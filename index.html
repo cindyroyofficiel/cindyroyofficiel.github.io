@@ -621,6 +621,10 @@
     .cover-video figcaption { margin-top: 12px; color: var(--muted); font-size: 13.5px; }
     /* ——— Avec arrangement : chansons complètes, collaboration avec Théo Rota ——— */
     .arranged { margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); }
+    .arranged-head { display: flex; gap: 28px; align-items: center; }
+    .arranged-photo { margin: 0; flex: none; width: 200px; text-align: center; }
+    .arranged-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 50%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .arranged-photo figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.4; }
     .arranged-title { margin: 0; max-width: 920px; font-family: var(--serif); font-size: clamp(30px, 3.8vw, 40px); font-weight: 600; line-height: 1.12; color: #a67c1a; }
     @media (prefers-color-scheme: dark) { .arranged-title { color: var(--gold); } }
     .arranged-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: start; }
@@ -630,6 +634,9 @@
     .arranged-credit { margin: 14px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
     @media (max-width: 620px) {
       .arranged { margin-top: 48px; padding-top: 36px; }
+      .arranged-head { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+      .arranged-photo { width: 180px; }
+      .arranged-title { text-align: center; }
       .arranged-grid { grid-template-columns: 1fr; }
       .arranged-card { padding: 20px; }
     }
@@ -1738,7 +1745,13 @@
           </ol>
 
           <section class="arranged" aria-labelledby="arranged-title">
-            <h3 class="arranged-title" id="arranged-title">Avec arrangement — collaboration avec Théo Rota</h3>
+            <div class="arranged-head">
+              <figure class="arranged-photo">
+                <img src="assets/theo-rota.jpg" alt="Théo Rota" width="644" height="616" loading="lazy" />
+                <figcaption>Théo Rota</figcaption>
+              </figure>
+              <h3 class="arranged-title" id="arranged-title">Avec arrangement — collaboration avec Théo Rota</h3>
+            </div>
             <div class="arranged-grid">
               <div class="arranged-card">
                 <h4>Béni sois-tu</h4>
