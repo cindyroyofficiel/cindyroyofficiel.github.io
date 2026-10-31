@@ -619,6 +619,20 @@
     .cover-video { margin: 26px 0 6px; max-width: 300px; }
     .cover-video video { width: 100%; aspect-ratio: 9 / 16; display: block; background: #0c0d0b; box-shadow: var(--shadow); }
     .cover-video figcaption { margin-top: 12px; color: var(--muted); font-size: 13.5px; }
+    /* ——— Avec arrangement : chansons complètes, collaboration avec Théo Rota ——— */
+    .arranged { margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); }
+    .arranged-title { margin: 0; max-width: 920px; font-family: var(--serif); font-size: clamp(30px, 3.8vw, 40px); font-weight: 600; line-height: 1.12; color: #a67c1a; }
+    @media (prefers-color-scheme: dark) { .arranged-title { color: var(--gold); } }
+    .arranged-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: start; }
+    .arranged-card { padding: 24px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .arranged-card h4 { margin: 0; font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+    .arranged-card audio { display: block; width: 100%; margin-top: 16px; }
+    .arranged-credit { margin: 14px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    @media (max-width: 620px) {
+      .arranged { margin-top: 48px; padding-top: 36px; }
+      .arranged-grid { grid-template-columns: 1fr; }
+      .arranged-card { padding: 20px; }
+    }
     /* ——— Familles d’extraits : Mes Cabrel, Country & dédicaces, Hommage à Dolly ——— */
     .family-title { margin: 68px 0 0; font-family: var(--serif); font-size: clamp(30px, 3.6vw, 38px); font-weight: 600; line-height: 1.1; color: #a67c1a; }
     @media (prefers-color-scheme: dark) { .family-title { color: var(--gold); } }
@@ -1722,6 +1736,22 @@
             <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Que la neige » dans le montage vidéo"><span class="song-num">06</span><span class="song-name">Que la neige — texte : Cindy Roy · musique et arrangement : Théo Rota</span></button></li>
             <li><button class="song-jump" type="button" data-time="118.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">07</span><span class="song-name">Avant de me rendre</span></button></li>
           </ol>
+
+          <section class="arranged" aria-labelledby="arranged-title">
+            <h3 class="arranged-title" id="arranged-title">Avec arrangement — collaboration avec Théo Rota</h3>
+            <div class="arranged-grid">
+              <div class="arranged-card">
+                <h4>Béni sois-tu</h4>
+                <audio controls preload="metadata" src="assets/beni-sois-tu.mp3" title="« Béni sois-tu » — Cindy Roy, en collaboration avec Théo Rota"></audio>
+                <p class="arranged-credit">Béni sois-tu — texte : Cindy Roy et Théo Rota · musique et arrangement : Théo Rota</p>
+              </div>
+              <div class="arranged-card">
+                <h4>Que la neige</h4>
+                <audio controls preload="metadata" src="assets/que-la-neige.mp3" title="« Que la neige » — Cindy Roy, en collaboration avec Théo Rota"></audio>
+                <p class="arranged-credit">Que la neige — texte : Cindy Roy · musique et arrangement : Théo Rota</p>
+              </div>
+            </div>
+          </section>
         </div>
         <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
           <h4 class="covers-title">Covers acoustiques à la guitare</h4>
