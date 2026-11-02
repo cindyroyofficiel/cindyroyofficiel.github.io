@@ -296,37 +296,42 @@
        recadrage ni voile par-dessus. */
     .hero-photo.hero-cover { min-height: 0; background: var(--deep); }
     /* La boîte de la photo est réservée dès le premier affichage, au format
-       exact de l’image (16:9 en large, 4:5 en portrait — voir le bloc
-       téléphone plus bas) : pendant le chargement, rien ne pousse ni ne
-       tire la page, et l’accueil reste pile sur son début. Le format de la
-       boîte étant celui de l’image, object-fit: cover ne recadre rien. */
-    .hero-photo.hero-cover picture { display: block; aspect-ratio: 1920 / 1080; }
+       exact de l’image (1920 × 1540 en large, 1080 × 2110 en portrait —
+       voir le bloc téléphone plus bas) : pendant le chargement, rien ne
+       pousse ni ne tire la page, et l’accueil reste pile sur son début.
+       Le format de la boîte étant celui de l’image, object-fit: cover ne
+       recadre rien. */
+    .hero-photo.hero-cover picture { display: block; aspect-ratio: 1920 / 1540; }
     .hero-photo.hero-cover img { width: 100%; height: 100%; object-fit: cover; }
     .hero-photo.hero-cover::after { content: none; }
-    /* ——— Montage de scène (accueil) : l’ouverture respire et le nom règne,
-       CENTRÉ, au-dessus de la photo — jamais par-dessus son visage.
-       Un bandeau-titre vert profond, décliné en deux arrangements
-       distincts (téléphone / portable — voir les deux blocs plus bas) :
-       le papillon doré (sa signature), la ligne d’origine, son nom en
-       Great Vibes bien grand et tape-à-l’œil, sa désignation montée juste
-       sous le nom (au lieu d’être cachée sous la photo), puis sa phrase
-       d’accroche. La photo de scène suit, entière, tête comprise.
-       Tout est centré, aéré, et lisible au premier coup d’œil. ——— */
-    .hero-scene { display: flex; flex-direction: column; background: var(--deep); }
-    .hero-scene picture { order: 2; }
+    /* ——— Montage de scène (accueil) : les écrits vivent DIRECTEMENT sur
+       la photo — le bandeau vert séparé a disparu, l’ouverture tombe
+       droit sur sa photo de scène. Les deux montages (large et portrait)
+       prolongent en haut la brume sombre de la scène, en fondu, pour
+       offrir aux titres un ciel dégagé : le papillon doré (sa signature),
+       la ligne d’origine, son nom en Great Vibes bien grand, sa
+       désignation juste sous le nom, puis sa phrase d’accroche — tout
+       centré, posé dans ce ciel, et son visage, plus bas dans l’image,
+       reste entièrement libre et intact. Un voile sombre en dégradé,
+       qui s’éteint avant d’atteindre son visage, plus un halo doré
+       derrière le nom, font ressortir chaque ligne sur la photo.
+       Deux arrangements distincts (téléphone / portable — voir les deux
+       blocs plus bas), pour qu’un correctif sur l’un ne défasse jamais
+       l’autre. ——— */
+    .hero-scene { position: relative; display: block; background: var(--deep); }
     .hero-titles {
-      order: 1; position: relative; z-index: 2;
+      position: absolute; top: 0; left: 0; right: 0; z-index: 3;
       display: flex; flex-direction: column; align-items: center; text-align: center;
-      padding: clamp(96px, 11vw, 132px) clamp(22px, 5vw, 64px) clamp(42px, 5vw, 58px);
+      padding: clamp(96px, 11vw, 132px) clamp(22px, 5vw, 64px) 96px;
       background:
-        radial-gradient(640px 300px at 50% 30%, rgba(201, 162, 79, .17), rgba(201, 162, 79, 0) 68%),
-        linear-gradient(180deg, var(--deep-2) 0%, var(--deep) 72%);
+        radial-gradient(700px 330px at 50% 36%, rgba(201, 162, 79, .20), rgba(201, 162, 79, 0) 68%),
+        linear-gradient(180deg, rgba(7, 11, 7, .74) 0%, rgba(7, 11, 7, .56) 52%, rgba(7, 11, 7, .27) 78%, rgba(7, 11, 7, 0) 100%);
       pointer-events: none;
     }
     /* Spécificité renforcée : le papillon vit dans .hero-photo, dont les
        règles photo (width: 100%) ne doivent pas s’appliquer à lui. */
-    .hero-photo.hero-cover .hero-butterfly { width: 52px; height: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(1.5) saturate(1.12); }
-    .hero-titles .origin { margin: 0; max-width: none; text-align: center; }
+    .hero-photo.hero-cover .hero-butterfly { width: 52px; height: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(1.5) saturate(1.12) drop-shadow(0 2px 14px rgba(0, 0, 0, .55)); }
+    .hero-titles .origin { margin: 0; max-width: none; text-align: center; text-shadow: 0 1px 12px rgba(0, 0, 0, .85), 0 0 22px rgba(0, 0, 0, .5); }
     .hero-titles h1 {
       margin-top: 10px; padding-inline: .1em;
       max-width: 100%;
@@ -347,7 +352,7 @@
       -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
       font-size: clamp(76px, 10.5vw, 148px); line-height: 1.14;
       color: #fdfaf0;
-      text-shadow: 0 3px 34px rgba(0, 0, 0, .45), 0 0 46px rgba(201, 162, 79, .22);
+      text-shadow: 0 3px 34px rgba(0, 0, 0, .62), 0 0 46px rgba(201, 162, 79, .30), 0 1px 10px rgba(0, 0, 0, .55);
     }
     .hero-rule { display: flex; align-items: center; gap: 14px; margin-top: 20px; color: var(--gold); }
     .hero-rule::before, .hero-rule::after {
@@ -359,8 +364,9 @@
     .hero-titles .role {
       margin: 20px auto 0; max-width: 720px; text-align: center;
       font-size: clamp(25px, 3.4vw, 38px); line-height: 1.22; color: #f4edda;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, .7), 0 0 26px rgba(0, 0, 0, .45);
     }
-    .hero-titles .hero-tagline { margin-top: 14px; text-align: center; }
+    .hero-titles .hero-tagline { margin-top: 14px; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .75), 0 0 22px rgba(0, 0, 0, .5); }
     /* Le bloc sous la photo ne garde que la note manuscrite et les boutons,
        eux aussi centrés : l’invitation, claire et dégagée. */
     .hero .hero-copy {
@@ -372,34 +378,42 @@
     /* ——— Deux arrangements DISTINCTS pour l’ouverture, comme Cindy le
        veut : le portable et le téléphone ne partagent plus les mêmes
        mesures, pour qu’un correctif sur l’un ne défasse jamais l’autre.
-       PORTABLE / GRAND ÉCRAN (ci-dessous) : le bandeau est compacté
-       (papillon réduit, nom un peu moins haut, espacements resserrés)
-       pour que l’ouverture « tombe sur sa photo » : la photo de scène —
-       et son visage, qui est dans le haut de l’image — paraît dès le
+       Dans les deux cas, les écrits sont posés sur la photo, dans le
+       ciel de brume prolongé au-dessus d’elle, et le voile en dégradé
+       s’éteint bien avant son visage.
+       PORTABLE / GRAND ÉCRAN (ci-dessous) : le montage large (1920 ×
+       1540) place le haut de sa tête à ≈ 41 % de la hauteur; la pile de
+       titres, dosée pour finir vers ≈ 36 %, ne l’approche même pas —
+       et l’ouverture tombe droit sur la photo, visage visible dès le
        premier écran, sans défiler.
-       TÉLÉPHONE (bloc suivant) : l’ordre approuvé ne change pas (bandeau,
-       puis photo), mais le nom part plus petit et poussé d’une liche de
-       plus vers la gauche, avec le garde-fou « fitName » renforcé, pour
+       TÉLÉPHONE (bloc suivant) : le montage portrait (1080 × 2110)
+       place le haut de sa tête à ≈ 41 % de la hauteur elle aussi; pile
+       resserrée (papillon réduit, nom à 15,5 vw, désignation à 20 px)
+       qui finit vers ≈ 39 %, juste au-dessus de ses cheveux. Le nom part poussé d’une liche de plus
+       vers la gauche, avec le garde-fou « fitName » renforcé, pour
        tenir AU COMPLET entre les deux bords. ——— */
     @media (min-width: 701px) {
-      .hero-titles { padding: 74px clamp(22px, 5vw, 64px) 22px; }
-      .hero-photo.hero-cover .hero-butterfly { width: 34px; margin-bottom: 10px; }
-      .hero-titles h1 { margin-top: 4px; font-size: clamp(62px, 7.4vw, 98px); }
-      .hero-rule { margin-top: 10px; }
-      .hero-titles .role { margin-top: 12px; font-size: clamp(23px, 2.6vw, 32px); }
+      .hero-titles { padding: 72px clamp(22px, 5vw, 64px) 88px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 30px; margin-bottom: 8px; }
+      .hero-titles h1 { margin-top: 4px; font-size: clamp(68px, 8vw, 118px); }
+      .hero-rule { margin-top: 12px; }
+      .hero-titles .role { margin-top: 12px; font-size: clamp(24px, 2.7vw, 33px); }
       .hero-titles .hero-tagline { margin-top: 8px; }
     }
     @media (max-width: 700px) {
-      .hero-photo.hero-cover picture { aspect-ratio: 1080 / 1350; }
-      .hero-titles { padding: 92px 20px 40px; }
-      .hero-photo.hero-cover .hero-butterfly { width: 44px; margin-bottom: 14px; }
-      /* Téléphone : nom rapetissé d’emblée (16 vw au lieu de 18,5) et
-         poussé une petite liche de plus vers la gauche (-0,095 em au
-         lieu de -0,065) — la demande de Cindy. Le « fitName » renforcé
-         (cible 90 % de la largeur, contrôle des deux bords, reprises
-         tardives) finit le travail si le téléphone grossit le texte. */
-      .hero-titles h1 { font-size: clamp(54px, 16vw, 78px); transform: translateX(-.095em); }
-      .hero-titles .origin { font-size: 12px; letter-spacing: .12em; line-height: 1.7; }
+      .hero-photo.hero-cover picture { aspect-ratio: 1080 / 2110; }
+      .hero-titles { padding: 64px 18px 68px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 24px; margin-bottom: 6px; }
+      /* Téléphone : nom rapetissé d’emblée (15,5 vw) et poussé une
+         petite liche de plus vers la gauche (-0,095 em au lieu de
+         -0,065) — la demande de Cindy. Le « fitName » renforcé (cible
+         90 % de la largeur, contrôle des deux bords, reprises tardives)
+         finit le travail si le téléphone grossit le texte. */
+      .hero-titles h1 { font-size: clamp(50px, 15.5vw, 72px); transform: translateX(-.095em); }
+      .hero-titles .origin { font-size: 10.5px; letter-spacing: .1em; line-height: 1.5; }
+      .hero-rule { margin-top: 9px; }
+      .hero-titles .role { margin-top: 10px; font-size: 20px; line-height: 1.2; }
+      .hero-titles .hero-tagline { margin-top: 6px; }
       .hero .hero-copy { padding-top: 38px; padding-bottom: 54px; }
       .hero .hero-copy .hero-actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; margin-inline: auto; }
     }
@@ -1742,8 +1756,8 @@
       <span class="hero-watermark" aria-hidden="true">Acadie</span>
       <div class="hero-photo hero-cover hero-scene">
         <picture>
-          <source media="(max-width: 700px)" srcset="assets/cindy-accueil-scene-portrait.jpg" width="1080" height="1350" />
-          <img src="assets/cindy-accueil-scene-large.jpg" width="1920" height="1080" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" />
+          <source media="(max-width: 700px)" srcset="assets/cindy-accueil-scene-portrait-titres.jpg" width="1080" height="2110" />
+          <img src="assets/cindy-accueil-scene-large-titres.jpg" width="1920" height="1540" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" />
         </picture>
         <div class="hero-titles">
           <img class="hero-butterfly" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" />
