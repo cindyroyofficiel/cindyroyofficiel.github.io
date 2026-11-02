@@ -103,7 +103,7 @@
     "description": "Autrice-compositrice-interprète acadienne originaire de Robertville, au Nouveau-Brunswick, née à Bathurst.",
     "birthPlace": {"@type": "Place", "name": "Bathurst, Nouveau-Brunswick"},
     "homeLocation": {"@type": "Place", "name": "Robertville, Nouveau-Brunswick"},
-    "award": "Prix Auteur-compositeur (prix de composition de la SOCAN) et prix RADARTS (laissez-passer pour les vitrines de Moncton et les festivités acadiennes) — Gala de la chanson de Caraquet 2015"
+    "award": "Prix Auteur-compositeur (prix de composition de la SOCAN) et laissez-passer RADARTS (pour les vitrines de Moncton et les festivités acadiennes) — Gala de la chanson de Caraquet 2015"
   }
   </script>
   <style>
@@ -295,13 +295,14 @@
        je chante… Un pas à la fois »), elle s’affiche donc en entier, sans
        recadrage ni voile par-dessus. */
     .hero-photo.hero-cover { min-height: 0; background: var(--deep); }
-    /* La boîte de la photo est réservée dès le premier affichage, au format
-       exact de l’image (1920 × 1540 en large, 1080 × 2110 en portrait —
-       voir le bloc téléphone plus bas) : pendant le chargement, rien ne
-       pousse ni ne tire la page, et l’accueil reste pile sur son début.
-       Le format de la boîte étant celui de l’image, object-fit: cover ne
-       recadre rien. */
-    .hero-photo.hero-cover picture { display: block; aspect-ratio: 1920 / 1540; }
+    /* La boîte de la photo est réservée dès le premier affichage
+       (1920 × 1420 en large, 1080 × 2040 en portrait — voir les deux
+       arrangements plus bas) : pendant le chargement, rien ne pousse ni
+       ne tire la page, et l’accueil reste pile sur son début. En large,
+       la hauteur du cadre est en plus contenue dans le premier écran
+       (max-height: 100svh dans l’arrangement portable). En portrait,
+       le cadre épouse le montage (voir plus bas). */
+    .hero-photo.hero-cover picture { display: block; aspect-ratio: 1920 / 1640; }
     .hero-photo.hero-cover img { width: 100%; height: 100%; object-fit: cover; }
     .hero-photo.hero-cover::after { content: none; }
     /* ——— Montage de scène (accueil) : les écrits vivent DIRECTEMENT sur
@@ -322,6 +323,13 @@
     .hero-titles {
       position: absolute; top: 0; left: 0; right: 0; z-index: 3;
       display: flex; flex-direction: column; align-items: center; text-align: center;
+      /* Toute la pile est dosée au pixel (voir les deux arrangements plus
+         bas) : on empêche le grossissement automatique du texte des
+         téléphones de gonfler AUSSI l’origine, la désignation et la
+         phrase d’accroche — sans ça, sur le Galaxy de Cindy (texte
+         grossi), ces lignes grandissaient en douce et descendaient
+         jusque sur ses cheveux. */
+      -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
       padding: clamp(96px, 11vw, 132px) clamp(22px, 5vw, 64px) 96px;
       background:
         radial-gradient(700px 330px at 50% 36%, rgba(201, 162, 79, .20), rgba(201, 162, 79, 0) 68%),
@@ -367,8 +375,17 @@
       text-shadow: 0 2px 18px rgba(0, 0, 0, .7), 0 0 26px rgba(0, 0, 0, .45);
     }
     .hero-titles .hero-tagline { margin-top: 14px; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .75), 0 0 22px rgba(0, 0, 0, .5); }
-    /* Le bloc sous la photo ne garde que la note manuscrite et les boutons,
-       eux aussi centrés : l’invitation, claire et dégagée. */
+    /* « une fille qui lâche pas » : la ligne vivait sous la photo
+       (l’ancienne note manuscrite). Cindy la veut DANS l’ouverture
+       portable, sous le bloc de droite, dans sa calligraphie —
+       elle n’existe donc qu’à cet endroit de l’ouverture
+       (règle : pas de répétition). Au téléphone, elle reste
+       cachée pour l’instant : la pile mobile, déjà serrée,
+       garde sa marge au-dessus de ses cheveux (la phase
+       téléphone décidera de sa place). */
+    .hero-titles .hero-motto { display: none; }
+    /* Le bloc sous la photo ne garde que les boutons, centrés :
+       l’invitation, claire et dégagée. */
     .hero .hero-copy {
       align-items: center; text-align: center;
       padding: 46px clamp(22px, 5vw, 64px) 62px;
@@ -381,41 +398,130 @@
        Dans les deux cas, les écrits sont posés sur la photo, dans le
        ciel de brume prolongé au-dessus d’elle, et le voile en dégradé
        s’éteint bien avant son visage.
+       RÈGLE DE CINDY (2 nov., ferme) : TOUTE la pile des écrits finit
+       AU-DESSUS de ses cheveux, avec une marge libre — aucun écrit sur
+       ses cheveux ni son visage, même sur son téléphone où le texte
+       est grossi. Trois leviers, des deux bords : (1) la pile monte et
+       se resserre (départ plus haut, papillon plus petit, nom un peu
+       réduit, espacements serrés, désignation et accroche un peu plus
+       petites); (2) le grossissement automatique du texte est bloqué
+       sur toute la pile (text-size-adjust plus haut), comme il l’était
+       déjà pour le nom; (3) les montages eux-mêmes ont été recomposés
+       (brume rognée en haut, voir les deux arrangements) et, côté
+       portable, la hauteur du cadre est contenue dans le premier
+       écran pour que sa figure y soit visible au complet.
        PORTABLE / GRAND ÉCRAN (ci-dessous) : le montage large (1920 ×
-       1540) place le haut de sa tête à ≈ 41 % de la hauteur; la pile de
-       titres, dosée pour finir vers ≈ 36 %, ne l’approche même pas —
-       et l’ouverture tombe droit sur la photo, visage visible dès le
-       premier écran, sans défiler.
-       TÉLÉPHONE (bloc suivant) : le montage portrait (1080 × 2110)
-       place le haut de sa tête à ≈ 41 % de la hauteur elle aussi; pile
-       resserrée (papillon réduit, nom à 15,5 vw, désignation à 20 px)
-       qui finit vers ≈ 39 %, juste au-dessus de ses cheveux. Le nom part poussé d’une liche de plus
+       1420 — 120 px de brume retirés en haut du montage d’origine,
+       1920 × 1540; haut de tête à ≈ 37,6 %) s’affiche dans un cadre
+       au même format, dont la hauteur est CONTENUE dans le premier
+       écran (max-height: 100svh, « cover » ancré en haut) : pile
+       resserrée qui finit avec ≈ 70–100 px de marge au-dessus de ses
+       cheveux aux largeurs de portable, et son visage ET son torse
+       sont visibles dès l’ouverture, sans défiler (précision de
+       Cindy, 2 nov. 13 h 11 — avant ça, l’image plus haute que
+       l’écran ne laissait voir que le dessus de sa tête tout en bas).
+       Sa suggestion de déplacer la ligne « Robertville… » plus haut
+       ou près du nom officiel : laissée telle quelle, comme elle
+       l’a permis (« sinon laisse-le là ») — la ligne reste juste
+       au-dessus du nom, et c’est la photo qui a été remontée.
+       TÉLÉPHONE (bloc suivant) : le montage portrait (1080 × 2040 —
+       70 px de brume retirés en haut du montage d’origine, 1080 ×
+       2110 : précision de Cindy le 2 nov. à 13 h 10, elle voulait sa
+       photo remontée « un petit peu » pour qu’on la voie bien dès
+       l’ouverture) place le haut de sa tête à ≈ 39,5 %; cadre au même
+       format que le montage. Pile resserrée (papillon réduit, nom à
+       13,8 vw, désignation à 17 px, accroche à 16,5 px) qui finit
+       vers ≈ 32 % à 390 px de large — marge libre mesurée d’environ
+       55 px au-dessus de ses cheveux (≈ 40 px à 360 px, le format
+       de son Galaxy) — donc la règle tient, et sa figure est un peu
+       plus haute et présente dans le premier écran. Le nom part poussé d’une liche de plus
        vers la gauche, avec le garde-fou « fitName » renforcé, pour
        tenir AU COMPLET entre les deux bords. ——— */
     @media (min-width: 701px) {
-      .hero-titles { padding: 72px clamp(22px, 5vw, 64px) 88px; }
-      .hero-photo.hero-cover .hero-butterfly { width: 30px; margin-bottom: 8px; }
-      .hero-titles h1 { margin-top: 4px; font-size: clamp(68px, 8vw, 118px); }
-      .hero-rule { margin-top: 12px; }
-      .hero-titles .role { margin-top: 12px; font-size: clamp(24px, 2.7vw, 33px); }
-      .hero-titles .hero-tagline { margin-top: 8px; }
+      /* Hauteur contenue dans le premier écran (précision de Cindy,
+         2 nov. 13 h 11 : sur son portable, sa photo était « beaucoup
+         trop basse — on voit juste ma tête qui sort en dessous de
+         l’eau ») : le cadre ne dépasse jamais la hauteur visible, le
+         « cover » ancré EN HAUT garde la brume des titres puis son
+         visage et son torse dans ce premier écran, sans défiler.
+         Le bas de la robe peut être rogné sur les écrans bas — c’est
+         le prix, assumé, pour voir son visage dès l’arrivée. */
+      .hero-photo.hero-cover picture { aspect-ratio: 1920 / 1420; max-height: 100svh; }
+      .hero-photo.hero-cover img { object-position: 50% 0%; }
+      .hero-titles { padding: 48px clamp(22px, 5vw, 64px) 52px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 22px; margin-bottom: 5px; }
+      .hero-titles .origin { line-height: 1.4; }
+      /* Précisions de Cindy (2 nov., 13 h 19–13 h 20, portable) :
+         1) de l’ESPACE entre la ligne « Robertville… » et son nom —
+         la marge du nom passe de 2 à 16 px, ça respire;
+         2) son nom PLUS CENTRÉ à son œil (le décalage optique passe
+         de -0,065 em à -0,03 em) et un peu plus gros (permission
+         explicite : « tu pourrais même grossir mon nom un peu ») —
+         7,2 vw, plafond 118 px, le garde-fou « fitName » garde le
+         nom au complet entre les bords;
+         3) la désignation et la phrase d’accroche poussées NETTEMENT
+         À DROITE, dans l’espace libre à droite de sa figure — plus
+         rien dans son visage : les deux lignes forment un bloc
+         aligné à droite, même marge à droite, loin du bord. */
+      .hero-titles h1 { margin-top: 16px; font-size: clamp(58px, 7.2vw, 118px); transform: translateX(-.03em); }
+      .hero-rule { margin-top: 8px; }
+      .hero-titles .role { align-self: flex-end; text-align: right; margin: 10px clamp(28px, 4.5vw, 72px) 0 auto; font-size: clamp(21px, 2.2vw, 29px); }
+      .hero-titles .hero-tagline { align-self: flex-end; text-align: right; margin: 6px clamp(28px, 4.5vw, 72px) 0 auto; font-size: 19px; }
+      /* La continuation du bloc de droite (Cindy, 2 nov., 13 h 29) :
+         « une fille qui lâche pas » dans sa calligraphie (la plume
+         Great Vibes), dorée comme l’ancienne note manuscrite,
+         alignée à droite sur la même marge que la désignation et
+         l’accroche — le bloc de droite se lit comme un cartouche :
+         qui elle est, sa phrase, puis sa devise à la plume. */
+      .hero-titles .hero-motto {
+        display: block; align-self: flex-end; text-align: right;
+        margin: 14px clamp(28px, 4.5vw, 72px) 0 auto;
+        font-family: var(--script-name); font-weight: 400;
+        font-size: clamp(30px, 3vw, 42px); line-height: 1.2; color: #f0bd6d;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, .75), 0 0 22px rgba(0, 0, 0, .5);
+      }
+    }
+    /* Fenêtres moyennes (701–1020 px : fenêtre partagée, petit
+       portable) : la pile se resserre encore pour garder la marge
+       au-dessus de ses cheveux même quand l’image rapetisse. */
+    @media (min-width: 701px) and (max-width: 1020px) {
+      .hero-titles { padding-top: 42px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 18px; margin-bottom: 4px; }
+      .hero-titles .origin { font-size: 11.5px; }
+      .hero-titles h1 { font-size: clamp(44px, 6vw, 60px); }
+      .hero-rule { margin-top: 6px; }
+      .hero-titles .role { margin-top: 6px; font-size: 20px; }
+      .hero-titles .hero-tagline { margin-top: 5px; font-size: 17px; }
+    }
+    @media (min-width: 701px) and (max-width: 760px) {
+      .hero-titles { padding-top: 36px; }
     }
     @media (max-width: 700px) {
-      .hero-photo.hero-cover picture { aspect-ratio: 1080 / 2110; }
-      .hero-titles { padding: 64px 18px 68px; }
-      .hero-photo.hero-cover .hero-butterfly { width: 24px; margin-bottom: 6px; }
-      /* Téléphone : nom rapetissé d’emblée (15,5 vw) et poussé une
+      .hero-photo.hero-cover picture { aspect-ratio: 1080 / 2040; }
+      .hero-titles { padding: 56px 18px 40px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 18px; margin-bottom: 4px; }
+      /* Téléphone : nom rapetissé d’emblée (13,8 vw) et poussé une
          petite liche de plus vers la gauche (-0,095 em au lieu de
          -0,065) — la demande de Cindy. Le « fitName » renforcé (cible
          90 % de la largeur, contrôle des deux bords, reprises tardives)
          finit le travail si le téléphone grossit le texte. */
-      .hero-titles h1 { font-size: clamp(50px, 15.5vw, 72px); transform: translateX(-.095em); }
-      .hero-titles .origin { font-size: 10.5px; letter-spacing: .1em; line-height: 1.5; }
-      .hero-rule { margin-top: 9px; }
-      .hero-titles .role { margin-top: 10px; font-size: 20px; line-height: 1.2; }
-      .hero-titles .hero-tagline { margin-top: 6px; }
+      .hero-titles h1 { margin-top: 2px; font-size: clamp(42px, 13.8vw, 64px); line-height: 1.08; transform: translateX(-.095em); }
+      .hero-titles .origin { font-size: 10px; letter-spacing: .08em; line-height: 1.4; }
+      .hero-rule { margin-top: 5px; }
+      .hero-titles .role { margin-top: 7px; font-size: 17px; line-height: 1.15; }
+      .hero-titles .hero-tagline { margin-top: 5px; font-size: 16.5px; }
       .hero .hero-copy { padding-top: 38px; padding-bottom: 54px; }
       .hero .hero-copy .hero-actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; margin-inline: auto; }
+    }
+    /* Très petits téléphones (≤ 380 px) : la désignation repasse sur
+       deux lignes et la photo remontée laisse moins de marge — on
+       resserre encore un peu la pile pour garder la règle de Cindy
+       (les écrits finissent au-dessus des cheveux) même là. */
+    @media (max-width: 380px) {
+      .hero-titles { padding-top: 50px; }
+      .hero-titles h1 { font-size: clamp(40px, 13vw, 50px); }
+      .hero-titles .role { font-size: 16px; }
+      .hero-titles .hero-tagline { font-size: 15.5px; }
     }
 
     section { padding: 106px 24px; }
@@ -825,14 +931,82 @@
     .welcome-title { margin: 0; max-width: 880px; font-family: var(--serif); font-size: clamp(40px, 5vw, 68px); line-height: 1.03; letter-spacing: -.02em; font-weight: 600; }
     .welcome-title em { font-style: italic; font-weight: 500; color: var(--accent); }
     .welcome-intro { margin: 24px 0 0; max-width: 710px; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.6; }
-    /* ——— Poème de bienvenue + photo de la mer, côte à côte ——— */
-    .welcome-poem { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(28px, 5vw, 60px); align-items: start; }
-    .welcome-poem .welcome-intro { margin: 0; max-width: none; }
-    .welcome-photo { margin: 0; }
+    /* ——— Bienvenue, arrangement portable (directives de Cindy, 2 nov.) :
+       13 h 12 — son portrait signature à gauche et le texte de
+       bienvenue À CÔTÉ, dans l’espace de droite (avant, le portrait
+       était seul sur sa rangée, un grand vide à droite, et le texte
+       tombait en dessous);
+       13 h 17 — la VIDÉO de bienvenue à côté de ce texte, plutôt
+       qu’en dessous : la première rangée porte donc portrait |
+       poème et drapeaux | vidéo (les trois hauteurs se tiennent :
+       ≈ 530–550 px);
+       13 h 18 — la carte « Mère chanteuse » ALIGNÉE avec la grosse
+       photo, « pour que ça tombe comme carré » : elle passe en
+       pleine largeur sous la première rangée, son bord gauche
+       exactement sur celui du portrait, son bord droit sur celui
+       de la vidéo — un seul bloc net, aux bords alignés. La photo
+       de la mer suit, centrée.
+       Au téléphone (≤ 820 px), la même grille s’empile en une seule
+       colonne et l’ordre d’origine est conservé (portrait, texte,
+       carte, photo de la mer, vidéo) grâce aux « order » plus bas. ——— */
+    .welcome-poem { margin-top: 38px; display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: clamp(28px, 3.5vw, 44px); align-items: start; }
+    .welcome-poem > .mere-chanteuse { margin-top: 0; }
+    @media (min-width: 821px) {
+      .welcome-poem { grid-template-columns: minmax(0, 400px) minmax(0, 1fr) minmax(0, 288px); }
+      .welcome-portrait { grid-column: 1; grid-row: 1; }
+      .welcome-poem-copy { grid-column: 2; grid-row: 1; }
+      .welcome-poem > .welcome-frame { grid-column: 3; grid-row: 1; margin: 0; width: 100%; max-width: none; }
+      .welcome-poem > .mere-chanteuse { grid-column: 1 / -1; grid-row: 2; }
+      .welcome-poem > .welcome-photo-row { grid-column: 1 / -1; grid-row: 3; }
+      /* Photo de la mer tassée complètement à gauche, sa ligne
+         à côté (demandes de Cindy, 2 nov., 13 h 26 puis 13 h 27,
+         portable) : la photo garde le bord gauche de la grille
+         (alignée sur le portrait du haut) et son texte — choisi
+         et approuvé mot pour mot par Cindy — vit dans la colonne
+         de droite, centré verticalement contre la photo. */
+      .welcome-photo-row { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: clamp(28px, 3.5vw, 44px); align-items: center; }
+      .welcome-photo-row .welcome-photo { grid-column: auto; width: 100%; }
+    }
+    /* ——— Le poème de bienvenue, à la plume (demande de Cindy,
+       2 nov., 13 h 23) : « tout ce que je dis de ma voix, j’aime
+       que ça soit écrit comme ça, élégant » — son poème passe donc
+       dans l’écriture signature du site (Great Vibes, la même plume
+       que son nom et que sa ligne « Mère chanteuse »), en taille
+       confortable et lisible : Great Vibes a un petit œil, alors
+       27–36 px, interligne généreux, encre pleine (pas le gris
+       « muted » d’avant). Aucun mot changé — style seulement.
+       Les retours à la ligne de ses vers restent les siens; si une
+       ligne déborde en largeur réduite, elle se replie doucement
+       comme un vers qui continue. ——— */
+    .welcome-poem .welcome-intro {
+      margin: 0; max-width: none;
+      font-family: var(--script-name); font-weight: 400;
+      font-size: clamp(27px, 2.7vw, 36px); line-height: 1.5;
+      color: var(--ink);
+    }
+    .welcome-photo { margin: 0; grid-column: 1 / -1; width: min(720px, 100%); justify-self: center; }
+    /* ——— La rangée du voilier : photo à gauche, sa ligne à côté.
+       La ligne est une de SES lignes de voix (approuvée mot pour
+       mot le 2 nov.) : elle s’écrit donc à la plume du site
+       (Great Vibes), en belle taille lisible, comme le poème
+       de bienvenue et la ligne « Mère chanteuse ». Au téléphone,
+       la rangée s’empile : la photo, puis sa ligne dessous. ——— */
+    .welcome-photo-row { min-width: 0; }
+    .welcome-photo-row .welcome-photo { margin: 0 auto; }
+    .welcome-photo-line {
+      margin: 22px 0 0; min-width: 0;
+      font-family: var(--script-name); font-weight: 400;
+      font-size: clamp(30px, 3.1vw, 42px); line-height: 1.4;
+      color: var(--ink); text-wrap: balance;
+    }
+    @media (min-width: 821px) {
+      .welcome-photo-line { margin: 0; }
+    }
     .welcome-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .welcome-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 13.5px; }
-    /* ——— Portrait signature, grand et clair, au début de Bienvenue ——— */
-    .welcome-portrait { margin: 38px 0 0; max-width: 520px; }
+    /* ——— Portrait signature, grand et clair, au début de Bienvenue :
+       première cellule de la grille ci-dessus (à gauche du texte). ——— */
+    .welcome-portrait { margin: 0; max-width: none; }
     .welcome-portrait img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     /* ——— Mini drapeaux en défilé doux, sous le poème ———
        Belle-Baie, l’Acadie, le Québec, le Canada et la France,
@@ -862,6 +1036,11 @@
     }
     @media (max-width: 820px) {
       .welcome-poem { grid-template-columns: 1fr; gap: 26px; }
+      .welcome-portrait { max-width: 520px; order: 1; }
+      .welcome-poem-copy { order: 2; }
+      .welcome-poem > .mere-chanteuse { order: 3; }
+      .welcome-poem > .welcome-photo-row { order: 4; }
+      .welcome-poem > .welcome-frame { order: 5; justify-self: center; margin-top: 22px; }
     }
     .welcome-frame { margin: 48px auto 0; margin-inline: auto; width: min(100%, calc(80vh * 9 / 16)); max-width: 460px; }
     .welcome-frame video { width: 100%; aspect-ratio: 9 / 16; max-height: 80vh; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
@@ -1680,7 +1859,8 @@
        2) Accueil (Bienvenue) : dans l’espace libre à gauche, sous le
           poème, sa ligne « Mère chanteuse » écrite à la plume
           romantique (Great Vibes), avec sa photo main sur le cœur
-          juste à côté.
+          juste à côté — présentée comme une page de cahier ancien,
+          encre sépia sur papier d’époque (vision de Cindy, 2 nov.).
        ════════════════════════════════════════════════════════════════ */
     /* — Martial en tout petit : vignette ronde cliquable, titre à côté — */
     .martial-head { display: flex; align-items: center; gap: 18px; margin: 0 0 22px; }
@@ -1711,23 +1891,205 @@
        juste à côté — dans la colonne du poème de bienvenue, sous les
        petits drapeaux : c’est l’espace libre à gauche, en bas, que
        Cindy avait repéré (la photo de la mer, à droite, descend
-       plus bas que le poème). */
-    .mere-chanteuse { margin-top: 38px; display: flex; align-items: center; gap: clamp(16px, 2.6vw, 24px); min-width: 0; }
-    .mere-photo { margin: 0; flex: 0 0 clamp(112px, 11vw, 138px); width: clamp(112px, 11vw, 138px); }
+       plus bas que le poème).
+       VISION DE CINDY (2 nov., 13 h 03) : « les écrits écrits à la
+       vieille plume… dans un vrai cahier, avec une écriture
+       calligraphie du temps » — le bloc devient donc une PAGE DE
+       CAHIER ANCIEN : papier ivoire d’époque (il reste papier dans
+       les deux modes, clair comme sombre — une vraie page ne change
+       pas de couleur), fine ligne de marge rosée à gauche, écriture
+       en encre sépia de plume (Great Vibes) posée sur les lignes
+       du cahier — le lignage est dessiné DANS le paragraphe, au pas
+       exact de son interligne, pour que chaque ligne d’écriture
+       repose sur une ligne du cahier. Sa photo main sur le cœur
+       reste à côté, comme une photo d’époque collée sur la page
+       (bordure blanche de tirage, très légère inclinaison). Goût
+       élégant, retenu : ni spirale, ni trous, ni taches forcées. */
+    .mere-chanteuse {
+      margin-top: 38px; display: flex; align-items: center; gap: clamp(16px, 2.6vw, 24px); min-width: 0;
+      position: relative;
+      padding: 24px 26px 24px 36px;
+      background:
+        radial-gradient(420px 190px at 88% -10%, rgba(201, 162, 79, .14), rgba(201, 162, 79, 0) 65%),
+        linear-gradient(168deg, #fbf5e2 0%, #f4e9cd 54%, #eddeb9 100%);
+      border: 1px solid rgba(122, 90, 38, .38);
+      border-radius: 3px 11px 4px 13px;
+      box-shadow: 0 18px 38px rgba(74, 56, 26, .20), inset 0 1px 0 rgba(255, 253, 244, .7), inset 0 0 26px rgba(146, 110, 52, .08);
+      transform: rotate(-.3deg);
+    }
+    /* La ligne de marge du cahier, fine et rosée, tout le long de la page */
+    .mere-chanteuse::before {
+      content: ""; position: absolute; top: 10px; bottom: 10px; left: 17px;
+      width: 1px; background: rgba(181, 80, 47, .34);
+    }
+    /* ——— Décor d’automne de la page de cahier (demande de Cindy,
+       2 nov., 13 h 24 : « tu peux t’amuser à mettre des feuilles
+       d’automne… avec une petite plume d’ancien temps ») — retenu
+       et élégant : une plume d’oie posée en diagonale au coin de
+       sa photo, comme si elle venait d’écrire la ligne, et trois
+       petites feuilles d’automne (rouille, ocre, bourgogne)
+       déposées sur les bords de la page. Dessins en SVG inline,
+       purement décoratifs (aria-hidden), jamais sur l’écriture. ——— */
+    .mere-deco { position: absolute; pointer-events: none; z-index: 3; display: block; }
+    .mere-quill {
+      left: clamp(100px, 10.2vw, 128px); bottom: 2px; width: 56px;
+      transform: rotate(-16deg);
+      filter: drop-shadow(0 4px 5px rgba(74, 56, 26, .30));
+    }
+    .mere-leaf-1 { top: -11px; right: 34px; width: 27px; transform: rotate(38deg); }
+    .mere-leaf-2 { left: -9px; bottom: 16px; width: 29px; transform: rotate(-52deg); }
+    .mere-leaf-3 { right: -6px; bottom: -9px; width: 23px; transform: rotate(124deg); }
+    @media (max-width: 620px) {
+      .mere-quill { left: 88px; bottom: 0; width: 44px; }
+      .mere-leaf-1 { width: 22px; right: 24px; }
+      .mere-leaf-2 { width: 24px; }
+      .mere-leaf-3 { width: 19px; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .mere-chanteuse { box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 253, 244, .7), inset 0 0 26px rgba(146, 110, 52, .08); }
+    }
+    .mere-photo {
+      margin: 0; flex: 0 0 clamp(112px, 11vw, 138px); width: clamp(112px, 11vw, 138px);
+      background: #fffdf6; padding: 5px 5px 13px;
+      box-shadow: 0 8px 20px rgba(74, 56, 26, .28);
+      transform: rotate(-1.5deg);
+    }
     .mere-photo img {
       width: 100%; aspect-ratio: 4 / 5; display: block; object-fit: cover;
-      object-position: 50% 26%; border: 1px solid var(--line);
-      border-radius: var(--r-media, 14px); box-shadow: var(--shadow-warm, var(--shadow));
+      object-position: 50% 26%; border: 1px solid rgba(122, 90, 38, .25);
+      border-radius: 1px; box-shadow: none;
     }
     .mere-line {
       margin: 0; min-width: 0; font-family: var(--script-name); font-weight: 400;
-      font-size: clamp(27px, 2.7vw, 35px); line-height: 1.38; color: var(--accent-2);
+      font-size: clamp(27px, 2.7vw, 35px); line-height: 40px; color: #4e3520;
+      /* Les lignes du cahier, au pas de l’interligne (40 px) : le
+         trait bleu-gris très pâle passe juste sous chaque ligne
+         d’écriture, comme sous une plume qui suit la réglure. */
+      background-image: linear-gradient(180deg, rgba(93, 124, 150, 0) 33px, rgba(93, 124, 150, .30) 34px, rgba(93, 124, 150, 0) 35px);
+      background-size: 100% 40px; background-repeat: repeat-y; background-position: 0 2px;
+      text-shadow: 0 0 .35px rgba(78, 53, 32, .35);
     }
-    @media (prefers-color-scheme: dark) { .mere-line { color: var(--gold); } }
     @media (max-width: 620px) {
-      .mere-chanteuse { gap: 14px; }
+      .mere-chanteuse { gap: 14px; padding: 20px 16px 20px 28px; }
+      .mere-chanteuse::before { left: 12px; }
       .mere-photo { flex-basis: 104px; width: 104px; }
-      .mere-line { font-size: 26px; line-height: 1.36; }
+      .mere-line { font-size: 26px; line-height: 36px; background-size: 100% 36px; background-image: linear-gradient(180deg, rgba(93, 124, 150, 0) 29px, rgba(93, 124, 150, .30) 30px, rgba(93, 124, 150, 0) 31px); }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       LÉGENDES DES PHOTOS — plus marquées, plus artistiques
+       (direction de Cindy, revue portable, 2 nov., 13 h 28 :
+       « toutes les légendes en dessous des photos, je trouve
+       c’est écrit en très petit — j’aimerais quelque chose de
+       plus marqué, peut-être plus artistique »).
+       Le système, dans l’esprit élégant du site :
+       — les légendes FACTUELLES et les CRÉDITS passent en serif
+         italique (Cormorant), nettement plus grands et plus
+         présents, en restant parfaitement lisibles;
+       — les légendes qui sont SA VOIX prennent la plume du
+         site (Great Vibes), comme ses autres lignes de voix.
+       Aucun mot de légende changé — taille et traitement
+       seulement. Bloc placé en fin de feuille : il harmonise
+       toutes les règles de légendes dispersées plus haut. */
+    /* — Factuelles et crédits : serif italique, plus grands — */
+    .timeline-photo figcaption { font-size: 18.5px; }
+    .gala-photo figcaption { font-family: var(--serif); font-style: italic; font-size: 18px; }
+    .gala-doc figcaption { font-family: var(--serif); font-style: italic; font-size: 16px; }
+    .archive-photo figcaption { font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.5; }
+    .influence-photo figcaption { font-family: var(--serif); font-style: italic; font-size: 17.5px; }
+    .intro-frame figcaption { font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.55; }
+    .cover-video figcaption { font-family: var(--serif); font-style: italic; font-size: 16.5px; }
+    .clip-card figcaption { font-family: var(--serif); font-style: italic; font-size: 17.5px; }
+    .about-video figcaption, .about-photo figcaption, .parent-photo figcaption { font-family: var(--serif); font-style: italic; font-size: 17.5px; }
+    .vitrine-photo figcaption, .vitrine-video figcaption { font-family: var(--serif); font-style: italic; font-size: 17.5px; }
+    .scene-item figcaption { font-family: var(--serif); font-style: italic; font-size: 18px; }
+    .press-item figcaption { font-family: var(--serif); font-style: italic; font-size: 18px; }
+    .kit-item figcaption { font-family: var(--serif); font-style: italic; font-size: 16.5px; }
+    .gala-opening figcaption { font-size: 19.5px; }
+    .scene-featured figcaption { font-size: 23px; }
+    .trophy-feature figcaption { font-size: 23px; }
+    .gala-featured figcaption { font-size: 23px; }
+    .highlights-vedette figcaption { font-size: 20px; }
+    .arranged-photo figcaption { font-size: 14.5px; }
+    .martial-head .martial-photo figcaption { font-size: 14.5px; }
+    /* — Sa voix, à la plume : l’accueil en vidéo, la phrase du
+       voilier (« Entre rêves et prières ») et les montages — */
+    .welcome-frame figcaption { font-family: var(--script-name); font-weight: 400; font-size: clamp(25px, 2.5vw, 30px); line-height: 1.45; color: var(--ink); text-align: center; margin-top: 16px; }
+    .welcome-photo figcaption { font-family: var(--script-name); font-weight: 400; font-size: 29px; line-height: 1.3; color: var(--ink); margin-top: 16px; }
+    .montage-frame figcaption { font-family: var(--script-name); font-weight: 400; font-size: clamp(24px, 2.4vw, 29px); line-height: 1.45; color: var(--ink); text-align: center; margin-top: 16px; }
+
+    /* ════════════════════════════════════════════════════════════════
+       PASSE PORTABLE — lot dicté de Cindy (2 nov., après-midi)
+       1) Sa figure glisse UN TOUT PETIT PEU à gauche sur la photo
+          d’accueil (portable seulement) — juste assez pour garder
+          l’effet qu’elle aime : sa main pointe l’étoile au milieu
+          de son nom. Léger grossissement pour qu’aucun bord ne
+          laisse de vide.
+       2) « Une fille qui lâche pas » : le U majuscule manquait —
+          il devient une belle initiale décorative, plus grosse
+          que le reste de la devise, à la plume.
+       3) Cadre de la vidéo de bienvenue : un peu moins épais
+          (filet plus fin et plus doux, ombre allégée).
+       4) Carte « Mère chanteuse » : les trois feuilles deviennent
+          de vraies feuilles d’ÉRABLE et trois autres s’ajoutent
+          (six en tout), déposées sur les bords de la page de
+          cahier, jamais sur l’écriture. La plume reste.
+       5) Ligne du voilier en deux temps : la phrase de fermeture
+          « Je la porte partout où je vais » passe sur sa propre
+          ligne, avec un GROS J décoratif. Texte inchangé.
+       6) Gala : l’annonce du prix et l’interprétation primée
+          CÔTE À CÔTE sur portable (les deux vidéos sont en
+          portrait, ~720 × 1220 — elles se tiennent en paire),
+          au lieu de l’empilement trop gros; empilées au téléphone.
+       7) Hommage à l’Assemblée : sa photo, restaurée en pleine
+          vue dans le bloc de l’hommage, cadre doré comme le
+          trophée (elle n’y paraissait que dans la galerie).
+       8) Martial Marey dans Ma musique : sa petite photo ronde
+          bien visible devant ses chansons, comme celle de Théo.
+       9) La photo « J’aime, je vis, je chante… Un pas à la fois »
+          (Racines) sort de la seule colonne de droite : sur
+          portable, elle s’étend centrée sur toute la largeur de
+          la grille — fini le grand vide à gauche.
+       ════════════════════════════════════════════════════════════════ */
+    @media (min-width: 701px) {
+      .hero-photo.hero-cover img { object-position: 46% 0%; transform: translateX(-1%) scale(1.025); }
+    }
+    .hero-titles .hero-motto .motto-initial { font-size: 1.55em; line-height: .82; }
+    .welcome-frame video { border: 1px solid rgba(201, 162, 79, .55); box-shadow: 0 10px 26px rgba(74, 56, 26, .16); }
+    .mere-leaf-4 { top: -12px; left: 46%; width: 26px; transform: rotate(72deg); }
+    .mere-leaf-5 { top: -10px; left: 148px; width: 22px; transform: rotate(-24deg); }
+    .mere-leaf-6 { bottom: -10px; left: 34%; width: 20px; transform: rotate(158deg); }
+    @media (max-width: 620px) {
+      .mere-leaf-4 { width: 21px; }
+      .mere-leaf-5 { left: 118px; width: 18px; }
+      .mere-leaf-6 { width: 17px; }
+    }
+    .welcome-photo-line .voilier-close { display: block; margin-top: 2px; }
+    .welcome-photo-line .big-j { font-size: 1.6em; line-height: .85; }
+    .gala-videos-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; margin-top: 36px; }
+    .gala-videos-duo .gala-featured { margin: 0; max-width: none; }
+    .gala-videos-duo .gala-featured figure { margin-top: 20px; }
+    .gala-videos-duo .gala-grid--solo { margin-top: 0; grid-template-columns: minmax(0, 1fr); }
+    @media (max-width: 720px) {
+      .gala-videos-duo { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .gala-hommage-photo {
+      margin: 36px 0 0; max-width: 540px; padding: 12px;
+      background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, .5); border-radius: var(--r-card); overflow: hidden;
+    }
+    .gala-hommage-photo img { width: 100%; display: block; border-radius: 8px; }
+    .gala-hommage-photo figcaption { padding: 13px 8px 4px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.4; color: #2a1e04; }
+    .martial-music-head { align-items: center; }
+    .martial-music-photo { width: 84px; }
+    .martial-music-photo figcaption { font-size: 13.5px; }
+    @media (max-width: 620px) { .martial-music-photo { width: 72px; } }
+    @media (min-width: 941px) {
+      .about-grid { container-type: inline-size; }
+      .about-copy .racines-photo {
+        width: min(920px, 100cqw); max-width: none;
+        margin-left: calc(-1 * (100cqw - 100%) + (100cqw - min(920px, 100cqw)) / 2);
+      }
     }
 
   </style>
@@ -1756,8 +2118,8 @@
       <span class="hero-watermark" aria-hidden="true">Acadie</span>
       <div class="hero-photo hero-cover hero-scene">
         <picture>
-          <source media="(max-width: 700px)" srcset="assets/cindy-accueil-scene-portrait-titres.jpg" width="1080" height="2110" />
-          <img src="assets/cindy-accueil-scene-large-titres.jpg" width="1920" height="1540" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" />
+          <source media="(max-width: 700px)" srcset="assets/cindy-accueil-scene-portrait-titres.jpg" width="1080" height="2040" />
+          <img src="assets/cindy-accueil-scene-large-titres.jpg" width="1920" height="1420" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" />
         </picture>
         <div class="hero-titles">
           <img class="hero-butterfly" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" />
@@ -1765,12 +2127,12 @@
           <h1 class="hero-name" aria-label="Cindy Roy">C<span class="i-accent">ı<span class="i-star" aria-hidden="true">★</span></span>ndy Roy</h1>
           <p class="hero-rule" aria-hidden="true"><span>★</span></p>
           <p class="role">Autrice-compositrice-interprète acadienne</p>
-          <p class="hero-tagline">L’album d’une vie, sous ma croûte.</p>
+          <p class="hero-tagline">L’album d’une vie, entre mers et prières.</p>
+          <p class="hero-motto">« <span class="motto-initial">U</span>ne fille qui lâche pas »</p>
         </div>
         <p class="hero-caption" hidden>Cindy Roy en train de chanter sur scène, en robe verte</p>
       </div>
       <div class="hero-copy">
-        <p class="hand-note" aria-hidden="true">« une fille qui lâche pas »</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#musique"><span class="play-mark">▶</span> Écouter ma musique</a>
           <a class="button button-ghost" href="#apropos">Découvrir mon histoire</a>
@@ -1782,31 +2144,41 @@
       <div class="wrap">
         <p class="section-tag">Bienvenue</p>
         <h2 class="welcome-title">Un petit mot <em>de bienvenue</em>, de vive voix.</h2>
-        <figure class="welcome-portrait">
-          <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
-        </figure>
         <div class="welcome-poem">
+          <figure class="welcome-portrait">
+            <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
+          </figure>
           <div class="welcome-poem-copy">
           <p class="welcome-intro">« Bienvenue dans mon p’tit jardin<br>de Fabreville, à Laval,<br>mon havre tranquille où mon cœur fait escale.<br>Mon autre port d’attache,<br>c’est Robertville, au cœur de Belle-Baie,<br>mon Acadie natale,<br>là où la mer, jamais ben loin,<br>veille sur ma vie. »</p>
           <div class="mini-flags">
               <div class="mini-flags-track"><span class="mini-flags-half"><span class="mini-flags-group"><span class="mini-flag"><img src="assets/drapeau-belle-baie.png" alt="Drapeau officiel de la Ville de Belle-Baie : étoile dorée de l’Acadie et gouvernail sur fond bleu, plume et forêt sur les couleurs acadiennes" width="512" height="258" loading="lazy" /></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de l’Acadie : bleu, blanc, rouge à l’étoile dorée" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau du Québec : le fleurdelisé, croix blanche et quatre fleurs de lys sur fond bleu" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag"><svg viewBox="0 0 120 60" role="img" aria-label="Drapeau du Canada : rouge, blanc, rouge, feuille d’érable rouge au centre" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de la France : bleu, blanc, rouge" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span><span class="mini-flags-half" aria-hidden="true"><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span></div>
             </div>
+          </div>
+          <figure class="welcome-frame">
+            <video src="assets/video-bienvenue-debout-web.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
+            <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
+          </figure>
             <div class="mere-chanteuse">
               <figure class="mere-photo">
                 <img src="assets/cindy-main-sur-le-coeur.jpg" alt="Cindy Roy dehors en automne, la main sur le cœur, à côté d’une plante aux feuilles d’automne" width="798" height="1024" loading="lazy" />
               </figure>
               <p class="mere-line">Mère chanteuse — je chante ce que j’écris, je raconte ce que je vis, je cuisine, je ris et je prie, et partout où je passe, je sème l’amour à tout ce qui vit.</p>
+              <svg class="mere-deco mere-quill" viewBox="0 0 72 72" aria-hidden="true" focusable="false"><defs><linearGradient id="mere-quill-grad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#e2c078"/><stop offset=".55" stop-color="#f7e7bd"/><stop offset="1" stop-color="#d3ab55"/></linearGradient></defs><path fill="url(#mere-quill-grad)" stroke="rgba(110, 78, 26, .65)" stroke-width="1.1" d="M52.5 4.5c2.8 15.8-3.2 32.8-18.2 43.4-5.2 3.7-11.3 6.2-16.6 6.7.8-4.7 2.9-9.7 5.9-14.3C29.6 31.2 40.4 14.9 52.5 4.5Z"/><path d="M17.7 54.6C27.9 42.3 40.2 24.1 52.5 4.5" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round"/><path d="M26.5 43.5c3.8.4 7.4-.3 10.6-2M31.8 36.2c3.9.2 7.5-.7 10.7-2.6M37.6 28.4c3.8-.1 7.3-1.2 10.3-3.2M43.4 20.3c3.6-.4 6.9-1.7 9.7-3.9" fill="none" stroke="rgba(138, 106, 52, .5)" stroke-width="1.1" stroke-linecap="round"/><path d="M17.7 54.6 11.8 64.2c-.5.8.2 1.7 1.1 1.4l5.9-1.9" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="mere-deco mere-leaf-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#b5502f" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(94, 32, 14, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <svg class="mere-deco mere-leaf-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#c9932b" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(105, 70, 10, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <svg class="mere-deco mere-leaf-3" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#8e3b2c" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(70, 20, 12, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <svg class="mere-deco mere-leaf-4" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#d2691e" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(120, 52, 10, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <svg class="mere-deco mere-leaf-5" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#a86f1c" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(96, 62, 8, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <svg class="mere-deco mere-leaf-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#7d8c3f" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(52, 62, 20, .45)" stroke-width="1" stroke-linecap="round"/></svg>
             </div>
-          </div>
+          <div class="welcome-photo-row">
           <figure class="welcome-photo">
             <img src="assets/cindy-lune-mer-acadie.webp" alt="Cindy Roy, en blouse pêche, les mains jointes devant la mer au crépuscule — un voilier navigue sous la pleine lune rose" />
             <figcaption>Entre rêves et prières</figcaption>
           </figure>
+          <p class="welcome-photo-line"><span class="voilier-line-1">Mon Acadie natale a pas d’adresse&nbsp;:</span> <span class="voilier-close"><span class="big-j">J</span>e la porte partout où je vais.</span></p>
+          </div>
         </div>
-        <figure class="welcome-frame">
-          <video src="assets/video-bienvenue-debout-web.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
-          <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
-        </figure>
         <div class="welcome-actions">
           <a class="button button-listen" href="#musique">🎵 Écouter mes chansons</a>
         </div>
@@ -1830,7 +2202,7 @@
           <article class="plateau-card">
             <p class="plateau-family">Famille 2 · Mes reprises</p>
             <h3>Mes reprises</h3>
-            <iframe src="https://www.youtube-nocookie.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <p>Dix-huit reprises favorites en extraits — des versions toutes simples, pis d’autres avec arrangement.</p>
             <a class="plateau-link" href="#musique" data-goto-tab="tab-interpretations">Ouvrir la famille complète →</a>
           </article>
@@ -1857,8 +2229,8 @@
       <div class="wrap">
         <div class="highlights-head">
           <p class="section-tag">Mes plus beaux accomplissements</p>
-          <h2 class="highlights-title">« Entend ma prière » — <em>deux prix, un seul soir, à Caraquet.</em></h2>
-          <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le prix RADARTS au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
+          <h2 class="highlights-title">« Entend ma prière » — <em>Ma prière a été entendue</em></h2>
+          <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
         </div>
         <figure class="highlights-vedette">
           <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
@@ -1867,8 +2239,8 @@
         <ul class="honours">
           <li class="honour">
             <p class="honour-when">Caraquet · 31 juillet 2015</p>
-            <h3>Deux prix au Gala de la chanson</h3>
-            <p>Le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le prix RADARTS, reçus le même soir pour « Entend ma prière ».</p>
+            <h3>Ma prière a été entendue</h3>
+            <p>Au Gala de la chanson de Caraquet, en 2015, « Entend ma prière » reçoit le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, le même soir.</p>
             <a class="honour-link" href="#gala">Lire l’histoire du Gala →</a>
           </li>
           <li class="honour">
@@ -1923,7 +2295,7 @@
         </div>
         <div class="gala-memory gala-memory--text">
           <div class="gala-prix-copy">
-            <h3 class="birth-title">Deux prix, une soirée</h3>
+            <h3 class="birth-title">Ma prière a été entendue</h3>
             <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entend ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu un beau laissez-passer de RADARTS pour les vitrines de Moncton et les festivités acadiennes.</p>
           </div>
         </div>
@@ -1934,10 +2306,11 @@
           <figcaption>Le trophée de Cindy Roy — Lauréat 2015, 47e Gala de la chanson de Caraquet</figcaption>
         </figure>
         <h3 class="gala-subhead">La soirée en images</h3>
+        <div class="gala-videos-duo">
         <div class="gala-featured">
           <span class="scene-badge">En vedette</span>
           <figure>
-            <iframe src="https://www.youtube-nocookie.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entend ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entend ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Gala de la chanson de Caraquet 2015 — l’annonce de mon Prix Auteur-compositeur pour « Entend ma prière »</figcaption>
           </figure>
         </div>
@@ -1947,10 +2320,15 @@
             <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
+        </div>
         <h3 class="gala-subhead" id="hommage">Un hommage à l’Assemblée législative</h3>
         <p class="gala-hommage-copy">Le 2 décembre 2015, le député de Restigouche-Chaleur, Daniel Guitard, s’est levé à l’Assemblée législative du Nouveau-Brunswick pour souligner la victoire de Cindy Roy : le prix auteur-compositeur de la chanson primée, au Gala de la chanson de Caraquet.</p>
         <p class="award-quote">« Cindy fait la fierté des gens de notre région. Elle est une véritable ambassadrice de nos artistes et de tout le Nouveau-Brunswick. »</p>
         <p class="press-note">— Extrait du Hansard, Assemblée législative du Nouveau-Brunswick, 2 décembre 2015.</p>
+        <figure class="gala-hommage-photo">
+          <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
+          <figcaption>Mon trophée Lauréat 2015, à côté de la lettre d’hommage du député Daniel Guitard — Assemblée législative du Nouveau-Brunswick, 2 décembre 2015</figcaption>
+        </figure>
         <p class="gala-press-pointer">La couverture de presse complète du Gala vous attend dans le <a href="#presse">Dossier de presse</a>.</p>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie du Gala <span class="gallery-toggle-hint">toutes les photos, un clic</span></summary>
@@ -2069,8 +2447,16 @@
           </section>
 
           <section class="arranged music-martial" aria-labelledby="martial-music-title">
+            <div class="arranged-head martial-music-head">
+              <figure class="arranged-photo martial-music-photo">
+                <img src="assets/martial-marey-portrait.jpg" alt="Martial Marey" width="1205" height="1260" loading="lazy" />
+                <figcaption>Martial Marey</figcaption>
+              </figure>
+              <div class="martial-music-head-copy">
             <h3 class="arranged-title" id="martial-music-title">Les chansons de Martial Marey — interprétées par Cindy</h3>
             <p class="arranged-credit" style="margin:0 0 6px">De 2005 à 2017, j’ai prêté ma voix aux compositions de Martial Marey, auteur-compositeur français. Son histoire complète vous attend dans mon <a href="#parcours">Parcours</a> — ses chansons, elles, vivent ici, avec toutes les miennes.</p>
+              </div>
+            </div>
           <details class="photo-gallery">
             <summary class="gallery-toggle">Écouter ses chansons <span class="gallery-toggle-hint">deux chansons, un clic</span></summary>
             <div class="gallery-body">
@@ -2096,7 +2482,7 @@
           <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées. Je n’ai pas de formation en guitare : c’est moi-même qui m’accompagne, modestement, à la guitare — parce que mon instrument de choix, ça reste ma voix. Des covers acoustiques, simples et vrais, comme dans mon salon, entre nous. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
           <h3 class="montage-title">Mes reprises <em>favorites</em></h3>
           <figure class="montage-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Vos plus écoutées et mes coups de cœur — 15 secondes chacune, juste les moments les plus forts.</figcaption>
           </figure>
           <ol class="song-list">
@@ -2128,30 +2514,30 @@
           <div class="family-grid">
             <figure class="clip-card">
               <h5>Je te suivrai</h5>
-              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/vrL2gu9MMxs" title="Cindy Roy chante « Je te suivrai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe class="portrait" src="https://www.youtube.com/embed/vrL2gu9MMxs" title="Cindy Roy chante « Je te suivrai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </figure>
             <figure class="clip-card">
               <h5>Je t’aimais, je t’aime et je t’aimerai</h5>
-              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/soZTlzml5jU" title="Cindy Roy chante « Je t’aimais, je t’aime et je t’aimerai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe class="portrait" src="https://www.youtube.com/embed/soZTlzml5jU" title="Cindy Roy chante « Je t’aimais, je t’aime et je t’aimerai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               <figcaption>Pour Shawn et Marie-Eve</figcaption>
             </figure>
             <figure class="clip-card wide">
               <h5>De l’autre côté de toi</h5>
-              <iframe class="landscape" src="https://www.youtube-nocookie.com/embed/3swsUNYifZI" title="Cindy Roy chante « De l’autre côté de toi » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe class="landscape" src="https://www.youtube.com/embed/3swsUNYifZI" title="Cindy Roy chante « De l’autre côté de toi » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </figure>
           </div>
 
           <h4 class="family-title">🤠 Country &amp; dédicaces</h4>
           <figure class="clip-card solo">
             <h5>Coal Miner’s Daughter</h5>
-            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/8QxlcbwJxSc" title="Cindy Roy chante « Coal Miner’s Daughter » de Loretta Lynn — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe class="portrait" src="https://www.youtube.com/embed/8QxlcbwJxSc" title="Cindy Roy chante « Coal Miner’s Daughter » de Loretta Lynn — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Loretta Lynn — pour mon oncle Len Roy, à la demande de ma cousine Heather Ann (extrait)</figcaption>
           </figure>
 
           <h4 class="family-title">🕊️ Hommage à Dolly Parton</h4>
           <figure class="clip-card solo">
             <h5>Coat of Many Colors</h5>
-            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/uAhzD7jrmgs" title="Cindy Roy chante « Coat of Many Colors » — son hommage à Dolly Parton, au complet" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe class="portrait" src="https://www.youtube.com/embed/uAhzD7jrmgs" title="Cindy Roy chante « Coat of Many Colors » — son hommage à Dolly Parton, au complet" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Mon hommage à Dolly Parton, au complet. Entre deux brassées de lavage, je l’ai chantée tout simplement avec mon cœur.</figcaption>
           </figure>
             </div>
@@ -2194,12 +2580,12 @@
         <p class="section-intro">Janvier 2015, au Carnaval du Siffleux de Beresford : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
         <div class="scene-grid">
 <figure class="scene-item">
-            <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
-            <figcaption>Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
-          </figure>
-<figure class="scene-item">
             <img src="assets/siffleux-cindy-emotion.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" loading="lazy" />
             <figcaption>Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
+          </figure>
+<figure class="scene-item">
+            <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
+            <figcaption>Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
           </figure>
         </div>
         <details class="photo-gallery">
@@ -2207,11 +2593,11 @@
           <div class="gallery-body">
             <div class="scene-grid">
               <figure class="scene-item">
-                <iframe src="https://www.youtube-nocookie.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" style="aspect-ratio: 720 / 1164" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" style="aspect-ratio: 720 / 1164" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <figcaption>« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
               </figure>
               <figure class="scene-item">
-                <iframe src="https://www.youtube-nocookie.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.youtube.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
               </figure>
               <figure class="scene-item">
@@ -2254,7 +2640,7 @@
         <div class="scene-grid">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
           </figure>
 <figure class="scene-item">
@@ -2268,7 +2654,7 @@
             <div class="scene-grid">
 <h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
           </figure>
 <figure class="scene-item">
@@ -2277,7 +2663,7 @@
           </figure>
           <h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
           </figure>
 <figure class="scene-item">
@@ -2290,12 +2676,12 @@
           </figure>
           <h4 class="scene-group-title">Medley Offenbach</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
           </figure>
           <h4 class="scene-group-title">Mario Benjamin</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
           </figure>
 <figure class="scene-item">
@@ -2585,7 +2971,7 @@
         <p class="section-intro">J’ai aussi osé les auditions des grands concours télé : Canadian Idol (2003), Star Académie (2005) et La Voix (2015).</p>
         <div class="journey-body">
           <figure class="journey-photo">
-            <img src="assets/cindy-scene-robe-verte.jpg" alt="Cindy Roy chantant sur scène en robe verte, un micro à la main" loading="lazy" />
+            <img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" />
           </figure>
           <div class="timeline">
           <article class="timeline-row">
@@ -2619,7 +3005,7 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2015</div>
-            <div class="timeline-copy"><p>Gala de la chanson de Caraquet 2015 — deux prix, dont le Prix Auteur-compositeur. <a href="#gala">→ Voir la section</a></p></div>
+            <div class="timeline-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entend ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">Aujourd’hui</div>
@@ -2920,7 +3306,7 @@
             <figcaption>L’Acadie Nouvelle — 9 juin 2015</figcaption>
           </figure>
           <figure class="press-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/w1MF0PKgOi0" title="Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015" loading="lazy" style="aspect-ratio: 720 / 694" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.youtube.com/embed/w1MF0PKgOi0" title="Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015" loading="lazy" style="aspect-ratio: 720 / 694" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
@@ -2978,7 +3364,7 @@
             <div class="onesheet-block">
               <h4>Prix et distinctions</h4>
               <ul>
-                <li>« Entend ma prière » — Prix Auteur-compositeur (prix de composition de la SOCAN) et prix RADARTS, Gala de la chanson de Caraquet 2015</li>
+                <li>« Entend ma prière » — Prix Auteur-compositeur (prix de composition de la SOCAN) et laissez-passer RADARTS pour la FrancoFête en Acadie, Gala de la chanson de Caraquet 2015</li>
                 <li>La Voix de Beresford 2015 — prix des juges et prix du public, au Carnaval du Siffleux</li>
                 <li>Hommage à l’Assemblée législative du Nouveau-Brunswick — le député Daniel Guitard, 2 décembre 2015</li>
               </ul>
@@ -3324,7 +3710,7 @@
             if (!montageFrame) return;
             var ytMatch = montageFrame.src.match(/\/embed\/([\w-]+)/);
             if (!ytMatch) return;
-            montageFrame.src = 'https://www.youtube-nocookie.com/embed/' + ytMatch[1] + '?start=' + Math.floor(t) + '&autoplay=1&rel=0';
+            montageFrame.src = 'https://www.youtube.com/embed/' + ytMatch[1] + '?start=' + Math.floor(t) + '&autoplay=1&rel=0';
             montageFrame.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
             return;
           }
