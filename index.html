@@ -531,6 +531,23 @@
     .section-intro { margin: 24px 0 0; max-width: 710px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
 
     .music-section { background: var(--bg-cream); }
+    .music-intro { display: flex; align-items: center; gap: clamp(28px, 4vw, 52px); }
+    .music-intro-copy { flex: 1 1 auto; min-width: 0; }
+    .music-intro-photo { margin: 0; flex: none; width: clamp(180px, 22vw, 240px); }
+    .music-intro-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    @media (max-width: 700px) {
+      .music-intro { flex-direction: column; align-items: flex-start; }
+      .music-intro-photo { width: 200px; }
+    }
+    .atelier-intro { display: flex; align-items: flex-start; gap: clamp(28px, 4vw, 52px); }
+    .atelier-intro-copy { flex: 1 1 auto; min-width: 0; }
+    .atelier-photo { margin: 0; flex: none; width: clamp(180px, 22vw, 230px); text-align: center; }
+    .atelier-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .atelier-photo figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.4; }
+    @media (max-width: 700px) {
+      .atelier-intro { flex-direction: column; }
+      .atelier-photo { width: 190px; }
+    }
     /* Alternance douce crème / sable très pâle pour la profondeur, sans jamais charger */
     #apropos { background: var(--bg-sand); }
     #projets { background: var(--bg-sand); }
@@ -692,6 +709,11 @@
     .step-copy .section-tag { color: #ffe0a3; }
     .step-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(44px, 6vw, 76px); line-height: 1; }
     .step-copy p { max-width: 580px; font-size: 19px; color: rgba(255,255,255,.88); }
+    .step-photo { margin: 30px 0 0; width: clamp(190px, 22vw, 250px); }
+    .step-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.4); }
+    @media (max-width: 700px) {
+      .step-photo { width: 210px; }
+    }
 
     .photos { background: var(--bg-cream); }
     .gallery-grid {
@@ -1463,7 +1485,7 @@
     .journey-photo, .marquee-group figure, .parent-frame { border-radius: var(--r-media); }
     .welcome-photo img, .welcome-frame video, .montage-frame video,
     .cover-video video, .about-video video, .scene-item video, .scene-item img,
-    .press-item video, .gala-featured video, .signature-photo img,
+    .press-item video, .gala-featured video, .signature-photo img, .music-intro-photo img, .atelier-photo img,
     .vitrine-photo img, .influence-photo img, .archive-photo img,
     .timeline-photo img, .gala-photo img, .gala-doc img, .martial-photo img,
     .gala-opening img, .scene-featured video {
@@ -2391,9 +2413,16 @@
     <section class="music-section" id="musique">
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-        <p class="section-tag">Ma musique</p>
-        <h2 class="section-title">Des histoires vraies, en chansons.</h2>
-        <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Une voix franche, des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
+        <div class="music-intro">
+          <div class="music-intro-copy">
+            <p class="section-tag">Ma musique</p>
+            <h2 class="section-title">Des histoires vraies, en chansons.</h2>
+            <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
+          </div>
+          <figure class="music-intro-photo">
+            <img src="assets/cindy-rocher-riviere-automne.jpg" alt="Cindy Roy assise sur un rocher au bord d’une rivière, en automne, grand sourire" width="1586" height="2048" loading="lazy" />
+          </figure>
+        </div>
 
         <div class="library-head">
           <h3>Répertoire</h3>
@@ -2548,11 +2577,19 @@
         </div>
 
         <div id="atelier" role="tabpanel" aria-labelledby="tab-atelier" hidden>
-          <h3 class="montage-title">L’Atelier — <em>mes chansons en construction.</em></h3>
-          <p class="covers-intro">« Ici, c'est mon atelier. Je vous montre mes chansons pendant qu'elles se font — brutes, pas finies, comme dans mon salon. Vos impressions comptent pour de vrai : dites-moi lesquelles vous touchent, lesquelles je devrais continuer. Embarquez dans mon train, pis faites un bout de chemin avec moi. 🦋 »</p>
-          <p class="covers-intro">Bienvenue dans mon atelier : c’est ici que vivent mes chansons en construction — les élans, les ébauches, le brut. Facebook, c’est mon petit salon; l’atelier, c’est là où les chansons poussent, une à une, avant de décider lesquelles peaufiner, lesquelles finir.</p>
-          <p class="covers-intro">« J’attends pas que mes chansons soient finies pour vous les montrer. Je vous invite à partir avec moi de mes tounes brutes, à vivre l’histoire avec moi. Ensemble, on va voir lesquelles peaufiner, lesquelles finir. »</p>
-          <p class="covers-intro">Une chanson n’a pas besoin d’être parfaite pour avoir quelque chose à raconter. Elle peut changer, grandir et prendre une toute autre couleur avec le temps.</p>
+          <div class="atelier-intro">
+            <div class="atelier-intro-copy">
+              <h3 class="montage-title">L’Atelier — <em>mes chansons en construction.</em></h3>
+              <p class="covers-intro">« Ici, c'est mon atelier. Je vous montre mes chansons pendant qu'elles se font — brutes, pas finies, comme dans mon salon. Vos impressions comptent pour de vrai : dites-moi lesquelles vous touchent, lesquelles je devrais continuer. Embarquez dans mon train, pis faites un bout de chemin avec moi. 🦋 »</p>
+              <p class="covers-intro">Bienvenue dans mon atelier : c’est ici que vivent mes chansons en construction — les élans, les ébauches, le brut. Facebook, c’est mon petit salon; l’atelier, c’est là où les chansons poussent, une à une, avant de décider lesquelles peaufiner, lesquelles finir.</p>
+              <p class="covers-intro">« J’attends pas que mes chansons soient finies pour vous les montrer. Je vous invite à partir avec moi de mes tounes brutes, à vivre l’histoire avec moi. Ensemble, on va voir lesquelles peaufiner, lesquelles finir. »</p>
+              <p class="covers-intro">Une chanson n’a pas besoin d’être parfaite pour avoir quelque chose à raconter. Elle peut changer, grandir et prendre une toute autre couleur avec le temps.</p>
+            </div>
+            <figure class="atelier-photo">
+              <img src="assets/cindy-7-ans-marteau.jpg" alt="Cindy Roy à 7 ans, un marteau à la main, le sourire aux lèvres, dans un cadrage de bois en construction" width="1068" height="1397" loading="lazy" />
+              <figcaption>Mon petit moi de 7 ans</figcaption>
+            </figure>
+          </div>
           <figure class="montage-frame">
             <video src="assets/des-bouts-de-moi.mp4" poster="assets/des-bouts-de-moi-poster.jpg" controls playsinline preload="none" title="« Des bouts de moi » — Cindy Roy"></video>
             <figcaption>Des bouts de moi</figcaption>
@@ -3235,6 +3272,9 @@
           <p>Un pas à la fois avec Cindy — mon petit rendez-vous vidéo, à la maison, comme entre amies et amis. L’histoire de mes chansons, ma cuisine à ma façon, mon jardin, mon Acadie, mon parcours. Entre rêves et prières.</p>
           <p class="fil-line">Le train continue de rouler, un pas à la fois.</p>
           <p><strong>« Toute la femme derrière la fille qui lâche pas. »</strong></p>
+          <figure class="step-photo">
+            <img src="assets/cindy-un-pas-riviere.jpg" alt="Cindy Roy assise sur un rocher au bord d’une rivière aux rapides, sourire par-dessus l’épaule, un bracelet aux couleurs de l’Acadie au poignet" width="1536" height="2048" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
