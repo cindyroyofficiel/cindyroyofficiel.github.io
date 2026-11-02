@@ -3,6 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script>
+    /* Ouverture pile sur le début — téléphone ET portable : le navigateur
+       restaurait parfois l’ancien défilement d’une visite précédente, et le
+       site ouvrait au milieu (rendu à Bienvenue), la tête coupée. Trois
+       chemins de restauration à couvrir :
+       1) la restauration classique au chargement (load + polices prêtes);
+       2) le retour depuis le cache mémoire du navigateur (retour arrière,
+          onglet restauré sur le portable) : « load » ne repart pas, seul
+          « pageshow » se déclenche — c’était le trou qui restait côté
+          portable;
+       3) une restauration tardive, après « load » : on replace en haut à
+          quelques reprises pendant les ~3 premières secondes, MAIS on
+          abandonne dès que la visiteuse défile elle-même (molette, tactile,
+          clavier, pointeur), pour ne jamais lui arracher la page des mains.
+       Si le lien vise une section précise (#musique, #apropos…), on ne
+       force pas le haut : on réaligne plutôt sur cette section une fois le
+       chargement fini, pour compenser les photos qui finissent de charger. */
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    (function () {
+      var userMoved = false;
+      function markUser() { userMoved = true; }
+      ['wheel', 'touchmove', 'keydown', 'pointerdown'].forEach(function (type) {
+        window.addEventListener(type, markUser, { passive: true });
+      });
+      function hashTarget() {
+        var hash = window.location.hash;
+        if (!hash || hash === '#accueil') return null;
+        try { return document.querySelector(hash); } catch (e) { return null; }
+      }
+      function jumpTo(el) {
+        var root = document.documentElement;
+        var previous = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        if (el) { el.scrollIntoView({ behavior: 'auto', block: 'start' }); }
+        else { window.scrollTo(0, 0); }
+        root.style.scrollBehavior = previous;
+      }
+      function settle() {
+        if (userMoved) return;
+        jumpTo(hashTarget());
+      }
+      function settleAtTop() {
+        if (window.location.hash && window.location.hash !== '#accueil') return;
+        if (userMoved) return;
+        jumpTo(null);
+      }
+      window.addEventListener('DOMContentLoaded', settle);
+      window.addEventListener('load', function () {
+        settle();
+        [400, 1200, 2600].forEach(function (delay) { window.setTimeout(settle, delay); });
+      });
+      window.addEventListener('pageshow', settle);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(settleAtTop); }
+    })();
+  </script>
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#1d2b1e" />
   <meta name="description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
@@ -14,12 +69,12 @@
   <meta property="og:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cindyroyofficiel.com/" />
-  <meta property="og:image" content="https://cindyroyofficiel.com/assets/cindy-hero-automne-guitare.png" />
+  <meta property="og:image" content="https://cindyroyofficiel.com/assets/cindy-accueil-scene-large.jpg" />
   <meta property="og:locale" content="fr_CA" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cindy Roy — autrice-compositrice-interprète | Cindy Roy Officiel" />
   <meta name="twitter:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
-  <meta name="twitter:image" content="https://cindyroyofficiel.com/assets/cindy-hero-automne-guitare.png" />
+  <meta name="twitter:image" content="https://cindyroyofficiel.com/assets/cindy-accueil-scene-large.jpg" />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
@@ -28,7 +83,8 @@
   <link rel="preload" as="image" href="assets/cindy-automne-main-coeur-carrousel.jpg" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/great-vibes-latin.woff2" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
   <title>Cindy Roy — autrice-compositrice-interprète | Cindy Roy Officiel</title>
   <script type="application/ld+json">
   {
@@ -51,6 +107,29 @@
   }
   </script>
   <style>
+    /* Son nom, en romantique PARTOUT — garanti : la plume Great Vibes est
+       hébergée dans le site même (fichiers sous assets/fonts/, licence OFL),
+       plutôt que seulement chez Google Fonts. Si le service de polices
+       externe tarde ou ne répond pas, le nom ne retombe plus en serif
+       ordinaire : l’en-tête, le grand titre d’accueil, la fiche pour les
+       salles et la signature du bas de page restent en belle écriture
+       romantique dès le premier affichage, sur tous les appareils. */
+    @font-face {
+      font-family: "Great Vibes";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/fonts/great-vibes-latin-ext.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: "Great Vibes";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/fonts/great-vibes-latin.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
     :root {
       color-scheme: light dark;
       --paper: #faf5ea;
@@ -69,6 +148,8 @@
       --focus: #e59a4a;
       --serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       --script: "Caveat", "Segoe Script", "Bradley Hand", cursive;
+      /* Son nom en enseigne : la plume élégante et romantique de ses titres d’honneur */
+      --script-name: "Great Vibes", cursive;
       --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, sans-serif;
       --shadow: 0 24px 70px rgba(74, 56, 26, .18);
       --max: 1180px;
@@ -104,6 +185,10 @@
       }
     }
     * { box-sizing: border-box; }
+    /* L’écart sous la barre fixe vient du seul scroll-padding ci-dessus :
+       ajouter en plus un scroll-margin-top aux sections DOUBLE l’écart
+       (les deux s’additionnent — vérifié : la section atterrissait à
+       ~176 px au lieu de 88). Ne pas remettre de scroll-margin ici. */
     html { scroll-behavior: smooth; scroll-padding-top: 88px; }
     body {
       margin: 0;
@@ -146,7 +231,7 @@
       transition: background .25s, padding .25s;
     }
     .site-nav.scrolled { background: rgba(18,26,17,.96); padding-top: 7px; padding-bottom: 11px; box-shadow: 0 1px 0 rgba(255,255,255,.12); }
-    .wordmark { display: inline-flex; align-items: center; gap: 11px; font-family: var(--serif); font-size: 17px; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
+    .wordmark { display: inline-flex; align-items: center; gap: 11px; font-family: var(--script-name); font-size: 28px; font-weight: 400; letter-spacing: 0; line-height: 1.25; text-decoration: none; white-space: nowrap; }
     /* Signature acadienne : étoile dorée (Stella Maris) + fine touche tricolore bleu-blanc-rouge */
     .acadie-signature { display: inline-flex; align-items: center; gap: 8px; vertical-align: middle; flex: none; }
     .acadie-star { color: var(--gold); font-size: 14px; line-height: 1; }
@@ -156,6 +241,10 @@
     .acadie-bars i:nth-child(2) { background: #ffffff; }
     .acadie-bars i:nth-child(3) { background: #ed2e26; }
     .sig-name { display: inline-flex; align-items: center; gap: 10px; }
+    /* Son nom en romantique aussi quand il paraît dans un titre (le Cindy Roy Show) :
+       même plume que l’en-tête et l’accueil, un peu plus grande pour garder
+       la même présence que le serif autour (Great Vibes a un petit œil). */
+    .name-script { font-family: var(--script-name); font-weight: 400; font-size: 1.3em; line-height: 1; letter-spacing: 0; white-space: nowrap; }
     .nav-links { display: flex; align-items: center; gap: 26px; }
     .nav-links a { color: rgba(255,255,255,.88); font-size: 14px; font-weight: 650; text-decoration: none; }
     .nav-links a:hover { color: #fff; }
@@ -174,7 +263,7 @@
       position: relative;
     }
     .origin { margin: 0 0 22px; color: #e3dbc2; font-size: 13px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-    h1 { margin: 0; font-family: var(--script); font-size: clamp(58px, 9vw, 118px); line-height: 1.12; letter-spacing: 0; font-weight: 600; white-space: nowrap; }
+    h1 { margin: 0; font-family: var(--script-name); font-size: clamp(72px, 10.5vw, 138px); line-height: 1.12; letter-spacing: 0; font-weight: 400; white-space: nowrap; }
     .role { margin: 28px 0 0; max-width: 580px; font-family: var(--serif); font-size: clamp(24px, 3vw, 38px); line-height: 1.16; color: #f0e8da; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 38px; }
     .button {
@@ -195,8 +284,82 @@
        je chante… Un pas à la fois »), elle s’affiche donc en entier, sans
        recadrage ni voile par-dessus. */
     .hero-photo.hero-cover { min-height: 0; background: var(--deep); }
-    .hero-photo.hero-cover img { height: auto; object-fit: fill; }
+    /* La boîte de la photo est réservée dès le premier affichage, au format
+       exact de l’image (16:9 en large, 4:5 en portrait — voir le bloc
+       téléphone plus bas) : pendant le chargement, rien ne pousse ni ne
+       tire la page, et l’accueil reste pile sur son début. Le format de la
+       boîte étant celui de l’image, object-fit: cover ne recadre rien. */
+    .hero-photo.hero-cover picture { display: block; aspect-ratio: 1920 / 1080; }
+    .hero-photo.hero-cover img { width: 100%; height: 100%; object-fit: cover; }
     .hero-photo.hero-cover::after { content: none; }
+    /* ——— Montage de scène (accueil) : l’ouverture respire et le nom règne,
+       CENTRÉ, au-dessus de la photo — jamais par-dessus son visage.
+       Un bandeau-titre vert profond, identique sur téléphone et portable :
+       le papillon doré (sa signature), la ligne d’origine, son nom en
+       Great Vibes bien grand et tape-à-l’œil, sa désignation montée juste
+       sous le nom (au lieu d’être cachée sous la photo), puis sa phrase
+       d’accroche. La photo de scène suit, entière, tête comprise.
+       Tout est centré, aéré, et lisible au premier coup d’œil. ——— */
+    .hero-scene { display: flex; flex-direction: column; background: var(--deep); }
+    .hero-scene picture { order: 2; }
+    .hero-titles {
+      order: 1; position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: clamp(96px, 11vw, 132px) clamp(22px, 5vw, 64px) clamp(42px, 5vw, 58px);
+      background:
+        radial-gradient(640px 300px at 50% 30%, rgba(201, 162, 79, .17), rgba(201, 162, 79, 0) 68%),
+        linear-gradient(180deg, var(--deep-2) 0%, var(--deep) 72%);
+      pointer-events: none;
+    }
+    /* Spécificité renforcée : le papillon vit dans .hero-photo, dont les
+       règles photo (width: 100%) ne doivent pas s’appliquer à lui. */
+    .hero-photo.hero-cover .hero-butterfly { width: 52px; height: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(1.5) saturate(1.12); }
+    .hero-titles .origin { margin: 0; max-width: none; text-align: center; }
+    .hero-titles h1 {
+      margin-top: 10px; padding-inline: .1em;
+      max-width: 100%;
+      /* Centrage optique : dans Great Vibes, l’encre du nom penche à droite
+         de sa boîte (la boucle du « C » rentre dans sa chasse, la fioriture
+         du « y » final déborde à droite) — mesuré à ≈ 0,065 em sur les
+         captures bureau et téléphone. On ramène donc le nom d’autant vers
+         la gauche : il paraît alors centré pour de vrai, au lieu d’être
+         poussé à droite avec le « y » au bord de l’écran. Le script
+         « fitName » en bas de page réduit en plus la taille si l’écran
+         (ou le grossissement du texte du téléphone) le fait déborder. */
+      transform: translateX(-.065em);
+      font-size: clamp(76px, 10.5vw, 148px); line-height: 1.14;
+      color: #fdfaf0;
+      text-shadow: 0 3px 34px rgba(0, 0, 0, .45), 0 0 46px rgba(201, 162, 79, .22);
+    }
+    .hero-rule { display: flex; align-items: center; gap: 14px; margin-top: 20px; color: var(--gold); }
+    .hero-rule::before, .hero-rule::after {
+      content: ""; width: clamp(52px, 9vw, 96px); height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 79, .85));
+    }
+    .hero-rule::after { background: linear-gradient(90deg, rgba(201, 162, 79, .85), transparent); }
+    .hero-rule span { font-size: 13px; line-height: 1; }
+    .hero-titles .role {
+      margin: 20px auto 0; max-width: 720px; text-align: center;
+      font-size: clamp(25px, 3.4vw, 38px); line-height: 1.22; color: #f4edda;
+    }
+    .hero-titles .hero-tagline { margin-top: 14px; text-align: center; }
+    /* Le bloc sous la photo ne garde que la note manuscrite et les boutons,
+       eux aussi centrés : l’invitation, claire et dégagée. */
+    .hero .hero-copy {
+      align-items: center; text-align: center;
+      padding: 46px clamp(22px, 5vw, 64px) 62px;
+    }
+    .hero .hero-copy .hand-note { margin: 0 auto; transform-origin: center; }
+    .hero .hero-copy .hero-actions { justify-content: center; margin-top: 30px; }
+    @media (max-width: 700px) {
+      .hero-photo.hero-cover picture { aspect-ratio: 1080 / 1350; }
+      .hero-titles { padding: 92px 20px 40px; }
+      .hero-photo.hero-cover .hero-butterfly { width: 44px; margin-bottom: 14px; }
+      .hero-titles h1 { font-size: clamp(64px, 18.5vw, 92px); }
+      .hero-titles .origin { font-size: 12px; letter-spacing: .12em; line-height: 1.7; }
+      .hero .hero-copy { padding-top: 38px; padding-bottom: 54px; }
+      .hero .hero-copy .hero-actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; margin-inline: auto; }
+    }
 
     section { padding: 106px 24px; }
     .wrap { max-width: var(--max); margin: 0 auto; }
@@ -457,19 +620,19 @@
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.55"/></svg>');
     }
     .site-nav.scrolled { background: rgba(18,26,17,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    h1 { letter-spacing: 0; font-weight: 600; }
+    h1 { letter-spacing: 0; font-weight: 400; }
     /* Signature : le point du « i » de Cindy devient une mini étoile dorée.
-       Le « ı » est le i sans point de Caveat; l’étoile est centrée aux
+       Le « ı » est le i sans point de Great Vibes; l’étoile est centrée aux
        coordonnées exactes du point d’origine, mesurées dans la police :
-       centre à 0,2465 em du bord gauche du i (chasse du ı : 0,187 em,
-       d’où left = 0,2465 / 0,187 ≈ 131,8 % de la largeur du bloc) et à
-       0,4825 em au-dessus de la base, elle-même à 0,23 em du bas du bloc
-       pour un interligne de 1,12 (d’où bottom = 0,7125 / 1,12 ≈ 63,6 %
+       centre à 0,1835 em du bord gauche du i (chasse du ı : 0,176 em,
+       d’où left = 0,1835 / 0,176 ≈ 104,3 % de la largeur du bloc) et à
+       0,446 em au-dessus de la base, elle-même à 0,335 em du bas du bloc
+       pour un interligne de 1,12 (d’où bottom = 0,781 / 1,12 ≈ 69,7 %
        de la hauteur du bloc). Position en % : les em de l’étoile seraient
        relatifs à sa propre petite taille, pas à celle du titre. */
     .i-accent { position: relative; display: inline-block; }
     .i-star {
-      position: absolute; left: 131.8%; bottom: 63.6%;
+      position: absolute; left: 104.3%; bottom: 69.7%;
       transform: translate(-50%, 50%);
       font-family: var(--sans); font-size: .26em; font-weight: 400; line-height: 1;
       color: #e2b64d; pointer-events: none;
@@ -611,6 +774,9 @@
     .welcome-photo { margin: 0; }
     .welcome-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .welcome-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 13.5px; }
+    /* ——— Portrait signature, grand et clair, au début de Bienvenue ——— */
+    .welcome-portrait { margin: 38px 0 0; max-width: 520px; }
+    .welcome-portrait img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     /* ——— Mini drapeaux en défilé doux, sous le poème ———
        Belle-Baie, l’Acadie, le Québec, le Canada et la France,
        en tout petits drapeaux (21 px de haut) qui se suivent et
@@ -708,6 +874,8 @@
     .about-video { margin: 28px 0 6px; }
     .about-video video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .about-video figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    .racines-photo { margin: 30px 0 8px; max-width: 640px; }
+    .racines-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     /* ——— Photo souvenir dans la bio (À propos) ——— */
     .about-photo { margin: 28px auto 6px; max-width: 460px; }
     .about-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
@@ -721,6 +889,16 @@
     .parent-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
     .maman-line { margin: 26px 0 0; font-family: var(--serif); font-size: 23px; line-height: 1.4; font-weight: 600; color: var(--ink); text-align: center; }
     .maman-suite { margin: 8px auto 0; max-width: 560px; font-family: var(--serif); font-size: 19px; line-height: 1.55; font-weight: 400; color: var(--muted); text-align: center; }
+    /* ——— Photos du miroir (À propos, près de Michel) : la grande, pis la petite vignette du couple juste à côté ——— */
+    .michel-photos { margin: 32px auto 8px; max-width: 500px; display: flex; gap: 18px; align-items: flex-start; justify-content: center; }
+    .michel-photo-main { margin: 0; flex: 0 1 300px; min-width: 0; }
+    .michel-photo-small { margin: 0; flex: 0 1 148px; min-width: 0; }
+    .michel-photos img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    @media (max-width: 620px) {
+      .michel-photos { gap: 12px; max-width: 400px; }
+      .michel-photo-main { flex-basis: 62%; }
+      .michel-photo-small { flex-basis: 34%; }
+    }
     @media (max-width: 620px) {
       .parents-photos { grid-template-columns: 1fr; gap: 28px; max-width: 340px; margin-inline: auto; }
     }
@@ -885,9 +1063,9 @@
     @media (max-width: 620px) {
       body { font-size: 16px; }
       section { padding: 76px 20px; }
-      .wordmark { font-size: 14px; letter-spacing: .07em; }
+      .wordmark { font-size: 23px; }
       .hero-copy { min-height: 0; padding: 54px 22px 52px; }
-      h1 { font-size: clamp(52px, 15.5vw, 76px); }
+      h1 { font-size: clamp(60px, 17vw, 84px); }
       .role { font-size: 25px; }
       .origin { max-width: 290px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
@@ -954,7 +1132,7 @@
     @media (prefers-reduced-motion: reduce) { .carousel-track { transition: none; } }
 
     /* ——— Section-récit du Gala ——— */
-    .gala-opening { margin: 48px auto 0; max-width: 840px; }
+    .gala-opening { margin: 48px auto 0; max-width: 680px; }
     .gala-opening img { width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.42); border: 1px solid rgba(213,164,58,.35); }
     .gala-opening figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
     .gala-section .gala-story { max-width: 840px; margin-top: 46px; }
@@ -1183,6 +1361,8 @@
     .fil-line { margin: 14px 0 0; font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.5; color: var(--muted); }
     .step-copy .fil-line { color: #ffe0a3; font-size: 18px; }
     .footer-signature { flex: 1 1 100%; margin-top: 10px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 15px; color: #cfc9b4; }
+    .footer-sig-name { display: inline; font-family: var(--script-name); font-style: normal; font-size: 1.75em; line-height: 1; color: #e9dfc2; vertical-align: -.08em; }
+    .sig-name strong { font-family: var(--script-name); font-size: 25px; font-weight: 400; letter-spacing: 0; line-height: 1.25; color: #f0e8da; white-space: nowrap; }
     /* — Accent signature : le petit papillon doré, centré au-dessus des titres de section — */
     .papillon-accent { display: block; width: 38px; height: auto; margin: 0 auto 14px; }
     .journey .papillon-accent, .contact .papillon-accent { filter: brightness(1.5) saturate(1.12); }
@@ -1271,24 +1451,244 @@
       .reveal { opacity: 1 !important; transform: none !important; }
     }
 
+    /* ════════════════════════════════════════════════════════════════
+       RECONSTRUCTION « USER FRIENDLY » (2 nov. 2026)
+       Rien n’est retiré : les pièces sont réordonnées pour que
+       l’entrée POP — vidéo de bienvenue d’abord, puis la pièce
+       maîtresse (trophée du Gala + « Entend ma prière »), puis
+       Ma musique en trois familles (originales / covers / Atelier).
+       Théo Rota : photo en tout petit, crédits complets inchangés.
+       ════════════════════════════════════════════════════════════════ */
+    /* — Les accomplissements : UN moment tape-à-l’œil, aéré —
+       Le trophée et la lettre du député en vedette, puis trois
+       honneurs en texte libre (aucune carte) : les deux prix du
+       Gala, l’hommage à l’Assemblée, la double victoire à Beresford.
+       L’élaboration reste dans les sections Gala et Beresford. */
+    .highlights { background: var(--deep); color: var(--cream-ink); padding-block: clamp(96px, 11vw, 148px); }
+    .highlights-head { max-width: 800px; margin: 0 auto; text-align: center; }
+    .highlights .section-tag { color: #e7b34b; }
+    .highlights-title { margin: 0; font-family: var(--serif); font-size: clamp(40px, 5.6vw, 68px); line-height: 1.04; font-weight: 600; letter-spacing: -.02em; }
+    .highlights-title em { font-style: italic; font-weight: 500; color: #e7b34b; }
+    .highlights-lede { margin: 26px auto 0; max-width: 620px; color: #dde0cb; font-size: 19px; line-height: 1.7; }
+    .highlights-vedette { max-width: 500px; margin: clamp(52px, 6vw, 76px) auto 0; padding: 12px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 0 70px rgba(201,162,79,.22); border-radius: var(--r-card); }
+    .highlights-vedette img { width: 100%; display: block; border-radius: 8px; }
+    .highlights-vedette figcaption { padding: 13px 8px 4px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; color: #2a1e04; }
+    .honours { list-style: none; margin: clamp(64px, 8vw, 96px) auto 0; padding: 0; max-width: 1100px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(36px, 4.5vw, 64px); text-align: left; }
+    .honour { border-top: 1px solid rgba(201,162,79,.5); padding-top: 24px; }
+    .honour-when { margin: 0; color: #e7b34b; font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .honour h3 { margin: 12px 0 0; font-family: var(--serif); font-size: clamp(26px, 2.6vw, 31px); font-weight: 600; line-height: 1.15; }
+    .honour p:not(.honour-when) { margin: 14px 0 0; color: #dde0cb; font-size: 16.5px; line-height: 1.65; }
+    .honour-link { display: inline-flex; margin-top: 16px; color: #e7b34b; font-weight: 700; text-underline-offset: 5px; }
+    .honour-link:hover { color: #f0cd7e; }
+    @media (max-width: 820px) { .honours { grid-template-columns: 1fr; max-width: 560px; } }
+    /* — Galeries photo : 1-2 photos visibles par moment, le reste
+       un clic plus loin (règle de Cindy : décharger l’œil).
+       Aucune photo supprimée : elles vivent dans leurs galeries. */
+    .gala-memory--text { grid-template-columns: minmax(0, 780px); }
+    .gala-grid--solo { grid-template-columns: minmax(0, 620px); justify-content: center; }
+    .photo-gallery { margin-top: clamp(60px, 7vw, 88px); }
+    .gallery-toggle { list-style: none; cursor: pointer; display: flex; width: fit-content; max-width: 100%; margin: 0 auto; align-items: center; gap: 14px; padding: 16px 30px; border: 1.5px solid rgba(201,162,79,.65); border-radius: 999px; font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.2; text-align: center; transition: background .25s ease, border-color .25s ease; }
+    .gallery-toggle::-webkit-details-marker { display: none; }
+    .gallery-toggle:hover { background: rgba(201,162,79,.14); border-color: var(--gold); }
+    .gallery-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .gallery-toggle::before { content: "★"; color: var(--gold); font-size: 16px; }
+    .gallery-toggle::after { content: "+"; color: var(--gold); font-family: var(--serif); font-size: 26px; font-weight: 600; line-height: 1; }
+    .photo-gallery[open ] .gallery-toggle::after { content: "–"; }
+    .gallery-toggle-hint { font-family: inherit; font-size: 15px; font-weight: 500; opacity: .75; }
+    .gallery-body { padding-top: 8px; }
+    .gallery-body .gala-subhead { margin-top: 56px; }
+    .gallery-body .gala-grid, .gallery-body .scene-grid { margin-top: 28px; }
+    @media (max-width: 620px) { .gallery-toggle { flex-wrap: wrap; justify-content: center; font-size: 20px; padding: 14px 22px; } }
+    @media print { .photo-gallery > .gallery-body { display: block !important; } }
+    .press .photo-gallery { margin-top: 26px; }
+    #apropos .photo-gallery { margin-top: 44px; }
+    .autumn-row.autumn-row--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin-inline: auto; }
+    .gallery-body .autumn-row { margin-top: 28px; grid-template-columns: minmax(0, 400px); justify-content: center; }
+    /* — Passe d’air générale : les moments respirent, une vedette à la fois — */
+    section:not(.one-step):not(.carousel-section):not(.contact) { padding-block: clamp(104px, 10.5vw, 136px); }
+    .highlights { padding-block: clamp(110px, 12vw, 160px); }
+    @media (max-width: 720px) { section:not(.one-step):not(.carousel-section):not(.contact) { padding-block: 88px; } }
+    /* — Le Gala, pièce maîtresse : trophée agrandi, halo doré — */
+    .gala-section .trophy-feature { max-width: 720px; box-shadow: 0 34px 84px rgba(0,0,0,.55), 0 0 0 1px rgba(231,179,75,.35), 0 0 64px rgba(201,162,79,.28); }
+    .gala-section .section-title { font-size: clamp(44px, 5.8vw, 80px); }
+    /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
+    .arranged-head { align-items: center; gap: 18px; }
+    .arranged-photo { width: 68px; }
+    .arranged-photo img { aspect-ratio: 1 / 1; border-radius: 50%; object-position: 50% 30%; box-shadow: 0 8px 20px rgba(74,56,26,.20); }
+    .arranged-photo figcaption { margin-top: 6px; font-size: 12.5px; }
+    @media (max-width: 620px) { .arranged-photo { width: 60px; } .arranged-head { flex-direction: row; text-align: left; } .arranged-title { text-align: left; } }
+    /* — Martial Marey dans Ma musique (fond clair) : cartes lisibles — */
+    .music-martial .martial-songs { margin-top: 24px; }
+    .music-martial .martial-song { background: var(--surface); border: 1px solid rgba(201,162,79,.55); box-shadow: var(--shadow-warm); }
+    .music-martial .martial-song h4 { color: var(--ink); }
+    .music-martial .martial-song .martial-song-note { color: var(--accent); }
+    .music-martial .martial-song .martial-credits { color: var(--muted); }
+    .martial-listen { margin: 26px 0 0; color: #dde0cb; font-size: 17.5px; line-height: 1.65; max-width: 760px; }
+    .martial-listen a { color: #e7b34b; font-weight: 700; text-underline-offset: 4px; }
+    /* — Atelier : liste des chansons en construction — */
+    .atelier-list li { display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 15px; padding: 18px 4px; }
+    @media (max-width: 620px) { .atelier-list li { grid-template-columns: 32px 1fr; } .atelier-list .song-state { grid-column: 2; text-align: left; margin-top: -6px; } }
+    /* — Onglets : trois familles, retour à la ligne sur petit écran — */
+    @media (max-width: 620px) { .tabs { flex-wrap: wrap; width: 100%; } .tab { flex: 1 1 42%; white-space: normal; } }
+
+    /* — Le plateau : tous les lecteurs au même endroit — */
+    .plateau { background: var(--bg-sand); }
+    .plateau-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: start; }
+    .plateau-card { padding: 30px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow-warm); }
+    .plateau-family { margin: 0; color: var(--accent); font-size: 12.5px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .plateau-card h3 { margin: 10px 0 18px; font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; }
+    .plateau-card video, .plateau-card iframe { width: 100%; aspect-ratio: 16 / 9; display: block; background: #0c0d0b; border: 1px solid var(--line); border-radius: var(--r-media); }
+    .plateau-card > p:not(.plateau-family) { margin: 16px 0 0; color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+    .plateau-link { display: inline-flex; margin-top: 16px; color: var(--accent); font-weight: 750; text-underline-offset: 5px; }
+    .plateau-atelier-box { padding: 24px; aspect-ratio: 16 / 9; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(150deg, var(--deep-2), var(--deep)); border: 1px solid rgba(201,162,79,.5); border-radius: var(--r-media); color: var(--cream-ink); }
+    .plateau-atelier-big { margin: 0; font-family: var(--script); font-weight: 600; font-size: clamp(28px, 3.4vw, 38px); line-height: 1.15; color: #f0bd6d; }
+    .plateau-atelier-box p:not(.plateau-atelier-big) { margin: 12px 0 0; color: #dde0cb; font-size: 15.5px; line-height: 1.55; }
+    .plateau-card--hot { border-color: rgba(201,162,79,.65); }
+    @media (max-width: 720px) { .plateau-grid { grid-template-columns: 1fr; margin-top: 40px; } .plateau-card { padding: 24px; } .plateau-atelier-box { aspect-ratio: auto; } }
+
+    /* ════════════════════════════════════════════════════════════════
+       PASSE « TIROIRS » PARTOUT (2 nov. 2026)
+       Dans chaque section, le tape-à-l'œil reste directement visible;
+       tout le reste (récits, listes longues, photos et vidéos de
+       soutien) vit dans des tiroirs — le même mécanisme dépliant que
+       les galeries déjà en place. Aucun contenu retiré, aucun texte
+       approuvé réécrit : tout est seulement rangé à sa place.
+       ════════════════════════════════════════════════════════════════ */
+    #parcours .photo-gallery { margin-top: 30px; }
+    #musique .photo-gallery { margin-top: 30px; }
+    #scene .photo-gallery, #photos .photo-gallery { margin-top: 46px; }
+    .gallery-body .gala-story { margin-top: 32px; }
+    .gallery-body .gala-story:first-child { margin-top: 14px; }
+    .gallery-body .gala-memory { margin-top: 36px; padding-top: 0; border-top: 0; }
+    .gallery-body .gallery-grid { margin-top: 26px; }
+    .gallery-body .family-title { margin-top: 44px; }
+    .gallery-body .family-title:first-child { margin-top: 6px; }
+    .gallery-body .arranged-grid, .gallery-body .martial-songs { margin-top: 8px; }
+    .about-copy .gallery-body > p:first-child { font-size: inherit; }
+    .martial .gallery-body .martial-listen { margin-top: 22px; }
+    .atelier-doors { margin: 36px 0 0; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+    .collab-line { margin: 26px 0 0; max-width: 640px; font-family: var(--serif); font-size: clamp(19px, 2.1vw, 23px); line-height: 1.5; color: #e9e2cb; }
+
+    /* — Bouton « Écrivez-moi » toujours visible : le contact à un clic,
+       peu importe où on est sur la page — */
+    .fixed-contact {
+      position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 35;
+      display: inline-flex; align-items: center; gap: 9px;
+      min-height: 52px; padding: 13px 24px; border-radius: 999px;
+      background: var(--accent); color: #fff; border: 1.5px solid var(--gold);
+      font-size: 15px; font-weight: 760; letter-spacing: .03em; text-decoration: none;
+      box-shadow: 0 16px 36px rgba(29, 43, 30, .38);
+    }
+    .fixed-contact::before { content: "★"; color: var(--gold); font-size: 12px; line-height: 1; }
+    .fixed-contact:hover { background: var(--accent-2); }
+    @media print { .fixed-contact { display: none; } }
+
+    /* — One-sheet pour les salles et organisateurs (Dossier de presse) :
+       photo, bio courte, prix, répertoire, besoins de scène simples —
+       uniquement du contenu déjà présent sur le site, aucun montant. — */
+    .onesheet { margin-top: 58px; padding: clamp(28px, 4vw, 44px); background: var(--surface); border: 1.5px solid rgba(201,162,79,.6); border-radius: var(--r-card); box-shadow: var(--shadow-warm); }
+    .onesheet-head { display: flex; gap: clamp(20px, 3.5vw, 36px); align-items: center; }
+    .onesheet-photo { margin: 0; flex: none; width: clamp(120px, 18vw, 168px); }
+    .onesheet-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; display: block; border-radius: var(--r-media); border: 1px solid var(--line); }
+    .onesheet-name { margin: 0; font-family: var(--script-name); font-size: clamp(42px, 5.2vw, 58px); font-weight: 400; line-height: 1.2; }
+    .onesheet-role { margin: 8px 0 0; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .onesheet-cols { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 40px; }
+    .onesheet-block h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 22px; font-weight: 600; color: #a67c1a; }
+    @media (prefers-color-scheme: dark) { .onesheet-block h4 { color: var(--gold); } }
+    .onesheet-block p { margin: 0; color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+    .onesheet-block ul { margin: 0; padding: 0 0 0 20px; color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+    .onesheet-block li { margin: 5px 0; padding-left: 4px; }
+    .onesheet-block li::marker { color: var(--accent); }
+    .onesheet-block a { color: var(--accent); font-weight: 750; text-underline-offset: 4px; }
+    @media (max-width: 720px) {
+      .onesheet-head { flex-direction: column; align-items: flex-start; }
+      .onesheet-cols { grid-template-columns: 1fr; }
+    }
+    @media print { .onesheet { break-inside: avoid; box-shadow: none; } }
+
+    /* — Kit média (Presse) : ses photos en liens téléchargeables — */
+    .kit-grid { margin-top: 26px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .kit-item { margin: 0; }
+    .kit-item img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 24%; display: block; border-radius: var(--r-media); border: 1px solid var(--line); background: var(--line); }
+    .kit-item figcaption { margin-top: 9px; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+    .kit-download { display: inline-flex; margin-top: 5px; color: var(--accent); font-weight: 750; font-size: 14.5px; text-underline-offset: 4px; }
+    .kit-download:hover { color: var(--accent-2); }
+    @media (max-width: 720px) { .kit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+    /* ════════════════════════════════════════════════════════════════
+       PASSE DU 2 NOV. (demandes de Cindy)
+       1) Martial Marey : sa grosse photo devient une toute petite
+          vignette ronde, comme celle de Théo Rota (68 px) — un clic
+          sur la vignette ouvre son histoire (le tiroir existant).
+       2) Accueil (Bienvenue) : dans l’espace libre à gauche, sous le
+          poème, sa ligne « Mère chanteuse » écrite à la plume
+          romantique (Great Vibes), avec sa photo main sur le cœur
+          juste à côté.
+       ════════════════════════════════════════════════════════════════ */
+    /* — Martial en tout petit : vignette ronde cliquable, titre à côté — */
+    .martial-head { display: flex; align-items: center; gap: 18px; margin: 0 0 22px; }
+    .martial-head .martial-title { margin: 0; }
+    .martial-head .martial-photo { margin: 0; flex: none; width: 68px; max-width: none; text-align: center; }
+    .martial-thumb {
+      display: block; width: 68px; height: 68px; padding: 0; margin: 0 auto;
+      border: 1.5px solid rgba(213, 164, 58, .65); border-radius: 50%;
+      background: none; cursor: pointer; overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+      transition: border-color .25s ease, box-shadow .25s ease;
+    }
+    .martial-thumb:hover { border-color: var(--gold); box-shadow: 0 8px 22px rgba(0, 0, 0, .45), 0 0 0 3px rgba(201, 162, 79, .35); }
+    .martial-thumb:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .martial-head .martial-photo .martial-thumb img {
+      width: 100%; height: 100%; display: block; object-fit: cover;
+      object-position: 50% 28%; border: 0; border-radius: 50%; box-shadow: none;
+    }
+    .martial-head .martial-photo figcaption {
+      margin-top: 6px; font-family: var(--serif); font-style: italic;
+      font-size: 12.5px; line-height: 1.3; color: #dde0cb;
+    }
+    @media (max-width: 620px) {
+      .martial-head .martial-photo { width: 60px; }
+      .martial-thumb { width: 60px; height: 60px; }
+    }
+    /* — « Mère chanteuse » : la ligne à la plume, photo main sur le cœur
+       juste à côté — dans la colonne du poème de bienvenue, sous les
+       petits drapeaux : c’est l’espace libre à gauche, en bas, que
+       Cindy avait repéré (la photo de la mer, à droite, descend
+       plus bas que le poème). */
+    .mere-chanteuse { margin-top: 38px; display: flex; align-items: center; gap: clamp(16px, 2.6vw, 24px); min-width: 0; }
+    .mere-photo { margin: 0; flex: 0 0 clamp(112px, 11vw, 138px); width: clamp(112px, 11vw, 138px); }
+    .mere-photo img {
+      width: 100%; aspect-ratio: 4 / 5; display: block; object-fit: cover;
+      object-position: 50% 26%; border: 1px solid var(--line);
+      border-radius: var(--r-media, 14px); box-shadow: var(--shadow-warm, var(--shadow));
+    }
+    .mere-line {
+      margin: 0; min-width: 0; font-family: var(--script-name); font-weight: 400;
+      font-size: clamp(27px, 2.7vw, 35px); line-height: 1.38; color: var(--accent-2);
+    }
+    @media (prefers-color-scheme: dark) { .mere-line { color: var(--gold); } }
+    @media (max-width: 620px) {
+      .mere-chanteuse { gap: 14px; }
+      .mere-photo { flex-basis: 104px; width: 104px; }
+      .mere-line { font-size: 26px; line-height: 1.36; }
+    }
+
   </style>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <nav class="site-nav" aria-label="Navigation principale">
-    <a class="wordmark" href="#accueil" aria-label="Retour à l'accueil"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span>CINDY ROY OFFICIEL</a>
+    <a class="wordmark" href="#accueil" aria-label="Retour à l'accueil"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span>Cindy Roy Officiel</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Ouvrir le menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
     </button>
     <div class="nav-links" id="nav-links">
       <a href="#accueil">Accueil</a>
-      <a href="#apropos">À propos</a>
       <a href="#gala">Le Gala 2015</a>
-      <a href="#beresford">La Voix de Beresford</a>
-      <a href="#scene">Scène</a>
-      <a href="#parcours">Parcours</a>
       <a href="#musique">Ma musique</a>
-      <a href="#influences">Influences</a>
+      <a href="#scene">Scène</a>
+      <a href="#apropos">À propos</a>
+      <a href="#parcours">Parcours</a>
       <a href="#presse">Presse</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </div>
@@ -1297,15 +1697,22 @@
   <main id="contenu">
     <header class="hero" id="accueil">
       <span class="hero-watermark" aria-hidden="true">Acadie</span>
-      <div class="hero-photo hero-cover">
-        <img src="assets/cindy-hero-automne-guitare.png" alt="Cindy Roy à la guitare dans un décor d’automne doré, un grand foulard brun sur l’épaule et des papillons sur sa guitare, avec l’inscription manuscrite « J’aime, je vis, je chante… Un pas à la fois »" />
-        <p class="hero-caption" hidden>Cindy Roy à la guitare, en automne — la photo de sa couverture Facebook</p>
+      <div class="hero-photo hero-cover hero-scene">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/cindy-accueil-scene-portrait.jpg" width="1080" height="1350" />
+          <img src="assets/cindy-accueil-scene-large.jpg" width="1920" height="1080" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" />
+        </picture>
+        <div class="hero-titles">
+          <img class="hero-butterfly" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" />
+          <p class="origin"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span> Robertville · Nouveau-Brunswick · Acadie</p>
+          <h1 class="hero-name" aria-label="Cindy Roy">C<span class="i-accent">ı<span class="i-star" aria-hidden="true">★</span></span>ndy Roy</h1>
+          <p class="hero-rule" aria-hidden="true"><span>★</span></p>
+          <p class="role">Autrice-compositrice-interprète acadienne</p>
+          <p class="hero-tagline">L’album d’une vie, sous ma croûte.</p>
+        </div>
+        <p class="hero-caption" hidden>Cindy Roy en train de chanter sur scène, en robe verte</p>
       </div>
       <div class="hero-copy">
-        <p class="origin"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span> Robertville · Nouveau-Brunswick · Acadie</p>
-        <h1 class="hero-name" aria-label="Cindy Roy">C<span class="i-accent">ı<span class="i-star" aria-hidden="true">★</span></span>ndy Roy</h1>
-        <p class="hero-tagline">L’album d’une vie, sous ma croûte.</p>
-        <p class="role">Autrice-compositrice-interprète acadienne</p>
         <p class="hand-note" aria-hidden="true">« une fille qui lâche pas »</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#musique"><span class="play-mark">▶</span> Écouter ma musique</a>
@@ -1318,11 +1725,20 @@
       <div class="wrap">
         <p class="section-tag">Bienvenue</p>
         <h2 class="welcome-title">Un petit mot <em>de bienvenue</em>, de vive voix.</h2>
+        <figure class="welcome-portrait">
+          <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
+        </figure>
         <div class="welcome-poem">
           <div class="welcome-poem-copy">
           <p class="welcome-intro">« Bienvenue dans mon p’tit jardin<br>de Fabreville, à Laval,<br>mon havre tranquille où mon cœur fait escale.<br>Mon autre port d’attache,<br>c’est Robertville, au cœur de Belle-Baie,<br>mon Acadie natale,<br>là où la mer, jamais ben loin,<br>veille sur ma vie. »</p>
           <div class="mini-flags">
               <div class="mini-flags-track"><span class="mini-flags-half"><span class="mini-flags-group"><span class="mini-flag"><img src="assets/drapeau-belle-baie.png" alt="Drapeau officiel de la Ville de Belle-Baie : étoile dorée de l’Acadie et gouvernail sur fond bleu, plume et forêt sur les couleurs acadiennes" width="512" height="258" loading="lazy" /></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de l’Acadie : bleu, blanc, rouge à l’étoile dorée" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau du Québec : le fleurdelisé, croix blanche et quatre fleurs de lys sur fond bleu" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag"><svg viewBox="0 0 120 60" role="img" aria-label="Drapeau du Canada : rouge, blanc, rouge, feuille d’érable rouge au centre" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de la France : bleu, blanc, rouge" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span><span class="mini-flags-half" aria-hidden="true"><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span></div>
+            </div>
+            <div class="mere-chanteuse">
+              <figure class="mere-photo">
+                <img src="assets/cindy-main-sur-le-coeur.jpg" alt="Cindy Roy dehors en automne, la main sur le cœur, à côté d’une plante aux feuilles d’automne" width="798" height="1024" loading="lazy" />
+              </figure>
+              <p class="mere-line">Mère chanteuse — je chante ce que j’écris, je raconte ce que je vis, je cuisine, je ris et je prie, et partout où je passe, je sème l’amour à tout ce qui vit.</p>
             </div>
           </div>
           <figure class="welcome-photo">
@@ -1340,42 +1756,546 @@
       </div>
     </section>
 
-    <section class="intro-video" id="introduction">
-      <div class="wrap intro-grid">
-        <div class="intro-copy">
-          <p class="section-tag">Un petit moment avec moi</p>
-          <h2 class="intro-title">Un petit moment <em>avec moi</em></h2>
-          <p>Un instant tout simple, juste entre nous — le temps d’une chanson.</p>
-          <p>Avant de poursuivre votre visite, offrez-vous une petite minute. Imaginez-vous dans mon salon : je vous y accueille, guitare à la main. Pas de flafla — juste ma voix, ma guitare, pis « Octobre », cette magnifique chanson de Francis Cabrel que j’aime tant chanter.</p>
-          <p class="intro-autumn">En ce bel automne, que ce petit moment vous réchauffe le cœur, tout doucement… 🤎🍂</p>
+    <section class="plateau" id="plateau" aria-label="Le plateau — tout ce que j’offre, au même endroit">
+      <div class="wrap">
+        <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+        <p class="section-tag">Le plateau</p>
+        <h2 class="section-title">Tout mon or, <em>sur un même plateau.</em></h2>
+        <p class="section-intro">Mes chansons originales, mes reprises, mes chansons en construction pis mon humour — tous mes lecteurs, rassemblés ici, d’un seul coup d’œil. Le reste du site vous raconte chaque histoire en détail; ici, on écoute.</p>
+        <div class="plateau-grid">
+          <article class="plateau-card">
+            <p class="plateau-family">Famille 1 · Mes chansons</p>
+            <h3>Chansons originales</h3>
+            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses 6 chansons originales"></video>
+            <p>Six chansons originales en quelques secondes — du brut, du vrai, telles qu’elles sont nées.</p>
+            <a class="plateau-link" href="#musique" data-goto-tab="tab-originales">Ouvrir la famille complète →</a>
+          </article>
+          <article class="plateau-card">
+            <p class="plateau-family">Famille 2 · Mes reprises</p>
+            <h3>Mes reprises</h3>
+            <iframe src="https://www.youtube-nocookie.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <p>Dix-huit reprises favorites en extraits — des versions toutes simples, pis d’autres avec arrangement.</p>
+            <a class="plateau-link" href="#musique" data-goto-tab="tab-interpretations">Ouvrir la famille complète →</a>
+          </article>
+          <article class="plateau-card plateau-card--atelier">
+            <p class="plateau-family">Famille 3 · En construction</p>
+            <h3>L’Atelier</h3>
+            <video src="assets/des-bouts-de-moi.mp4" poster="assets/des-bouts-de-moi-poster.jpg" controls playsinline preload="none" title="« Des bouts de moi » — Cindy Roy"></video>
+            <p>« Des bouts de moi »</p>
+            <p>Sur l’établi en ce moment : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas » — et la suite pousse tranquillement.</p>
+            <a class="plateau-link" href="#musique" data-goto-tab="tab-atelier">Entrer dans l’Atelier →</a>
+          </article>
+          <article class="plateau-card plateau-card--hot">
+            <p class="plateau-family">Et aussi · Pour rire</p>
+            <h3>Mon humour — le <span class="name-script">Cindy Roy</span> Show</h3>
+            <video src="assets/teaser-cindy-roy-show.mp4" poster="assets/teaser-cindy-roy-show-poster.jpg" controls playsinline preload="none" title="La bande-annonce du Cindy Roy Show — un avant-goût des capsules d’humour de Cindy Roy"></video>
+            <p>La bande-annonce de mes capsules d’humour — pour rire un bon coup, ensemble.</p>
+            <a class="plateau-link" href="#ca-sen-vient">Voir le projet au complet →</a>
+          </article>
         </div>
-        <figure class="intro-frame">
-          <div class="intro-frame-box">
-            <video src="assets/video-intro-guitare.mp4" poster="assets/video-intro-guitare-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « Octobre » de Francis Cabrel — cover acoustique à la guitare, dans son salon"></video>
-          </div>
-          <figcaption>« Octobre » de Francis Cabrel — Cindy Roy, voix et guitare. Mon cover acoustique, comme à la maison.</figcaption>
-        </figure>
       </div>
     </section>
 
-    <section class="carousel-section" id="carrousel" aria-label="À cinquante ans, je me choisis">
+    <section class="highlights" id="coups-de-coeur" aria-label="Mes plus beaux accomplissements">
       <div class="wrap">
-        <h2 class="carousel-title">À cinquante ans, je me choisis<span class="carousel-subtitle">Je suis l’âme du voilier de ma vie. Et j’en suis la capitaine aussi.</span></h2>
-        <div class="carousel" id="home-carousel">
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-              <figure class="carousel-slide is-active"><img src="assets/cindy-automne-main-coeur-carrousel.jpg" alt="Cindy Roy la main sur le cœur, près de feuilles d’automne dorées" width="900" height="1154" loading="eager" fetchpriority="high" decoding="async" /></figure>
-              <figure class="carousel-slide"><img src="assets/cindy-automne-yeux-fermes-carrousel.jpg" alt="Portrait d’automne de Cindy Roy, les yeux fermés dans la lumière dorée du soleil, cardigan brun et gris fermé par sa broche papillon" width="900" height="1164" loading="eager" decoding="async" /></figure>
-              <figure class="carousel-slide"><img src="assets/cindy-voilier-quai-carrousel.jpg" alt="Un grand voilier de bois amarré au quai au crépuscule, avec Cindy Roy à côté, en rose, la main posée près du bateau" width="960" height="1280" loading="eager" decoding="async" /></figure>
-              <figure class="carousel-slide is-clone" aria-hidden="true"><img src="assets/cindy-automne-main-coeur-carrousel.jpg" alt="" width="900" height="1154" loading="eager" decoding="async" /></figure>
-            </div>
-          </div>
-          <div class="carousel-dots">
-            <button class="carousel-dot is-active" type="button" aria-label="Photo 1 — Cindy la main sur le cœur, près des feuilles d’automne"></button>
-            <button class="carousel-dot" type="button" aria-label="Photo 2 — Portrait d’automne de Cindy, les yeux fermés au soleil"></button>
-            <button class="carousel-dot" type="button" aria-label="Photo 3 — Cindy en rose à côté du grand voilier de bois, au quai"></button>
+        <div class="highlights-head">
+          <p class="section-tag">Mes plus beaux accomplissements</p>
+          <h2 class="highlights-title">« Entend ma prière » — <em>deux prix, un seul soir, à Caraquet.</em></h2>
+          <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le prix RADARTS au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
+        </div>
+        <figure class="highlights-vedette">
+          <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
+          <figcaption>Mon trophée du Gala, à côté de la lettre du député — 2015</figcaption>
+        </figure>
+        <ul class="honours">
+          <li class="honour">
+            <p class="honour-when">Caraquet · 31 juillet 2015</p>
+            <h3>Deux prix au Gala de la chanson</h3>
+            <p>Le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le prix RADARTS, reçus le même soir pour « Entend ma prière ».</p>
+            <a class="honour-link" href="#gala">Lire l’histoire du Gala →</a>
+          </li>
+          <li class="honour">
+            <p class="honour-when">Assemblée législative · 2 décembre 2015</p>
+            <h3>Un hommage à l’Assemblée législative</h3>
+            <p>Le député Daniel Guitard s’est levé en Chambre pour souligner ma victoire : « Cindy fait la fierté des gens de notre région. » Sa lettre encadrée garde ses mots.</p>
+            <a class="honour-link" href="#hommage">Lire l’histoire de l’hommage →</a>
+          </li>
+          <li class="honour">
+            <p class="honour-when">Beresford · Janvier 2015</p>
+            <h3>La Voix de Beresford — double victoire</h3>
+            <p>Au Carnaval du Siffleux, je remporte la première place de La Voix de Beresford : le prix des juges et le prix du public, les deux.</p>
+            <a class="honour-link" href="#beresford">Lire l’histoire de Beresford →</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="journey gala-section" id="gala">
+      <div class="wrap">
+        <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+        <p class="section-tag">Caraquet · 31 juillet 2015</p>
+        <h2 class="section-title">« Entend ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
+        <p class="section-intro">L’histoire de ma chanson primée, des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
+        <figure class="gala-opening">
+          <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
+          <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entend ma prière » — 2015</figcaption>
+        </figure>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entend ma prière », un clic</span></summary>
+          <div class="gallery-body">
+        <div class="gala-story">
+          <h4 class="birth-title">Comment « Entend ma prière » est née</h4>
+          <p>En 2014, je venais de perdre mon père, et je traversais une période très difficile : l’hôpital, le travail, mes jeunes enfants et, par-dessus tout, la maladie de Verneuil, avec ses infections à répétition et ses glandes sudoripares obstruées. Le diabète s’ajoutait à tout ça — tout arrivait en même temps.</p>
+          <p>Je marchais chaque jour, je me battais pour ma santé. Pis un jour, en pleine marche, une mélodie m’est venue, comme un cadeau tombé du ciel. J’ai levé les yeux… et les mots sont arrivés tout seuls : « Entend ma prière. »</p>
+          <p>Je me suis enregistrée sur mon téléphone, petit bout par petit bout, pour rien perdre. De retour à la maison, j’ai tout couché sur papier, puis les accords sont venus à la guitare.</p>
+          <p>Ma prière, c’était de guérir, de retrouver ma santé et de reprendre ma vie en main. J’ai l’impression qu’elle a été entendue. La maladie de Verneuil est considérée comme une maladie qui ne guérit pas, mais aujourd’hui, moi, je n’en souffre plus. J’ai perdu 140 livres. Un pas à la fois, j’ai repris ma santé en main — pis aujourd’hui, je n’ai plus besoin d’aucun médicament. Ma perte de poids, la nutrition, la prière, la foi, mon père… Je crois que tout cela a contribué à ce que je vis comme un miracle.</p>
+          <p>Un an plus tard, « Entend ma prière » remportait le Prix Auteur-compositeur au Gala de la chanson de Caraquet. J’y ai toujours vu un coup de pouce de mon papa, comme s’il me disait : « J’ai pas pu t’aider quand j’étais malade… Là, je souffre plus. Je vais t’aider, ma fille. »</p>
+          <p>J'ai composé « Entend ma prière » à la guitare — mes paroles, ma mélodie, mes accords. Juste pour la maquette envoyée au Gala, Mathieu Binette en a fait l'arrangement au piano, à partir de ce que j'avais. Pis sur la scène du Gala, ce sont les doigts magiques d'Isabelle Thériault qui l'ont portée.</p>
+        </div>
+        <div class="gala-story">
+          <h4 class="birth-title">Ce que mon histoire m’a appris</h4>
+          <p>Je ne changerais rien à mon histoire : tout ce que j’ai traversé m’a façonnée, les beaux moments comme les moins beaux. Même les passages difficiles nous laissent des leçons précieuses — des outils à garder dans notre coffre, pour les jours où on en aura besoin.</p>
+        </div>
+        <div class="gala-story">
+          <h4 class="birth-title">« Avant de me rendre » — le voyage de mon père</h4>
+          <p>« Avant de me rendre », c’est moi qui l’ai écrite, mais c’est l’histoire de mon père : son voyage vers son ciel, ses trébuchements en chemin et, au bout du compte, son âme sauvée. En l’écrivant, j’avais l’impression qu’il me racontait tout ça à travers moi, comme s’il avait emprunté mon vaisseau pour me transmettre son histoire. Moi, j’étais simplement le canal, le cœur grand ouvert.</p>
+        </div>
+        <div class="gala-story">
+          <h4 class="birth-title">« Moi, je crois » — choisir le bonheur</h4>
+          <p>Pour moi, « Moi, je crois », c’est croire à la vie, de tout son cœur. On pense souvent que le bonheur est inaccessible, alors qu’il suffit parfois, tout simplement, de le choisir. Il faut aligner notre cœur avec notre être profond ; nos expériences humaines nous y conduisent souvent. Je crois que nous sommes une conscience, de l’énergie, et que nous avons simplement emprunté ce vaisseau pour cette vie-ci.</p>
+        </div>
+        <div class="gala-memory gala-memory--text">
+          <div class="gala-prix-copy">
+            <h3 class="birth-title">Deux prix, une soirée</h3>
+            <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entend ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu un beau laissez-passer de RADARTS pour les vitrines de Moncton et les festivités acadiennes.</p>
           </div>
         </div>
+          </div>
+        </details>
+        <figure class="trophy-feature">
+          <img src="assets/trophee-vedette-gala-2015.jpg" alt="Gros plan sur les mains de Cindy Roy tenant son trophée doré et son certificat, lors de la remise de son prix au 47e Gala de la chanson de Caraquet en 2015" loading="lazy" />
+          <figcaption>Le trophée de Cindy Roy — Lauréat 2015, 47e Gala de la chanson de Caraquet</figcaption>
+        </figure>
+        <h3 class="gala-subhead">La soirée en images</h3>
+        <div class="gala-featured">
+          <span class="scene-badge">En vedette</span>
+          <figure>
+            <iframe src="https://www.youtube-nocookie.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entend ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Gala de la chanson de Caraquet 2015 — l’annonce de mon Prix Auteur-compositeur pour « Entend ma prière »</figcaption>
+          </figure>
+        </div>
+        <div class="gala-grid gala-grid--solo">
+          <figure class="scene-item">
+            <video src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entend ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
+            <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
+          </figure>
+        </div>
+        <h3 class="gala-subhead" id="hommage">Un hommage à l’Assemblée législative</h3>
+        <p class="gala-hommage-copy">Le 2 décembre 2015, le député de Restigouche-Chaleur, Daniel Guitard, s’est levé à l’Assemblée législative du Nouveau-Brunswick pour souligner la victoire de Cindy Roy : le prix auteur-compositeur de la chanson primée, au Gala de la chanson de Caraquet.</p>
+        <p class="award-quote">« Cindy fait la fierté des gens de notre région. Elle est une véritable ambassadrice de nos artistes et de tout le Nouveau-Brunswick. »</p>
+        <p class="press-note">— Extrait du Hansard, Assemblée législative du Nouveau-Brunswick, 2 décembre 2015.</p>
+        <p class="gala-press-pointer">La couverture de presse complète du Gala vous attend dans le <a href="#presse">Dossier de presse</a>.</p>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Galerie du Gala <span class="gallery-toggle-hint">toutes les photos, un clic</span></summary>
+          <div class="gallery-body">
+            <h4 class="gala-subhead">La soirée du Gala</h4>
+            <div class="gala-grid">
+              <figure class="gala-doc">
+                <img src="assets/gala-2015-annonce-recadree.jpg" alt="Billet du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le Prix Auteur-compositeur remis à Cindy Roy pour « Entend ma prière », avec sa biographie officielle — crédit photos : Julie D’Amour-Léger" loading="lazy" />
+                <figcaption>L’annonce officielle du Gala, 31 juillet 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-cindy-portrait-lutrin.png" alt="Cindy Roy au lutrin, en veston blanc, lors de l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet, en 2015 — photo d’Yvon Cormier" loading="lazy" />
+                <figcaption>Cindy Roy à l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet — 2015<br />Photos : Yvon Cormier</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/finalistes-gala-2015.jpg" alt="Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène — Cindy Roy au centre, en veston blanc, une guitare acoustique posée devant le groupe" loading="lazy" />
+                <figcaption>Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/cindy-portrait-coulisses-2015.jpg" alt="Cindy Roy en coulisses en 2015 — sourire franc, cheveux blonds dans la lumière du soleil" loading="lazy" />
+                <figcaption>En coulisses, 2015</figcaption>
+              </figure>
+              <figure class="archive-photo">
+                <img src="assets/annonce-gala-2015.jpg" alt="Publication du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le prix Auteur-compositeur remis à Cindy Roy pour Entend ma prière" loading="lazy" />
+                <figcaption>Archive — publication du Gala de la chanson de Caraquet, 31 juillet 2015.</figcaption>
+              </figure>
+            </div>
+            <h4 class="gala-subhead">Les ateliers du printemps — mai 2015</h4>
+            <p class="gala-hommage-copy">Ateliers, fun avec la gang du Gala à la maison Dugas et souper au resto — mai 2015, avant la grande soirée.</p>
+            <div class="gala-grid">
+              <figure class="scene-item">
+                <img src="assets/gala-finalistes-repetition-2015.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet en atelier et en répétition, en mai 2015 — Cindy Roy à droite, en veste de jeans et chemise à carreaux" width="650" height="530" loading="lazy" />
+                <figcaption>Les finalistes du 47e Gala en atelier — répétition, mai 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-finalistes-rencontre-2015.jpg" alt="Selfie de groupe de la première rencontre des finalistes du 47e Gala de la chanson de Caraquet, en mai 2015 — Cindy Roy en veston blanc, au centre" width="720" height="352" loading="lazy" />
+                <figcaption>Première rencontre des finalistes du 47e Gala — mai 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-finalistes-atelier-2015.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet en atelier, en mai 2015 — Cindy Roy à droite, en veste de jeans" width="650" height="970" loading="lazy" />
+                <figcaption>Les finalistes du 47e Gala en atelier — mai 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-souper-gang-2015.jpg" alt="Souper au resto avec la gang du 47e Gala de la chanson de Caraquet — les finalistes, dont Cindy Roy, souriants autour de la table, en mai 2015" width="960" height="540" loading="lazy" />
+                <figcaption>Souper au resto avec la gang du 47e Gala — mai 2015</figcaption>
+              </figure>
+            </div>
+            <h4 class="gala-subhead">L’hommage à l’Assemblée législative</h4>
+            <div class="gala-grid gala-grid-one">
+              <figure class="press-item">
+                <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de l’extrait encadré du hansard de l’Assemblée législative du Nouveau-Brunswick du 2 décembre 2015 où le député Daniel Guitard lui rend hommage" loading="lazy" />
+                <figcaption>Hommage à l’Assemblée législative du Nouveau-Brunswick (2 décembre 2015) et trophée Lauréat 2015 du Gala de la chanson</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="music-section" id="musique">
+      <div class="wrap">
+        <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+        <p class="section-tag">Ma musique</p>
+        <h2 class="section-title">Des histoires vraies, en chansons.</h2>
+        <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Une voix franche, des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
+
+        <div class="library-head">
+          <h3>Répertoire</h3>
+          <div class="tabs" role="tablist" aria-label="Type de répertoire">
+            <button class="tab" id="tab-originales" role="tab" aria-selected="true" aria-controls="originales">Chansons originales</button>
+            <button class="tab" id="tab-interpretations" role="tab" aria-selected="false" aria-controls="interpretations">Reprises à la guitare</button>
+            <button class="tab" id="tab-atelier" role="tab" aria-selected="false" aria-controls="atelier">L’Atelier — en construction</button>
+          </div>
+        </div>
+        <p class="covers-hint">Envie de mes reprises à la guitare ? Touchez l’onglet <strong>« Reprises à la guitare »</strong> ci-dessus.</p>
+        <div id="originales" role="tabpanel" aria-labelledby="tab-originales">
+          <h3 class="montage-title">Mes originales, <em>en quelques secondes — telles qu’elles sont nées, du brut, du vrai.</em></h3>
+          <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une.</p>
+          <figure class="montage-frame">
+            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses 6 chansons originales"></video>
+          </figure>
+          <ol class="song-list">
+            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
+            <li><button class="song-jump" type="button" data-time="43.5" aria-label="Écouter « Moi je crois » dans le montage vidéo"><span class="song-num">02</span><span class="song-name">Moi je crois</span></button></li>
+            <li><button class="song-jump" type="button" data-time="58.5" aria-label="Écouter « Les mots oubliés » dans le montage vidéo"><span class="song-num">03</span><span class="song-name">Les mots oubliés</span></button></li>
+            <li><button class="song-jump" type="button" data-time="73.5" aria-label="Écouter « Une fille qui lâche pas » dans le montage vidéo"><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span></button></li>
+            <li><button class="song-jump" type="button" data-time="88.5" aria-label="Écouter « Fonce vers tes rêves » dans le montage vidéo"><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span></button></li>
+            <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">06</span><span class="song-name">Avant de me rendre</span></button></li>
+          </ol>
+
+          <section class="arranged" aria-labelledby="arranged-title">
+            <div class="arranged-head">
+              <figure class="arranged-photo">
+                <img src="assets/theo-rota.jpg" alt="Théo Rota" width="644" height="616" loading="lazy" />
+                <figcaption>Théo Rota</figcaption>
+              </figure>
+              <h3 class="arranged-title" id="arranged-title">Avec arrangement — collaboration avec Théo Rota</h3>
+            </div>
+            <details class="photo-gallery">
+              <summary class="gallery-toggle">Écouter les chansons <span class="gallery-toggle-hint">avec arrangement, un clic</span></summary>
+              <div class="gallery-body">
+            <div class="arranged-grid">
+              <div class="arranged-card">
+                <h4>Béni sois-tu</h4>
+                <audio controls preload="metadata" src="assets/beni-sois-tu.mp3" title="« Béni sois-tu » — Cindy Roy, en collaboration avec Théo Rota"></audio>
+                <p class="arranged-credit">Béni sois-tu — texte : Cindy Roy &amp; Théo Rota · musique &amp; arrangement : Théo Rota</p>
+              </div>
+              <div class="arranged-card">
+                <h4>Que la neige</h4>
+                <audio controls preload="metadata" src="assets/que-la-neige.mp3" title="« Que la neige » — Cindy Roy, en collaboration avec Théo Rota"></audio>
+                <p class="arranged-credit">Que la neige — texte : Cindy Roy · musique &amp; arrangement : Théo Rota</p>
+              </div>
+            </div>
+              </div>
+            </details>
+          </section>
+
+          <section class="arranged music-martial" aria-labelledby="martial-music-title">
+            <h3 class="arranged-title" id="martial-music-title">Les chansons de Martial Marey — interprétées par Cindy</h3>
+            <p class="arranged-credit" style="margin:0 0 6px">De 2005 à 2017, j’ai prêté ma voix aux compositions de Martial Marey, auteur-compositeur français. Son histoire complète vous attend dans mon <a href="#parcours">Parcours</a> — ses chansons, elles, vivent ici, avec toutes les miennes.</p>
+          <details class="photo-gallery">
+            <summary class="gallery-toggle">Écouter ses chansons <span class="gallery-toggle-hint">deux chansons, un clic</span></summary>
+            <div class="gallery-body">
+          <div class="martial-songs">
+            <div class="martial-song">
+              <h4>« Mes cris dans le silence »</h4>
+              <p class="martial-song-note">En finale à MuseON-2007 — concours international France-Russie</p>
+              <audio controls preload="metadata" src="assets/mes-cris-dans-le-silence-museon-2007.mp3" title="« Mes cris dans le silence » — Cindy Roy, en finale à MuseON-2007"></audio>
+              <p class="martial-credits">Musique : Léonide Choumakov · Texte : Martial Marey · Interprétation : Cindy Roy (Canada)</p>
+            </div>
+            <div class="martial-song">
+              <h4>« T’aimer au firmament »</h4>
+              <p class="martial-song-note">Chanson de Martial Marey interprétée par Cindy Roy, en son hommage 🕊️🤍</p>
+              <audio controls preload="metadata" src="assets/taimer-au-firmament.mp3" title="« T’aimer au firmament » — chanson de Martial Marey interprétée par Cindy Roy"></audio>
+            </div>
+          </div>
+            </div>
+          </details>
+          </section>
+        </div>
+        <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
+          <h4 class="covers-title">Reprises à la guitare</h4>
+          <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées. Je n’ai pas de formation en guitare : c’est moi-même qui m’accompagne, modestement, à la guitare — parce que mon instrument de choix, ça reste ma voix. Des covers acoustiques, simples et vrais, comme dans mon salon, entre nous. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
+          <h3 class="montage-title">Mes reprises <em>favorites</em></h3>
+          <figure class="montage-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Vos plus écoutées et mes coups de cœur — 15 secondes chacune, juste les moments les plus forts.</figcaption>
+          </figure>
+          <ol class="song-list">
+            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Je pars à l’autre bout du monde » dans le montage des reprises"><span class="song-num">01</span><span class="song-name">Je pars à l’autre bout du monde</span></button></li>
+            <li><button class="song-jump" type="button" data-time="17.5" aria-label="Écouter « Nothing’s Gonna Change My Love for You » dans le montage des reprises"><span class="song-num">02</span><span class="song-name">Nothing’s Gonna Change My Love for You</span></button></li>
+            <li><button class="song-jump" type="button" data-time="32.5" aria-label="Écouter « Un peu plus haut, un peu plus loin » dans le montage des reprises"><span class="song-num">03</span><span class="song-name">Un peu plus haut, un peu plus loin</span></button></li>
+            <li><button class="song-jump" type="button" data-time="47.5" aria-label="Écouter « Voyage, voyage » dans le montage des reprises"><span class="song-num">04</span><span class="song-name">Voyage, voyage</span></button></li>
+            <li><button class="song-jump" type="button" data-time="62.5" aria-label="Écouter « Always Remember Us This Way » dans le montage des reprises"><span class="song-num">05</span><span class="song-name">Always Remember Us This Way</span></button></li>
+            <li><button class="song-jump" type="button" data-time="77.5" aria-label="Écouter « Jericho Walls » dans le montage des reprises"><span class="song-num">06</span><span class="song-name">Jericho Walls</span></button></li>
+            <li><button class="song-jump" type="button" data-time="92.5" aria-label="Écouter « Someone You Loved » dans le montage des reprises"><span class="song-num">07</span><span class="song-name">Someone You Loved</span></button></li>
+            <li><button class="song-jump" type="button" data-time="107.5" aria-label="Écouter « Éternel » dans le montage des reprises"><span class="song-num">08</span><span class="song-name">Éternel</span></button></li>
+            <li><button class="song-jump" type="button" data-time="122.5" aria-label="Écouter « Je pardonne » dans le montage des reprises"><span class="song-num">09</span><span class="song-name">Je pardonne</span></button></li>
+            <li><button class="song-jump" type="button" data-time="137.5" aria-label="Écouter « Beautiful Things » dans le montage des reprises"><span class="song-num">10</span><span class="song-name">Beautiful Things</span></button></li>
+            <li><button class="song-jump" type="button" data-time="152.5" aria-label="Écouter « The Door » dans le montage des reprises"><span class="song-num">11</span><span class="song-name">The Door</span></button></li>
+            <li><button class="song-jump" type="button" data-time="167.5" aria-label="Écouter « Lose Control » dans le montage des reprises"><span class="song-num">12</span><span class="song-name">Lose Control</span></button></li>
+            <li><button class="song-jump" type="button" data-time="182.5" aria-label="Écouter « Ce monde » dans le montage des reprises"><span class="song-num">13</span><span class="song-name">Ce monde</span></button></li>
+            <li><button class="song-jump" type="button" data-time="197.5" aria-label="Écouter « Le jardinier du couvent » dans le montage des reprises"><span class="song-num">14</span><span class="song-name">Le jardinier du couvent</span></button></li>
+            <li><button class="song-jump" type="button" data-time="212.5" aria-label="Écouter « Sur ta plage » dans le montage des reprises"><span class="song-num">15</span><span class="song-name">Sur ta plage</span></button></li>
+            <li><button class="song-jump" type="button" data-time="227.5" aria-label="Écouter « Une » dans le montage des reprises"><span class="song-num">16</span><span class="song-name">Une</span></button></li>
+            <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-name">Amoureuse</span></button></li>
+            <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
+          </ol>
+
+          <details class="photo-gallery">
+            <summary class="gallery-toggle">Les extraits, par famille <span class="gallery-toggle-hint">Mes Cabrel · Country · Dolly Parton, un clic</span></summary>
+            <div class="gallery-body">
+          <h4 class="family-title">🎸 Mes Cabrel</h4>
+          <p class="family-note">Des extraits de 15 secondes — chansons de Francis Cabrel</p>
+          <div class="family-grid">
+            <figure class="clip-card">
+              <h5>Je te suivrai</h5>
+              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/vrL2gu9MMxs" title="Cindy Roy chante « Je te suivrai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </figure>
+            <figure class="clip-card">
+              <h5>Je t’aimais, je t’aime et je t’aimerai</h5>
+              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/soZTlzml5jU" title="Cindy Roy chante « Je t’aimais, je t’aime et je t’aimerai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <figcaption>Pour Shawn et Marie-Eve</figcaption>
+            </figure>
+            <figure class="clip-card wide">
+              <h5>De l’autre côté de toi</h5>
+              <iframe class="landscape" src="https://www.youtube-nocookie.com/embed/3swsUNYifZI" title="Cindy Roy chante « De l’autre côté de toi » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </figure>
+          </div>
+
+          <h4 class="family-title">🤠 Country &amp; dédicaces</h4>
+          <figure class="clip-card solo">
+            <h5>Coal Miner’s Daughter</h5>
+            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/8QxlcbwJxSc" title="Cindy Roy chante « Coal Miner’s Daughter » de Loretta Lynn — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Loretta Lynn — pour mon oncle Len Roy, à la demande de ma cousine Heather Ann (extrait)</figcaption>
+          </figure>
+
+          <h4 class="family-title">🕊️ Hommage à Dolly Parton</h4>
+          <figure class="clip-card solo">
+            <h5>Coat of Many Colors</h5>
+            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/uAhzD7jrmgs" title="Cindy Roy chante « Coat of Many Colors » — son hommage à Dolly Parton, au complet" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Mon hommage à Dolly Parton, au complet. Entre deux brassées de lavage, je l’ai chantée tout simplement avec mon cœur.</figcaption>
+          </figure>
+            </div>
+          </details>
+        </div>
+
+        <div id="atelier" role="tabpanel" aria-labelledby="tab-atelier" hidden>
+          <h3 class="montage-title">L’Atelier — <em>mes chansons en construction.</em></h3>
+          <p class="covers-intro">« Ici, c'est mon atelier. Je vous montre mes chansons pendant qu'elles se font — brutes, pas finies, comme dans mon salon. Vos impressions comptent pour de vrai : dites-moi lesquelles vous touchent, lesquelles je devrais continuer. Embarquez dans mon train, pis faites un bout de chemin avec moi. 🦋 »</p>
+          <p class="covers-intro">Bienvenue dans mon atelier : c’est ici que vivent mes chansons en construction — les élans, les ébauches, le brut. Facebook, c’est mon petit salon; l’atelier, c’est là où les chansons poussent, une à une, avant de décider lesquelles peaufiner, lesquelles finir.</p>
+          <p class="covers-intro">« J’attends pas que mes chansons soient finies pour vous les montrer. Je vous invite à partir avec moi de mes tounes brutes, à vivre l’histoire avec moi. Ensemble, on va voir lesquelles peaufiner, lesquelles finir. »</p>
+          <p class="covers-intro">Une chanson n’a pas besoin d’être parfaite pour avoir quelque chose à raconter. Elle peut changer, grandir et prendre une toute autre couleur avec le temps.</p>
+          <figure class="montage-frame">
+            <video src="assets/des-bouts-de-moi.mp4" poster="assets/des-bouts-de-moi-poster.jpg" controls playsinline preload="none" title="« Des bouts de moi » — Cindy Roy"></video>
+            <figcaption>Des bouts de moi</figcaption>
+          </figure>
+          <h4 class="family-title">Sur l’établi, en ce moment</h4>
+          <ol class="song-list atelier-list">
+            <li><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015 — en chantier</span></li>
+            <li><span class="song-num">02</span><span class="song-name">Moi je crois</span><span class="song-state">En chantier</span></li>
+            <li><span class="song-num">03</span><span class="song-name">Les mots oubliés</span><span class="song-state">En chantier</span></li>
+            <li><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span><span class="song-state">En chantier</span></li>
+            <li><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span><span class="song-state">En chantier</span></li>
+            <li><span class="song-num">06</span><span class="song-name">Avant de me rendre</span><span class="song-state">En chantier</span></li>
+          </ol>
+          <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une. Les nouvelles ébauches s’ajouteront ici, un pas à la fois.</p>
+          <p class="atelier-doors">
+            <a class="button button-primary" href="#embarquez">Embarquez dans mon train</a>
+            <a class="plateau-link" href="https://www.facebook.com/cindyroyofficiel" target="_blank" rel="noopener">Écrivez-moi sur Facebook →</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="scene beresford-section" id="beresford">
+      <div class="wrap">
+        <p class="section-tag">Carnaval du Siffleux · Beresford · 2015</p>
+        <h2 class="section-title">La Voix de Beresford — <em>Carnaval du Siffleux 2015</em></h2>
+        <p class="section-intro">Janvier 2015, au Carnaval du Siffleux de Beresford : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
+        <div class="scene-grid">
+<figure class="scene-item">
+            <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
+            <figcaption>Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/siffleux-cindy-emotion.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" loading="lazy" />
+            <figcaption>Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
+          </figure>
+        </div>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Galerie de Beresford <span class="gallery-toggle-hint">les autres photos et vidéos de la soirée, un clic</span></summary>
+          <div class="gallery-body">
+            <div class="scene-grid">
+              <figure class="scene-item">
+                <iframe src="https://www.youtube-nocookie.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" style="aspect-ratio: 720 / 1164" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <figcaption>« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <iframe src="https://www.youtube-nocookie.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/siffleux-cindy-chante-1.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
+                <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
+                <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/siffleux-groupe-annonce.jpg" alt="Carnaval du Siffleux — La Voix de Beresford, janvier 2015" loading="lazy" />
+                <figcaption>Carnaval du Siffleux — La Voix de Beresford, janvier 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/siffleux-cindy-chante-2.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
+                <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
+              </figure>
+              <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
+              <figure class="scene-item">
+                <img src="assets/duo-brina-scene.jpg" alt="Sur scène avec Brina Warne" loading="lazy" />
+                <figcaption>Sur scène avec Brina Warne</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/duo-brina-studio.jpg" alt="En studio avec Brina Warne" loading="lazy" />
+                <figcaption>En studio avec Brina Warne</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/beresford-equipe-louis-noel-2015.jpg" alt="L’équipe du coach Louis Noël à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy Roy" width="720" height="489" loading="lazy" />
+                <figcaption>L’équipe du coach Louis Noël — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy — Carnaval du Siffleux, 2015</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="scene" id="scene">
+      <div class="wrap">
+        <p class="section-tag">Moments de scène</p>
+        <h2 class="section-title">La scène, <em>comme si vous y étiez.</em></h2>
+        <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
+        <div class="scene-grid">
+          <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube-nocookie.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
+            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
+          </figure>
+        </div>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Galerie — Moments de scène <span class="gallery-toggle-hint">tous les autres moments, un clic</span></summary>
+          <div class="gallery-body">
+            <div class="scene-grid">
+<h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube-nocookie.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/fete-acadie-beresford-2015.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes sur scène aux Festivités acadiennes de Beresford, en août 2015 — de gauche à droite : Louis Noël, Cindy Roy, Stéphane Hébert et Madiane Michaud, devant un grand drapeau acadien" loading="lazy" />
+            <figcaption>Le cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, août 2015</figcaption>
+          </figure>
+          <h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube-nocookie.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/photo-scene-donna-landry-2016-1.jpg" alt="Cindy Roy au micro sur scène avec Michel Thériault à la guitare et son bassiste, devant un rideau aux couleurs acadiennes — Beresford, 15 août 2016" loading="lazy" />
+            <figcaption>Sur scène avec Michel Thériault — Beresford, 15 août 2016</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/photo-scene-donna-landry-2016-3.jpg" alt="Cindy Roy avec Michel Thériault, devant les fanions acadiens — Beresford, 15 août 2016" loading="lazy" />
+            <figcaption>Avec Michel Thériault — Beresford, 15 août 2016</figcaption>
+          </figure>
+          <h4 class="scene-group-title">Medley Offenbach</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube-nocookie.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
+          </figure>
+          <h4 class="scene-group-title">Mario Benjamin</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube-nocookie.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/cindy-et-mario-benjamin.png" alt="Cindy Roy avec Mario Benjamin" width="1080" height="1428" loading="lazy" />
+            <figcaption>Avec Mario Benjamin — Boston Pizza, Saint-Eustache, 4 octobre 2025</figcaption>
+          </figure>
+<figure class="scene-item">
+            <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
+            <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
+          </figure>
+              <figure class="scene-item">
+                <img src="assets/affiche-dans-lshed-labibitte-2015.jpg" alt="L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015" loading="lazy" />
+                <figcaption>L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/des-airs-et-des-mots-couverture-2015.jpg" alt="Montage sépia des quatre membres du cercle d’auteurs-compositeurs Des airs et des mots, en 2015 — Cindy Roy, Louis Noël, Stéphane Hébert et Madiane Michaud" width="720" height="280" loading="lazy" />
+                <figcaption>Des airs et des mots — Cindy, Louis Noël, Stéphane Hébert et Madiane Michaud, 2015</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="photos" id="photos">
+      <div class="wrap">
+        <h2 class="section-title">Sur scène, le soir.</h2>
+        <div class="stage-marquee" aria-label="Photos de Cindy Roy en spectacle le soir, en défilement">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="Cindy Roy chantant en pleine note sur scène, en robe verte et talons dorés, sous un faisceau de lumière doré aux reflets bleus et mauves" loading="lazy" /></figure>
+              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="Cindy Roy sur scène le soir, en robe verte et talons dorés, chantant sous un spot chaud avec un jeu de lumière bleu et mauve" loading="lazy" /></figure>
+              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" /></figure>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="" loading="lazy" /></figure>
+              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="" loading="lazy" /></figure>
+              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="" loading="lazy" /></figure>
+            </div>
+          </div>
+        </div>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Galerie de photos <span class="gallery-toggle-hint">Cindy, en images — un clic</span></summary>
+          <div class="gallery-body">
+        <div class="gallery-grid" aria-label="Galerie de photos de Cindy Roy">
+          <figure class="gallery-item featured"><img src="assets/cindy-broche-papillon.png" alt="Cindy Roy souriante dans la lumière dorée de l’automne, portant un châle tricoté brun et gris fermé par sa broche papillon en perles, sur un haut bleu pâle" loading="lazy" /></figure>
+          <figure class="gallery-item portrait"><img src="assets/cindy-profil-pensif.png" alt="Cindy Roy de profil, le menton appuyé sur sa main — montre et bracelet dorés — sous un ciel bleu d’automne" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="assets/cindy-country-bras-ouverts.jpg" alt="Cindy Roy debout les bras ouverts, en chemisier bleu et jupe blanche, dans la nature" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="assets/cindy-rochers-sourire.jpg" alt="Cindy Roy assise sur des rochers dans la nature, souriante" loading="lazy" /></figure>
+          <figure class="gallery-item portrait"><img src="assets/cindy-papillon-yeux-fermes.png" alt="Cindy Roy les yeux fermés, maquillage bleu, portant son châle tricoté brun et gris et sa broche papillon — pose artistique dans la lumière dorée" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors d’une remise de prix" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="assets/cindy-rochers-ciel.jpg" alt="Cindy Roy assise sur un rocher entre les pins, le regard levé vers le ciel" loading="lazy" /></figure>
+          <figure class="gallery-item portrait"><img src="assets/cindy-cloture-automne.png" alt="Cindy Roy près d’une clôture métallique, cheveux longs ondulés et petit collier à pendentif en cercle, dans la lumière d’automne" loading="lazy" /></figure>
+        </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1401,6 +2321,12 @@
             </figure>
             <h3>Mes racines acadiennes</h3>
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
+            <figure class="racines-photo">
+              <img src="assets/cindy-hero-automne-guitare.png" alt="Cindy Roy à la guitare dans un décor d’automne doré, un grand foulard brun sur l’épaule et des papillons sur sa guitare, avec l’inscription manuscrite « J’aime, je vis, je chante… Un pas à la fois »" width="1672" height="940" loading="lazy" decoding="async" />
+            </figure>
+            <details class="photo-gallery">
+              <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, Michel — un clic</span></summary>
+              <div class="gallery-body">
             <p>Ma grand-mère Marie Boudreau chantait et jouait de l’orgue dans son salon, souvent à l’oreille. Moi aussi, j’avais déjà l’oreille et je m’amusais à inventer des mélodies. C’est elle qui m’a montré mes premiers accords — ça m’a influencée, comme tout le reste.</p>
             <p>Pendant ce temps, mon grand-père Émery Boudreau filmait tous les moments spéciaux — il aimait tellement sa caméra. Excellent cuisinier, c'est lui qui cuisait la dinde à chaque Noël. Vétéran de la Deuxième Guerre mondiale, c’était un véritable héros — il s’est battu pour notre pays. Un homme autoritaire… mais drôle comme pas un! Mon oncle Donald a raconté son histoire dans son livre, La guerre à Emery à Edmond — vous le trouverez plus bas, dans ma vitrine familiale. Ma grand-mère et lui se taquinaient sans arrêt, chacun essayant de nous recruter dans son équipe.</p>
             <p>Ma grand-mère Violet montait sur scène sous le nom de « la Gadelle » et faisait rire des salles entières.</p>
@@ -1424,11 +2350,24 @@
             <p class="maman-suite" style="margin-top: 26px;">Je suis maman de deux grands — Shawn et Marie-Eve — ma plus grande fierté. Je les aime plus que tout au monde, pis je suis tellement fière d’eux : ils portent un bout de mon cœur partout où ils vont. Leur vie leur appartient : le reste, je le garde privé, par respect pour eux.</p>
             <p class="michel-merci-title"><span class="michel-heart" aria-hidden="true">♥</span>À Michel — l'homme de ma vie.</p>
             <p class="maman-suite" style="margin-top: 16px;">Michel, l’homme de ma vie — mon complice en tout. Toujours le premier à m’encourager, il connaît mes chansons par cœur — mes silences aussi. On partage le vaisseau, pis la musique : il prend sa guitare pour le plaisir, on chante à deux, on s’amuse comme des enfants — pis on vit au max les belles années qui nous sont données, une journée précieuse à la fois. Un regard, un fou rire, une toune qui part toute seule : c’est ça, nous deux.</p>
+            <div class="michel-photos">
+              <figure class="michel-photo-main">
+                <img src="assets/cindy-miroir-robe-verte.jpg" alt="Cindy Roy devant le miroir, plein pied, dans sa robe verte et ses sandales dorées, le soir du spectacle" width="665" height="1863" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="michel-photo-small">
+                <img src="assets/cindy-michel-miroir.jpg" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="983" height="2027" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+              </div>
+            </details>
             <p>Quand je chante, quand j’écris ou quand je fais rire, c’est tout ce monde-là qui chante, écrit et rit avec moi. Ce sont mes racines, mon Acadie — pis c’est un bout de tout ça que je vous partage, un pas à la fois.</p>
             <div class="vitrine">
               <p class="section-tag">Vitrine familiale</p>
               <h3>Où le talent, chez nous, ça se passe en famille</h3>
               <p>Chez nous, l’art, c’est de famille — un vrai buffet de talents. Des livres, de la peinture, des chansons, de la bonne cuisine, de la soudure, de la construction, de la mécanique, de l’électricité, des musiciens pis des libres penseurs — chacun a sa façon de faire de l’art. Voici les œuvres de ma parenté — à découvrir, à savourer, à encourager.</p>
+              <details class="photo-gallery">
+                <summary class="gallery-toggle">Découvrir la vitrine <span class="gallery-toggle-hint">les œuvres de ma parenté, un clic</span></summary>
+                <div class="gallery-body">
               <ul class="vitrine-list">
                 <li>
                   <h4 class="vitrine-name">Pascal Roy, mon frère, et Kevin Duguay</h4>
@@ -1504,6 +2443,8 @@
                 </li>
               </ul>
               <p class="vitrine-closing">« Un membre de ma famille qui fait de belles choses pis qui est pas ici? Écris-moi un message — je vais t'ajouter avec plaisir. »</p>
+                </div>
+              </details>
             </div>
             <h3>Chanteuse autodidacte</h3>
             <p>Je suis chanteuse avant tout. Ma voix, c’est mon instrument, pis les mélodies naissent dans ma tête — parfois même au réveil. Autodidacte, je me suis formée en écoutant, en m’enregistrant, en pratiquant pendant des milliers d’heures, en collaborant avec des musiciens du Québec et de la France — de mes premiers pas sur scène jusqu’à mes expériences en studio.</p>
@@ -1518,24 +2459,29 @@
             </figure>
           </div>
         </div>
-        <div class="about-portraits" aria-label="Portrait de Cindy Roy">
-          <figure>
-            <img src="assets/cindy-portrait-soleil.jpg" alt="Cindy Roy au grand sourire, portrait rapproché au soleil, vêtue d’un haut rose" loading="lazy" />
-          </figure>
-        </div>
         <div class="autumn-portraits">
           <p class="autumn-cap">De petits instants de bonheur, captés dans mon havre de paix.</p>
-          <div class="autumn-row" aria-label="Portraits d’automne de Cindy Roy">
+          <div class="autumn-row autumn-row--duo" aria-label="Portraits d’automne de Cindy Roy">
             <figure>
               <img src="assets/cindy-automne-portrait-1.png" alt="Portrait rapproché de Cindy Roy devant un feuillage jaune d’automne, cheveux longs ondulés et cardigan beige" loading="lazy" />
             </figure>
             <figure>
               <img src="assets/cindy-automne-portrait-3.png" alt="Cindy Roy au grand sourire, baignée de lumière dorée, feuillage d’automne derrière elle" loading="lazy" />
             </figure>
-            <figure>
-              <img src="assets/cindy-automne-portrait-4.png" alt="Cindy Roy levant les yeux vers le ciel sous un arbre aux feuilles dorées" loading="lazy" />
-            </figure>
           </div>
+          <details class="photo-gallery">
+            <summary class="gallery-toggle">Galerie d’automne <span class="gallery-toggle-hint">d’autres petits instants, un clic</span></summary>
+            <div class="gallery-body">
+              <div class="autumn-row" aria-label="Autres portraits d’automne de Cindy Roy">
+                <figure>
+                  <img src="assets/cindy-automne-portrait-4.png" alt="Cindy Roy levant les yeux vers le ciel sous un arbre aux feuilles dorées" loading="lazy" />
+                </figure>
+                <figure>
+                  <img src="assets/cindy-portrait-soleil.jpg" alt="Cindy Roy au grand sourire, portrait rapproché au soleil, vêtue d’un haut rose" loading="lazy" />
+                </figure>
+              </div>
+            </div>
+          </details>
         </div>
         <div class="mission reveal">
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
@@ -1552,230 +2498,23 @@
       </div>
     </section>
 
-    <section class="journey gala-section" id="gala">
+    <section class="carousel-section" id="carrousel" aria-label="À cinquante ans, je me choisis">
       <div class="wrap">
-        <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-        <p class="section-tag">Caraquet · 31 juillet 2015</p>
-        <h2 class="section-title">« Entend ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
-        <p class="section-intro">L’histoire de ma chanson primée, des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
-        <figure class="gala-opening">
-          <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
-          <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entend ma prière » — 2015</figcaption>
-        </figure>
-        <div class="gala-story">
-          <h4 class="birth-title">Comment « Entend ma prière » est née</h4>
-          <p>En 2014, je venais de perdre mon père, et je traversais une période très difficile : l’hôpital, le travail, mes jeunes enfants et, par-dessus tout, la maladie de Verneuil, avec ses infections à répétition et ses glandes sudoripares obstruées. Le diabète s’ajoutait à tout ça — tout arrivait en même temps.</p>
-          <p>Je marchais chaque jour, je me battais pour ma santé. Pis un jour, en pleine marche, une mélodie m’est venue, comme un cadeau tombé du ciel. J’ai levé les yeux… et les mots sont arrivés tout seuls : « Entend ma prière. »</p>
-          <p>Je me suis enregistrée sur mon téléphone, petit bout par petit bout, pour rien perdre. De retour à la maison, j’ai tout couché sur papier, puis les accords sont venus à la guitare.</p>
-          <p>Ma prière, c’était de guérir, de retrouver ma santé et de reprendre ma vie en main. J’ai l’impression qu’elle a été entendue. La maladie de Verneuil est considérée comme une maladie qui ne guérit pas, mais aujourd’hui, moi, je n’en souffre plus. J’ai perdu 140 livres. Un pas à la fois, j’ai repris ma santé en main — pis aujourd’hui, je n’ai plus besoin d’aucun médicament. Ma perte de poids, la nutrition, la prière, la foi, mon père… Je crois que tout cela a contribué à ce que je vis comme un miracle.</p>
-          <p>Un an plus tard, « Entend ma prière » remportait le Prix Auteur-compositeur au Gala de la chanson de Caraquet. J’y ai toujours vu un coup de pouce de mon papa, comme s’il me disait : « J’ai pas pu t’aider quand j’étais malade… Là, je souffre plus. Je vais t’aider, ma fille. »</p>
-          <p>J'ai composé « Entend ma prière » à la guitare — mes paroles, ma mélodie, mes accords. Juste pour la maquette envoyée au Gala, Mathieu Binette en a fait l'arrangement au piano, à partir de ce que j'avais. Pis sur la scène du Gala, ce sont les doigts magiques d'Isabelle Thériault qui l'ont portée.</p>
-        </div>
-        <div class="gala-story">
-          <h4 class="birth-title">Ce que mon histoire m’a appris</h4>
-          <p>Je ne changerais rien à mon histoire : tout ce que j’ai traversé m’a façonnée, les beaux moments comme les moins beaux. Même les passages difficiles nous laissent des leçons précieuses — des outils à garder dans notre coffre, pour les jours où on en aura besoin.</p>
-        </div>
-        <div class="gala-story">
-          <h4 class="birth-title">« Avant de me rendre » — le voyage de mon père</h4>
-          <p>« Avant de me rendre », c’est moi qui l’ai écrite, mais c’est l’histoire de mon père : son voyage vers son ciel, ses trébuchements en chemin et, au bout du compte, son âme sauvée. En l’écrivant, j’avais l’impression qu’il me racontait tout ça à travers moi, comme s’il avait emprunté mon vaisseau pour me transmettre son histoire. Moi, j’étais simplement le canal, le cœur grand ouvert.</p>
-        </div>
-        <div class="gala-story">
-          <h4 class="birth-title">« Moi, je crois » — choisir le bonheur</h4>
-          <p>Pour moi, « Moi, je crois », c’est croire à la vie, de tout son cœur. On pense souvent que le bonheur est inaccessible, alors qu’il suffit parfois, tout simplement, de le choisir. Il faut aligner notre cœur avec notre être profond ; nos expériences humaines nous y conduisent souvent. Je crois que nous sommes une conscience, de l’énergie, et que nous avons simplement emprunté ce vaisseau pour cette vie-ci.</p>
-        </div>
-        <div class="gala-memory">
-          <div class="gala-prix-copy">
-            <h3 class="birth-title">Deux prix, une soirée</h3>
-            <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entend ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu un beau laissez-passer de RADARTS pour les vitrines de Moncton et les festivités acadiennes.</p>
+        <h2 class="carousel-title">À cinquante ans, je me choisis<span class="carousel-subtitle">Je suis l’âme du voilier de ma vie. Et j’en suis la capitaine aussi.</span></h2>
+        <div class="carousel" id="home-carousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <figure class="carousel-slide is-active"><img src="assets/cindy-automne-main-coeur-carrousel.jpg" alt="Cindy Roy la main sur le cœur, près de feuilles d’automne dorées" width="900" height="1154" loading="eager" fetchpriority="high" decoding="async" /></figure>
+              <figure class="carousel-slide"><img src="assets/cindy-automne-yeux-fermes-carrousel.jpg" alt="Portrait d’automne de Cindy Roy, les yeux fermés dans la lumière dorée du soleil, cardigan brun et gris fermé par sa broche papillon" width="900" height="1164" loading="eager" decoding="async" /></figure>
+              <figure class="carousel-slide"><img src="assets/cindy-voilier-quai-carrousel.jpg" alt="Un grand voilier de bois amarré au quai au crépuscule, avec Cindy Roy à côté, en rose, la main posée près du bateau" width="960" height="1280" loading="eager" decoding="async" /></figure>
+              <figure class="carousel-slide is-clone" aria-hidden="true"><img src="assets/cindy-automne-main-coeur-carrousel.jpg" alt="" width="900" height="1154" loading="eager" decoding="async" /></figure>
+            </div>
           </div>
-          <figure class="gala-doc">
-            <img src="assets/gala-2015-annonce-recadree.jpg" alt="Billet du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le Prix Auteur-compositeur remis à Cindy Roy pour « Entend ma prière », avec sa biographie officielle — crédit photos : Julie D’Amour-Léger" loading="lazy" />
-            <figcaption>L’annonce officielle du Gala, 31 juillet 2015</figcaption>
-          </figure>
-        </div>
-        <figure class="trophy-feature">
-          <img src="assets/trophee-vedette-gala-2015.jpg" alt="Gros plan sur les mains de Cindy Roy tenant son trophée doré et son certificat, lors de la remise de son prix au 47e Gala de la chanson de Caraquet en 2015" loading="lazy" />
-          <figcaption>Le trophée de Cindy Roy — Lauréat 2015, 47e Gala de la chanson de Caraquet</figcaption>
-        </figure>
-        <h3 class="gala-subhead">La soirée en images</h3>
-        <div class="gala-featured">
-          <span class="scene-badge">En vedette</span>
-          <figure>
-            <iframe src="https://www.youtube-nocookie.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entend ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Gala de la chanson de Caraquet 2015 — l’annonce de mon Prix Auteur-compositeur pour « Entend ma prière »</figcaption>
-          </figure>
-        </div>
-        <div class="gala-grid">
-          <figure class="scene-item">
-            <video src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entend ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
-            <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/gala-cindy-portrait-lutrin.png" alt="Cindy Roy au lutrin, en veston blanc, lors de l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet, en 2015 — photo d’Yvon Cormier" loading="lazy" />
-            <figcaption>Cindy Roy à l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet — 2015<br />Photos : Yvon Cormier</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/finalistes-gala-2015.jpg" alt="Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène — Cindy Roy au centre, en veston blanc, une guitare acoustique posée devant le groupe" loading="lazy" />
-            <figcaption>Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/cindy-portrait-coulisses-2015.jpg" alt="Cindy Roy en coulisses en 2015 — sourire franc, cheveux blonds dans la lumière du soleil" loading="lazy" />
-            <figcaption>En coulisses, 2015</figcaption>
-          </figure>
-          <figure class="archive-photo">
-            <img src="assets/annonce-gala-2015.jpg" alt="Publication du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le prix Auteur-compositeur remis à Cindy Roy pour Entend ma prière" loading="lazy" />
-            <figcaption>Archive — publication du Gala de la chanson de Caraquet, 31 juillet 2015.</figcaption>
-          </figure>
-        </div>
-        <h3 class="gala-subhead">Les ateliers du printemps — mai 2015</h3>
-        <p class="gala-hommage-copy">Ateliers, fun avec la gang du Gala à la maison Dugas et souper au resto — mai 2015, avant la grande soirée.</p>
-        <div class="gala-grid">
-          <figure class="scene-item">
-            <img src="assets/gala-finalistes-repetition-2015.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet en atelier et en répétition, en mai 2015 — Cindy Roy à droite, en veste de jeans et chemise à carreaux" width="650" height="530" loading="lazy" />
-            <figcaption>Les finalistes du 47e Gala en atelier — répétition, mai 2015</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/gala-finalistes-rencontre-2015.jpg" alt="Selfie de groupe de la première rencontre des finalistes du 47e Gala de la chanson de Caraquet, en mai 2015 — Cindy Roy en veston blanc, au centre" width="720" height="352" loading="lazy" />
-            <figcaption>Première rencontre des finalistes du 47e Gala — mai 2015</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/gala-finalistes-atelier-2015.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet en atelier, en mai 2015 — Cindy Roy à droite, en veste de jeans" width="650" height="970" loading="lazy" />
-            <figcaption>Les finalistes du 47e Gala en atelier — mai 2015</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <img src="assets/gala-souper-gang-2015.jpg" alt="Souper au resto avec la gang du 47e Gala de la chanson de Caraquet — les finalistes, dont Cindy Roy, souriants autour de la table, en mai 2015" width="960" height="540" loading="lazy" />
-            <figcaption>Souper au resto avec la gang du 47e Gala — mai 2015</figcaption>
-          </figure>
-        </div>
-        <h3 class="gala-subhead">Un hommage à l’Assemblée législative</h3>
-        <p class="gala-hommage-copy">Le 2 décembre 2015, le député de Restigouche-Chaleur, Daniel Guitard, s’est levé à l’Assemblée législative du Nouveau-Brunswick pour souligner la victoire de Cindy Roy : le prix auteur-compositeur de la chanson primée, au Gala de la chanson de Caraquet.</p>
-        <p class="award-quote">« Cindy fait la fierté des gens de notre région. Elle est une véritable ambassadrice de nos artistes et de tout le Nouveau-Brunswick. »</p>
-        <p class="press-note">— Extrait du Hansard, Assemblée législative du Nouveau-Brunswick, 2 décembre 2015.</p>
-        <div class="gala-grid gala-grid-one">
-          <figure class="press-item">
-            <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de l’extrait encadré du hansard de l’Assemblée législative du Nouveau-Brunswick du 2 décembre 2015 où le député Daniel Guitard lui rend hommage" loading="lazy" />
-            <figcaption>Hommage à l’Assemblée législative du Nouveau-Brunswick (2 décembre 2015) et trophée Lauréat 2015 du Gala de la chanson</figcaption>
-          </figure>
-        </div>
-        <p class="gala-press-pointer">La couverture de presse complète du Gala vous attend dans le <a href="#presse">Dossier de presse</a>.</p>
-      </div>
-    </section>
-
-    <section class="scene beresford-section" id="beresford">
-      <div class="wrap">
-        <p class="section-tag">Carnaval du Siffleux · Beresford · 2015</p>
-        <h2 class="section-title">La Voix de Beresford — <em>Carnaval du Siffleux 2015</em></h2>
-        <p class="section-intro">Janvier 2015, au Carnaval du Siffleux de Beresford : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
-        <div class="scene-grid">
-<figure class="scene-item">
-            <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
-            <figcaption>Duo avec Brina Warne — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" style="aspect-ratio: 720 / 1164" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Je t'aime » de Lara Fabian — finale de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/siffleux-groupe-annonce.jpg" alt="Carnaval du Siffleux — La Voix de Beresford, janvier 2015" loading="lazy" />
-            <figcaption>Carnaval du Siffleux — La Voix de Beresford, janvier 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/siffleux-cindy-chante-1.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
-            <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
-            <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/siffleux-cindy-chante-2.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
-            <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
-          </figure>
-<p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
-<figure class="scene-item">
-            <img src="assets/siffleux-cindy-emotion.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" loading="lazy" />
-            <figcaption>Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/duo-brina-scene.jpg" alt="Sur scène avec Brina Warne" loading="lazy" />
-            <figcaption>Sur scène avec Brina Warne</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/duo-brina-studio.jpg" alt="En studio avec Brina Warne" loading="lazy" />
-            <figcaption>En studio avec Brina Warne</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/beresford-equipe-louis-noel-2015.jpg" alt="L’équipe du coach Louis Noël à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy Roy" width="720" height="489" loading="lazy" />
-            <figcaption>L’équipe du coach Louis Noël — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy — Carnaval du Siffleux, 2015</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" id="scene">
-      <div class="wrap">
-        <p class="section-tag">Moments de scène</p>
-        <h2 class="section-title">La scène, <em>comme si vous y étiez.</em></h2>
-        <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
-        <div class="scene-grid">
-          <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/affiche-dans-lshed-labibitte-2015.jpg" alt="L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015" loading="lazy" />
-            <figcaption>L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
-            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/des-airs-et-des-mots-couverture-2015.jpg" alt="Montage sépia des quatre membres du cercle d’auteurs-compositeurs Des airs et des mots, en 2015 — Cindy Roy, Louis Noël, Stéphane Hébert et Madiane Michaud" width="720" height="280" loading="lazy" />
-            <figcaption>Des airs et des mots — Cindy, Louis Noël, Stéphane Hébert et Madiane Michaud, 2015</figcaption>
-          </figure>
-<h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/fete-acadie-beresford-2015.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes sur scène aux Festivités acadiennes de Beresford, en août 2015 — de gauche à droite : Louis Noël, Cindy Roy, Stéphane Hébert et Madiane Michaud, devant un grand drapeau acadien" loading="lazy" />
-            <figcaption>Le cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, août 2015</figcaption>
-          </figure>
-          <h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/photo-scene-donna-landry-2016-1.jpg" alt="Cindy Roy au micro sur scène avec Michel Thériault à la guitare et son bassiste, devant un rideau aux couleurs acadiennes — Beresford, 15 août 2016" loading="lazy" />
-            <figcaption>Sur scène avec Michel Thériault — Beresford, 15 août 2016</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/photo-scene-donna-landry-2016-3.jpg" alt="Cindy Roy avec Michel Thériault, devant les fanions acadiens — Beresford, 15 août 2016" loading="lazy" />
-            <figcaption>Avec Michel Thériault — Beresford, 15 août 2016</figcaption>
-          </figure>
-          <h4 class="scene-group-title">Medley Offenbach</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
-          </figure>
-          <h4 class="scene-group-title">Mario Benjamin</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube-nocookie.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
-          </figure>
-<figure class="scene-item">
-            <img src="assets/cindy-et-mario-benjamin.png" alt="Cindy Roy avec Mario Benjamin" width="1080" height="1428" loading="lazy" />
-            <figcaption>Avec Mario Benjamin — Boston Pizza, Saint-Eustache, 4 octobre 2025</figcaption>
-          </figure>
-<figure class="scene-item">
-            <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
-            <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
-          </figure>
+          <div class="carousel-dots">
+            <button class="carousel-dot is-active" type="button" aria-label="Photo 1 — Cindy la main sur le cœur, près des feuilles d’automne"></button>
+            <button class="carousel-dot" type="button" aria-label="Photo 2 — Portrait d’automne de Cindy, les yeux fermés au soleil"></button>
+            <button class="carousel-dot" type="button" aria-label="Photo 3 — Cindy en rose à côté du grand voilier de bois, au quai"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -1833,156 +2572,41 @@
         </div>
 
         <article class="martial">
-          <figure class="martial-photo">
-            <img src="assets/martial-marey-portrait.jpg" alt="Martial Marey" loading="lazy" />
-          </figure>
-          <h3 class="martial-title">Martial Marey — <em>une école, une amitié</em></h3>
+          <div class="martial-head">
+            <figure class="martial-photo">
+              <button class="martial-thumb" type="button" aria-expanded="false" aria-controls="martial-story" aria-label="Lire l’histoire de Martial Marey">
+                <img src="assets/martial-marey-portrait.jpg" alt="" width="1205" height="1260" loading="lazy" />
+              </button>
+              <figcaption>Martial Marey</figcaption>
+            </figure>
+            <h3 class="martial-title">Martial Marey — <em>une école, une amitié</em></h3>
+          </div>
+          <details class="photo-gallery" id="martial-story">
+            <summary class="gallery-toggle">Lire son histoire <span class="gallery-toggle-hint">la collaboration, de 2005 à 2017 — un clic</span></summary>
+            <div class="gallery-body">
           <div class="martial-copy">
             <p>« De 2005 à 2017, j’ai collaboré à distance avec Martial Marey (dit « Michel de la lumière »), auteur-compositeur français. Il m’envoyait ses maquettes en me disant : « Fais de la magie avec ça » — et il me laissait carte blanche pour les interpréter, être moi-même. Quand je lui retournais les chansons, il me répondait : « Tu m’as fait tomber en bas de ma chaise! »</p>
             <p>J’ai prêté ma voix à la plupart de ses compositions, dont « T’aimer au firmament », une de mes préférées, et « Mes cris dans le silence » (musique de Léonide Choumakov), qui s’est rendue jusqu’en finale du concours international en ligne MuseON-2007.</p>
             <p>Avec de jeunes enfants, c’était l’idéal : continuer la musique de la maison, apprendre à m’enregistrer, approfondir ma voix et mes techniques d’enregistrement. Je garde ces belles années en précieuse mémoire — son expérience, sa bienveillance. Ça a été une véritable école, pis un beau cadeau.</p>
             <p>Il nous a laissé de belles chansons à texte du cœur, que j’aime beaucoup. Martial n’est plus de ce monde — paix à son âme — mais ses chansons, elles, vivent encore. 🕊️ »</p>
           </div>
-          <div class="martial-songs">
-            <div class="martial-song">
-              <h4>« Mes cris dans le silence »</h4>
-              <p class="martial-song-note">En finale à MuseON-2007 — concours international France-Russie</p>
-              <audio controls preload="metadata" src="assets/mes-cris-dans-le-silence-museon-2007.mp3" title="« Mes cris dans le silence » — Cindy Roy, en finale à MuseON-2007"></audio>
-              <p class="martial-credits">Musique : Léonide Choumakov · Texte : Martial Marey · Interprétation : Cindy Roy (Canada)</p>
+          <p class="martial-listen">🎧 Ses chansons vivent dans <a href="#musique">Ma musique</a>, avec toutes mes autres chansons — « Mes cris dans le silence » et « T’aimer au firmament » vous y attendent.</p>
             </div>
-            <div class="martial-song">
-              <h4>« T’aimer au firmament »</h4>
-              <p class="martial-song-note">Chanson de Martial Marey interprétée par Cindy Roy, en son hommage 🕊️🤍</p>
-              <audio controls preload="metadata" src="assets/taimer-au-firmament.mp3" title="« T’aimer au firmament » — chanson de Martial Marey interprétée par Cindy Roy"></audio>
-            </div>
-          </div>
+          </details>
         </article>
 
         <article class="martial radio-block">
           <h3 class="martial-title">À la radio, des deux bords de l’océan</h3>
+          <details class="photo-gallery">
+            <summary class="gallery-toggle">Lire le récit <span class="gallery-toggle-hint">CKLE-FM, CJMS, Radio Corsaire — un clic</span></summary>
+            <div class="gallery-body">
           <div class="martial-copy">
             <p>« Ma voix a voyagé loin, à la radio — pis sur le web en même temps. « Ma vraie vie », une chanson de Claude Argelès sur un texte d’Ida Sala que j’ai eu le bonheur d’interpréter, a joué en faible rotation à CKLE-FM, en Acadie, à l’époque où Mathieu Friolet y était animateur.</p>
             <p>Et mes interprétations des chansons de Martial Marey ont aussi trouvé leur beau chemin jusqu’aux ondes : à CJMS, dans le coin de Lévis et de la Chaudière-Appalaches, et même à Radio Corsaire, en France. De l’Acadie à la France, un pas à la fois. 🕊️ »</p>
           </div>
+            </div>
+          </details>
         </article>
-      </div>
-    </section>
-
-    <section class="music-section" id="musique">
-      <div class="wrap">
-        <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-        <p class="section-tag">Ma musique</p>
-        <h2 class="section-title">Des histoires vraies, en chansons.</h2>
-        <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Une voix franche, des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
-
-        <div class="library-head">
-          <h3>Répertoire</h3>
-          <div class="tabs" role="tablist" aria-label="Type de répertoire">
-            <button class="tab" id="tab-originales" role="tab" aria-selected="true" aria-controls="originales">Chansons originales</button>
-            <button class="tab" id="tab-interpretations" role="tab" aria-selected="false" aria-controls="interpretations">Covers acoustiques à la guitare</button>
-          </div>
-        </div>
-        <p class="covers-hint">Envie de mes reprises à la guitare ? Touchez l’onglet <strong>« Covers acoustiques à la guitare »</strong> ci-dessus.</p>
-        <div id="originales" role="tabpanel" aria-labelledby="tab-originales">
-          <h3 class="montage-title">Mes originales, <em>en quelques secondes — telles qu’elles sont nées, du brut, du vrai.</em></h3>
-          <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une.</p>
-          <figure class="montage-frame">
-            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses 7 chansons originales"></video>
-          </figure>
-          <ol class="song-list">
-            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
-            <li><button class="song-jump" type="button" data-time="43.5" aria-label="Écouter « Moi je crois » dans le montage vidéo"><span class="song-num">02</span><span class="song-name">Moi je crois</span></button></li>
-            <li><button class="song-jump" type="button" data-time="58.5" aria-label="Écouter « Les mots oubliés » dans le montage vidéo"><span class="song-num">03</span><span class="song-name">Les mots oubliés</span></button></li>
-            <li><button class="song-jump" type="button" data-time="73.5" aria-label="Écouter « Une fille qui lâche pas » dans le montage vidéo"><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span></button></li>
-            <li><button class="song-jump" type="button" data-time="88.5" aria-label="Écouter « Fonce vers tes rêves » dans le montage vidéo"><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span></button></li>
-            <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Que la neige » dans le montage vidéo"><span class="song-num">06</span><span class="song-name">Que la neige — texte : Cindy Roy · musique &amp; arrangement : Théo Rota</span></button></li>
-            <li><button class="song-jump" type="button" data-time="118.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">07</span><span class="song-name">Avant de me rendre</span></button></li>
-          </ol>
-
-          <section class="arranged" aria-labelledby="arranged-title">
-            <div class="arranged-head">
-              <figure class="arranged-photo">
-                <img src="assets/theo-rota.jpg" alt="Théo Rota" width="644" height="616" loading="lazy" />
-                <figcaption>Théo Rota</figcaption>
-              </figure>
-              <h3 class="arranged-title" id="arranged-title">Avec arrangement — collaboration avec Théo Rota</h3>
-            </div>
-            <div class="arranged-grid">
-              <div class="arranged-card">
-                <h4>Béni sois-tu</h4>
-                <audio controls preload="metadata" src="assets/beni-sois-tu.mp3" title="« Béni sois-tu » — Cindy Roy, en collaboration avec Théo Rota"></audio>
-                <p class="arranged-credit">Béni sois-tu — texte : Cindy Roy &amp; Théo Rota · musique &amp; arrangement : Théo Rota</p>
-              </div>
-              <div class="arranged-card">
-                <h4>Que la neige</h4>
-                <audio controls preload="metadata" src="assets/que-la-neige.mp3" title="« Que la neige » — Cindy Roy, en collaboration avec Théo Rota"></audio>
-                <p class="arranged-credit">Que la neige — texte : Cindy Roy · musique &amp; arrangement : Théo Rota</p>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
-          <h4 class="covers-title">Covers acoustiques à la guitare</h4>
-          <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées. Je n’ai pas de formation en guitare : c’est moi-même qui m’accompagne, modestement, à la guitare — parce que mon instrument de choix, ça reste ma voix. Des covers acoustiques, simples et vrais, comme dans mon salon, entre nous. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
-          <h3 class="montage-title">Mes reprises <em>favorites</em></h3>
-          <figure class="montage-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Vos plus écoutées et mes coups de cœur — 15 secondes chacune, juste les moments les plus forts.</figcaption>
-          </figure>
-          <ol class="song-list">
-            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Je pars à l’autre bout du monde » dans le montage des reprises"><span class="song-num">01</span><span class="song-name">Je pars à l’autre bout du monde</span></button></li>
-            <li><button class="song-jump" type="button" data-time="17.5" aria-label="Écouter « Nothing’s Gonna Change My Love for You » dans le montage des reprises"><span class="song-num">02</span><span class="song-name">Nothing’s Gonna Change My Love for You</span></button></li>
-            <li><button class="song-jump" type="button" data-time="32.5" aria-label="Écouter « Un peu plus haut, un peu plus loin » dans le montage des reprises"><span class="song-num">03</span><span class="song-name">Un peu plus haut, un peu plus loin</span></button></li>
-            <li><button class="song-jump" type="button" data-time="47.5" aria-label="Écouter « Voyage, voyage » dans le montage des reprises"><span class="song-num">04</span><span class="song-name">Voyage, voyage</span></button></li>
-            <li><button class="song-jump" type="button" data-time="62.5" aria-label="Écouter « Always Remember Us This Way » dans le montage des reprises"><span class="song-num">05</span><span class="song-name">Always Remember Us This Way</span></button></li>
-            <li><button class="song-jump" type="button" data-time="77.5" aria-label="Écouter « Jericho Walls » dans le montage des reprises"><span class="song-num">06</span><span class="song-name">Jericho Walls</span></button></li>
-            <li><button class="song-jump" type="button" data-time="92.5" aria-label="Écouter « Someone You Loved » dans le montage des reprises"><span class="song-num">07</span><span class="song-name">Someone You Loved</span></button></li>
-            <li><button class="song-jump" type="button" data-time="107.5" aria-label="Écouter « Éternel » dans le montage des reprises"><span class="song-num">08</span><span class="song-name">Éternel</span></button></li>
-            <li><button class="song-jump" type="button" data-time="122.5" aria-label="Écouter « Je pardonne » dans le montage des reprises"><span class="song-num">09</span><span class="song-name">Je pardonne</span></button></li>
-            <li><button class="song-jump" type="button" data-time="137.5" aria-label="Écouter « Beautiful Things » dans le montage des reprises"><span class="song-num">10</span><span class="song-name">Beautiful Things</span></button></li>
-            <li><button class="song-jump" type="button" data-time="152.5" aria-label="Écouter « The Door » dans le montage des reprises"><span class="song-num">11</span><span class="song-name">The Door</span></button></li>
-            <li><button class="song-jump" type="button" data-time="167.5" aria-label="Écouter « Lose Control » dans le montage des reprises"><span class="song-num">12</span><span class="song-name">Lose Control</span></button></li>
-            <li><button class="song-jump" type="button" data-time="182.5" aria-label="Écouter « Ce monde » dans le montage des reprises"><span class="song-num">13</span><span class="song-name">Ce monde</span></button></li>
-            <li><button class="song-jump" type="button" data-time="197.5" aria-label="Écouter « Le jardinier du couvent » dans le montage des reprises"><span class="song-num">14</span><span class="song-name">Le jardinier du couvent</span></button></li>
-            <li><button class="song-jump" type="button" data-time="212.5" aria-label="Écouter « Sur ta plage » dans le montage des reprises"><span class="song-num">15</span><span class="song-name">Sur ta plage</span></button></li>
-            <li><button class="song-jump" type="button" data-time="227.5" aria-label="Écouter « Une » dans le montage des reprises"><span class="song-num">16</span><span class="song-name">Une</span></button></li>
-            <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-name">Amoureuse</span></button></li>
-            <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
-          </ol>
-
-          <h4 class="family-title">🎸 Mes Cabrel</h4>
-          <p class="family-note">Des extraits de 15 secondes — chansons de Francis Cabrel</p>
-          <div class="family-grid">
-            <figure class="clip-card">
-              <h5>Je te suivrai</h5>
-              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/vrL2gu9MMxs" title="Cindy Roy chante « Je te suivrai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </figure>
-            <figure class="clip-card">
-              <h5>Je t’aimais, je t’aime et je t’aimerai</h5>
-              <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/soZTlzml5jU" title="Cindy Roy chante « Je t’aimais, je t’aime et je t’aimerai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-              <figcaption>Pour Shawn et Marie-Eve</figcaption>
-            </figure>
-            <figure class="clip-card wide">
-              <h5>De l’autre côté de toi</h5>
-              <iframe class="landscape" src="https://www.youtube-nocookie.com/embed/3swsUNYifZI" title="Cindy Roy chante « De l’autre côté de toi » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </figure>
-          </div>
-
-          <h4 class="family-title">🤠 Country &amp; dédicaces</h4>
-          <figure class="clip-card solo">
-            <h5>Coal Miner’s Daughter</h5>
-            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/8QxlcbwJxSc" title="Cindy Roy chante « Coal Miner’s Daughter » de Loretta Lynn — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Loretta Lynn — pour mon oncle Len Roy, à la demande de ma cousine Heather Ann (extrait)</figcaption>
-          </figure>
-
-          <h4 class="family-title">🕊️ Hommage à Dolly Parton</h4>
-          <figure class="clip-card solo">
-            <h5>Coat of Many Colors</h5>
-            <iframe class="portrait" src="https://www.youtube-nocookie.com/embed/uAhzD7jrmgs" title="Cindy Roy chante « Coat of Many Colors » — son hommage à Dolly Parton, au complet" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Mon hommage à Dolly Parton, au complet. Entre deux brassées de lavage, je l’ai chantée tout simplement avec mon cœur.</figcaption>
-          </figure>
-        </div>
-
       </div>
     </section>
 
@@ -2138,6 +2762,24 @@
       </div>
     </section>
 
+    <section class="intro-video" id="introduction">
+      <div class="wrap intro-grid">
+        <div class="intro-copy">
+          <p class="section-tag">Un petit moment avec moi</p>
+          <h2 class="intro-title">Un petit moment <em>avec moi</em></h2>
+          <p>Un instant tout simple, juste entre nous — le temps d’une chanson.</p>
+          <p>Avant de poursuivre votre visite, offrez-vous une petite minute. Imaginez-vous dans mon salon : je vous y accueille, guitare à la main. Pas de flafla — juste ma voix, ma guitare, pis « Octobre », cette magnifique chanson de Francis Cabrel que j’aime tant chanter.</p>
+          <p class="intro-autumn">En ce bel automne, que ce petit moment vous réchauffe le cœur, tout doucement… 🤎🍂</p>
+        </div>
+        <figure class="intro-frame">
+          <div class="intro-frame-box">
+            <video src="assets/video-intro-guitare.mp4" poster="assets/video-intro-guitare-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « Octobre » de Francis Cabrel — cover acoustique à la guitare, dans son salon"></video>
+          </div>
+          <figcaption>« Octobre » de Francis Cabrel — Cindy Roy, voix et guitare. Mon cover acoustique, comme à la maison.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="one-step" id="un-pas">
       <div class="one-step-inner">
         <div class="step-graphic"><img src="assets/cindy-main-soleil.jpg" alt="Cindy Roy levant la main vers la lumière du soleil, dans une image artistique" loading="lazy" /><span class="step-script" aria-hidden="true">un pas à la fois…</span></div>
@@ -2147,38 +2789,6 @@
           <p>Un pas à la fois avec Cindy — mon petit rendez-vous vidéo, à la maison, comme entre amies et amis. L’histoire de mes chansons, ma cuisine à ma façon, mon jardin, mon Acadie, mon parcours. Entre rêves et prières.</p>
           <p class="fil-line">Le train continue de rouler, un pas à la fois.</p>
           <p><strong>« Toute la femme derrière la fille qui lâche pas. »</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="photos" id="photos">
-      <div class="wrap">
-        <h2 class="section-title">Sur scène, le soir.</h2>
-        <div class="stage-marquee" aria-label="Photos de Cindy Roy en spectacle le soir, en défilement">
-          <div class="marquee-track">
-            <div class="marquee-group">
-              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="Cindy Roy chantant en pleine note sur scène, en robe verte et talons dorés, sous un faisceau de lumière doré aux reflets bleus et mauves" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="Cindy Roy sur scène le soir, en robe verte et talons dorés, chantant sous un spot chaud avec un jeu de lumière bleu et mauve" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" /></figure>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="" loading="lazy" /></figure>
-            </div>
-          </div>
-        </div>
-        <div class="gallery-grid" aria-label="Galerie de photos de Cindy Roy">
-          <figure class="gallery-item featured"><img src="assets/cindy-broche-papillon.png" alt="Cindy Roy souriante dans la lumière dorée de l’automne, portant un châle tricoté brun et gris fermé par sa broche papillon en perles, sur un haut bleu pâle" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy souriante, portant un chandail rose, devant un décor naturel" loading="lazy" /></figure>
-          <figure class="gallery-item portrait"><img src="assets/cindy-profil-pensif.png" alt="Cindy Roy de profil, le menton appuyé sur sa main — montre et bracelet dorés — sous un ciel bleu d’automne" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/cindy-country-bras-ouverts.jpg" alt="Cindy Roy debout les bras ouverts, en chemisier bleu et jupe blanche, dans la nature" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/cindy-rochers-sourire.jpg" alt="Cindy Roy assise sur des rochers dans la nature, souriante" loading="lazy" /></figure>
-          <figure class="gallery-item portrait"><img src="assets/cindy-papillon-yeux-fermes.png" alt="Cindy Roy les yeux fermés, maquillage bleu, portant son châle tricoté brun et gris et sa broche papillon — pose artistique dans la lumière dorée" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors d’une remise de prix" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" /></figure>
-          <figure class="gallery-item"><img src="assets/cindy-rochers-ciel.jpg" alt="Cindy Roy assise sur un rocher entre les pins, le regard levé vers le ciel" loading="lazy" /></figure>
-          <figure class="gallery-item portrait"><img src="assets/cindy-cloture-automne.png" alt="Cindy Roy près d’une clôture métallique, cheveux longs ondulés et petit collier à pendentif en cercle, dans la lumière d’automne" loading="lazy" /></figure>
         </div>
       </div>
     </section>
@@ -2265,6 +2875,9 @@
           <li><a href="https://web.archive.org/web/20170906133652/http://www.socan.ca/fr/news/cindy-roy-recipiendaire-du-prix-socan-au-47e-gala-de-la-chanson-de-caraquet" target="_blank" rel="noopener noreferrer">Paroles &amp; Musique (SOCAN) — 11 août 2015</a></li>
         </ul>
         <p class="press-gallery-title">Les articles, en images.</p>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Galerie de presse <span class="gallery-toggle-hint">les captures d’articles, un clic</span></summary>
+          <div class="gallery-body">
         <div class="press-grid">
           <figure class="press-item press-clipping">
             <img src="assets/preuve-radio-canada-1aout2015.jpg" alt="Capture de l’article de Radio-Canada du 1er août 2015 sur le Gala de la chanson de Caraquet" loading="lazy" />
@@ -2287,6 +2900,84 @@
             <figcaption>Paroles &amp; Musique (SOCAN) — 11 août 2015</figcaption>
           </figure>
         </div>
+          </div>
+        </details>
+        <article class="onesheet" aria-label="One-sheet pour les salles et les organisateurs">
+          <p class="section-tag">Pour les salles et les organisateurs</p>
+          <div class="onesheet-head">
+            <figure class="onesheet-photo">
+              <img src="assets/cindy-scene-robe-verte.jpg" alt="Cindy Roy chantant sur scène en robe verte, un micro à la main" loading="lazy" />
+            </figure>
+            <div>
+              <h3 class="onesheet-name">Cindy Roy</h3>
+              <p class="onesheet-role">Autrice-compositrice-interprète acadienne · Robertville, Nouveau-Brunswick</p>
+            </div>
+          </div>
+          <div class="onesheet-cols">
+            <div class="onesheet-block">
+              <h4>En bref</h4>
+              <p>Je suis Cindy Roy, autrice-compositrice-interprète acadienne, née à Bathurst et originaire de Robertville, au Nouveau-Brunswick. Je suis chanteuse avant tout : ma voix, c’est mon instrument.</p>
+            </div>
+            <div class="onesheet-block">
+              <h4>Prix et distinctions</h4>
+              <ul>
+                <li>« Entend ma prière » — Prix Auteur-compositeur (prix de composition de la SOCAN) et prix RADARTS, Gala de la chanson de Caraquet 2015</li>
+                <li>La Voix de Beresford 2015 — prix des juges et prix du public, au Carnaval du Siffleux</li>
+                <li>Hommage à l’Assemblée législative du Nouveau-Brunswick — le député Daniel Guitard, 2 décembre 2015</li>
+              </ul>
+            </div>
+            <div class="onesheet-block">
+              <h4>Répertoire</h4>
+              <ul>
+                <li>7 chansons originales : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas », « Fonce vers tes rêves », « Que la neige », « Avant de me rendre »</li>
+                <li>18 reprises favorites — dont Francis Cabrel, Diane Tell et le country</li>
+              </ul>
+            </div>
+            <div class="onesheet-block">
+              <h4>Sur scène</h4>
+              <p>Ma voix et ma guitare : je m’accompagne moi-même, modestement, à la guitare — mon instrument de choix, ça reste ma voix. Pour une réservation ou une collaboration, <a href="https://www.facebook.com/cindyroyofficiel" target="_blank" rel="noopener">écrivez-moi</a>.</p>
+            </div>
+          </div>
+        </article>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Kit média <span class="gallery-toggle-hint">mes photos à télécharger, pour vos affiches et vos médias — un clic</span></summary>
+          <div class="gallery-body">
+            <div class="kit-grid">
+              <figure class="kit-item">
+                <img src="assets/cindy-hero-automne-guitare.png" alt="Cindy Roy à la guitare dans un décor d’automne doré, un grand foulard brun sur l’épaule" loading="lazy" style="object-position: 76% 18%" />
+                <figcaption>Photo de couverture — Cindy à la guitare, en automne<br /><a class="kit-download" href="assets/cindy-hero-automne-guitare.png" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy souriante, portant un chandail rose, devant un décor naturel" loading="lazy" />
+                <figcaption>Portrait — Cindy souriante, en rose<br /><a class="kit-download" href="assets/cindy-portrait-accueil.jpg" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-scene-robe-verte.jpg" alt="Cindy Roy chantant sur scène en robe verte, un micro à la main" loading="lazy" />
+                <figcaption>Sur scène — en robe verte<br /><a class="kit-download" href="assets/cindy-scene-robe-verte.jpg" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" />
+                <figcaption>Sur scène, le soir — sous les spots<br /><a class="kit-download" href="assets/cindy-scene-soir-spot-1.webp" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-broche-papillon.png" alt="Cindy Roy souriante dans la lumière dorée de l’automne, portant un châle tricoté brun et gris fermé par sa broche papillon en perles" loading="lazy" />
+                <figcaption>Portrait d’automne — la broche papillon<br /><a class="kit-download" href="assets/cindy-broche-papillon.png" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-portrait-soleil.jpg" alt="Cindy Roy au grand sourire, portrait rapproché au soleil, vêtue d’un haut rose" loading="lazy" />
+                <figcaption>Portrait au soleil<br /><a class="kit-download" href="assets/cindy-portrait-soleil.jpg" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-automne-portrait-1.png" alt="Portrait rapproché de Cindy Roy devant un feuillage jaune d’automne, cheveux longs ondulés et cardigan beige" loading="lazy" />
+                <figcaption>Portrait d’automne — feuillage doré<br /><a class="kit-download" href="assets/cindy-automne-portrait-1.png" download>Télécharger</a></figcaption>
+              </figure>
+              <figure class="kit-item">
+                <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" loading="lazy" />
+                <figcaption>Le trophée du Gala 2015<br /><a class="kit-download" href="assets/gala-2015-trophee-retouchee.jpg" download>Télécharger</a></figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
         <p>Mon CV artistique complet — disponible sur demande, avec plaisir.</p>
         <p><a class="button button-primary" href="https://www.facebook.com/cindyroyofficiel" target="_blank" rel="noopener">Demander mon CV</a></p>
       </div>
@@ -2441,6 +3132,7 @@
           <h2>Faire vivre une chanson, ça commence par <em>une rencontre.</em></h2>
           <p class="booking-text">« Envie de m’inviter à chanter ? Pour un spectacle ou un événement, écrivez-moi — je vous réponds moi-même, avec le sourire, un pas à la fois. »</p>
           <p class="booking-action"><a class="button button-primary" href="https://www.facebook.com/cindyroyofficiel" target="_blank" rel="noopener">Écrivez-moi</a></p>
+          <p class="collab-line">Collaborations : je suis ouverte aux belles rencontres musicales — co-écriture, arrangements, scène. Ma porte est ouverte.</p>
         </div>
         <div class="contact-panel">
           <strong>Me joindre</strong>
@@ -2454,8 +3146,10 @@
 
   </main>
 
+  <a class="fixed-contact" href="https://www.facebook.com/cindyroyofficiel" target="_blank" rel="noopener" aria-label="Écrivez-moi sur Facebook">Écrivez-moi</a>
+
   <footer>
-    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>CINDY ROY OFFICIEL</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature">Cindy Roy — l’album d’une vie, un pas à la fois. 🦋</span></div>
+    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>Cindy Roy Officiel</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature"><span class="footer-sig-name">Cindy Roy</span> — l’album d’une vie, un pas à la fois. 🦋</span></div>
   </footer>
 
   <script>
@@ -2483,6 +3177,38 @@
       });
       links.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMenu); });
 
+      /* Sections qui tombent pile, sur portable comme sur téléphone : le
+         défilement doux natif calcule sa cible avec les photos paresseuses
+         pas encore chargées (plusieurs n’ont pas de hauteur réservée);
+         quand elles arrivent, la section visée glisse plus bas et
+         l’atterrissage n’est plus juste. Après un clic d’ancre interne, on
+         réaligne donc sur la cible à la fin du défilement, puis une seconde
+         fois un peu plus tard — sauf si la visiteuse a défilé elle-même
+         entre-temps (molette, tactile, clavier), auquel cas on la laisse
+         tranquille. */
+      var anchorToken = 0;
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var id = link.getAttribute('href');
+          if (!id || id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          var token = ++anchorToken;
+          var cancelled = false;
+          function cancel() { cancelled = true; }
+          ['wheel', 'touchmove', 'keydown'].forEach(function (type) {
+            window.addEventListener(type, cancel, { passive: true, once: true });
+          });
+          [700, 1600].forEach(function (delay) {
+            window.setTimeout(function () {
+              if (cancelled || token !== anchorToken) return;
+              if (window.location.hash !== id) return;
+              target.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }, delay);
+          });
+        });
+      });
+
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
           tabs.forEach(function (item) {
@@ -2503,6 +3229,26 @@
           panel.hidden = expanded;
         });
       });
+
+      /* Martial Marey en vignette : un clic sur sa petite photo ouvre
+         (ou referme) son histoire — le tiroir « Lire son histoire »
+         déjà en place juste en dessous. L’état du bouton suit aussi
+         les ouvertures faites depuis le tiroir lui-même. */
+      var martialThumb = document.querySelector('.martial-thumb');
+      var martialStory = document.getElementById('martial-story');
+      if (martialThumb && martialStory) {
+        martialThumb.addEventListener('click', function () {
+          martialStory.open = !martialStory.open;
+          martialThumb.setAttribute('aria-expanded', String(martialStory.open));
+          if (martialStory.open) {
+            var summary = martialStory.querySelector('summary');
+            if (summary) summary.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+          }
+        });
+        martialStory.addEventListener('toggle', function () {
+          martialThumb.setAttribute('aria-expanded', String(martialStory.open));
+        });
+      }
 
       // Titres des montages (originales et reprises) : un clic (ou Entrée/Espace
       // au clavier) fait sauter le lecteur du même panneau au début de la
@@ -2616,6 +3362,62 @@
         dot.addEventListener('click', function () { show(i); play(); });
       });
       play();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      /* Le plateau : chaque tuile ouvre Ma musique sur la bonne famille */
+      document.querySelectorAll('[data-goto-tab]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var tab = document.getElementById(link.getAttribute('data-goto-tab'));
+          if (tab) tab.click();
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      /* Le nom de l’accueil tient toujours au complet, sur tous les écrans :
+         il est en une seule ligne (nowrap) à très grande taille, donc dès
+         que l’écran est étroit — ou que le téléphone grossit le texte
+         (réglage de taille de police du Galaxy) — il débordait à droite et
+         le « y » se faisait couper, alors que tout le reste de la page,
+         qui revient à la ligne, restait beau. On mesure donc l’encre
+         réelle du nom une fois la plume Great Vibes chargée, et on réduit
+         la taille juste ce qu’il faut pour qu’elle rentre dans le bandeau,
+         avec une petite marge. Aucun effet quand le nom rentre déjà. */
+      var band = document.querySelector('.hero-titles');
+      var name = band ? band.querySelector('h1') : null;
+      if (!band || !name) return;
+      var range = document.createRange();
+      function inkWidth() {
+        range.selectNodeContents(name);
+        var w = range.getBoundingClientRect().width;
+        return w > 0 ? w : name.scrollWidth;
+      }
+      function fitName() {
+        name.style.fontSize = '';
+        var style = window.getComputedStyle(band);
+        var avail = band.clientWidth
+          - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        var ink = inkWidth();
+        if (avail > 0 && ink > avail * 0.98) {
+          var base = parseFloat(window.getComputedStyle(name).fontSize);
+          if (base > 0) {
+            name.style.fontSize = (base * (avail * 0.98) / ink).toFixed(1) + 'px';
+          }
+        }
+      }
+      var resizeTimer = null;
+      window.addEventListener('resize', function () {
+        if (resizeTimer) window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(fitName, 120);
+      });
+      window.addEventListener('load', fitName);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitName); }
+      fitName();
+      [600, 1800].forEach(function (delay) { window.setTimeout(fitName, delay); });
     })();
   </script>
 <script data-goatcounter="https://cindyroyofficiel.goatcounter.com/count"
