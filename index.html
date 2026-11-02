@@ -670,6 +670,10 @@
     .birth-title { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; line-height: 1.2; font-weight: 600; color: #f0e8da; }
     .birth-copy p + p { margin-top: 16px; }
     .timeline-photo { margin: 26px 0 0; max-width: 420px; }
+    /* Photo « Nicole et moi » (Parcours, 2013 à 2019) : petite vignette seulement,
+       même largeur que la petite photo du couple (.michel-photo-small, 148 px) —
+       proportions naturelles conservées, aucun étirement ni recadrage. */
+    .timeline-photo.nicole-small { max-width: 148px; }
     .timeline-photo img { width: 100%; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(213,164,58,.35); }
     .timeline-photo figcaption { margin-top: 12px; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 16px; }
     .gala-memory { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(250px, .62fr); gap: clamp(26px, 4vw, 46px); margin-top: 70px; padding-top: 58px; border-top: 1px solid rgba(255,255,255,.15); align-items: start; }
@@ -1144,16 +1148,17 @@
     .parent-frame { position: relative; display: block; overflow: hidden; aspect-ratio: 17 / 20; background: #141310; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .parent-frame::before { content: ""; position: absolute; inset: 0; background-image: var(--frame-bg); background-size: cover; background-position: center; filter: blur(22px) brightness(.82); transform: scale(1.25); }
     .parent-frame img { position: relative; width: 100%; height: 100%; display: block; object-fit: contain; }
+    .parent-frame--zoom img { object-fit: cover; object-position: 50% 32%; }
     .parent-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
     .maman-line { margin: 26px 0 0; font-family: var(--serif); font-size: 23px; line-height: 1.4; font-weight: 600; color: var(--ink); text-align: center; }
     .maman-suite { margin: 8px auto 0; max-width: 560px; font-family: var(--serif); font-size: 19px; line-height: 1.55; font-weight: 400; color: var(--muted); text-align: center; }
     /* ——— Photos du miroir (À propos, près de Michel) : la grande, pis la petite vignette du couple juste à côté ——— */
-    .michel-photos { margin: 32px auto 8px; max-width: 500px; display: flex; gap: 18px; align-items: flex-start; justify-content: center; }
-    .michel-photo-main { margin: 0; flex: 0 1 300px; min-width: 0; }
-    .michel-photo-small { margin: 0; flex: 0 1 148px; min-width: 0; }
-    .michel-photos img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .michel-photos { margin: 32px auto 8px; max-width: 400px; display: flex; gap: 14px; align-items: flex-start; justify-content: center; }
+    .michel-photo-main { margin: 0; flex: 0 1 240px; min-width: 0; }
+    .michel-photo-small { margin: 0; flex: 0 1 118px; min-width: 0; }
+    .michel-photos img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     @media (max-width: 620px) {
-      .michel-photos { gap: 12px; max-width: 400px; }
+      .michel-photos { gap: 10px; max-width: 320px; }
       .michel-photo-main { flex-basis: 62%; }
       .michel-photo-small { flex-basis: 34%; }
     }
@@ -1263,6 +1268,10 @@
 
     /* ——— Dossier de presse : entrevue vidéo + document officiel ——— */
     .press-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; }
+    /* Une seule pièce en tête du Dossier de presse (l’entrevue CHAU-TV, depuis
+       que la coupure du 9 juin 2015 a rejoint la Galerie de presse) : colonne
+       unique centrée, même esprit que .gala-grid-one. */
+    .press-grid-one { grid-template-columns: minmax(0, 720px); justify-content: center; }
     .press-item { margin: 0; }
     .press-item video, .press-item img { width: 100%; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .press-item figcaption { margin-top: 14px; color: var(--muted); font-size: 16px; line-height: 1.55; }
@@ -2095,6 +2104,41 @@
     @media (max-width: 720px) {
       .gala-videos-duo { grid-template-columns: 1fr; gap: 40px; }
     }
+    /* — La soirée en images : paire ÉGALE (Cindy, 2 nov. 16 h 31) —
+       les deux vidéos portrait partent du même haut et finissent à
+       la même hauteur. Avant : le badge « En vedette » (en flux,
+       au-dessus de sa figure + sa marge de 20 px) poussait la
+       vidéo de l’annonce vers le bas pendant que celle de Kit
+       Goguen partait du haut de sa colonne — Kit paraissait donc
+       « un petit peu plus haute ». Maintenant le badge chevauche
+       le haut du cadre de l’annonce, centré, sur le fond vert de
+       la section, sans rien pousser; et la vidéo de Kit adopte le
+       même format que l’annonce (540 / 932 — le sien, 720 × 1220,
+       est à peine plus large : le lecteur l’ajuste dans son cadre
+       noir, sans rien rogner). À colonnes égales : hauts alignés,
+       hauteurs égales, une belle paire. Au téléphone, les deux
+       restent empilées, le badge au même endroit. */
+    .gala-videos-duo .gala-featured { position: relative; }
+    .gala-videos-duo .gala-featured .scene-badge {
+      position: absolute; top: 0; left: 50%; z-index: 2;
+      transform: translate(-50%, -50%);
+      background: var(--deep); white-space: nowrap;
+    }
+    .gala-videos-duo .gala-featured figure { margin-top: 0; }
+    .gala-videos-duo .scene-item video { aspect-ratio: 540 / 932; }
+    /* — Originales : Théo et Martial, UNE seule famille (Cindy,
+       2 nov. 16 h 31) — l’espace entre le bloc « Avec
+       arrangement — Théo Rota » et le bloc des chansons de
+       Martial Marey se resserre (marge du haut 64 → 34 px, air
+       interne 44 → 30 px, tiroir d’écoute un peu remonté) pour
+       qu’ils se lisent d’un trait, comme une même famille sur
+       un même écran, au lieu de deux pages séparées. Rien n’est
+       retiré ni déplacé : juste l’air entre les deux blocs. */
+    #originales .music-martial { margin-top: 34px; padding-top: 30px; }
+    #originales .arranged .photo-gallery { margin-top: 22px; }
+    @media (max-width: 620px) {
+      #originales .music-martial { margin-top: 28px; padding-top: 26px; }
+    }
     .gala-hommage-photo {
       margin: 36px 0 0; max-width: 540px; padding: 12px;
       background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f);
@@ -2106,12 +2150,84 @@
     .martial-music-photo { width: 84px; }
     .martial-music-photo figcaption { font-size: 13.5px; }
     @media (max-width: 620px) { .martial-music-photo { width: 72px; } }
-    @media (min-width: 941px) {
-      .about-grid { container-type: inline-size; }
-      .about-copy .racines-photo {
-        width: min(920px, 100cqw); max-width: none;
-        margin-left: calc(-1 * (100cqw - 100%) + (100cqw - min(920px, 100cqw)) / 2);
-      }
+    /* — Racines → Autodidacte : colonne CENTRÉE (Cindy, 2 nov.
+       16 h 33, captures portable à l’appui) — tout ce tronçon
+       (« Mes racines acadiennes », la photo, le tiroir « Mes
+       racines, ma famille », la Vitrine familiale, « Chanteuse
+       autodidacte ») vivait dans la seule colonne de droite de
+       la grille « À propos » : la citation de gauche, courte,
+       finissait tôt et laissait un grand vide à gauche jusqu’à
+       la fin du tronçon. Il sort donc de la grille et vit dans
+       son propre bloc centré (.racines-suite), qui garde la
+       classe .about-copy — tous ses styles de texte, titres à
+       la plume compris, restent exactement les mêmes. Largeur
+       920 px, celle de la photo des Racines, alignée sur l’axe
+       du reste de la page. L’ancien élargissement de la photo
+       par container queries (100cqw) n’a plus lieu d’être :
+       dans le bloc centré, elle prend simplement toute la
+       largeur, centrée. Au téléphone, la grille était déjà en
+       une colonne : le bloc suit, pleine largeur, rien ne
+       change d’arrangement.
+       — Le texte aussi DANS LE MILIEU (Cindy, 2 nov. 17 h 41 :
+       « être certain de réparer […] c’était calé tout à droite
+       pis de le mettre dans le milieu, là ce qui est mes
+       racines acadiennes ») — le bloc était centré, mais tout
+       son texte restait aligné à gauche, calé contre le bord
+       gauche du bloc : à l’œil, le tronçon paraissait encore
+       poussé de côté entre la citation « La musique, c’est de
+       la nourriture pour mon âme » au-dessus et la carte
+       « Chanter, pour moi, c’est épouser l’âme » en dessous,
+       qui, elle, est centrée. Maintenant, de « Mes racines
+       acadiennes » jusqu’à « Chanteuse autodidacte » — et
+       juste entre ces deux citations, comme elle l’a précisé —
+       titres, paragraphes, étiquettes et liens sont centrés
+       sur l’axe de la page; les paragraphes gardent une mesure
+       lisible (780 px) tenue au centre par leurs marges. Les
+       photos du tiroir (parents, Michel) et leurs légendes,
+       déjà centrées, ne bougent pas. */
+    .racines-suite { max-width: 920px; margin: clamp(48px, 5.5vw, 68px) auto 0; text-align: center; }
+    .racines-suite > h3:first-child { margin-top: 0; }
+    .racines-suite .racines-photo { max-width: none; margin-inline: auto; }
+    .racines-suite p { max-width: 780px; margin-inline: auto; }
+    .racines-suite p.mona-merci-title, .racines-suite p.michel-merci-title, .racines-suite p.grands-merci-title { margin-inline: auto; }
+    .racines-suite .vitrine-photo, .racines-suite .vitrine-video { margin-inline: auto; }
+    .racines-suite .vitrine-links { justify-content: center; }
+    .racines-suite .vitrine-closing { margin-inline: auto; }
+    /* La ligne « maman de deux grands », déjà centrée dans sa
+       mesure de 560 px, garde exactement sa largeur d’avant. */
+    .racines-suite p.maman-suite { max-width: 560px; }
+
+    /* — Tronçon Racines : recentrage BUREAU renforcé (Cindy,
+       2 nov. 18 h 17) — sur son téléphone, tout est beau; sur
+       son portable (Windows, barre de défilement réelle, polices
+       et photos réellement chargées), à partir du tiroir
+       « Mes racines, ma famille », tout paraissait décalé à
+       droite, avec un grand vide à gauche. Deux ceintures de
+       sécurité, bureau seulement (≥ 701 px — le téléphone ne
+       change pas d’un poil) :
+       1) la colonne du tronçon est verrouillée au centre de la
+       page et chaque morceau du tiroir et de la Vitrine est
+       recentré nommément (paragraphes, photos des parents,
+       photos de Michel, liste de la Vitrine, ses photos, sa
+       vidéo et ses liens) — plus aucun alignement hérité d’un
+       contexte voisin ne peut tirer le tronçon de côté;
+       2) la section « À propos » ne peut plus jamais élargir
+       la page : si un élément dépasse d’un poil (ombre, cadre
+       tourné, bande défilante), il est rogné au bord de la
+       section au lieu de créer un défilement horizontal qui
+       pousse tout le reste à droite sur un vrai écran.
+       « clip » (et non « hidden ») : aucun contexte de
+       défilement n’est créé, donc rien d’autre ne change. */
+    @media (min-width: 701px) {
+      #apropos { overflow-x: clip; }
+      .racines-suite { width: 100%; margin-inline: auto; float: none; clear: both; }
+      .racines-suite details.photo-gallery, .racines-suite .gallery-body { width: 100%; }
+      .racines-suite .parents-photos { width: 100%; margin-inline: auto; }
+      .racines-suite .vitrine, .racines-suite .vitrine-list { width: 100%; }
+      .racines-suite .vitrine-list li { text-align: center; }
+      .racines-suite .vitrine-list p { margin-inline: auto; }
+      .racines-suite .vitrine-photo, .racines-suite .vitrine-video { margin-inline: auto; }
+      .racines-suite .vitrine-links { justify-content: center; }
     }
 
   </style>
@@ -2217,8 +2333,8 @@
           <article class="plateau-card">
             <p class="plateau-family">Famille 1 · Mes chansons</p>
             <h3>Chansons originales</h3>
-            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses 6 chansons originales"></video>
-            <p>Six chansons originales en quelques secondes — du brut, du vrai, telles qu’elles sont nées.</p>
+            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
+            <p>Ses chansons originales en quelques secondes — du brut, du vrai, telles qu’elles sont nées.</p>
             <a class="plateau-link" href="#musique" data-goto-tab="tab-originales">Ouvrir la famille complète →</a>
           </article>
           <article class="plateau-card">
@@ -2436,7 +2552,7 @@
           <h3 class="montage-title">Mes originales, <em>en quelques secondes — telles qu’elles sont nées, du brut, du vrai.</em></h3>
           <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une.</p>
           <figure class="montage-frame">
-            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses 6 chansons originales"></video>
+            <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
           </figure>
           <ol class="song-list">
             <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
@@ -2802,6 +2918,9 @@
               <video src="assets/party-noel-boudreau-v6.mp4" poster="assets/poster-noel-1986.jpg" controls playsinline preload="none" title="Party de Noël des Boudreau, vers 1986 — Cindy Roy, petite fille, chante près du sapin"></video>
               <figcaption>1986. Le salon des Boudreau à Noël — tassé, joyeux, plein de musique. C'est dans ce petit paradis-là que ma mission a commencé.</figcaption>
             </figure>
+          </div>
+        </div>
+        <div class="about-copy racines-suite">
             <h3>Mes racines acadiennes</h3>
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
             <figure class="racines-photo">
@@ -2821,11 +2940,11 @@
             <p>C’est elle, la toute première, qui m’a donné le goût de la musique. Je viens d’une famille musicale — ça a bercé toute mon enfance — mais ce sont nos soirées toutes seules, elle avec sa guitare, à me jouer des petits bouts de ses compositions, qui sont venus me chercher au tout début. Avant Diane, avant Cabrel, avant toutes mes influences, il y a eu ma mère. Le plus gros morceau de tout, c’est à elle qu’il revient.</p>
             <div class="parents-photos">
               <figure class="parent-photo">
-                <span class="parent-frame" style="--frame-bg: url('assets/cindy-avec-son-pere.jpg')"><img src="assets/cindy-avec-son-pere.jpg" alt="Cindy Roy avec son père" width="1220" height="1254" loading="lazy" decoding="async" /></span>
+                <span class="parent-frame" style="--frame-bg: url('assets/cindy-avec-son-pere.jpg')"><img src="assets/cindy-avec-son-pere.jpg" alt="Cindy Roy avec son père" width="1220" height="1254" decoding="async" /></span>
                 <figcaption>Avec mon père, Lévis Roy</figcaption>
               </figure>
               <figure class="parent-photo">
-                <span class="parent-frame" style="--frame-bg: url('assets/cindy-avec-sa-mere.jpg')"><img src="assets/cindy-avec-sa-mere.jpg" alt="Cindy Roy avec sa mère, Mona Boudreau" width="1535" height="2048" loading="lazy" decoding="async" /></span>
+                <span class="parent-frame parent-frame--zoom" style="--frame-bg: url('assets/cindy-avec-sa-mere.jpg')"><img src="assets/cindy-avec-sa-mere.jpg" alt="Cindy Roy avec sa mère, Mona Boudreau" width="1535" height="2048" loading="lazy" decoding="async" /></span>
                 <figcaption>Avec ma mère, Mona Boudreau</figcaption>
               </figure>
             </div>
@@ -2835,10 +2954,10 @@
             <p class="maman-suite" style="margin-top: 16px;">Michel, l’homme de ma vie — mon complice en tout. Toujours le premier à m’encourager, il connaît mes chansons par cœur — mes silences aussi. On partage le vaisseau, pis la musique : il prend sa guitare pour le plaisir, on chante à deux, on s’amuse comme des enfants — pis on vit au max les belles années qui nous sont données, une journée précieuse à la fois. Un regard, un fou rire, une toune qui part toute seule : c’est ça, nous deux.</p>
             <div class="michel-photos">
               <figure class="michel-photo-main">
-                <img src="assets/cindy-miroir-robe-verte.jpg" alt="Cindy Roy devant le miroir, plein pied, dans sa robe verte et ses sandales dorées, le soir du spectacle" width="665" height="1863" loading="lazy" decoding="async" />
+                <img src="assets/cindy-miroir-robe-verte.jpg" alt="Cindy Roy devant le miroir, plein pied, dans sa robe verte et ses sandales dorées, le soir du spectacle" width="864" height="2432" loading="lazy" decoding="async" />
               </figure>
               <figure class="michel-photo-small">
-                <img src="assets/cindy-michel-miroir.jpg" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="983" height="2027" loading="lazy" decoding="async" />
+                <img src="assets/cindy-michel-miroir.jpg" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="1104" height="2288" loading="lazy" decoding="async" />
               </figure>
             </div>
               </div>
@@ -2932,7 +3051,6 @@
             <h3>Chanteuse autodidacte</h3>
             <p>Je suis chanteuse avant tout. Ma voix, c’est mon instrument, pis les mélodies naissent dans ma tête — parfois même au réveil. Autodidacte, je me suis formée en écoutant, en m’enregistrant, en pratiquant pendant des milliers d’heures, en collaborant avec des musiciens du Québec et de la France — de mes premiers pas sur scène jusqu’à mes expériences en studio.</p>
             <p>De la chorale de Robertville aux concours, des soirées d’écriture aux collaborations, j’ai toujours gardé des chansons dans le tiroir — pis un rêve qui, lui, est resté bien vivant. Les chansons que je compose, ce sont des bouts de moi que je transforme en musique pis que je partage avec vous.</p>
-          </div>
         </div>
         <div class="artist-portrait reveal">
           <div class="signature-duo">
@@ -3033,7 +3151,7 @@
           <article class="timeline-row">
             <div class="timeline-year">2013 à 2019</div>
             <div class="timeline-copy"><p>« De 2013 à 2019, j’ai chanté la messe au complet dans les églises de la région — Bathurst, Robertville, Beresford, Petit-Rocher et Pointe-Verte — deux dimanches par mois, accompagnée par Nicole McGrath.</p><p>Nicole, c’était mon enseignante de première et de sixième année, devenue une grande amie. Elle savait faire planer ma voix vers le ciel. Elle me disait toujours : « Cindy, toi, quand tu chantes, c’est comme une prière. » Elle a une grosse place dans mon cœur — elle y est toujours. Elle n'est plus de ce monde — paix à son âme — mais elle m'accompagnera toujours.</p><p>On chante pas pour la gloire. Mais quand les gens venaient me dire « tu nous aides à prier », ça faisait tellement de bien. Rendre service avec ma voix, c’est un pur privilège, et je suis pleine de gratitude, à chaque fois. »</p>
-            <figure class="timeline-photo">
+            <figure class="timeline-photo nicole-small">
               <img src="assets/cindy-nicole-eglise.jpg" alt="Cindy Roy chantant au micro dans une église, avec Nicole McGrath au clavier juste à côté d’elle" loading="lazy" />
               <figcaption>Nicole et moi</figcaption>
             </figure>
@@ -3343,11 +3461,7 @@
         <p class="section-tag">Presse et médias</p>
         <h2 class="section-title">Dossier de <em>presse</em></h2>
         <p class="section-intro">Entrevues, articles et documents officiels — le beau récit que les médias ont fait de mon parcours.</p>
-        <div class="press-grid">
-          <figure class="press-item press-clipping">
-            <img src="assets/article-acadie-nouvelle-9juin2015-p4.png" alt="Page de L’Acadie Nouvelle du 9 juin 2015" loading="lazy" />
-            <figcaption>L’Acadie Nouvelle — 9 juin 2015</figcaption>
-          </figure>
+        <div class="press-grid press-grid-one">
           <figure class="press-item">
             <iframe src="https://www.youtube.com/embed/w1MF0PKgOi0" title="Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015" loading="lazy" style="aspect-ratio: 720 / 694" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015</figcaption>
@@ -3365,6 +3479,10 @@
           <summary class="gallery-toggle">Galerie de presse <span class="gallery-toggle-hint">les captures d’articles, un clic</span></summary>
           <div class="gallery-body">
         <div class="press-grid">
+          <figure class="press-item press-clipping">
+            <img src="assets/article-acadie-nouvelle-9juin2015-p4.png" alt="Capture de l’article de L’Acadie Nouvelle du 9 juin 2015 — « Beresford célèbrera l’Acadie sur trois jours »" loading="lazy" />
+            <figcaption>L’Acadie Nouvelle — 9 juin 2015</figcaption>
+          </figure>
           <figure class="press-item press-clipping">
             <img src="assets/preuve-radio-canada-1aout2015.jpg" alt="Capture de l’article de Radio-Canada du 1er août 2015 sur le Gala de la chanson de Caraquet" loading="lazy" />
             <figcaption>Radio-Canada — 1er août 2015</figcaption>
@@ -3415,7 +3533,7 @@
             <div class="onesheet-block">
               <h4>Répertoire</h4>
               <ul>
-                <li>7 chansons originales : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas », « Fonce vers tes rêves », « Que la neige », « Avant de me rendre »</li>
+                <li>Une quinzaine de chansons originales — j’en présente quelques-unes sur mon site web : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas », « Fonce vers tes rêves », « Que la neige », « Avant de me rendre »</li>
                 <li>18 reprises favorites — dont Francis Cabrel, Diane Tell et le country</li>
               </ul>
             </div>
@@ -3438,8 +3556,8 @@
                 <figcaption>Portrait — Cindy souriante, en rose<br /><a class="kit-download" href="assets/cindy-portrait-accueil.jpg" download>Télécharger</a></figcaption>
               </figure>
               <figure class="kit-item">
-                <img src="assets/cindy-scene-robe-verte.jpg" alt="Cindy Roy chantant sur scène en robe verte, un micro à la main" loading="lazy" />
-                <figcaption>Sur scène — en robe verte<br /><a class="kit-download" href="assets/cindy-scene-robe-verte.jpg" download>Télécharger</a></figcaption>
+                <img src="assets/cindy-accueil-scene-portrait.jpg" alt="Cindy Roy en train de chanter sur scène, en robe verte aux manches bouffantes, le micro à la bouche et un bras tendu, sous les faisceaux de lumière d’une scène de théâtre" loading="lazy" />
+                <figcaption>Sur scène — la photo d’ouverture<br /><a class="kit-download" href="assets/cindy-accueil-scene-portrait.jpg" download>Télécharger</a></figcaption>
               </figure>
               <figure class="kit-item">
                 <img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" />
@@ -3622,7 +3740,6 @@
         </div>
         <div class="contact-panel">
           <strong>Me joindre</strong>
-          <span>Les demandes passent par mes réseaux sociaux — Facebook en premier.</span>
           <div class="socials" aria-label="Mes réseaux sociaux">
             <a href="https://www.youtube.com/@cindyroyofficiel" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cindyroyofficiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cindyroyofficiel" target="_blank" rel="noopener">Instagram</a>
           </div>
