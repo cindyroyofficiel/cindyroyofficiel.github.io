@@ -374,6 +374,26 @@
       font-size: clamp(25px, 3.4vw, 38px); line-height: 1.22; color: #f4edda;
       text-shadow: 0 2px 18px rgba(0, 0, 0, .7), 0 0 26px rgba(0, 0, 0, .45);
     }
+    /* Le « A » d’« Autrice » en lettrine à la plume (suggestion de
+       Cindy, 2 nov. 20 h 33 : « copier un peu comme le U de
+       "Une fille qui lâche pas", ça ferait beau ») : même plume
+       Great Vibes et même grossissement (1,55 em, ligne .82) que
+       le « U » du motto (.motto-initial), doré doux du motto
+       (#f0bd6d) harmonisé au crème de la ligne — le reste de la
+       ligne garde son serif actuel, et le texte reste exactement
+       « Autrice-compositrice-interprète acadienne ». Le léger
+       décalage vertical (-.05 em) assoit la plume sur la même
+       ligne de base que le serif. La règle vit dans le style de
+       base de .role : elle s’applique donc aux DEUX arrangements
+       où la ligne paraît (portable, alignée à droite, et
+       téléphone, centrée), la taille suivant en em celle de
+       chaque arrangement. */
+    .hero-titles .role .role-initial {
+      font-family: var(--script-name); font-weight: 400;
+      font-size: 1.55em; line-height: .82;
+      color: #f0bd6d; vertical-align: -.05em;
+      margin-right: .015em;
+    }
     .hero-titles .hero-tagline { margin-top: 14px; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .75), 0 0 22px rgba(0, 0, 0, .5); }
     /* « une fille qui lâche pas » : la ligne vivait sous la photo
        (l’ancienne note manuscrite). Cindy la veut DANS l’ouverture
@@ -392,6 +412,293 @@
     }
     .hero .hero-copy .hand-note { margin: 0 auto; transform-origin: center; }
     .hero .hero-copy .hero-actions { justify-content: center; margin-top: 30px; }
+    /* ——— Accent d’accueil (idée de Cindy, 2 nov., à l’essai) : sa photo solo
+       de la loge, en PETIT, sous le motto « Une fille qui lâche pas ».
+       REPOSITIONNEMENT (précision de Cindy, 2 nov. 19 h 54) : la photo
+       vient SIGNER le motto, « comme un statement » — elle n’est plus
+       reléguée dans le coin bas-droite, elle est CENTRÉE DIRECTEMENT
+       SOUS le motto, dans sa colonne. Au téléphone, son bord inférieur
+       termine EXACTEMENT au bas de la photo (bottom: 0); sur portable,
+       elle DESCEND plus bas encore (voir le bloc portable : la ligne
+       de ses pieds épouse le bas de la photo, le bas de l’image —
+       du plancher déjà dissous — dépasse sous la ligne). Sur portable, son centre épouse
+       celui du motto : le décalage depuis la droite additionne le
+       rembourrage du bandeau des titres, la marge droite du motto et
+       la demi-largeur du motto (4,31 × sa taille de plume, ≈ 362 px à
+       42 px), et un translateX(50 %) centre la photo sur cet axe —
+       voir le bloc portable plus bas. À cette place, elle reste
+       NETTEMENT à droite de la main tendue et du corps de Cindy sur
+       la photo de scène : ni son visage ni son corps ne sont couverts.
+       Sa largeur suit la hauteur de l’écran (le terme en svh) : ≈ 150 px
+       sur un portable plein écran; elle rapetisse sur les écrans moins
+       hauts pour que son haut reste toujours SOUS le motto, sans couvrir
+       les titres. Au téléphone, l’accent n’existe pas : il y a été
+       retiré au complet le 2 nov. au soir (voir le bloc téléphone
+       plus bas) — l’ouverture mobile reste la grande photo seule.
+       TRAITEMENT FONDU (demande de Cindy, 2 nov. 19 h 49; renforcé
+       le 2 nov. 19 h 52, puis ENCORE le 3 nov., avec le faisceau) :
+       la petite photo FOND dans le décor de la grande — aucun cadre,
+       aucune bordure, aucune ombre, aucun fond autour. Ses bords
+       s’estompent en dégradé plumeux PROGRESSIF sur les quatre côtés
+       (masque CSS : deux dégradés croisés) et une translucidité
+       dosée achèvent de la dissoudre dans les zones sombres de la
+       photo de scène — sans devenir fantomatique : Cindy et le
+       miroir restent bien visibles.
+       FONDU VERTICAL RESSERRÉ (Cindy, 2 nov. 20 h 16 : « je veux
+       que ma robe soit vraiment verte ») : le corps — visage, robe
+       verte, jambes — est à pleine force ou presque (opacité
+       remontée à .92, masque vertical plein de 10 % à 83 % de la
+       hauteur) : le fondu vertical ne vit plus que sur le bord du
+       haut et sur le plancher SOUS ses pieds (83 % → 99 %, ses
+       pieds étant à ≈ 83,5 %); les bords latéraux gardent leur
+       fondu plumeux. Position et ligne des pieds inchangées.
+       COULEURS PLUS PRÉSENTES, PAS PLUS BLANC (Cindy, 2 nov.
+       20 h 22 : « essaye de l’éclaircir un peu — mais quand je
+       dis clair, pas comme plus blanc là, comme juste plus
+       qu’on voit bien les couleurs surtout ») : AUCUN gain de
+       luminosité — l’opacité passe à .97 et un léger renfort de
+       saturation (saturate 1,15) est appliqué à l’image, pour
+       que le vert de la robe et les tons ressortent riches.
+       Position, ligne des pieds et fondu des bords inchangés.
+       LISIBILITÉ DU VISAGE (Cindy, 2 nov. 20 h 42 : son visage
+       lui paraît « peut-être pas assez défini » — faire ressortir
+       un peu sa mâchoire et ses lèvres, son rouge à lèvres étant
+       pâle) : l’accent pointe désormais vers une COPIE DÉRIVÉE
+       réservée à l’accent (assets/cindy-miroir-robe-verte-accent-visage.jpg,
+       mêmes dimensions 864 × 2432), où seule la zone du visage
+       reçoit une amélioration douce CUITE DANS LE FICHIER —
+       léger contraste local et netteté fine sur le visage et la
+       mâchoire (la mâchoire se définit par le contraste et les
+       ombres déjà là, AUCUNE déformation ni remodelage), et un
+       léger renfort de saturation de la couleur EXISTANTE de
+       ses lèvres. Aucun lissage, aucune « perfection » : on fait
+       ressortir ce qui est déjà là. Le fichier d’origine reste
+       intact et continue de servir dans le bloc sous Michel
+       (.michel-photos). Aucun filtre ajouté ici : l’opacité .97
+       et la saturation 1,15 actuelles sont inchangées.
+       NETTETÉ (Cindy, 2 nov. 20 h 10) : le léger flou d’ensemble
+       (.6 px) essayé avant est RETIRÉ — « c’est correct que ça soit
+       flou autour à cause du projecteur, mais l’image comme telle
+       j’aimerais qu’elle soit plus claire » : la personne, son
+       visage et le miroir sont NETS au centre; le flou ne vit plus
+       que dans les bords (le masque plumeux) et dans le faisceau.
+       FAISCEAU DE PROJECTEUR (idée de Cindy, 3 nov.) : un cône de
+       lumière de scène, chaud et très doux (::before, dégradé
+       conique depuis un point source au-dessus d’elle, dissous par
+       un double masque et un léger flou), descend de la zone du
+       motto jusqu’à la petite photo, avec une mare de lumière à sa
+       base (::after) — comme si un spot de la même scène l’éclairait
+       DANS la photo : aucune ligne, aucun bord, elle fait partie de
+       la photo d’origine. Le traitement est porté par .hero-accent
+       seulement : la même photo dans le bloc Michel (.michel-photos)
+       reste nette et cadrée comme avant. ——— */
+    /* DÉCISION (Cindy, 2 nov. 21 h 30) : la petite photo de la loge
+       est RETIRÉE de la couverture — plus aucune petite Cindy sous
+       le motto, ni son halo « porte d’arrière-scène ». Il ne reste
+       que le PROJECTEUR, conservé comme effet de lumière seul.
+       CALIBRATION (Cindy, 2 nov. 21 h 33) : en enlevant la photo,
+       le projecteur « a beaucoup diminué » — il doit garder la
+       présence qu’il avait AVEC la photo, moins « juste une
+       liche ». Le support de lumière est donc DÉCOUPLÉ de l’image :
+       il porte en propre l’empreinte exacte de l’ancien accent —
+       même position, même largeur, et une hauteur EXPLICITE égale
+       à celle que la photo (864 × 2432, ratio 2,81481) donnait à
+       la boîte : clamp(281px, (100svh − 486px) × 0,9993, 462px),
+       soit largeur × 2432/864 aux trois bornes — au lieu de
+       dépendre du contenu ou du seul format. Le faisceau
+       (::before, 88°, 640 % × 235 %) et la mare (::after,
+       560 % × 52 %), dimensionnés en % de ce support, retrouvent
+       donc leur grandeur rendue d’avant le retrait. La liche :
+       intensité −6 à −8 % seulement (opacité du cône .6 → .55;
+       mare .32/.16 → .30/.15), géométrie intacte. */
+    .hero-accent {
+      position: absolute; z-index: 2; margin: 0; pointer-events: none;
+      background: transparent;
+      right: clamp(28px, 4.5vw, 72px); bottom: 0;
+      width: clamp(100px, calc((100svh - 486px) * .355), 164px);
+      height: clamp(281px, calc((100svh - 486px) * .9993), 462px);
+      aspect-ratio: 864 / 2432;
+    }
+    /* PETITE LICHE DE FONDU À LA BASE (Cindy, 2 nov. 20 h 35,
+       portable) : sous ses pieds, là où le projecteur arrive,
+       le noir devenait trop concentré trop vite — « faudrait
+       que ça vienne progressivement », surtout du côté GAUCHE.
+       Juste une touche, le reste du fondu est « pas si pire » :
+       1) le fondu vertical du bas n’est plus un simple linéaire
+       83 % → 99 % : il court maintenant en paliers PROGRESSIFS
+       jusqu’à 100 % (plein jusqu’à 82 %, puis .82 à 88,5 %,
+       .52 à 94 %, .22 à 97,5 %, transparent à 100 %) — la
+       transition est plus longue et le noir s’éclaircit par
+       degrés au lieu de tomber d’un bloc; ses pieds (≈ 83,5 %)
+       restent à ≈ .96, intacts, et leur ligne ne bouge pas.
+       2) une TROISIÈME couche de masque, radiale au coin
+       BAS-GAUCHE (ellipse 95 % × 26 % ancrée à 0 % 100 %,
+       éteinte à 78 % de son rayon), allonge encore la
+       dissolution du plancher noir en bas à gauche, en
+       diagonale : le coin fond dès plus haut et plus loin,
+       sans aucun paquet de noir abrupt. Elle n’atteint ni ses
+       pieds (distance ≈ .90 du coin, au-delà du rayon plein),
+       ni ses jambes, ni sa robe — seulement le plancher sous
+       ses pieds, surtout à gauche. Les fondus du haut et des
+       côtés sont inchangés. */
+    .hero-photo.hero-cover .hero-accent img {
+      width: 100%; height: auto; object-fit: contain; transform: none;
+      opacity: .97; filter: saturate(1.15);
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0, #000 31%, #000 69%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 10%, #000 82%, rgba(0, 0, 0, .82) 88.5%, rgba(0, 0, 0, .52) 94%, rgba(0, 0, 0, .22) 97.5%, transparent 100%),
+        radial-gradient(95% 26% at 0% 100%, transparent 0, rgba(0, 0, 0, .5) 42%, #000 78%);
+      -webkit-mask-composite: source-in, source-in;
+      mask-image:
+        linear-gradient(to right, transparent 0, #000 31%, #000 69%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 10%, #000 82%, rgba(0, 0, 0, .82) 88.5%, rgba(0, 0, 0, .52) 94%, rgba(0, 0, 0, .22) 97.5%, transparent 100%),
+        radial-gradient(95% 26% at 0% 100%, transparent 0, rgba(0, 0, 0, .5) 42%, #000 78%);
+      mask-composite: intersect, intersect;
+    }
+    /* Le halo « porte d’arrière-scène » (Cindy, 2 nov. 20 h 29-30;
+       RETOUCHE NETTETÉ, 2 nov. 20 h 32, portable seulement —
+       l’accent entier est retiré au téléphone) : Cindy trouvait
+       sa face « un peu trop blurry » et demande la qualité de
+       son visage du début. Cause : l’ancien halo (88 % × 54 %,
+       fondu jusqu’à ≈ 40-51 % de la hauteur) vivait AU-DESSUS de
+       l’image et voilait donc ses cheveux et son visage (repères
+       mesurés dans la photo source 864 × 2432 : écriteau
+       « PORTE DE SCÈNE » à 17-21,5 % de la hauteur, haut de sa
+       tête à ≈ 25,8 %, visage à ≈ 27-35 %). Le halo est donc
+       CONFINÉ STRICTEMENT à la zone NOIRE EN HAUT, AU-DESSUS de
+       l’écriteau : sa boîte ne couvre plus que le premier
+       16 % de la hauteur (top -1 % + hauteur 17 %), son dégradé
+       radial s’éteint à 80 % de son rayon (centre à 32 % de la
+       boîte, soit une lumière éteinte vers ≈ 10 % de l’image),
+       et un masque vertical propre à l’élément force en plus
+       la transparence complète à 96 % de la boîte — même le
+       débord du flou (réduit à 6 px) meurt donc avant
+       l’écriteau (17 %) et très loin avant le haut de sa tête
+       (25,8 %). Aucun voile, halo, cône ou dégradé ne passe
+       plus sur son visage ni ses cheveux : le cône ::before
+       reste DERRIÈRE l’image (z-index négatif, inchangé :
+       88°, boîte 640 % × 235 %) et ne la voile pas, la mare
+       ::after reste à sa base, et l’image elle-même garde
+       opacité .97 / saturation 1,15 SANS aucun flou — son
+       visage et ses cheveux sont aussi nets et naturels que
+       dans la photo source (le même fichier, net, sous
+       Michel). La lueur chaude subsiste seulement tout en
+       haut, dans le noir au-dessus de la pancarte, en
+       progression — aucun bord, aucun cadre dessiné.
+       PRIORITÉ (Cindy, 2 nov. 20 h 35) : « faut surtout que
+       mes cheveux, mon visage soit plus voyant, parce qu’à
+       cause du blurry du projecteur qui tombe dessus, ça
+       fait un effet qu’on voit pas bien » — sa TÊTE AU
+       COMPLET (haut de tête à ≈ 25,8 %, visage à 27-35 %,
+       chevelure qui descend aux épaules) est donc hors de
+       portée de TOUT effet : le halo meurt à 16 %, le cône
+       vit derrière l’image, aucun dégradé ne la recouvre;
+       visage et cheveux sont à pleine netteté d’origine,
+       bien visibles. Les effets de lumière restent
+       derrière et autour d’elle, jamais par-dessus sa tête. */
+    .hero-accent-glow {
+      position: absolute; z-index: 1; pointer-events: none;
+      left: 50%; top: -1%; transform: translateX(-50%);
+      width: 88%; height: 17%;
+      border-radius: 42% 42% 50% 50% / 30% 30% 46% 46%;
+      background: radial-gradient(50% 50% at 50% 32%,
+        rgba(255, 243, 214, .62) 0%, rgba(255, 238, 196, .30) 42%,
+        rgba(255, 236, 190, .08) 62%, rgba(255, 236, 190, 0) 80%);
+      filter: blur(6px);
+      -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 52%, transparent 96%);
+      mask-image: linear-gradient(to bottom, #000 0, #000 52%, transparent 96%);
+    }
+    /* Le cône du spot : il naît en un point au-dessus de la photo
+       (zone du motto) et s’évase en descendant jusqu’à elle.
+       Historique : élargi d’un cran le 2 nov. 20 h 16 (angle 34° →
+       42°), puis nettement le 2 nov. 20 h 22 (42° → 68°, boîte
+       320 % → 500 %, mare 315 % → 480 %). ÉLARGI ENCORE, ET
+       ALLONGÉ VERS LE HAUT DE LA PHOTO (Cindy, 2 nov. 20 h 29,
+       portable seulement : « je l’élargirais encore plus le
+       projecteur, pis en haut dans ma photo, en haut de la
+       pancarte PORTE DE SCÈNE, le noir en haut de là, je mettrais
+       le projecteur qui va jusqu’à là — j’enlèverais du noir là.
+       Je le ferais fondre en progression ») : même point de
+       départ (50 % 0, sous le motto), mêmes teintes et mêmes
+       alphas (toujours doux, jamais dur) — l’angle passe de 68°
+       à 88° (de 136°, crans à 22/44/66/88), la boîte suit
+       (500 % → 640 %, zone pleine du masque horizontal 16/84 →
+       12/88, mare 480 % → 560 %), l’opacité monte d’un souffle
+       (.55 → .6), et surtout la boîte S’ALLONGE (hauteur 155 % →
+       235 %) : le cône traverse maintenant TOUTE la petite photo
+       et sa pointe de lumière atteint son bord supérieur — le
+       noir au-dessus de l’écriteau « PORTE DE SCÈNE » reçoit le
+       spot jusqu’en haut (voir aussi le halo « porte » ci-dessous,
+       .hero-accent-glow, qui vit DANS la photo). Le dégradé
+       conique donne la forme, le double masque le dissout en
+       haut, en bas et sur les flancs, le flou finit les bords :
+       aucune ligne nulle part, tout en progression. Il vit
+       DERRIÈRE la petite photo (z-index négatif dans le contexte
+       de .hero-accent), donc au-dessus de la photo de scène mais
+       sous Cindy — la lumière semble la traverser et l’éclairer
+       de dedans. */
+    .hero-accent::before {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      left: 50%; bottom: 0; transform: translateX(-50%);
+      width: 640%; height: 235%;
+      background: conic-gradient(from 136deg at 50% 0,
+        transparent 0deg, rgba(255, 238, 196, .16) 22deg, rgba(255, 240, 205, .5) 44deg, rgba(255, 238, 196, .16) 66deg, transparent 88deg);
+      /* Liche du 2 nov. 21 h 33 : opacité .6 → .55 (−8 %) — le seul
+         cran de baisse, teintes, angle et masques inchangés. */
+      opacity: .55; filter: blur(7px);
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 16%, #000 72%, rgba(0, 0, 0, .55) 87%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 16%, #000 72%, rgba(0, 0, 0, .55) 87%, transparent 100%);
+      mask-composite: intersect;
+    }
+    /* La mare de lumière au pied du faisceau, là où le spot
+       « frappe » la scène autour d’elle. Élargie en proportion
+       du cône (315 % → 480 % le 2 nov. 20 h 22, puis 480 % →
+       560 % le 2 nov. 20 h 29 avec le cône à 88°) : elle s’étale
+       avec lui, jusqu’à presque la zone du bouton « Écrivez-moi »
+       à droite, et autant à gauche — même teinte, même douceur.
+       ARRIVÉE PLUS PROGRESSIVE (Cindy, 2 nov. 20 h 35, même
+       touche que le fondu de base de l’image ci-dessus) : sa
+       taille et sa place sont inchangées (560 % × 52 %), mais
+       son dégradé s’étire — .32 au centre, .16 à 46 %, éteint
+       à 80 % au lieu de 68 % — et son flou passe de 9 à 11 px :
+       là où le projecteur arrive sous ses pieds, la lumière
+       (et donc le noir autour) vient maintenant en progression,
+       sans concentration abrupte, surtout à gauche où la mare
+       rejoint le fondu diagonal du coin bas-gauche. Le bas du
+       cône ::before reçoit le même traitement (palier .55 à
+       87 % dans son masque vertical). */
+    .hero-accent::after {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      left: 50%; bottom: -5%; transform: translateX(-50%);
+      width: 560%; height: 52%;
+      /* Liche du 2 nov. 21 h 33 : centre .32 → .30, mi-course
+         .16 → .15 (−6 %) — taille, place et flou inchangés. */
+      background: radial-gradient(50% 50% at 50% 50%, rgba(255, 240, 205, .30) 0%, rgba(255, 240, 205, .15) 46%, rgba(255, 240, 205, 0) 80%);
+      filter: blur(11px);
+    }
+    @media (max-width: 700px) {
+      /* Téléphone : ACCENT RETIRÉ AU COMPLET (Cindy, 2 nov. 20 h 15,
+         d’après la capture de SON téléphone : « pas trop beau »).
+         Historique : le faisceau avait déjà été retiré là (20 h 07,
+         « un peu weird » — colonne fantôme sur le fond gris du
+         montage portrait), mais la petite photo fondue restait :
+         elle tombait en bas à droite du hero, exactement derrière
+         le gros bouton flottant « Écrivez-moi » qui la coupait en
+         deux, et elle flottait sans ancrage — le motto « Une fille
+         qui lâche pas », sa raison d’être, n’apparaît pas sur
+         mobile. On retire donc l’accent entier sur téléphone
+         seulement : l’ouverture reste la grande photo portrait
+         seule, propre, avec le bouton « Écrivez-moi » dégagé.
+         L’arrangement portable (≥ 701 px) garde tout : accent,
+         projecteur et clarté du corps. La même photo dans le bloc
+         Michel (.michel-photos) n’est pas touchée. */
+      .hero-accent { display: none; }
+    }
     /* ——— Deux arrangements DISTINCTS pour l’ouverture, comme Cindy le
        veut : le portable et le téléphone ne partagent plus les mêmes
        mesures, pour qu’un correctif sur l’un ne défasse jamais l’autre.
@@ -480,6 +787,74 @@
         font-size: clamp(30px, 3vw, 42px); line-height: 1.2; color: #f0bd6d;
         text-shadow: 0 2px 16px rgba(0, 0, 0, .75), 0 0 22px rgba(0, 0, 0, .5);
       }
+      /* L’accent SIGNE le motto (Cindy, 2 nov. 19 h 54) : centré
+         DIRECTEMENT sous le motto, dans sa colonne — son centre
+         épouse l’axe du motto. Le « right » additionne le rembourrage
+         droit du bandeau des titres, la marge droite du motto et la
+         demi-largeur du motto (4,31 × sa taille : la ligne fait
+         ≈ 8,62 em, mesuré sur la plume Great Vibes), puis
+         translateX(50 %) recentre la photo sur cet axe, quelle que
+         soit sa largeur. À cette place, la photo demeure à droite de
+         la main tendue de Cindy sur la photo de scène, sans la
+         couvrir. (Le bas flush des débuts est remplacé par la
+         descente « pieds en ligne » ci-dessous.)
+         DESCENTE D’UN DEMI-POUCE (Cindy, 2 nov. 20 h 06, d’après sa
+         capture de SON portable) : le motto tombait directement sur
+         le visage de Cindy dans la petite photo fondue. Le bas
+         restant flush, on DESCEND le haut de ≈ 48 px en réduisant la
+         largeur de 17 px partout dans la formule (la photo fait
+         864 × 2432 : 48 px de hauteur = 48 × 864/2432 ≈ 17 px de
+         largeur) — le haut de l’accent, visage compris, se dégage
+         complètement du motto, et le faisceau (::before/::after,
+         dimensionné en % de l’accent) descend et raccourcit avec
+         lui. L’arrangement téléphone (max-width: 700px) n’est pas
+         touché : sa largeur propre (84 px) continue de s’appliquer.
+         DESCENTE « PIEDS EN LIGNE » (Cindy, 2 nov. 20 h 10, portable
+         seulement) : elle veut descendre ENCORE — que les PIEDS de
+         la petite Cindy soient EN LIGNE avec le bas de la grande
+         photo de scène à côté. Dans la photo accent (864 × 2432),
+         ses pieds/sandales sont à ≈ 83,5 % de la hauteur, avec du
+         plancher foncé en dessous : on descend donc l’accent de
+         16,5 % de sa propre hauteur (translateY, ajouté au
+         translateX(50 %) du centrage) — la ligne de ses pieds
+         tombe exactement sur le bord inférieur de la photo de
+         scène, et le bas de l’image (du plancher déjà dissous par
+         le masque) dépasse sous cette ligne, rogné par le
+         overflow: hidden du hero. Le faisceau et la mare de
+         lumière (::before/::after, enfants de l’accent) descendent
+         avec elle : la mare suit ses pieds. Son visage s’éloigne
+         d’autant du motto, et elle ne couvre ni le visage ni le
+         corps de la grande Cindy. Le téléphone n’est pas touché. */
+      .hero-accent {
+        right: calc(clamp(22px, 5vw, 64px) + clamp(28px, 4.5vw, 72px) + clamp(129px, 12.93vw, 181px));
+        transform: translate(50%, 16.5%);
+        width: clamp(83px, calc((100svh - 534px) * .355), 147px);
+        /* Empreinte découplée de l’image (calibration 21 h 33) :
+           hauteur explicite = largeur × 2432/864 aux trois bornes
+           (83 → 234 px; fluide × 0,9993; 147 → 414 px) — la même
+           boîte que lorsque la photo était là. */
+        height: clamp(234px, calc((100svh - 534px) * .9993), 414px);
+      }
+    }
+    /* Écrans très bas (fenêtre écrasée, portable à fort grossissement) :
+       la pile des titres prend déjà presque toute la hauteur — on
+       RAPETISSE l’accent plutôt que de le retirer. Correctif du 3 nov. :
+       l’ancien retrait (display: none sous 620 px de haut) le faisait
+       disparaître COMPLÈTEMENT sur le portable de Cindy, dont la
+       fenêtre utile passe sous cette hauteur, alors qu’il paraissait
+       sur son téléphone — elle ne voyait « rien du tout » sous le
+       motto. Plus petit, son haut fondu reste sous le motto, le
+       faisceau raccourcit avec lui, et il signe toujours la photo.
+       Largeur passée de 88 à 71 px le 2 nov. au soir : la même
+       descente d’un demi-pouce que le bloc ≥ 701 px ci-dessus
+       (17 px de largeur ≈ 48 px de hauteur) — c’est très
+       probablement le cas du portable de Cindy (fenêtre basse +
+       grossissement), où le motto touchait son visage dans la
+       petite photo. Ce bloc vient APRÈS le bloc ≥ 701 px pour que
+       sa largeur l’emporte dans les fenêtres basses. */
+    @media (min-width: 701px) and (max-height: 620px) {
+      /* Hauteur assortie à la largeur de 71 px : 71 × 2432/864 ≈ 200 px. */
+      .hero-accent { width: 71px; height: 200px; }
     }
     /* Fenêtres moyennes (701–1020 px : fenêtre partagée, petit
        portable) : la pile se resserre encore pour garder la marge
@@ -531,7 +906,79 @@
     .section-intro { margin: 24px 0 0; max-width: 710px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
 
     .music-section { background: var(--bg-cream); }
-    .music-intro { display: flex; align-items: center; gap: clamp(28px, 4vw, 52px); }
+    .music-intro { display: flex; align-items: center; gap: clamp(28px, 4vw, 52px); position: relative; }
+    /* — La portée en tiges de plantes (idée de Cindy, 2 nov.
+       21 h 45, RAFFINÉE 21 h 58 — remplace le petit motif « fleur
+       en clé de sol » qui vivait à la jonction photo/texte, retiré
+       pour ne pas doubler : un seul motif de ce genre dans la
+       section) : une PORTÉE musicale décorative posée juste
+       au-dessus du titre « Des histoires vraies, en chansons. »,
+       dans la colonne des écrits — jamais sur la photo, jamais
+       sur le texte, le titre reste parfaitement lisible. Les
+       cinq lignes de la portée sont de fines TIGES DE PLANTES :
+       courbes végétales très légères, vert tendre et doré, qui
+       traversent la largeur de la zone du titre et s’éteignent
+       en fondu aux deux bouts. Au début de la portée, comme sur
+       une vraie partition, une belle CLÉ DE SOL (ligne dorée qui
+       vire au vert tendre, spirale, crochet, queue en volute)
+       ORNÉE DE FLEURS D’AUTOMNE — terracotta, rouille, doré,
+       crème — et de feuilles tendres. Quelques feuilles et
+       bourgeons sobres poussent le long des tiges. Effet
+       « jardin de musique », en écho à l’intro (« Bienvenue
+       dans mon petit jardin de musique »). Statique, raffiné.
+       RAFFINEMENT 2 nov. 22 h 02 (précision de Cindy : « la
+       portée pourrait avoir des courbes, que ça soit comme
+       poétique ») : les cinq tiges partagent désormais UNE
+       même ondulation ample et lente — elles montent en
+       douceur vers un sommet vers le premier tiers, redescendent
+       en creux passé le milieu, puis se reposent vers la fin,
+       comme une mélodie qui respire. L’écart de 12 px entre
+       les tiges est conservé partout (elles ondulent en
+       harmonie, la portée reste lisible), les extrémités
+       restent quasi à niveau et s’éteignent toujours en fondu;
+       feuilles et bourgeons ont été recalés sur la nouvelle
+       courbe pour rester accrochés aux tiges. Même tracé au
+       téléphone (version simplifiée sans feuilles/bourgeons).
+       AJOUT 2 nov. 22 h 04 (précisions de Cindy) : une petite
+       MÉLODIE de six notes sobres posées sur les tiges (têtes
+       ovales, hampes fines, deux crochets en forme de feuille),
+       dont les hauteurs suivent l’ondulation des lignes; leurs
+       teintes sont prélevées dans la PHOTO du rocher/rivière à
+       droite de l’intro — rouille et doré du feuillage d’automne,
+       vert des pins, et une note couleur d’eau de la rivière.
+       Derrière la zone de la portée, un HALO doux reprend la
+       même palette de la photo (eau gris-vert à gauche, rouille
+       à droite) en dégradés radiaux très subtils — même recette
+       que le halo de la légende « Entre rêves et prières ».
+       Le titre et le texte en dessous ne sont pas touchés et
+       restent 100 % lisibles; la photo elle-même est inchangée.
+       Au téléphone : le halo et les notes restent (la mélodie
+       fait partie de la version simplifiée), seuls les
+       feuilles/bourgeons le long des tiges restent omis.
+       Au téléphone : version réduite et simplifiée (les
+       feuilles/bourgeons le long des tiges sont omis, la portée
+       et la clé fleurie restent, en petit) pour garder l’air.
+       Décoratif (aria-hidden). */
+    .music-staff { display: block; width: 100%; max-width: 680px; height: auto;
+      margin: 2px 0 14px; pointer-events: none; opacity: .96;
+      /* Halo aux couleurs de la photo du rocher (ajout du
+         2 nov. 22 h 04, ci-dessous) : l’eau gris-vert de la
+         rivière à gauche, la rouille du feuillage à droite,
+         en dégradés radiaux très subtils derrière la portée —
+         même recette que le halo d’« Entre rêves et prières ». */
+      background:
+        radial-gradient(ellipse 64% 62% at 30% 42%, rgba(110, 128, 116, .30), rgba(110, 128, 116, 0) 70%),
+        radial-gradient(ellipse 56% 64% at 74% 68%, rgba(188, 97, 54, .24), rgba(188, 97, 54, 0) 72%); }
+    @media (prefers-color-scheme: dark) {
+      .music-staff {
+        background:
+          radial-gradient(ellipse 64% 62% at 30% 42%, rgba(140, 160, 148, .26), rgba(140, 160, 148, 0) 70%),
+          radial-gradient(ellipse 56% 64% at 74% 68%, rgba(201, 122, 69, .22), rgba(201, 122, 69, 0) 72%); }
+    }
+    @media (max-width: 700px) {
+      .music-staff { max-width: 430px; margin-bottom: 8px; }
+      .music-staff .staff-extra { display: none; }
+    }
     .music-intro-copy { flex: 1 1 auto; min-width: 0; }
     .music-intro-photo { margin: 0; flex: none; width: clamp(180px, 22vw, 240px); }
     .music-intro-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
@@ -670,9 +1117,9 @@
     .birth-title { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; line-height: 1.2; font-weight: 600; color: #f0e8da; }
     .birth-copy p + p { margin-top: 16px; }
     .timeline-photo { margin: 26px 0 0; max-width: 420px; }
-    /* Photo « Nicole et moi » (Parcours, 2013 à 2019) : petite vignette seulement,
-       même largeur que la petite photo du couple (.michel-photo-small, 148 px) —
-       proportions naturelles conservées, aucun étirement ni recadrage. */
+    /* Photo « Nicole et moi » (Parcours, 2013 à 2019) : petite vignette
+       seulement (148 px) — proportions naturelles conservées, aucun
+       étirement ni recadrage. */
     .timeline-photo.nicole-small { max-width: 148px; }
     .timeline-photo img { width: 100%; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(213,164,58,.35); }
     .timeline-photo figcaption { margin-top: 12px; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 16px; }
@@ -1152,15 +1599,16 @@
     .parent-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
     .maman-line { margin: 26px 0 0; font-family: var(--serif); font-size: 23px; line-height: 1.4; font-weight: 600; color: var(--ink); text-align: center; }
     .maman-suite { margin: 8px auto 0; max-width: 560px; font-family: var(--serif); font-size: 19px; line-height: 1.55; font-weight: 400; color: var(--muted); text-align: center; }
-    /* ——— Photos du miroir (À propos, près de Michel) : la grande, pis la petite vignette du couple juste à côté ——— */
+    /* ——— Photos du miroir (À propos, près de Michel) : les deux photos à la
+       MÊME grandeur (demande de Cindy, 2 nov.) — même largeur pour chacune
+       (≈ 190 px dans le bloc de 400 px), alignées en haut, proportions
+       naturelles, aucun étirement ni recadrage. Au téléphone, elles restent
+       côte à côte à parts égales (≈ 48 % / 48 %). ——— */
     .michel-photos { margin: 32px auto 8px; max-width: 400px; display: flex; gap: 14px; align-items: flex-start; justify-content: center; }
-    .michel-photo-main { margin: 0; flex: 0 1 240px; min-width: 0; }
-    .michel-photo-small { margin: 0; flex: 0 1 118px; min-width: 0; }
+    .michel-photo-main, .michel-photo-small { margin: 0; flex: 1 1 0; min-width: 0; }
     .michel-photos img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     @media (max-width: 620px) {
-      .michel-photos { gap: 10px; max-width: 320px; }
-      .michel-photo-main { flex-basis: 62%; }
-      .michel-photo-small { flex-basis: 34%; }
+      .michel-photos { gap: 10px; max-width: 400px; }
     }
     @media (max-width: 620px) {
       .parents-photos { grid-template-columns: 1fr; gap: 28px; max-width: 340px; margin-inline: auto; }
@@ -1416,7 +1864,12 @@
     .gala-featured video { width: 100%; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid rgba(201, 162, 79, .4); }
     .gala-featured figcaption { margin-top: 16px; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.4; color: #f0e8da; }
     .gala-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; }
-    .gala-grid-one { grid-template-columns: minmax(0, 720px); justify-content: center; }
+    /* Colonne unique de la galerie du Gala (la photo de l’hommage
+       à l’Assemblée) : 720 px → 460 px (Cindy, 2 nov., ~22 h 15) —
+       la photo reste aussi dans la galerie, mais plus petite,
+       comme dans le récit; la vedette des accomplissements garde
+       ses 500 px. */
+    .gala-grid-one { grid-template-columns: minmax(0, 460px); justify-content: center; }
     .gala-section .scene-item figcaption, .gala-section .press-item figcaption, .gala-section .archive-photo figcaption { color: #dde0cb; }
     .gala-section .archive-photo img, .gala-section .press-item img { width: 100%; box-shadow: 0 18px 44px rgba(0, 0, 0, .38); border: 1px solid rgba(213, 164, 58, .35); }
     .gala-hommage-copy { margin: 18px 0 0; max-width: 760px; color: #ccd0ba; }
@@ -1778,6 +2231,53 @@
     /* — Le Gala, pièce maîtresse : trophée agrandi, halo doré — */
     .gala-section .trophy-feature { max-width: 720px; box-shadow: 0 34px 84px rgba(0,0,0,.55), 0 0 0 1px rgba(231,179,75,.35), 0 0 64px rgba(201,162,79,.28); }
     .gala-section .section-title { font-size: clamp(44px, 5.8vw, 80px); }
+    /* — La colombe messagère des accomplissements (idée de Cindy,
+       2 nov. 21 h 42; DÉPLACÉE le 2 nov. 21 h 56-57 du Gala vers
+       le bloc « Mes plus beaux accomplissements », en haut de
+       page — une seule colombe sur toute la page) : une petite
+       colombe blanche/dorée très pâle, délicate et légèrement
+       translucide, un petit ROULEAU messager au bec — la prière
+       portée. Elle fait UN seul aller : elle traverse le haut du
+       bloc d’un vol lent au battement d’ailes calme, puis vient
+       se POSER sur le « E » du mot « Entend » dans la mention
+       « Entend ma prière » du titre de CE bloc, et y reste
+       perchée, tranquille (au plus un micro-balancement), son
+       rouleau toujours au bec. Pas de second départ, pas de
+       boucle : le vol part une seule fois, quand le bloc entre
+       à l’écran (IntersectionObserver), et la position d’arrivée
+       est MESURÉE en JavaScript sur la lettre réelle du titre
+       (--dove-end-x / --dove-end-y), pour tomber juste sur
+       portable comme au téléphone. En vol, elle reste dans la
+       bande libre du haut — jamais sur les textes, la photo du
+       trophée/hommage ni les boutons. Au téléphone, elle est
+       gardée TRÈS petite (52 px) pour ne pas charger le bloc.
+       prefers-reduced-motion : pas de vol (colombe masquée).
+       Purement décorative (aria-hidden). */
+    .highlights { position: relative; overflow: hidden; }
+    .highlights-dove { position: absolute; z-index: 2; top: 0; left: 0; width: 80px; opacity: 0; pointer-events: none;
+      --dove-end-x: 118px; --dove-end-y: 148px;
+      transform: translate(calc(100vw + 60px), 14px); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
+    .highlights-dove svg { display: block; width: 100%; height: auto; overflow: visible;
+      animation: highlights-dove-sway 7s ease-in-out 17.4s infinite alternate; transform-origin: 50% 88%; }
+    .highlights-dove.play { opacity: .94; animation: highlights-dove-fly 16s ease-in-out forwards; }
+    .highlights-dove .dove-wing-near { transform-origin: 62px 36px; animation: highlights-dove-flap .8s ease-in-out 19 alternate, highlights-dove-fold-near 1.8s ease-in-out 15.6s forwards; }
+    .highlights-dove .dove-wing-far { transform-origin: 60px 38px; animation: highlights-dove-flap-far .8s ease-in-out 19 alternate, highlights-dove-fold-far 1.8s ease-in-out 15.6s forwards; }
+    @keyframes highlights-dove-fly {
+      0% { transform: translate(calc(100vw + 60px), 14px) rotate(1deg); }
+      18% { transform: translate(calc(var(--dove-end-x) + 58vw), 4px) rotate(-.8deg); }
+      42% { transform: translate(calc(var(--dove-end-x) + 36vw), 14px) rotate(1deg); }
+      64% { transform: translate(calc(var(--dove-end-x) + 18vw), 2px) rotate(-.8deg); }
+      82% { transform: translate(calc(var(--dove-end-x) + 110px), calc(var(--dove-end-y) - 30px)) rotate(.6deg); }
+      92% { transform: translate(calc(var(--dove-end-x) + 34px), calc(var(--dove-end-y) - 10px)) rotate(-.4deg); }
+      100% { transform: translate(var(--dove-end-x), var(--dove-end-y)) rotate(0deg); }
+    }
+    @keyframes highlights-dove-flap { from { transform: rotate(-16deg); } to { transform: rotate(24deg); } }
+    @keyframes highlights-dove-flap-far { from { transform: rotate(12deg); } to { transform: rotate(-18deg); } }
+    @keyframes highlights-dove-fold-near { from { transform: rotate(-16deg); } to { transform: rotate(48deg); } }
+    @keyframes highlights-dove-fold-far { from { transform: rotate(12deg); } to { transform: rotate(34deg); } }
+    @keyframes highlights-dove-sway { from { transform: rotate(-.6deg); } to { transform: rotate(.6deg); } }
+    @media (max-width: 700px) { .highlights-dove { width: 52px; } }
+    @media (prefers-reduced-motion: reduce) { .highlights-dove { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
     .arranged-photo { width: 68px; }
@@ -1799,7 +2299,48 @@
     @media (max-width: 620px) { .tabs { flex-wrap: wrap; width: 100%; } .tab { flex: 1 1 42%; white-space: normal; } }
 
     /* — Le plateau : tous les lecteurs au même endroit — */
-    .plateau { background: var(--bg-sand); }
+    .plateau { background: var(--bg-sand); position: relative; overflow: hidden; }
+    .plateau > .wrap { position: relative; z-index: 1; }
+    /* — Coucher de soleil sur la baie, avec voilier (idée de Cindy,
+       2 nov. 21 h 40, à l’essai) : une scène d’ambiance TRANSLUCIDE
+       dans le haut de la section — ciel pêche/doré/rose qui fond
+       dans une eau calme, soleil bas et son reflet, et un voilier
+       au grand mât qui AVANCE doucement sur l’eau, léger tangage,
+       petit drapeau acadien au mât (bleu-blanc-rouge, étoile
+       dorée). La scène vit EN ARRIÈRE-PLAN (z-index 0, contenu à
+       z-index 1, aucune interaction) : le fond sable et les textes
+       restent dominants et 100 % lisibles. Mouvements lents et
+       calmes; scène figée si prefers-reduced-motion. */
+    .plateau-scene { position: absolute; z-index: 0; top: 0; left: 0; right: 0; height: 480px; pointer-events: none; opacity: .9;
+      background: linear-gradient(180deg, rgba(250, 214, 165, .50) 0%, rgba(248, 183, 140, .38) 32%, rgba(240, 158, 138, .26) 54%, rgba(233, 168, 152, .13) 72%, rgba(233, 168, 152, 0) 100%); }
+    .plateau-sun { position: absolute; top: 110px; right: 21%; width: 124px; height: 124px; border-radius: 50%; opacity: .85;
+      background: radial-gradient(circle, rgba(255, 238, 196, .95) 0%, rgba(251, 203, 128, .55) 52%, rgba(251, 203, 128, 0) 72%); }
+    .plateau-water { position: absolute; left: 0; right: 0; top: 298px; height: 132px;
+      background:
+        repeating-linear-gradient(180deg, rgba(255, 240, 210, 0) 0 9px, rgba(255, 240, 210, .13) 9px 10px),
+        linear-gradient(180deg, rgba(146, 164, 160, .32) 0%, rgba(120, 146, 152, .18) 55%, rgba(120, 146, 152, 0) 100%); }
+    .plateau-reflect { position: absolute; top: 300px; right: calc(21% + 6px); width: 112px; height: 104px; border-radius: 50%; filter: blur(2px); opacity: .5;
+      background: repeating-linear-gradient(180deg, rgba(255, 216, 152, .34) 0 3px, rgba(255, 216, 152, 0) 3px 9px);
+      animation: plateau-shimmer 7s ease-in-out infinite alternate; }
+    .plateau-boat { position: absolute; top: 188px; right: 15%; width: 196px; opacity: .62;
+      animation: plateau-sail 36s ease-in-out infinite alternate; }
+    .plateau-boat svg { display: block; width: 100%; height: auto; animation: plateau-bob 6.5s ease-in-out infinite; }
+    .plateau-flag { transform-origin: 110px 23px; animation: plateau-flag 3.8s ease-in-out infinite alternate; }
+    @keyframes plateau-sail { from { transform: translateX(46px); } to { transform: translateX(-72px); } }
+    @keyframes plateau-bob { 0%, 100% { transform: translateY(0) rotate(-1.1deg); } 50% { transform: translateY(4px) rotate(1.1deg); } }
+    @keyframes plateau-flag { from { transform: rotate(-2.5deg) skewY(-1.5deg); } to { transform: rotate(3deg) skewY(2deg); } }
+    @keyframes plateau-shimmer { from { opacity: .34; transform: scaleX(.92); } to { opacity: .55; transform: scaleX(1.05); } }
+    @media (max-width: 720px) {
+      .plateau-scene { height: 410px; opacity: .78; }
+      .plateau-sun { top: 88px; right: 9%; width: 88px; height: 88px; }
+      .plateau-water { top: 252px; height: 112px; }
+      .plateau-reflect { top: 254px; right: calc(9% + 4px); width: 80px; height: 84px; }
+      .plateau-boat { top: 152px; right: 4%; width: 134px; opacity: .55; }
+    }
+    @media (prefers-color-scheme: dark) { .plateau-scene { opacity: .5; } }
+    @media (prefers-reduced-motion: reduce) {
+      .plateau-boat, .plateau-boat svg, .plateau-flag, .plateau-reflect { animation: none !important; }
+    }
     .plateau-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: start; }
     .plateau-card { padding: 30px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--shadow-warm); }
     .plateau-family { margin: 0; color: var(--accent); font-size: 12.5px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
@@ -1846,7 +2387,20 @@
       font-size: 15px; font-weight: 760; letter-spacing: .03em; text-decoration: none;
       box-shadow: 0 16px 36px rgba(29, 43, 30, .38);
     }
-    .fixed-contact::before { content: "★"; color: var(--gold); font-size: 12px; line-height: 1; }
+    /* La petite étoile devient une PLUME d’écriture (Cindy, 2 nov.
+       20 h 17 : « une petite plume dessus au lieu d’une petite
+       étoile, une vraie plume d’oiseau ») : plume fine dessinée en
+       lignes délicates doré/crème (SVG en ligne, filets de 1,1 px,
+       rachis et barbes), légèrement inclinée comme prête à signer —
+       dans l’esprit de sa signature en plume et de son nom en
+       script. Ni emoji ni pictogramme épais. La pilule, ses
+       couleurs et le texte « Écrivez-moi » restent inchangés. */
+    .fixed-contact::before {
+      content: ""; flex: none; width: 15px; height: 27px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 42'%3E%3Cg fill='none' stroke='%23f0d99b' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M12 2c6.5 5.5 7.8 15.5 0 30C4.2 17.5 5.5 7.5 12 2Z' fill='rgba(240,217,155,0.16)'/%3E%3Cpath d='M12 12c2.8-.3 5-1.9 6.2-4.4M12 19c3-.2 5.4-1.8 6.8-4.4M12 26c2.8-.2 5-1.7 6.3-4.2M12 12c-2.8-.3-5-1.9-6.2-4.4M12 19c-3-.2-5.4-1.8-6.8-4.4M12 26c-2.8-.2-5-1.7-6.3-4.2'/%3E%3Cpath d='M12 40c-.4-10-.4-26 0-37'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      transform: rotate(16deg);
+      filter: drop-shadow(0 1px 2px rgba(29, 43, 30, .35));
+    }
     .fixed-contact:hover { background: var(--accent-2); }
     @media print { .fixed-contact { display: none; } }
 
@@ -1967,14 +2521,27 @@
       transform: rotate(-16deg);
       filter: drop-shadow(0 4px 5px rgba(74, 56, 26, .30));
     }
-    .mere-leaf-1 { top: -11px; right: 34px; width: 27px; transform: rotate(38deg); }
-    .mere-leaf-2 { left: -9px; bottom: 16px; width: 29px; transform: rotate(-52deg); }
-    .mere-leaf-3 { right: -6px; bottom: -9px; width: 23px; transform: rotate(124deg); }
+    /* Feuilles PHOTOGRAPHIQUES autour du cahier (Cindy, 2 nov.
+       21 h 37) : les six petites feuilles DESSINÉES (.mere-leaf-1
+       à 6, SVG plats) sont retirées et remplacées par TROIS vraies
+       feuilles d’érable découpées de sa photo de référence — les
+       mêmes fichiers leaf-photo-* que le titre et le poème de
+       Bienvenue (rouge profond, doré, orange-rouge). Elles gardent
+       l’esprit des anciens emplacements (haut droit de la page,
+       bord gauche vers le bas, coin bas-droit), un peu plus
+       grandes que les dessins pour que le détail photographique
+       se lise, avec la même ombre douce que les feuilles du
+       titre — jamais sur l’écriture. La plume (.mere-quill)
+       reste telle quelle. */
+    .mere-leaf-photo { height: auto; filter: drop-shadow(0 2px 3px rgba(74, 40, 10, .35)); }
+    .mere-leaf-photo-1 { top: -14px; right: 34px; width: 37px; transform: rotate(38deg); }
+    .mere-leaf-photo-2 { left: -12px; bottom: 16px; width: 39px; transform: rotate(-52deg); }
+    .mere-leaf-photo-3 { right: -8px; bottom: -12px; width: 33px; transform: rotate(124deg); }
     @media (max-width: 620px) {
       .mere-quill { left: 88px; bottom: 0; width: 44px; }
-      .mere-leaf-1 { width: 22px; right: 24px; }
-      .mere-leaf-2 { width: 24px; }
-      .mere-leaf-3 { width: 19px; }
+      .mere-leaf-photo-1 { width: 30px; right: 24px; }
+      .mere-leaf-photo-2 { width: 31px; }
+      .mere-leaf-photo-3 { width: 27px; }
     }
     @media (prefers-color-scheme: dark) {
       .mere-chanteuse { box-shadow: 0 18px 40px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 253, 244, .7), inset 0 0 26px rgba(146, 110, 52, .08); }
@@ -2087,16 +2654,118 @@
     }
     .hero-titles .hero-motto .motto-initial { font-size: 1.55em; line-height: .82; }
     .welcome-frame video { border: 1px solid rgba(201, 162, 79, .55); box-shadow: 0 10px 26px rgba(74, 56, 26, .16); }
-    .mere-leaf-4 { top: -12px; left: 46%; width: 26px; transform: rotate(72deg); }
-    .mere-leaf-5 { top: -10px; left: 148px; width: 22px; transform: rotate(-24deg); }
-    .mere-leaf-6 { bottom: -10px; left: 34%; width: 20px; transform: rotate(158deg); }
-    @media (max-width: 620px) {
-      .mere-leaf-4 { width: 21px; }
-      .mere-leaf-5 { left: 118px; width: 18px; }
-      .mere-leaf-6 { width: 17px; }
-    }
     .welcome-photo-line .voilier-close { display: block; margin-top: 2px; }
     .welcome-photo-line .big-j { font-size: 1.6em; line-height: .85; }
+    /* ——— Bienvenue : feuilles d’érable, petite plume et ombre
+       décorative (Cindy, 2 nov. 21 h 14 : « vas-y avec ça pour
+       commencer »). Automne oblige : pas de fleurs, des feuilles —
+       quelques petites feuilles d’érable délicates aux couleurs
+       de son foulard (rouille, doré, terracotta), comme tombées
+       dans la page : un petit groupe juste après « voix. » dans
+       le titre, pis une ou deux semées à travers son poème.
+       Une petite plume fine, même dessin que celle du bouton
+       « Écrivez-moi », se pose à côté du mot « mot » — essayée
+       et gardée : fine, dorée, inclinée comme prête à signer,
+       elle prolonge le titre sans le charger.
+       Sa phrase du voilier reçoit une ombre décorative : un halo
+       doux derrière le texte qui va chercher la couleur de l’eau
+       de la photo voisine (bleu-gris argenté de la mer au
+       crépuscule) pis une touche du rose saumon de son chandail;
+       le texte reste encre pleine, parfaitement lisible, et son
+       libellé ne change pas d’un mot. ——— */
+    .title-feather {
+      display: inline-block; width: auto; height: .6em;
+      margin: 0 .09em 0 .03em; vertical-align: -.12em;
+      color: #a67c1a; transform: rotate(15deg);
+      filter: drop-shadow(0 1px 1px rgba(110, 78, 26, .22));
+    }
+    @media (prefers-color-scheme: dark) { .title-feather { color: #e6c877; } }
+    .title-leaves { white-space: nowrap; }
+    .title-leaves img { display: inline-block; }
+    /* Feuilles PHOTOGRAPHIQUES (Cindy, 2 nov. 21 h 20 : elle envoie
+       une photo de vraies feuilles d’érable qui tombent sur fond
+       noir — « Des feuilles comme ça. Quelques unes. ») : les
+       feuilles dessinées (SVG plat) de la vague précédente sont
+       remplacées par de vraies feuilles découpées de SA photo de
+       référence (nervures détaillées, rouge profond, orange, doré),
+       fond noir retiré pour un fond transparent, aux MÊMES
+       emplacements — le trio après « voix. », celle après
+       « escale. », celle à la fin du poème. Tailles un peu plus
+       grandes que les dessins pour que le détail photographique
+       se lise, mais toujours petites et délicates, avec une ombre
+       douce qui les assoit sur le fond de la section. Les feuilles
+       dessinées de la carte « Mère chanteuse » ne sont pas touchées. */
+    .title-leaf-1 { width: .62em; margin-left: .18em; vertical-align: -.1em; transform: rotate(14deg); filter: drop-shadow(0 2px 3px rgba(74, 40, 10, .35)); }
+    .title-leaf-2 { width: .56em; margin-left: .1em; vertical-align: .06em; transform: rotate(-10deg); filter: drop-shadow(0 2px 3px rgba(74, 40, 10, .32)); }
+    .title-leaf-3 { width: .46em; margin-left: .08em; vertical-align: -.06em; transform: rotate(24deg); filter: drop-shadow(0 2px 3px rgba(74, 40, 10, .3)); }
+    .poem-leaf { display: inline-block; width: .95em; height: auto; margin-left: .18em; filter: drop-shadow(0 2px 3px rgba(74, 40, 10, .32)); }
+    .poem-leaf-a { vertical-align: -.12em; transform: rotate(-12deg); }
+    .poem-leaf-b { vertical-align: -.1em; transform: rotate(16deg); }
+    .welcome-photo-line {
+      position: relative; z-index: 0;
+      text-shadow:
+        0 1px 0 rgba(255, 253, 247, .5),
+        0 0 24px rgba(157, 180, 189, .5),
+        0 12px 32px rgba(226, 154, 132, .38);
+    }
+    .welcome-photo-line::before {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      inset: -20px -18px; border-radius: 50%; filter: blur(7px);
+      background:
+        radial-gradient(ellipse 64% 60% at 30% 40%, rgba(141, 168, 180, .38), rgba(141, 168, 180, 0) 70%),
+        radial-gradient(ellipse 56% 64% at 74% 70%, rgba(232, 160, 140, .34), rgba(232, 160, 140, 0) 72%);
+    }
+    @media (prefers-color-scheme: dark) {
+      .welcome-photo-line {
+        text-shadow:
+          0 1px 2px rgba(10, 14, 8, .35),
+          0 0 24px rgba(157, 180, 189, .45),
+          0 12px 32px rgba(226, 154, 132, .4);
+      }
+      .welcome-photo-line::before {
+        background:
+          radial-gradient(ellipse 64% 60% at 30% 40%, rgba(141, 168, 180, .3), rgba(141, 168, 180, 0) 70%),
+          radial-gradient(ellipse 56% 64% at 74% 70%, rgba(232, 160, 140, .3), rgba(232, 160, 140, 0) 72%);
+      }
+    }
+    /* ——— RAPPEL du même halo sur « Entre rêves et prières »
+       (Cindy, 2 nov. 21 h 22) : elle ADORE l’ombre décorative de
+       sa phrase du voilier (« c’est vraiment beau, j’aime ça »)
+       et demande de rappeler le MÊME traitement sur la légende
+       « Entre rêves et prières », juste en dessous de la photo
+       du voilier, dans le même ensemble. Même halo doux, même
+       palette — le bleu-gris de l’eau de la photo et la touche
+       de rose saumon de son chandail — dosé à la taille de la
+       légende (halo resserré autour du texte, largeur ajustée
+       au libellé). Le texte, sa police, sa taille et sa couleur
+       ne changent pas d’un poil : parfaitement lisible. ——— */
+    .welcome-photo figcaption.reves-halo {
+      position: relative; z-index: 0; width: fit-content; max-width: 100%;
+      text-shadow:
+        0 1px 0 rgba(255, 253, 247, .5),
+        0 0 18px rgba(157, 180, 189, .55),
+        0 8px 22px rgba(226, 154, 132, .42);
+    }
+    .welcome-photo figcaption.reves-halo::before {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      inset: -13px -20px; border-radius: 50%; filter: blur(6px);
+      background:
+        radial-gradient(ellipse 64% 60% at 30% 40%, rgba(141, 168, 180, .4), rgba(141, 168, 180, 0) 70%),
+        radial-gradient(ellipse 56% 64% at 74% 70%, rgba(232, 160, 140, .36), rgba(232, 160, 140, 0) 72%);
+    }
+    @media (prefers-color-scheme: dark) {
+      .welcome-photo figcaption.reves-halo {
+        text-shadow:
+          0 1px 2px rgba(10, 14, 8, .35),
+          0 0 18px rgba(157, 180, 189, .5),
+          0 8px 22px rgba(226, 154, 132, .45);
+      }
+      .welcome-photo figcaption.reves-halo::before {
+        background:
+          radial-gradient(ellipse 64% 60% at 30% 40%, rgba(141, 168, 180, .32), rgba(141, 168, 180, 0) 70%),
+          radial-gradient(ellipse 56% 64% at 74% 70%, rgba(232, 160, 140, .32), rgba(232, 160, 140, 0) 72%);
+      }
+    }
     .gala-videos-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; margin-top: 36px; }
     .gala-videos-duo .gala-featured { margin: 0; max-width: none; }
     .gala-videos-duo .gala-featured figure { margin-top: 20px; }
@@ -2126,6 +2795,51 @@
     }
     .gala-videos-duo .gala-featured figure { margin-top: 0; }
     .gala-videos-duo .scene-item video { aspect-ratio: 540 / 932; }
+    /* — La soirée en images : lecteurs RÉDUITS (Cindy, 2 nov.
+       22 h 11) — les deux lecteurs de la paire lui paraissaient
+       « vraiment énorme » : l’annonce de son prix (à gauche) et
+       la prestation de Christian « Kit » Goguen (à droite)
+       passent aux DEUX TIERS de la largeur de leur colonne,
+       centrés dans celle-ci. Proportions intactes (540 / 932
+       des deux côtés, aucun recadrage), légendes inchangées,
+       paire côte à côte conservée sur portable, badge « En
+       vedette » toujours centré sur le même axe que son lecteur.
+       Au téléphone (une seule colonne), les lecteurs gardent
+       une largeur confortable de 92 % pour rester regardables.
+       La règle ne vise que .gala-videos-duo : aucun autre
+       lecteur du site n’est touché. */
+    .gala-videos-duo .gala-featured iframe,
+    .gala-videos-duo .scene-item video {
+      width: 66.666%; margin-inline: auto;
+    }
+    @media (max-width: 720px) {
+      .gala-videos-duo .gala-featured iframe,
+      .gala-videos-duo .scene-item video { width: 92%; }
+    }
+    /* — Photo de l’intro « Ma musique » : FONDU dans le décor
+       (Cindy, 2 nov. 22 h 11) — sa photo au rocher/rivière,
+       complètement à droite de l’intro, FOND maintenant dans
+       le fond crème de la section : masque CSS plumeux sur les
+       quatre côtés, un peu plus appuyé en bas, comme une photo
+       fondue dans le décor. Cindy reste entièrement nette et
+       visible au centre; le fichier photo n’est ni recadré ni
+       retouché (masque seulement). Le cadre dur disparaît avec
+       le fondu : ni bordure ni ombre portée, qui dessineraient
+       un rectangle net sous les bords dissous. Le masque est
+       en transparence : il épouse aussi bien le crème clair
+       que le fond sombre du mode nuit. Même traitement au
+       téléphone, où la photo passe sous le texte. */
+    .music-section .music-intro-photo img {
+      border: 0; box-shadow: none; border-radius: 0;
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0, #000 13%, #000 87%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 7%, #000 74%, rgba(0, 0, 0, .55) 88%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right, transparent 0, #000 13%, #000 87%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 7%, #000 74%, rgba(0, 0, 0, .55) 88%, transparent 100%);
+      mask-composite: intersect;
+    }
     /* — Originales : Théo et Martial, UNE seule famille (Cindy,
        2 nov. 16 h 31) — l’espace entre le bloc « Avec
        arrangement — Théo Rota » et le bloc des chansons de
@@ -2146,6 +2860,34 @@
     }
     .gala-hommage-photo img { width: 100%; display: block; border-radius: 8px; }
     .gala-hommage-photo figcaption { padding: 13px 8px 4px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.4; color: #2a1e04; }
+    /* — Gala : les deux souvenirs en VIGNETTE (Cindy, 2 nov.
+       20 h 45) — la photo de sa main qui tient le trophée
+       (.trophy-feature, 720 px) et la photo de l’hommage à
+       l’Assemblée (.gala-hommage-photo, 540 px, calée à gauche)
+       étaient TROP GROSSES à son goût : « on n’a pas besoin
+       d’une grosse photo comme ça ». Les deux deviennent des
+       vignettes modestes et CENTRÉES : 330 px max sur portable,
+       et au téléphone elles suivent la largeur de l’écran en
+       proportion (le max-width les capte, la marge auto les
+       centre). Contenu, proportions (3/2 recadré pour le
+       trophée, format naturel pour l’hommage), cadres dorés,
+       ombres, légendes et textes : tout est conservé — seule
+       la taille change. Les autres usages des mêmes photos
+       (carte des honneurs, galerie, dossier de presse) ne sont
+       pas touchés. */
+    .gala-section .trophy-feature { max-width: 330px; }
+    .gala-hommage-photo { max-width: 330px; margin-inline: auto; }
+    /* — Hommage à l’Assemblée : la photo reste aux DEUX places,
+       mais plus petite dans l’histoire (Cindy, 2 nov., ~22 h 15) —
+       « Je la garderai dans les deux places mais pas aussi gros.
+       Dans les accomplissements je la mets gros assez, ben dans
+       mon histoire on peut la mettre un peu plus petite. » La
+       vedette des accomplissements (.highlights-vedette, 500 px)
+       ne bouge donc pas; ici, dans le récit du Gala, la photo
+       passe de 330 px à 250 px — même cadre doré, même légende,
+       juste plus discrète. La copie de la galerie du Gala (plus
+       bas) suit le même esprit : voir .gala-grid-one. */
+    .gala-hommage-photo { max-width: 250px; }
     .martial-music-head { align-items: center; }
     .martial-music-photo { width: 84px; }
     .martial-music-photo figcaption { font-size: 13.5px; }
@@ -2264,10 +3006,11 @@
           <p class="origin"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span> Robertville · Nouveau-Brunswick · Acadie</p>
           <h1 class="hero-name" aria-label="Cindy Roy">C<span class="i-accent">ı<span class="i-star" aria-hidden="true">★</span></span>ndy Roy</h1>
           <p class="hero-rule" aria-hidden="true"><span>★</span></p>
-          <p class="role">Autrice-compositrice-interprète acadienne</p>
+          <p class="role"><span class="role-initial">A</span>utrice-compositrice-interprète acadienne</p>
           <p class="hero-tagline">L’album d’une vie, entre mers et prières.</p>
           <p class="hero-motto">« <span class="motto-initial">U</span>ne fille qui lâche pas »</p>
         </div>
+        <figure class="hero-accent" aria-hidden="true"></figure>
         <p class="hero-caption" hidden>Cindy Roy en train de chanter sur scène, en robe verte</p>
       </div>
       <div class="hero-copy">
@@ -2281,13 +3024,13 @@
     <section class="welcome-video" id="bienvenue">
       <div class="wrap">
         <p class="section-tag">Bienvenue</p>
-        <h2 class="welcome-title">Un petit mot <em>de bienvenue</em>, de vive voix.</h2>
+        <h2 class="welcome-title">Un petit mot <svg class="title-feather" viewBox="0 0 24 42" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12 2c6.5 5.5 7.8 15.5 0 30C4.2 17.5 5.5 7.5 12 2Z" fill="currentColor" fill-opacity=".14" stroke="none"/><path d="M12 2c6.5 5.5 7.8 15.5 0 30C4.2 17.5 5.5 7.5 12 2Z"/><path d="M12 12c2.8-.3 5-1.9 6.2-4.4M12 19c3-.2 5.4-1.8 6.8-4.4M12 26c2.8-.2 5-1.7 6.3-4.2M12 12c-2.8-.3-5-1.9-6.2-4.4M12 19c-3-.2-5.4-1.8-6.8-4.4M12 26c-2.8-.2-5-1.7-6.3-4.2"/><path d="M12 40c-.4-10-.4-26 0-37"/></g></svg><em>de bienvenue</em>, de vive voix.<span class="title-leaves" aria-hidden="true"><img class="title-leaf-1" src="assets/leaf-photo-red-deep.png" alt="" width="565" height="521" /><img class="title-leaf-2" src="assets/leaf-photo-gold.png" alt="" width="521" height="366" /><img class="title-leaf-3" src="assets/leaf-photo-orange-red.png" alt="" width="346" height="235" /></span></h2>
         <div class="welcome-poem">
           <figure class="welcome-portrait">
             <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
           </figure>
           <div class="welcome-poem-copy">
-          <p class="welcome-intro">« Bienvenue dans mon p’tit jardin<br>de Fabreville, à Laval,<br>mon havre tranquille où mon cœur fait escale.<br>Mon autre port d’attache,<br>c’est Robertville, au cœur de Belle-Baie,<br>mon Acadie natale,<br>là où la mer, jamais ben loin,<br>veille sur ma vie. »</p>
+          <p class="welcome-intro">« Bienvenue dans mon p’tit jardin<br>de Fabreville, à Laval,<br>mon havre tranquille où mon cœur fait escale.<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>Mon autre port d’attache,<br>c’est Robertville, au cœur de Belle-Baie,<br>mon Acadie natale,<br>là où la mer, jamais ben loin,<br>veille sur ma vie. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /></p>
           <div class="mini-flags">
               <div class="mini-flags-track"><span class="mini-flags-half"><span class="mini-flags-group"><span class="mini-flag"><img src="assets/drapeau-belle-baie.png" alt="Drapeau officiel de la Ville de Belle-Baie : étoile dorée de l’Acadie et gouvernail sur fond bleu, plume et forêt sur les couleurs acadiennes" width="512" height="258" loading="lazy" /></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de l’Acadie : bleu, blanc, rouge à l’étoile dorée" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau du Québec : le fleurdelisé, croix blanche et quatre fleurs de lys sur fond bleu" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag"><svg viewBox="0 0 120 60" role="img" aria-label="Drapeau du Canada : rouge, blanc, rouge, feuille d’érable rouge au centre" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de la France : bleu, blanc, rouge" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span><span class="mini-flags-half" aria-hidden="true"><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span><span class="mini-flags-group" aria-hidden="true"><span class="mini-flag" aria-hidden="true"><img src="assets/drapeau-belle-baie.png" alt="" width="512" height="258" loading="lazy" aria-hidden="true" /></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="90" height="60" fill="#003da5"/><rect x="40" width="10" height="60" fill="#ffffff"/><rect y="25" width="90" height="10" fill="#ffffff"/><g fill="#ffffff"><g transform="translate(21 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 15) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(21 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g><g transform="translate(69 45) scale(0.62) translate(-15 -15)"><path d="M15 1.5c2.3 2.8 4 5.2 4 8 0 2-1.4 3.1-3 2.7 1.6-1.6 4.3-1.2 6 1 2.2 2.9.1 6.4-3.4 6.1 1 2 .1 3.9-1.9 3.6v2.9h-3.4v-2.9c-2 .3-2.9-1.6-1.9-3.6-3.5.3-5.6-3.2-3.4-6.1 1.7-2.2 4.4-2.6 6-1-1.6.4-3-.7-3-2.7 0-2.8 1.7-5.2 4-8z"/><rect x="10.2" y="21.4" width="9.6" height="2.4" rx="1.2"/></g></g></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#ff0000"/><rect x="30" width="60" height="60" fill="#ffffff"/><rect x="90" width="30" height="60" fill="#ff0000"/><path fill="#ff0000" d="M60.89 50.00 L60.45 41.43 A0.94 0.94 0 0 1 61.55 40.46 L70.07 41.96 L68.92 38.78 A0.65 0.65 0 0 1 69.12 38.06 L78.46 30.50 L76.36 29.51 A0.65 0.65 0 0 1 76.02 28.73 L77.87 23.05 L72.49 24.19 A0.65 0.65 0 0 1 71.76 23.82 L70.72 21.36 L66.52 25.87 A0.65 0.65 0 0 1 65.42 25.31 L67.44 14.86 L64.20 16.74 A0.65 0.65 0 0 1 63.30 16.47 L60.00 10.00 L56.70 16.47 A0.65 0.65 0 0 1 55.80 16.74 L52.56 14.86 L54.58 25.31 A0.65 0.65 0 0 1 53.48 25.87 L49.28 21.36 L48.24 23.82 A0.65 0.65 0 0 1 47.51 24.19 L42.13 23.05 L43.98 28.73 A0.65 0.65 0 0 1 43.64 29.51 L41.54 30.50 L50.88 38.06 A0.65 0.65 0 0 1 51.08 38.78 L49.93 41.96 L58.45 40.46 A0.94 0.94 0 0 1 59.55 41.43 L59.11 50.00 Z"/></svg></span><span class="mini-flag" aria-hidden="true"><svg viewBox="0 0 90 60" aria-hidden="true" focusable="false"><rect width="30" height="60" fill="#0055a4"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ef4135"/></svg></span></span></span></div>
             </div>
@@ -2302,17 +3045,14 @@
               </figure>
               <p class="mere-line">Mère chanteuse — je chante ce que j’écris, je raconte ce que je vis, je cuisine, je ris et je prie, et partout où je passe, je sème l’amour à tout ce qui vit.</p>
               <svg class="mere-deco mere-quill" viewBox="0 0 72 72" aria-hidden="true" focusable="false"><defs><linearGradient id="mere-quill-grad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#e2c078"/><stop offset=".55" stop-color="#f7e7bd"/><stop offset="1" stop-color="#d3ab55"/></linearGradient></defs><path fill="url(#mere-quill-grad)" stroke="rgba(110, 78, 26, .65)" stroke-width="1.1" d="M52.5 4.5c2.8 15.8-3.2 32.8-18.2 43.4-5.2 3.7-11.3 6.2-16.6 6.7.8-4.7 2.9-9.7 5.9-14.3C29.6 31.2 40.4 14.9 52.5 4.5Z"/><path d="M17.7 54.6C27.9 42.3 40.2 24.1 52.5 4.5" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round"/><path d="M26.5 43.5c3.8.4 7.4-.3 10.6-2M31.8 36.2c3.9.2 7.5-.7 10.7-2.6M37.6 28.4c3.8-.1 7.3-1.2 10.3-3.2M43.4 20.3c3.6-.4 6.9-1.7 9.7-3.9" fill="none" stroke="rgba(138, 106, 52, .5)" stroke-width="1.1" stroke-linecap="round"/><path d="M17.7 54.6 11.8 64.2c-.5.8.2 1.7 1.1 1.4l5.9-1.9" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <svg class="mere-deco mere-leaf-1" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#b5502f" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(94, 32, 14, .45)" stroke-width="1" stroke-linecap="round"/></svg>
-              <svg class="mere-deco mere-leaf-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#c9932b" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(105, 70, 10, .45)" stroke-width="1" stroke-linecap="round"/></svg>
-              <svg class="mere-deco mere-leaf-3" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#8e3b2c" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(70, 20, 12, .45)" stroke-width="1" stroke-linecap="round"/></svg>
-              <svg class="mere-deco mere-leaf-4" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#d2691e" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(120, 52, 10, .45)" stroke-width="1" stroke-linecap="round"/></svg>
-              <svg class="mere-deco mere-leaf-5" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#a86f1c" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(96, 62, 8, .45)" stroke-width="1" stroke-linecap="round"/></svg>
-              <svg class="mere-deco mere-leaf-6" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#7d8c3f" d="M12 1.6l1.7 4.6 3.3-2.9-.5 4.3 4.3-1.3-2.5 3.7 3.7.6-3.3 2.5 1.7 3.9-4.1-1-.9 4.4-2.2-2.7-.7 4.7h-1.2l-.7-4.7-2.2 2.7-.9-4.4-4.1 1 1.7-3.9L2 10.6l3.7-.6L3.2 6.3l4.3 1.3L7 3.3l3.3 2.9z"/><path d="M12 8.5v12" fill="none" stroke="rgba(52, 62, 20, .45)" stroke-width="1" stroke-linecap="round"/></svg>
+              <img class="mere-deco mere-leaf-photo mere-leaf-photo-1" src="assets/leaf-photo-red-deep.png" alt="" width="565" height="521" loading="lazy" decoding="async" />
+              <img class="mere-deco mere-leaf-photo mere-leaf-photo-2" src="assets/leaf-photo-gold.png" alt="" width="521" height="366" loading="lazy" decoding="async" />
+              <img class="mere-deco mere-leaf-photo mere-leaf-photo-3" src="assets/leaf-photo-orange-red.png" alt="" width="346" height="235" loading="lazy" decoding="async" />
             </div>
           <div class="welcome-photo-row">
           <figure class="welcome-photo">
             <img src="assets/cindy-lune-mer-acadie.webp" alt="Cindy Roy, en blouse pêche, les mains jointes devant la mer au crépuscule — un voilier navigue sous la pleine lune rose" />
-            <figcaption>Entre rêves et prières</figcaption>
+            <figcaption class="reves-halo">Entre rêves et prières</figcaption>
           </figure>
           <p class="welcome-photo-line"><span class="voilier-line-1">Mon Acadie natale a pas d’adresse&nbsp;:</span> <span class="voilier-close"><span class="big-j">J</span>e la porte partout où je vais.</span></p>
           </div>
@@ -2324,10 +3064,33 @@
     </section>
 
     <section class="plateau" id="plateau" aria-label="Le plateau — tout ce que j’offre, au même endroit">
+      <div class="plateau-scene" aria-hidden="true">
+        <span class="plateau-sun"></span>
+        <span class="plateau-water"></span>
+        <span class="plateau-reflect"></span>
+        <div class="plateau-boat">
+          <svg viewBox="0 0 220 180" focusable="false">
+            <g class="plateau-flag">
+              <rect x="110" y="14" width="10.5" height="18" fill="#3a6ea8" />
+              <rect x="120.5" y="14" width="10.5" height="18" fill="#f6f1e3" />
+              <rect x="131" y="14" width="10.5" height="18" fill="#c8452c" />
+              <polygon points="115.25,17.1 116.05,19.4 118.48,19.45 116.54,20.92 117.25,23.25 115.25,21.86 113.25,23.25 113.96,20.92 112.02,19.45 114.45,19.4" fill="#e9b949" />
+            </g>
+            <rect x="108.6" y="14" width="2.8" height="118" fill="#6d4c2f" />
+            <path d="M116 26 C142 58 156 92 164 126 L116 126 Z" fill="rgba(255, 250, 238, .92)" stroke="rgba(122, 90, 38, .35)" stroke-width="1" />
+            <path d="M102 36 C84 66 70 96 62 126 L102 126 Z" fill="rgba(246, 232, 205, .85)" stroke="rgba(122, 90, 38, .28)" stroke-width="1" />
+            <rect x="110" y="127" width="58" height="2.6" fill="#6d4c2f" />
+            <path d="M28 138 L192 138 C184 156 168 166 148 166 L66 166 C48 166 34 154 28 138 Z" fill="rgba(61, 79, 95, .92)" />
+            <rect x="28" y="136" width="164" height="3" fill="rgba(233, 185, 73, .75)" />
+            <ellipse cx="110" cy="173" rx="72" ry="3.6" fill="none" stroke="rgba(255, 255, 255, .38)" stroke-width="1.4" />
+            <ellipse cx="110" cy="176.5" rx="44" ry="2.4" fill="none" stroke="rgba(255, 255, 255, .26)" stroke-width="1.2" />
+          </svg>
+        </div>
+      </div>
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Le plateau</p>
-        <h2 class="section-title">Tout mon or, <em>sur un même plateau.</em></h2>
+        <h2 class="section-title">Tout mon art, <em>sur un même plateau.</em></h2>
         <p class="section-intro">Mes chansons originales, mes reprises, mes chansons en construction pis mon humour — tous mes lecteurs, rassemblés ici, d’un seul coup d’œil. Le reste du site vous raconte chaque histoire en détail; ici, on écoute.</p>
         <div class="plateau-grid">
           <article class="plateau-card">
@@ -2364,6 +3127,24 @@
     </section>
 
     <section class="highlights" id="coups-de-coeur" aria-label="Mes plus beaux accomplissements">
+      <div class="highlights-dove" aria-hidden="true">
+        <svg viewBox="0 0 130 84" focusable="false">
+          <g transform="translate(130 0) scale(-1 1)">
+            <path class="dove-wing-far" d="M60 38 C50 22 52 8 66 1 C70 14 70 27 68 37 Z" fill="rgba(240, 228, 196, .65)" />
+            <path d="M31 53 L5 43 L12 55 L7 63 L29 63 Z" fill="#f3e9d2" />
+            <path d="M28 58 C30 44 46 34 66 34 C86 34 98 42 104 50 C98 61 84 67 64 67 C46 67 30 65 28 58 Z" fill="#fdfaf0" fill-opacity=".96" stroke="rgba(201, 162, 79, .40)" stroke-width="1" />
+            <path class="dove-wing-near" d="M62 37 C57 15 70 3 93 1 C89 15 85 28 78 38 C72 42 66 41 62 37 Z" fill="#fffdf6" stroke="rgba(201, 162, 79, .35)" stroke-width="1" />
+            <circle cx="104" cy="42" r="11" fill="#fdfaf0" />
+            <circle cx="107.5" cy="39.5" r="1.5" fill="#5a4632" />
+            <path d="M114 39 L125 42.5 L114 47 Z" fill="#d9a441" />
+            <g transform="rotate(24 118 47)">
+              <rect x="116" y="45.5" width="17" height="6.5" rx="3.2" fill="#f3e5c3" stroke="rgba(122, 90, 38, .5)" stroke-width=".8" />
+              <rect x="123" y="45.5" width="2.4" height="6.5" fill="#c9a24f" />
+              <ellipse cx="133" cy="48.8" rx="2.4" ry="3.1" fill="#e8d5a8" stroke="rgba(122, 90, 38, .5)" stroke-width=".8" />
+            </g>
+          </g>
+        </svg>
+      </div>
       <div class="wrap">
         <div class="highlights-head">
           <p class="section-tag">Mes plus beaux accomplissements</p>
@@ -2514,13 +3295,6 @@
                 <figcaption>Souper au resto avec la gang du 47e Gala — mai 2015</figcaption>
               </figure>
             </div>
-            <h4 class="gala-subhead">L’hommage à l’Assemblée législative</h4>
-            <div class="gala-grid gala-grid-one">
-              <figure class="press-item">
-                <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de l’extrait encadré du hansard de l’Assemblée législative du Nouveau-Brunswick du 2 décembre 2015 où le député Daniel Guitard lui rend hommage" loading="lazy" />
-                <figcaption>Hommage à l’Assemblée législative du Nouveau-Brunswick (2 décembre 2015) et trophée Lauréat 2015 du Gala de la chanson</figcaption>
-              </figure>
-            </div>
           </div>
         </details>
       </div>
@@ -2532,6 +3306,97 @@
         <div class="music-intro">
           <div class="music-intro-copy">
             <p class="section-tag">Ma musique</p>
+            <svg class="music-staff" viewBox="0 0 720 112" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="staff-clef-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#b98a2f" />
+                  <stop offset=".55" stop-color="#a08a3d" />
+                  <stop offset="1" stop-color="#7d9b57" />
+                </linearGradient>
+                <linearGradient id="staff-fade-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity=".3" />
+                  <stop offset=".06" stop-color="#ffffff" />
+                  <stop offset=".9" stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <mask id="staff-fade-mask">
+                  <rect x="0" y="0" width="720" height="112" fill="url(#staff-fade-grad)" />
+                </mask>
+              </defs>
+              <g mask="url(#staff-fade-mask)" fill="none" stroke-linecap="round">
+                <path d="M6 40 C120 35 200 31 300 32 C400 33 440 42 520 45 C600 48 660 44 714 41" stroke="#7d9b57" stroke-width="1.7" opacity=".55" />
+                <path d="M6 52 C120 47 200 43 300 44 C400 45 440 54 520 57 C600 60 660 56 714 53" stroke="#8a9a4e" stroke-width="1.5" opacity=".5" />
+                <path d="M6 64 C120 59 200 55 300 56 C400 57 440 66 520 69 C600 72 660 68 714 65" stroke="#a08a3d" stroke-width="1.6" opacity=".5" />
+                <path d="M6 76 C120 71 200 67 300 68 C400 69 440 78 520 81 C600 84 660 80 714 77" stroke="#7d9b57" stroke-width="1.5" opacity=".5" />
+                <path d="M6 88 C120 83 200 79 300 80 C400 81 440 90 520 93 C600 96 660 92 714 89" stroke="#8a9a4e" stroke-width="1.7" opacity=".55" />
+              </g>
+              <g class="staff-extra">
+                <g fill="#7d9b57" opacity=".75">
+                  <path transform="translate(0 -8)" d="M232 52 C238 42 248 38 256 40 C254 48 246 53 237 54 Z" />
+                  <path transform="translate(0 -4)" d="M388 76 C394 85 404 89 412 87 C410 79 402 74 393 74 Z" />
+                  <path transform="translate(0 5)" d="M520 64 C525 55 534 51 541 52 C540 60 533 65 525 66 Z" />
+                  <path transform="translate(0 5)" d="M636 51 C641 43 649 40 655 41 C654 48 647 52 640 53 Z" />
+                </g>
+                <circle cx="300" cy="55" r="3" fill="#cd7350" opacity=".85" />
+                <circle cx="455" cy="52" r="2.6" fill="#c9a24f" opacity=".9" />
+                <circle cx="585" cy="82" r="3" fill="#b5502f" opacity=".8" />
+                <circle cx="168" cy="80" r="2.4" fill="#d98a6a" opacity=".85" />
+              </g>
+              <g class="staff-notes" stroke-linecap="round">
+                <g stroke="#bc6136" stroke-width="1.7">
+                  <path d="M189.2 49 L189.2 29" fill="none" />
+                  <path d="M189.2 29 C195.7 29.5 197.2 34.5 195.2 40.5 C193.2 36.5 191.2 34.5 189.2 33.5 Z" fill="#bc6136" stroke="none" opacity=".9" />
+                  <ellipse cx="185" cy="51" rx="4.8" ry="3.5" transform="rotate(-18 185 51)" fill="#bc6136" stroke="none" opacity=".92" />
+                </g>
+                <g stroke="#c9a24f" stroke-width="1.7">
+                  <path d="M267.8 46 L267.8 66" fill="none" />
+                  <ellipse cx="272" cy="44" rx="4.8" ry="3.5" transform="rotate(-18 272 44)" fill="#c9a24f" stroke="none" opacity=".92" />
+                </g>
+                <g stroke="#5c7048" stroke-width="1.7">
+                  <path d="M342.2 55 L342.2 35" fill="none" />
+                  <ellipse cx="338" cy="57" rx="4.8" ry="3.5" transform="rotate(-18 338 57)" fill="#5c7048" stroke="none" opacity=".92" />
+                </g>
+                <g stroke="#5f7268" stroke-width="1.7">
+                  <path d="M426.2 72 L426.2 52" fill="none" />
+                  <ellipse cx="422" cy="74" rx="4.8" ry="3.5" transform="rotate(-18 422 74)" fill="#5f7268" stroke="none" opacity=".92" />
+                </g>
+                <g stroke="#cd7350" stroke-width="1.7">
+                  <path d="M506.2 72 L506.2 52" fill="none" />
+                  <path d="M506.2 52 C512.7 52.5 514.2 57.5 512.2 63.5 C510.2 59.5 508.2 57.5 506.2 56.5 Z" fill="#cd7350" stroke="none" opacity=".9" />
+                  <ellipse cx="502" cy="74" rx="4.8" ry="3.5" transform="rotate(-18 502 74)" fill="#cd7350" stroke="none" opacity=".92" />
+                </g>
+                <g stroke="#b5502f" stroke-width="1.7">
+                  <path d="M577.8 60 L577.8 80" fill="none" />
+                  <ellipse cx="582" cy="58" rx="4.8" ry="3.5" transform="rotate(-18 582 58)" fill="#b5502f" stroke="none" opacity=".92" />
+                </g>
+              </g>
+              <g transform="translate(6 1) scale(.68)">
+                <g fill="none" stroke="url(#staff-clef-grad)" stroke-width="3.8" stroke-linecap="round">
+                  <path d="M46 148 C48 120 49 92 46 64 C44 46 45 28 52 18" />
+                  <path d="M52 18 C58 8 70 8 73 16 C75 23 68 28 62 25" />
+                  <path d="M46 96 C30 92 20 80 24 66 C28 53 42 48 52 54 C62 60 62 74 54 80 C48 84 40 82 36 76" />
+                  <path d="M46 148 C34 149 25 141 27 131 C29 122 39 118 46 123 C52 128 51 137 44 139" />
+                </g>
+                <g fill="#7d9b57" opacity=".85">
+                  <path d="M49 52 C55 45 63 43 68 45 C66 51 60 55 53 56 Z" />
+                  <path d="M43 108 C36 103 28 103 24 106 C27 111 34 114 41 113 Z" />
+                  <path d="M48 84 C54 79 61 78 65 80 C63 85 57 88 51 88 Z" />
+                </g>
+                <g fill="#d98a6a">
+                  <circle cx="69" cy="6" r="4.4" /><circle cx="78" cy="10.5" r="4.4" /><circle cx="76" cy="19.5" r="4.4" /><circle cx="66" cy="20" r="4.4" /><circle cx="62.5" cy="11" r="4.4" />
+                </g>
+                <circle cx="69.5" cy="13" r="3.1" fill="#e9b949" />
+                <g fill="#b5502f" opacity=".92">
+                  <circle cx="18.5" cy="55" r="3.6" /><circle cx="25.5" cy="58" r="3.6" /><circle cx="23.5" cy="65" r="3.6" /><circle cx="16.5" cy="63.5" r="3.6" />
+                </g>
+                <circle cx="21" cy="60.5" r="2.4" fill="#f3e5c3" />
+                <g fill="#f3e5c3">
+                  <circle cx="37" cy="29" r="3.4" /><circle cx="43.5" cy="32" r="3.4" /><circle cx="42" cy="38.5" r="3.4" /><circle cx="35.5" cy="37.5" r="3.4" />
+                </g>
+                <circle cx="39" cy="34" r="2.2" fill="#cd7350" />
+                <circle cx="52" cy="128" r="2.6" fill="#c9a24f" />
+              </g>
+            </svg>
             <h2 class="section-title">Des histoires vraies, en chansons.</h2>
             <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
           </div>
@@ -2927,7 +3792,7 @@
               <img src="assets/cindy-hero-automne-guitare.png" alt="Cindy Roy à la guitare dans un décor d’automne doré, un grand foulard brun sur l’épaule et des papillons sur sa guitare, avec l’inscription manuscrite « J’aime, je vis, je chante… Un pas à la fois »" width="1672" height="940" loading="lazy" decoding="async" />
             </figure>
             <details class="photo-gallery">
-              <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, Michel — un clic</span></summary>
+              <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, mes grands enfants, Michel — un clic</span></summary>
               <div class="gallery-body">
             <p>Ma grand-mère Marie Boudreau chantait et jouait de l’orgue dans son salon, souvent à l’oreille. Moi aussi, j’avais déjà l’oreille et je m’amusais à inventer des mélodies. C’est elle qui m’a montré mes premiers accords — ça m’a influencée, comme tout le reste.</p>
             <p>Pendant ce temps, mon grand-père Émery Boudreau filmait tous les moments spéciaux — il aimait tellement sa caméra. Excellent cuisinier, c'est lui qui cuisait la dinde à chaque Noël. Vétéran de la Deuxième Guerre mondiale, c’était un véritable héros — il s’est battu pour notre pays. Un homme autoritaire… mais drôle comme pas un! Mon oncle Donald a raconté son histoire dans son livre, La guerre à Emery à Edmond — vous le trouverez plus bas, dans ma vitrine familiale. Ma grand-mère et lui se taquinaient sans arrêt, chacun essayant de nous recruter dans son équipe.</p>
@@ -2957,7 +3822,7 @@
                 <img src="assets/cindy-miroir-robe-verte.jpg" alt="Cindy Roy devant le miroir, plein pied, dans sa robe verte et ses sandales dorées, le soir du spectacle" width="864" height="2432" loading="lazy" decoding="async" />
               </figure>
               <figure class="michel-photo-small">
-                <img src="assets/cindy-michel-miroir.jpg" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="1104" height="2288" loading="lazy" decoding="async" />
+                <img src="assets/cindy-michel-miroir.jpg" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="1056" height="2208" loading="lazy" decoding="async" />
               </figure>
             </div>
               </div>
@@ -3087,7 +3952,7 @@
         <div class="mission reveal">
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
           <h3 class="mission-title">Ma mission</h3>
-          <p class="mission-text">« Depuis ma tendre enfance, je sais que je suis ici pour une raison. Je me suis jamais sentie faite pour les cadres : je peux y entrer, faire ma petite besogne à ma façon, mais ma place est plus grande que ça. Ma mission, c’est d’apporter de l’amour vrai, partout où je passe. Parce que là où il manque pas d’amour, l’ennemi n’est pas invité. Il a même pas envie de venir : il lui reste pas de place. Dans le fond, c’est nous qui contrôle ça, les portails — si on les remplit d’amour, il se fera pas de mauvaise craque. »</p>
+          <p class="mission-text">« Depuis ma tendre enfance, je sais que je suis ici pour une raison. Je ne me suis jamais sentie faite pour les cadres : je peux y entrer, faire ma petite besogne à ma façon, mais la mission que je porte est plus grande que ça. Ma mission, c’est d’apporter de l’amour vrai, partout où je passe. Parce que là où on met notre attention, c’est là que notre énergie s’en va. Si on choisit de la mettre au bon endroit — de nourrir l’amour pis les bonnes choses — l’ennemi n’est pas invité : il trouve pas de place pour entrer. Un cœur rempli d’amour, ça laisse pas de mauvaise craque pour le mal. »</p>
           <div class="mission-lines">
             <p class="mission-line">Préserver l’humanité.</p>
             <p class="mission-line">Préserver son énergie.</p>
@@ -3150,7 +4015,7 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2013 à 2019</div>
-            <div class="timeline-copy"><p>« De 2013 à 2019, j’ai chanté la messe au complet dans les églises de la région — Bathurst, Robertville, Beresford, Petit-Rocher et Pointe-Verte — deux dimanches par mois, accompagnée par Nicole McGrath.</p><p>Nicole, c’était mon enseignante de première et de sixième année, devenue une grande amie. Elle savait faire planer ma voix vers le ciel. Elle me disait toujours : « Cindy, toi, quand tu chantes, c’est comme une prière. » Elle a une grosse place dans mon cœur — elle y est toujours. Elle n'est plus de ce monde — paix à son âme — mais elle m'accompagnera toujours.</p><p>On chante pas pour la gloire. Mais quand les gens venaient me dire « tu nous aides à prier », ça faisait tellement de bien. Rendre service avec ma voix, c’est un pur privilège, et je suis pleine de gratitude, à chaque fois. »</p>
+            <div class="timeline-copy"><p>« De 2013 à 2019, j’ai chanté aux messes dans les églises de la région — Bathurst, Robertville, Beresford, Petit-Rocher et Pointe-Verte — deux dimanches par mois, accompagnée par Nicole McGrath.</p><p>Nicole, c’était mon enseignante de première et de sixième année, devenue une grande amie. Elle savait faire planer ma voix vers le ciel, et elle me disait toujours : « Cindy, toi, quand tu chantes, c’est comme une prière. » Elle a une grosse place dans mon cœur — elle y est toujours. Elle n’est plus de ce monde — paix à son âme — mais elle m’accompagnera toujours.</p><p>On chante pas pour la gloire. Mais quand les gens venaient me dire : « Tu nous aides à prier », ça faisait tellement de bien. Rendre service avec ma voix, c’est un pur privilège, et je suis pleine de gratitude, à chaque fois. »</p>
             <figure class="timeline-photo nicole-small">
               <img src="assets/cindy-nicole-eglise.jpg" alt="Cindy Roy chantant au micro dans une église, avec Nicole McGrath au clavier juste à côté d’elle" loading="lazy" />
               <figcaption>Nicole et moi</figcaption>
@@ -3228,10 +4093,10 @@
                   <img src="assets/cindy-diane-tell-petit-rocher.jpg" alt="Cindy Roy avec Diane Tell à Petit-Rocher — Diane Tell à gauche, en noir avec un béret, et Cindy Roy à droite, en veste bleue et robe blanche, debout côte à côte devant un rideau noir" loading="lazy" />
                   <figcaption>Avec Diane Tell, mon idole depuis 45 ans — Petit-Rocher, 4 octobre 2026</figcaption>
                 </figure>
-                <p>Pourquoi Diane Tell? Parce qu’elle me rappelle les femmes de ma famille. Sa douceur, c’est celle des femmes Boudreau — mes tantes, ma mère. Mais derrière cette douceur, il y a un cœur de guerrière, de rebelle : elle fait sa petite affaire, elle sort des cadres. Féminine, coquette assumée — avec une bonne tête sur les épaules. Ce côté-là d’elle, il colle tellement à mon énergie — comme si on se reconnaissait.</p>
-            <p>Diane, c’est la première artiste que j’ai entendue de ma vie. J’avais cinq ans, on vivait à Calgary, et c’est mon oncle Alain qui m’avait donné une de ses cassettes. Ma mère avait un stéréo à deux cassettes : je m’enregistrais en chantant avec Diane — pis je rêvais déjà, du haut de mes cinq ans, de chanter comme elle. « Je veux chanter comme Diane! » J’étais déjà exigeante envers moi-même, à cinq ans.</p>
+                <p>Pourquoi Diane Tell? Parce qu’elle me rappelle les femmes de ma famille. Sa douceur, c’est celle des femmes Boudreau — mes tantes, ma mère. Mais derrière cette douceur, il y a un cœur de guerrière, de rebelle : elle fait sa petite affaire, elle sort des cadres. Féminine, coquette assumée, avec une bonne tête sur les épaules. Ce côté-là d’elle colle tellement à mon énergie — comme si, elle et moi, on se reconnaissait.</p>
+            <p>Diane, c’est la première artiste que j’ai entendue de ma vie. J’avais cinq ans, on vivait à Calgary, et c’est mon oncle Alain qui m’avait donné une de ses cassettes. Ma mère avait un stéréo à deux cassettes : je m’enregistrais en chantant avec Diane — pis déjà, du haut de mes cinq ans, je rêvais de chanter comme elle. « Je veux chanter comme Diane! » J’étais déjà exigeante envers moi-même, à cinq ans.</p>
             <p>Je me suis toujours sentie comme une belle petite bébitte weird, pas comme les autres — je rentrais pas dans le cadre, moi non plus. Mon album préféré d’elle, c’est En flèche : ma petite cassette orange, je l’ai gardée toute ma vie — même si, un jour, j’ai enregistré par-dessus une chanson par accident. Elle vaut plus que de l’or pour moi, cette cassette-là.</p>
-            <p>C’est sûrement là, devant ce stéréo, que j’ai décidé : « Moi, je veux chanter. » Bien des artistes sont passés depuis. Diane, elle, je l’ai toujours gardée avec moi — tout le long du chemin, comme une étoile qui me guide.</p>
+            <p>C’est sûrement là, devant ce stéréo, que j’ai décidé : « Moi, je veux chanter. » Bien des artistes sont passés depuis, mais Diane, elle, je l’ai toujours gardée avec moi — tout le long du chemin, comme une étoile qui me guide.</p>
               </div>
             </div>
           </li>
@@ -3243,7 +4108,7 @@
             <div class="influence-panel" id="influence-cabrel-panel" role="region" aria-labelledby="influence-cabrel-toggle" hidden>
               <div class="influence-panel-inner">
                 <h3 class="influence-panel-title">Pourquoi Cabrel?</h3>
-            <p>Je l’aime autant que Diane Tell — mais d’une tout autre façon. Cabrel, c’est la trame sonore de ma maison d’enfance : ma mère l’adorait et le faisait jouer du matin au soir. Mon père, un bon vivant, avait pourtant ses limites… et un jour, sa patience a lâché : malgré le stéréo caché dans le tiroir du bureau pour le protéger, il a connu la hache! 😄 À force de l’entendre partout, j’ai appris ses chansons par cœur sans m’en rendre compte. Elles font partie de mon ADN — et aujourd’hui, de mon répertoire, tout naturellement.</p>
+            <p>Cabrel, c’est la trame sonore de ma maison d’enfance : ma mère l’adorait, elle le faisait jouer du matin au soir. Mon père, un bon vivant, avait pourtant ses limites… et un jour, sa patience a lâché : malgré le stéréo caché dans le tiroir du bureau pour le protéger, il a connu la hache! 😄 À force de l’entendre partout, j’ai appris ses chansons par cœur, sans même m’en rendre compte. Elles font partie de mon ADN — et aujourd’hui, de mon répertoire, tout naturellement.</p>
             <p>Et sa plume… Personne n’écrit comme Cabrel : ça sonne Cabrel — du velours à mes oreilles. Il écrit et chante en paraboles, un style qui me va comme un gant : moi aussi, dans la vie, je parle souvent en images. Ses textes sont tellement poétiques, tellement imagés, qu’ils font naître des images en nous — jamais les mêmes d’une personne à l’autre. La même chanson peut nous rejoindre à vingt ans, puis tout autrement à cinquante. C’est ça, l’art.</p>
             <p>Je ne l’ai jamais rencontré, encore — pis ce rendez-vous-là, il est sur ma bucket list. Je garde ce rêve-là bien vivant, précieusement, dans mon cœur.</p>
               </div>
@@ -3257,7 +4122,7 @@
             <div class="influence-panel" id="influence-isabelle-panel" role="region" aria-labelledby="influence-isabelle-toggle" hidden>
               <div class="influence-panel-inner">
                 <p>Pourquoi Isabelle Boulay? Pour moi, c’est comme une fille de chez nous — une fille de la mer, de Sainte-Félicité, en Gaspésie. Son grain de voix a quelque chose de mélancolique, mêlé à une douceur maternelle qui me va droit au cœur. Sa voix, c’est une berceuse : réconfortante comme un bon bouillon de poulet avec une bonne tranche de pain de pays — c’est doux pour l’âme.</p>
-                <p>Elle interprète avec une simplicité désarmante, une aisance, une confiance tranquille. Pas de grands déploiements — elle chante avec son cœur, et c’est là que tout devient fort, intense.</p>
+                <p>Elle interprète avec une simplicité désarmante, une aisance, une confiance tranquille. Pas de grands déploiements : elle chante avec son cœur — et c’est là, justement, que tout devient fort, intense.</p>
                 <p>L’album qui m’a le plus rejointe, c’est États d’amour, avec « Je t’oublierai, je t’oublierai » et « Le banc des délaissés ». Je la chante encore aujourd’hui, avec le même plaisir.</p>
               </div>
             </div>
@@ -3269,9 +4134,9 @@
             </button>
             <div class="influence-panel" id="influence-patrick-panel" role="region" aria-labelledby="influence-patrick-toggle" hidden>
               <div class="influence-panel-inner">
-                <p>Pourquoi Patrick Norman? Je l’aime depuis que j’ai douze ans. À l’époque, les autres trippaient sur les groupes rock et les Backstreet Boys; moi, je préférais la musique québécoise. Pendant qu’elles magasinaient leurs albums, je me cachais pour aller chercher le mien : la cassette de Quand on est en amour, achetée avec mon argent de gardiennage. C’est un des premiers albums que je me suis offerts — un petit trésor de mes douze ans.</p>
+                <p>Pourquoi Patrick Norman? Je l’aime depuis que j’ai douze ans. À l’époque, les garçons trippaient sur les groupes rock pis le heavy metal, pis les filles sur les boys bands; moi, je me cachais pour aller acheter les albums de Patrick Norman. La cassette de Quand on est en amour, achetée avec mon argent de gardiennage — c’est un des premiers albums que je me suis offerts, un petit trésor de mes douze ans.</p>
                 <p>Je l’adore pour sa simplicité. Tout a l’air facile, chez lui : il joue de la guitare comme un dieu, et sa voix est douce, mélancolique — tellement familière. Ça m’apaise; c’est doux pour l’âme et pour le cœur. Ses chansons sont belles, harmonieuses, sans jamais en faire trop.</p>
-                <p>Et il y a mon père, là-dedans : il l’aimait beaucoup, Patrick Norman. Il chantait souvent ses chansons, il s’amusait à faire du karaoké sur ses tunes. Moi, je l’écoute encore aujourd’hui. Je l’ai vu en spectacle quand j’étais jeune — pis le revoir, rendue adulte, avec tout ce que je connais de la musique maintenant : je suis sûre que je l’apprécierais encore plus. C’est sur ma bucket list.</p>
+                <p>Et il y a mon père, là-dedans : il l’aimait beaucoup, Patrick Norman. Il chantait souvent ses chansons, il s’amusait à faire du karaoké sur ses tunes. Moi, je l’écoute encore aujourd’hui. Je l’ai vu en spectacle quand j’étais jeune — pis le revoir, rendue adulte, avec tout ce que je connais de la musique maintenant, je suis sûre que je l’apprécierais encore plus. C’est sur ma bucket list.</p>
               </div>
             </div>
           </li>
@@ -3282,9 +4147,9 @@
             </button>
             <div class="influence-panel" id="influence-ginette-panel" role="region" aria-labelledby="influence-ginette-toggle" hidden>
               <div class="influence-panel-inner">
-                <p>Pourquoi Ginette Reno? C’est mon idole de jeunesse. Quelle femme! Forte — dans tous les sens du mot. Elle a probablement la plus belle voix que je connaisse. Et quand Ginette entre quelque part, elle prend toute la place, toute l’énergie. C’est fou, pis c’est magnifique.</p>
-                <p>Pour moi, elle est la définition même d’une battante. Elle a osé être elle-même : vraie, simple, drôle, directe — 100 % Ginette, pis c’est exactement pour ça qu’on l’aime. Elle dégage une force de caractère incroyable.</p>
-                <p>Et avec tout le succès de sa longue carrière, elle est restée accessible à son monde. Elle a même fait la tournée des Jean Coutu, au Québec, pour rencontrer les gens et signer des autographes. Elle fait partie de ces artistes précieux qui vont à la rencontre de leur monde. Il y a une vingtaine d’années, je lui avais écrit pour l’inviter à visiter mon site et à écouter ma voix. Elle m’avait répondu : « Bonne et belle voix, continue! » Ces mots-là, je les garde précieusement. Elle avait pris la peine de m’écouter, pis ça veut dire tellement pour moi. Si jamais tu vois ça, Ginette : merci.</p>
+                <p>Pourquoi Ginette Reno? C’est une grande interprète, une grande chanteuse que j’adore depuis ma jeunesse. Quelle femme! Forte — dans tous les sens du mot. Elle a probablement la plus belle voix que je connaisse. Et quand Ginette entre quelque part, elle prend toute la place, toute l’énergie — c’est fou, pis c’est magnifique.</p>
+                <p>Pour moi, elle est la définition même d’une battante. Elle a osé être elle-même : vraie, simple, drôle, directe — 100 % Ginette. Pis c’est exactement pour ça qu’on l’aime : elle dégage une force de caractère incroyable.</p>
+                <p>Et avec tout le succès de sa longue carrière, elle est restée accessible à son monde. Elle a même fait la tournée des Jean Coutu, au Québec, pour rencontrer les gens et signer des autographes : elle fait partie de ces artistes précieux qui vont à la rencontre de leur monde. Il y a une vingtaine d’années, je lui avais écrit pour l’inviter à visiter mon site et à écouter ma voix. Elle m’avait répondu : « Bonne et belle voix, continue! » Ces mots-là, je les garde précieusement — elle avait pris la peine de m’écouter, pis ça veut dire tellement pour moi. Si jamais tu vois ça, Ginette : merci.</p>
               </div>
             </div>
           </li>
@@ -3295,7 +4160,7 @@
             </button>
             <div class="influence-panel" id="influence-laurence-panel" role="region" aria-labelledby="influence-laurence-toggle" hidden>
               <div class="influence-panel-inner">
-                <p>Pourquoi Laurence Jalbert? C’est familier — comme une amie de longue date. Ses chansons me suivent depuis ses premiers albums — l’époque de Columbia House, où j’ai bâti ma collection de CD, douze à la fois pour une cenne. Dès que j’ai entendu Tomber, je suis tombée sous le charme. Encore et encore, Tomber… honnêtement, toutes les chansons de cet album-là sont mes préférées.</p>
+                <p>Pourquoi Laurence Jalbert? C’est familier — comme une amie de longue date. Ses chansons me suivent depuis ses premiers albums, depuis l’époque de Columbia House, où j’ai bâti ma collection de CD, douze à la fois pour une cenne. Dès que j’ai entendu Tomber, je suis tombée sous le charme. Encore et encore, Tomber… honnêtement, toutes les chansons de cet album-là sont mes préférées.</p>
                 <p>Pour moi, Laurence, c’est comme un cheval : sa belle crinière, sa force — et ce côté sauvage. Il y a chez elle quelque chose de familier, un peu comme chez Isabelle Boulay, mais en version sauvage. Et cette énergie-là, je la reconnais : moi aussi, j’ai un petit côté sauvage, pour ceux qui me connaissent bien. J’aime beaucoup le monde… mais j’aime aussi ma petite bulle.</p>
                 <p>Un jour, j’aimerais chanter avec elle. Deux crinières dans le vent — je me verrais bien là. L’invitation est lancée, Laurence : je sais que t’es cool. 😉</p>
               </div>
@@ -3309,7 +4174,7 @@
             <div class="influence-panel" id="influence-shania-panel" role="region" aria-labelledby="influence-shania-toggle" hidden>
               <div class="influence-panel-inner">
                 <p>Pourquoi Shania Twain? D’abord, son histoire de courage — elle est venue me chercher, droit au cœur. On a nos similarités, elle et moi : comme elle, j’ai dû grandir trop vite, devenir adulte trop vite. Aujourd’hui, je me reprends : je retourne à mes amours de chanson, pis je bâtis, un pas à la fois, vers le rêve d’une vie.</p>
-                <p>Pour moi, c’est la reine du country. Elle a fait tomber toutes les barrières : elle a traversé du country à la pop et amené une dimension nouvelle — le country n’a jamais été pareil après elle, et les femmes du country non plus. Elle l’a fait en restant fidèle à elle-même : au début, ils ont essayé de la modeler; elle a insisté. Résilience et force mentale — c’est ça, Shania. Elle savait où elle s’en allait — son nom le dit : Shania, ça veut dire « je suis en route ».</p>
+                <p>Pour moi, c’est la reine du country. Elle a fait tomber toutes les barrières : elle a traversé du country à la pop, elle a amené une dimension nouvelle — le country n’a jamais été pareil après elle, et les femmes du country non plus. Elle l’a fait en restant fidèle à elle-même : au début, ils ont essayé de la modeler; elle a insisté. Résilience et force mentale — c’est ça, Shania. Elle savait où elle s’en allait — son nom le dit : Shania, ça veut dire « je suis en route ».</p>
                 <p>Pis sa musique a tellement joué dans nos oreilles qu’elle est devenue familière — un mouvement, presque. Je l’écoutais religieusement dans l’auto; je les ai toutes sues par cœur. Encore aujourd’hui, quand je sors Man! I Feel Like a Woman! ou Any Man of Mine dans un show, le plancher de danse se remplit — garanti. Mon côté performeuse, celle qui aime danser pis bouger sur scène, s’y reconnaît. Shania, c’est un incontournable.</p>
               </div>
             </div>
@@ -3322,7 +4187,7 @@
             <div class="influence-panel" id="influence-lara-panel" role="region" aria-labelledby="influence-lara-toggle" hidden>
               <div class="influence-panel-inner">
                 <p>Pourquoi Lara Fabian? Je pense à l’album Pure. Sa façon d’interpréter, d’être proche de ses émotions, me rejoint beaucoup. Moi, je me sentais à la maison quand je l’écoutais, quand je la voyais performer pis incarner sa chanson — valser avec l’âme de la toune. Lara, pour moi, c’est une école : une école d’interprétation.</p>
-                <p>Sa façon de véhiculer, de bouger, de se retenir puis de propulser — tout est tellement calculé, tellement à sa place. C’est une génie, une magicienne, une alchimiste de la voix. Je l’écoute encore aujourd’hui avec autant d’admiration, pis j’apprends encore d’elle. Lara, c’est comme une harpe : douce, mais pleine de pouvoir.</p>
+                <p>Sa façon de véhiculer, de bouger, de se retenir puis de propulser — tout est tellement calculé, tellement à sa place. C’est un génie, une magicienne, une alchimiste de la voix. Je l’écoute encore aujourd’hui avec autant d’admiration, pis j’apprends encore d’elle. Lara, c’est comme une harpe : douce, mais pleine de pouvoir.</p>
                 <p>Pis elle est très maternelle, très femme. Je pense que j’ai un pattern : j’aime les femmes qui montrent leurs émotions, avec ce beau côté maternel — autant que j’aime le côté sauvage, rebelle, guerrière. Deux pôles qui m’attirent, pis qui m’inspirent.</p>
               </div>
             </div>
@@ -3335,7 +4200,7 @@
             <div class="influence-panel" id="influence-alanis-panel" role="region" aria-labelledby="influence-alanis-toggle" hidden>
               <div class="influence-panel-inner">
                 <p>Pourquoi Alanis Morissette? Elle est arrivée juste au bon moment. J’avais 16, 17, 18 ans — pis toute une gang de filles comme moi, on était prêtes pour ça. L’adolescence, avec ses amours, ses hormones, tout ce qui bouge fort dans ce temps-là… ses chansons, ça a été un défoulement collectif. Ça faisait du bien de crier ça dans un micro. Jagged Little Pill — selon moi, le meilleur album qu’elle ait jamais fait.</p>
-                <p>Encore aujourd’hui, quand j’ai le goût de me défouler en karaoké, c’est elle que je chante : « And every time I scratch my nails down someone else’s back, I hope you feel it — well, can you feel it? » Ah, que ça fait du bien — ça enlève le méchant. Ça défoule — pis c’est encore efficace aujourd’hui.</p>
+                <p>Encore aujourd’hui, quand j’ai le goût de me défouler en karaoké, c’est elle que je chante : « And every time I scratch my nails down someone else’s back, I hope you feel it — well, can you feel it? » Ah, que ça fait du bien — ça enlève le méchant. Ça défoule, pis c’est encore efficace aujourd’hui.</p>
                 <p>Pis je suis fière d’elle : une grande Canadienne. Au début, ils ont essayé de la modeler en petite princesse de la pop; elle a dit non, non, non — elle a fait son petit bout de chemin, à sa façon. Elle est restée elle-même. C’est pour ça qu’on se rappelle d’elle, pis qu’on chante encore ses chansons aujourd’hui.</p>
               </div>
             </div>
@@ -3347,9 +4212,9 @@
             </button>
             <div class="influence-panel" id="influence-celine-panel" role="region" aria-labelledby="influence-celine-toggle" hidden>
               <div class="influence-panel-inner">
-                <p>Pourquoi Céline Dion? Céline, c’est un incontournable — la plus grande chanteuse du monde. Pour moi, ça a été l’école totale. Je la suis depuis que je suis toute petite — pas tout à fait aussi longtemps que Diane Tell, mais juste après. J’ai acheté tous ses albums, je connais pratiquement toutes ses chansons, pis je les ai toutes chantées.</p>
-                <p>J’ai appris à chanter en l’imitant. Dans ce temps-là, je pensais que chanter comme Céline, c’était ça, chanter : j’essayais de sonner comme elle, avant de découvrir le plaisir de chanter comme moi. C’est une étape que bien des artistes traversent en se cherchant. Ses chansons, c’étaient souvent mes vocalises : si je pouvais chanter du Céline, le reste allait être facile. Pis aujourd’hui, j’ose croire que j’ai trouvé ma voix — avec des petites influences ici et là, c’est normal. Mais Céline, ça a été la grande, grande, grande école.</p>
-                <p>Pis comment ne pas être fière d’elle? Une si grande carrière, tellement de détermination, tellement de drive. Oui, elle avait une bonne équipe, elle avait son René — mais cette femme-là, c’est une grande. J’ai eu le privilège de la voir en show en 1996, en pleine tournée Falling into You. J’étais étudiante à l’université dans ce temps-là. Je m’étais payé un billet, pis j’ai probablement fini le mois à stretcher mes nouilles ramen — but in the end, it was worth it. Mic drop.</p>
+                <p>Pourquoi Céline Dion? Parce que Céline, c’est un incontournable — la plus grande chanteuse du monde. Pour moi, ça a été l’école totale. Je la suis depuis que je suis toute petite — pas tout à fait aussi longtemps que Diane Tell, mais juste après. J’ai acheté tous ses albums, je connais pratiquement toutes ses chansons, pis je les ai toutes chantées.</p>
+                <p>J’ai appris à chanter en l’imitant. Dans ce temps-là, je pensais que chanter comme Céline, c’était ça, chanter : j’essayais de sonner comme elle, avant de découvrir le plaisir de chanter comme moi — une étape que bien des artistes traversent en se cherchant. Ses chansons, c’étaient souvent mes vocalises : si je pouvais chanter du Céline, le reste allait être facile. Pis aujourd’hui, j’ose croire que j’ai trouvé ma voix — avec des petites influences ici et là, c’est normal. Mais Céline, ça a été la grande, grande, grande école.</p>
+                <p>Pis comment ne pas être fière d’elle? Une si grande carrière, tellement de détermination, tellement de drive. Oui, elle avait une bonne équipe, elle avait son René — mais cette femme-là, c’est une grande. J’ai eu le privilège de la voir en show en 1996, en pleine tournée Falling into You. J’étais étudiante à l’université dans ce temps-là : je m’étais payé un billet, pis j’ai probablement fini le mois à stretcher mes nouilles ramen — but in the end, it was worth it. Mic drop.</p>
               </div>
             </div>
           </li>
@@ -4056,6 +4921,52 @@
       }
       fitName();
       [300, 900, 2000, 3500].forEach(function (delay) { window.setTimeout(fitName, delay); });
+    })();
+  </script>
+<script>
+    /* La colombe des accomplissements : une seule traversée,
+       déclenchée quand le bloc « Mes plus beaux accomplissements »
+       entre à l’écran, puis elle se pose sur le « E » de
+       « Entend » dans la mention « Entend ma prière » de ce bloc
+       (position mesurée sur la lettre réelle du titre) et y
+       reste. Aucun redépart. */
+    (function () {
+      var dove = document.querySelector('.highlights-dove');
+      var section = document.getElementById('coups-de-coeur');
+      if (!dove || !section) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function measure() {
+        var title = section.querySelector('.highlights-title');
+        if (!title) return false;
+        var node = null, idx = -1;
+        for (var i = 0; i < title.childNodes.length; i++) {
+          var n = title.childNodes[i];
+          if (n.nodeType === 3 && n.textContent.indexOf('Entend') > -1) { node = n; idx = n.textContent.indexOf('Entend'); break; }
+        }
+        if (!node) return false;
+        var range = document.createRange();
+        range.setStart(node, idx); range.setEnd(node, idx + 1);
+        var r = range.getBoundingClientRect();
+        var s = section.getBoundingClientRect();
+        var w = dove.offsetWidth, h = dove.offsetHeight;
+        if (!r.width || !w) return false;
+        dove.style.setProperty('--dove-end-x', (r.left - s.left + r.width / 2 - w * 0.50) + 'px');
+        dove.style.setProperty('--dove-end-y', (r.top - s.top - h * 0.80 + 5) + 'px');
+        return true;
+      }
+      var played = false;
+      function play() { if (played) return; if (!measure()) return; played = true; dove.classList.add('play'); }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
+        }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
+        io.observe(section);
+      } else { play(); }
+      var rt;
+      window.addEventListener('resize', function () {
+        if (!played) return;
+        window.clearTimeout(rt); rt = window.setTimeout(measure, 200);
+      });
     })();
   </script>
 <script data-goatcounter="https://cindyroyofficiel.goatcounter.com/count"
