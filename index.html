@@ -1002,7 +1002,12 @@
     .section-intro { margin: 24px 0 0; max-width: 710px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
 
     .music-section { background: var(--bg-cream); }
-    .music-intro { display: flex; align-items: center; gap: clamp(28px, 4vw, 52px); position: relative; }
+    /* Intro « Ma musique » : le texte à gauche, et à sa droite — en
+       haut — le petit vidéo « L’autrice au travail » (.ecrit-video),
+       qui a pris la place de l’ancienne photo fondue du rocher/rivière
+       (retirée à la demande de Cindy, 4 nov.). Même disposition au
+       téléphone et sur l’ordinateur : toujours côte à côte. */
+    .music-intro { display: flex; align-items: flex-start; gap: clamp(28px, 4vw, 52px); position: relative; }
     /* — La portée en tiges de plantes (idée de Cindy, 2 nov.
        21 h 45, RAFFINÉE 21 h 58 — remplace le petit motif « fleur
        en clé de sol » qui vivait à la jonction photo/texte, retiré
@@ -1076,11 +1081,10 @@
       .music-staff .staff-extra { display: none; }
     }
     .music-intro-copy { flex: 1 1 auto; min-width: 0; }
-    .music-intro-photo { margin: 0; flex: none; width: clamp(180px, 22vw, 240px); }
-    .music-intro-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     @media (max-width: 700px) {
-      .music-intro { flex-direction: column; align-items: flex-start; }
-      .music-intro-photo { width: 200px; }
+      /* Téléphone : PAS d’empilement — le vidéo reste à côté du
+         texte, à droite, comme sur l’ordinateur (Cindy, 4 nov.). */
+      .music-intro { flex-direction: row; align-items: flex-start; gap: 16px; }
     }
     .atelier-intro { display: flex; align-items: flex-start; gap: clamp(28px, 4vw, 52px); }
     .atelier-intro-copy { flex: 1 1 auto; min-width: 0; }
@@ -2894,16 +2898,20 @@
     /* — « L’autrice au travail » (Cindy, 4 nov.) : le petit vidéo
        d’elle qui écrit, extrait réel de la fin de son vidéo « Une
        fleur à la bouche » — assise avec son cahier, crayon en main.
-       PETIT format élégant, posé dans la rangée d’intro de la
-       section, dans l’esprit du jardin : lecture automatique en
-       sourdine, en boucle, sans contrôles (rien qui distrait),
-       cadre FIN doré dont les bords se perdent en léger fondu
-       (masque plumeux, même technique que la photo d’intro de la
-       section) avec un doux halo doré. Petit texte dessous :
-       « L’autrice au travail. » Si prefers-reduced-motion, le
-       vidéo ne démarre pas tout seul (garde-fou dans le script
-       juste après la figure ; l’affiche reste visible). À
-       l’impression, le vidéo se retire, comme le jardin. */
+       PETIT format élégant, posé EN HAUT À DROITE de l’intro de la
+       section, à côté du texte « Des histoires vraies, en
+       chansons. » — il y a pris la place de l’ancienne photo fondue
+       du rocher/rivière, retirée, et il n’apparaît qu’À CET endroit
+       de la section (une seule fois). Même disposition au téléphone
+       et sur l’ordinateur : toujours à côté du texte, à droite.
+       Dans l’esprit du jardin : lecture automatique en sourdine, en
+       boucle, sans contrôles (rien qui distrait), cadre FIN doré
+       dont les bords se perdent en léger fondu (masque plumeux)
+       avec un doux halo doré. Petit texte dessous : « L’autrice au
+       travail. » Si prefers-reduced-motion, le vidéo ne démarre pas
+       tout seul (garde-fou dans le script juste après la figure ;
+       l’affiche reste visible). À l’impression, le vidéo se retire,
+       comme le jardin. */
     .ecrit-video { margin: 0; flex: none; width: clamp(128px, 13vw, 158px); text-align: center; }
     .ecrit-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border: 1px solid var(--gold); border-radius: 6px;
       box-shadow: 0 0 0 3px rgba(201, 162, 79, .16), 0 14px 34px rgba(74, 56, 26, .20);
@@ -2916,7 +2924,7 @@
         linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
       mask-composite: intersect; }
     .ecrit-video figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.4; }
-    @media (max-width: 700px) { .ecrit-video { width: 136px; } }
+    @media (max-width: 700px) { .ecrit-video { width: 122px; } }
     @media print { .ecrit-video { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
@@ -3456,30 +3464,11 @@
       .gala-videos-duo .gala-featured iframe,
       .gala-videos-duo .scene-item video { width: 92%; }
     }
-    /* — Photo de l’intro « Ma musique » : FONDU dans le décor
-       (Cindy, 2 nov. 22 h 11) — sa photo au rocher/rivière,
-       complètement à droite de l’intro, FOND maintenant dans
-       le fond crème de la section : masque CSS plumeux sur les
-       quatre côtés, un peu plus appuyé en bas, comme une photo
-       fondue dans le décor. Cindy reste entièrement nette et
-       visible au centre; le fichier photo n’est ni recadré ni
-       retouché (masque seulement). Le cadre dur disparaît avec
-       le fondu : ni bordure ni ombre portée, qui dessineraient
-       un rectangle net sous les bords dissous. Le masque est
-       en transparence : il épouse aussi bien le crème clair
-       que le fond sombre du mode nuit. Même traitement au
-       téléphone, où la photo passe sous le texte. */
-    .music-section .music-intro-photo img {
-      border: 0; box-shadow: none; border-radius: 0;
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0, #000 13%, #000 87%, transparent 100%),
-        linear-gradient(to bottom, transparent 0, #000 7%, #000 74%, rgba(0, 0, 0, .55) 88%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to right, transparent 0, #000 13%, #000 87%, transparent 100%),
-        linear-gradient(to bottom, transparent 0, #000 7%, #000 74%, rgba(0, 0, 0, .55) 88%, transparent 100%);
-      mask-composite: intersect;
-    }
+    /* — Photo de l’intro « Ma musique » : RETIRÉE (Cindy, 4 nov.) —
+       l’ancienne photo fondue du rocher/rivière, qui vivait en haut
+       à droite de l’intro, a été enlevée; le petit vidéo « L’autrice
+       au travail » (.ecrit-video) occupe maintenant cette place, à
+       côté du texte. */
     /* — Originales : Théo et Martial, UNE seule famille (Cindy,
        2 nov. 16 h 31) — l’espace entre le bloc « Avec
        arrangement — Théo Rota » et le bloc des chansons de
@@ -4245,9 +4234,6 @@
             <h2 class="section-title">Des histoires vraies, en chansons.</h2>
             <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
           </div>
-          <figure class="music-intro-photo">
-            <img src="assets/cindy-rocher-riviere-automne.jpg" alt="Cindy Roy assise sur un rocher au bord d’une rivière, en automne, grand sourire" width="1586" height="2048" loading="lazy" />
-          </figure>
           <figure class="ecrit-video">
             <video src="assets/cindy-ecrit.mp4" poster="assets/cindy-ecrit-poster.jpg" autoplay muted loop playsinline preload="metadata" title="Cindy Roy en train d’écrire dans son cahier — les dernières secondes de son vidéo « Une fleur à la bouche »" aria-label="Cindy Roy, assise avec son cahier, en train d’écrire"></video>
             <figcaption>L’autrice au travail.</figcaption>
