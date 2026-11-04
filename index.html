@@ -2716,7 +2716,7 @@
     .highlights-lede { margin: 26px auto 0; max-width: 620px; color: #dde0cb; font-size: 19px; line-height: 1.7; }
     /* — Le petit bout de piano des accomplissements (décision de
        Cindy, 3 nov.) : un seul bouton doré discret sous le titre
-       où la colombe se pose; l’audio reste invisible (aucun gros
+       du bloc; l’audio reste invisible (aucun gros
        lecteur), aucun autoplay — un clic joue, un clic met pause. */
     .piano-listen { display: inline-flex; align-items: center; gap: 9px; margin: 30px auto 0; padding: 11px 24px; border: 1.5px solid rgba(201,162,79,.65); border-radius: 999px; background: transparent; color: #e7b34b; font-family: var(--sans); font-size: 15.5px; font-weight: 700; letter-spacing: .01em; line-height: 1.25; cursor: pointer; transition: background .25s ease, border-color .25s ease, color .25s ease; }
     .piano-listen:hover { background: rgba(201,162,79,.14); border-color: var(--gold); color: #f0cd7e; }
@@ -2791,15 +2791,22 @@
        l’ancien rouleau messager) — la prière portée. Elle fait
        UN seul aller : elle traverse le haut du
        bloc d’un vol lent au battement d’ailes calme, puis vient
-       se POSER sur le « E » du mot « Entends » dans la mention
-       « Entends ma prière » du titre de CE bloc, et y reste
-       perchée, tranquille (au plus un micro-balancement), son
-       rouleau toujours au bec. Pas de second départ, pas de
-       boucle : le vol part une seule fois, quand le bloc entre
-       à l’écran (IntersectionObserver), et la position d’arrivée
-       est MESURÉE en JavaScript sur la lettre réelle du titre
+       se POSER sur le CŒUR de Cindy (précision de Cindy, 4 nov.
+       au soir : « ça serait plus beau si elle volait et se
+       déposerait sur mon cœur » — elle remplace l’ancien
+       atterrissage sur le « E » d’« Entends ma prière ») : le
+       cœur de Cindy dans la photo fondue du décor des honneurs
+       (assets/gala-decor-cindy-trophee.jpg, à gauche du titre),
+       et elle y reste perchée, tranquille (au plus un
+       micro-balancement), son chapelet toujours au bec. Pas de
+       second départ, pas de boucle : le vol part une seule fois,
+       quand le bloc entre à l’écran (IntersectionObserver), et
+       la position d’arrivée est MESURÉE en JavaScript sur la
+       photo réelle du décor — un point d’ancrage sur sa
+       poitrine, côté cœur, rattaché à l’élément photo
        (--dove-end-x / --dove-end-y), pour tomber juste sur
-       portable comme au téléphone. En vol, elle reste dans la
+       son cœur à toutes les largeurs, portable comme au
+       téléphone. En vol, elle reste dans la
        bande libre du haut — jamais sur les textes, la photo du
        trophée/hommage ni les boutons. Au téléphone, elle fait
        66 px (100 px sur grand écran) : assez grande pour se
@@ -3011,8 +3018,16 @@
       /* Ancre reculée de 20 px (4 nov., au soir) : le papillon suit
          le petit vidéo « L’autrice au travail », poussé du même
          20 px vers la droite au téléphone (voir .ecrit-video,
-         bloc ≤ 700 px plus bas) — il vole toujours par-dessus. */
-      .music-garden-butterfly { width: 30px; opacity: .95; top: 320px; right: calc(18px + clamp(18px, 5.7vw, 76px) - 20px); }
+         bloc ≤ 700 px plus bas) — il vole toujours par-dessus.
+         SUIVI DU RAPETISSEMENT (4 nov., plus tard) : le vidéo est
+         descendu (bord supérieur à ~265 px du haut de la section)
+         et rapetissé à 90 px — l’ancre du papillon descend donc
+         avec lui (top 320 px → 300 px, pour qu’il parte du haut
+         du vidéo et le traverse en montant, comme avant) et son
+         ancre de droite est ramenée vis-à-vis le nouveau coin
+         supérieur droit du bloc (bord droit du vidéo à ~39 px du
+         bord de l’écran, rembourrage compris). */
+      .music-garden-butterfly { width: 30px; opacity: .95; top: 300px; right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) - 5px); }
       @keyframes garden-butterfly-rise {
         0% { transform: translate(0, 0) rotate(-4deg); }
         35% { transform: translate(-10px, -44px) rotate(4deg); }
@@ -3136,12 +3151,34 @@
        ces 20 px et le titre respire) — le bloc reste entièrement
        dans l’écran : il garde toujours au moins ~10 px de marge
        propre, plus le rembourrage de la section, aucun
-       débordement horizontal. Taille (144 px), cadre doré et
-       légende « L’autrice au travail. » — centrée sous le bloc,
-       elle le suit — inchangés. Le papillon de l’envol recule du
-       même 20 px sur son ancre mobile (règle ≤ 700 px plus haut)
-       pour garder sa trajectoire par-dessus le vidéo. */
-    @media (max-width: 700px) { .ecrit-video { width: 144px; margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) - 20px); } }
+       débordement horizontal. Cadre doré et légende « L’autrice
+       au travail. » — centrée sous le bloc, elle le suit —
+       inchangés. Le papillon de l’envol recule du même 20 px sur
+       son ancre mobile (règle ≤ 700 px plus haut) pour garder
+       sa trajectoire par-dessus le vidéo.
+       RAPETISSÉ ET DESCENDU (Cindy, 4 nov., plus tard) : même
+       poussé à droite, le vidéo restait TROP GROS au téléphone —
+       collé sur le mot « histoires » du titre et par-dessus sa
+       photo dans le jardin en fond. Il passe donc de 144 px à
+       90 px de large (moins des deux tiers; sa hauteur tombe de
+       ~256 px à ~160 px) et il DESCEND franchement dans l’espace
+       libre sous l’en-tête : une marge du haut de 190 px pose son
+       bord supérieur bien sous la hauteur de l’épaule de Cindy
+       dans la photo de jardin (l’épaule arrive à ~170 px du haut
+       de la section au téléphone; le vidéo part à ~265 px). Le
+       titre « Des histoires vraies, en chansons. » est alors
+       entièrement dégagé, sa colonne de texte s’élargit d’autant
+       (le mot « histoires » tient au complet sur sa ligne), et
+       le bloc prend beaucoup moins de place dans la page : la
+       colonne de texte de gauche reste plus haute que lui, donc
+       l’en-tête ne grandit pas. Toujours ancré à droite, même
+       marge de droite (le recul de 20 px ci-dessus est conservé),
+       aucun débordement horizontal. La légende suit le bloc. Le
+       papillon de l’envol suit aussi le déplacement (règle
+       ≤ 700 px plus haut : ancre abaissée et ramenée sur le
+       nouveau coin du vidéo) pour continuer de voler par-dessus
+       lui. L’ordinateur (≥ 701 px) ne change pas. */
+    @media (max-width: 700px) { .ecrit-video { width: 90px; margin-top: 190px; margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) - 20px); } .ecrit-video figcaption { font-size: 14.5px; } }
     @media print { .ecrit-video { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
@@ -6124,32 +6161,38 @@
 <script>
     /* La colombe des accomplissements : une seule traversée,
        déclenchée quand le bloc « Mes plus beaux accomplissements »
-       entre à l’écran, puis elle se pose sur le « E » de
-       « Entends » dans la mention « Entends ma prière » de ce bloc
-       (position mesurée sur la lettre réelle du titre) et y
-       reste. Aucun redépart. */
+       entre à l’écran, puis elle vole se déposer sur le CŒUR de
+       Cindy dans la photo fondue du décor des honneurs
+       (assets/gala-decor-cindy-trophee.jpg, Cindy avec son
+       trophée, à gauche du titre « Ma prière a été entendue »)
+       et y reste. Aucun redépart.
+       Le point d’atterrissage est rattaché à l’ÉLÉMENT PHOTO
+       lui-même : on mesure son rectangle rendu, puis on vise le
+       point de sa poitrine, côté cœur, repéré dans le fichier
+       source (760 × 1178) à ≈ 58,5 % de sa largeur et ≈ 53,0 %
+       de sa hauteur — juste sous son pendentif, sur la dentelle
+       au-dessus du trophée. Comme le point suit le rectangle
+       réel de la photo, la colombe tombe sur son cœur à toutes
+       les largeurs, portable comme téléphone. Ses pattes (à
+       ≈ 37 % de la largeur du dessin, ≈ 83 % de sa hauteur)
+       sont le point de contact : on décale donc l’arrivée pour
+       que ce soient elles qui touchent le cœur. */
     (function () {
       var dove = document.querySelector('.highlights-dove');
       var section = document.getElementById('coups-de-coeur');
       if (!dove || !section) return;
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       function measure() {
-        var title = section.querySelector('.highlights-title');
-        if (!title) return false;
-        var node = null, idx = -1;
-        for (var i = 0; i < title.childNodes.length; i++) {
-          var n = title.childNodes[i];
-          if (n.nodeType === 3 && n.textContent.indexOf('Entends') > -1) { node = n; idx = n.textContent.indexOf('Entends'); break; }
-        }
-        if (!node) return false;
-        var range = document.createRange();
-        range.setStart(node, idx); range.setEnd(node, idx + 1);
-        var r = range.getBoundingClientRect();
+        var photo = section.querySelector('.gala-decor-photo--cindy');
+        if (!photo) return false;
+        var r = photo.getBoundingClientRect();
         var s = section.getBoundingClientRect();
         var w = dove.offsetWidth, h = dove.offsetHeight;
-        if (!r.width || !w) return false;
-        dove.style.setProperty('--dove-end-x', (r.left - s.left + r.width / 2 - w * 0.50) + 'px');
-        dove.style.setProperty('--dove-end-y', (r.top - s.top - h * 0.80 + 5) + 'px');
+        if (!r.width || !r.height || !w) return false;
+        var heartX = r.left - s.left + r.width * 0.585;
+        var heartY = r.top - s.top + r.height * 0.530;
+        dove.style.setProperty('--dove-end-x', (heartX - w * 0.37) + 'px');
+        dove.style.setProperty('--dove-end-y', (heartY - h * 0.83 + 3) + 'px');
         return true;
       }
       var played = false;
