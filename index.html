@@ -2048,6 +2048,34 @@
       .scene-item.scene-loge figcaption { text-align: center; }
       .scene-item.scene-loge figcaption::before { margin-bottom: 10px; }
     }
+    /* La loge déménage à côté du vidéo de La Bibitte (Cindy, 4 nov.,
+       captures de son portable à l’appui) : sur ORDINATEUR, le lecteur
+       « Entend ma prière » — portrait et très haut — occupait seul la
+       première rangée de la grille et laissait un grand vide dans la
+       deuxième colonne. La photo de la loge remplit maintenant ce vide,
+       centrée verticalement à côté du vidéo, avec sa légende étoilée à
+       sa droite, exactement comme elle se présentait avant. La photo
+       du cercle « Des airs et des mots » reste en dessous, pleine
+       largeur, inchangée. La loge garde ses classes : son cadre reste
+       celui de toutes les photos de scène (.scene-item img — bordure,
+       ombre, coins), identique à celui de la photo miroir avec Michel.
+       Sur TÉLÉPHONE, Cindy trouve la disposition actuelle correcte :
+       elle est conservée telle quelle — la grille passe à une colonne
+       et l’ordre d’origine (vidéo, photo du cercle, puis la loge
+       centrée avec sa légende dessous) est rétabli par order, la
+       marge du haut de la loge étant remplacée par l’écart de grille. */
+    .scene-grid--bibitte .scene-loge { margin: 0 auto; max-width: none; }
+    .scene-grid--bibitte .scene-bibitte-wide { grid-column: 1 / -1; margin-top: 0; }
+    @media (min-width: 721px) {
+      .scene-grid--bibitte .scene-loge { align-self: center; }
+    }
+    @media (max-width: 720px) {
+      .scene-grid--bibitte .scene-bibitte-wide { order: 3; }
+      .scene-grid--bibitte .scene-loge { order: 4; }
+    }
+    @media (max-width: 620px) {
+      .scene-grid--bibitte .scene-loge { max-width: 320px; }
+    }
     /* La vraie photo de scène (Cindy, 3 nov.) : en tête de la section
        Scène, juste sous le titre et l’intro — la première chose qu’on
        voit en arrivant dans la section, dans l’espace libéré par le
@@ -2863,6 +2891,33 @@
       .music-garden-note-float { opacity: .35; }
     }
     @media print { .music-garden { display: none; } }
+    /* — « L’autrice au travail » (Cindy, 4 nov.) : le petit vidéo
+       d’elle qui écrit, extrait réel de la fin de son vidéo « Une
+       fleur à la bouche » — assise avec son cahier, crayon en main.
+       PETIT format élégant, posé dans la rangée d’intro de la
+       section, dans l’esprit du jardin : lecture automatique en
+       sourdine, en boucle, sans contrôles (rien qui distrait),
+       cadre FIN doré dont les bords se perdent en léger fondu
+       (masque plumeux, même technique que la photo d’intro de la
+       section) avec un doux halo doré. Petit texte dessous :
+       « L’autrice au travail. » Si prefers-reduced-motion, le
+       vidéo ne démarre pas tout seul (garde-fou dans le script
+       juste après la figure ; l’affiche reste visible). À
+       l’impression, le vidéo se retire, comme le jardin. */
+    .ecrit-video { margin: 0; flex: none; width: clamp(128px, 13vw, 158px); text-align: center; }
+    .ecrit-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border: 1px solid var(--gold); border-radius: 6px;
+      box-shadow: 0 0 0 3px rgba(201, 162, 79, .16), 0 14px 34px rgba(74, 56, 26, .20);
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+        linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+      mask-composite: intersect; }
+    .ecrit-video figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.4; }
+    @media (max-width: 700px) { .ecrit-video { width: 136px; } }
+    @media print { .ecrit-video { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
     .arranged-photo { width: 68px; }
@@ -4193,7 +4248,23 @@
           <figure class="music-intro-photo">
             <img src="assets/cindy-rocher-riviere-automne.jpg" alt="Cindy Roy assise sur un rocher au bord d’une rivière, en automne, grand sourire" width="1586" height="2048" loading="lazy" />
           </figure>
+          <figure class="ecrit-video">
+            <video src="assets/cindy-ecrit.mp4" poster="assets/cindy-ecrit-poster.jpg" autoplay muted loop playsinline preload="metadata" title="Cindy Roy en train d’écrire dans son cahier — les dernières secondes de son vidéo « Une fleur à la bouche »" aria-label="Cindy Roy, assise avec son cahier, en train d’écrire"></video>
+            <figcaption>L’autrice au travail.</figcaption>
+          </figure>
         </div>
+        <script>
+          /* « L’autrice au travail » : si la personne préfère un
+             mouvement réduit, le petit vidéo ne démarre pas tout
+             seul — son affiche reste là, tranquille. */
+          (function () {
+            var v = document.querySelector('.ecrit-video video');
+            if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              v.removeAttribute('autoplay');
+              v.pause();
+            }
+          })();
+        </script>
 
         <div class="library-head">
           <h3>Répertoire</h3>
@@ -4470,7 +4541,7 @@
         </details>
         <aside class="carnaval-note">
           <p>Le Carnaval du Siffleux renaît : sa 48e édition aura lieu du 29 janvier au 7 février 2027.</p>
-          <a href="https://www.facebook.com/carnavaldusiffleux" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford →</a>
+          <a href="https://www.facebook.com/CarnavalSiffleuxBeresford" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford →</a>
         </aside>
       </div>
     </section>
@@ -4490,21 +4561,21 @@
             <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
           </div>
         </div>
-        <div class="scene-grid">
+        <div class="scene-grid scene-grid--bibitte">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
             <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
           </figure>
+          <figure class="scene-item scene-loge">
+            <img src="assets/cindy-miroir-loge-solo.jpg" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — derrière elle, la coiffeuse éclairée, les costumes suspendus et l’écriteau « Stage Door »" width="864" height="2432" loading="lazy" />
+            <figcaption>Dans ma loge, devant le miroir, avant d’entrer en scène.</figcaption>
+          </figure>
+          <figure class="scene-item scene-bibitte-wide">
+            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
+            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
+          </figure>
         </div>
-        <figure class="scene-item scene-bibitte-wide">
-          <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
-          <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
-        </figure>
-        <figure class="scene-item scene-loge">
-          <img src="assets/cindy-miroir-loge-solo.jpg" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — derrière elle, la coiffeuse éclairée, les costumes suspendus et l’écriteau « Stage Door »" width="864" height="2432" loading="lazy" />
-          <figcaption>Dans ma loge, devant le miroir, avant d’entrer en scène.</figcaption>
-        </figure>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie — Moments de scène <span class="gallery-toggle-hint">tous les autres moments, un clic</span></summary>
           <div class="gallery-body">
