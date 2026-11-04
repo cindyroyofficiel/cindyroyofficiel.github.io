@@ -2682,6 +2682,44 @@
     @keyframes highlights-dove-sway { from { transform: rotate(-.6deg); } to { transform: rotate(.6deg); } }
     @media (max-width: 700px) { .highlights-dove { width: 52px; } }
     @media (prefers-reduced-motion: reduce) { .highlights-dove { display: none; } }
+    /* — Décor de gala du bloc des accomplissements (demande de
+       Cindy, 4 nov.) : deux branches de laurier dorées encadrent
+       le bloc « Ma prière a été entendue », une petite étoile
+       acadienne dorée veille au centre en haut, et deux photos
+       de la soirée de Caraquet vivent FONDUES dans le fond, une
+       de chaque côté — Cindy sur scène, son trophée à la main,
+       à gauche; Christian « Kit » Goguen en pleine interprétation
+       de sa chanson, les bras ouverts, à droite. Rien qui
+       accroche : des présences translucides en arrière-plan, le
+       contenu passe devant, les bords des photos se perdent dans
+       le fond (masques en dégradé). Purement décoratif
+       (aria-hidden, alt vide). Sur écran étroit, les lauriers se
+       retirent et les photos deviennent à peine un souffle
+       derrière le titre, pour garder le texte parfaitement
+       lisible sur le téléphone de Cindy. */
+    .highlights > .wrap { position: relative; z-index: 1; }
+    .gala-decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .gala-decor-photo { position: absolute; width: clamp(250px, 27vw, 400px); height: auto; opacity: .34; filter: saturate(.88) contrast(1.02);
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%);
+      mask-composite: intersect; }
+    .gala-decor-photo--cindy { left: -26px; top: clamp(30px, 5vw, 84px); }
+    .gala-decor-photo--kit { right: -26px; top: clamp(110px, 10vw, 170px); }
+    @media (max-width: 1300px) { .gala-decor-photo { opacity: .22; } }
+    @media (max-width: 900px) {
+      .gala-decor-photo { width: 58vw; opacity: .15; }
+      .gala-decor-photo--cindy { left: -64px; top: 56px; }
+      .gala-decor-photo--kit { right: -64px; top: 320px; }
+    }
+    .highlights-head { position: relative; }
+    .gala-star { display: block; width: 30px; height: 30px; margin: 0 auto 16px; filter: drop-shadow(0 2px 8px rgba(201, 162, 79, .45)); }
+    .gala-star svg { display: block; width: 100%; height: 100%; }
+    .laurel { position: absolute; top: 46%; height: clamp(240px, 26vw, 330px); width: auto; opacity: .9; pointer-events: none; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .35)); }
+    .laurel--left { left: -168px; transform: translateY(-50%); }
+    .laurel--right { right: -168px; transform: translateY(-50%) scaleX(-1); }
+    @media (max-width: 1150px) { .laurel { display: none; } }
+    @media print { .gala-decor, .laurel, .gala-star { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
     .arranged-photo { width: 68px; }
@@ -3553,8 +3591,59 @@
           </g>
         </svg>
       </div>
+      <div class="gala-decor" aria-hidden="true">
+        <img class="gala-decor-photo gala-decor-photo--cindy" src="assets/gala-decor-cindy-trophee.jpg" alt="" width="760" height="1178" loading="lazy" />
+        <img class="gala-decor-photo gala-decor-photo--kit" src="assets/gala-decor-kit-scene.jpg" alt="" width="720" height="740" loading="lazy" />
+      </div>
       <div class="wrap">
         <div class="highlights-head">
+          <span class="gala-star" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 1.8 L14.9 8.6 L22.1 9.3 L16.7 14.1 L18.4 21.2 L12 17.4 L5.6 21.2 L7.3 14.1 L1.9 9.3 L9.1 8.6 Z" fill="#e7b34b" /></svg></span>
+          <svg class="laurel laurel--left" viewBox="0 0 120 340" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="laurel-leaf-a" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#cda550" />
+            </defs>
+            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#b8912f" stroke-width="3.5" stroke-linecap="round" />
+            <use href="#laurel-leaf-a" transform="translate(55 298) rotate(-44) scale(1.05)" />
+            <use href="#laurel-leaf-a" transform="translate(57 298) rotate(36) scale(1.05)" />
+            <use href="#laurel-leaf-a" transform="translate(48 258) rotate(-46) scale(1)" />
+            <use href="#laurel-leaf-a" transform="translate(50 258) rotate(34) scale(1)" />
+            <use href="#laurel-leaf-a" transform="translate(45 218) rotate(-48) scale(.95)" />
+            <use href="#laurel-leaf-a" transform="translate(47 218) rotate(32) scale(.95)" />
+            <use href="#laurel-leaf-a" transform="translate(45 178) rotate(-48) scale(.88)" />
+            <use href="#laurel-leaf-a" transform="translate(47 178) rotate(32) scale(.88)" />
+            <use href="#laurel-leaf-a" transform="translate(48 140) rotate(-46) scale(.8)" />
+            <use href="#laurel-leaf-a" transform="translate(50 140) rotate(34) scale(.8)" />
+            <use href="#laurel-leaf-a" transform="translate(53 104) rotate(-42) scale(.72)" />
+            <use href="#laurel-leaf-a" transform="translate(55 104) rotate(36) scale(.72)" />
+            <use href="#laurel-leaf-a" transform="translate(59 70) rotate(-36) scale(.62)" />
+            <use href="#laurel-leaf-a" transform="translate(61 70) rotate(38) scale(.62)" />
+            <use href="#laurel-leaf-a" transform="translate(64 16) rotate(2) scale(.5)" />
+            <circle cx="52" cy="318" r="4.5" fill="#cda550" />
+            <circle cx="66" cy="326" r="3.8" fill="#cda550" />
+          </svg>
+          <svg class="laurel laurel--right" viewBox="0 0 120 340" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="laurel-leaf-b" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#cda550" />
+            </defs>
+            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#b8912f" stroke-width="3.5" stroke-linecap="round" />
+            <use href="#laurel-leaf-b" transform="translate(55 298) rotate(-44) scale(1.05)" />
+            <use href="#laurel-leaf-b" transform="translate(57 298) rotate(36) scale(1.05)" />
+            <use href="#laurel-leaf-b" transform="translate(48 258) rotate(-46) scale(1)" />
+            <use href="#laurel-leaf-b" transform="translate(50 258) rotate(34) scale(1)" />
+            <use href="#laurel-leaf-b" transform="translate(45 218) rotate(-48) scale(.95)" />
+            <use href="#laurel-leaf-b" transform="translate(47 218) rotate(32) scale(.95)" />
+            <use href="#laurel-leaf-b" transform="translate(45 178) rotate(-48) scale(.88)" />
+            <use href="#laurel-leaf-b" transform="translate(47 178) rotate(32) scale(.88)" />
+            <use href="#laurel-leaf-b" transform="translate(48 140) rotate(-46) scale(.8)" />
+            <use href="#laurel-leaf-b" transform="translate(50 140) rotate(34) scale(.8)" />
+            <use href="#laurel-leaf-b" transform="translate(53 104) rotate(-42) scale(.72)" />
+            <use href="#laurel-leaf-b" transform="translate(55 104) rotate(36) scale(.72)" />
+            <use href="#laurel-leaf-b" transform="translate(59 70) rotate(-36) scale(.62)" />
+            <use href="#laurel-leaf-b" transform="translate(61 70) rotate(38) scale(.62)" />
+            <use href="#laurel-leaf-b" transform="translate(64 16) rotate(2) scale(.5)" />
+            <circle cx="52" cy="318" r="4.5" fill="#cda550" />
+            <circle cx="66" cy="326" r="3.8" fill="#cda550" />
+          </svg>
           <p class="section-tag">Mes plus beaux accomplissements</p>
           <h2 class="highlights-title">« Entend ma prière » — <em>Ma prière a été entendue</em></h2>
           <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
@@ -3657,7 +3746,7 @@
         </div>
         </div>
         <div class="gala-highlight">
-          <p>Ce que j’ai jamais vraiment raconté, c’est le frisson que ça m’a fait d’entendre Kit Goguen interpréter ma chanson, ce soir-là. J’avais des frissons partout, à la grandeur du corps — pis encore aujourd’hui, juste d’en parler, j’en ai. Il en a fait une interprétation majestueuse : personne n’aurait pu interpréter ma chanson aussi bien que lui. On dit souvent qu’un message est jamais mieux porté que par soi-même, mais lui, il a trouvé en lui la juste mesure. C’était aligné comme ça — c’est lui qui pouvait porter mon message de la façon que je voulais qu’il soit porté. C’est comme s’il avait apporté mon cœur sur la scène, sans que j’aie à me déplacer : ma vraie essence était dans son interprétation. Incroyable, vraiment.</p>
+          <p>Ce que j’ai jamais vraiment raconté, c’est le frisson que ça m’a fait d’entendre Christian Kit Goguen interpréter ma chanson, ce soir-là. J’avais des frissons partout, à la grandeur du corps — pis encore aujourd’hui, juste d’en parler, j’en ai. Il en a fait une interprétation majestueuse : personne n’aurait pu interpréter ma chanson aussi bien que lui. On dit souvent qu’un message est jamais mieux porté que par soi-même, mais lui, il a trouvé en lui la juste mesure. C’était aligné comme ça — c’est lui qui pouvait porter mon message de la façon que je voulais qu’il soit porté. C’est comme s’il avait apporté mon cœur sur la scène, sans que j’aie à me déplacer : ma vraie essence était dans son interprétation. Incroyable, vraiment.</p>
           <p>Je pensais tellement pas gagner que je m’étais même pas assise dans la loge avec les autres finalistes — j’étais assise avec les spectateurs, bien contente de voir le spectacle gratuitement. Quand ils ont appelé mon nom, je me cherchais un chemin pour monter sur le stage : je suis passée par le côté, à travers les fils pis toutes les affaires. Ça a pris du temps — c’est pour ça qu’on entend le monde crier « Elle est là! Elle est là! » dans la vidéo : ils me pointaient du doigt, pour montrer que je m’en venais.</p>
         </div>
         <h3 class="gala-subhead" id="hommage">Un hommage à l’Assemblée législative</h3>
