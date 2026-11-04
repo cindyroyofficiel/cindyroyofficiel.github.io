@@ -2960,6 +2960,25 @@
         linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
       mask-composite: intersect; }
     .ecrit-video figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.4; }
+    /* — RECENTRAGE SUR L’ORDINATEUR SEULEMENT (Cindy, 4 nov., plus
+       tard) : sur le portable, le vidéo restait encore trop vers la
+       droite — elle le veut environ au MILIEU de l’espace libre
+       entre la fin du bloc de texte de l’intro et le bord droit de
+       la zone de contenu. Sa marge de droite reçoit donc un pas
+       fixe de plus, +76 px (≈ 2 cm), MAIS seulement à partir de
+       701 px : au téléphone (≤ 700 px), elle trouve ça « vraiment
+       beau » tel quel — sa marge actuelle ne bouge pas d’un poil.
+       Le vidéo n’est PAS élargi (elle ne veut pas qu’il ait l’air
+       trop gros) : taille, cadre doré et légende inchangés.
+       L’ancre de droite du papillon de l’envol reçoit le même pas,
+       comme aux reculs précédents, pour qu’il garde exactement sa
+       trajectoire par-dessus le vidéo — sa couleur doré profond et
+       son envol ne changent pas. Au téléphone, sa propre règle
+       (≤ 700 px, plus haut) continue de primer : rien ne bouge. */
+    @media (min-width: 701px) {
+      .ecrit-video { margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) + 76px); }
+      .music-garden-butterfly { right: calc(clamp(52px, 7vw, 118px) + clamp(18px, 5.7vw, 76px) + 76px); }
+    }
     @media (max-width: 700px) { .ecrit-video { width: 144px; } }
     @media print { .ecrit-video { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
