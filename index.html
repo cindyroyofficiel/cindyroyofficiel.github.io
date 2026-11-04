@@ -1807,10 +1807,20 @@
        MÊME grandeur (demande de Cindy, 2 nov.) — même largeur pour chacune
        (≈ 190 px dans le bloc de 400 px), alignées en haut, proportions
        naturelles, aucun étirement ni recadrage. Au téléphone, elles restent
-       côte à côte à parts égales (≈ 48 % / 48 %). ——— */
+       côte à côte à parts égales (≈ 48 % / 48 %).
+       MÊME GRANDEUR POUR VRAI (précision de Cindy, 4 nov.) : à largeur
+       égale, les hauteurs naturelles restaient différentes (543 px contre
+       403 px) — la paire paraissait débalancée sur son portable. Les deux
+       photos vivent maintenant dans des cadres IDENTIQUES (même largeur,
+       même hauteur, rapport 21/50) : recadrage doux en object-fit: cover,
+       cadré pour garder l’enseigne « Porte de scène », les visages et les
+       pieds; pour la photo avec Michel, le cadre centré garde les deux
+       sujets au complet. ——— */
     .michel-photos { margin: 32px auto 8px; max-width: 400px; display: flex; gap: 14px; align-items: flex-start; justify-content: center; }
     .michel-photo-main, .michel-photo-small { margin: 0; flex: 1 1 0; min-width: 0; }
-    .michel-photos img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .michel-photos img { width: 100%; aspect-ratio: 21 / 50; object-fit: cover; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .michel-photo-main img { object-position: 50% 72%; }
+    .michel-photo-small img { object-position: 50% 50%; }
     @media (max-width: 620px) {
       .michel-photos { gap: 10px; max-width: 400px; }
     }
@@ -2009,10 +2019,23 @@
        lecteur YouTube de la section, où son format respire enfin. */
     .scene-bibitte-wide { margin-top: 36px; }
     /* Coulisses (Cindy, 3 nov.) : Cindy SEULE devant le miroir de sa loge,
-       en robe verte — portrait étroit centré parmi les photos de la
-       section, après les moments de scène, avant la galerie. */
-    .scene-loge { margin: 58px auto 0; max-width: 300px; }
-    .scene-loge figcaption { text-align: center; }
+       en robe verte — après les moments de scène, avant la galerie.
+       RAPETISSÉE + RECOMPOSÉE (Cindy, 4 nov.) : seule au centre, la photo
+       (864 × 2432, très haute) remplissait tout l’écran, perdue dans un
+       grand vide de chaque bord. Elle devient un PETIT portrait à gauche
+       (228 px de large) et sa légende la rejoint à droite, en belle
+       italique serif centrée verticalement, coiffée de la petite étoile
+       dorée du site : la rangée respire, la photo ne domine plus.
+       Sur téléphone : photo centrée (216 px) au-dessus de sa légende. */
+    .scene-loge { margin: 58px auto 0; max-width: 780px; display: grid; grid-template-columns: 228px minmax(0, 1fr); gap: clamp(26px, 4vw, 52px); align-items: center; }
+    .scene-item.scene-loge figcaption { margin-top: 0; text-align: left; font-family: var(--serif); font-style: italic; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.45; color: var(--ink); max-width: 430px; }
+    .scene-item.scene-loge figcaption::before { content: "★"; display: block; margin-bottom: 14px; font-style: normal; font-size: 15px; color: var(--gold); }
+    @media (max-width: 620px) {
+      .scene-loge { grid-template-columns: 1fr; justify-items: center; gap: 20px; max-width: 320px; }
+      .scene-item.scene-loge img { width: 216px; }
+      .scene-item.scene-loge figcaption { text-align: center; }
+      .scene-item.scene-loge figcaption::before { margin-bottom: 10px; }
+    }
     /* La vraie photo de scène (Cindy, 3 nov.) : en tête de la section
        Scène, juste sous le titre et l’intro — la première chose qu’on
        voit en arrivant dans la section, dans l’espace libéré par le
@@ -4077,9 +4100,6 @@
             <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
           </div>
         </div>
-        <figure class="scene-item scene-vraie">
-          <img src="assets/cindy-scene-vraie.png" alt="Cindy Roy sur scène" width="1122" height="1361" loading="lazy" />
-        </figure>
         <div class="scene-grid">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
@@ -4200,10 +4220,6 @@
           <div class="about-copy">
             <p>Je suis Cindy Roy, autrice-compositrice-interprète acadienne, née à Bathurst et originaire de Robertville, au Nouveau-Brunswick.</p>
             <p>Je chante depuis toute petite — vers l’âge de deux ans, presque avant même de savoir parler. Dans le salon des Boudreau, la musique prenait vie : à Noël, dès que les guitares sortaient, c’était un vrai petit paradis pour mon âme de chanteuse en devenir. C’était tassé, mais j’étais déterminée — j’ai fini par me tailler une place parmi les guitares et les voix, tout près, au cœur de la musique. Mon rêve de chanter m’habitait déjà; ces petits moments venaient le nourrir et me murmurer, au creux de l’âme, que la musique était ma mission.</p>
-            <figure class="about-video">
-              <video src="assets/party-noel-boudreau-v6.mp4" poster="assets/poster-noel-1986.jpg" controls playsinline preload="none" title="Party de Noël des Boudreau, vers 1986 — Cindy Roy, petite fille, chante près du sapin"></video>
-              <figcaption>1986. Le salon des Boudreau à Noël — tassé, joyeux, plein de musique. C'est dans ce petit paradis-là que ma mission a commencé.</figcaption>
-            </figure>
           </div>
         </div>
         <div class="about-copy racines-suite">
@@ -4215,6 +4231,10 @@
             <details class="photo-gallery">
               <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, mes grands enfants, Michel — un clic</span></summary>
               <div class="gallery-body">
+            <figure class="about-video">
+              <video src="assets/party-noel-boudreau-montage-restaure-v3.mp4" poster="assets/poster-noel-1986.jpg" controls playsinline preload="none" title="Party de Noël des Boudreau, vers 1986 — montage restauré, avec la chanson de Cindy en lit musical"></video>
+              <figcaption>1986. Le salon des Boudreau à Noël — tassé, joyeux, plein de musique. C'est dans ce petit paradis-là que ma mission a commencé.</figcaption>
+            </figure>
             <p>Ma grand-mère Marie Boudreau chantait et jouait de l’orgue dans son salon, souvent à l’oreille. Moi aussi, j’avais déjà l’oreille et je m’amusais à inventer des mélodies. C’est elle qui m’a montré mes premiers accords — ça m’a influencée, comme tout le reste.</p>
             <p>Pendant ce temps, mon grand-père Émery Boudreau filmait tous les moments spéciaux — il aimait tellement sa caméra. Excellent cuisinier, c'est lui qui cuisait la dinde à chaque Noël. Vétéran de la Deuxième Guerre mondiale, c’était un véritable héros — il s’est battu pour notre pays. Un homme autoritaire… mais drôle comme pas un! Mon oncle Donald a raconté son histoire dans son livre, La guerre à Emery à Edmond — vous le trouverez plus bas, dans ma vitrine familiale. Ma grand-mère et lui se taquinaient sans arrêt, chacun essayant de nous recruter dans son équipe.</p>
             <p>Ma grand-mère Violet montait sur scène sous le nom de « la Gadelle » et faisait rire des salles entières.</p>
@@ -4223,7 +4243,7 @@
             <p>Mon père avait hérité du sens de l’humour de sa mère. Il faisait des imitations de politiciens et se promenait avec un chandail à mon effigie (avec ma photo dessus), ses bretelles multicolores bien en vue, en disant à tout le monde : « C’est ma fille, ça! »</p>
             <p class="mona-merci-title"><span class="mona-heart" aria-hidden="true">♥</span>À ma mère, Mona — la toute première.</p>
             <p>Ma mère, c’est une force tranquille, une artiste dans l’âme.</p>
-            <p>C’est elle, la toute première, qui m’a donné le goût de la musique. Je viens d’une famille musicale — ça a bercé toute mon enfance — mais ce sont nos soirées toutes seules, elle avec sa guitare, à me jouer des petits bouts de ses compositions, qui sont venus me chercher au tout début. Avant Diane, avant Cabrel, avant toutes mes influences, il y a eu ma mère. Le plus gros morceau de tout, c’est à elle qu’il revient.</p>
+            <p>C’est elle, la toute première, qui m’a donné le goût de la musique. Je viens d’une famille musicale — ça a bercé toute mon enfance — mais ce sont nos soirées toutes seules, elle avec sa guitare, à me jouer des petits bouts de ses compositions, qui sont venus me chercher au tout début. Avant Diane Tell, avant Cabrel, avant toutes mes influences, il y a eu ma mère. Le plus gros morceau de tout, c’est à elle qu’il revient.</p>
             <div class="parents-photos">
               <figure class="parent-photo">
                 <span class="parent-frame" style="--frame-bg: url('assets/cindy-avec-son-pere.jpg')"><img src="assets/cindy-avec-son-pere.jpg" alt="Cindy Roy avec son père" width="1220" height="1254" decoding="async" /></span>
