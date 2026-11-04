@@ -2224,6 +2224,29 @@
     .gala-section .gala-story { max-width: 840px; margin-top: 46px; }
     .gala-section .gala-story p { color: #dde0cb; margin: 0 0 16px; }
     .gala-section .gala-story p:last-child { margin-bottom: 0; }
+    /* ——— Le moment de l’annonce, mis en valeur (Cindy, 4 nov.) : son
+       récit du frisson et de l’annonce, « bien souligné », dans un
+       encadré doré du même esprit que le cadre doré de la photo du
+       trophée (.trophy-feature) — double filet d’or, fond légèrement
+       relevé, étoile dorée (Stella Maris) en ornement. Le texte reste
+       du vrai HTML, mot pour mot, pour que les moteurs de recherche
+       l’indexent tel quel. ——— */
+    .gala-highlight {
+      position: relative; max-width: 880px; margin: 64px auto 0;
+      padding: clamp(34px, 5vw, 50px) clamp(24px, 5.5vw, 56px) clamp(30px, 4.5vw, 44px);
+      background: linear-gradient(168deg, rgba(201, 162, 79, .13), rgba(201, 162, 79, .045) 55%, rgba(201, 162, 79, .09));
+      border: 1px solid rgba(231, 179, 75, .6);
+      box-shadow: 0 0 0 5px rgba(201, 162, 79, .10), 0 26px 64px rgba(0, 0, 0, .38), 0 0 54px rgba(201, 162, 79, .13);
+    }
+    .gala-highlight::before {
+      content: "★"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      width: 30px; height: 30px; display: grid; place-items: center;
+      background: var(--deep); color: var(--gold); font-size: 15px; line-height: 1;
+      border: 1px solid rgba(231, 179, 75, .6); border-radius: 50%;
+    }
+    .gala-highlight p { margin: 0 0 18px; color: #f0ead2; font-size: 18.5px; line-height: 1.78; }
+    .gala-highlight p:last-child { margin-bottom: 0; }
+    @media (max-width: 720px) { .gala-highlight { margin-top: 52px; } .gala-highlight p { font-size: 17.5px; } }
     .gala-prix-copy p { color: #ccd0ba; margin: 0; max-width: 640px; }
     .trophy-feature { margin: 68px auto 0; max-width: 660px; padding: 12px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 30px 70px rgba(0, 0, 0, .5); }
     .trophy-feature img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
@@ -3632,6 +3655,10 @@
             <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
+        </div>
+        <div class="gala-highlight">
+          <p>Ce que j’ai jamais vraiment raconté, c’est le frisson que ça m’a fait d’entendre Kit Goguen interpréter ma chanson, ce soir-là. J’avais des frissons partout, à la grandeur du corps — pis encore aujourd’hui, juste d’en parler, j’en ai. Il en a fait une interprétation majestueuse : personne n’aurait pu interpréter ma chanson aussi bien que lui. On dit souvent qu’un message est jamais mieux porté que par soi-même, mais lui, il a trouvé en lui la juste mesure. C’était aligné comme ça — c’est lui qui pouvait porter mon message de la façon que je voulais qu’il soit porté. C’est comme s’il avait apporté mon cœur sur la scène, sans que j’aie à me déplacer : ma vraie essence était dans son interprétation. Incroyable, vraiment.</p>
+          <p>Je pensais tellement pas gagner que je m’étais même pas assise dans la loge avec les autres finalistes — j’étais assise avec les spectateurs, bien contente de voir le spectacle gratuitement. Quand ils ont appelé mon nom, je me cherchais un chemin pour monter sur le stage : je suis passée par le côté, à travers les fils pis toutes les affaires. Ça a pris du temps — c’est pour ça qu’on entend le monde crier « Elle est là! Elle est là! » dans la vidéo : ils me pointaient du doigt, pour montrer que je m’en venais.</p>
         </div>
         <h3 class="gala-subhead" id="hommage">Un hommage à l’Assemblée législative</h3>
         <p class="gala-hommage-copy">Le 2 décembre 2015, le député de Restigouche-Chaleur, Daniel Guitard, s’est levé à l’Assemblée législative du Nouveau-Brunswick pour souligner la victoire de Cindy Roy : le prix auteur-compositeur de la chanson primée, au Gala de la chanson de Caraquet.</p>
