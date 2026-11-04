@@ -60,20 +60,20 @@
   </script>
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#1d2b1e" />
-  <meta name="description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
+  <meta name="description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises favorites et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
   <link rel="canonical" href="https://cindyroyofficiel.com/" />
   <meta name="keywords" content="Cindy Roy chanteuse, Cindy Roy Robertville, autrice-compositrice-interprète acadienne, Entend ma prière, Gala de la chanson de Caraquet, La Voix de Beresford" />
   <meta name="google-site-verification" content="sSaVujwGYfN_HCuXFTocQ_saVkFXoi5N9orCC4IsxJo" />
   <meta property="og:site_name" content="Cindy Roy Officiel" />
   <meta property="og:title" content="Cindy Roy — autrice-compositrice-interprète | Cindy Roy Officiel" />
-  <meta property="og:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
+  <meta property="og:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises favorites et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cindyroyofficiel.com/" />
   <meta property="og:image" content="https://cindyroyofficiel.com/assets/cindy-accueil-scene-large.jpg" />
   <meta property="og:locale" content="fr_CA" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cindy Roy — autrice-compositrice-interprète | Cindy Roy Officiel" />
-  <meta name="twitter:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises acoustiques et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
+  <meta name="twitter:description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises favorites et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
   <meta name="twitter:image" content="https://cindyroyofficiel.com/assets/cindy-accueil-scene-large.jpg" />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
@@ -1217,6 +1217,100 @@
        seulement (148 px) — proportions naturelles conservées, aucun
        étirement ni recadrage. */
     .timeline-photo.nicole-small { max-width: 148px; }
+    /* Montage « Jeudi saint 2014 » (Parcours, bloc Nicole) : lecteur
+       portrait 9:16, même traitement que les autres vidéos du site —
+       fond sombre, ombre et fine bordure dorée comme la photo voisine.
+       Largeur pensée téléphone d’abord, centrée, sans débordement. */
+    .timeline-video { margin: 26px auto 0; max-width: 300px; }
+    .timeline-video video { width: 100%; aspect-ratio: 9 / 16; display: block; background: #0c0d0b; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(213,164,58,.35); }
+    /* Bloc Nicole (Parcours, 2013 à 2019) : la photo « Nicole et moi »
+       et le lecteur du Jeudi saint 2014 CÔTE À CÔTE (Cindy, 3 nov.) —
+       fini le grand lecteur sous la photo, qui écrasait tout : les
+       deux vignettes ont la même largeur, alignées par le haut, et
+       forment une belle paire équilibrée, au téléphone comme au
+       portable. Ni la photo, ni la vidéo, ni leurs légendes et
+       crédits ne changent : seule la disposition. */
+    .nicole-duo { display: flex; gap: 20px; align-items: flex-start; margin-top: 26px; }
+    .nicole-duo .timeline-photo { margin: 0; flex: 0 0 148px; }
+    .nicole-duo .timeline-video { margin: 0; flex: 0 0 148px; max-width: 148px; }
+    /* Panneau d’HOMMAGE à Nicole McGrath (Parcours, 2013 à 2019) —
+       Cindy : « une belle hommage pour elle », plus beau, plus
+       poétique. Encadré doré double filet sur fond vert très sombre,
+       vitrail d’église en filigrane translucide derrière le texte
+       (tons chauds et dorés, voile radial pour garder le centre
+       lisible), titre en Great Vibes dorée, texte d’hommage approuvé
+       mot pour mot en Cormorant italique, colombe discrète, photo et
+       petit vidéo côte à côte au cœur du panneau, les souvenirs de
+       leur travail ensemble résumés en grandes lignes dans le texte
+       même de l’hommage (même écriture), et l’épitaphe « Que son âme
+       repose en paix. » en toute dernière ligne du panneau. */
+    .hommage {
+      position: relative;
+      overflow: hidden;
+      margin-top: 4px;
+      padding: clamp(30px, 4.5vw, 48px) clamp(20px, 4vw, 44px) clamp(28px, 4vw, 40px);
+      background: linear-gradient(168deg, #242e1c 0%, #151b10 55%, #10150d 100%);
+      border: 1px solid rgba(213, 164, 58, .6);
+      box-shadow: inset 0 0 0 5px #10150d, inset 0 0 0 6px rgba(213, 164, 58, .32), 0 22px 50px rgba(0, 0, 0, .35);
+      text-align: center;
+    }
+    .hommage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/vitrail-hommage.jpg") 50% 30% / cover no-repeat;
+      opacity: .17;
+    }
+    .hommage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(115% 88% at 50% 42%, rgba(13, 17, 10, 0) 26%, rgba(13, 17, 10, .52) 100%);
+    }
+    .hommage > * { position: relative; z-index: 1; }
+    .hommage-dove { margin: 0 0 4px; font-size: 23px; line-height: 1; opacity: .92; }
+    .hommage .hommage-title {
+      margin: 0;
+      font-family: var(--script-name);
+      font-weight: 400;
+      font-size: clamp(44px, 6vw, 62px);
+      line-height: 1.15;
+      color: #eec979;
+    }
+    .hommage-rule { display: flex; align-items: center; gap: 12px; max-width: 300px; margin: 12px auto 22px; color: rgba(213, 164, 58, .8); font-size: 11px; }
+    .hommage-rule::before { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(213, 164, 58, 0), rgba(213, 164, 58, .7)); }
+    .hommage-rule::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(213, 164, 58, .7), rgba(213, 164, 58, 0)); }
+    .hommage-text { max-width: 560px; margin: 0 auto; font-family: var(--serif); font-style: italic; color: #f3ecd9; }
+    .hommage-text p { margin: 0; font-size: 20px; line-height: 1.55; }
+    .hommage-text p + p { margin-top: 14px; }
+    .hommage-text .hommage-lead { font-size: clamp(23px, 3vw, 27px); line-height: 1.35; color: #f8f2df; }
+    .hommage .nicole-duo { justify-content: center; margin-top: 30px; }
+    .hommage-epitaph { margin: 28px auto 0; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.5; color: #eec979; }
+    .hommage-epitaph p { margin: 0; }
+    @media (max-width: 480px) {
+      .hommage .nicole-duo .timeline-photo, .hommage .nicole-duo .timeline-video { flex: 1 1 0; min-width: 0; max-width: 148px; }
+      .hommage-text p { font-size: 19px; }
+    }
+    /* Trio « auditions télé » (Parcours, intro) : les trois photos des
+       auditions regroupées sous la phrase des auditions — Star Académie
+       2005 (affiche, portrait; salle d’attente, paysage) et La Voix.
+       Même ombre, bordure dorée et légende serif italique centrée que les
+       autres photos du Parcours; coins arrondis au rayon média du site.
+       Sur écran large : rangée souple où chaque largeur est proportionnelle
+       au format de sa photo (flex-grow = rapport largeur/hauteur), donc les
+       trois images partagent la même hauteur sans aucun recadrage.
+       Sur téléphone : empilées, centrées, à proportions naturelles. */
+    .audition-trio { display: flex; gap: 22px; margin: 34px auto 4px; max-width: 980px; }
+    .audition-trio .timeline-photo { margin: 0; max-width: none; min-width: 0; }
+    .audition-trio .trio-affiche { flex: 0.705 1 0; }
+    .audition-trio .trio-salle { flex: 1.424 1 0; }
+    .audition-trio .trio-voix { flex: 1.308 1 0; }
+    .audition-trio .timeline-photo img { display: block; border-radius: var(--r-media); overflow: hidden; }
+    .audition-trio figcaption { text-align: center; }
+    @media (max-width: 700px) {
+      .audition-trio { flex-direction: column; align-items: center; gap: 28px; max-width: 340px; }
+      .audition-trio .timeline-photo { flex: none; width: 100%; }
+    }
     .timeline-photo img { width: 100%; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(213,164,58,.35); }
     .timeline-photo figcaption { margin-top: 12px; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 16px; }
     .gala-memory { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(250px, .62fr); gap: clamp(26px, 4vw, 46px); margin-top: 70px; padding-top: 58px; border-top: 1px solid rgba(255,255,255,.15); align-items: start; }
@@ -1441,6 +1535,11 @@
     .influence-discover { display: inline-flex; align-items: center; gap: 7px; color: #a67c1a; font-size: 15px; font-weight: 750; letter-spacing: .01em; }
     .influence-chevron { display: inline-block; color: var(--gold); font-size: 15px; line-height: 1; transition: transform .25s ease; }
     .influence-toggle[aria-expanded="true"] .influence-chevron { transform: rotate(90deg); }
+    .influence-portrait { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(60, 42, 10, .18); align-self: center; flex: 0 0 auto; }
+    /* ——— Icônes des originales : même médaillon rond à anneau doré que les portraits des Influences, à côté du titre de chaque chanson solo ——— */
+    .song-icon { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(60, 42, 10, .18); align-self: center; flex: 0 0 auto; }
+    #originales .song-jump { grid-template-columns: 42px auto 1fr auto; }
+    .influences-credits { margin: 26px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.65; max-width: 780px; }
     .influence-panel { padding: 2px 4px 28px; max-width: 100%; }
     .influence-panel-inner { max-width: 820px; }
     .influence-panel p { margin: 0 0 16px; color: var(--muted); line-height: 1.65; overflow-wrap: break-word; }
@@ -1449,8 +1548,15 @@
     .influence-photo { margin: 4px auto 24px; max-width: 460px; }
     .influence-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .influence-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
+    /* Photo d’enfance dans le panneau Diane Tell : taille modeste et centrée
+       (pleine largeur moins les marges sur téléphone), coins arrondis, même
+       ombre et même bordure que les autres photos du site; légende en serif
+       italique. La photo de famille garde ses couleurs d’époque, intactes. */
+    .influence-photo--enfance { margin: 6px auto 26px; max-width: 340px; }
+    .influence-photo--enfance img { border-radius: 12px; }
+    .influence-photo--enfance figcaption { font-family: var(--serif); font-style: italic; font-size: 17px; }
     @media (prefers-color-scheme: dark) { .influence-discover { color: var(--gold); } }
-    @media (max-width: 620px) { .influence-toggle { padding: 18px 2px; } .influence-panel { padding-inline: 2px; } }
+    @media (max-width: 620px) { .influence-toggle { padding: 18px 2px; } .influence-panel { padding-inline: 2px; } .influence-portrait { width: 54px; height: 54px; } .song-icon { width: 54px; height: 54px; } }
     @media (max-width: 940px) {
       .influence-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
     }
@@ -1648,6 +1754,8 @@
     .arranged-card { padding: 24px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--line); }
     .arranged-card h4 { margin: 0; font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.15; color: var(--ink); }
     .arranged-card audio { display: block; width: 100%; margin-top: 16px; }
+    .arranged-card iframe { display: block; width: 100%; aspect-ratio: 16 / 9; margin-top: 16px; background: #0c0d0b; border: 0; border-radius: 10px; }
+    .arranged-grid-single { grid-template-columns: minmax(0, 1fr); max-width: 920px; }
     .arranged-credit { margin: 14px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
     @media (max-width: 620px) {
       .arranged { margin-top: 48px; padding-top: 36px; }
@@ -1800,6 +1908,10 @@
     .scene-item video, .scene-item img { width: 100%; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .scene-item img { background: var(--line); }
     .scene-item figcaption { margin-top: 14px; color: var(--muted); font-size: 16px; line-height: 1.55; }
+    /* Reel Facebook vertical : largeur modeste, centrée sur toute la rangée */
+    .scene-item.scene-item--reel { grid-column: 1 / -1; justify-self: center; width: 100%; max-width: 380px; }
+    .scene-item--reel .photo-credit a { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    .scene-item--reel .photo-credit a:hover { color: var(--accent); text-decoration-color: var(--accent); }
     /* Crédit photo partagé par une paire de photos : une seule ligne, juste après les deux */
     .photo-credit { grid-column: 1 / -1; margin: -30px 0 0; color: var(--muted); font-size: 16px; line-height: 1.55; }
     /* Crédit photo propre à une photo : même style, juste sous sa légende, dans la figure */
@@ -1808,6 +1920,126 @@
       .scene-grid { grid-template-columns: 1fr; gap: 40px; }
       .scene-featured figcaption { font-size: 19px; }
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
+    }
+
+    /* ——— Projecteur de scène (#scene seulement, idée de Cindy, 3 nov. 2026) ———
+       Un cône de lumière dorée douce descend du haut de la section, s’ouvre
+       en entonnoir et pose un halo derrière le titre « La scène, comme si
+       vous y étiez ». Le faisceau BALAIE lentement de gauche à droite
+       (±3,6°, cycle de 12 s en va-et-vient) et le halo au sol suit le
+       mouvement, comme un vrai spot qui cherche sa chanteuse. Purement
+       décoratif : couche EN ARRIÈRE du contenu (z-index 0, contenu à
+       z-index 1), opacités faibles, bords très doux (flou), aucune
+       interaction (pointer-events: none) — les textes et les vidéos
+       restent 100 % lisibles. Faisceau droit et immobile si
+       prefers-reduced-motion. Version téléphone : cône plus étroit et
+       plus court, contenu dans la section (overflow: hidden), aucun
+       débordement horizontal. */
+    #scene { position: relative; overflow: hidden; }
+    #scene > .wrap { position: relative; z-index: 1; }
+    .scene-spot { position: absolute; z-index: 0; top: 0; left: 0; right: 0; height: 520px; pointer-events: none; overflow: hidden; }
+    .scene-spot-source { position: absolute; top: -36px; left: 50%; width: 200px; height: 88px; margin-left: -100px; border-radius: 50%; filter: blur(4px);
+      background: radial-gradient(ellipse at center, rgba(255, 240, 196, .85) 0%, rgba(255, 222, 150, .32) 55%, rgba(255, 222, 150, 0) 75%); }
+    .scene-spot-beam { position: absolute; top: -6px; left: 50%; width: 600px; height: 470px; margin-left: -300px; transform-origin: 50% 0;
+      animation: scene-spot-sweep 12s ease-in-out infinite alternate; }
+    .scene-spot-cone { position: absolute; inset: 0; filter: blur(7px); clip-path: polygon(47% 0, 53% 0, 86% 100%, 14% 100%);
+      background: linear-gradient(180deg, rgba(255, 226, 158, .50) 0%, rgba(250, 205, 116, .30) 45%, rgba(250, 205, 116, .10) 78%, rgba(250, 205, 116, 0) 100%); }
+    .scene-spot-halo { position: absolute; top: 366px; left: 50%; width: 520px; height: 112px; margin-left: -260px; border-radius: 50%; filter: blur(6px);
+      background: radial-gradient(ellipse at center, rgba(255, 228, 160, .48) 0%, rgba(250, 208, 120, .20) 55%, rgba(250, 208, 120, 0) 78%);
+      animation: scene-spot-drift 12s ease-in-out infinite alternate; }
+    @keyframes scene-spot-sweep { from { transform: rotate(-3.6deg); } to { transform: rotate(3.6deg); } }
+    @keyframes scene-spot-drift { from { transform: translateX(-27px); } to { transform: translateX(27px); } }
+    @media (prefers-color-scheme: dark) {
+      .scene-spot-cone { background: linear-gradient(180deg, rgba(255, 226, 158, .55) 0%, rgba(250, 205, 116, .34) 45%, rgba(250, 205, 116, .12) 78%, rgba(250, 205, 116, 0) 100%); }
+      .scene-spot-halo { background: radial-gradient(ellipse at center, rgba(255, 228, 160, .55) 0%, rgba(250, 208, 120, .24) 55%, rgba(250, 208, 120, 0) 78%); }
+    }
+    @media (max-width: 720px) {
+      .scene-spot { height: 400px; }
+      .scene-spot-source { width: 150px; height: 70px; margin-left: -75px; }
+      .scene-spot-beam { width: 380px; height: 336px; margin-left: -190px; }
+      .scene-spot-halo { top: 258px; width: 330px; height: 84px; margin-left: -165px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scene-spot-beam, .scene-spot-halo { animation: none !important; }
+    }
+    /* — Cindy FONDUE dans le décor, EN HAUT de la section Scène
+       (Cindy, 3 nov.) : sa photo en robe crème, recadrée sur elle qui
+       chante (pas tout le stage), posée à droite du faisceau du
+       projecteur, dans la couche décorative du haut de la section.
+       Même fondu plumeux que la photo de scène déjà fondue plus bas
+       (.scene-vraie) : les quatre bords se dissolvent dans le fond de
+       la section — ni bordure, ni ombre, ni coins arrondis. Le
+       faisceau passe devant elle, comme si le spot l'éclairait.
+       Purement décoratif : derrière le contenu (couche à z-index 0),
+       aucune interaction. Au téléphone : plus petite et plus
+       discrète, dans le coin haut droit, pour laisser le titre
+       respirer. La photo d'origine n'est ni retouchée ni recadrée
+       dans le fichier : le recadrage est en object-fit, le fondu en
+       masque. */
+    .scene-spot-photo { position: absolute; top: 0; right: clamp(6px, 3.5vw, 56px); width: 380px; max-width: 44%; height: 520px; object-fit: cover; object-position: 58% 8%;
+      -webkit-mask-image:
+        linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+      mask-composite: intersect; }
+    @media (max-width: 720px) {
+      .scene-spot-photo { width: 196px; height: 340px; right: -6px; opacity: .62; }
+    }
+
+    /* ——— En-tête de la section Scène (Cindy, 3 nov.) : les deux photos du
+       soir recomposées sur le fond de la photo de couverture défilent à
+       DROITE du titre « La scène, comme si vous y étiez », dans la même
+       rangée sur grand écran; sur téléphone, la bande passe sous le titre.
+       Défilement horizontal manuel (doigt, molette), accroche douce d’une
+       photo à l’autre, un bout de la suivante toujours visible. ——— */
+    .scene-head { display: grid; grid-template-columns: minmax(0, 780px); gap: clamp(30px, 4.5vw, 60px); align-items: center; }
+    .scene-head-gallery { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
+    .scene-head-gallery figure { margin: 0; flex: 0 0 74%; scroll-snap-align: start; }
+    .scene-head-gallery img { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); border-radius: var(--r-media); }
+    @media (max-width: 860px) {
+      .scene-head { grid-template-columns: 1fr; gap: 28px; }
+      .scene-head-gallery figure { flex-basis: 58%; }
+    }
+    /* Photo de La Bibitte descendue (Cindy, 3 nov.) : le panoramique du
+       cercle « Des airs et des mots » (1440 × 496) sort de la colonne
+       étroite de la grille et s’affiche en pleine largeur JUSTE SOUS le
+       lecteur YouTube de la section, où son format respire enfin. */
+    .scene-bibitte-wide { margin-top: 36px; }
+    /* Coulisses (Cindy, 3 nov.) : Cindy SEULE devant le miroir de sa loge,
+       en robe verte — portrait étroit centré parmi les photos de la
+       section, après les moments de scène, avant la galerie. */
+    .scene-loge { margin: 58px auto 0; max-width: 300px; }
+    .scene-loge figcaption { text-align: center; }
+    /* La vraie photo de scène (Cindy, 3 nov.) : en tête de la section
+       Scène, juste sous le titre et l’intro — la première chose qu’on
+       voit en arrivant dans la section, dans l’espace libéré par le
+       retrait des photos du soir. Figure centrée, pleine largeur
+       disponible sur téléphone.
+       Fondu dans le décor (Cindy, 3 nov.) : pas de cadre — ni bordure
+       dorée, ni coins arrondis, ni ombre. Les quatre bords de la photo
+       se dissolvent en transparence par masque (dégradé vertical ×
+       dégradé horizontal, fondu plus long en bas), et le fond réel de
+       la section — le dégradé crème de --bg-cream — transparaît sans
+       couture, en clair comme en sombre. La photo elle-même est
+       intacte : c’est un masque de présentation, pas une retouche.
+       Le centre (Cindy, la scène) reste à pleine opacité. */
+    .scene-vraie { margin: 46px auto 0; max-width: 680px; }
+    .scene-item.scene-vraie img {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+      -webkit-mask-image:
+        linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+      mask-composite: intersect;
     }
 
     /* ——— Dossier de presse : entrevue vidéo + document officiel ——— */
@@ -1891,6 +2123,8 @@
       .tab { flex: 1; padding-inline: 8px; }
       .song-jump { grid-template-columns: 32px 1fr; }
       .song-state { grid-column: 2; text-align: left; margin-top: -9px; }
+      #originales .song-jump { grid-template-columns: 32px auto 1fr; }
+      #originales .song-state { grid-column: 3; }
       .chantier-note { grid-template-columns: 1fr; padding: 24px; }
       .about-portraits { grid-template-columns: minmax(0, 420px); margin-top: 44px; }
       .autumn-portraits { margin-top: 44px; }
@@ -1946,6 +2180,12 @@
     .gala-opening { margin: 48px auto 0; max-width: 680px; }
     .gala-opening img { width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.42); border: 1px solid rgba(213,164,58,.35); }
     .gala-opening figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
+    /* Photo « juste avant le Gala » (Cindy, 3 nov.) : portrait intime, sobre,
+       juste après la photo de victoire — jamais en vedette géante. */
+    .gala-avant { margin: 44px auto 0; max-width: 360px; }
+    .gala-avant img { width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.42); border: 1px solid rgba(213,164,58,.35); }
+    .gala-avant figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
+    @media (max-width: 720px) { .gala-avant { max-width: min(340px, 88vw); margin-top: 36px; } }
     .gala-section .gala-story { max-width: 840px; margin-top: 46px; }
     .gala-section .gala-story p { color: #dde0cb; margin: 0 0 16px; }
     .gala-section .gala-story p:last-child { margin-bottom: 0; }
@@ -2045,7 +2285,7 @@
     .cover-video video, .about-video video, .scene-item video, .scene-item img,
     .press-item video, .gala-featured video, .signature-photo img, .music-intro-photo img, .atelier-photo img,
     .vitrine-photo img, .influence-photo img, .archive-photo img,
-    .timeline-photo img, .gala-photo img, .gala-doc img, .martial-photo img,
+    .timeline-photo img, .timeline-video video, .gala-photo img, .gala-doc img, .martial-photo img,
     .gala-opening img, .scene-featured video {
       border-radius: var(--r-media);
     }
@@ -2286,6 +2526,16 @@
     .highlights-title { margin: 0; font-family: var(--serif); font-size: clamp(40px, 5.6vw, 68px); line-height: 1.04; font-weight: 600; letter-spacing: -.02em; }
     .highlights-title em { font-style: italic; font-weight: 500; color: #e7b34b; }
     .highlights-lede { margin: 26px auto 0; max-width: 620px; color: #dde0cb; font-size: 19px; line-height: 1.7; }
+    /* — Le petit bout de piano des accomplissements (décision de
+       Cindy, 3 nov.) : un seul bouton doré discret sous le titre
+       où la colombe se pose; l’audio reste invisible (aucun gros
+       lecteur), aucun autoplay — un clic joue, un clic met pause. */
+    .piano-listen { display: inline-flex; align-items: center; gap: 9px; margin: 30px auto 0; padding: 11px 24px; border: 1.5px solid rgba(201,162,79,.65); border-radius: 999px; background: transparent; color: #e7b34b; font-family: var(--sans); font-size: 15.5px; font-weight: 700; letter-spacing: .01em; line-height: 1.25; cursor: pointer; transition: background .25s ease, border-color .25s ease, color .25s ease; }
+    .piano-listen:hover { background: rgba(201,162,79,.14); border-color: var(--gold); color: #f0cd7e; }
+    .piano-listen:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .piano-listen.is-playing { background: rgba(201,162,79,.18); border-color: var(--gold); color: #f0cd7e; }
+    .piano-caption { margin: 12px auto 0; max-width: 100%; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.45; color: #d9bc74; }
+    @media print { .piano-listen, .piano-caption { display: none; } }
     .highlights-vedette { max-width: 500px; margin: clamp(52px, 6vw, 76px) auto 0; padding: 12px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 0 70px rgba(201,162,79,.22); border-radius: var(--r-card); }
     .highlights-vedette img { width: 100%; display: block; border-radius: 8px; }
     .highlights-vedette figcaption { padding: 13px 8px 4px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; color: #2a1e04; }
@@ -3079,11 +3329,12 @@
     </button>
     <div class="nav-links" id="nav-links">
       <a href="#accueil">Accueil</a>
-      <a href="#gala">Le Gala 2015</a>
+      <a href="#coups-de-coeur">Le Gala 2015</a>
       <a href="#musique">Ma musique</a>
       <a href="#scene">Scène</a>
       <a href="#apropos">À propos</a>
       <a href="#parcours">Parcours</a>
+      <a href="#influences">Influences</a>
       <a href="#presse">Presse</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </div>
@@ -3134,7 +3385,7 @@
             </div>
           </div>
           <figure class="welcome-frame">
-            <video src="assets/video-bienvenue-debout-web.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
+            <video src="assets/video-bienvenue-piano-finition.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
             <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
           </figure>
             <div class="mere-chanteuse">
@@ -3248,6 +3499,10 @@
           <p class="section-tag">Mes plus beaux accomplissements</p>
           <h2 class="highlights-title">« Entend ma prière » — <em>Ma prière a été entendue</em></h2>
           <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
+          <!-- Petit bout de piano d’ambiance du site (extrait de 47 s) : bouton seul, aucun lecteur visible, aucun autoplay. -->
+          <button class="piano-listen" id="piano-listen-btn" type="button" aria-pressed="false" aria-controls="piano-listen-audio">🎹 Écouter un petit bout de piano</button>
+          <p class="piano-caption">« Entend ma prière » — version instrumentale classique</p>
+          <audio id="piano-listen-audio" preload="none" src="assets/entend-ma-priere-piano-extrait.mp3"></audio>
         </div>
         <figure class="highlights-vedette">
           <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
@@ -3285,6 +3540,10 @@
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
           <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entend ma prière » — 2015</figcaption>
+        </figure>
+        <figure class="gala-avant">
+          <img src="assets/cindy-avant-gala-2015.jpg" alt="Cindy Roy en robe fleurie, cheveux blonds ondulés, souriante dans la lumière de fin de journée, juste avant de partir au Gala de la chanson de Caraquet en 2015" width="640" height="852" loading="lazy" />
+          <figcaption>Toute prête pour le gala</figcaption>
         </figure>
         <details class="photo-gallery">
           <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entend ma prière », un clic</span></summary>
@@ -3361,16 +3620,28 @@
                 <figcaption>Cindy Roy à l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet — 2015<br />Photos : Yvon Cormier</figcaption>
               </figure>
               <figure class="scene-item">
+                <img src="assets/gala-cindy-portrait.jpg" alt="Cindy Roy de profil, en veston blanc et robe à pois, devant le piano, lors de l’atelier-spectacle du 47e Gala de la chanson de Caraquet, en 2015" width="1280" height="853" loading="lazy" />
+                <figcaption>De profil au piano — atelier-spectacle du 47e Gala, 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-cindy-portrait-assise.png" alt="Cindy Roy assise, en veston blanc et robe noire à pois, souriante devant un rideau gris — portrait du 47e Gala de la chanson de Caraquet, en 2015" width="1536" height="1024" loading="lazy" />
+                <figcaption>Portrait assise, en veston blanc — 47e Gala de la chanson de Caraquet, 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
                 <img src="assets/finalistes-gala-2015.jpg" alt="Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène — Cindy Roy au centre, en veston blanc, une guitare acoustique posée devant le groupe" loading="lazy" />
                 <figcaption>Les finalistes du Gala de la chanson de Caraquet 2015 réunis sur scène</figcaption>
               </figure>
               <figure class="scene-item">
+                <img src="assets/gala-groupe-1.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet réunis devant un rideau — Cindy Roy au centre, en veston blanc, deux guitares acoustiques dans le groupe, en 2015" width="960" height="575" loading="lazy" />
+                <figcaption>Les finalistes du 47e Gala réunis — 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-groupe-3.jpg" alt="Les finalistes du 47e Gala de la chanson de Caraquet debout devant un rideau brun — Cindy Roy au centre, en veston blanc, une guitare acoustique au premier plan, en 2015" width="960" height="639" loading="lazy" />
+                <figcaption>La gang des finalistes du 47e Gala, debout — 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
                 <img src="assets/cindy-portrait-coulisses-2015.jpg" alt="Cindy Roy en coulisses en 2015 — sourire franc, cheveux blonds dans la lumière du soleil" loading="lazy" />
                 <figcaption>En coulisses, 2015</figcaption>
-              </figure>
-              <figure class="archive-photo">
-                <img src="assets/annonce-gala-2015.jpg" alt="Publication du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le prix Auteur-compositeur remis à Cindy Roy pour Entend ma prière" loading="lazy" />
-                <figcaption>Archive — publication du Gala de la chanson de Caraquet, 31 juillet 2015.</figcaption>
               </figure>
             </div>
             <h4 class="gala-subhead">Les ateliers du printemps — mai 2015</h4>
@@ -3391,6 +3662,18 @@
               <figure class="scene-item">
                 <img src="assets/gala-souper-gang-2015.jpg" alt="Souper au resto avec la gang du 47e Gala de la chanson de Caraquet — les finalistes, dont Cindy Roy, souriants autour de la table, en mai 2015" width="960" height="540" loading="lazy" />
                 <figcaption>Souper au resto avec la gang du 47e Gala — mai 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-souper-homards-2015.jpg" alt="Souper de homards avec la gang du Gala de la chanson de Caraquet — les finalistes autour d’une table pleine d’assiettes de homard, Cindy Roy en chandail gris, en 2015" width="960" height="540" loading="lazy" />
+                <figcaption>Souper de homards avec la gang du Gala — 2015</figcaption>
+              </figure>
+              <figure class="scene-item">
+                <img src="assets/gala-post-atelier-spectacle-2015.jpg" alt="Collage de photos de l’atelier-spectacle des ateliers du printemps du 47e Gala de la chanson de Caraquet — des finalistes à la guitare et au piano, Cindy Roy en veston blanc en bas à droite — photos d’Yvon Cormier, en 2015" width="680" height="665" loading="lazy" />
+                <figcaption>L’atelier-spectacle des ateliers du printemps, en photos — 2015<br />Photos : Yvon Cormier</figcaption>
+              </figure>
+              <figure class="gala-doc">
+                <img src="assets/gala-invitation-conference-presse-2015.jpg" alt="Invitation à la conférence de presse du 47e Gala de la chanson de Caraquet, le jeudi 16 juillet 2015 à 10 h, au foyer du Centre culturel de Caraquet" width="720" height="404" loading="lazy" />
+                <figcaption>Invitation à la conférence de presse du 47e Gala — 16 juillet 2015</figcaption>
               </figure>
             </div>
           </div>
@@ -3518,12 +3801,12 @@
             <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
           </figure>
           <ol class="song-list">
-            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
-            <li><button class="song-jump" type="button" data-time="43.5" aria-label="Écouter « Moi je crois » dans le montage vidéo"><span class="song-num">02</span><span class="song-name">Moi je crois</span></button></li>
-            <li><button class="song-jump" type="button" data-time="58.5" aria-label="Écouter « Les mots oubliés » dans le montage vidéo"><span class="song-num">03</span><span class="song-name">Les mots oubliés</span></button></li>
-            <li><button class="song-jump" type="button" data-time="73.5" aria-label="Écouter « Une fille qui lâche pas » dans le montage vidéo"><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span></button></li>
-            <li><button class="song-jump" type="button" data-time="88.5" aria-label="Écouter « Fonce vers tes rêves » dans le montage vidéo"><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span></button></li>
-            <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">06</span><span class="song-name">Avant de me rendre</span></button></li>
+            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><img class="song-icon" src="assets/icone-originale-entend-ma-priere.png" alt="Icône colombe — Entend ma prière" width="480" height="480" loading="lazy" /><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
+            <li><button class="song-jump" type="button" data-time="43.5" aria-label="Écouter « Moi je crois » dans le montage vidéo"><span class="song-num">02</span><img class="song-icon" src="assets/icone-originale-moi-je-crois.png" alt="Icône étoile acadienne — Moi je crois" width="480" height="480" loading="lazy" /><span class="song-name">Moi je crois</span><span class="song-state">Présentée au Gala 2015</span></button></li>
+            <li><button class="song-jump" type="button" data-time="58.5" aria-label="Écouter « Les mots oubliés » dans le montage vidéo"><span class="song-num">03</span><img class="song-icon" src="assets/icone-originale-les-mots-oublies.png" alt="Icône plume et lettre — Les mots oubliés" width="480" height="480" loading="lazy" /><span class="song-name">Les mots oubliés</span></button></li>
+            <li><button class="song-jump" type="button" data-time="73.5" aria-label="Écouter « Une fille qui lâche pas » dans le montage vidéo"><span class="song-num">04</span><img class="song-icon" src="assets/icone-originale-une-fille-qui-lache-pas.png" alt="Icône papillon — Une fille qui lâche pas" width="480" height="480" loading="lazy" /><span class="song-name">Une fille qui lâche pas</span></button></li>
+            <li><button class="song-jump" type="button" data-time="88.5" aria-label="Écouter « Fonce vers tes rêves » dans le montage vidéo"><span class="song-num">05</span><img class="song-icon" src="assets/icone-originale-fonce-vers-tes-reves.png" alt="Icône élan — Fonce vers tes rêves" width="480" height="480" loading="lazy" /><span class="song-name">Fonce vers tes rêves</span></button></li>
+            <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">06</span><img class="song-icon" src="assets/icone-originale-avant-de-me-rendre.png" alt="Icône chemin vers la lumière — Avant de me rendre" width="480" height="480" loading="lazy" /><span class="song-name">Avant de me rendre</span><span class="song-state">Présentée au Gala 2015</span></button></li>
           </ol>
 
           <section class="arranged" aria-labelledby="arranged-title">
@@ -3549,6 +3832,24 @@
                 <p class="arranged-credit">Que la neige — texte : Cindy Roy · musique &amp; arrangement : Théo Rota</p>
               </div>
             </div>
+              </div>
+            </details>
+          </section>
+
+          <section class="arranged" aria-labelledby="denis-title">
+            <div class="arranged-head">
+              <h3 class="arranged-title" id="denis-title">Collaboration avec Denis Leclair</h3>
+            </div>
+            <details class="photo-gallery">
+              <summary class="gallery-toggle">Écouter la chanson <span class="gallery-toggle-hint">vidéo complète, un clic</span></summary>
+              <div class="gallery-body">
+                <div class="arranged-grid arranged-grid-single">
+                  <div class="arranged-card">
+                    <h4>Toile au clair de lune</h4>
+                    <iframe src="https://www.youtube.com/embed/ZRL28fwhWkc" title="« Toile au clair de lune » — Cindy Roy, en collaboration avec Denis Leclair (vidéo complète)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <p class="arranged-credit">2017 — Paroles : Cindy Roy · Musique : Cindy Roy et Denis Leclair · Guitare : Denis Leclair · Chœurs : Denis L. · Voix : Cindy Roy</p>
+                  </div>
+                </div>
               </div>
             </details>
           </section>
@@ -3616,6 +3917,12 @@
             <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-name">Amoureuse</span></button></li>
             <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
           </ol>
+
+          <figure class="clip-card" style="margin-top: 30px">
+            <h5>Ayoye (Offenbach)</h5>
+            <video class="landscape" src="assets/ayoye-extrait-mer-v2.mp4" controls playsinline preload="metadata" title="« Ayoye » d’Offenbach — extrait : Cindy Roy marche devant la mer, puis la pochette, avec sa voix"></video>
+            <figcaption>2017 — Arrangement : Denis Leclair · Guitare : Denis Leclair · Chœurs : Denis L. · Voix : Cindy Roy</figcaption>
+          </figure>
 
           <details class="photo-gallery">
             <summary class="gallery-toggle">Les extraits, par famille <span class="gallery-toggle-hint">Mes Cabrel · Country · Dolly Parton, un clic</span></summary>
@@ -3745,6 +4052,10 @@
                 <img src="assets/beresford-equipe-louis-noel-2015.jpg" alt="L’équipe du coach Louis Noël à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy Roy" width="720" height="489" loading="lazy" />
                 <figcaption>L’équipe du coach Louis Noël — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy — Carnaval du Siffleux, 2015</figcaption>
               </figure>
+              <figure class="scene-item">
+                <img src="assets/cindy-andrea-richardson-voix-beresford.jpg" alt="Cindy Roy, en veston blanc, avec la chanteuse Andrea Richardson, à La Voix de Beresford, au Carnaval du Siffleux" width="720" height="960" loading="lazy" />
+                <figcaption>Avec Andrea Richardson — La Voix de Beresford, Carnaval du Siffleux</figcaption>
+              </figure>
             </div>
           </div>
         </details>
@@ -3752,21 +4063,38 @@
     </section>
 
     <section class="scene" id="scene">
+      <div class="scene-spot" aria-hidden="true">
+        <img class="scene-spot-photo" src="assets/cindy-scene-robe-creme.jpg" alt="" width="1122" height="1361" loading="lazy" />
+        <div class="scene-spot-source"></div>
+        <div class="scene-spot-beam"><div class="scene-spot-cone"></div></div>
+        <div class="scene-spot-halo"></div>
+      </div>
       <div class="wrap">
-        <p class="section-tag">Moments de scène</p>
-        <h2 class="section-title">La scène, <em>comme si vous y étiez.</em></h2>
-        <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
+        <div class="scene-head">
+          <div class="scene-head-copy">
+            <p class="section-tag">Moments de scène</p>
+            <h2 class="section-title">La scène, <em>comme si vous y étiez.</em></h2>
+            <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
+          </div>
+        </div>
+        <figure class="scene-item scene-vraie">
+          <img src="assets/cindy-scene-vraie.png" alt="Cindy Roy sur scène" width="1122" height="1361" loading="lazy" />
+        </figure>
         <div class="scene-grid">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
             <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
           </figure>
-<figure class="scene-item">
-            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
-            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
-          </figure>
         </div>
+        <figure class="scene-item scene-bibitte-wide">
+          <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
+          <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
+        </figure>
+        <figure class="scene-item scene-loge">
+          <img src="assets/cindy-miroir-loge-solo.jpg" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — derrière elle, la coiffeuse éclairée, les costumes suspendus et l’écriteau « Stage Door »" width="864" height="2432" loading="lazy" />
+          <figcaption>Dans ma loge, devant le miroir, avant d’entrer en scène.</figcaption>
+        </figure>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie — Moments de scène <span class="gallery-toggle-hint">tous les autres moments, un clic</span></summary>
           <div class="gallery-body">
@@ -3779,6 +4107,10 @@
 <figure class="scene-item">
             <img src="assets/fete-acadie-beresford-2015.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes sur scène aux Festivités acadiennes de Beresford, en août 2015 — de gauche à droite : Louis Noël, Cindy Roy, Stéphane Hébert et Madiane Michaud, devant un grand drapeau acadien" loading="lazy" />
             <figcaption>Le cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, août 2015</figcaption>
+          </figure>
+<figure class="scene-item">
+            <img src="assets/cindy-drapeau-acadien.jpg" alt="Cindy Roy, chapeau de paille aux couleurs acadiennes, tenant un drapeau acadien à l’étoile dorée, aux Festivités acadiennes" width="1200" height="1207" loading="lazy" />
+            <figcaption>Festivités acadiennes</figcaption>
           </figure>
           <h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
 <figure class="scene-item">
@@ -3819,6 +4151,12 @@
                 <img src="assets/des-airs-et-des-mots-couverture-2015.jpg" alt="Montage sépia des quatre membres du cercle d’auteurs-compositeurs Des airs et des mots, en 2015 — Cindy Roy, Louis Noël, Stéphane Hébert et Madiane Michaud" width="720" height="280" loading="lazy" />
                 <figcaption>Des airs et des mots — Cindy, Louis Noël, Stéphane Hébert et Madiane Michaud, 2015</figcaption>
               </figure>
+          <h4 class="scene-group-title">« Quand la nature écoute »</h4>
+<figure class="scene-item scene-item--reel">
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Ffacebook.com%2Freel%2F3225534657596758%2F&show_text=false" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — Reel Facebook du 11 octobre 2025, filmé par sa tante Louise" loading="lazy" style="aspect-ratio: 9 / 16" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
+            <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
+          </figure>
             </div>
           </div>
         </details>
@@ -3827,21 +4165,6 @@
 
     <section class="photos" id="photos">
       <div class="wrap">
-        <h2 class="section-title">Sur scène, le soir.</h2>
-        <div class="stage-marquee" aria-label="Photos de Cindy Roy en spectacle le soir, en défilement">
-          <div class="marquee-track">
-            <div class="marquee-group">
-              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="Cindy Roy chantant en pleine note sur scène, en robe verte et talons dorés, sous un faisceau de lumière doré aux reflets bleus et mauves" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="Cindy Roy sur scène le soir, en robe verte et talons dorés, chantant sous un spot chaud avec un jeu de lumière bleu et mauve" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" /></figure>
-            </div>
-            <div class="marquee-group" aria-hidden="true">
-              <figure><img src="assets/cindy-scene-soir-spot-3.webp" alt="" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-4.webp" alt="" loading="lazy" /></figure>
-              <figure><img src="assets/cindy-scene-soir-spot-1.webp" alt="" loading="lazy" /></figure>
-            </div>
-          </div>
-        </div>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie de photos <span class="gallery-toggle-hint">Cindy, en images — un clic</span></summary>
           <div class="gallery-body">
@@ -4090,6 +4413,25 @@
         <h2 class="section-title">Une vie en musique, <em>sans raccourci.</em></h2>
         <p class="section-intro">Mon parcours, c’est celui d’une battante : une femme qui a vécu, aimé, travaillé, élevé ses enfants, recommencé — pis qui n’a jamais lâché cette partie d’elle-même qui avait tant besoin de chanter.</p>
         <p class="section-intro">J’ai aussi osé les auditions des grands concours télé : Canadian Idol (2003), Star Académie (2005) et La Voix (2015).</p>
+        <details class="photo-gallery">
+          <summary class="gallery-toggle">Les photos des auditions <span class="gallery-toggle-hint">Star Académie 2005 et La Voix 2015 — un clic</span></summary>
+          <div class="gallery-body">
+        <div class="audition-trio">
+          <figure class="timeline-photo trio-affiche">
+            <img src="assets/star-academie-2005-cindy-4355-affiche.jpg" alt="Cindy Roy devant l’affiche officielle de Star Académie 2005, souriante, numéro de candidate 4355 épinglé sur son manteau noir" width="960" height="1362" loading="lazy" decoding="async" />
+            <figcaption>Star Académie 2005 — candidate #4355.</figcaption>
+          </figure>
+          <figure class="timeline-photo trio-salle">
+            <img src="assets/star-academie-2005-cindy-4355-salle.jpg" alt="Cindy Roy assise dans la salle d’attente des auditions de Star Académie 2005, numéro de candidate 4355 sur la poitrine, parmi les rangées de chaises vertes" width="960" height="674" loading="lazy" decoding="async" />
+            <figcaption>Star Académie 2005 — candidate #4355.</figcaption>
+          </figure>
+          <figure class="timeline-photo trio-voix">
+            <img src="assets/la-voix-2015-cindy-1120.jpg" alt="Cindy Roy aux auditions de La Voix, souriante devant le mur orange de l’émission, veste de jean et numéro de candidate 1120 épinglé sur la poitrine" width="960" height="734" loading="lazy" decoding="async" />
+            <figcaption>Aux auditions de La Voix, à Québec — candidate 1120.</figcaption>
+          </figure>
+        </div>
+          </div>
+        </details>
         <div class="journey-body">
           <figure class="journey-photo">
             <img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" />
@@ -4105,7 +4447,11 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2005 à 2008</div>
-            <div class="timeline-copy"><p>De 2005 à 2008, j’ai eu le bonheur de chanter aux fêtes de la Saint-Jean à Saint-Adolphe-d’Howard, aux côtés de Mathieu Bessette, Pierre Shapiro et Mathieu Binette.</p></div>
+            <div class="timeline-copy"><p>Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
+            <figure class="timeline-photo">
+              <img src="assets/saint-adolphe-saint-jean-2007.jpg" alt="Cindy Roy chantant sur une scène extérieure à Saint-Adolphe-d’Howard pour la fête de la Saint-Jean 2007, avec Pierre Shapiro, André Binette et Mathieu Binette" width="960" height="769" loading="lazy" />
+            </figure>
+            </div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
@@ -4113,11 +4459,33 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2013 à 2019</div>
-            <div class="timeline-copy"><p>« De 2013 à 2019, j’ai chanté aux messes dans les églises de la région — Bathurst, Robertville, Beresford, Petit-Rocher et Pointe-Verte — deux dimanches par mois, accompagnée par Nicole McGrath.</p><p>Nicole, c’était mon enseignante de première et de sixième année, devenue une grande amie. Elle savait faire planer ma voix vers le ciel, et elle me disait toujours : « Cindy, toi, quand tu chantes, c’est comme une prière. » Elle a une grosse place dans mon cœur — elle y est toujours. Elle n’est plus de ce monde — paix à son âme — mais elle m’accompagnera toujours.</p><p>On chante pas pour la gloire. Mais quand les gens venaient me dire : « Tu nous aides à prier », ça faisait tellement de bien. Rendre service avec ma voix, c’est un pur privilège, et je suis pleine de gratitude, à chaque fois. »</p>
+            <div class="timeline-copy">
+            <div class="hommage">
+              <p class="hommage-dove" aria-hidden="true">🕊️</p>
+              <h3 class="hommage-title">À Nicole McGrath</h3>
+              <div class="hommage-rule" aria-hidden="true">✦</div>
+              <div class="hommage-text">
+                <p class="hommage-lead">Elle m’a appris à lire, à écrire… et à chanter comme on prie.</p>
+                <p>Enseignante de ma 1<sup>re</sup> et de ma 6<sup>e</sup> année, Nicole a accompagné mon chant à la paroisse de 2013 à 2019. « Quand tu chantes, c’est comme une prière », qu’elle me disait.</p>
+                <p>Ce Jeudi saint 2014 reste une soirée spéciale — on avait même reçu des acclamations à la fin. Nicole est à l’orgue, à mes côtés, comme toujours; Maxime Boudreau chante avec moi, et Mathieu Binette et Jonathan sont aux flûtes.</p>
+                <p>Ensemble, on a chanté aux messes dans les églises de la région — Bathurst, Robertville, Beresford, Petit-Rocher et Pointe-Verte — deux dimanches par mois. On chante pas pour la gloire, mais quand les gens venaient me dire : « Tu nous aides à prier », ça faisait tellement de bien. Rendre service avec ma voix, c’est un pur privilège — et je suis pleine de gratitude, à chaque fois.</p>
+                <p>Nicole, c’était une grande amie. Elle savait faire planer ma voix vers le ciel. Elle a une grosse place dans mon cœur — elle y est toujours — et elle m’accompagnera toujours.</p>
+                <p>Elle nous a quittés le 25 novembre 2025.</p>
+              </div>
+            <div class="nicole-duo">
             <figure class="timeline-photo nicole-small">
               <img src="assets/cindy-nicole-eglise.jpg" alt="Cindy Roy chantant au micro dans une église, avec Nicole McGrath au clavier juste à côté d’elle" loading="lazy" />
               <figcaption>Nicole et moi</figcaption>
             </figure>
+            <figure class="timeline-video">
+              <video src="assets/jeudi-saint-2014-nicole.mp4" poster="assets/jeudi-saint-2014-affiche.jpg" controls playsinline preload="metadata" title="Jeudi saint 2014 — église Saint-Vincent-de-Paul, Pointe-Verte"></video>
+            </figure>
+            </div>
+              <div class="hommage-epitaph">
+                <p>Merci pour tout, Nicole.</p>
+                <p>Que son âme repose en paix. 🕊️</p>
+              </div>
+            </div>
             </div>
           </article>
           <article class="timeline-row">
@@ -4182,6 +4550,7 @@
         <ul class="influence-list">
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-diane-panel" id="influence-diane-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-diane.jpg" alt="Portrait de Diane Tell" width="480" height="480" loading="lazy" />
               <span class="influence-name">Diane Tell</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4193,6 +4562,10 @@
                 </figure>
                 <p>Pourquoi Diane Tell? Parce qu’elle me rappelle les femmes de ma famille. Sa douceur, c’est celle des femmes Boudreau — mes tantes, ma mère. Mais derrière cette douceur, il y a un cœur de guerrière, de rebelle : elle fait sa petite affaire, elle sort des cadres. Féminine, coquette assumée, avec une bonne tête sur les épaules. Ce côté-là d’elle colle tellement à mon énergie — comme si, elle et moi, on se reconnaissait.</p>
             <p>Diane, c’est la première artiste que j’ai entendue de ma vie. J’avais cinq ans, on vivait à Calgary, et c’est mon oncle Alain qui m’avait donné une de ses cassettes. Ma mère avait un stéréo à deux cassettes : je m’enregistrais en chantant avec Diane — pis déjà, du haut de mes cinq ans, je rêvais de chanter comme elle. « Je veux chanter comme Diane! » J’étais déjà exigeante envers moi-même, à cinq ans.</p>
+                <figure class="influence-photo influence-photo--enfance">
+                  <img src="assets/petite-cindy-boombox-diane-tell.jpg" alt="La petite Cindy Roy, vers cinq ans, assise sur un lit à côté d’un gros boombox, avec un grand sourire — vieille photo de famille aux couleurs d’époque" width="1080" height="733" loading="lazy" />
+                  <figcaption>La petite Cindy, vers cinq ans — « J’écoutais mon Diane Tell. »</figcaption>
+                </figure>
             <p>Je me suis toujours sentie comme une belle petite bébitte weird, pas comme les autres — je rentrais pas dans le cadre, moi non plus. Mon album préféré d’elle, c’est En flèche : ma petite cassette orange, je l’ai gardée toute ma vie — même si, un jour, j’ai enregistré par-dessus une chanson par accident. Elle vaut plus que de l’or pour moi, cette cassette-là.</p>
             <p>C’est sûrement là, devant ce stéréo, que j’ai décidé : « Moi, je veux chanter. » Bien des artistes sont passés depuis, mais Diane, elle, je l’ai toujours gardée avec moi — tout le long du chemin, comme une étoile qui me guide.</p>
               </div>
@@ -4200,6 +4573,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-cabrel-panel" id="influence-cabrel-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-cabrel.jpg" alt="Portrait de Francis Cabrel" width="480" height="480" loading="lazy" />
               <span class="influence-name">Francis Cabrel</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4214,6 +4588,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-isabelle-panel" id="influence-isabelle-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-isabelle.jpg" alt="Portrait d’Isabelle Boulay" width="480" height="480" loading="lazy" />
               <span class="influence-name">Isabelle Boulay</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4227,6 +4602,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-patrick-panel" id="influence-patrick-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-patrick.jpg" alt="Portrait de Patrick Norman" width="480" height="480" loading="lazy" />
               <span class="influence-name">Patrick Norman</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4240,6 +4616,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-ginette-panel" id="influence-ginette-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-ginette.jpg" alt="Portrait de Ginette Reno" width="480" height="480" loading="lazy" />
               <span class="influence-name">Ginette Reno</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4253,6 +4630,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-laurence-panel" id="influence-laurence-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-laurence.jpg" alt="Portrait de Laurence Jalbert" width="480" height="480" loading="lazy" />
               <span class="influence-name">Laurence Jalbert</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4266,6 +4644,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-shania-panel" id="influence-shania-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-shania.jpg" alt="Portrait de Shania Twain" width="480" height="480" loading="lazy" />
               <span class="influence-name">Shania Twain</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4279,6 +4658,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-lara-panel" id="influence-lara-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-lara.jpg" alt="Portrait de Lara Fabian" width="480" height="480" loading="lazy" />
               <span class="influence-name">Lara Fabian</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4292,6 +4672,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-alanis-panel" id="influence-alanis-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-alanis.jpg" alt="Portrait d’Alanis Morissette" width="480" height="480" loading="lazy" />
               <span class="influence-name">Alanis Morissette</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4305,6 +4686,7 @@
           </li>
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-celine-panel" id="influence-celine-toggle">
+              <img class="influence-portrait" src="assets/influence-portrait-celine.jpg" alt="Portrait de Céline Dion" width="480" height="480" loading="lazy" />
               <span class="influence-name">Céline Dion</span>
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
@@ -4323,6 +4705,7 @@
         <div class="influences-closing">
           <blockquote class="influences-quote">« Ma voix, c’est tous ces petits bouts de moi qui viennent de ce qui passait à la <em>radio.</em> »</blockquote>
         </div>
+        <p class="influences-credits">Crédits photo : Diane Tell © Sophie Arosteguy (CC BY-SA 4.0) · Francis Cabrel © sally-rose (CC BY 2.0) · Isabelle Boulay © Michaël Bemelmans (CC BY-SA 4.0) · Shania Twain © Katherine Brock (CC BY-SA 2.0) · Lara Fabian © Lucian Nuță (CC BY-SA 2.0) · Alanis Morissette © Justin Higuchi (CC BY 2.0) · Céline Dion © Yoyo76300 (CC BY-SA 3.0) — photos via Wikimedia Commons.</p>
       </div>
     </section>
 
@@ -4473,7 +4856,7 @@
           <p class="section-tag">Pour les salles et les organisateurs</p>
           <div class="onesheet-head">
             <figure class="onesheet-photo">
-              <img src="assets/cindy-scene-robe-verte.jpg" alt="Cindy Roy chantant sur scène en robe verte, un micro à la main" loading="lazy" />
+              <img src="assets/cindy-scene-robe-creme.jpg" alt="Cindy Roy chantant sur scène en robe crème, un micro à la main" loading="lazy" />
             </figure>
             <div>
               <h3 class="onesheet-name">Cindy Roy</h3>
@@ -4523,8 +4906,8 @@
                 <figcaption>Sur scène — la photo d’ouverture<br /><a class="kit-download" href="assets/cindy-accueil-scene-portrait.jpg" download>Télécharger</a></figcaption>
               </figure>
               <figure class="kit-item">
-                <img src="assets/cindy-scene-soir-spot-1.webp" alt="Cindy Roy en spectacle le soir, en robe verte et talons dorés, le micro à la bouche sous un spot chaud, un bras tendu vers le public" loading="lazy" />
-                <figcaption>Sur scène, le soir — sous les spots<br /><a class="kit-download" href="assets/cindy-scene-soir-spot-1.webp" download>Télécharger</a></figcaption>
+                <img src="assets/cindy-scene-robe-creme.jpg" alt="Cindy Roy en spectacle le soir, en robe crème et talons dorés, chantant au micro sous les spots chauds de la scène" loading="lazy" />
+                <figcaption>Sur scène, le soir — sous les spots<br /><a class="kit-download" href="assets/cindy-scene-robe-creme.jpg" download>Télécharger</a></figcaption>
               </figure>
               <figure class="kit-item">
                 <img src="assets/cindy-broche-papillon.png" alt="Cindy Roy souriante dans la lumière dorée de l’automne, portant un châle tricoté brun et gris fermé par sa broche papillon en perles" loading="lazy" />
@@ -5065,6 +5448,31 @@
         if (!played) return;
         window.clearTimeout(rt); rt = window.setTimeout(measure, 200);
       });
+    })();
+  </script>
+<script>
+    /* Le petit bout de piano des accomplissements : le bouton
+       joue l’extrait au clic (aucun autoplay), un second clic
+       met en pause; le libellé reflète l’état, sobrement, et
+       revient à « Écouter » quand l’extrait se termine. */
+    (function () {
+      var btn = document.getElementById('piano-listen-btn');
+      var audio = document.getElementById('piano-listen-audio');
+      if (!btn || !audio) return;
+      var labelPlay = '🎹 Écouter un petit bout de piano';
+      var labelPause = '🎹 Pause';
+      function sync() {
+        var playing = !audio.paused && !audio.ended;
+        btn.textContent = playing ? labelPause : labelPlay;
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        btn.classList.toggle('is-playing', playing);
+      }
+      btn.addEventListener('click', function () {
+        if (audio.paused || audio.ended) { audio.play(); } else { audio.pause(); }
+      });
+      audio.addEventListener('play', sync);
+      audio.addEventListener('pause', sync);
+      audio.addEventListener('ended', sync);
     })();
   </script>
   <div class="shooting-star" aria-hidden="true" hidden>
