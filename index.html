@@ -2734,10 +2734,13 @@
        n’est touché, tout reste parfaitement lisible. Les tiges
        balancent à peine, les petites notes libres montent
        doucement, le papillon flotte — mouvements lents et calmes,
-       figés si prefers-reduced-motion. Au téléphone, le jardin se
-       retire au complet, comme les lauriers du Gala, pour garder
-       l’écran léger et le texte dégagé. Aucune photo, aucun texte
-       nouveau. Purement décoratif (aria-hidden, alt vide). */
+       figés si prefers-reduced-motion. Au téléphone (≤ 700 px,
+       bloc plus bas), le jardin ne se retire plus au complet :
+       il reste en souffle très discret — quelques tiges en très
+       basse opacité sur les côtés, le papillon en petit, un
+       soupçon de poussière d’or — sans jamais nuire au texte
+       ni aux lecteurs. Aucune photo, aucun texte nouveau.
+       Purement décoratif (aria-hidden, alt vide). */
     .music-section { position: relative; overflow: hidden; }
     .music-section > .wrap { position: relative; z-index: 1; }
     .music-garden { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
@@ -2812,8 +2815,40 @@
       .music-garden-butterfly { width: 44px; opacity: .6; }
       .music-garden-note-float { display: none; }
     }
-    @media (max-width: 700px) { .music-garden { display: none; } }
+    /* Téléphone (≤ 700 px) — le jardin en souffle (demande de
+       Cindy, 4 nov.) : plutôt que de se retirer au complet, le
+       jardin reste présent, mais réduit à peine à un murmure,
+       comme les photos fondues du Gala au téléphone. Quelques
+       tiges fines avec leurs fleurs-notes en très basse opacité
+       sur les côtés, le ciel et les étoiles à demi éteints, un
+       soupçon de poussière d’or, et le papillon en petit, qui
+       monte doucement, sur une course raccourcie. Tout vit
+       derrière le contenu (z-index 0) : ni le texte ni les
+       lecteurs ne sont jamais gênés. Les notes libres restent
+       retirées (déjà masquées ≤ 1000 px plus haut). */
+    @media (max-width: 700px) {
+      .music-garden-sky { opacity: .5; }
+      .music-garden-stars { opacity: .5; }
+      .music-garden-side { opacity: .2; height: 360px; top: 16px; }
+      .music-garden-side--left { left: -22px; }
+      .music-garden-side--right { right: -22px; }
+      .music-garden-butterfly { width: 30px; opacity: .45; top: 320px; right: 18px; }
+      @keyframes garden-butterfly-rise {
+        0% { transform: translate(0, 0) rotate(-4deg); }
+        35% { transform: translate(-10px, -44px) rotate(4deg); }
+        70% { transform: translate(4px, -82px) rotate(-3deg); }
+        100% { transform: translate(-7px, -118px) rotate(5deg); }
+      }
+    }
     @media (prefers-color-scheme: dark) { .music-garden-side { opacity: .5; } .music-garden-butterfly { filter: brightness(1.4) saturate(1.1) drop-shadow(0 3px 10px rgba(0, 0, 0, .4)); } }
+    /* Mode sombre au téléphone : le souffle reste un souffle —
+       les opacités du bloc ≤ 700 px priment sur celles du mode
+       sombre ci-dessus, avec juste un petit cran de plus, parce
+       que le fond sombre avale davantage l’or. */
+    @media (max-width: 700px) and (prefers-color-scheme: dark) {
+      .music-garden-side { opacity: .26; }
+      .music-garden-butterfly { opacity: .5; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .music-garden-side .garden-stem, .music-garden-note-float, .music-garden-butterfly { animation: none !important; }
       .music-garden-note-float { opacity: .35; }
