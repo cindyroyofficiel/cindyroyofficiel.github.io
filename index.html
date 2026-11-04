@@ -2879,6 +2879,25 @@
     .laurel { position: absolute; top: 46%; height: clamp(240px, 26vw, 330px); width: auto; opacity: .9; pointer-events: none; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .35)); }
     .laurel--left { left: -168px; transform: translateY(-50%); }
     .laurel--right { right: -168px; transform: translateY(-50%) scaleX(-1); }
+    /* — Correctif du 4 nov. au soir (vu par Cindy sur son
+       portable) : dans la bande des écrans d’ordinateur de
+       1151 à 1560 px, le laurier de gauche chevauchait la photo
+       fondue du trophée et une feuille lui traversait le visage
+       (son visage y commence à ≈ 40 % de la largeur de la photo,
+       collée au bord gauche de la section, pendant que le bloc
+       de titre — et son laurier — se recentre avec l’écran).
+       On pousse donc ce seul laurier vers la GAUCHE, d’un
+       décalage qui grandit avec la largeur de l’écran
+       (left: 315px − 42vw vaut −168 px à 1150 px, puis glisse
+       jusqu’à ≈ −340 px à 1560 px) : juste assez pour que les
+       feuilles s’arrêtent avant son visage, à toutes ces
+       largeurs, sans jamais sortir de l’écran. Au-delà de
+       1560 px, le laurier retombe de lui-même à droite de son
+       visage : position d’origine inchangée. Le laurier de
+       droite, l’étoile acadienne et la colombe (qui mesure la
+       photo elle-même) ne bougent pas; au téléphone, les
+       lauriers restent retirés, comme avant. */
+    @media (min-width: 1151px) and (max-width: 1560px) { .laurel--left { left: calc(315px - 42vw); } }
     @media (max-width: 1150px) { .laurel { display: none; } }
     @media print { .gala-decor, .laurel, .gala-star { display: none; } }
     /* — Jardin de musique de la section « Ma musique » (concept de
