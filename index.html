@@ -2808,8 +2808,18 @@
       78% { opacity: .42; }
       100% { opacity: 0; transform: translateY(-46px) rotate(7deg); }
     }
-    .music-garden-butterfly { position: absolute; top: clamp(300px, 30vw, 430px); right: clamp(52px, 7vw, 118px); width: 56px; height: auto; opacity: .85;
-      filter: drop-shadow(0 3px 10px rgba(201, 162, 79, .35));
+    /* VISIBILITÉ RENFORCÉE (Cindy, 4 nov.) : le papillon de l’envol
+       était trop pâle sur le fond clair de la section — il pointe
+       désormais vers une copie en DORÉ PROFOND et saturé
+       (assets/papillon-or-fonce.png : mêmes filets, teinte bronze
+       soutenue, traits un soupçon épaissis), à pleine opacité, avec
+       un fin halo bronze foncé qui le détache du fond crème. Son
+       ancre de droite recule EXACTEMENT du même pas que le vidéo
+       (le « + clamp(18px, 5.7vw, 76px) » du recul du 4 nov., voir
+       .ecrit-video) : son mouvement et sa trajectoire PAR-DESSUS le
+       vidéo restent donc inchangés, juste déplacés avec lui. */
+    .music-garden-butterfly { position: absolute; top: clamp(300px, 30vw, 430px); right: calc(clamp(52px, 7vw, 118px) + clamp(18px, 5.7vw, 76px)); width: 56px; height: auto; opacity: 1;
+      filter: drop-shadow(0 0 1.6px rgba(122, 74, 4, .85)) drop-shadow(0 2px 7px rgba(122, 74, 4, .45));
       animation: garden-butterfly-rise 16s ease-in-out infinite alternate; }
     /* Le papillon VOLE PAR-DESSUS le contenu (Cindy, 4 nov. : « ça
        serait beau s’il vole dessus ») : il ne vit plus dans le
@@ -2865,7 +2875,7 @@
     @media (max-width: 1300px) { .music-garden-side { opacity: .45; } }
     @media (max-width: 1000px) {
       .music-garden-side { opacity: .28; height: clamp(380px, 58vw, 520px); }
-      .music-garden-butterfly { width: 44px; opacity: .6; }
+      .music-garden-butterfly { width: 44px; opacity: .95; }
       .music-garden-note-float { display: none; }
     }
     /* Téléphone (≤ 700 px) — le jardin en souffle (demande de
@@ -2885,7 +2895,7 @@
       .music-garden-side { opacity: .2; height: 360px; top: 16px; }
       .music-garden-side--left { left: -22px; }
       .music-garden-side--right { right: -22px; }
-      .music-garden-butterfly { width: 30px; opacity: .45; top: 320px; right: 18px; }
+      .music-garden-butterfly { width: 30px; opacity: .95; top: 320px; right: calc(18px + clamp(18px, 5.7vw, 76px)); }
       @keyframes garden-butterfly-rise {
         0% { transform: translate(0, 0) rotate(-4deg); }
         35% { transform: translate(-10px, -44px) rotate(4deg); }
@@ -2893,14 +2903,14 @@
         100% { transform: translate(-7px, -118px) rotate(5deg); }
       }
     }
-    @media (prefers-color-scheme: dark) { .music-garden-side { opacity: .5; } .music-garden-butterfly { filter: brightness(1.4) saturate(1.1) drop-shadow(0 3px 10px rgba(0, 0, 0, .4)); } }
+    @media (prefers-color-scheme: dark) { .music-garden-side { opacity: .5; } .music-garden-butterfly { filter: brightness(1.75) saturate(1.3) drop-shadow(0 0 1.6px rgba(0, 0, 0, .65)) drop-shadow(0 2px 7px rgba(0, 0, 0, .5)); } }
     /* Mode sombre au téléphone : le souffle reste un souffle —
        les opacités du bloc ≤ 700 px priment sur celles du mode
        sombre ci-dessus, avec juste un petit cran de plus, parce
        que le fond sombre avale davantage l’or. */
     @media (max-width: 700px) and (prefers-color-scheme: dark) {
       .music-garden-side { opacity: .26; }
-      .music-garden-butterfly { opacity: .5; }
+      .music-garden-butterfly { opacity: .9; }
     }
     @media (prefers-reduced-motion: reduce) {
       .music-garden-side .garden-stem, .music-garden-note-float, .music-garden-butterfly { animation: none !important; }
@@ -2928,8 +2938,17 @@
        droit de la zone de contenu — une petite marge à droite
        (12 px au téléphone, jusqu’à 40 px sur l’ordinateur) le
        pousse un ti peu vers la gauche et lui laisse de l’air.
-       Taille, cadre doré, légende et texte à gauche inchangés. */
-    .ecrit-video { margin: 0 clamp(12px, 2.8vw, 40px) 0 0; flex: none; width: clamp(152px, 15.5vw, 190px); text-align: center; }
+       Taille, cadre doré, légende et texte à gauche inchangés.
+       RECUL SUPPLÉMENTAIRE (Cindy, 4 nov., plus tard) : « pousse-le
+       encore, un bon deux centimètres » — la marge de droite reçoit
+       un second terme proportionnel à l’écran (+18 px minimum,
+       +5,7 vw, jusqu’à +76 px ≈ 2 cm sur l’ordinateur; ≈ +22 px
+       sur le téléphone) : le vidéo recule donc d’un vrai pas de
+       plus vers la gauche, même taille, même cadre, texte toujours
+       lisible à côté. Le papillon de l’envol reçoit le même pas
+       sur son ancre (voir .music-garden-butterfly) pour garder
+       sa trajectoire par-dessus le vidéo. */
+    .ecrit-video { margin: 0 calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px)) 0 0; flex: none; width: clamp(152px, 15.5vw, 190px); text-align: center; }
     .ecrit-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border: 1px solid var(--gold); border-radius: 6px;
       box-shadow: 0 0 0 3px rgba(201, 162, 79, .16), 0 14px 34px rgba(74, 56, 26, .20);
       -webkit-mask-image:
@@ -4151,7 +4170,7 @@
         <svg class="music-garden-note-float music-garden-note-float--2" viewBox="0 0 24 36" focusable="false"><g fill="#c9a24f"><path d="M10 32 L10 3 C15 3.5 17.5 7 16 13 C14.8 9.8 13 7.8 10 6.8 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g></svg>
         <svg class="music-garden-note-float music-garden-note-float--3" viewBox="0 0 24 36" focusable="false"><g fill="#d5a83e"><path d="M10 32 L10 4 L11.8 4 L11.8 32 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g></svg>
       </div>
-      <img class="music-garden-butterfly" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+      <img class="music-garden-butterfly" src="assets/papillon-or-fonce.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <div class="music-intro">
