@@ -62,7 +62,7 @@
   <meta name="theme-color" content="#1d2b1e" />
   <meta name="description" content="Cindy Roy, autrice-compositrice-interprète originaire de Robertville, au Nouveau-Brunswick. Chansons originales, reprises favorites et le Gala de la chanson de Caraquet 2015. Bienvenue dans mon univers — l’album d’une vie, un pas à la fois." />
   <link rel="canonical" href="https://cindyroyofficiel.com/" />
-  <meta name="keywords" content="Cindy Roy chanteuse, Cindy Roy Robertville, autrice-compositrice-interprète acadienne, Entend ma prière, Gala de la chanson de Caraquet, La Voix de Beresford" />
+  <meta name="keywords" content="Cindy Roy chanteuse, Cindy Roy Robertville, autrice-compositrice-interprète acadienne, Entends ma prière, Gala de la chanson de Caraquet, La Voix de Beresford" />
   <meta name="google-site-verification" content="sSaVujwGYfN_HCuXFTocQ_saVkFXoi5N9orCC4IsxJo" />
   <meta property="og:site_name" content="Cindy Roy Officiel" />
   <meta property="og:title" content="Cindy Roy — autrice-compositrice-interprète | Cindy Roy Officiel" />
@@ -1249,6 +1249,20 @@
     .nicole-duo .timeline-photo, .nicole-duo .timeline-video { margin: 0; flex: 1 1 0; min-width: 0; max-width: 300px; }
     .nicole-duo .timeline-photo img, .nicole-duo .timeline-video video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
     .nicole-duo .timeline-photo img { object-position: 50% 18%; }
+    /* Duo de l’église de Robertville (Parcours, « La chorale de
+       Robertville », Cindy, 4 nov.) : ses deux photos se répondent
+       côte à côte dans des boîtes identiques — elle sur les marches
+       sous le drapeau acadien, et la façade de l’église — même
+       hauteur, bords alignés, fine bordure dorée comme les autres
+       photos du Parcours (fond sombre). Une seule légende, sobre :
+       « L’église de Robertville ». Au téléphone, le duo reste côte
+       à côte, en plus petit, sans débordement. */
+    .eglise-duo { margin: 26px 0 0; max-width: 720px; }
+    .eglise-duo-imgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .eglise-duo-imgs img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; box-shadow: 0 18px 44px rgba(0, 0, 0, .38); border: 1px solid rgba(213, 164, 58, .35); }
+    .eglise-duo-imgs img:last-child { object-position: 50% 0; }
+    .eglise-duo figcaption { margin-top: 14px; color: #ccd0ba; font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.45; text-align: center; }
+    @media (max-width: 700px) { .eglise-duo-imgs { gap: 10px; } .eglise-duo figcaption { font-size: 15.5px; } }
     /* Panneau d’HOMMAGE à Nicole McGrath (Parcours, 2013 à 2019) —
        Cindy : « une belle hommage pour elle », plus beau, plus
        poétique. Encadré doré double filet sur fond vert très sombre,
@@ -1571,6 +1585,25 @@
     .influence-photo--enfance { margin: 6px auto 26px; max-width: 340px; }
     .influence-photo--enfance img { border-radius: 12px; }
     .influence-photo--enfance figcaption { font-family: var(--serif); font-style: italic; font-size: 17px; }
+    /* La rencontre « en rêve » dans le panneau Diane Tell (Cindy,
+       4 nov.) : la même photo propre d’elle avec Diane, une seconde
+       fois, mais fondue en décor derrière le récit — translucide,
+       bords dissous en dégradés plumeux, aucun cadre — comme un
+       rêve réalisé qui flotte autour des mots. La photo claire et
+       sa légende, dans le panneau, restent intactes et nettes
+       devant. Aucune déformation : proportions naturelles, la
+       photo n’est qu’estompée. Purement décoratif (aria-hidden,
+       alt vide); le texte reste parfaitement lisible. */
+    #influence-diane-panel { position: relative; }
+    #influence-diane-panel .influence-panel-inner { position: relative; z-index: 1; }
+    .diane-dream { position: absolute; z-index: 0; top: 430px; right: -64px; width: clamp(250px, 28vw, 330px); height: auto; opacity: .17; pointer-events: none; filter: saturate(.94);
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 14%, #000 84%, transparent 100%);
+      mask-composite: intersect; }
+    @media (prefers-color-scheme: dark) { .diane-dream { opacity: .22; } }
+    @media (max-width: 700px) { .diane-dream { top: auto; bottom: 30px; right: -70px; width: 62vw; opacity: .13; } }
+    @media print { .diane-dream { display: none; } }
     @media (prefers-color-scheme: dark) { .influence-discover { color: var(--gold); } }
     @media (max-width: 620px) { .influence-toggle { padding: 18px 2px; } .influence-panel { padding-inline: 2px; } .influence-portrait { width: 54px; height: 54px; } .song-icon { width: 54px; height: 54px; } }
     @media (max-width: 940px) {
@@ -2054,7 +2087,7 @@
     }
     /* La loge déménage à côté du vidéo de La Bibitte (Cindy, 4 nov.,
        captures de son portable à l’appui) : sur ORDINATEUR, le lecteur
-       « Entend ma prière » — portrait et très haut — occupait seul la
+       « Entends ma prière » — portrait et très haut — occupait seul la
        première rangée de la grille et laissait un grand vide dans la
        deuxième colonne. La photo de la loge remplit maintenant ce vide,
        centrée verticalement à côté du vidéo, avec sa légende étoilée à
@@ -2601,7 +2634,7 @@
        RECONSTRUCTION « USER FRIENDLY » (2 nov. 2026)
        Rien n’est retiré : les pièces sont réordonnées pour que
        l’entrée POP — vidéo de bienvenue d’abord, puis la pièce
-       maîtresse (trophée du Gala + « Entend ma prière »), puis
+       maîtresse (trophée du Gala + « Entends ma prière »), puis
        Ma musique en trois familles (originales / covers / Atelier).
        Théo Rota : photo en tout petit, crédits complets inchangés.
        ════════════════════════════════════════════════════════════════ */
@@ -2684,8 +2717,8 @@
        translucide, un petit ROULEAU messager au bec — la prière
        portée. Elle fait UN seul aller : elle traverse le haut du
        bloc d’un vol lent au battement d’ailes calme, puis vient
-       se POSER sur le « E » du mot « Entend » dans la mention
-       « Entend ma prière » du titre de CE bloc, et y reste
+       se POSER sur le « E » du mot « Entends » dans la mention
+       « Entends ma prière » du titre de CE bloc, et y reste
        perchée, tranquille (au plus un micro-balancement), son
        rouleau toujours au bec. Pas de second départ, pas de
        boucle : le vol part une seule fois, quand le bloc entre
@@ -2840,7 +2873,7 @@
       100% { transform: translate(-14px, -228px) rotate(5deg); }
     }
     /* — Le jardin devient ciel (enrichissement de Cindy, 4 nov.) :
-       « C’est comme dans “Entend ma prière”, c’est de mon âme
+       « C’est comme dans “Entends ma prière”, c’est de mon âme
        jusqu’au ciel » — les tiges poussent vers le haut, les
        fleurs-notes s’ouvrent en montant, puis le haut du décor
        se transforme doucement en LUMIÈRE : un halo doré très pâle
@@ -2917,6 +2950,32 @@
       .music-garden-note-float { opacity: .35; }
     }
     @media print { .music-garden, .music-section > .music-garden-butterfly { display: none; } }
+    /* — Sa vraie photo dans le jardin (Cindy, 4 nov.) : elle, debout
+       dans son jardin, le regard vers le ciel, en présence fondue
+       d’arrière-plan — même esprit que les photos fondues du décor
+       du Gala : translucide, bords perdus en dégradés plumeux sur
+       les quatre côtés, jamais par-dessus le texte (le jardin vit à
+       z-index 0, le contenu à z-index 1). Elle habite le haut droit
+       de la section, derrière l’intro; le vidéo « L’autrice au
+       travail » garde exactement sa place et passe devant elle.
+       Au téléphone, elle devient un souffle, comme le reste du
+       jardin. Purement décoratif (aria-hidden, alt vide). */
+    .music-garden-photo { position: absolute; top: 4px; right: -58px; width: clamp(360px, 36vw, 540px); height: auto; opacity: .3; filter: saturate(.92);
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 82%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 76%, transparent 99%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 82%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 10%, #000 76%, transparent 99%);
+      mask-composite: intersect; }
+    @media (max-width: 1300px) { .music-garden-photo { opacity: .24; } }
+    @media (max-width: 1000px) { .music-garden-photo { opacity: .18; } }
+    @media (prefers-color-scheme: dark) { .music-garden-photo { opacity: .26; } }
+    @media (max-width: 700px) { .music-garden-photo { width: 76vw; right: -92px; top: 0; opacity: .15; } }
+    @media (max-width: 700px) and (prefers-color-scheme: dark) { .music-garden-photo { opacity: .18; } }
+    @media print { .music-garden-photo { display: none; } }
+    /* Sa petite ligne du jardin, sous l’intro de la section :
+       « Les chansons poussent. » — sa phrase, en écriture
+       manuscrite, comme ses autres notes signées sur le site. */
+    .garden-line { margin: 20px 0 0 6px; font-family: var(--script); font-weight: 600; font-size: clamp(28px, 3vw, 36px); line-height: 1.1; color: var(--accent); transform: rotate(-2deg); transform-origin: left center; }
+    @media (prefers-color-scheme: dark) { .garden-line { color: var(--gold); } }
     /* — « L’autrice au travail » (Cindy, 4 nov.) : le petit vidéo
        d’elle qui écrit, extrait réel de la fin de son vidéo « Une
        fleur à la bouche » — assise avec son cahier, crayon en main.
@@ -3800,7 +3859,7 @@
             <h3>L’Atelier</h3>
             <video src="assets/des-bouts-de-moi.mp4" poster="assets/des-bouts-de-moi-poster.jpg" controls playsinline preload="none" title="« Des bouts de moi » — Cindy Roy"></video>
             <p>« Des bouts de moi »</p>
-            <p>Sur l’établi en ce moment : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas » — et la suite pousse tranquillement.</p>
+            <p>Sur l’établi en ce moment : « Entends ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas » — et la suite pousse tranquillement.</p>
             <a class="plateau-link" href="#musique" data-goto-tab="tab-atelier">Entrer dans l’Atelier →</a>
           </article>
           <article class="plateau-card plateau-card--hot">
@@ -3887,11 +3946,11 @@
             <circle cx="66" cy="326" r="3.8" fill="#cda550" />
           </svg>
           <p class="section-tag">Mes plus beaux accomplissements</p>
-          <h2 class="highlights-title">« Entend ma prière » — <em>Ma prière a été entendue</em></h2>
-          <p class="highlights-lede">En 2015, ma chanson « Entend ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
+          <h2 class="highlights-title">« Entends ma prière » — <em>Ma prière a été entendue</em></h2>
+          <p class="highlights-lede">En 2015, ma chanson « Entends ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
           <!-- Petit bout de piano d’ambiance du site (extrait de 47 s) : bouton seul, aucun lecteur visible, aucun autoplay. -->
           <button class="piano-listen" id="piano-listen-btn" type="button" aria-pressed="false" aria-controls="piano-listen-audio">🎹 Écouter un petit bout de piano</button>
-          <p class="piano-caption">« Entend ma prière » — version instrumentale classique</p>
+          <p class="piano-caption">« Entends ma prière » — version instrumentale classique</p>
           <audio id="piano-listen-audio" preload="none" src="assets/entend-ma-priere-piano-extrait.mp3"></audio>
         </div>
         <figure class="highlights-vedette">
@@ -3902,7 +3961,7 @@
           <li class="honour">
             <p class="honour-when">Caraquet · 31 juillet 2015</p>
             <h3>Ma prière a été entendue</h3>
-            <p>Au Gala de la chanson de Caraquet, en 2015, « Entend ma prière » reçoit le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, le même soir.</p>
+            <p>Au Gala de la chanson de Caraquet, en 2015, « Entends ma prière » reçoit le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, le même soir.</p>
             <a class="honour-link" href="#gala">Lire l’histoire du Gala →</a>
           </li>
           <li class="honour">
@@ -3925,27 +3984,27 @@
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Caraquet · 31 juillet 2015</p>
-        <h2 class="section-title">« Entend ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
+        <h2 class="section-title">« Entends ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
         <p class="section-intro">L’histoire de ma chanson primée, des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
-          <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entend ma prière » — 2015</figcaption>
+          <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entends ma prière » — 2015</figcaption>
         </figure>
         <figure class="gala-avant">
           <img src="assets/cindy-avant-gala-2015.jpg" alt="Cindy Roy en robe fleurie, cheveux blonds ondulés, souriante dans la lumière de fin de journée, juste avant de partir au Gala de la chanson de Caraquet en 2015" width="640" height="852" loading="lazy" />
           <figcaption>Toute prête pour le gala</figcaption>
         </figure>
         <details class="photo-gallery">
-          <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entend ma prière », un clic</span></summary>
+          <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entends ma prière », un clic</span></summary>
           <div class="gallery-body">
         <div class="gala-story">
-          <h4 class="birth-title">Comment « Entend ma prière » est née</h4>
+          <h4 class="birth-title">Comment « Entends ma prière » est née</h4>
           <p>En 2014, je venais de perdre mon père, et je traversais une période très difficile : l’hôpital, le travail, mes jeunes enfants et, par-dessus tout, la maladie de Verneuil, avec ses infections à répétition et ses glandes sudoripares obstruées. Le diabète s’ajoutait à tout ça — tout arrivait en même temps.</p>
-          <p>Je marchais chaque jour, je me battais pour ma santé. Pis un jour, en pleine marche, une mélodie m’est venue, comme un cadeau tombé du ciel. J’ai levé les yeux… et les mots sont arrivés tout seuls : « Entend ma prière. »</p>
+          <p>Je marchais chaque jour, je me battais pour ma santé. Pis un jour, en pleine marche, une mélodie m’est venue, comme un cadeau tombé du ciel. J’ai levé les yeux… et les mots sont arrivés tout seuls : « Entends ma prière. »</p>
           <p>Je me suis enregistrée sur mon téléphone, petit bout par petit bout, pour rien perdre. De retour à la maison, j’ai tout couché sur papier, puis les accords sont venus à la guitare.</p>
           <p>Ma prière, c’était de guérir, de retrouver ma santé et de reprendre ma vie en main. J’ai l’impression qu’elle a été entendue. La maladie de Verneuil est considérée comme une maladie qui ne guérit pas, mais aujourd’hui, moi, je n’en souffre plus. J’ai perdu 140 livres. Un pas à la fois, j’ai repris ma santé en main — pis aujourd’hui, je n’ai plus besoin d’aucun médicament. Ma perte de poids, la nutrition, la prière, la foi, mon père… Je crois que tout cela a contribué à ce que je vis comme un miracle.</p>
-          <p>Un an plus tard, « Entend ma prière » remportait le Prix Auteur-compositeur au Gala de la chanson de Caraquet. J’y ai toujours vu un coup de pouce de mon papa, comme s’il me disait : « J’ai pas pu t’aider quand j’étais malade… Là, je souffre plus. Je vais t’aider, ma fille. »</p>
-          <p>J'ai composé « Entend ma prière » à la guitare — mes paroles, ma mélodie, mes accords. Juste pour la maquette envoyée au Gala, Mathieu Binette en a fait l'arrangement au piano, à partir de ce que j'avais. Pis sur la scène du Gala, ce sont les doigts magiques d'Isabelle Thériault qui l'ont portée.</p>
+          <p>Un an plus tard, « Entends ma prière » remportait le Prix Auteur-compositeur au Gala de la chanson de Caraquet. J’y ai toujours vu un coup de pouce de mon papa, comme s’il me disait : « J’ai pas pu t’aider quand j’étais malade… Là, je souffre plus. Je vais t’aider, ma fille. »</p>
+          <p>J'ai composé « Entends ma prière » à la guitare — mes paroles, ma mélodie, mes accords. Juste pour la maquette envoyée au Gala, Mathieu Binette en a fait l'arrangement au piano, à partir de ce que j'avais. Pis sur la scène du Gala, ce sont les doigts magiques d'Isabelle Thériault qui l'ont portée.</p>
         </div>
         <div class="gala-story">
           <h4 class="birth-title">Ce que mon histoire m’a appris</h4>
@@ -3962,7 +4021,7 @@
         <div class="gala-memory gala-memory--text">
           <div class="gala-prix-copy">
             <h3 class="birth-title">Ma prière a été entendue</h3>
-            <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entend ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu un beau laissez-passer de RADARTS pour les vitrines de Moncton et les festivités acadiennes.</p>
+            <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entends ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu un beau laissez-passer de RADARTS pour les vitrines de Moncton et les festivités acadiennes.</p>
           </div>
         </div>
           </div>
@@ -3976,13 +4035,13 @@
         <div class="gala-featured">
           <span class="scene-badge">En vedette</span>
           <figure>
-            <iframe src="https://www.youtube.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entend ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Gala de la chanson de Caraquet 2015 — l’annonce de mon Prix Auteur-compositeur pour « Entend ma prière »</figcaption>
+            <iframe src="https://www.youtube.com/embed/jxGGi764Qmg" title="Gala de la chanson de Caraquet 2015 — l’annonce du Prix Auteur-compositeur de Cindy Roy pour « Entends ma prière »" loading="lazy" style="aspect-ratio: 540 / 932" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Gala de la chanson de Caraquet 2015 — l’annonce de mon Prix Auteur-compositeur pour « Entends ma prière »</figcaption>
           </figure>
         </div>
         <div class="gala-grid gala-grid--solo">
           <figure class="scene-item">
-            <video src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entend ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
+            <video src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entends ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
             <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
@@ -4006,7 +4065,7 @@
             <h4 class="gala-subhead">La soirée du Gala</h4>
             <div class="gala-grid">
               <figure class="gala-doc">
-                <img src="assets/gala-2015-annonce-recadree.jpg" alt="Billet du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le Prix Auteur-compositeur remis à Cindy Roy pour « Entend ma prière », avec sa biographie officielle — crédit photos : Julie D’Amour-Léger" loading="lazy" />
+                <img src="assets/gala-2015-annonce-recadree.jpg" alt="Billet du Gala de la chanson de Caraquet du 31 juillet 2015 annonçant le Prix Auteur-compositeur remis à Cindy Roy pour « Entends ma prière », avec sa biographie officielle — crédit photos : Julie D’Amour-Léger" loading="lazy" />
                 <figcaption>L’annonce officielle du Gala, 31 juillet 2015</figcaption>
               </figure>
               <figure class="scene-item">
@@ -4078,6 +4137,7 @@
     <section class="music-section" id="musique">
       <div class="music-garden" aria-hidden="true">
         <div class="music-garden-sky"></div>
+        <img class="music-garden-photo" src="assets/cindy-jardin-regard-ciel.jpg" alt="" width="1070" height="1470" loading="lazy" />
         <svg class="music-garden-stars" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMin slice" focusable="false">
           <g fill="#d5a83e">
             <path class="g-star" style="animation-delay:-1s" d="M120 62 l3.2 8.8 8.8 3.2 -8.8 3.2 -3.2 8.8 -3.2 -8.8 -8.8 -3.2 8.8 -3.2 Z" />
@@ -4288,6 +4348,7 @@
             </svg>
             <h2 class="section-title">Des histoires vraies, en chansons.</h2>
             <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
+            <p class="garden-line">Les chansons poussent.</p>
           </div>
           <figure class="ecrit-video">
             <video src="assets/cindy-ecrit.mp4" poster="assets/cindy-ecrit-poster.jpg" autoplay muted loop playsinline preload="metadata" title="Cindy Roy en train d’écrire dans son cahier — les dernières secondes de son vidéo « Une fleur à la bouche »" aria-label="Cindy Roy, assise avec son cahier, en train d’écrire"></video>
@@ -4322,7 +4383,7 @@
             <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
           </figure>
           <ol class="song-list">
-            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entend ma prière » dans le montage vidéo"><span class="song-num">01</span><img class="song-icon" src="assets/icone-originale-entend-ma-priere.png" alt="Icône colombe — Entend ma prière" width="480" height="480" loading="lazy" /><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
+            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Entends ma prière » dans le montage vidéo"><span class="song-num">01</span><img class="song-icon" src="assets/icone-originale-entend-ma-priere.png" alt="Icône colombe — Entends ma prière" width="480" height="480" loading="lazy" /><span class="song-name">Entends ma prière</span><span class="song-state">Chanson primée · 2015</span></button></li>
             <li><button class="song-jump" type="button" data-time="43.5" aria-label="Écouter « Moi je crois » dans le montage vidéo"><span class="song-num">02</span><img class="song-icon" src="assets/icone-originale-moi-je-crois.png" alt="Icône étoile acadienne — Moi je crois" width="480" height="480" loading="lazy" /><span class="song-name">Moi je crois</span><span class="song-state">Présentée au Gala 2015</span></button></li>
             <li><button class="song-jump" type="button" data-time="58.5" aria-label="Écouter « Les mots oubliés » dans le montage vidéo"><span class="song-num">03</span><img class="song-icon" src="assets/icone-originale-les-mots-oublies.png" alt="Icône plume et lettre — Les mots oubliés" width="480" height="480" loading="lazy" /><span class="song-name">Les mots oubliés</span></button></li>
             <li><button class="song-jump" type="button" data-time="73.5" aria-label="Écouter « Une fille qui lâche pas » dans le montage vidéo"><span class="song-num">04</span><img class="song-icon" src="assets/icone-originale-une-fille-qui-lache-pas.png" alt="Icône papillon — Une fille qui lâche pas" width="480" height="480" loading="lazy" /><span class="song-name">Une fille qui lâche pas</span></button></li>
@@ -4503,7 +4564,7 @@
           </figure>
           <h4 class="family-title">Sur l’établi, en ce moment</h4>
           <ol class="song-list atelier-list">
-            <li><span class="song-num">01</span><span class="song-name">Entend ma prière</span><span class="song-state">Chanson primée · 2015 — en chantier</span></li>
+            <li><span class="song-num">01</span><span class="song-name">Entends ma prière</span><span class="song-state">Chanson primée · 2015 — en chantier</span></li>
             <li><span class="song-num">02</span><span class="song-name">Moi je crois</span><span class="song-state">En chantier</span></li>
             <li><span class="song-num">03</span><span class="song-name">Les mots oubliés</span><span class="song-state">En chantier</span></li>
             <li><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span><span class="song-state">En chantier</span></li>
@@ -4605,8 +4666,8 @@
         <div class="scene-grid scene-grid--bibitte">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entend ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Entend ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
+            <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entends ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Entends ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
           </figure>
           <figure class="scene-item scene-loge">
             <img src="assets/cindy-miroir-loge-solo.jpg" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — derrière elle, la coiffeuse éclairée, les costumes suspendus et l’écriteau « Stage Door »" width="864" height="2432" loading="lazy" />
@@ -4961,7 +5022,14 @@
           <div class="timeline">
           <article class="timeline-row">
             <div class="timeline-year">Enfance</div>
-            <div class="timeline-copy"><h3>La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p></div>
+            <div class="timeline-copy"><h3>La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
+            <figure class="eglise-duo">
+              <div class="eglise-duo-imgs">
+                <img src="assets/cindy-eglise-robertville-marches.jpg" alt="Cindy Roy assise sur les marches de l’église de Robertville, sous le drapeau acadien" width="1455" height="1940" loading="lazy" decoding="async" />
+                <img src="assets/eglise-robertville-facade.jpg" alt="Façade blanche de l’église de Robertville, sous un ciel bleu" width="1252" height="1724" loading="lazy" decoding="async" />
+              </div>
+              <figcaption>L’église de Robertville</figcaption>
+            </figure></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
@@ -5016,7 +5084,7 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2015</div>
-            <div class="timeline-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entend ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
+            <div class="timeline-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">Aujourd’hui</div>
@@ -5077,6 +5145,7 @@
               <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
             </button>
             <div class="influence-panel" id="influence-diane-panel" role="region" aria-labelledby="influence-diane-toggle" hidden>
+              <img class="diane-dream" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="" aria-hidden="true" width="969" height="1347" loading="lazy" />
               <div class="influence-panel-inner">
                 <figure class="influence-photo">
                   <img src="assets/cindy-diane-tell-petit-rocher.jpg" alt="Cindy Roy avec Diane Tell à Petit-Rocher — Diane Tell à gauche, en noir avec un béret, et Cindy Roy à droite, en veste bleue et robe blanche, debout côte à côte devant un rideau noir" loading="lazy" />
@@ -5392,7 +5461,7 @@
             <div class="onesheet-block">
               <h4>Prix et distinctions</h4>
               <ul>
-                <li>« Entend ma prière » — Prix Auteur-compositeur (prix de composition de la SOCAN) et laissez-passer RADARTS pour la FrancoFête en Acadie, Gala de la chanson de Caraquet 2015</li>
+                <li>« Entends ma prière » — Prix Auteur-compositeur (prix de composition de la SOCAN) et laissez-passer RADARTS pour la FrancoFête en Acadie, Gala de la chanson de Caraquet 2015</li>
                 <li>La Voix de Beresford 2015 — prix des juges et prix du public, au Carnaval du Siffleux</li>
                 <li>Hommage à l’Assemblée législative du Nouveau-Brunswick — le député Daniel Guitard, 2 décembre 2015</li>
               </ul>
@@ -5400,7 +5469,7 @@
             <div class="onesheet-block">
               <h4>Répertoire</h4>
               <ul>
-                <li>Une quinzaine de chansons originales — j’en présente quelques-unes sur mon site web : « Entend ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas », « Fonce vers tes rêves », « Que la neige », « Avant de me rendre »</li>
+                <li>Une quinzaine de chansons originales — j’en présente quelques-unes sur mon site web : « Entends ma prière », « Moi je crois », « Les mots oubliés », « Une fille qui lâche pas », « Fonce vers tes rêves », « Que la neige », « Avant de me rendre »</li>
                 <li>18 reprises favorites — dont Francis Cabrel, Diane Tell et le country</li>
               </ul>
             </div>
@@ -5929,7 +5998,7 @@
     /* La colombe des accomplissements : une seule traversée,
        déclenchée quand le bloc « Mes plus beaux accomplissements »
        entre à l’écran, puis elle se pose sur le « E » de
-       « Entend » dans la mention « Entend ma prière » de ce bloc
+       « Entends » dans la mention « Entends ma prière » de ce bloc
        (position mesurée sur la lettre réelle du titre) et y
        reste. Aucun redépart. */
     (function () {
@@ -5943,7 +6012,7 @@
         var node = null, idx = -1;
         for (var i = 0; i < title.childNodes.length; i++) {
           var n = title.childNodes[i];
-          if (n.nodeType === 3 && n.textContent.indexOf('Entend') > -1) { node = n; idx = n.textContent.indexOf('Entend'); break; }
+          if (n.nodeType === 3 && n.textContent.indexOf('Entends') > -1) { node = n; idx = n.textContent.indexOf('Entends'); break; }
         }
         if (!node) return false;
         var range = document.createRange();
