@@ -1186,6 +1186,15 @@
       vertical-align: .18em;
       margin-right: .18em;
     }
+    /* Petit papillon doré de Cindy, discret, juste après le titre du merci à tante Diane */
+    .diane-papillon {
+      display: inline-block;
+      width: 36px;
+      height: auto;
+      margin-left: 12px;
+      vertical-align: -4px;
+      filter: brightness(1.5) saturate(1.12);
+    }
     .diane-merci-word {
       font-family: "Great Vibes", cursive;
       font-size: 1.5em;
@@ -1213,26 +1222,29 @@
     .birth-title { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; line-height: 1.2; font-weight: 600; color: #f0e8da; }
     .birth-copy p + p { margin-top: 16px; }
     .timeline-photo { margin: 26px 0 0; max-width: 420px; }
-    /* Photo « Nicole et moi » (Parcours, 2013 à 2019) : petite vignette
-       seulement (148 px) — proportions naturelles conservées, aucun
-       étirement ni recadrage. */
-    .timeline-photo.nicole-small { max-width: 148px; }
+    /* Photo « Nicole & moi » (Parcours, 2013 à 2019) : sa grandeur est
+       régie par la paire .nicole-duo ci-dessous — même boîte que la vidéo. */
+    .timeline-photo.nicole-small { max-width: none; }
     /* Montage « Jeudi saint 2014 » (Parcours, bloc Nicole) : lecteur
        portrait 9:16, même traitement que les autres vidéos du site —
        fond sombre, ombre et fine bordure dorée comme la photo voisine.
        Largeur pensée téléphone d’abord, centrée, sans débordement. */
     .timeline-video { margin: 26px auto 0; max-width: 300px; }
     .timeline-video video { width: 100%; aspect-ratio: 9 / 16; display: block; background: #0c0d0b; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(213,164,58,.35); }
-    /* Bloc Nicole (Parcours, 2013 à 2019) : la photo « Nicole et moi »
-       et le lecteur du Jeudi saint 2014 CÔTE À CÔTE (Cindy, 3 nov.) —
-       fini le grand lecteur sous la photo, qui écrasait tout : les
-       deux vignettes ont la même largeur, alignées par le haut, et
-       forment une belle paire équilibrée, au téléphone comme au
-       portable. Ni la photo, ni la vidéo, ni leurs légendes et
-       crédits ne changent : seule la disposition. */
+    /* Bloc Nicole (Parcours, 2013 à 2019) : la photo « Nicole & moi »
+       et le lecteur du Jeudi saint 2014 CÔTE À CÔTE, dans des boîtes
+       EXACTEMENT identiques (Cindy, 4 nov.) : même largeur, même
+       hauteur, bords alignés. La boîte commune est au format 4:3 —
+       le format réel de la scène du Jeudi saint, filmée en 4:3 puis
+       letterboxée dans un fichier portrait : en « cover », la scène
+       remplit le lecteur au complet, fini les grosses bandes noires.
+       La photo, portrait, est cadrée sur les deux visages
+       (object-position haut). Ni les fichiers, ni les légendes, ni
+       les crédits ne changent : seule la disposition. */
     .nicole-duo { display: flex; gap: 20px; align-items: flex-start; margin-top: 26px; }
-    .nicole-duo .timeline-photo { margin: 0; flex: 0 0 148px; }
-    .nicole-duo .timeline-video { margin: 0; flex: 0 0 148px; max-width: 148px; }
+    .nicole-duo .timeline-photo, .nicole-duo .timeline-video { margin: 0; flex: 1 1 0; min-width: 0; max-width: 300px; }
+    .nicole-duo .timeline-photo img, .nicole-duo .timeline-video video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .nicole-duo .timeline-photo img { object-position: 50% 18%; }
     /* Panneau d’HOMMAGE à Nicole McGrath (Parcours, 2013 à 2019) —
        Cindy : « une belle hommage pour elle », plus beau, plus
        poétique. Encadré doré double filet sur fond vert très sombre,
@@ -1288,7 +1300,7 @@
     .hommage-epitaph { margin: 28px auto 0; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.5; color: #eec979; }
     .hommage-epitaph p { margin: 0; }
     @media (max-width: 480px) {
-      .hommage .nicole-duo .timeline-photo, .hommage .nicole-duo .timeline-video { flex: 1 1 0; min-width: 0; max-width: 148px; }
+      .hommage .nicole-duo .timeline-photo, .hommage .nicole-duo .timeline-video { flex: 1 1 0; min-width: 0; max-width: none; }
       .hommage-text p { font-size: 19px; }
     }
     /* Trio « auditions télé » (Parcours, intro) : les trois photos des
@@ -4398,7 +4410,7 @@
             <p class="mission-line">Préserver l’humanité.</p>
             <p class="mission-line">Préserver son énergie.</p>
             <p class="mission-line">Préserver sa conscience.</p>
-            <p class="mission-conscience">Quand la conscience est bonne, quand la conscience est alignée, l’humanité a rien à craindre.</p>
+            <p class="mission-conscience">Quand la conscience est bonne et bien alignée, l’humanité a rien à craindre.</p>
             <p class="mission-signature">Un pas à la fois, sous ma croûte.</p>
           </div>
         </div>
@@ -4439,15 +4451,15 @@
         <div class="audition-trio">
           <figure class="timeline-photo trio-affiche">
             <img src="assets/star-academie-2005-cindy-4355-affiche.jpg" alt="Cindy Roy devant l’affiche officielle de Star Académie 2005, souriante, numéro de candidate 4355 épinglé sur son manteau noir" width="960" height="1362" loading="lazy" decoding="async" />
-            <figcaption>Star Académie 2005 — candidate #4355.</figcaption>
+            <figcaption>Star Académie 2005.</figcaption>
           </figure>
           <figure class="timeline-photo trio-salle">
             <img src="assets/star-academie-2005-cindy-4355-salle.jpg" alt="Cindy Roy assise dans la salle d’attente des auditions de Star Académie 2005, numéro de candidate 4355 sur la poitrine, parmi les rangées de chaises vertes" width="960" height="674" loading="lazy" decoding="async" />
-            <figcaption>Star Académie 2005 — candidate #4355.</figcaption>
+            <figcaption>Star Académie 2005.</figcaption>
           </figure>
           <figure class="timeline-photo trio-voix">
             <img src="assets/la-voix-2015-cindy-1120.jpg" alt="Cindy Roy aux auditions de La Voix, souriante devant le mur orange de l’émission, veste de jean et numéro de candidate 1120 épinglé sur la poitrine" width="960" height="734" loading="lazy" decoding="async" />
-            <figcaption>Aux auditions de La Voix, à Québec — candidate 1120.</figcaption>
+            <figcaption>Aux auditions de La Voix, à Québec.</figcaption>
           </figure>
         </div>
           </div>
@@ -4463,7 +4475,7 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
-            <div class="timeline-copy"><p class="diane-merci-title"><span class="diane-heart" aria-hidden="true">♥</span>Un merci tout spécial à tante Diane.</p><p>« Quand mon frère et moi étions jeunes, les circonstances ont fait qu'il a fallu trouver un toit pour nous deux. Diane Cormier, ma tante par alliance, nous a accueillis pendant plusieurs années. Elle nous a donné un toit et s'est assurée qu'on ne manque de rien. Je préfère garder les détails de cette période pour moi, mais je tiens à reconnaître ce qu'elle a fait pour nous. Elle est encore présente dans nos vies aujourd'hui, surtout auprès de mes enfants. Pour tout ça, je lui dis <span class="diane-merci-word">merci</span>. »</p><p>Merci d'avoir été là dans pas mal toutes mes aventures — pis d'avoir capturé tant de ces moments-là en vidéo, pour qu'on puisse les revivre encore et encore.</p></div>
+            <div class="timeline-copy"><p class="diane-merci-title"><span class="diane-heart" aria-hidden="true">♥</span>Un merci tout spécial à tante Diane.<img class="diane-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" /></p><p>« Quand mon frère et moi étions jeunes, les circonstances ont fait qu'il a fallu trouver un toit pour nous deux. Diane Cormier, ma tante de cœur, nous a accueillis pendant plusieurs années. Elle nous a donné un toit et s'est assurée qu'on ne manque de rien. Je préfère garder les détails de cette période pour moi, mais je tiens à reconnaître ce qu'elle a fait pour nous. Elle est encore présente dans nos vies aujourd'hui, surtout auprès de mes enfants. Pour tout ça, je lui dis <span class="diane-merci-word">merci</span>. »</p><p>Merci d'avoir été là dans pas mal toutes mes aventures — pis d'avoir capturé tant de ces moments-là en vidéo, pour qu'on puisse les revivre encore et encore.</p></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2005 à 2008</div>
@@ -4495,7 +4507,7 @@
             <div class="nicole-duo">
             <figure class="timeline-photo nicole-small">
               <img src="assets/cindy-nicole-eglise.jpg" alt="Cindy Roy chantant au micro dans une église, avec Nicole McGrath au clavier juste à côté d’elle" loading="lazy" />
-              <figcaption>Nicole et moi</figcaption>
+              <figcaption>Nicole &amp; moi</figcaption>
             </figure>
             <figure class="timeline-video">
               <video src="assets/jeudi-saint-2014-nicole.mp4" poster="assets/jeudi-saint-2014-affiche.jpg" controls playsinline preload="metadata" title="Jeudi saint 2014 — église Saint-Vincent-de-Paul, Pointe-Verte"></video>
