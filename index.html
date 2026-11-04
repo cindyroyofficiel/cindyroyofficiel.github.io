@@ -2720,6 +2720,105 @@
     .laurel--right { right: -168px; transform: translateY(-50%) scaleX(-1); }
     @media (max-width: 1150px) { .laurel { display: none; } }
     @media print { .gala-decor, .laurel, .gala-star { display: none; } }
+    /* — Jardin de musique de la section « Ma musique » (concept de
+       Cindy, 4 nov. — remplace l’idée de la portée dorée) : « On dit
+       des chansons qui poussent à leur façon » — alors les chansons
+       POUSSENT : des tiges fines et gracieuses montent des deux
+       côtés de la section, en line-art doré délicat, et leurs
+       boutons et leurs fleurs sont des NOTES DE MUSIQUE dorées —
+       des chansons qui poussent et fleurissent. Son papillon doré
+       se promène dans le jardin. Même traitement que le décor du
+       Gala : fondu, translucide, jamais busy — le décor vit en
+       arrière-plan (z-index 0, contenu à z-index 1), les bords se
+       perdent dans le fond crème, aucun texte ni aucune carte
+       n’est touché, tout reste parfaitement lisible. Les tiges
+       balancent à peine, les petites notes libres montent
+       doucement, le papillon flotte — mouvements lents et calmes,
+       figés si prefers-reduced-motion. Au téléphone, le jardin se
+       retire au complet, comme les lauriers du Gala, pour garder
+       l’écran léger et le texte dégagé. Aucune photo, aucun texte
+       nouveau. Purement décoratif (aria-hidden, alt vide). */
+    .music-section { position: relative; overflow: hidden; }
+    .music-section > .wrap { position: relative; z-index: 1; }
+    .music-garden { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    /* Le jardin vit dans le haut de la section, autour du titre :
+       les tiges y prennent racine, leurs bases se dissolvent en
+       fondu vers le bas (masque en dégradé, comme les photos du
+       Gala), et leurs fleurs-notes montent dans le ciel du décor. */
+    .music-garden-side { position: absolute; top: 24px; height: clamp(460px, 52vw, 700px); width: auto; opacity: .62;
+      -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 98%);
+      mask-image: linear-gradient(to bottom, #000 76%, transparent 98%); }
+    .music-garden-side--left { left: -34px; }
+    .music-garden-side--right { right: -34px; transform: scaleX(-1); }
+    .music-garden-side .garden-stem { transform-origin: 50% 100%; animation: garden-sway 9s ease-in-out infinite alternate; }
+    .music-garden-side .garden-stem--2 { animation-duration: 11s; animation-delay: -3s; }
+    .music-garden-side .garden-stem--3 { animation-duration: 10s; animation-delay: -6s; }
+    @keyframes garden-sway { from { transform: rotate(-.7deg); } to { transform: rotate(.9deg); } }
+    .music-garden-note-float { position: absolute; opacity: 0; animation: garden-note-rise 12s ease-in-out infinite; }
+    .music-garden-note-float--1 { left: 7%; top: 300px; width: 26px; animation-delay: -2s; }
+    .music-garden-note-float--2 { right: 8%; top: 380px; width: 20px; animation-delay: -7s; }
+    .music-garden-note-float--3 { right: 13%; top: 210px; width: 16px; animation-delay: -10s; }
+    @keyframes garden-note-rise {
+      0% { opacity: 0; transform: translateY(14px) rotate(-6deg); }
+      22% { opacity: .5; }
+      78% { opacity: .42; }
+      100% { opacity: 0; transform: translateY(-46px) rotate(7deg); }
+    }
+    .music-garden-butterfly { position: absolute; top: clamp(300px, 30vw, 430px); right: clamp(52px, 7vw, 118px); width: 56px; height: auto; opacity: .85;
+      filter: drop-shadow(0 3px 10px rgba(201, 162, 79, .35));
+      animation: garden-butterfly-rise 16s ease-in-out infinite alternate; }
+    @keyframes garden-butterfly-rise {
+      0% { transform: translate(0, 0) rotate(-4deg); }
+      35% { transform: translate(-22px, -84px) rotate(4deg); }
+      70% { transform: translate(8px, -158px) rotate(-3deg); }
+      100% { transform: translate(-14px, -228px) rotate(5deg); }
+    }
+    /* — Le jardin devient ciel (enrichissement de Cindy, 4 nov.) :
+       « C’est comme dans “Entend ma prière”, c’est de mon âme
+       jusqu’au ciel » — les tiges poussent vers le haut, les
+       fleurs-notes s’ouvrent en montant, puis le haut du décor
+       se transforme doucement en LUMIÈRE : un halo doré très pâle
+       au sommet de la section, une poussière dorée qui monte en
+       continu, et de petites étoiles qui scintillent à peine —
+       une prière qui monte, de son âme jusqu’au ciel. Le papillon
+       monte avec ce mouvement (garden-butterfly-rise ci-dessus :
+       il part du jardin et s’élève lentement vers la lumière, en
+       balançant doucement, aller-retour calme, jamais de boucle
+       brusque). Toujours en arrière-plan, translucide et fondu :
+       aucun texte touché, lisibilité intacte. */
+    .music-garden-sky { position: absolute; top: 0; left: 0; right: 0; height: 420px; pointer-events: none;
+      background:
+        radial-gradient(880px 340px at 50% -60px, rgba(233, 185, 73, .22), rgba(233, 185, 73, 0) 66%),
+        radial-gradient(420px 220px at 16% 30px, rgba(240, 217, 155, .14), rgba(240, 217, 155, 0) 70%),
+        radial-gradient(420px 220px at 84% 30px, rgba(240, 217, 155, .14), rgba(240, 217, 155, 0) 70%); }
+    .music-garden-stars { position: absolute; top: 0; left: 0; width: 100%; height: 360px; }
+    .music-garden-stars .g-star { transform-origin: center; transform-box: fill-box; animation: garden-twinkle 5.5s ease-in-out infinite alternate; }
+    @keyframes garden-twinkle { from { opacity: .18; transform: scale(.82) rotate(0deg); } to { opacity: .75; transform: scale(1.08) rotate(12deg); } }
+    .music-garden-stars .g-dust { animation: garden-dust-rise 12s linear infinite; }
+    @keyframes garden-dust-rise {
+      0% { opacity: 0; transform: translateY(26px); }
+      25% { opacity: .55; }
+      75% { opacity: .4; }
+      100% { opacity: 0; transform: translateY(-64px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .music-garden-stars .g-star, .music-garden-stars .g-dust { animation: none !important; }
+      .music-garden-stars .g-star { opacity: .45; }
+      .music-garden-stars .g-dust { opacity: .3; }
+    }
+    @media (max-width: 1300px) { .music-garden-side { opacity: .45; } }
+    @media (max-width: 1000px) {
+      .music-garden-side { opacity: .28; height: clamp(380px, 58vw, 520px); }
+      .music-garden-butterfly { width: 44px; opacity: .6; }
+      .music-garden-note-float { display: none; }
+    }
+    @media (max-width: 700px) { .music-garden { display: none; } }
+    @media (prefers-color-scheme: dark) { .music-garden-side { opacity: .5; } .music-garden-butterfly { filter: brightness(1.4) saturate(1.1) drop-shadow(0 3px 10px rgba(0, 0, 0, .4)); } }
+    @media (prefers-reduced-motion: reduce) {
+      .music-garden-side .garden-stem, .music-garden-note-float, .music-garden-butterfly { animation: none !important; }
+      .music-garden-note-float { opacity: .35; }
+    }
+    @media print { .music-garden { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
     .arranged-photo { width: 68px; }
@@ -3834,6 +3933,120 @@
     </section>
 
     <section class="music-section" id="musique">
+      <div class="music-garden" aria-hidden="true">
+        <div class="music-garden-sky"></div>
+        <svg class="music-garden-stars" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMin slice" focusable="false">
+          <g fill="#d5a83e">
+            <path class="g-star" style="animation-delay:-1s" d="M120 62 l3.2 8.8 8.8 3.2 -8.8 3.2 -3.2 8.8 -3.2 -8.8 -8.8 -3.2 8.8 -3.2 Z" />
+            <path class="g-star" style="animation-delay:-3.4s" d="M342 30 l2.4 6.6 6.6 2.4 -6.6 2.4 -2.4 6.6 -2.4 -6.6 -6.6 -2.4 6.6 -2.4 Z" />
+            <path class="g-star" style="animation-delay:-2.2s" d="M588 84 l2.8 7.7 7.7 2.8 -7.7 2.8 -2.8 7.7 -2.8 -7.7 -7.7 -2.8 7.7 -2.8 Z" />
+            <path class="g-star" style="animation-delay:-4.6s" d="M726 26 l3.6 9.9 9.9 3.6 -9.9 3.6 -3.6 9.9 -3.6 -9.9 -9.9 -3.6 9.9 -3.6 Z" />
+            <path class="g-star" style="animation-delay:-.6s" d="M862 96 l2.2 6 6 2.2 -6 2.2 -2.2 6 -2.2 -6 -6 -2.2 6 -2.2 Z" />
+            <path class="g-star" style="animation-delay:-5.1s" d="M1096 44 l3 8.3 8.3 3 -8.3 3 -3 8.3 -3 -8.3 -8.3 -3 8.3 -3 Z" />
+            <path class="g-star" style="animation-delay:-2.9s" d="M1308 74 l2.6 7.1 7.1 2.6 -7.1 2.6 -2.6 7.1 -2.6 -7.1 -7.1 -2.6 7.1 -2.6 Z" />
+            <path class="g-star" style="animation-delay:-4s" d="M214 148 l2 5.5 5.5 2 -5.5 2 -2 5.5 -2 -5.5 -5.5 -2 5.5 -2 Z" />
+            <path class="g-star" style="animation-delay:-1.7s" d="M1218 168 l2 5.5 5.5 2 -5.5 2 -2 5.5 -2 -5.5 -5.5 -2 5.5 -2 Z" />
+            <path class="g-star" style="animation-delay:-3s" d="M472 150 l1.8 4.9 4.9 1.8 -4.9 1.8 -1.8 4.9 -1.8 -4.9 -4.9 -1.8 4.9 -1.8 Z" />
+            <path class="g-star" style="animation-delay:-4.9s" d="M968 156 l1.8 4.9 4.9 1.8 -4.9 1.8 -1.8 4.9 -1.8 -4.9 -4.9 -1.8 4.9 -1.8 Z" />
+          </g>
+          <g fill="#c9a24f">
+            <circle class="g-dust" style="animation-delay:-2s" cx="180" cy="300" r="2.6" />
+            <circle class="g-dust" style="animation-delay:-6s" cx="392" cy="330" r="2" />
+            <circle class="g-dust" style="animation-delay:-9s" cx="540" cy="290" r="3" />
+            <circle class="g-dust" style="animation-delay:-4s" cx="668" cy="336" r="2.2" />
+            <circle class="g-dust" style="animation-delay:-11s" cx="792" cy="296" r="2.8" />
+            <circle class="g-dust" style="animation-delay:-3s" cx="918" cy="326" r="2" />
+            <circle class="g-dust" style="animation-delay:-8s" cx="1064" cy="292" r="3" />
+            <circle class="g-dust" style="animation-delay:-5s" cx="1252" cy="322" r="2.4" />
+            <circle class="g-dust" style="animation-delay:-10s" cx="1358" cy="286" r="2" />
+            <circle class="g-dust" style="animation-delay:-7s" cx="96" cy="330" r="2.2" />
+          </g>
+        </svg>
+        <svg class="music-garden-side music-garden-side--left" viewBox="0 0 220 640" focusable="false">
+          <g fill="none" stroke="#b8912f" stroke-linecap="round">
+            <g class="garden-stem garden-stem--1">
+              <path d="M34 646 C28 500 44 380 30 216" stroke-width="2.4" opacity=".75" />
+              <path d="M33 470 C18 462 8 448 6 432 C22 436 32 448 34 462 Z" fill="rgba(201,162,79,.28)" stroke-width="1.4" opacity=".8" />
+              <path d="M36 356 C50 346 62 344 74 348 C66 362 52 368 40 366 Z" fill="rgba(201,162,79,.22)" stroke-width="1.4" opacity=".8" />
+              <g transform="translate(30 200)">
+                <path d="M-24 -6 C-18 -16 -8 -21 0 -20 C-2 -10 -10 -3 -20 0 Z" fill="rgba(201,162,79,.30)" stroke-width="1.3" />
+                <path d="M14 -14 C22 -20 32 -20 38 -15 C32 -7 22 -4 14 -6 Z" fill="rgba(201,162,79,.30)" stroke-width="1.3" />
+                <path d="M4 -34 C10 -42 20 -45 27 -42 C24 -33 15 -28 7 -28 Z" fill="rgba(201,162,79,.24)" stroke-width="1.3" />
+                <path d="M5 12 L5 -32" stroke-width="2.2" opacity=".9" />
+                <path d="M5 -32 C15 -30 19 -21 15 -11 C12 -18 9 -22 5 -24 Z" fill="#c9a24f" stroke="none" opacity=".9" />
+                <ellipse cx="-1" cy="14" rx="11" ry="7.5" transform="rotate(-18 -1 14)" fill="#c9a24f" stroke="none" opacity=".95" />
+              </g>
+            </g>
+            <g class="garden-stem garden-stem--2">
+              <path d="M80 646 C90 522 64 432 88 318" stroke-width="2.1" opacity=".6" />
+              <path d="M82 540 C68 532 60 520 58 506 C72 510 80 520 83 532 Z" fill="rgba(201,162,79,.24)" stroke-width="1.3" opacity=".75" />
+              <path d="M84 428 C96 420 108 418 118 422 C111 434 98 439 87 437 Z" fill="rgba(201,162,79,.20)" stroke-width="1.3" opacity=".75" />
+              <g transform="translate(88 302)">
+                <path d="M-20 -2 C-14 -11 -5 -15 2 -14 C0 -6 -6 0 -15 2 Z" fill="rgba(201,162,79,.26)" stroke-width="1.2" />
+                <path d="M3 10 L3 -26" stroke-width="2" opacity=".85" />
+                <ellipse cx="-2" cy="12" rx="9.5" ry="6.5" transform="rotate(-18 -2 12)" fill="#d5a83e" stroke="none" opacity=".9" />
+                <circle cx="16" cy="-16" r="4.5" fill="rgba(201,162,79,.55)" stroke="none" />
+              </g>
+            </g>
+            <g class="garden-stem garden-stem--3">
+              <path d="M128 646 C122 550 142 480 124 398" stroke-width="1.9" opacity=".5" />
+              <path d="M127 566 C115 558 108 548 107 536 C119 540 126 548 128 558 Z" fill="rgba(201,162,79,.20)" stroke-width="1.2" opacity=".7" />
+              <g transform="translate(124 386)">
+                <path d="M2 8 L2 -18" stroke-width="1.8" opacity=".8" />
+                <ellipse cx="-2" cy="10" rx="8" ry="5.5" transform="rotate(-18 -2 10)" fill="#c9a24f" stroke="none" opacity=".8" />
+                <path d="M2 -18 C8 -24 16 -25 21 -21 C17 -14 9 -11 3 -12 Z" fill="rgba(201,162,79,.35)" stroke-width="1.1" />
+              </g>
+            </g>
+            <path d="M168 646 C170 592 158 552 170 502" stroke-width="1.6" opacity=".4" />
+            <path d="M169 556 C158 550 152 541 151 531 C161 534 167 542 169 550 Z" fill="rgba(201,162,79,.20)" stroke-width="1.1" opacity=".65" />
+            <path d="M14 646 C22 610 20 580 28 548" stroke-width="1.5" opacity=".38" />
+          </g>
+        </svg>
+        <svg class="music-garden-side music-garden-side--right" viewBox="0 0 220 640" focusable="false">
+          <g fill="none" stroke="#b8912f" stroke-linecap="round">
+            <g class="garden-stem garden-stem--1">
+              <path d="M34 646 C28 500 44 380 30 216" stroke-width="2.4" opacity=".75" />
+              <path d="M33 470 C18 462 8 448 6 432 C22 436 32 448 34 462 Z" fill="rgba(201,162,79,.28)" stroke-width="1.4" opacity=".8" />
+              <path d="M36 356 C50 346 62 344 74 348 C66 362 52 368 40 366 Z" fill="rgba(201,162,79,.22)" stroke-width="1.4" opacity=".8" />
+              <g transform="translate(30 200)">
+                <path d="M-24 -6 C-18 -16 -8 -21 0 -20 C-2 -10 -10 -3 -20 0 Z" fill="rgba(201,162,79,.30)" stroke-width="1.3" />
+                <path d="M14 -14 C22 -20 32 -20 38 -15 C32 -7 22 -4 14 -6 Z" fill="rgba(201,162,79,.30)" stroke-width="1.3" />
+                <path d="M4 -34 C10 -42 20 -45 27 -42 C24 -33 15 -28 7 -28 Z" fill="rgba(201,162,79,.24)" stroke-width="1.3" />
+                <path d="M5 12 L5 -32" stroke-width="2.2" opacity=".9" />
+                <path d="M5 -32 C15 -30 19 -21 15 -11 C12 -18 9 -22 5 -24 Z" fill="#c9a24f" stroke="none" opacity=".9" />
+                <ellipse cx="-1" cy="14" rx="11" ry="7.5" transform="rotate(-18 -1 14)" fill="#c9a24f" stroke="none" opacity=".95" />
+              </g>
+            </g>
+            <g class="garden-stem garden-stem--2">
+              <path d="M80 646 C90 522 64 432 88 318" stroke-width="2.1" opacity=".6" />
+              <path d="M82 540 C68 532 60 520 58 506 C72 510 80 520 83 532 Z" fill="rgba(201,162,79,.24)" stroke-width="1.3" opacity=".75" />
+              <path d="M84 428 C96 420 108 418 118 422 C111 434 98 439 87 437 Z" fill="rgba(201,162,79,.20)" stroke-width="1.3" opacity=".75" />
+              <g transform="translate(88 302)">
+                <path d="M-20 -2 C-14 -11 -5 -15 2 -14 C0 -6 -6 0 -15 2 Z" fill="rgba(201,162,79,.26)" stroke-width="1.2" />
+                <path d="M3 10 L3 -26" stroke-width="2" opacity=".85" />
+                <ellipse cx="-2" cy="12" rx="9.5" ry="6.5" transform="rotate(-18 -2 12)" fill="#d5a83e" stroke="none" opacity=".9" />
+                <circle cx="16" cy="-16" r="4.5" fill="rgba(201,162,79,.55)" stroke="none" />
+              </g>
+            </g>
+            <g class="garden-stem garden-stem--3">
+              <path d="M128 646 C122 550 142 480 124 398" stroke-width="1.9" opacity=".5" />
+              <path d="M127 566 C115 558 108 548 107 536 C119 540 126 548 128 558 Z" fill="rgba(201,162,79,.20)" stroke-width="1.2" opacity=".7" />
+              <g transform="translate(124 386)">
+                <path d="M2 8 L2 -18" stroke-width="1.8" opacity=".8" />
+                <ellipse cx="-2" cy="10" rx="8" ry="5.5" transform="rotate(-18 -2 10)" fill="#c9a24f" stroke="none" opacity=".8" />
+                <path d="M2 -18 C8 -24 16 -25 21 -21 C17 -14 9 -11 3 -12 Z" fill="rgba(201,162,79,.35)" stroke-width="1.1" />
+              </g>
+            </g>
+            <path d="M168 646 C170 592 158 552 170 502" stroke-width="1.6" opacity=".4" />
+            <path d="M169 556 C158 550 152 541 151 531 C161 534 167 542 169 550 Z" fill="rgba(201,162,79,.20)" stroke-width="1.1" opacity=".65" />
+            <path d="M14 646 C22 610 20 580 28 548" stroke-width="1.5" opacity=".38" />
+          </g>
+        </svg>
+        <svg class="music-garden-note-float music-garden-note-float--1" viewBox="0 0 24 36" focusable="false"><g fill="#c9a24f"><path d="M9 33 L9 5 L21 2 L21 29 L19.4 29 L19.4 4.6 L10.6 7 L10.6 33 Z" /><ellipse cx="6" cy="33" rx="6" ry="4.4" transform="rotate(-18 6 33)" /><ellipse cx="18" cy="29" rx="6" ry="4.4" transform="rotate(-18 18 29)" /></g></svg>
+        <svg class="music-garden-note-float music-garden-note-float--2" viewBox="0 0 24 36" focusable="false"><g fill="#c9a24f"><path d="M10 32 L10 3 C15 3.5 17.5 7 16 13 C14.8 9.8 13 7.8 10 6.8 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g></svg>
+        <svg class="music-garden-note-float music-garden-note-float--3" viewBox="0 0 24 36" focusable="false"><g fill="#d5a83e"><path d="M10 32 L10 4 L11.8 4 L11.8 32 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g></svg>
+        <img class="music-garden-butterfly" src="assets/papillon-or.png" alt="" width="920" height="691" loading="lazy" />
+      </div>
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <div class="music-intro">
