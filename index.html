@@ -2777,10 +2777,19 @@
     /* — La colombe messagère des accomplissements (idée de Cindy,
        2 nov. 21 h 42; DÉPLACÉE le 2 nov. 21 h 56-57 du Gala vers
        le bloc « Mes plus beaux accomplissements », en haut de
-       page — une seule colombe sur toute la page) : une petite
-       colombe blanche/dorée très pâle, délicate et légèrement
-       translucide, un petit ROULEAU messager au bec — la prière
-       portée. Elle fait UN seul aller : elle traverse le haut du
+       page — une seule colombe sur toute la page) : une vraie
+       belle colombe blanche, distinguée et coquette — poitrine
+       bombée, queue en éventail aux plumes dessinées, tête nette
+       à l’œil visible (REFONTE du 4 nov. : l’ancien dessin, trop
+       abstrait, ne se lisait pas comme une colombe aux yeux de
+       Cindy, qui voit mal et zoome). Ses ailes sont ARTICULÉES
+       en deux segments (épaule + grandes plumes) et battent pour
+       vrai, avec ampleur, pendant le vol, puis se referment en
+       douceur à l’atterrissage. Au bec, elle porte un petit
+       CHAPELET DORÉ — rangée de grains fins et minuscule croix
+       au bout, qui pend et balance doucement (il remplace
+       l’ancien rouleau messager) — la prière portée. Elle fait
+       UN seul aller : elle traverse le haut du
        bloc d’un vol lent au battement d’ailes calme, puis vient
        se POSER sur le « E » du mot « Entends » dans la mention
        « Entends ma prière » du titre de CE bloc, et y reste
@@ -2792,19 +2801,22 @@
        (--dove-end-x / --dove-end-y), pour tomber juste sur
        portable comme au téléphone. En vol, elle reste dans la
        bande libre du haut — jamais sur les textes, la photo du
-       trophée/hommage ni les boutons. Au téléphone, elle est
-       gardée TRÈS petite (52 px) pour ne pas charger le bloc.
+       trophée/hommage ni les boutons. Au téléphone, elle fait
+       66 px (100 px sur grand écran) : assez grande pour se
+       reconnaître d’un coup d’œil, sans charger le bloc.
        prefers-reduced-motion : pas de vol (colombe masquée).
        Purement décorative (aria-hidden). */
     .highlights { position: relative; overflow: hidden; }
-    .highlights-dove { position: absolute; z-index: 2; top: 0; left: 0; width: 80px; opacity: 0; pointer-events: none;
+    .highlights-dove { position: absolute; z-index: 2; top: 0; left: 0; width: 100px; opacity: 0; pointer-events: none;
       --dove-end-x: 118px; --dove-end-y: 148px;
       transform: translate(calc(100vw + 60px), 14px); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
     .highlights-dove svg { display: block; width: 100%; height: auto; overflow: visible;
       animation: highlights-dove-sway 7s ease-in-out 17.4s infinite alternate; transform-origin: 50% 88%; }
-    .highlights-dove.play { opacity: .94; animation: highlights-dove-fly 16s ease-in-out forwards; }
-    .highlights-dove .dove-wing-near { transform-origin: 62px 36px; animation: highlights-dove-flap .8s ease-in-out 19 alternate, highlights-dove-fold-near 1.8s ease-in-out 15.6s forwards; }
-    .highlights-dove .dove-wing-far { transform-origin: 60px 38px; animation: highlights-dove-flap-far .8s ease-in-out 19 alternate, highlights-dove-fold-far 1.8s ease-in-out 15.6s forwards; }
+    .highlights-dove.play { opacity: .97; animation: highlights-dove-fly 16s ease-in-out forwards; }
+    .highlights-dove .dove-wing-near { transform-origin: 72px 39px; animation: highlights-dove-flap .8s ease-in-out 19 alternate, highlights-dove-fold-near 1.8s ease-in-out 15.6s forwards; }
+    .highlights-dove .dove-wing-tip { transform-origin: 90px 11px; animation: highlights-dove-flap-tip .8s ease-in-out 19 alternate, highlights-dove-fold-tip 1.8s ease-in-out 15.6s forwards; }
+    .highlights-dove .dove-wing-far { transform-origin: 66px 40px; animation: highlights-dove-flap-far .8s ease-in-out 19 alternate, highlights-dove-fold-far 1.8s ease-in-out 15.6s forwards; }
+    .highlights-dove .dove-rosary { transform-origin: 133px 27px; animation: highlights-dove-rosary-sway 3.4s ease-in-out infinite alternate; }
     @keyframes highlights-dove-fly {
       0% { transform: translate(calc(100vw + 60px), 14px) rotate(1deg); }
       18% { transform: translate(calc(var(--dove-end-x) + 58vw), 4px) rotate(-.8deg); }
@@ -2814,12 +2826,15 @@
       92% { transform: translate(calc(var(--dove-end-x) + 34px), calc(var(--dove-end-y) - 10px)) rotate(-.4deg); }
       100% { transform: translate(var(--dove-end-x), var(--dove-end-y)) rotate(0deg); }
     }
-    @keyframes highlights-dove-flap { from { transform: rotate(-16deg); } to { transform: rotate(24deg); } }
-    @keyframes highlights-dove-flap-far { from { transform: rotate(12deg); } to { transform: rotate(-18deg); } }
-    @keyframes highlights-dove-fold-near { from { transform: rotate(-16deg); } to { transform: rotate(48deg); } }
-    @keyframes highlights-dove-fold-far { from { transform: rotate(12deg); } to { transform: rotate(34deg); } }
+    @keyframes highlights-dove-flap { from { transform: rotate(-22deg); } to { transform: rotate(30deg); } }
+    @keyframes highlights-dove-flap-tip { from { transform: rotate(-16deg); } to { transform: rotate(12deg); } }
+    @keyframes highlights-dove-flap-far { from { transform: rotate(14deg); } to { transform: rotate(-22deg); } }
+    @keyframes highlights-dove-fold-near { from { transform: rotate(-22deg); } to { transform: rotate(54deg); } }
+    @keyframes highlights-dove-fold-tip { from { transform: rotate(-16deg); } to { transform: rotate(20deg); } }
+    @keyframes highlights-dove-fold-far { from { transform: rotate(14deg); } to { transform: rotate(38deg); } }
+    @keyframes highlights-dove-rosary-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(3.5deg); } }
     @keyframes highlights-dove-sway { from { transform: rotate(-.6deg); } to { transform: rotate(.6deg); } }
-    @media (max-width: 700px) { .highlights-dove { width: 52px; } }
+    @media (max-width: 700px) { .highlights-dove { width: 66px; } }
     @media (prefers-reduced-motion: reduce) { .highlights-dove { display: none; } }
     /* — Décor de gala du bloc des accomplissements (demande de
        Cindy, 4 nov.) : deux branches de laurier dorées encadrent
@@ -2993,7 +3008,11 @@
       .music-garden-side { opacity: .2; height: 360px; top: 16px; }
       .music-garden-side--left { left: -22px; }
       .music-garden-side--right { right: -22px; }
-      .music-garden-butterfly { width: 30px; opacity: .95; top: 320px; right: calc(18px + clamp(18px, 5.7vw, 76px)); }
+      /* Ancre reculée de 20 px (4 nov., au soir) : le papillon suit
+         le petit vidéo « L’autrice au travail », poussé du même
+         20 px vers la droite au téléphone (voir .ecrit-video,
+         bloc ≤ 700 px plus bas) — il vole toujours par-dessus. */
+      .music-garden-butterfly { width: 30px; opacity: .95; top: 320px; right: calc(18px + clamp(18px, 5.7vw, 76px) - 20px); }
       @keyframes garden-butterfly-rise {
         0% { transform: translate(0, 0) rotate(-4deg); }
         35% { transform: translate(-10px, -44px) rotate(4deg); }
@@ -3090,20 +3109,39 @@
        entre la fin du bloc de texte de l’intro et le bord droit de
        la zone de contenu. Sa marge de droite reçoit donc un pas
        fixe de plus, +76 px (≈ 2 cm), MAIS seulement à partir de
-       701 px : au téléphone (≤ 700 px), elle trouve ça « vraiment
-       beau » tel quel — sa marge actuelle ne bouge pas d’un poil.
-       Le vidéo n’est PAS élargi (elle ne veut pas qu’il ait l’air
-       trop gros) : taille, cadre doré et légende inchangés.
-       L’ancre de droite du papillon de l’envol reçoit le même pas,
-       comme aux reculs précédents, pour qu’il garde exactement sa
-       trajectoire par-dessus le vidéo — sa couleur doré profond et
-       son envol ne changent pas. Au téléphone, sa propre règle
-       (≤ 700 px, plus haut) continue de primer : rien ne bouge. */
+       701 px. Le vidéo n’est PAS élargi (elle ne veut pas qu’il
+       ait l’air trop gros) : taille, cadre doré et légende
+       inchangés. L’ancre de droite du papillon de l’envol reçoit
+       le même pas, comme aux reculs précédents, pour qu’il garde
+       exactement sa trajectoire par-dessus le vidéo — sa couleur
+       doré profond et son envol ne changent pas.
+       ENCORE UN PAS À GAUCHE SUR L’ORDINATEUR (Cindy, 4 nov., au
+       soir) : depuis que sa vraie photo dans le jardin vit en fond
+       à droite de la section, elle veut le vidéo tassé ENCORE plus
+       à gauche — le rapprocher du centre et du texte, et dégager
+       davantage la photo du jardin à droite. Le pas fixe passe
+       donc de +76 px à +140 px (≈ 3,7 cm au total), toujours à
+       partir de 701 px seulement, même taille, même cadre. Le
+       papillon reçoit le même pas de plus (+140 px) : il continue
+       de voler par-dessus le vidéo, comme avant. */
     @media (min-width: 701px) {
-      .ecrit-video { margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) + 76px); }
-      .music-garden-butterfly { right: calc(clamp(52px, 7vw, 118px) + clamp(18px, 5.7vw, 76px) + 76px); }
+      .ecrit-video { margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) + 140px); }
+      .music-garden-butterfly { right: calc(clamp(52px, 7vw, 118px) + clamp(18px, 5.7vw, 76px) + 140px); }
     }
-    @media (max-width: 700px) { .ecrit-video { width: 144px; } }
+    /* — TÉLÉPHONE : LE CONTRAIRE (Cindy, 4 nov., au soir) — sur le
+       téléphone (≤ 700 px), le bloc vidéo serrait le titre « Des
+       histoires vraies, en chansons. » et en masquait le bord :
+       elle veut le vidéo poussé un peu plus vers la DROITE. Sa
+       marge de droite perd donc 20 px (la colonne de texte gagne
+       ces 20 px et le titre respire) — le bloc reste entièrement
+       dans l’écran : il garde toujours au moins ~10 px de marge
+       propre, plus le rembourrage de la section, aucun
+       débordement horizontal. Taille (144 px), cadre doré et
+       légende « L’autrice au travail. » — centrée sous le bloc,
+       elle le suit — inchangés. Le papillon de l’envol recule du
+       même 20 px sur son ancre mobile (règle ≤ 700 px plus haut)
+       pour garder sa trajectoire par-dessus le vidéo. */
+    @media (max-width: 700px) { .ecrit-video { width: 144px; margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) - 20px); } }
     @media print { .ecrit-video { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
@@ -3942,17 +3980,34 @@
       <div class="highlights-dove" aria-hidden="true">
         <svg viewBox="0 0 130 84" focusable="false">
           <g transform="translate(130 0) scale(-1 1)">
-            <path class="dove-wing-far" d="M60 38 C50 22 52 8 66 1 C70 14 70 27 68 37 Z" fill="rgba(240, 228, 196, .65)" />
-            <path d="M31 53 L5 43 L12 55 L7 63 L29 63 Z" fill="#f3e9d2" />
-            <path d="M28 58 C30 44 46 34 66 34 C86 34 98 42 104 50 C98 61 84 67 64 67 C46 67 30 65 28 58 Z" fill="#fdfaf0" fill-opacity=".96" stroke="rgba(201, 162, 79, .40)" stroke-width="1" />
-            <path class="dove-wing-near" d="M62 37 C57 15 70 3 93 1 C89 15 85 28 78 38 C72 42 66 41 62 37 Z" fill="#fffdf6" stroke="rgba(201, 162, 79, .35)" stroke-width="1" />
-            <circle cx="104" cy="42" r="11" fill="#fdfaf0" />
-            <circle cx="107.5" cy="39.5" r="1.5" fill="#5a4632" />
-            <path d="M114 39 L125 42.5 L114 47 Z" fill="#d9a441" />
-            <g transform="rotate(24 118 47)">
-              <rect x="116" y="45.5" width="17" height="6.5" rx="3.2" fill="#f3e5c3" stroke="rgba(122, 90, 38, .5)" stroke-width=".8" />
-              <rect x="123" y="45.5" width="2.4" height="6.5" fill="#c9a24f" />
-              <ellipse cx="133" cy="48.8" rx="2.4" ry="3.1" fill="#e8d5a8" stroke="rgba(122, 90, 38, .5)" stroke-width=".8" />
+            <path class="dove-wing-far" d="M66 41 C56 28 51 15 54 6 C65 8 76 17 82 28 C86 36 82 43 74 43.5 C70.5 43.7 67 42.7 66 41 Z" fill="rgba(240, 228, 196, .8)" stroke="rgba(201, 162, 79, .30)" stroke-width="1" />
+            <path d="M45 51 C33 42 18 36 4 35 C7 41 8 44.5 5 49.5 C10 50.5 12.5 52.5 10.5 58 C21 59.5 35 58.5 46 58.5 Z" fill="#f3e9d2" stroke="rgba(201, 162, 79, .35)" stroke-width="1" />
+            <path d="M43 49 C32 44.5 20 41 10 40.5 M43 54.5 C32 54 20 54 11 54.5" fill="none" stroke="rgba(150, 115, 55, .35)" stroke-width=".9" />
+            <path d="M44 50 C47 35 61 25 78 23 C87 22 95 23 101 25 C103 18 108 13 115 14 C122 15 125 20 124.5 26 C124 31 121 35 117 36.5 C120 44 116 54 106 60 C93 66.5 73 68.5 58 63 C48 59.5 42 56.5 44 50 Z" fill="#fdfaf0" fill-opacity=".97" stroke="rgba(201, 162, 79, .5)" stroke-width="1.1" />
+            <path d="M117.5 37 C119.5 44.5 115.5 53 105.5 59 M60 61.5 C74 66 91 65 102 60" fill="none" stroke="rgba(201, 162, 79, .30)" stroke-width="1" />
+            <path d="M77 67 C77 68.5 76 69.5 74 69.8 M87 67.3 C87 68.8 86 69.8 84 70.1" fill="none" stroke="#b08a3e" stroke-width="1.3" stroke-linecap="round" />
+            <g class="dove-wing-near">
+              <path d="M72 40 C69 24 75 9 89 2 C95 11 97 23 94 33 C91 41 83 45 77 43.5 C74 42.7 72.5 41.5 72 40 Z" fill="#fffdf6" stroke="rgba(201, 162, 79, .4)" stroke-width="1" />
+              <path d="M76 34 C78 22 84 12 92 7 M80 39 C82 28 87 19 94 13" fill="none" stroke="rgba(176, 138, 60, .35)" stroke-width=".9" />
+              <g class="dove-wing-tip">
+                <path d="M89 13 C99 3 113 -1 126 1 C120 10 109 17 96 18.5 C91 19 88 17 89 13 Z" fill="#fffdf6" stroke="rgba(201, 162, 79, .4)" stroke-width="1" />
+                <path d="M95 12.5 C104 6.5 114 3.5 122 3.5 M93.5 16 C102 10.5 111 8 118 7.5" fill="none" stroke="rgba(176, 138, 60, .4)" stroke-width=".9" />
+              </g>
+            </g>
+            <path d="M104 19 C107 16.5 112 15.5 116.5 17" fill="none" stroke="rgba(176, 138, 60, .45)" stroke-width="1" />
+            <circle cx="115" cy="23" r="1.9" fill="#4a3826" />
+            <circle cx="115.7" cy="22.3" r=".65" fill="#ffffff" />
+            <path d="M122.5 22.5 L133 26.8 L122.5 30.5 Z" fill="#d9a441" />
+            <g class="dove-rosary">
+              <path d="M132.5 28 C133.5 38 131 50 123.5 59.5" fill="none" stroke="rgba(146, 108, 38, .6)" stroke-width=".8" />
+              <circle cx="132.8" cy="29.5" r="1.6" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="133.2" cy="34" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="132.8" cy="40" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="131.5" cy="46" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="129.3" cy="51.5" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="126.3" cy="56.5" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <circle cx="122.8" cy="60.5" r="2.1" fill="#dcbc66" stroke="#96762a" stroke-width=".55" />
+              <path d="M121 62.5 h2.6 v3.2 h3.2 v2.6 h-3.2 v5.7 h-2.6 v-5.7 h-3.2 v-2.6 h3.2 Z" fill="#c9a24f" stroke="#8a6a24" stroke-width=".5" />
             </g>
           </g>
         </svg>
