@@ -3094,6 +3094,31 @@
     .gala-kit-note p { margin: 0; max-width: 470px; font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.55; color: #d9bc74; }
     .gala-kit-note .honour-link { margin-top: 10px; font-size: 15.5px; }
     @media (max-width: 820px) { .gala-kit-note { max-width: 560px; } }
+    /* — Kit AU MILIEU, sur le bureau (demande de Cindy, 5 nov.
+       17 h, captures de son portable à l’appui) : « Prends Kit
+       et move-le au milieu. » Le bloc Kit formait deux moitiés
+       séparées : sa légende et son lien à gauche, sa photo
+       rejetée à droite dans le décor, un grand vide au centre.
+       Sur les écrans de bureau (901 px et plus), le bloc
+       devient UN tout cohérent centré : la légende et le lien
+       se centrent sous les honneurs, et la photo de Kit quitte
+       son coin droit pour venir se centrer juste sous sa
+       légende, dans une zone réservée à même le bas de la
+       section — la section grandit de la hauteur de la photo
+       (le rembourrage du bas ci-dessous : sa hauteur calculée
+       + 96 px sous lui + 48 px de respiration au-dessus), donc
+       aucun écrit ne tombe jamais PAR-DESSUS lui (règle
+       permanente de Cindy). Hauteur de la photo : sa largeur
+       clamp(280px, 25vw, 380px) × 740/720 (son format). Le
+       téléphone ne change PAS : ses règles (max-width: 900px
+       pour la photo, 820px pour la légende) restent exactement
+       comme elles sont, et rien ci-dessous ne s’y applique. — */
+    @media (min-width: 901px) {
+      #coups-de-coeur { padding-bottom: calc(clamp(288px, 25.7vw, 391px) + 144px); }
+      .gala-decor-photo.gala-decor-photo--kit { left: 50%; right: auto; bottom: 96px; transform: translateX(-50%); }
+      .gala-kit-note { text-align: center; }
+      .gala-kit-note p { margin-inline: auto; }
+    }
     @media (max-width: 1300px) { .gala-decor-photo { opacity: .22; } }
     @media (max-width: 900px) {
       .gala-decor-photo { width: 58vw; opacity: .15; }
