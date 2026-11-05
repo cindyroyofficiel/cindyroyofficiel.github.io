@@ -1586,28 +1586,23 @@
     .influence-photo--enfance img { border-radius: 12px; }
     .influence-photo--enfance figcaption { font-family: var(--serif); font-style: italic; font-size: 17px; }
     /* Le rêve en haut des Influences (Cindy, 4 nov. — précisé le
-       même jour, après le diptyque pleine opacité) : les DEUX
-       photos en ARRIÈRE-PLAN translucide derrière l’en-tête de la
-       section, « comme dans le background » — pas en vignettes à
+       même jour, après le diptyque pleine opacité) : photo en
+       ARRIÈRE-PLAN translucide derrière l’en-tête de la
+       section, « comme dans le background » — pas en vignette à
        côté du titre. Le duo, à droite, reste assez présent pour
-       qu’on reconnaisse nettement Cindy et Diane; la photo de la
-       table, à gauche, est devenue un fantôme (voir le point 1).
-       Les deux sont fondues en douceur dans le fond de la
-       section, pour que le texte reste parfaitement lisible
-       par-dessus.
-       1) À gauche, la vue depuis SA table réservée — RETOUCHÉE
-       le 4 nov. au soir (Cindy : la photo tombait trop bas,
-       directement sur ses influences) : elle est RAPETISSÉE et
-       REMONTÉE ENTIÈREMENT dans la bande d’en-tête — hauteur
-       propre, alignée tout en haut de sa colonne, elle ne
-       descend plus jamais sur la liste des influences —, rendue
-       PLUS transparente (présence fantôme : on la voit juste un
-       tout petit peu), et RECADRÉE SERRÉ sur le premier plan
-       (ancrage tout en bas de la photo) : sa petite carte
-       « Cindy Roy » bien là, un peu de la table autour, le bas
-       du verre; la scène au complet n’apparaît plus. Ses bords
-       bas et droit se perdent en dégradé plumeux propre à
-       l’image, bien avant la liste.
+       qu’on reconnaisse nettement Cindy et Diane, fondu en
+       douceur dans le fond de la section, pour que le texte
+       reste parfaitement lisible par-dessus.
+       1) La vue depuis SA table réservée (le verre, sa carte
+       « Cindy Roy »), d’abord à gauche en présence fantôme,
+       est RETIRÉE du fond (Cindy, 4 nov. au soir : même
+       rapetissée et remontée dans la bande d’en-tête, son
+       verre tombait encore sur ses écrits — titre, intro ou
+       liste, au téléphone comme à l’ordinateur, il n’y a
+       aucune poche libre de texte dans la bande pour la
+       garder avec sa carte lisible; son mot : « au pire,
+       l’enlever si c’est trop »). Le duo reste donc SEUL
+       comme fond de rêve de la section.
        2) À droite, le duo avec Diane Tell : ancrage haut, les
        deux visages restent intacts et reconnaissables.
        Les bords se perdent en dégradés plumeux (masque, comme les
@@ -1631,14 +1626,7 @@
       mask-image: linear-gradient(to right, transparent 0, #000 3.5%, #000 96.5%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 99%);
       mask-composite: intersect; }
     .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: .52; filter: saturate(1.04); }
-    .influences-dream img.dream-table { object-position: 50% 100%;
-      width: 88%; justify-self: start; align-self: start;
-      height: clamp(280px, 34vw, 350px); opacity: .38;
-      -webkit-mask-image: linear-gradient(to bottom, #000 54%, transparent 98%), linear-gradient(to right, #000 84%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to bottom, #000 54%, transparent 98%), linear-gradient(to right, #000 84%, transparent 100%);
-      mask-composite: intersect; }
-    .influences-dream img.dream-duo { object-position: 50% 22%; }
+    .influences-dream img.dream-duo { object-position: 50% 22%; grid-column: 2; }
     .influences-dream::after { content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(58% 46% at 20% 26%, rgba(255, 253, 247, .52), rgba(255, 253, 247, 0) 72%),
@@ -1648,7 +1636,6 @@
     @media (max-width: 700px) {
       .influences-dream { height: 430px; }
       .influences-dream img { opacity: .5; }
-      .influences-dream img.dream-table { object-position: 50% 100%; width: 100%; height: 172px; opacity: .34; }
       .influences-dream::after {
         background:
           radial-gradient(88% 44% at 50% 20%, rgba(255, 253, 247, .58), rgba(255, 253, 247, 0) 74%),
@@ -1656,7 +1643,6 @@
     }
     @media (prefers-color-scheme: dark) {
       .influences-dream img { opacity: .46; }
-      .influences-dream img.dream-table { opacity: .32; }
       .influences-dream::after {
         background:
           radial-gradient(58% 46% at 20% 26%, rgba(26, 30, 19, .5), rgba(26, 30, 19, 0) 72%),
@@ -1668,7 +1654,37 @@
           radial-gradient(88% 44% at 50% 20%, rgba(26, 30, 19, .55), rgba(26, 30, 19, 0) 74%),
           linear-gradient(to bottom, rgba(26, 30, 19, .32), rgba(26, 30, 19, .08) 48%, rgba(26, 30, 19, 0) 76%); }
     }
-    @media print { .influences-dream { display: none; } }
+    /* — Extension du décor du duo (Cindy, 4 nov. au soir) : le
+       RIDEAU NOIR et le PLANCHER de la photo avec Diane Tell
+       CONTINUENT en translucide jusqu'au bord droit de la
+       section, derrière la photo de rêve elle-même — comme si
+       la scène du souvenir débordait dans la page, sans aucune
+       séparation nette entre la photo et le fond du site. Le
+       rideau (plis verticaux sombres) couvre le haut, le
+       plancher (lattes chaudes) le bas, aux mêmes proportions
+       que dans la photo; là où le fondu de la photo (.influences-dream)
+       s'éteint — bord droit et bas de la bande —, la continuation
+       prend le relais en douceur, puis se perd à son tour en
+       dégradé plumeux dans le fond crème de la section. Elle vit
+       en arrière-plan (z-index 0, contenu à z-index 1), seulement
+       dans la moitié droite occupée par le duo : le titre et les
+       écrits, à gauche et par-dessus le voile crème existant,
+       restent parfaitement lisibles. Purement décoratif. */
+    .duo-extension { position: absolute; top: 0; right: 0; z-index: 0; pointer-events: none;
+      width: 50%; height: clamp(620px, 62vw, 900px); opacity: .5;
+      background:
+        repeating-linear-gradient(92deg, rgba(196, 144, 84, .85) 0 34px, rgba(170, 116, 60, .85) 34px 37px, rgba(214, 164, 102, .85) 37px 72px, rgba(186, 132, 72, .85) 72px 75px),
+        repeating-linear-gradient(90deg, rgba(7, 7, 5, .94) 0 26px, rgba(30, 30, 25, .94) 26px 39px, rgba(4, 4, 3, .94) 39px 66px, rgba(22, 22, 18, .94) 66px 82px);
+      background-size: 100% 27%, 100% 76%;
+      background-position: 0 100%, 0 0;
+      background-repeat: no-repeat;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 95%, transparent 100%), linear-gradient(to bottom, #000 74%, transparent 99%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 95%, transparent 100%), linear-gradient(to bottom, #000 74%, transparent 99%);
+      mask-composite: intersect; }
+    @media (max-width: 700px) { .duo-extension { height: 430px; opacity: .44; } }
+    @media (prefers-color-scheme: dark) { .duo-extension { opacity: .38; } }
+    @media print { .influences-dream, .duo-extension { display: none; } }
     @media (prefers-color-scheme: dark) { .influence-discover { color: var(--gold); } }
     @media (max-width: 620px) { .influence-toggle { padding: 18px 2px; } .influence-panel { padding-inline: 2px; } .influence-portrait { width: 54px; height: 54px; } .song-icon { width: 54px; height: 54px; } }
     @media (max-width: 940px) {
@@ -2788,50 +2804,71 @@
        douceur à l’atterrissage. Au bec, elle porte un petit
        CHAPELET DORÉ — rangée de grains fins et minuscule croix
        au bout, qui pend et balance doucement (il remplace
-       l’ancien rouleau messager) — la prière portée. Elle fait
-       UN seul aller : elle traverse le haut du
-       bloc d’un vol lent au battement d’ailes calme, puis vient
-       se POSER sur le CŒUR de Cindy (précision de Cindy, 4 nov.
-       au soir : « ça serait plus beau si elle volait et se
-       déposerait sur mon cœur » — elle remplace l’ancien
-       atterrissage sur le « E » d’« Entends ma prière ») : le
-       cœur de Cindy dans la photo fondue du décor des honneurs
-       (assets/gala-decor-cindy-trophee.jpg, à gauche du titre),
-       et elle y reste perchée, tranquille (au plus un
-       micro-balancement), son chapelet toujours au bec. Pas de
-       second départ, pas de boucle : le vol part une seule fois,
-       quand le bloc entre à l’écran (IntersectionObserver), et
-       la position d’arrivée est MESURÉE en JavaScript sur la
-       photo réelle du décor — un point d’ancrage sur sa
-       poitrine, côté cœur, rattaché à l’élément photo
-       (--dove-end-x / --dove-end-y), pour tomber juste sur
-       son cœur à toutes les largeurs, portable comme au
-       téléphone. En vol, elle reste dans la
-       bande libre du haut — jamais sur les textes, la photo du
-       trophée/hommage ni les boutons. Au téléphone, elle fait
+       l’ancien rouleau messager) — la prière portée.
+       NOUVELLE CHORÉGRAPHIE (Cindy, 4 nov. au soir : « elle
+       serait peut-être plus belle si elle se déposait sur mes
+       doigts 2 sec pour me donner le chapelet… et ensuite aller
+       se déposer sur l’étoile en haut de mes plus beaux
+       accomplissements » — elle remplace l’atterrissage sur le
+       cœur du même soir, qui remplaçait lui-même celui sur le
+       « E » d’« Entends ma prière ») : elle traverse le haut du
+       bloc d’un vol lent au battement d’ailes calme, vient se
+       DÉPOSER SUR LES DOIGTS de Cindy dans la photo fondue du
+       décor des honneurs (assets/gala-decor-cindy-trophee.jpg,
+       à gauche du titre) — ses doigts tendus qui tiennent le
+       trophée et le certificat — y reste ≈ 2 secondes, son
+       chapelet au bec comme si elle le lui donnait, ailes
+       refermées; puis elle redécolle, se retourne en douceur
+       et va se poser sur l’ÉTOILE DORÉE acadienne au-dessus du
+       titre des honneurs, sa place finale, où elle reste
+       perchée, tranquille (au plus un micro-balancement), son
+       chapelet toujours au bec. Les ailes battent pendant
+       chaque vol et se referment à chaque arrêt. Pas de
+       boucle : le voyage part une seule fois, quand le bloc
+       entre à l’écran (IntersectionObserver), et les DEUX
+       positions d’arrivée sont MESURÉES en JavaScript sur les
+       éléments réels — le point des doigts rattaché à la photo
+       du décor (--dove-f-x / --dove-f-y), le point de l’étoile
+       rattaché à l’étoile elle-même (--dove-s-x / --dove-s-y) —
+       pour tomber juste à toutes les largeurs, portable comme
+       au téléphone, et recalculées au changement de taille.
+       En vol, elle reste dans la bande libre du haut — jamais
+       sur les textes ni les boutons. Au téléphone, elle fait
        66 px (100 px sur grand écran) : assez grande pour se
        reconnaître d’un coup d’œil, sans charger le bloc.
-       prefers-reduced-motion : pas de vol (colombe masquée).
+       prefers-reduced-motion : pas de vol — la colombe est
+       posée calmement sur l’étoile, ailes refermées.
        Purement décorative (aria-hidden). */
     .highlights { position: relative; overflow: hidden; }
     .highlights-dove { position: absolute; z-index: 2; top: 0; left: 0; width: 100px; opacity: 0; pointer-events: none;
-      --dove-end-x: 118px; --dove-end-y: 148px;
+      --dove-f-x: 200px; --dove-f-y: 440px; --dove-s-x: 640px; --dove-s-y: 104px;
       transform: translate(calc(100vw + 60px), 14px); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
     .highlights-dove svg { display: block; width: 100%; height: auto; overflow: visible;
-      animation: highlights-dove-sway 7s ease-in-out 17.4s infinite alternate; transform-origin: 50% 88%; }
-    .highlights-dove.play { opacity: .97; animation: highlights-dove-fly 16s ease-in-out forwards; }
-    .highlights-dove .dove-wing-near { transform-origin: 72px 39px; animation: highlights-dove-flap .8s ease-in-out 19 alternate, highlights-dove-fold-near 1.8s ease-in-out 15.6s forwards; }
-    .highlights-dove .dove-wing-tip { transform-origin: 90px 11px; animation: highlights-dove-flap-tip .8s ease-in-out 19 alternate, highlights-dove-fold-tip 1.8s ease-in-out 15.6s forwards; }
-    .highlights-dove .dove-wing-far { transform-origin: 66px 40px; animation: highlights-dove-flap-far .8s ease-in-out 19 alternate, highlights-dove-fold-far 1.8s ease-in-out 15.6s forwards; }
+      animation: highlights-dove-sway 7s ease-in-out 20.6s infinite alternate; transform-origin: 50% 88%; }
+    .highlights-dove.play { opacity: .97; animation: highlights-dove-fly 21s ease-in-out forwards, highlights-dove-turn 21s ease-in-out forwards; }
+    .highlights-dove .dove-wing-near { transform-origin: 72px 39px; animation: highlights-dove-flap .76s ease-in-out 12 alternate, highlights-dove-fold-near 1.3s ease-in-out 9.15s forwards, highlights-dove-flap .76s ease-in-out 11.3s 10 alternate, highlights-dove-fold-near 1.5s ease-in-out 18.9s forwards; }
+    .highlights-dove .dove-wing-tip { transform-origin: 90px 11px; animation: highlights-dove-flap-tip .76s ease-in-out 12 alternate, highlights-dove-fold-tip 1.3s ease-in-out 9.15s forwards, highlights-dove-flap-tip .76s ease-in-out 11.3s 10 alternate, highlights-dove-fold-tip 1.5s ease-in-out 18.9s forwards; }
+    .highlights-dove .dove-wing-far { transform-origin: 66px 40px; animation: highlights-dove-flap-far .76s ease-in-out 12 alternate, highlights-dove-fold-far 1.3s ease-in-out 9.15s forwards, highlights-dove-flap-far .76s ease-in-out 11.3s 10 alternate, highlights-dove-fold-far 1.5s ease-in-out 18.9s forwards; }
     .highlights-dove .dove-rosary { transform-origin: 133px 27px; animation: highlights-dove-rosary-sway 3.4s ease-in-out infinite alternate; }
     @keyframes highlights-dove-fly {
       0% { transform: translate(calc(100vw + 60px), 14px) rotate(1deg); }
-      18% { transform: translate(calc(var(--dove-end-x) + 58vw), 4px) rotate(-.8deg); }
-      42% { transform: translate(calc(var(--dove-end-x) + 36vw), 14px) rotate(1deg); }
-      64% { transform: translate(calc(var(--dove-end-x) + 18vw), 2px) rotate(-.8deg); }
-      82% { transform: translate(calc(var(--dove-end-x) + 110px), calc(var(--dove-end-y) - 30px)) rotate(.6deg); }
-      92% { transform: translate(calc(var(--dove-end-x) + 34px), calc(var(--dove-end-y) - 10px)) rotate(-.4deg); }
-      100% { transform: translate(var(--dove-end-x), var(--dove-end-y)) rotate(0deg); }
+      9% { transform: translate(calc(var(--dove-f-x) + 52vw), 6px) rotate(-.8deg); }
+      20% { transform: translate(calc(var(--dove-f-x) + 30vw), 16px) rotate(1deg); }
+      30% { transform: translate(calc(var(--dove-f-x) + 13vw), 6px) rotate(-.8deg); }
+      37% { transform: translate(calc(var(--dove-f-x) + 120px), calc(var(--dove-f-y) - 54px)) rotate(.6deg); }
+      41% { transform: translate(calc(var(--dove-f-x) + 40px), calc(var(--dove-f-y) - 14px)) rotate(-.4deg); }
+      43.8% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      54.3% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      58% { transform: translate(calc(var(--dove-f-x) + 44px), calc(var(--dove-f-y) - 84px)) rotate(-3deg); }
+      65% { transform: translate(calc(var(--dove-s-x) - 26vw), calc(var(--dove-s-y) - 64px)) rotate(1.5deg); }
+      74% { transform: translate(calc(var(--dove-s-x) - 120px), calc(var(--dove-s-y) - 40px)) rotate(-1deg); }
+      83% { transform: translate(calc(var(--dove-s-x) - 34px), calc(var(--dove-s-y) - 10px)) rotate(.5deg); }
+      88.6% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg); }
+      100% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg); }
+    }
+    @keyframes highlights-dove-turn {
+      0%, 53% { scale: 1 1; }
+      57.5%, 100% { scale: -1 1; }
     }
     @keyframes highlights-dove-flap { from { transform: rotate(-22deg); } to { transform: rotate(30deg); } }
     @keyframes highlights-dove-flap-tip { from { transform: rotate(-16deg); } to { transform: rotate(12deg); } }
@@ -2841,16 +2878,61 @@
     @keyframes highlights-dove-fold-far { from { transform: rotate(14deg); } to { transform: rotate(38deg); } }
     @keyframes highlights-dove-rosary-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(3.5deg); } }
     @keyframes highlights-dove-sway { from { transform: rotate(-.6deg); } to { transform: rotate(.6deg); } }
-    @media (max-width: 700px) { .highlights-dove { width: 66px; } }
-    @media (prefers-reduced-motion: reduce) { .highlights-dove { display: none; } }
+    @media (max-width: 700px) { .highlights-dove { width: 66px; --dove-s-x: 120px; --dove-s-y: 66px; } }
+    /* — TÉLÉPHONE SEULEMENT (correctif du 5 nov.) : sur son
+       téléphone, la colombe ne complétait pas son voyage
+       jusqu’à l’étoile. Le vol mobile a donc sa propre
+       chorégraphie : mêmes étapes et mêmes durées que sur
+       l’ordinateur (doigts ≈ 2 s, puis l’étoile), mais le
+       RETOURNEMENT du second vol est porté par le transform
+       lui-même (scaleX(-1) dans la liste, après le translate)
+       au lieu de la propriété « scale » séparée — la caisse
+       de la colombe reste alors exactement sur la position
+       mesurée, à tous les navigateurs de téléphone. Et à la
+       toute fin, le script pose la classe « landed-m » : les
+       animations s’arrêtent et la colombe est verrouillée,
+       immobile, sur les coordonnées de l’étoile FRAÎCHEMENT
+       remesurées à cet instant — son dépôt final ne peut
+       plus glisser. L’ordinateur garde sa chorégraphie
+       d’origine, inchangée. */
+    @media (max-width: 700px) {
+      .highlights-dove.play-m { opacity: .97; animation: highlights-dove-fly-m 21s ease-in-out forwards; }
+      .highlights-dove.landed-m { opacity: .97; animation: none; transform: translate(var(--dove-s-x), var(--dove-s-y)) scaleX(-1); }
+    }
+    @keyframes highlights-dove-fly-m {
+      0% { transform: translate(calc(100vw + 60px), 14px) rotate(1deg); }
+      9% { transform: translate(calc(var(--dove-f-x) + 52vw), 6px) rotate(-.8deg); }
+      20% { transform: translate(calc(var(--dove-f-x) + 30vw), 16px) rotate(1deg); }
+      30% { transform: translate(calc(var(--dove-f-x) + 13vw), 6px) rotate(-.8deg); }
+      37% { transform: translate(calc(var(--dove-f-x) + 120px), calc(var(--dove-f-y) - 54px)) rotate(.6deg); }
+      41% { transform: translate(calc(var(--dove-f-x) + 40px), calc(var(--dove-f-y) - 14px)) rotate(-.4deg); }
+      43.8% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      54.3% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      58% { transform: translate(calc(var(--dove-f-x) + 44px), calc(var(--dove-f-y) - 84px)) rotate(-3deg) scaleX(-1); }
+      65% { transform: translate(calc(var(--dove-s-x) - 26vw), calc(var(--dove-s-y) - 64px)) rotate(1.5deg) scaleX(-1); }
+      74% { transform: translate(calc(var(--dove-s-x) - 120px), calc(var(--dove-s-y) - 40px)) rotate(-1deg) scaleX(-1); }
+      83% { transform: translate(calc(var(--dove-s-x) - 34px), calc(var(--dove-s-y) - 10px)) rotate(.5deg) scaleX(-1); }
+      88.6% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
+      100% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .highlights-dove { opacity: .97; transform: translate(var(--dove-s-x), var(--dove-s-y)); scale: -1 1; animation: none; }
+      .highlights-dove svg, .highlights-dove .dove-wing-near, .highlights-dove .dove-wing-tip, .highlights-dove .dove-wing-far, .highlights-dove .dove-rosary { animation: none; }
+      .highlights-dove .dove-wing-near { transform: rotate(54deg); }
+      .highlights-dove .dove-wing-tip { transform: rotate(20deg); }
+      .highlights-dove .dove-wing-far { transform: rotate(38deg); }
+    }
     /* — Décor de gala du bloc des accomplissements (demande de
        Cindy, 4 nov.) : deux branches de laurier dorées encadrent
        le bloc « Ma prière a été entendue », une petite étoile
        acadienne dorée veille au centre en haut, et deux photos
        de la soirée de Caraquet vivent FONDUES dans le fond, une
        de chaque côté — Cindy sur scène, son trophée à la main,
-       à gauche; Christian « Kit » Goguen en pleine interprétation
-       de sa chanson, les bras ouverts, à droite. Rien qui
+       à gauche; à droite, Cindy « Toute prête pour le gala »,
+       en robe à fleurs, juste avant la soirée (depuis le 4 nov.
+       au soir : l'attente en rêve face à la victoire — elle
+       remplace en fondu la photo de Kit, qui reste présent
+       dans les vidéos et le récit du Gala). Rien qui
        accroche : des présences translucides en arrière-plan, le
        contenu passe devant, les bords des photos se perdent dans
        le fond (masques en dégradé). Purement décoratif
@@ -2866,13 +2948,39 @@
       mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 13%, #000 87%, transparent 100%);
       mask-composite: intersect; }
     .gala-decor-photo--cindy { left: -26px; top: clamp(30px, 5vw, 84px); }
-    .gala-decor-photo--kit { right: -26px; top: clamp(110px, 10vw, 170px); }
+    /* — À droite (remanié le 4 nov. au soir, idée de Cindy) :
+       Cindy « Toute prête pour le gala » (portrait d'avant le
+       gala, robe à fleurs) remplace la photo de Kit en fondu —
+       l'attente à droite, la victoire à gauche. C'est un
+       portrait (640 × 852), plus haut que l'ancienne photo
+       presque carrée : on le remonte un peu pour que le
+       visage vive à la hauteur du titre, et on adoucit sa
+       lumière de fin de journée (léger voile) pour l'assortir
+       au fondu « en rêve » du décor; le visage reste intact,
+       hors des zones de fondu des masques. — */
+    .gala-decor-photo--avant { right: -26px; top: clamp(84px, 8vw, 132px); filter: saturate(.85) contrast(1.02) brightness(.95); }
     @media (max-width: 1300px) { .gala-decor-photo { opacity: .22; } }
     @media (max-width: 900px) {
       .gala-decor-photo { width: 58vw; opacity: .15; }
       .gala-decor-photo--cindy { left: -64px; top: 56px; }
-      .gala-decor-photo--kit { right: -64px; top: 320px; }
+      .gala-decor-photo--avant { right: -64px; top: 300px; }
     }
+    /* — TÉLÉPHONE (Cindy, 5 nov., capture à l’appui) : dans le
+       bloc des honneurs, le texte tombait PAR-DESSUS le visage
+       de Cindy dans la photo décor du trophée, à gauche. On
+       descend donc tout le bloc de texte (étoile, surtitre,
+       titres, paragraphe) en donnant au haut de la section
+       l’espace qu’il faut : la formule suit la géométrie
+       réelle de la photo au téléphone (posée à 56 px du haut,
+       large de 58 vw, donc haute de ≈ 90 vw; le menton de
+       Cindy est à ≈ 33 % de sa hauteur, le bas de ses
+       cheveux à ≈ 48 %) — l’étoile commence sous son menton
+       et le surtitre sous ses cheveux, à toutes les largeurs
+       de téléphone, et son visage reste entièrement visible
+       au-dessus du texte. La colombe suit toute seule :
+       ses deux cibles (doigts, étoile) sont mesurées sur les
+       éléments réels. L’ordinateur (≥ 701 px) ne change pas. */
+    @media (max-width: 700px) { section.highlights:not(.one-step):not(.carousel-section):not(.contact) { padding-top: calc(20px + 43vw); } }
     .highlights-head { position: relative; }
     .gala-star { display: block; width: 30px; height: 30px; margin: 0 auto 16px; filter: drop-shadow(0 2px 8px rgba(201, 162, 79, .45)); }
     .gala-star svg { display: block; width: 100%; height: 100%; }
@@ -3199,6 +3307,128 @@
        lui. L’ordinateur (≥ 701 px) ne change pas. */
     @media (max-width: 700px) { .ecrit-video { width: 90px; margin-top: 190px; margin-right: calc(clamp(12px, 2.8vw, 40px) + clamp(18px, 5.7vw, 76px) - 20px); } .ecrit-video figcaption { font-size: 14.5px; } }
     @media print { .ecrit-video { display: none; } }
+    /* ═══ Trois ajouts du jardin (Cindy, 4 nov., au soir) ═══
+       1) [RETIRÉ le 5 nov. — décision de Cindy : « la rameuse,
+       c'est fini, on passe à autre chose »] La rameuse qui
+       entourait le vidéo « L'autrice au travail » est enlevée
+       entièrement; à sa place, son papillon doré profond est
+       perché sur le coin supérieur droit du cadre du vidéo
+       (voir .ecrit-butterfly ci-dessous). Le texte d'origine
+       de cet item ne documente plus que l'essai retiré :
+       Une VRAIE RAMEUSE PHOTOGRAPHIQUE pour le vidéo
+       « L'autrice au travail » (remplace la vigne en line-art
+       du premier essai, que Cindy ne voyait pas comme ça :
+       « je voyais une vraie rameuse, les vraies feuilles »).
+       NÉE AU CADRE, DESCENTE EN SPIRALE (Cindy, 5 nov. —
+       précision qui REMPLACE le grand arc de la veille) :
+       « Je veux que la rameuse parte à partir de mon
+       cadre, pas plus haut. Pas dans la photo en haut.
+       Juste le cadre de ma vidéo — descend doucement en
+       bas en spirale. Pis je le veux moins foncé, je le
+       veux un peu comme translucide. » C'est UNE seule
+       image (assets/vigne-reve.png, recomposée) : de
+       vraies feuilles de SA photo de jardin, éclaircies,
+       qui NAISSENT au coin supérieur droit du cadre du
+       vidéo (une petite touffe posée sur le coin, une
+       pousse fine sur le bord du haut — rien au-dessus,
+       rien dans la photo de jardin en arrière-plan), puis
+       DESCENDENT doucement le long du bord droit du
+       cadre, en le longeant de près, dépassent le bas du
+       vidéo et sa légende « L'autrice au travail. » et
+       finissent en SPIRALE délicate en bas à droite.
+       Traitement « rêve » allégé : feuillage TRANSLUCIDE
+       et MOINS FONCÉ qu'avant, bords plumeux, présence
+       légère. La descente vit dans la marge droite : elle
+       ne couvre ni le visage de Cindy dans le vidéo, ni
+       le titre à gauche (le « s » de « histoires » reste
+       entièrement dégagé — plus aucun feuillage à sa
+       hauteur). Une seule géométrie en pourcentages du
+       cadre, téléphone d'abord; l'ordinateur suit la même
+       proportion.
+       Les deux petits ÉCHOS ajoutés le même soir (vrille au
+       bout de la portée, vrille au bout du parterre) sont
+       RETIRÉS — la rameuse ne vit plus qu'autour du vidéo.
+       2) Un petit PAPILLON doré voyage lentement de gauche à
+       droite le long de la portée de l'en-tête, en suivant les
+       notes, avec un léger balancement de vol, en boucle douce
+       (fondu aux deux bouts); il vit DANS la zone de la portée
+       seulement — ni le titre ni le texte ne sont masqués.
+       3) Un petit PARTERRE sous « Les chansons poussent. » :
+       verdure fine, petites feuilles, belles petites fleurs et
+       petites notes de musique dorées qui poussent parmi elles,
+       comme les fleurs-notes du jardin. Hauteur discrète.
+       Le tout purement décoratif; mouvements figés si
+       prefers-reduced-motion. */
+    .ecrit-frame { position: relative; }
+    /* Le papillon perché (Cindy, 5 nov. — il REMPLACE la
+       rameuse, retirée entièrement) : son papillon doré
+       profond, le même que celui du jardin et de la portée
+       (assets/papillon-or-fonce.png), posé sur le COIN
+       SUPÉRIEUR DROIT du cadre du vidéo, à cheval sur le
+       coin — le visage de Cindy, au centre du vidéo, reste
+       entièrement dégagé. Bien visible au premier coup
+       d’œil, au téléphone comme à l’ordinateur : de 52 px
+       à 74 px selon l’écran, jamais minuscule. De temps en
+       temps, un petit battement d’ailes doux (une courte
+       salve dans un cycle calme de 6,5 s, le reste du temps
+       il se repose, avec juste un souffle de balancement).
+       Purement décoratif; immobile si prefers-reduced-motion. */
+    .ecrit-butterfly { position: absolute; z-index: 4; top: -19px; right: -21px; width: clamp(52px, 13vw, 74px); height: auto; pointer-events: none;
+      transform-origin: 50% 88%;
+      filter: drop-shadow(0 3px 6px rgba(74, 56, 26, .35));
+      animation: ecrit-butterfly-flutter 6.5s ease-in-out infinite; }
+    @keyframes ecrit-butterfly-flutter {
+      0%, 70%, 100% { transform: rotate(-4deg) scaleX(1); }
+      74% { transform: rotate(-1deg) scaleX(.83); }
+      78% { transform: rotate(-5deg) scaleX(1); }
+      82% { transform: rotate(-2deg) scaleX(.85); }
+      86% { transform: rotate(-4deg) scaleX(1); }
+      90% { transform: rotate(-3.4deg) scaleX(.92); }
+      94% { transform: rotate(-4deg) scaleX(1); }
+    }
+    @media (prefers-color-scheme: dark) { .ecrit-butterfly { filter: brightness(1.22) drop-shadow(0 3px 6px rgba(0, 0, 0, .5)); } }
+    /* — La petite guitare de Cindy (5 nov.) : SA guitare,
+       dessinée d’après sa photo — acoustique en bois clair
+       accrochée à son mur de bois : tête fendue aux chevilles
+       blanches, capo sur le manche, chevalet noir à chevilles
+       blanches, et ses DEUX papillons sur la caisse (un petit
+       foncé en haut à gauche, un grand genre monarque en bas
+       à droite). Toute petite et élégante, perchée en haut à
+       droite de l’intro, près du titre « Ma musique », sans
+       jamais toucher aux lettres : elle se tient devant le
+       bout effilé de la portée, le visage du vidéo et le
+       titre restent entièrement dégagés. Nette à toutes les
+       tailles (dessin vectoriel), téléphone comme ordinateur.
+       Purement décorative. */
+    .music-intro-copy { position: relative; }
+    .music-guitar { position: absolute; z-index: 3; top: -12px; right: -4px; height: clamp(64px, 9vw, 92px); width: auto; pointer-events: none;
+      transform: rotate(-7deg); transform-origin: 50% 94%;
+      filter: drop-shadow(0 4px 7px rgba(74, 56, 26, .30)); }
+    @media (max-width: 700px) { .music-guitar { top: -8px; right: -2px; } }
+    @media print { .music-guitar { display: none; } }
+    .staff-wrap { position: relative; }
+    .staff-butterfly { position: absolute; z-index: 2; left: 5%; top: 32%; width: 32px; height: auto; pointer-events: none; opacity: 0;
+      filter: drop-shadow(0 0 1.4px rgba(122, 74, 4, .8)) drop-shadow(0 2px 5px rgba(122, 74, 4, .4));
+      animation: staff-fly 21s ease-in-out infinite; }
+    @keyframes staff-fly {
+      0% { left: 4%; top: 38%; opacity: 0; transform: translateY(0) rotate(-5deg); }
+      7% { opacity: 1; }
+      27% { top: 22%; transform: translateY(-4px) rotate(3deg); }
+      50% { top: 42%; transform: translateY(3px) rotate(-3deg); }
+      74% { top: 26%; transform: translateY(-3px) rotate(4deg); }
+      93% { opacity: 1; }
+      100% { left: 89%; top: 34%; opacity: 0; transform: translateY(0) rotate(-2deg); }
+    }
+    @media (max-width: 700px) { .staff-butterfly { width: 22px; animation-duration: 17s; } }
+    @media (prefers-color-scheme: dark) { .staff-butterfly { filter: brightness(1.6) saturate(1.25) drop-shadow(0 0 1.4px rgba(0, 0, 0, .6)) drop-shadow(0 2px 5px rgba(0, 0, 0, .45)); } }
+    .garden-bed-wrap { position: relative; display: block; width: 100%; max-width: 470px; margin-top: 8px; }
+    .garden-bed { display: block; width: 100%; height: auto; pointer-events: none; }
+    @media (max-width: 700px) { .garden-bed-wrap { max-width: 300px; margin-top: 6px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ecrit-butterfly { animation: none !important; }
+      .staff-butterfly { animation: none !important; left: 52%; top: 24%; opacity: .95; }
+    }
+    @media print { .ecrit-butterfly, .staff-butterfly, .garden-bed { display: none; } }
     /* — Théo Rota en tout petit : vignette discrète, chansons et crédits intacts — */
     .arranged-head { align-items: center; gap: 18px; }
     .arranged-photo { width: 68px; }
@@ -4070,7 +4300,7 @@
       </div>
       <div class="gala-decor" aria-hidden="true">
         <img class="gala-decor-photo gala-decor-photo--cindy" src="assets/gala-decor-cindy-trophee.jpg" alt="" width="760" height="1178" loading="lazy" />
-        <img class="gala-decor-photo gala-decor-photo--kit" src="assets/gala-decor-kit-scene.jpg" alt="" width="720" height="740" loading="lazy" />
+        <img class="gala-decor-photo gala-decor-photo--avant" src="assets/cindy-avant-gala-2015.jpg" alt="" width="640" height="852" loading="lazy" />
       </div>
       <div class="wrap">
         <div class="highlights-head">
@@ -4202,10 +4432,6 @@
         </div>
           </div>
         </details>
-        <figure class="trophy-feature">
-          <img src="assets/trophee-vedette-gala-2015.jpg" alt="Gros plan sur les mains de Cindy Roy tenant son trophée doré et son certificat, lors de la remise de son prix au 47e Gala de la chanson de Caraquet en 2015" loading="lazy" />
-          <figcaption>Le trophée de Cindy Roy — Lauréat 2015, 47e Gala de la chanson de Caraquet</figcaption>
-        </figure>
         <h3 class="gala-subhead">La soirée en images</h3>
         <div class="gala-videos-duo">
         <div class="gala-featured">
@@ -4431,6 +4657,63 @@
         <div class="music-intro">
           <div class="music-intro-copy">
             <p class="section-tag">Ma musique</p>
+            <svg class="music-guitar" viewBox="0 0 72 170" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="gtr-wood" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#dec084" />
+                  <stop offset=".55" stop-color="#cfa45f" />
+                  <stop offset="1" stop-color="#c2944f" />
+                </linearGradient>
+                <g id="gtr-monarch-wing">
+                  <path d="M1 -1 C6 -8 13 -9.5 14.5 -4.5 C15.8 .2 9.5 2.5 3 1.2 Z" fill="#e0822a" stroke="#2a2320" stroke-width=".9" />
+                  <path d="M2 2.2 C8 3 11.5 7.5 9 11 C6.8 13.8 1.2 8.6 .6 3.4 Z" fill="#e0822a" stroke="#2a2320" stroke-width=".9" />
+                  <circle cx="11.8" cy="-3.6" r=".85" fill="#f8f3e4" />
+                  <circle cx="13.2" cy="-.6" r=".7" fill="#f8f3e4" />
+                  <circle cx="8.6" cy="9.8" r=".7" fill="#f8f3e4" />
+                </g>
+              </defs>
+              <path d="M36 86 C22 86 14 94 14 104 C14 114 20 118 20 126 C20 134 8 138 8 148 C8 160 20 168 36 168 C52 168 64 160 64 148 C64 138 52 134 52 126 C52 118 58 114 58 104 C58 94 50 86 36 86 Z" fill="url(#gtr-wood)" stroke="#7d5326" stroke-width="1.2" />
+              <ellipse cx="29" cy="130" rx="19" ry="29" fill="rgba(255, 242, 205, .16)" />
+              <rect x="30.5" y="29" width="11" height="75" fill="#2c1e11" />
+              <g stroke="rgba(233, 221, 192, .45)" stroke-width=".8">
+                <path d="M30.5 42 H41.5 M30.5 50 H41.5 M30.5 58 H41.5 M30.5 66 H41.5 M30.5 74 H41.5 M30.5 82 H41.5 M30.5 90 H41.5 M30.5 98 H41.5" />
+              </g>
+              <circle cx="36" cy="62" r="1.05" fill="rgba(240, 232, 205, .7)" />
+              <circle cx="36" cy="78" r="1.05" fill="rgba(240, 232, 205, .7)" />
+              <path d="M28.5 3.5 L43.5 3.5 L45 29 L27 29 Z" fill="#4a3420" stroke="#2c1d0f" stroke-width=".8" />
+              <rect x="31.8" y="8" width="3" height="15" rx="1.2" fill="#160e07" />
+              <rect x="37.2" y="8" width="3" height="15" rx="1.2" fill="#160e07" />
+              <g fill="#f3ecd9" stroke="#b3a284" stroke-width=".5">
+                <circle cx="26.8" cy="10.5" r="1.7" /><circle cx="26.8" cy="17" r="1.7" /><circle cx="26.8" cy="23.5" r="1.7" />
+                <circle cx="45.2" cy="10.5" r="1.7" /><circle cx="45.2" cy="17" r="1.7" /><circle cx="45.2" cy="23.5" r="1.7" />
+              </g>
+              <rect x="26.5" y="32.5" width="19" height="4.6" rx="2.2" fill="#191919" />
+              <circle cx="46.8" cy="34.8" r="2.1" fill="#191919" />
+              <circle cx="36" cy="114" r="12.4" fill="none" stroke="#8a5a28" stroke-width="1.5" />
+              <circle cx="36" cy="114" r="10.4" fill="#221204" />
+              <rect x="23" y="140" width="26" height="5.6" rx="2.6" fill="#201409" />
+              <g fill="#f4ecd8">
+                <circle cx="27" cy="142.8" r="1.1" /><circle cx="30.6" cy="142.8" r="1.1" /><circle cx="34.2" cy="142.8" r="1.1" /><circle cx="37.8" cy="142.8" r="1.1" /><circle cx="41.4" cy="142.8" r="1.1" /><circle cx="45" cy="142.8" r="1.1" />
+              </g>
+              <g stroke="rgba(246, 240, 224, .38)" stroke-width=".55">
+                <path d="M33.9 30 V140 M35.2 30 V140 M36.8 30 V140 M38.1 30 V140" />
+              </g>
+              <g transform="translate(18.5 100) rotate(-16)">
+                <path d="M0 0 C-5 -6 -11 -6.5 -11.5 -1.5 C-12 2.5 -6.5 3.5 -1 .8 Z" fill="#33241a" />
+                <path d="M0 0 C5 -6 11 -6.5 11.5 -1.5 C12 2.5 6.5 3.5 1 .8 Z" fill="#33241a" />
+                <path d="M-.6 1 C-5 2 -7.5 6 -5 8 C-2.8 9.6 -.4 5.4 0 2 Z" fill="#33241a" />
+                <path d="M.6 1 C5 2 7.5 6 5 8 C2.8 9.6 .4 5.4 0 2 Z" fill="#33241a" />
+                <ellipse cx="0" cy="1.5" rx="1" ry="3.8" fill="#211710" />
+              </g>
+              <g transform="translate(52.5 151) rotate(15)">
+                <use href="#gtr-monarch-wing" />
+                <use href="#gtr-monarch-wing" transform="scale(-1 1)" />
+                <ellipse cx="0" cy="2.6" rx="1.25" ry="5" fill="#2a2320" />
+                <circle cx="0" cy="-2.8" r="1.35" fill="#2a2320" />
+                <path d="M-.4 -3.8 C-1.8 -6.2 -3.6 -7.2 -5.2 -7.6 M.4 -3.8 C1.8 -6.2 3.6 -7.2 5.2 -7.6" fill="none" stroke="#2a2320" stroke-width=".6" />
+              </g>
+            </svg>
+            <div class="staff-wrap">
             <svg class="music-staff" viewBox="0 0 720 112" aria-hidden="true" focusable="false">
               <defs>
                 <linearGradient id="staff-clef-grad" x1="0" y1="0" x2="0" y2="1">
@@ -4522,12 +4805,56 @@
                 <circle cx="52" cy="128" r="2.6" fill="#c9a24f" />
               </g>
             </svg>
+            <img class="staff-butterfly" src="assets/papillon-or-fonce.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+            </div>
             <h2 class="section-title">Des histoires vraies, en chansons.</h2>
             <p class="section-intro">Mes chansons, je les ai vécues avant de les écrire. Des histoires vraies — pis une fille qui lâche pas. Bienvenue dans mon petit jardin de musique, où chaque chanson a poussé à sa façon.</p>
             <p class="garden-line">Les chansons poussent.</p>
+            <span class="garden-bed-wrap">
+            <svg class="garden-bed" viewBox="0 0 520 68" aria-hidden="true" focusable="false">
+              <path d="M4 62 C130 58 320 60 516 60" fill="none" stroke="#8a9a4e" stroke-width="1.5" stroke-linecap="round" opacity=".35" />
+              <g fill="none" stroke="#7d9b57" stroke-width="1.6" stroke-linecap="round" opacity=".8">
+                <path d="M52 62 C50 54 54 48 52 40" /><path d="M128 62 C130 55 126 49 128 42" />
+                <path d="M212 62 C210 54 214 47 212 38" /><path d="M292 62 C294 55 290 50 292 43" />
+                <path d="M372 62 C370 54 374 48 372 40" /><path d="M452 62 C454 55 450 49 452 42" />
+                <path d="M22 62 C24 56 21 52 23 46" stroke-width="1.3" opacity=".7" /><path d="M492 62 C490 56 493 52 491 46" stroke-width="1.3" opacity=".7" />
+                <path d="M168 62 C167 57 170 53 168 48" stroke-width="1.2" opacity=".6" /><path d="M332 62 C333 57 330 53 332 48" stroke-width="1.2" opacity=".6" />
+                <path d="M418 62 C417 57 420 53 418 48" stroke-width="1.2" opacity=".6" />
+              </g>
+              <g fill="#7d9b57">
+                <path d="M52 50 C44 48 38 44 36 38 C43 38 49 42 52 47 Z" opacity=".75" />
+                <path d="M53 55 C60 51 67 51 71 54 C66 59 58 59 53 57 Z" opacity=".7" />
+                <path d="M128 52 C121 50 115 46 113 40 C120 40 126 44 129 49 Z" opacity=".7" />
+                <path d="M212 51 C205 49 199 45 197 39 C204 39 210 43 213 48 Z" opacity=".75" />
+                <path d="M213 56 C220 52 227 52 231 55 C226 60 218 60 213 58 Z" opacity=".65" />
+                <path d="M292 53 C285 51 279 47 277 41 C284 41 290 45 293 50 Z" opacity=".7" />
+                <path d="M372 50 C365 48 359 44 357 38 C364 38 370 42 373 47 Z" opacity=".75" />
+                <path d="M452 52 C445 50 439 46 437 40 C444 40 450 44 453 49 Z" opacity=".7" />
+                <path d="M453 57 C460 53 467 53 471 56 C466 61 458 61 453 59 Z" opacity=".65" />
+              </g>
+              <g>
+                <g fill="#cd7350"><circle cx="52" cy="27" r="5" /><circle cx="59.5" cy="31" r="5" /><circle cx="57" cy="38" r="5" /><circle cx="47" cy="38" r="5" /><circle cx="44.5" cy="31" r="5" /></g><circle cx="52" cy="33" r="3.2" fill="#e9b949" />
+                <g fill="#f3e5c3"><circle cx="212" cy="25" r="5" /><circle cx="219.5" cy="29" r="5" /><circle cx="217" cy="36" r="5" /><circle cx="207" cy="36" r="5" /><circle cx="204.5" cy="29" r="5" /></g><circle cx="212" cy="31" r="3.2" fill="#cd7350" />
+                <g fill="#e9b949"><circle cx="372" cy="27" r="5" /><circle cx="379.5" cy="31" r="5" /><circle cx="377" cy="38" r="5" /><circle cx="367" cy="38" r="5" /><circle cx="364.5" cy="31" r="5" /></g><circle cx="372" cy="33" r="3.2" fill="#b5502f" />
+                <g fill="#d98a6a"><circle cx="128" cy="31" r="4" /><circle cx="134" cy="34" r="4" /><circle cx="132" cy="39.5" r="4" /><circle cx="124" cy="39.5" r="4" /><circle cx="122" cy="34" r="4" /></g><circle cx="128" cy="35.5" r="2.5" fill="#f3e5c3" />
+                <g fill="#b5502f" opacity=".92"><circle cx="292" cy="32" r="4" /><circle cx="298" cy="35" r="4" /><circle cx="296" cy="40.5" r="4" /><circle cx="288" cy="40.5" r="4" /><circle cx="286" cy="35" r="4" /></g><circle cx="292" cy="36.5" r="2.5" fill="#e9b949" />
+                <g fill="#cd7350"><circle cx="452" cy="31" r="4" /><circle cx="458" cy="34" r="4" /><circle cx="456" cy="39.5" r="4" /><circle cx="448" cy="39.5" r="4" /><circle cx="446" cy="34" r="4" /></g><circle cx="452" cy="35.5" r="2.5" fill="#f3e5c3" />
+              </g>
+              <g fill="#c9a24f">
+                <g transform="translate(84 16) scale(.82)"><path d="M10 32 L10 3 C15 3.5 17.5 7 16 13 C14.8 9.8 13 7.8 10 6.8 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g>
+                <g transform="translate(248 20) scale(.72)"><path d="M9 33 L9 5 L21 2 L21 29 L19.4 29 L19.4 4.6 L10.6 7 L10.6 33 Z" /><ellipse cx="6" cy="33" rx="6" ry="4.4" transform="rotate(-18 6 33)" /><ellipse cx="18" cy="29" rx="6" ry="4.4" transform="rotate(-18 18 29)" /></g>
+                <g transform="translate(404 14) scale(.88)"><path d="M10 32 L10 3 C15 3.5 17.5 7 16 13 C14.8 9.8 13 7.8 10 6.8 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g>
+                <g transform="translate(168 30) scale(.55)" opacity=".9"><path d="M10 32 L10 3 C15 3.5 17.5 7 16 13 C14.8 9.8 13 7.8 10 6.8 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g>
+                <g transform="translate(322 28) scale(.6)" opacity=".9"><path d="M10 32 L10 4 L11.8 4 L11.8 32 Z" /><ellipse cx="6.5" cy="32" rx="6.5" ry="4.6" transform="rotate(-18 6.5 32)" /></g>
+              </g>
+            </svg>
+            </span>
           </div>
           <figure class="ecrit-video">
+            <div class="ecrit-frame">
             <video src="assets/cindy-ecrit.mp4" poster="assets/cindy-ecrit-poster.jpg" autoplay muted loop playsinline preload="metadata" title="Cindy Roy en train d’écrire dans son cahier — les dernières secondes de son vidéo « Une fleur à la bouche »" aria-label="Cindy Roy, assise avec son cahier, en train d’écrire"></video>
+            <img class="ecrit-butterfly" src="assets/papillon-or-fonce.png" alt="" aria-hidden="true" width="920" height="691" loading="eager" />
+            </div>
             <figcaption>L’autrice au travail.</figcaption>
           </figure>
         </div>
@@ -5309,9 +5636,9 @@
     </section>
 
     <section class="influences" id="influences">
+      <div class="duo-extension" aria-hidden="true"></div>
       <div class="influences-dream" aria-hidden="true">
-        <img class="dream-table" src="assets/cindy-table-diane-tell-scene.jpg" alt="" width="720" height="930" loading="lazy" />
-        <img class="dream-duo" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="" width="969" height="1347" loading="lazy" />
+        <img class="dream-duo" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="" width="969" height="1347" loading="eager" />
       </div>
       <div class="wrap">
         <div class="influences-head">
@@ -6180,53 +6507,111 @@
 <script>
     /* La colombe des accomplissements : une seule traversée,
        déclenchée quand le bloc « Mes plus beaux accomplissements »
-       entre à l’écran, puis elle vole se déposer sur le CŒUR de
+       entre à l’écran. NOUVELLE CHORÉGRAPHIE (Cindy, 4 nov. au
+       soir) : elle vole d’abord se DÉPOSER SUR LES DOIGTS de
        Cindy dans la photo fondue du décor des honneurs
        (assets/gala-decor-cindy-trophee.jpg, Cindy avec son
        trophée, à gauche du titre « Ma prière a été entendue »)
-       et y reste. Aucun redépart.
-       Le point d’atterrissage est rattaché à l’ÉLÉMENT PHOTO
-       lui-même : on mesure son rectangle rendu, puis on vise le
-       point de sa poitrine, côté cœur, repéré dans le fichier
-       source (760 × 1178) à ≈ 58,5 % de sa largeur et ≈ 53,0 %
-       de sa hauteur — juste sous son pendentif, sur la dentelle
-       au-dessus du trophée. Comme le point suit le rectangle
-       réel de la photo, la colombe tombe sur son cœur à toutes
-       les largeurs, portable comme téléphone. Ses pattes (à
-       ≈ 37 % de la largeur du dessin, ≈ 83 % de sa hauteur)
-       sont le point de contact : on décale donc l’arrivée pour
-       que ce soient elles qui touchent le cœur. */
+       — ses doigts tendus qui tiennent le trophée et le
+       certificat — y reste ≈ 2 secondes, son petit chapelet
+       doré au bec comme si elle le lui donnait; puis elle
+       redécolle et va se poser sur l’ÉTOILE DORÉE acadienne
+       au-dessus du titre des honneurs, sa place finale, où elle
+       reste perchée. Aucun autre départ, pas de boucle.
+       Les deux points d’atterrissage sont MESURÉS sur les
+       éléments réels. Le point des doigts est rattaché à
+       l’ÉLÉMENT PHOTO lui-même : on mesure son rectangle rendu,
+       puis on vise le point repéré dans le fichier source
+       (760 × 1178) à ≈ 67 % de sa largeur et ≈ 69,9 % de sa
+       hauteur — le dessus de ses doigts tendus aux ongles
+       foncés, juste au-dessus du coin du certificat. Le point
+       de l’étoile est rattaché à l’ÉLÉMENT ÉTOILE lui-même :
+       son centre horizontal, son sommet. Comme les points
+       suivent les rectangles réels, la colombe tombe juste à
+       toutes les largeurs, portable comme téléphone, et tout
+       est recalculé au changement de taille. Ses pattes (à
+       ≈ 37 % de la largeur du dessin, ≈ 83 % de sa hauteur —
+       ≈ 63 % une fois la colombe retournée pour son second
+       vol) sont le point de contact : on décale donc chaque
+       arrivée pour que ce soient elles qui touchent.
+       prefers-reduced-motion : pas de vol — le CSS pose la
+       colombe calmement sur l’étoile; on ne fait ici que
+       mesurer la place de l’étoile (et la suivre au resize). */
     (function () {
       var dove = document.querySelector('.highlights-dove');
       var section = document.getElementById('coups-de-coeur');
       if (!dove || !section) return;
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function measure() {
         var photo = section.querySelector('.gala-decor-photo--cindy');
-        if (!photo) return false;
-        var r = photo.getBoundingClientRect();
+        var star = section.querySelector('.gala-star');
+        if (!photo || !star) return false;
         var s = section.getBoundingClientRect();
         var w = dove.offsetWidth, h = dove.offsetHeight;
-        if (!r.width || !r.height || !w) return false;
-        var heartX = r.left - s.left + r.width * 0.585;
-        var heartY = r.top - s.top + r.height * 0.530;
-        dove.style.setProperty('--dove-end-x', (heartX - w * 0.37) + 'px');
-        dove.style.setProperty('--dove-end-y', (heartY - h * 0.83 + 3) + 'px');
+        if (!w || !h) return false;
+        var r = photo.getBoundingClientRect();
+        if (r.width && r.height) {
+          var fingerX = r.left - s.left + r.width * 0.67;
+          var fingerY = r.top - s.top + r.height * 0.699;
+          dove.style.setProperty('--dove-f-x', (fingerX - w * 0.37) + 'px');
+          dove.style.setProperty('--dove-f-y', (fingerY - h * 0.83 + 3) + 'px');
+        }
+        var t = star.getBoundingClientRect();
+        if (t.width) {
+          var starX = t.left - s.left + t.width / 2;
+          var starY = t.top - s.top;
+          dove.style.setProperty('--dove-s-x', (starX - w * 0.63) + 'px');
+          dove.style.setProperty('--dove-s-y', (starY - h * 0.83 + 3) + 'px');
+        }
         return true;
       }
+      var rt;
+      window.addEventListener('resize', function () {
+        window.clearTimeout(rt); rt = window.setTimeout(measure, 200);
+      });
+      if (reduced) {
+        measure();
+        window.addEventListener('load', measure);
+        return;
+      }
       var played = false;
-      function play() { if (played) return; if (!measure()) return; played = true; dove.classList.add('play'); }
+      /* Au téléphone (≤ 700 px), le vol suit la chorégraphie
+         mobile (voir « highlights-dove-fly-m » dans le CSS) :
+         les cibles sont remesurées à chaque étape du voyage,
+         et à la fin du vol la colombe est VERROUILLÉE sur
+         l’étoile avec les coordonnées fraîches du moment
+         (classe « landed-m ») — si une mesure prise au départ
+         a glissé (polices, photos, barre du navigateur), le
+         dépôt final, lui, tombe juste sur la petite étoile.
+         L’ordinateur garde le comportement d’origine. */
+      var phoneFlight = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+      function play() {
+        if (played) return;
+        if (!measure()) return;
+        played = true;
+        if (!phoneFlight) { dove.classList.add('play'); return; }
+        dove.classList.add('play-m');
+        window.setTimeout(measure, 8500);
+        window.setTimeout(measure, 11400);
+        window.setTimeout(measure, 17500);
+        var landed = false;
+        function land() {
+          if (landed) return;
+          landed = true;
+          measure();
+          dove.classList.add('landed-m');
+        }
+        dove.addEventListener('animationend', function (e) {
+          if (e.animationName === 'highlights-dove-fly-m') land();
+        });
+        window.setTimeout(land, 22000);
+      }
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
         }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
         io.observe(section);
       } else { play(); }
-      var rt;
-      window.addEventListener('resize', function () {
-        if (!played) return;
-        window.clearTimeout(rt); rt = window.setTimeout(measure, 200);
-      });
     })();
   </script>
 <script>
