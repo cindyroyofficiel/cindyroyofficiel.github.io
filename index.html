@@ -2960,8 +2960,47 @@
       88.6% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
       100% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
     }
+    /* — ORDINATEUR (correctif du 5 nov., photo du portable de
+       Cindy à l’appui : « elle retourne pas sur l’étoile ») :
+       même cause que le téléphone ce matin, même remède. Le
+       vol bureau retournait la colombe par la propriété
+       « scale » séparée (animation highlights-dove-turn) :
+       composée avec le « transform: translate(…) » du vol,
+       elle REFLÉTAIT la position déjà translatée de la
+       colombe (miroir par rapport à son point d’origine, en
+       haut à gauche du bloc) au lieu de la retourner sur
+       place — dès le retournement (57,5 %), elle quittait sa
+       trajectoire et ne se posait jamais sur l’étoile dorée.
+       Le vol bureau a donc sa propre chorégraphie
+       (highlights-dove-fly-d), jumelle du vol mobile qui
+       marche : le scaleX(-1) vit DANS la liste des transforms,
+       après le translate. Et comme au téléphone, le script
+       remesure en cours de vol et pose « landed-d » à la fin :
+       animations arrêtées, colombe verrouillée, immobile,
+       sur les coordonnées de l’étoile fraîchement remesurées.
+       L’ancienne paire (play / highlights-dove-turn) n’est
+       plus utilisée. Le téléphone garde play-m / landed-m,
+       inchangés. */
+    .highlights-dove.play-d { opacity: .97; animation: highlights-dove-fly-d 21s ease-in-out forwards; }
+    .highlights-dove.landed-d { opacity: .97; animation: none; transform: translate(var(--dove-s-x), var(--dove-s-y)) scaleX(-1); }
+    @keyframes highlights-dove-fly-d {
+      0% { transform: translate(calc(100vw + 60px), 14px) rotate(1deg); }
+      9% { transform: translate(calc(var(--dove-f-x) + 52vw), 6px) rotate(-.8deg); }
+      20% { transform: translate(calc(var(--dove-f-x) + 30vw), 16px) rotate(1deg); }
+      30% { transform: translate(calc(var(--dove-f-x) + 13vw), 6px) rotate(-.8deg); }
+      37% { transform: translate(calc(var(--dove-f-x) + 120px), calc(var(--dove-f-y) - 54px)) rotate(.6deg); }
+      41% { transform: translate(calc(var(--dove-f-x) + 40px), calc(var(--dove-f-y) - 14px)) rotate(-.4deg); }
+      43.8% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      54.3% { transform: translate(var(--dove-f-x), var(--dove-f-y)) rotate(0deg); }
+      58% { transform: translate(calc(var(--dove-f-x) + 44px), calc(var(--dove-f-y) - 84px)) rotate(-3deg) scaleX(-1); }
+      65% { transform: translate(calc(var(--dove-s-x) - 26vw), calc(var(--dove-s-y) - 64px)) rotate(1.5deg) scaleX(-1); }
+      74% { transform: translate(calc(var(--dove-s-x) - 120px), calc(var(--dove-s-y) - 40px)) rotate(-1deg) scaleX(-1); }
+      83% { transform: translate(calc(var(--dove-s-x) - 34px), calc(var(--dove-s-y) - 10px)) rotate(.5deg) scaleX(-1); }
+      88.6% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
+      100% { transform: translate(var(--dove-s-x), var(--dove-s-y)) rotate(0deg) scaleX(-1); }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .highlights-dove { opacity: .97; transform: translate(var(--dove-s-x), var(--dove-s-y)); scale: -1 1; animation: none; }
+      .highlights-dove { opacity: .97; transform: translate(var(--dove-s-x), var(--dove-s-y)) scaleX(-1); animation: none; }
       .highlights-dove svg, .highlights-dove .dove-wing-near, .highlights-dove .dove-wing-tip, .highlights-dove .dove-wing-far, .highlights-dove .dove-rosary { animation: none; }
       .highlights-dove .dove-wing-near { transform: rotate(54deg); }
       .highlights-dove .dove-wing-tip { transform: rotate(20deg); }
@@ -4505,7 +4544,7 @@
           </svg>
           <p class="section-tag">Mes plus beaux accomplissements</p>
           <h2 class="highlights-title">« Entends ma prière » — <em>Ma prière a été entendue</em></h2>
-          <p class="highlights-lede">En 2015, ma chanson « Entends ma prière » remporte le Prix Auteur-compositeur — le prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie, au Gala de la chanson de Caraquet. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
+          <p class="highlights-lede">En 2015, ma chanson « Entends ma prière » remporte la Chanson primée (Étoile) au Gala de la chanson de Caraquet — le Prix Auteur-compositeur, prix de composition de la SOCAN — et le laissez-passer RADARTS pour la FrancoFête en Acadie. C’est la pièce maîtresse de mon histoire : commencez votre visite par elle.</p>
           <!-- Petit bout de piano d’ambiance du site (extrait de 47 s) : bouton seul, aucun lecteur visible, aucun autoplay. -->
           <button class="piano-listen" id="piano-listen-btn" type="button" aria-pressed="false" aria-controls="piano-listen-audio">🎹 Écouter un petit bout de piano</button>
           <p class="piano-caption">« Entends ma prière » — version instrumentale classique</p>
@@ -6816,13 +6855,34 @@
          (classe « landed-m ») — si une mesure prise au départ
          a glissé (polices, photos, barre du navigateur), le
          dépôt final, lui, tombe juste sur la petite étoile.
-         L’ordinateur garde le comportement d’origine. */
+         L’ordinateur (correctif du 5 nov.) suit le même cycle
+         avec sa chorégraphie « fly-d » et son verrou
+         « landed-d » : son ancien retournement par la
+         propriété « scale » séparée reflétait sa position et
+         elle ne se posait jamais sur l’étoile. */
       var phoneFlight = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
       function play() {
         if (played) return;
         if (!measure()) return;
         played = true;
-        if (!phoneFlight) { dove.classList.add('play'); return; }
+        if (!phoneFlight) {
+          dove.classList.add('play-d');
+          window.setTimeout(measure, 8500);
+          window.setTimeout(measure, 11400);
+          window.setTimeout(measure, 17500);
+          var landedD = false;
+          function landD() {
+            if (landedD) return;
+            landedD = true;
+            measure();
+            dove.classList.add('landed-d');
+          }
+          dove.addEventListener('animationend', function (e) {
+            if (e.animationName === 'highlights-dove-fly-d') landD();
+          });
+          window.setTimeout(landD, 22000);
+          return;
+        }
         dove.classList.add('play-m');
         window.setTimeout(measure, 8500);
         window.setTimeout(measure, 11400);
