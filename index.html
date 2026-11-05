@@ -1626,7 +1626,9 @@
       mask-image: linear-gradient(to right, transparent 0, #000 3.5%, #000 96.5%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 99%);
       mask-composite: intersect; }
     .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: .52; filter: saturate(1.04); }
-    .influences-dream img.dream-duo { object-position: 50% 22%; grid-column: 2; }
+    .influences-dream img.dream-duo { object-position: 50% 22%; grid-column: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%);
+      mask-image: linear-gradient(to right, transparent 0, #000 14%); }
     .influences-dream::after { content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(58% 46% at 20% 26%, rgba(255, 253, 247, .52), rgba(255, 253, 247, 0) 72%),
@@ -1654,24 +1656,26 @@
           radial-gradient(88% 44% at 50% 20%, rgba(26, 30, 19, .55), rgba(26, 30, 19, 0) 74%),
           linear-gradient(to bottom, rgba(26, 30, 19, .32), rgba(26, 30, 19, .08) 48%, rgba(26, 30, 19, 0) 76%); }
     }
-    /* — Extension du décor du duo (Cindy, 4 nov. au soir) : le
-       RIDEAU NOIR et le PLANCHER de la photo avec Diane Tell
-       CONTINUENT en translucide jusqu'au bord droit de la
-       section, derrière la photo de rêve elle-même — comme si
-       la scène du souvenir débordait dans la page, sans aucune
-       séparation nette entre la photo et le fond du site. Le
-       rideau (plis verticaux sombres) couvre le haut, le
-       plancher (lattes chaudes) le bas, aux mêmes proportions
-       que dans la photo; là où le fondu de la photo (.influences-dream)
-       s'éteint — bord droit et bas de la bande —, la continuation
-       prend le relais en douceur, puis se perd à son tour en
-       dégradé plumeux dans le fond crème de la section. Elle vit
-       en arrière-plan (z-index 0, contenu à z-index 1), seulement
-       dans la moitié droite occupée par le duo : le titre et les
-       écrits, à gauche et par-dessus le voile crème existant,
-       restent parfaitement lisibles. Purement décoratif. */
-    .duo-extension { position: absolute; top: 0; right: 0; z-index: 0; pointer-events: none;
-      width: 50%; height: clamp(620px, 62vw, 900px); opacity: .5;
+    /* — Extension du décor du duo (Cindy, 4 nov. au soir, puis
+       sa demande du même soir : « le plancher et le rideau en
+       continu ») : le RIDEAU NOIR et le PLANCHER de la photo
+       avec Diane Tell CONTINUENT en translucide sur TOUTE la
+       largeur de la bande d'en-tête, jusqu'aux deux bords de
+       la section, derrière la photo de rêve elle-même — comme
+       si la scène du souvenir débordait dans la page, sans
+       aucune séparation nette entre la photo et le fond vert
+       du site. Le rideau (plis verticaux sombres) couvre le
+       haut, le plancher (lattes chaudes) le bas, aux mêmes
+       proportions que dans la photo; là où le fondu de la
+       photo (.influences-dream) s'éteint — bords et bas de la
+       bande —, la continuation prend le relais en douceur,
+       puis se perd à son tour en dégradé plumeux dans le fond
+       de la section. Elle vit en arrière-plan (z-index 0,
+       contenu à z-index 1); à gauche, le titre et les écrits
+       passent par-dessus le voile existant du rêve et restent
+       parfaitement lisibles. Purement décoratif. */
+    .duo-extension { position: absolute; top: 0; left: 0; right: 0; z-index: 0; pointer-events: none;
+      height: clamp(620px, 62vw, 900px); opacity: .5;
       background:
         repeating-linear-gradient(92deg, rgba(196, 144, 84, .85) 0 34px, rgba(170, 116, 60, .85) 34px 37px, rgba(214, 164, 102, .85) 37px 72px, rgba(186, 132, 72, .85) 72px 75px),
         repeating-linear-gradient(90deg, rgba(7, 7, 5, .94) 0 26px, rgba(30, 30, 25, .94) 26px 39px, rgba(4, 4, 3, .94) 39px 66px, rgba(22, 22, 18, .94) 66px 82px);
@@ -2171,10 +2175,12 @@
        « Entends ma prière » — portrait et très haut — occupait seul la
        première rangée de la grille et laissait un grand vide dans la
        deuxième colonne. La photo de la loge remplit maintenant ce vide,
-       centrée verticalement à côté du vidéo, avec sa légende étoilée à
-       sa droite, exactement comme elle se présentait avant. La photo
-       du cercle « Des airs et des mots » reste en dessous, pleine
-       largeur, inchangée. La loge garde ses classes : son cadre reste
+       à côté du vidéo, avec sa légende étoilée. La photo du cercle
+       « Des airs et des mots » reste en dessous. (La composition de
+       la loge, la taille de la panoramique et l’ornement de fin de
+       bloc ont été rééquilibrés le même soir — voir le bloc
+       « Rééquilibrage » juste plus bas.) La loge garde ses classes :
+       son cadre reste
        celui de toutes les photos de scène (.scene-item img — bordure,
        ombre, coins), identique à celui de la photo miroir avec Michel.
        Sur TÉLÉPHONE, Cindy trouve la disposition actuelle correcte :
@@ -2184,15 +2190,51 @@
        marge du haut de la loge étant remplacée par l’écart de grille. */
     .scene-grid--bibitte .scene-loge { margin: 0 auto; max-width: none; }
     .scene-grid--bibitte .scene-bibitte-wide { grid-column: 1 / -1; margin-top: 0; }
-    @media (min-width: 721px) {
-      .scene-grid--bibitte .scene-loge { align-self: center; }
+    /* Rééquilibrage du bloc (Cindy, 4 nov. au soir : « c’est déséquilibré,
+       j’aime pas l’alignement ») : la loge ne flotte plus au centre de la
+       colonne de droite, sa légende perdue à mi-hauteur à côté d’elle.
+       Elle devient une colonne portrait composée, alignée sur le HAUT
+       du vidéo : photo centrée (248 px), légende centrée dessous comme
+       toutes les autres photos de scène, et un petit filet doré en
+       point final sous la légende. La photo panoramique du cercle,
+       qu’elle trouvait énorme en pleine largeur, respire maintenant
+       dans un cadre centré de 880 px au plus, légende centrée. Et un
+       ornement de fin de bloc — filets dorés, étoiles et son papillon,
+       les motifs du site — ferme la marche juste avant le bouton de
+       la galerie : le bas du bloc n’est plus vide, il est signé.
+       Sur téléphone, l’ordre et les mesures approuvés restent : vidéo,
+       panoramique, puis la loge centrée (photo 216 px). */
+    .scene-grid--bibitte .scene-loge {
+      margin: 0 auto; max-width: none;
+      display: flex; flex-direction: column; align-items: center;
     }
+    .scene-grid--bibitte .scene-loge img { width: min(248px, 100%); }
+    .scene-grid--bibitte .scene-loge figcaption { margin-top: 18px; text-align: center; max-width: 360px; }
+    .scene-grid--bibitte .scene-loge figcaption::after {
+      content: ""; display: block; width: 56px; height: 1px; margin: 20px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .scene-grid--bibitte .scene-bibitte-wide { width: 100%; max-width: 880px; margin: 4px auto 0; }
+    .scene-grid--bibitte .scene-bibitte-wide figcaption { text-align: center; }
+    .scene-ornement {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      margin: 50px auto 0; max-width: 460px; color: var(--gold);
+    }
+    .scene-ornement::before, .scene-ornement::after {
+      content: ""; flex: 1 1 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 79, .75));
+    }
+    .scene-ornement::after { background: linear-gradient(90deg, rgba(201, 162, 79, .75), transparent); }
+    .scene-ornement img { width: 30px; height: auto; opacity: .9; }
+    .scene-ornement span { font-size: 13px; line-height: 1; }
     @media (max-width: 720px) {
       .scene-grid--bibitte .scene-bibitte-wide { order: 3; }
       .scene-grid--bibitte .scene-loge { order: 4; }
     }
     @media (max-width: 620px) {
       .scene-grid--bibitte .scene-loge { max-width: 320px; }
+      .scene-grid--bibitte .scene-loge img { width: 216px; }
+      .scene-ornement { margin-top: 42px; }
     }
     /* La vraie photo de scène (Cindy, 3 nov.) : en tête de la section
        Scène, juste sous le titre et l’intro — la première chose qu’on
@@ -2971,7 +3013,14 @@
        dans le flux, sous les honneurs (.gala-kit-note). — */
     .gala-decor-photo.gala-decor-photo--kit { left: -26px; bottom: clamp(20px, 3vw, 44px); width: clamp(230px, 23vw, 340px); opacity: .26; filter: saturate(.85) contrast(1.02) brightness(.92); }
     @media (max-width: 1300px) { .gala-decor-photo.gala-decor-photo--kit { opacity: .18; } }
-    @media (max-width: 900px) { .gala-decor-photo.gala-decor-photo--kit { left: -44px; bottom: 18px; width: 44vw; opacity: .12; } }
+    /* — Correctif téléphone (Cindy, 5 nov.) : à .12 d’opacité,
+       Kit était pratiquement invisible sur son téléphone. On
+       le rend clairement présent dans le décor de rêve mobile
+       (opacité renforcée, un peu plus grand, voile levé) — il
+       reste en bas à gauche, loin du visage de Cindy dans la
+       photo du trophée (en haut) et du trajet de la colombe.
+       Le bureau ne change pas. — */
+    @media (max-width: 900px) { .gala-decor-photo.gala-decor-photo--kit { left: -30px; bottom: 24px; width: 52vw; opacity: .5; filter: saturate(.9) contrast(1.03) brightness(1); } }
     /* — Légende de Kit, sous les honneurs : discrète, à gauche
        (le côté de sa photo et du trophée), italique dorée comme
        les autres légendes du bloc; le lien reprend le style des
@@ -4126,6 +4175,65 @@
       .racines-suite .vitrine-links { justify-content: center; }
     }
 
+    /* ——— Lot du 4 novembre 2026 : Gala/Beresford, Marey, Brel,
+       voix prêtée, Saint-Jean et Mexiglù ——— */
+    .gala-subtitle {
+      margin: 18px 0 0; max-width: 760px;
+      font-family: var(--serif); font-style: italic; font-weight: 600;
+      font-size: clamp(21px, 2.6vw, 29px); line-height: 1.35; color: #e7b34b;
+    }
+    .chapter-title {
+      margin: 64px 0 0; display: flex; align-items: center; gap: 18px;
+      font-family: var(--serif); font-size: clamp(28px, 3.4vw, 38px);
+      font-weight: 600; line-height: 1.15; color: var(--ink);
+    }
+    .chapter-title::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, rgba(201,162,79,.75), rgba(201,162,79,0)); }
+    .calixte-story { max-width: 880px; margin: 0 auto; }
+    .calixte-story > p { margin: 20px 0 0; font-size: 18px; line-height: 1.75; color: var(--ink); }
+    .calixte-photos { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; align-items: start; }
+    .calixte-photos figure { margin: 0 auto; width: min(100%, 330px); }
+    .calixte-photos img { width: 100%; border: 1px solid rgba(201,162,79,.55); box-shadow: var(--shadow); }
+    .calixte-photos figcaption, .martial-tribute-photos figcaption {
+      margin-top: 11px; text-align: center; color: var(--muted);
+      font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.45;
+    }
+    .martial-tribute { max-width: 920px; }
+    .martial-tribute h3 { margin: 0; font-family: var(--serif); font-size: clamp(29px, 3.6vw, 40px); font-weight: 600; line-height: 1.12; color: #a67c1a; }
+    @media (prefers-color-scheme: dark) { .martial-tribute h3 { color: var(--gold); } }
+    .martial-tribute .tribute-listen { margin: 26px 0 0; font-size: 17.5px; line-height: 1.6; }
+    .martial-tribute .tribute-listen a { color: #a67c1a; font-weight: 700; text-underline-offset: 4px; }
+    @media (prefers-color-scheme: dark) { .martial-tribute .tribute-listen a { color: var(--gold); } }
+    .martial-tribute .tribute-copy { margin: 18px 0 0; color: var(--muted); font-size: 17.5px; line-height: 1.7; }
+    .martial-tribute-photos { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 22px; align-items: start; }
+    .martial-tribute-photos figure { margin: 0; width: 190px; max-width: calc(50% - 11px); }
+    .martial-tribute-photos img { width: 100%; height: 220px; object-fit: cover; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .martial-tribute-photos .marey-scene { object-position: 88% 50%; }
+    .martial-tribute-photos .marey-studio { object-position: 50% 50%; }
+    .brel-note {
+      margin: 30px 0 0; max-width: 760px; padding: 22px 24px;
+      border: 1px solid rgba(201,162,79,.55); background: var(--surface);
+      box-shadow: var(--shadow); color: var(--ink); font-size: 17.5px; line-height: 1.65;
+    }
+    .saint-jean-photo { position: relative; isolation: isolate; margin-top: 34px !important; }
+    .saint-jean-photo .quebec-flag {
+      position: absolute; top: -17px; right: 4px; z-index: -1;
+      width: 148px; opacity: .17; transform: rotate(2deg); pointer-events: none;
+    }
+    .saint-jean-photo .quebec-flag svg { display: block; width: 100%; height: auto; }
+    .saint-jean-photo img { position: relative; z-index: 1; }
+    .saint-jean-text { margin-top: 18px; }
+    .mexiglu-photo { max-width: 340px; }
+    @media (max-width: 620px) {
+      .chapter-title { margin-top: 52px; }
+      .calixte-photos { grid-template-columns: 1fr; gap: 34px; }
+      .calixte-photos figure { width: min(100%, 340px); }
+      .martial-tribute-photos figure { width: 160px; }
+      .martial-tribute-photos img { height: 190px; }
+      .brel-note { padding: 20px 18px; }
+      .saint-jean-photo .quebec-flag { width: 118px; top: -13px; right: 0; }
+      .mexiglu-photo { max-width: min(340px, 100%); }
+    }
+
   </style>
 </head>
 <body>
@@ -4418,6 +4526,7 @@
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Caraquet · 31 juillet 2015</p>
         <h2 class="section-title">« Entends ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
+        <p class="gala-subtitle">Et tout ce qui l’entoure — Beresford, Calixte, La Voix.</p>
         <p class="section-intro">L’histoire de ma chanson primée, des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
@@ -4977,7 +5086,7 @@
             <summary class="gallery-toggle">Écouter ses chansons <span class="gallery-toggle-hint">deux chansons, un clic</span></summary>
             <div class="gallery-body">
           <div class="martial-songs">
-            <div class="martial-song">
+            <div class="martial-song" id="mes-cris-dans-le-silence">
               <h4>« Mes cris dans le silence »</h4>
               <p class="martial-song-note">En finale à MuseON-2007 — concours international France-Russie</p>
               <audio controls preload="metadata" src="assets/mes-cris-dans-le-silence-museon-2007.mp3" title="« Mes cris dans le silence » — Cindy Roy, en finale à MuseON-2007"></audio>
@@ -4991,6 +5100,22 @@
           </div>
             </div>
           </details>
+          </section>
+
+          <section class="arranged martial-tribute" aria-labelledby="marey-tribute-title">
+            <h3 id="marey-tribute-title">« Mes cris dans le silence »</h3>
+            <p class="tribute-copy">Martial Marey, auteur-compositeur de France, a été une école pour moi. Pendant des années, j’ai prêté ma voix à ses chansons et à ses maquettes — dont « T’aimer au firmament », celle que j’avais choisie pour mon audition à Star Académie en 2005. « Mes cris dans le silence », née de notre collaboration avec le compositeur Léonide Choumakov, a remporté le premier prix dans sa catégorie au concours international MuseON-2007. Le grand Adamo a entendu nos démos et m’a encouragée à continuer. Martial nous a quittés — paix à son âme. Ce qu’il m’a appris, je le porte encore.</p>
+            <div class="martial-tribute-photos">
+              <figure>
+                <img class="marey-scene" src="assets/martial-marey-scene.jpg" alt="Martial Marey sur scène, le bras levé, en noir et blanc" width="1179" height="611" loading="lazy" decoding="async" />
+                <figcaption>Martial Marey, sur scène</figcaption>
+              </figure>
+              <figure>
+                <img class="marey-studio" src="assets/martial-marey-studio.jpg" alt="Martial Marey dans son studio, devant son clavier et son équipement" width="780" height="878" loading="lazy" decoding="async" />
+                <figcaption>Martial Marey, en studio</figcaption>
+              </figure>
+            </div>
+            <p class="tribute-listen"><a href="#mes-cris-dans-le-silence">Écouter « Mes cris dans le silence » →</a></p>
           </section>
         </div>
         <!-- Mes reprises : UNE seule liste fusionnée (décision de Cindy, 2 nov.) —
@@ -5025,6 +5150,8 @@
             <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-name">Amoureuse</span></button></li>
             <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
           </ol>
+
+          <p class="brel-note">« Ne me quitte pas » — Jacques Brel. Ma version de cette grande chanson s’est rendue jusqu’à la famille Brel, qui l’a appréciée. C’est un honneur que je porte doucement.</p>
 
           <figure class="clip-card" style="margin-top: 30px">
             <h5>Ayoye (Offenbach)</h5>
@@ -5112,6 +5239,7 @@
         <p class="section-tag">Carnaval du Siffleux · Beresford · 2015</p>
         <h2 class="section-title">La Voix de Beresford — <em>Carnaval du Siffleux 2015</em></h2>
         <p class="section-intro">Janvier 2015, au Carnaval du Siffleux de Beresford : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
+        <h3 class="chapter-title">Beresford</h3>
         <div class="scene-grid">
 <figure class="scene-item">
             <img src="assets/siffleux-cindy-emotion.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" loading="lazy" />
@@ -5167,6 +5295,22 @@
             </div>
           </div>
         </details>
+        <article class="calixte-story">
+          <h3 class="chapter-title">Le soir où j’ai chanté devant Calixte</h3>
+          <p>C’était en février 2015, quelques semaines après ma victoire à La Voix de Beresford. Je suis allée souper à l’Artishow de Petit-Rocher, sans savoir ce qui m’attendait. À la table voisine : l’ensemble Musica Mundi, venu accompagner le grand Calixte Duguay. Michel Carpentier annonce que j’ai gagné La Voix de Beresford et me demande de chanter. Je me lève, le cœur qui débat, et j’interprète a cappella « Plus jamais la mer » — sa chanson à lui, devant lui. Musica Mundi ajoute ses magnifiques harmonies par-dessus… un moment suspendu, un gros plein d’émotion. Pis la cerise sur le sundae : Calixte vient s’asseoir à côté de moi, pour me féliciter et m’encourager à aller à La Voix. Quelques mois plus tard, en avril-mai 2015, je suis montée à Québec pour auditionner, accompagnée de Michel Carpentier — et pendant le voyage, Calixte m’a appelée pour me souhaiter bonne chance. C’est sa chanson que j’ai chantée à mon audition.</p>
+          <div class="calixte-photos">
+            <figure>
+              <img src="assets/cindy-calixte-accolade-artishow.jpg" alt="Cindy Roy et Calixte Duguay se font une accolade à l’Artishow de Petit-Rocher" width="720" height="960" loading="lazy" decoding="async" />
+              <figcaption>L’accolade, à l’Artishow</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/cindy-calixte-face-a-face.jpg" alt="Calixte Duguay parle à Cindy Roy, le doigt levé, à l’Artishow de Petit-Rocher" width="940" height="1672" loading="lazy" decoding="async" />
+              <figcaption>Calixte qui me donne ses conseils</figcaption>
+            </figure>
+          </div>
+          <h3 class="chapter-title">La Voix</h3>
+          <p>À l’audition, ça allait vite : la plupart des candidats, une quinzaine de secondes, pis « next ». C’était un peu énervant. Moi, j’ai été surprise — on a écouté ma chanson jusqu’au bout. Pour ça, pis pour tout ce que l’expérience m’a donné comme bagage, ça valait la peine. Très belle expérience — une expérience de plus à mon arc.</p>
+        </article>
         <aside class="carnaval-note">
           <p>Le Carnaval du Siffleux renaît : sa 48e édition aura lieu du 29 janvier au 7 février 2027.</p>
           <a href="https://www.facebook.com/CarnavalSiffleuxBeresford" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford →</a>
@@ -5203,6 +5347,11 @@
             <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
             <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
           </figure>
+        </div>
+        <div class="scene-ornement" aria-hidden="true">
+          <span>★</span>
+          <img src="assets/papillon-or.png" alt="" width="920" height="691" loading="lazy" />
+          <span>★</span>
         </div>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie — Moments de scène <span class="gallery-toggle-hint">tous les autres moments, un clic</span></summary>
@@ -5377,6 +5526,10 @@
                       <iframe src="https://www.youtube.com/embed/5ZpWqIymDtM" title="Publicité télé du Mexiglù, restaurant mexicain à Bathurst" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <figcaption>Une vieille publicité télé du Mexiglù, de 2017, dans le temps que je travaillais là — on me voit servir au début, pis danser avec les maracas à la fin. Le restaurant a déménagé depuis.</figcaption>
+                  </figure>
+                  <figure class="vitrine-photo mexiglu-photo">
+                    <img src="assets/cindy-mexiglu-sombrero.jpg" alt="Cindy Roy au Mexiglù, coiffée d’un grand sombrero, souriante devant son assiette" width="1536" height="2048" loading="lazy" decoding="async" />
+                    <figcaption>Au Mexiglù, le restaurant de Pascal Roy et Kevin Duguay</figcaption>
                   </figure>
                 </li>
                 <li>
@@ -5564,10 +5717,27 @@
           <article class="timeline-row">
             <div class="timeline-year">2005 à 2008</div>
             <div class="timeline-copy"><p>Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
-            <figure class="timeline-photo">
+            <figure class="timeline-photo saint-jean-photo">
+              <span class="quebec-flag" aria-hidden="true">
+                <svg viewBox="0 0 90 60" focusable="false">
+                  <rect width="90" height="60" fill="#003da5" />
+                  <rect x="40" width="10" height="60" fill="#ffffff" />
+                  <rect y="25" width="90" height="10" fill="#ffffff" />
+                  <g fill="#ffffff" font-family="serif" font-size="17" text-anchor="middle">
+                    <text x="20" y="21">⚜</text><text x="70" y="21">⚜</text>
+                    <text x="20" y="51">⚜</text><text x="70" y="51">⚜</text>
+                  </g>
+                </svg>
+              </span>
               <img src="assets/saint-adolphe-saint-jean-2007.jpg" alt="Cindy Roy chantant sur une scène extérieure à Saint-Adolphe-d’Howard pour la fête de la Saint-Jean 2007, avec Pierre Shapiro, André Binette et Mathieu Binette" width="960" height="769" loading="lazy" />
+              <figcaption>Saint-Jean 2007, Saint-Adolphe-d’Howard. De gauche à droite : Mathieu Binette (flûte), André Binette (guitare), Pierre Shapiro (guitare) — et moi, Cindy Roy, à la voix.</figcaption>
             </figure>
+            <p class="saint-jean-text">De 2006 à 2008, j’ai chanté les fêtes de la Saint-Jean à Saint-Adolphe-d’Howard, où j’habitais dans ce temps-là. Trois étés de suite — la photo de 2007 en est un beau souvenir.</p>
             </div>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-year">2005 à 2017</div>
+            <div class="timeline-copy"><p>De 2005 à 2017, j’ai aussi prêté ma voix aux maquettes de plusieurs auteurs-compositeurs — de la France, de la Russie et du Québec. Des collaborations de coulisses : ma voix au service de leurs chansons, le temps d’un enregistrement.</p></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
@@ -5614,7 +5784,7 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year">Aujourd’hui</div>
-            <div class="timeline-copy"><p>« Je suis une fille qui rêve en grand — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — c’est de quoi ça a l’air, au tout début. Pis à partir de là, doucement... ça peut devenir un diamant.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
+            <div class="timeline-copy"><p>« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça. Pis dernièrement, j’apprécie ma guitare de plus en plus — je suis pas une grande guitariste, mais c’est grâce à elle que je mets des notes, des accords, sur mes mots.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
           </article>
           </div>
         </div>
@@ -6278,6 +6448,26 @@
               target.scrollIntoView({ behavior: 'auto', block: 'start' });
             }, delay);
           });
+        });
+      });
+
+      /* Lien vers un contenu rangé dans un <details> fermé (ex. le
+         lien « Écouter « Mes cris dans le silence » » de l'hommage à
+         Martial Marey, qui pointe vers la fiche de la chanson dans
+         le tiroir « Écouter ses chansons » juste au-dessus) : on
+         ouvre le tiroir pour que l'ancre puisse défiler jusqu'à
+         la chanson, où vivent la version complète et ses crédits. */
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var id = link.getAttribute('href');
+          if (!id || id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          var node = target.parentElement;
+          while (node) {
+            if (node.tagName === 'DETAILS' && !node.open) node.open = true;
+            node = node.parentElement;
+          }
         });
       });
 
