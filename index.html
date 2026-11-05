@@ -2959,6 +2959,28 @@
        au fondu « en rêve » du décor; le visage reste intact,
        hors des zones de fondu des masques. — */
     .gala-decor-photo--avant { right: -26px; top: clamp(84px, 8vw, 132px); filter: saturate(.85) contrast(1.02) brightness(.95); }
+    /* — Troisième couche de rêve du décor (demande de Cindy,
+       5 nov.) : Christian « Kit » Goguen sur scène, les bras en
+       l’air, en train d’interpréter « Entends ma prière » au
+       Gala 2015. Il veille EN BAS, du même côté que la photo du
+       trophée (à gauche), encore plus translucide que les deux
+       autres couches, avec le même fondu masqué hérité de
+       .gala-decor-photo. Les deux photos d’origine ne bougent
+       pas; la colombe non plus (elle mesure la photo du
+       trophée). Sa légende et son lien « Voir la vidéo » vivent
+       dans le flux, sous les honneurs (.gala-kit-note). — */
+    .gala-decor-photo.gala-decor-photo--kit { left: -26px; bottom: clamp(20px, 3vw, 44px); width: clamp(230px, 23vw, 340px); opacity: .26; filter: saturate(.85) contrast(1.02) brightness(.92); }
+    @media (max-width: 1300px) { .gala-decor-photo.gala-decor-photo--kit { opacity: .18; } }
+    @media (max-width: 900px) { .gala-decor-photo.gala-decor-photo--kit { left: -44px; bottom: 18px; width: 44vw; opacity: .12; } }
+    /* — Légende de Kit, sous les honneurs : discrète, à gauche
+       (le côté de sa photo et du trophée), italique dorée comme
+       les autres légendes du bloc; le lien reprend le style des
+       liens d’honneurs et défile jusqu’au lecteur vidéo du Gala
+       où on le voit interpréter la chanson. — */
+    .gala-kit-note { max-width: 1100px; margin: clamp(44px, 5vw, 64px) auto 0; text-align: left; }
+    .gala-kit-note p { margin: 0; max-width: 470px; font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.55; color: #d9bc74; }
+    .gala-kit-note .honour-link { margin-top: 10px; font-size: 15.5px; }
+    @media (max-width: 820px) { .gala-kit-note { max-width: 560px; } }
     @media (max-width: 1300px) { .gala-decor-photo { opacity: .22; } }
     @media (max-width: 900px) {
       .gala-decor-photo { width: 58vw; opacity: .15; }
@@ -4301,6 +4323,7 @@
       <div class="gala-decor" aria-hidden="true">
         <img class="gala-decor-photo gala-decor-photo--cindy" src="assets/gala-decor-cindy-trophee.jpg" alt="" width="760" height="1178" loading="lazy" />
         <img class="gala-decor-photo gala-decor-photo--avant" src="assets/cindy-avant-gala-2015.jpg" alt="" width="640" height="852" loading="lazy" />
+        <img class="gala-decor-photo gala-decor-photo--kit" src="assets/gala-decor-kit-scene.jpg" alt="" width="720" height="740" loading="lazy" />
       </div>
       <div class="wrap">
         <div class="highlights-head">
@@ -4383,6 +4406,10 @@
             <a class="honour-link" href="#beresford">Lire l’histoire de La Voix de Beresford →</a>
           </li>
         </ul>
+        <div class="gala-kit-note">
+          <p>Christian « Kit » Goguen, interprétant « Entends ma prière » au Gala 2015</p>
+          <a class="honour-link" href="#video-kit-gala">Voir la vidéo →</a>
+        </div>
       </div>
     </section>
 
@@ -4395,10 +4422,6 @@
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
           <figcaption>Cindy Roy sur scène au 47e Gala de la chanson de Caraquet, le soir de sa victoire dans la catégorie Chanson primée (le prix Auteur-compositeur de la SOCAN) pour « Entends ma prière » — 2015</figcaption>
-        </figure>
-        <figure class="gala-avant">
-          <img src="assets/cindy-avant-gala-2015.jpg" alt="Cindy Roy en robe fleurie, cheveux blonds ondulés, souriante dans la lumière de fin de journée, juste avant de partir au Gala de la chanson de Caraquet en 2015" width="640" height="852" loading="lazy" />
-          <figcaption>Toute prête pour le gala</figcaption>
         </figure>
         <details class="photo-gallery">
           <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entends ma prière », un clic</span></summary>
@@ -4443,7 +4466,7 @@
         </div>
         <div class="gala-grid gala-grid--solo">
           <figure class="scene-item">
-            <video src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entends ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
+            <video id="video-kit-gala" src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entends ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
             <figcaption>Ma chanson primée, interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
