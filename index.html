@@ -1088,12 +1088,15 @@
     }
     .atelier-intro { display: flex; align-items: flex-start; gap: clamp(28px, 4vw, 52px); }
     .atelier-intro-copy { flex: 1 1 auto; min-width: 0; }
-    .atelier-photo { margin: 0; flex: none; width: clamp(180px, 22vw, 230px); text-align: center; }
+    .atelier-photo { position: relative; margin: 0 clamp(48px, 7vw, 120px) 0 0; flex: none; width: clamp(180px, 22vw, 230px); text-align: center; }
     .atelier-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .atelier-photo figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.4; }
+    /* Petit cône de construction au coin de la photo — clin d’œil à « mes chansons en construction » */
+    .atelier-cone { position: absolute; left: -16px; bottom: 27px; width: 46px; height: auto; pointer-events: none; filter: drop-shadow(0 3px 4px rgba(60, 35, 5, .28)); }
     @media (max-width: 700px) {
       .atelier-intro { flex-direction: column; }
-      .atelier-photo { width: 190px; }
+      .atelier-photo { width: 190px; margin-right: 0; }
+      .atelier-cone { width: 38px; left: -10px; bottom: 25px; }
     }
     /* Alternance douce crème / sable très pâle pour la profondeur, sans jamais charger */
     #apropos { background: var(--bg-sand); }
@@ -5218,13 +5221,13 @@
           <div class="atelier-intro">
             <div class="atelier-intro-copy">
               <h3 class="montage-title">L’Atelier — <em>mes chansons en construction.</em></h3>
-              <p class="covers-intro">« Ici, c'est mon atelier. Je vous montre mes chansons pendant qu'elles se font — brutes, pas finies, comme dans mon salon. Vos impressions comptent pour de vrai : dites-moi lesquelles vous touchent, lesquelles je devrais continuer. Embarquez dans mon train, pis faites un bout de chemin avec moi. 🦋 »</p>
-              <p class="covers-intro">Bienvenue dans mon atelier : c’est ici que vivent mes chansons en construction — les élans, les ébauches, le brut. Facebook, c’est mon petit salon; l’atelier, c’est là où les chansons poussent, une à une, avant de décider lesquelles peaufiner, lesquelles finir.</p>
-              <p class="covers-intro">« J’attends pas que mes chansons soient finies pour vous les montrer. Je vous invite à partir avec moi de mes tounes brutes, à vivre l’histoire avec moi. Ensemble, on va voir lesquelles peaufiner, lesquelles finir. »</p>
+              <p class="covers-intro">« Je vous montre mes chansons pendant qu'elles se font — brutes, pas finies, comme dans mon salon. Vos impressions comptent pour de vrai : dites-moi lesquelles vous touchent, lesquelles je devrais continuer. Je vous invite à vivre l’histoire avec moi. Embarquez dans mon train, pis faites un bout de chemin avec moi. 🦋 »</p>
+              <p class="covers-intro">Ici, c’est mon atelier, où mes chansons poussent, une à une, avant de décider lesquelles peaufiner, lesquelles finir.</p>
               <p class="covers-intro">Une chanson n’a pas besoin d’être parfaite pour avoir quelque chose à raconter. Elle peut changer, grandir et prendre une toute autre couleur avec le temps.</p>
             </div>
             <figure class="atelier-photo">
               <img src="assets/cindy-7-ans-marteau.jpg" alt="Cindy Roy à 7 ans, un marteau à la main, le sourire aux lèvres, dans un cadrage de bois en construction" width="1068" height="1397" loading="lazy" />
+              <svg class="atelier-cone" viewBox="0 0 48 56" aria-hidden="true" focusable="false"><path d="M20.6 9.5 Q24 5.8 27.4 9.5 L35.2 48 H12.8 Z" fill="#F07D1E" stroke="#C2530F" stroke-width="1.4" stroke-linejoin="round"/><polygon points="17.8,24.5 30.2,24.5 31.7,31.5 16.3,31.5" fill="#FFF3E4"/><rect x="6.5" y="47.5" width="35" height="6.5" rx="3" fill="#D95F16" stroke="#B34C0E" stroke-width="1.2"/></svg>
               <figcaption>Mon petit moi de 7 ans</figcaption>
             </figure>
           </div>
