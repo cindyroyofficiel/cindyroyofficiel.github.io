@@ -3004,25 +3004,42 @@
     /* — Troisième couche de rêve du décor (demande de Cindy,
        5 nov.) : Christian « Kit » Goguen sur scène, les bras en
        l’air, en train d’interpréter « Entends ma prière » au
-       Gala 2015. Il veille EN BAS, du même côté que la photo du
-       trophée (à gauche), encore plus translucide que les deux
-       autres couches, avec le même fondu masqué hérité de
+       Gala 2015, avec le même fondu masqué hérité de
        .gala-decor-photo. Les deux photos d’origine ne bougent
        pas; la colombe non plus (elle mesure la photo du
        trophée). Sa légende et son lien « Voir la vidéo » vivent
-       dans le flux, sous les honneurs (.gala-kit-note). — */
-    .gala-decor-photo.gala-decor-photo--kit { left: -26px; bottom: clamp(20px, 3vw, 44px); width: clamp(230px, 23vw, 340px); opacity: .26; filter: saturate(.85) contrast(1.02) brightness(.92); }
-    @media (max-width: 1300px) { .gala-decor-photo.gala-decor-photo--kit { opacity: .18; } }
+       dans le flux, sous les honneurs (.gala-kit-note).
+       CORRECTIF (Cindy, 5 nov., portable/bureau) : en bas à
+       gauche, sa légende et son lien tombaient PAR-DESSUS sa
+       photo et sa silhouette restait faible et partielle —
+       « on le voit pas là, il y a des écrits par-dessus ». La
+       légende et le lien ne bougent PAS (ils restent à gauche,
+       exactement où ils sont) : c’est la PHOTO qui glisse plus
+       à DROITE, dans la grande zone libre du décor au même
+       niveau qu’eux — à droite des écrits, sous les honneurs,
+       loin du visage de Cindy (photo du trophée, en haut à
+       gauche) et de la photo d’avant-gala (en haut à droite).
+       Elle grandit au passage et son opacité rejoint celle du
+       téléphone (.5, voile levé) : sa figure au micro, bras en
+       l’air, est clairement visible, sans aucun écrit dessus,
+       et la légende se lit à côté de lui, pas sur lui. — */
+    .gala-decor-photo.gala-decor-photo--kit { left: auto; right: clamp(20px, 5.5vw, 96px); bottom: clamp(14px, 2vw, 30px); width: clamp(280px, 25vw, 380px); opacity: .5; filter: saturate(.9) contrast(1.03) brightness(1); }
+    @media (max-width: 1300px) { .gala-decor-photo.gala-decor-photo--kit { opacity: .5; } }
     /* — Correctif téléphone (Cindy, 5 nov.) : à .12 d’opacité,
        Kit était pratiquement invisible sur son téléphone. On
        le rend clairement présent dans le décor de rêve mobile
        (opacité renforcée, un peu plus grand, voile levé) — il
        reste en bas à gauche, loin du visage de Cindy dans la
        photo du trophée (en haut) et du trajet de la colombe.
-       Le bureau ne change pas. — */
-    @media (max-width: 900px) { .gala-decor-photo.gala-decor-photo--kit { left: -30px; bottom: 24px; width: 52vw; opacity: .5; filter: saturate(.9) contrast(1.03) brightness(1); } }
+       Le bureau ne change pas. PRÉSERVÉ TEL QUEL par le
+       correctif bureau ci-dessus : le « right: auto » ajouté
+       ici ne fait qu’annuler l’ancre de droite du bureau —
+       position, taille et opacité du téléphone sont inchangées. — */
+    @media (max-width: 900px) { .gala-decor-photo.gala-decor-photo--kit { left: -30px; right: auto; bottom: 24px; width: 52vw; opacity: .5; filter: saturate(.9) contrast(1.03) brightness(1); } }
     /* — Légende de Kit, sous les honneurs : discrète, à gauche
-       (le côté de sa photo et du trophée), italique dorée comme
+       (sa photo de décor veille à droite d’elle sur le bureau
+       depuis le correctif du 5 nov. — la légende, elle, n’a pas
+       bougé), italique dorée comme
        les autres légendes du bloc; le lien reprend le style des
        liens d’honneurs et défile jusqu’au lecteur vidéo du Gala
        où on le voit interpréter la chanson. — */
@@ -4526,7 +4543,7 @@
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Caraquet · 31 juillet 2015</p>
         <h2 class="section-title">« Entends ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
-        <p class="gala-subtitle">Et tout ce qui l’entoure — Beresford, Calixte, La Voix.</p>
+        <p class="gala-subtitle">Et tout ce qui entoure l’année 2015 — Beresford, Calixte, La Voix.</p>
         <p class="section-intro">L’histoire de ma chanson primée, des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
