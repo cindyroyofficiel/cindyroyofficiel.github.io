@@ -4241,6 +4241,21 @@
       font-family: var(--serif); font-style: italic; font-weight: 600;
       font-size: clamp(21px, 2.6vw, 29px); line-height: 1.35; color: #e7b34b;
     }
+    /* — Le petit trophée qui tourne (demande de Cindy, 5 nov. 2026) :
+       son vrai trophée du Gala 2015, détouré de sa propre vidéo (sans
+       la main, fond transparent), en petite colonne complètement à
+       droite de l’en-tête du Gala. Sur téléphone, il passe dans le
+       flux, petit, sous le sous-titre — jamais par-dessus le texte. — */
+    .gala-head { display: flex; align-items: flex-start; gap: clamp(26px, 4vw, 58px); }
+    .gala-head-text { flex: 1 1 auto; min-width: 0; }
+    .gala-trophy { margin: 4px 0 0; flex: 0 0 auto; }
+    .gala-trophy-img { display: block; height: 250px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
+    @media (max-width: 820px) {
+      .gala-head { flex-direction: column; gap: 16px; }
+      .gala-trophy { margin: 0 auto; }
+      .gala-trophy-img { height: 150px; }
+    }
+    @media print { .gala-trophy { display: none; } }
     .chapter-title {
       margin: 64px 0 0; display: flex; align-items: center; gap: 18px;
       font-family: var(--serif); font-size: clamp(28px, 3.4vw, 38px);
@@ -4584,9 +4599,24 @@
     <section class="journey gala-section" id="gala">
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-        <p class="section-tag">Caraquet · 31 juillet 2015</p>
-        <h2 class="section-title">« Entends ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
-        <p class="gala-subtitle">Et tout ce qui entoure l’année 2015 — Beresford, Calixte, La Voix.</p>
+        <div class="gala-head">
+          <div class="gala-head-text">
+            <p class="section-tag">Caraquet · 31 juillet 2015</p>
+            <h2 class="section-title">« Entends ma prière » — <em>le Gala de la chanson de Caraquet, 2015</em></h2>
+            <p class="gala-subtitle">Et tout ce qui entoure l’année 2015 — Beresford, Calixte, La Voix.</p>
+          </div>
+          <figure class="gala-trophy">
+            <img class="gala-trophy-img" src="assets/trophee-gala-2015-tourne.webp" alt="Le trophée du Gala 2015 de Cindy Roy, qui tourne lentement sur lui-même" width="279" height="780" loading="lazy" />
+          </figure>
+        </div>
+        <script>
+          (function () {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              var im = document.querySelector('.gala-trophy-img');
+              if (im) { im.src = 'assets/trophee-gala-2015-affiche.png'; }
+            }
+          })();
+        </script>
         <p class="section-intro">L’histoire de ma chanson primée (Étoile), des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de sa victoire au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
