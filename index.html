@@ -2788,6 +2788,17 @@
     .highlights-vedette { max-width: 500px; margin: clamp(52px, 6vw, 76px) auto 0; padding: 12px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 0 70px rgba(201,162,79,.22); border-radius: var(--r-card); }
     .highlights-vedette img { width: 100%; display: block; border-radius: 8px; }
     .highlights-vedette figcaption { padding: 13px 8px 4px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; color: #2a1e04; }
+    /* — Le trophée qui tourne (idée de Cindy, 5 nov. 2026) : sa vraie
+       vidéo du trophée du Gala 2015, en boucle muette, dans le même
+       cadre doré que la photo vedette, juste à côté d’elle. Sur
+       téléphone, les deux cadres s’empilent (la vidéo après la photo)
+       pour ne jamais cacher le titre ni le visage de Cindy. — */
+    .highlights-media { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: clamp(22px, 3vw, 34px); margin: clamp(52px, 6vw, 76px) auto 0; max-width: 900px; }
+    .highlights-media .highlights-vedette { margin: 0; flex: 0 1 500px; }
+    .trophy-turn { margin: 0; flex: 0 1 248px; padding: 10px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 0 70px rgba(201,162,79,.22); border-radius: var(--r-card); }
+    .trophy-turn video { display: block; width: 100%; height: auto; border-radius: 8px; background: #141210; }
+    @media (max-width: 820px) { .trophy-turn { flex-basis: 208px; } }
+    @media print { .trophy-turn { display: none; } }
     .honours { list-style: none; margin: clamp(64px, 8vw, 96px) auto 0; padding: 0; max-width: 1100px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(36px, 4.5vw, 64px); text-align: left; }
     .honour { border-top: 1px solid rgba(201,162,79,.5); padding-top: 24px; }
     .honour-when { margin: 0; color: #e7b34b; font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
@@ -4550,10 +4561,23 @@
           <p class="piano-caption">« Entends ma prière » — version instrumentale classique</p>
           <audio id="piano-listen-audio" preload="none" src="assets/entend-ma-priere-piano-extrait.mp3"></audio>
         </div>
-        <figure class="highlights-vedette">
-          <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
-          <figcaption>Mon trophée du Gala, à côté de la lettre du député — 2015</figcaption>
-        </figure>
+        <div class="highlights-media">
+          <figure class="highlights-vedette">
+            <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
+            <figcaption>Mon trophée du Gala, à côté de la lettre du député — 2015</figcaption>
+          </figure>
+          <figure class="trophy-turn">
+            <video src="assets/trophee-gala-2015-rotation.mp4" poster="assets/trophee-gala-2015-rotation-poster.jpg" width="480" height="1286" autoplay muted loop playsinline preload="metadata" aria-label="Le trophée du Gala 2015 de Cindy Roy, qui tourne lentement sur lui-même"></video>
+          </figure>
+        </div>
+        <script>
+          (function () {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              var v = document.querySelector('.trophy-turn video');
+              if (v) { v.removeAttribute('autoplay'); v.pause(); }
+            }
+          })();
+        </script>
         <ul class="honours">
           <li class="honour">
             <p class="honour-when">Caraquet · 31 juillet 2015</p>
