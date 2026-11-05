@@ -4252,17 +4252,47 @@
        de l’espace libre de l’en-tête : la colonne texte est plafonnée à
        880 px, la colonne trophée prend l’espace restant (flex: 1) et
        centre le trophée dedans (justify-content: center). La taille
-       (250 px) et le téléphone ne changent pas. — */
-    .gala-head { display: flex; align-items: flex-start; gap: clamp(26px, 4vw, 58px); }
-    .gala-head-text { flex: 1 1 auto; min-width: 0; max-width: 880px; }
-    .gala-trophy { margin: 4px 0 0; flex: 1 1 auto; min-width: 100px; display: flex; justify-content: center; }
+       (250 px) et le téléphone ne changent pas.
+       Ajout du 5 nov. 13 h 39 (Cindy) : un projecteur de scène — cône
+       de lumière chaude et douce, bords très fondus, qui part du coin
+       supérieur droit de l’en-tête et descend éclairer le trophée,
+       avec un léger halo à son pied; le faisceau passe DERRIÈRE le
+       trophée, il est statique (identique en prefers-reduced-motion)
+       et masqué sur téléphone, où seul le halo subsiste, atténué.
+       Ajout du 5 nov. 13 h 40 (Cindy) : en arrière-plan de l’en-tête,
+       la VRAIE salle du Carrefour de la mer de Caraquet en fantôme
+       translucide — photo réelle de la salle (le piano sur la scène,
+       les gradins), désaturée et assombrie sous un voile vert foncé,
+       avec une vignette qui fond ses bords dans le fond de la section.
+       Aucune salle inventée : la crédibilité d’abord. — */
+    .gala-head { display: flex; align-items: flex-start; gap: clamp(26px, 4vw, 58px); position: relative;
+      background-image:
+        radial-gradient(115% 125% at 50% 42%, rgba(0, 0, 0, 0) 52%, var(--deep) 98%),
+        linear-gradient(rgba(29, 43, 30, .84), rgba(29, 43, 30, .89)),
+        url("assets/gala-salle-carrefour-fond.jpg");
+      background-size: cover; background-position: center, center, center 40%; }
+    .gala-head::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 238, 196, .85), rgba(255, 216, 138, .38) 55%, rgba(255, 208, 120, .10));
+      clip-path: polygon(96.5% 0, 100% 0, 97.5% 82%, 80% 82%);
+      filter: blur(15px); opacity: .5; }
+    .gala-head::after { content: ""; position: absolute; left: 79.5%; top: 70%; width: 20%; height: 26%; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(255, 224, 158, .55), rgba(255, 212, 132, .20) 55%, rgba(255, 212, 132, 0) 72%);
+      filter: blur(9px); opacity: .8; }
+    .gala-head-text { flex: 1 1 auto; min-width: 0; max-width: 880px; position: relative; z-index: 1; }
+    .gala-trophy { margin: 4px 0 0; flex: 1 1 auto; min-width: 100px; display: flex; justify-content: center; position: relative; z-index: 1; }
     .gala-trophy-img { display: block; height: 250px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
     @media (max-width: 820px) {
-      .gala-head { flex-direction: column; gap: 16px; }
+      .gala-head { flex-direction: column; gap: 16px;
+        background-image:
+          radial-gradient(115% 125% at 50% 42%, rgba(0, 0, 0, 0) 40%, var(--deep) 97%),
+          linear-gradient(rgba(29, 43, 30, .92), rgba(29, 43, 30, .94)),
+          url("assets/gala-salle-carrefour-fond.jpg"); }
+      .gala-head::before { display: none; }
+      .gala-head::after { left: 50%; top: 85%; width: 58%; height: 14%; transform: translateX(-50%); opacity: .6; }
       .gala-trophy { margin: 0 auto; flex: 0 0 auto; min-width: 0; display: block; }
       .gala-trophy-img { height: 150px; }
     }
-    @media print { .gala-trophy { display: none; } }
+    @media print { .gala-trophy, .gala-head::before, .gala-head::after { display: none; } .gala-head { background: none; } }
     .chapter-title {
       margin: 64px 0 0; display: flex; align-items: center; gap: 18px;
       font-family: var(--serif); font-size: clamp(28px, 3.4vw, 38px);
