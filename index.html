@@ -4352,6 +4352,61 @@
       .gala-trophy-img { height: 150px; }
     }
     @media print { .gala-trophy, .gala-head::before, .gala-head::after { display: none; } .gala-head { background: none; } }
+    /* Fond « en rêve » de l’ouverture de Beresford (Cindy, 5 nov. 17 h 35,
+       à partir des aperçus : « je prendrai les deux dernières… me faire
+       une fondue de ça en rêve dans la page, une à gauche, une à
+       droite ») — les essais 2 (Cindy qui chante, le bras ouvert) et 3
+       (le moment de l’annonce) fondus l’un dans l’autre au centre en un
+       seul composite (assets/beresford-fond-fondu.jpg, 1920×880) :
+       fantômes bleu-hiver translucides, même famille que l’en-tête du
+       Gala, centre gardé très crème pour le texte, aucun élément
+       ajouté, visages intacts. Un voile crème en dégradé couvre la
+       zone du texte à gauche et fond le bas du bloc dans le crème de
+       la section — le reste de la section reste sur le crème uni.
+       Au téléphone, un composite resserré et plus pâle prend le
+       relais (assets/beresford-fond-fondu-tel.jpg, 1080×1080), avec un
+       voile renforcé : les fantômes se superposent plus pâles et le
+       bas du bloc est presque tout crème pour la phrase d’intro.
+       En mode sombre, le bloc demeure une fenêtre crème lumineuse
+       (liseré doré discret) et les couleurs claires du texte y sont
+       forcées, sinon le texte pâle du thème sombre serait illisible
+       sur le crème. — */
+    .beresford-head { position: relative; border-radius: 22px;
+      padding: clamp(30px, 4.5vw, 56px) clamp(22px, 4vw, 56px);
+      background-image:
+        linear-gradient(180deg, rgba(255, 253, 247, 0) 52%, rgba(255, 253, 247, .88) 88%, #fffdf7 100%),
+        linear-gradient(90deg, rgba(255, 253, 247, .38), rgba(255, 253, 247, .08) 55%, rgba(255, 253, 247, 0) 80%),
+        url("assets/beresford-fond-fondu.jpg");
+      background-size: cover; background-position: center, center, center 30%; }
+    @media (max-width: 820px) {
+      .beresford-head { padding: 30px 22px 34px;
+        background-image:
+          linear-gradient(180deg, rgba(255, 253, 247, 0) 46%, rgba(255, 253, 247, .90) 84%, #fffdf7 100%),
+          radial-gradient(125% 62% at 30% 16%, rgba(255, 253, 247, .55), rgba(255, 253, 247, 0) 72%),
+          linear-gradient(90deg, rgba(255, 253, 247, .55), rgba(255, 253, 247, .16) 60%, rgba(255, 253, 247, .04) 85%),
+          url("assets/beresford-fond-fondu-tel.jpg");
+        background-position: center, center, center, 38% top; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .beresford-head { border: 1px solid rgba(201, 162, 79, .35);
+        background-image:
+          linear-gradient(180deg, rgba(250, 243, 228, 0) 52%, rgba(250, 243, 228, .88) 88%, #faf3e4 100%),
+          linear-gradient(90deg, rgba(255, 253, 247, .38), rgba(255, 253, 247, .08) 55%, rgba(255, 253, 247, 0) 80%),
+          url("assets/beresford-fond-fondu.jpg"); }
+      .beresford-head .section-tag { color: #b5502f; }
+      .beresford-head .section-title { color: #2c2317; }
+      .beresford-head .section-title em { color: #b5502f; }
+      .beresford-head .section-intro { color: #57493a; }
+    }
+    @media (max-width: 820px) and (prefers-color-scheme: dark) {
+      .beresford-head { background-image:
+          linear-gradient(180deg, rgba(250, 243, 228, 0) 46%, rgba(250, 243, 228, .90) 84%, #faf3e4 100%),
+          radial-gradient(125% 62% at 30% 16%, rgba(253, 250, 242, .55), rgba(253, 250, 242, 0) 72%),
+          linear-gradient(90deg, rgba(255, 253, 247, .55), rgba(255, 253, 247, .16) 60%, rgba(255, 253, 247, .04) 85%),
+          url("assets/beresford-fond-fondu-tel.jpg");
+        background-position: center, center, center, 38% top; }
+    }
+    @media print { .beresford-head { background: none; border: none; } }
     .chapter-title {
       margin: 64px 0 0; display: flex; align-items: center; gap: 18px;
       font-family: var(--serif); font-size: clamp(28px, 3.4vw, 38px);
@@ -5426,9 +5481,11 @@
 
     <section class="scene beresford-section" id="beresford">
       <div class="wrap">
+        <div class="beresford-head">
         <p class="section-tag">Carnaval du Siffleux · Beresford · 2015</p>
         <h2 class="section-title">La Voix de Beresford — <em>Carnaval du Siffleux 2015</em></h2>
         <p class="section-intro">Janvier 2015, au Carnaval du Siffleux de Beresford (aujourd’hui Belle-Baie) : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
+        </div>
         <h3 class="chapter-title">Beresford</h3>
         <div class="scene-grid">
 <figure class="scene-item">
