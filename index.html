@@ -4264,6 +4264,12 @@
        noir, sans rien rogner). À colonnes égales : hauts alignés,
        hauteurs égales, une belle paire. Au téléphone, les deux
        restent empilées, le badge au même endroit. */
+    .gala-videos-panel { margin-top: 40px; padding: clamp(26px, 4vw, 44px) clamp(18px, 4vw, 44px) clamp(30px, 4vw, 40px); border-radius: 22px; border: 1px solid rgba(201, 162, 79, .55);
+      background: radial-gradient(120% 90% at 50% 0%, rgba(236, 210, 142, .35), rgba(236, 210, 142, 0) 55%), linear-gradient(170deg, #fdfaf2, #f6eeda);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+    .gala-videos-panel .gala-subhead { margin-top: 0; text-align: center; color: #6e1423; }
+    .gala-videos-panel .gala-subhead::after { content: "★"; display: block; margin-top: 10px; color: #c9a24f; font-size: 14px; }
+    .gala-videos-panel figcaption { color: #57493a; }
     .gala-videos-duo .gala-featured { position: relative; }
     .gala-videos-duo .gala-featured .scene-badge {
       position: absolute; top: 0; left: 50%; z-index: 2;
@@ -5080,7 +5086,8 @@
         </div>
           </div>
         </details>
-        <h3 class="gala-subhead">La soirée en images</h3>
+        <div class="gala-videos-panel">
+        <h3 class="gala-subhead">La soirée en vidéos</h3>
         <div class="gala-videos-duo">
         <div class="gala-featured">
           <span class="scene-badge">En vedette</span>
@@ -5094,6 +5101,7 @@
             <video id="video-kit-gala" src="assets/scene-gala-prestation.mp4" poster="assets/scene-gala-prestation-poster.jpg" controls playsinline preload="none" title="« Entends ma prière » de Cindy Roy, interprétée par Christian « Kit » Goguen au Gala de la chanson de Caraquet, 2015"></video>
             <figcaption>Ma chanson primée (Étoile), interprétée par Christian « Kit » Goguen — Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
+        </div>
         </div>
         </div>
         <div class="gala-highlight">
