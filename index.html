@@ -8319,7 +8319,7 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
         }, { threshold: 0.35 });
         io.observe(stage);
         var img = stage.querySelector('.beresford-stage-row .scene-item img');
-        if (img) { img.style.cursor = 'pointer'; img.addEventListener('click', burst); }
+        if (img) { img.style.cursor = 'pointer'; img.addEventListener('click', burst); img.addEventListener('mouseenter', burst); }
       })();
     </script>
 </body>
