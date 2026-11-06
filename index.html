@@ -2946,6 +2946,11 @@
     .carnaval-note p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.55; color: var(--ink); }
     .carnaval-note a { display: inline-block; margin-top: 14px; color: var(--accent-2); font-weight: 700; text-underline-offset: 5px; }
     .carnaval-note a:hover { color: var(--accent); }
+    .carnaval-2019 { display: flex; gap: 18px; align-items: flex-start; text-align: left; margin-bottom: 18px; }
+    .carnaval-2019 figure { margin: 0; flex: 0 0 148px; text-align: center; }
+    .carnaval-2019 img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(201, 162, 79, .35); }
+    .carnaval-2019 figcaption { margin-top: 6px; font-size: 11.5px; line-height: 1.35; color: var(--ink); opacity: .75; }
+    @media (max-width: 640px) { .carnaval-2019 { flex-direction: column; align-items: center; text-align: center; } .carnaval-2019 figure { flex: none; width: 132px; } }
     @media (prefers-color-scheme: dark) { .carnaval-note a { color: var(--gold); } .carnaval-note a:hover { color: #f0cd7e; } }
     .autumn-row.autumn-row--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin-inline: auto; }
     .gallery-body .autumn-row { margin-top: 28px; grid-template-columns: minmax(0, 400px); justify-content: center; }
@@ -5841,6 +5846,13 @@
           </div>
         </details>
         <aside class="carnaval-note" id="carnaval">
+          <div class="carnaval-2019">
+            <figure>
+              <img src="assets/carnaval-2019-affiche.jpg" alt="Affiche du souper-spectacle d’ouverture du Carnaval du Siffleux 2019, avec Cindy et Denis — complet" width="900" height="1159" loading="lazy" />
+              <figcaption>L’affiche du souper-spectacle d’ouverture — Carnaval du Siffleux, 2019</figcaption>
+            </figure>
+            <p>En 2019, elle revient au Carnaval en vedette : le souper-spectacle d’ouverture officielle — complet.</p>
+          </div>
           <p>Le Carnaval du Siffleux renaît : sa 48e édition aura lieu du 29 janvier au 7 février 2027.</p>
           <a href="https://www.facebook.com/CarnavalSiffleuxBeresford" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford →</a>
         </aside>
