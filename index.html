@@ -3223,9 +3223,31 @@
     .highlights-head { position: relative; }
     .gala-star { display: block; width: 30px; height: 30px; margin: 0 auto 16px; filter: drop-shadow(0 2px 8px rgba(201, 162, 79, .45)); }
     .gala-star svg { display: block; width: 100%; height: 100%; }
-    .laurel { position: absolute; top: 46%; height: clamp(240px, 26vw, 330px); width: auto; opacity: .9; pointer-events: none; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .35)); }
+    .laurel { position: absolute; top: 46%; height: clamp(240px, 26vw, 330px); width: auto; opacity: .55; pointer-events: none; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .15)); }
     .laurel--left { left: -168px; transform: translateY(-50%); }
-    .laurel--right { right: -168px; transform: translateY(-50%) scaleX(-1); }
+    .laurel--right { right: calc(290px - 49vw); transform: translateY(-50%) scaleX(-1); }
+    /* — Correctif du 5 nov. au soir (Cindy, capture de son
+       portable à l’appui) : DEUX demandes. (1) Les lauriers
+       étaient trop foncés, trop « collés » par-dessus le
+       décor : doré pâli (#e6cb8d → #e6cb8d aux feuilles et
+       aux baies, #b8912f → #cfb26a aux tiges), opacité
+       ramenée de .9 à .55 et ombre portée adoucie — ils se
+       fondent maintenant dans le fond, des deux côtés à
+       l’identique. (2) Le laurier de droite « me cache » :
+       il traversait le visage et la chevelure de Cindy dans
+       la photo fondue d’avant-gala, surtout entre 1151 et
+       1600 px (là où la photo, ancrée au bord droit de la
+       section, avance deux fois plus vite que le bloc de
+       titre quand l’écran grandit). Il est donc repoussé
+       vers la droite d’un décalage qui suit la largeur de
+       l’écran (right: 290px − 49vw : ≈ −274 px à 1151 px,
+       ≈ −401 px à 1440 px, ≈ −479 px à 1600 px) : mesuré
+       sur la page rendue, plus aucune feuille ne touche
+       son visage ni sa chevelure, à toutes les largeurs de
+       bureau; il finit en doux reflet doré au bord droit de
+       la section. Le laurier de gauche ne bouge pas (son
+       correctif du 4 nov. reste), et au téléphone les
+       lauriers restent retirés, comme avant. */
     /* — Correctif du 4 nov. au soir (vu par Cindy sur son
        portable) : dans la bande des écrans d’ordinateur de
        1151 à 1560 px, le laurier de gauche chevauchait la photo
@@ -4735,9 +4757,9 @@
           <span class="gala-star" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 1.8 L14.9 8.6 L22.1 9.3 L16.7 14.1 L18.4 21.2 L12 17.4 L5.6 21.2 L7.3 14.1 L1.9 9.3 L9.1 8.6 Z" fill="#e7b34b" /></svg></span>
           <svg class="laurel laurel--left" viewBox="0 0 120 340" aria-hidden="true" focusable="false">
             <defs>
-              <path id="laurel-leaf-a" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#cda550" />
+              <path id="laurel-leaf-a" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#e6cb8d" />
             </defs>
-            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#b8912f" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#cfb26a" stroke-width="3.5" stroke-linecap="round" />
             <use href="#laurel-leaf-a" transform="translate(55 298) rotate(-44) scale(1.05)" />
             <use href="#laurel-leaf-a" transform="translate(57 298) rotate(36) scale(1.05)" />
             <use href="#laurel-leaf-a" transform="translate(48 258) rotate(-46) scale(1)" />
@@ -4753,14 +4775,14 @@
             <use href="#laurel-leaf-a" transform="translate(59 70) rotate(-36) scale(.62)" />
             <use href="#laurel-leaf-a" transform="translate(61 70) rotate(38) scale(.62)" />
             <use href="#laurel-leaf-a" transform="translate(64 16) rotate(2) scale(.5)" />
-            <circle cx="52" cy="318" r="4.5" fill="#cda550" />
-            <circle cx="66" cy="326" r="3.8" fill="#cda550" />
+            <circle cx="52" cy="318" r="4.5" fill="#e6cb8d" />
+            <circle cx="66" cy="326" r="3.8" fill="#e6cb8d" />
           </svg>
           <svg class="laurel laurel--right" viewBox="0 0 120 340" aria-hidden="true" focusable="false">
             <defs>
-              <path id="laurel-leaf-b" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#cda550" />
+              <path id="laurel-leaf-b" d="M0 0 C -7.5 -9 -9.5 -24 0 -40 C 9.5 -24 7.5 -9 0 0 Z" fill="#e6cb8d" />
             </defs>
-            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#b8912f" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M64 334 C 42 262 42 92 64 10" fill="none" stroke="#cfb26a" stroke-width="3.5" stroke-linecap="round" />
             <use href="#laurel-leaf-b" transform="translate(55 298) rotate(-44) scale(1.05)" />
             <use href="#laurel-leaf-b" transform="translate(57 298) rotate(36) scale(1.05)" />
             <use href="#laurel-leaf-b" transform="translate(48 258) rotate(-46) scale(1)" />
@@ -4776,8 +4798,8 @@
             <use href="#laurel-leaf-b" transform="translate(59 70) rotate(-36) scale(.62)" />
             <use href="#laurel-leaf-b" transform="translate(61 70) rotate(38) scale(.62)" />
             <use href="#laurel-leaf-b" transform="translate(64 16) rotate(2) scale(.5)" />
-            <circle cx="52" cy="318" r="4.5" fill="#cda550" />
-            <circle cx="66" cy="326" r="3.8" fill="#cda550" />
+            <circle cx="52" cy="318" r="4.5" fill="#e6cb8d" />
+            <circle cx="66" cy="326" r="3.8" fill="#e6cb8d" />
           </svg>
           <p class="section-tag">Mes plus beaux accomplissements</p>
           <h2 class="highlights-title">« Entends ma prière » — <em>Ma prière a été entendue</em></h2>
