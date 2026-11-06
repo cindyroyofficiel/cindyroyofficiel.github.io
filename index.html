@@ -4556,6 +4556,14 @@
     .calixte-dream > p { margin: 18px 0 0; font-size: 18px; line-height: 1.75; color: #2c2317; background: rgba(251,247,238,.55); border-radius: 14px; padding: 18px 20px; }
     .calixte-dream .calixte-photos figcaption { display: inline-block; background: rgba(251,247,238,.85); border-radius: 999px; padding: 3px 14px; color: #6d5a2e; }
     @media (max-width: 640px) { .calixte-dream { padding: 20px 14px 18px; } .calixte-dream > p { font-size: 17px; padding: 14px 15px; } }
+    @media (min-width: 761px) {
+      .calixte-dream { position: relative; left: 50%; transform: translateX(-50%); width: min(1140px, 95vw); padding: 44px 40px 40px; }
+      .calixte-dream .chapter-title { justify-content: center; text-align: center; }
+      .calixte-dream > p { max-width: 500px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 760px) {
+      .calixte-dream { background: url('assets/calixte-fond-reve-mobile.jpg') center / cover no-repeat; }
+    }
     .calixte-story > p { margin: 20px 0 0; font-size: 18px; line-height: 1.75; color: var(--ink); }
     .calixte-photos { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; align-items: start; }
     .calixte-photos figure { margin: 0 auto; width: min(100%, 330px); }
