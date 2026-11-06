@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 250">
+  <defs>
+    <clipPath id="vague2">
+      <path d="M12 40 C 90 14, 200 62, 308 28 C 300 84, 312 132, 304 184 C 210 214, 100 172, 16 200 C 24 148, 6 92, 12 40 Z"/>
+    </clipPath>
+    <linearGradient id="plis" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity="0.14"/>
+      <stop offset="0.16" stop-color="#fff" stop-opacity="0.13"/>
+      <stop offset="0.36" stop-color="#000" stop-opacity="0.05"/>
+      <stop offset="0.52" stop-color="#fff" stop-opacity="0.15"/>
+      <stop offset="0.70" stop-color="#000" stop-opacity="0.13"/>
+      <stop offset="0.86" stop-color="#fff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#vague2)">
+    <path d="M12 40 C 50 27, 82 30, 112 44 L 110 192 C 82 182, 44 198, 16 200 C 24 148, 6 92, 12 40 Z" fill="#2a4d9b"/>
+    <path d="M112 44 C 148 57, 176 55, 206 48 L 204 198 C 172 206, 140 200, 110 192 Z" fill="#f7f3e8"/>
+    <path d="M206 48 C 240 41, 276 33, 308 28 C 300 84, 312 132, 304 184 C 274 194, 240 200, 204 198 Z" fill="#c8102e"/>
+    <rect x="0" y="0" width="320" height="250" fill="url(#plis)"/>
+    <polygon fill="#f2b705" transform="rotate(-6 56 92)" points="56,64 63,83 83,83 67,95 73,115 56,103 39,115 45,95 29,83 49,83"/>
+  </g>
+  <path d="M8 226 C 60 213, 112 234, 168 222 C 224 210, 272 230, 314 219" stroke="#3a6ea5" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.32"/>
+  <path d="M30 240 C 76 230, 128 246, 180 236 C 226 227, 268 242, 300 234" stroke="#3a6ea5" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.20"/>
+</svg>
