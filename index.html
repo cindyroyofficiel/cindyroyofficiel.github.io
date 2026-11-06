@@ -289,7 +289,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 148px; }
+    #calixte, #lavoix, #carnaval, #beresford, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #credo, #racines, #famille, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
@@ -4664,13 +4664,76 @@
           <a href="#carnaval">Carnaval</a>
         </span>
       </span>
-      <a href="#musique">Ma musique</a>
-      <a href="#scene">Scène</a>
-      <a href="#ca-sen-vient">Le coffre aux talents</a>
-      <a href="#apropos">À propos</a>
-      <a href="#parcours">Parcours</a>
-      <a href="#influences">Influences</a>
-      <a href="#presse">Presse</a>
+      <span class="has-sub">
+        <a href="#musique">Ma musique</a>
+        <span class="sub-menu">
+          <a href="#originales">Originales</a>
+          <a href="#arranged-title">Avec Théo</a>
+          <a href="#denis-title">Avec Denis</a>
+          <a href="#martial-music-title">Martial Marey</a>
+          <a href="#interpretations">Mes reprises</a>
+          <a href="#atelier">L’Atelier</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#scene">Scène</a>
+        <span class="sub-menu">
+          <a href="#scene">Scène</a>
+          <a href="#photos">Photos</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#ca-sen-vient">Le coffre aux talents</a>
+        <span class="sub-menu">
+          <a href="#coffre-humour">L’humour maison</a>
+          <a href="#coffre-cuisine">Dans ma cuisine</a>
+          <a href="#coffre-balado">Podcast / Balado</a>
+          <a href="#coffre-livre">Livre</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#apropos">À propos</a>
+        <span class="sub-menu">
+          <a href="#credo">Je choisis le vrai</a>
+          <a href="#racines">Racines</a>
+          <a href="#famille">Famille</a>
+          <a href="#autodidacte">Autodidacte</a>
+          <a href="#mission">Ma mission</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#parcours">Parcours</a>
+        <span class="sub-menu">
+          <a href="#robertville">Robertville</a>
+          <a href="#guitare">Guitare</a>
+          <a href="#nicole">Nicole McGrath</a>
+          <a href="#martial-story">Martial Marey</a>
+          <a href="#radio">La radio</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#influences">Influences</a>
+        <span class="sub-menu">
+          <a href="#influence-diane-toggle">Diane Tell</a>
+          <a href="#influence-cabrel-toggle">Francis Cabrel</a>
+          <a href="#influence-isabelle-toggle">Isabelle Boulay</a>
+          <a href="#influence-patrick-toggle">Patrick Norman</a>
+          <a href="#influence-ginette-toggle">Ginette Reno</a>
+          <a href="#influence-laurence-toggle">Laurence Jalbert</a>
+          <a href="#influence-shania-toggle">Shania Twain</a>
+          <a href="#influence-lara-toggle">Lara Fabian</a>
+          <a href="#influence-alanis-toggle">Alanis Morissette</a>
+          <a href="#influence-celine-toggle">Céline Dion</a>
+        </span>
+      </span>
+      <span class="has-sub">
+        <a href="#presse">Presse</a>
+        <span class="sub-menu">
+          <a href="#presse">Dossier de presse</a>
+          <a href="#fiche-presse">La fiche</a>
+          <a href="#articles-presse">Articles</a>
+        </span>
+      </span>
       <a class="nav-cta" href="#contact">Contact</a>
     </div>
   </nav>
@@ -5443,7 +5506,15 @@
           })();
         </script>
 
-        <div class="library-head">
+        <nav class="door-nav" aria-label="Compartiments de Ma musique">
+          <a href="#originales">Originales</a>
+          <a href="#arranged-title">Avec Théo</a>
+          <a href="#denis-title">Avec Denis</a>
+          <a href="#martial-music-title">Martial Marey</a>
+          <a href="#interpretations">Mes reprises</a>
+          <a href="#atelier">L’Atelier</a>
+        </nav>
+         <div class="library-head">
           <h3>Répertoire</h3>
           <div class="tabs" role="tablist" aria-label="Type de répertoire">
             <button class="tab" id="tab-originales" role="tab" aria-selected="true" aria-controls="originales">Chansons originales</button>
@@ -5800,6 +5871,10 @@
         <div class="scene-spot-halo"></div>
       </div>
       <div class="wrap">
+        <nav class="door-nav" aria-label="Compartiments de Scène">
+          <a href="#scene">Scène</a>
+          <a href="#photos">Photos</a>
+        </nav>
         <div class="scene-head">
           <div class="scene-head-copy">
             <p class="section-tag">Moments de scène</p>
@@ -5918,7 +5993,14 @@
 
     <section id="apropos">
       <div class="wrap">
-        <div class="manifesto reveal">
+        <nav class="door-nav" aria-label="Compartiments d’À propos">
+          <a href="#credo">Je choisis le vrai</a>
+          <a href="#racines">Racines</a>
+          <a href="#famille">Famille</a>
+          <a href="#autodidacte">Autodidacte</a>
+          <a href="#mission">Ma mission</a>
+        </nav>
+        <div class="manifesto reveal" id="credo">
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
           <h2 class="manifesto-title">Je choisis le vrai</h2>
           <p>On vit à une époque où tout va vite. Les outils d’intelligence artificielle font maintenant partie de notre quotidien. Moi, je les trouve intéressants et agréables à utiliser. Mais pour moi, ce qui compte, c’est de rester vraie et de ne pas oublier ce qui nous rend humains : nos petites failles, nos imperfections et tout ce qui fait qu’on est uniques.</p>
@@ -5934,7 +6016,7 @@
             <p>Je chante depuis toute petite — vers l’âge de deux ans, presque avant même de savoir parler. Dans le salon des Boudreau, la musique prenait vie : à Noël, dès que les guitares sortaient, c’était un vrai petit paradis pour mon âme de chanteuse en devenir. C’était tassé, mais j’étais déterminée — j’ai fini par me tailler une place parmi les guitares et les voix, tout près, au cœur de la musique. Mon rêve de chanter m’habitait déjà; ces petits moments venaient le nourrir et me murmurer, au creux de l’âme, que la musique était ma mission.</p>
           </div>
         </div>
-        <div class="about-copy racines-suite">
+        <div class="about-copy racines-suite" id="racines">
             <h3>Mes racines acadiennes</h3>
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
             <figure class="racines-photo">
@@ -5981,7 +6063,7 @@
               </div>
             </details>
             <p>Quand je chante, quand j’écris ou quand je fais rire, c’est tout ce monde-là qui chante, écrit et rit avec moi. Ce sont mes racines, mon Acadie — pis c’est un bout de tout ça que je vous partage, un pas à la fois.</p>
-            <div class="vitrine">
+            <div class="vitrine" id="famille">
               <p class="section-tag">Vitrine familiale</p>
               <h3>Où le talent, chez nous, ça se passe en famille</h3>
               <p>Chez nous, l’art, c’est de famille — un vrai buffet de talents. Des livres, de la peinture, des chansons, de la bonne cuisine, de la soudure, de la construction, de la mécanique, de l’électricité, des musiciens pis des libres penseurs — chacun a sa façon de faire de l’art. Voici les œuvres de ma parenté — à découvrir, à savourer, à encourager.</p>
@@ -6070,7 +6152,7 @@
                 </div>
               </details>
             </div>
-            <h3>Chanteuse autodidacte</h3>
+            <h3 id="autodidacte">Chanteuse autodidacte</h3>
             <p>Je suis chanteuse avant tout. Ma voix, c’est mon instrument, pis les mélodies naissent dans ma tête — parfois même au réveil. Autodidacte, je me suis formée en écoutant, en m’enregistrant, en pratiquant pendant des milliers d’heures, en collaborant avec des musiciens du Québec et de la France — de mes premiers pas sur scène jusqu’à mes expériences en studio.</p>
             <p>De la chorale de Robertville aux concours, des soirées d’écriture aux collaborations, j’ai toujours gardé des chansons dans le tiroir — pis un rêve qui, lui, est resté bien vivant. Les chansons que je compose, ce sont des bouts de moi que je transforme en musique pis que je partage avec vous.</p>
         </div>
@@ -6108,7 +6190,7 @@
         </div>
         <div class="mission reveal">
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-          <h3 class="mission-title">Ma mission</h3>
+          <h3 class="mission-title" id="mission">Ma mission</h3>
           <p class="mission-text">« Depuis ma tendre enfance, je sais que je suis ici pour une raison. Je ne me suis jamais sentie faite pour les cadres : je peux y entrer, faire ma petite besogne à ma façon, mais la mission que je porte est plus grande que ça. Ma mission, c’est d’apporter de l’amour vrai, partout où je passe. Parce que là où on met notre attention, c’est là que notre énergie s’en va. Si on choisit de la mettre au bon endroit — de nourrir l’amour pis les bonnes choses — l’ennemi n’est pas invité : il trouve pas de place pour entrer. Un cœur rempli d’amour, ça laisse pas de mauvaise craque pour le mal. »</p>
           <div class="mission-lines">
             <p class="mission-line">Préserver l’humanité.</p>
@@ -6144,6 +6226,13 @@
 
     <section class="journey" id="parcours">
       <div class="wrap">
+        <nav class="door-nav" aria-label="Compartiments de Parcours">
+          <a href="#robertville">Robertville</a>
+          <a href="#guitare">Guitare</a>
+          <a href="#nicole">Nicole McGrath</a>
+          <a href="#martial-story">Martial Marey</a>
+          <a href="#radio">La radio</a>
+        </nav>
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Parcours & distinctions</p>
         <h2 class="section-title">Une vie en musique, <em>sans raccourci.</em></h2>
@@ -6175,7 +6264,7 @@
           <div class="timeline">
           <article class="timeline-row">
             <div class="timeline-year">Enfance</div>
-            <div class="timeline-copy"><h3>La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
+            <div class="timeline-copy"><h3 id="robertville">La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
             <figure class="eglise-duo">
               <div class="eglise-duo-imgs">
                 <img class="photo-fondue" src="assets/cindy-eglise-robertville-marches-fondue.webp" alt="Cindy Roy assise sur les marches de l’église de Robertville, sous le drapeau acadien" width="1455" height="1940" loading="lazy" decoding="async" />
@@ -6215,14 +6304,14 @@
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
-            <div class="timeline-copy"><h3>Chanteuse, gratteuse de guitare.</h3><p>J’aurais voulu vivre de ma musique, mais les bills, faut que ça se paye : mon gagne-pain, ça a toujours été mon travail à temps plein, avec deux enfants à élever. Ma musique, c’était ma passion — un sideline qui trouvait sa place quand le temps le permettait : des spectacles ici et là, surtout l’été dans les festivités acadiennes, pis du chant à l’église.</p></div>
+            <div class="timeline-copy"><h3 id="guitare">Chanteuse, gratteuse de guitare.</h3><p>J’aurais voulu vivre de ma musique, mais les bills, faut que ça se paye : mon gagne-pain, ça a toujours été mon travail à temps plein, avec deux enfants à élever. Ma musique, c’était ma passion — un sideline qui trouvait sa place quand le temps le permettait : des spectacles ici et là, surtout l’été dans les festivités acadiennes, pis du chant à l’église.</p></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2013 à 2019</div>
             <div class="timeline-copy">
             <div class="hommage">
               <p class="hommage-dove" aria-hidden="true">🕊️</p>
-              <h3 class="hommage-title">À Nicole McGrath</h3>
+              <h3 class="hommage-title" id="nicole">À Nicole McGrath</h3>
               <div class="hommage-rule" aria-hidden="true">✦</div>
               <div class="hommage-text">
                 <p class="hommage-lead">Elle m’a appris à lire, à écrire… et à chanter comme on prie.</p>
@@ -6287,7 +6376,7 @@
           </details>
         </article>
 
-        <article class="martial radio-block">
+        <article class="martial radio-block" id="radio">
           <h3 class="martial-title">À la radio, des deux bords de l’océan</h3>
           <details class="photo-gallery">
             <summary class="gallery-toggle">Lire le récit <span class="gallery-toggle-hint">CKLE-FM, CJMS, Radio Corsaire — un clic</span></summary>
@@ -6308,6 +6397,18 @@
         <img class="dream-duo" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="" width="969" height="1347" loading="eager" />
       </div>
       <div class="wrap">
+        <nav class="door-nav" aria-label="Compartiments d’Influences">
+          <a href="#influence-diane-toggle">Diane Tell</a>
+          <a href="#influence-cabrel-toggle">Francis Cabrel</a>
+          <a href="#influence-isabelle-toggle">Isabelle Boulay</a>
+          <a href="#influence-patrick-toggle">Patrick Norman</a>
+          <a href="#influence-ginette-toggle">Ginette Reno</a>
+          <a href="#influence-laurence-toggle">Laurence Jalbert</a>
+          <a href="#influence-shania-toggle">Shania Twain</a>
+          <a href="#influence-lara-toggle">Lara Fabian</a>
+          <a href="#influence-alanis-toggle">Alanis Morissette</a>
+          <a href="#influence-celine-toggle">Céline Dion</a>
+        </nav>
         <div class="influences-head">
           <div class="influences-head-copy">
             <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
@@ -6537,6 +6638,12 @@
 
     <section class="coming" id="ca-sen-vient">
       <div class="wrap">
+        <nav class="door-nav" aria-label="Compartiments du coffre aux talents">
+          <a href="#coffre-humour">L’humour maison</a>
+          <a href="#coffre-cuisine">Dans ma cuisine</a>
+          <a href="#coffre-balado">Podcast / Balado</a>
+          <a href="#coffre-livre">Livre</a>
+        </nav>
         <img class="papillon-accent coming-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Projets à venir</p>
         <h2 class="section-title">Le coffre aux <em>talents</em></h2>
@@ -7142,23 +7249,23 @@
           </script>
         </div>
         <div class="coming-grid">
-          <article class="coming-card coming-card--hot">
+          <article class="coming-card coming-card--hot" id="coffre-humour">
             <h3>L’humour maison</h3>
             <p>Cindy Roy Show — mes capsules d’humour, pour rire un bon coup, ensemble.</p>
             <video src="assets/teaser-cindy-roy-show-v3.mp4" poster="assets/teaser-cindy-roy-show-poster.jpg" controls playsinline preload="none" title="La bande-annonce du Cindy Roy Show — un avant-goût des capsules d’humour de Cindy Roy"></video>
             <p class="teaser-note">Teaser medley — les 4 capsules complètes sont disponibles sur <a href="https://youtube.com/playlist?list=PLG_ipdyLZjDuTosVd1R-xi0vhD81rg0-K" target="_blank" rel="noopener">YouTube</a>.</p>
           </article>
-          <article class="coming-card">
+          <article class="coming-card" id="coffre-cuisine">
             <span class="coming-badge">À construire</span>
             <h3>Dans ma cuisine</h3>
             <p>Ma cuisine à ma façon — moins de sucre, mais plein, plein de cœur.</p>
           </article>
-          <article class="coming-card">
+          <article class="coming-card" id="coffre-balado">
             <span class="coming-badge">À construire</span>
             <h3>Podcast / Balado</h3>
             <p>Mon podcast vidéo, tourné à la maison, tout près de vous — je vous raconte tout ça en détail dans ma section Podcast.</p>
           </article>
-          <article class="coming-card">
+          <article class="coming-card" id="coffre-livre">
             <span class="coming-badge">À construire</span>
             <h3>Livre</h3>
             <p>Entre rêves et prières — mon livre, en préparation, une page à la fois.</p>
@@ -7169,6 +7276,11 @@
 
     <section class="press" id="presse">
       <div class="wrap">
+        <nav class="door-nav" aria-label="Compartiments de Presse">
+          <a href="#presse">Dossier de presse</a>
+          <a href="#fiche-presse">La fiche</a>
+          <a href="#articles-presse">Articles</a>
+        </nav>
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <p class="section-tag">Presse et médias</p>
         <h2 class="section-title">Dossier de <em>presse</em></h2>
@@ -7179,7 +7291,7 @@
             <figcaption>Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
-        <ul class="press-list">
+        <ul class="press-list" id="articles-presse">
           <li><a href="https://ici.radio-canada.ca/nouvelle/732174/gala-chanson-caraquet" target="_blank" rel="noopener noreferrer">Radio-Canada — 1er août 2015</a></li>
           <li><a href="https://www.acadienouvelle.com/actualites/2015/07/31/gala-de-la-chanson-mathieu-boudreau-et-emilie-landry-couronnes/" target="_blank" rel="noopener noreferrer">L’Acadie Nouvelle — 1er août 2015</a></li>
           <li><a href="https://www.acadienouvelle.com/actualites/2015/08/06/une-fete-bien-meritee-pour-les-paroissiens-a-petit-rocher-video/" target="_blank" rel="noopener noreferrer">L’Acadie Nouvelle — 6 août 2015</a></li>
@@ -7218,7 +7330,7 @@
         </div>
           </div>
         </details>
-        <article class="onesheet" aria-label="One-sheet pour les salles et les organisateurs">
+        <article class="onesheet" id="fiche-presse" aria-label="One-sheet pour les salles et les organisateurs">
           <p class="section-tag">Pour les salles et les organisateurs</p>
           <div class="onesheet-head">
             <figure class="onesheet-photo">
@@ -8115,8 +8227,15 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           var target = document.querySelector(id);
           if (!target) return;
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           try { history.pushState(null, '', id); } catch (_) {}
+          var go = function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+          var tabId = target.getAttribute('aria-labelledby');
+          if (target.hidden && tabId) {
+            var tab = document.getElementById(tabId);
+            if (tab) { tab.click(); setTimeout(go, 90); return; }
+          }
+          if (target.tagName === 'BUTTON' && target.getAttribute('aria-expanded') === 'false') { target.click(); setTimeout(go, 90); return; }
+          go();
         });
       });
     </script>
