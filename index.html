@@ -2136,6 +2136,7 @@
       background-color: #faf5ea; background-image: url("assets/beresford-fond-gang-reve.jpg");
       background-size: cover; background-position: center 30%; background-repeat: no-repeat;
       border: 1px solid rgba(201, 162, 79, .35); }
+    .beresford-stage .stage-sparkles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
     .beresford-stage-veil { position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background: linear-gradient(180deg, rgba(255, 253, 247, .04) 50%, rgba(255, 253, 247, .50) 87%, rgba(255, 253, 247, .78) 100%); }
     .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
@@ -5760,6 +5761,7 @@
         <h3 class="chapter-title">Beresford</h3>
         <div class="beresford-stage">
           <div class="beresford-stage-veil"></div>
+          <canvas class="stage-sparkles" aria-hidden="true"></canvas>
           <div class="beresford-stage-row">
             <figure class="scene-item">
               <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" width="277" height="445" loading="lazy" />
@@ -8241,6 +8243,54 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           go();
         });
       });
+    </script>
+    <script>
+      /* Étincelles dorées sur la photo de la victoire (Beresford) :
+         un jet façon « golden buzzer » quand la vedette arrive à
+         l’écran, et au clic sur la photo. Rien si reduced-motion. */
+      (function () {
+        var stage = document.querySelector('.beresford-stage');
+        if (!stage) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var canvas = stage.querySelector('.stage-sparkles');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var parts = [], raf = null;
+        function size() { canvas.width = stage.clientWidth; canvas.height = stage.clientHeight; }
+        size(); window.addEventListener('resize', size);
+        var COLORS = ['#c9a24f', '#ecd28e', '#fff3c4', '#9a741f'];
+        function burst() {
+          var img = stage.querySelector('.beresford-stage-row .scene-item img');
+          if (!img) return;
+          var sr = stage.getBoundingClientRect(), ir = img.getBoundingClientRect();
+          var x = ir.left - sr.left + ir.width / 2, y = ir.top - sr.top + ir.height / 3;
+          for (var i = 0; i < 90; i++) {
+            var a = Math.random() * Math.PI * 2, sp = 1 + Math.random() * 3.4;
+            parts.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 1.6, r: 1 + Math.random() * 2.6, life: 1, decay: 0.006 + Math.random() * 0.010, color: COLORS[i % COLORS.length], star: Math.random() < 0.3, rot: Math.random() * Math.PI });
+          }
+          if (!raf) tick();
+        }
+        function tick() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          parts = parts.filter(function (p) { return p.life > 0; });
+          parts.forEach(function (p) {
+            p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.vx *= 0.99; p.life -= p.decay; p.rot += 0.05;
+            ctx.save(); ctx.globalAlpha = Math.max(p.life, 0); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color;
+            if (p.star) { ctx.beginPath(); var r = p.r * 2.2; ctx.moveTo(0, -r); ctx.quadraticCurveTo(0, 0, r, 0); ctx.quadraticCurveTo(0, 0, 0, r); ctx.quadraticCurveTo(0, 0, -r, 0); ctx.quadraticCurveTo(0, 0, 0, -r); ctx.fill(); }
+            else { ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.fill(); }
+            ctx.restore();
+          });
+          if (parts.length) { raf = requestAnimationFrame(tick); }
+          else { raf = null; ctx.clearRect(0, 0, canvas.width, canvas.height); }
+        }
+        var done = false;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting && !done) { done = true; setTimeout(burst, 350); } });
+        }, { threshold: 0.35 });
+        io.observe(stage);
+        var img = stage.querySelector('.beresford-stage-row .scene-item img');
+        if (img) { img.style.cursor = 'pointer'; img.addEventListener('click', burst); }
+      })();
     </script>
 </body>
 </html>
