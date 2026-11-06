@@ -3198,6 +3198,27 @@
       .gala-kit-note { text-align: center; }
       .gala-kit-note p { margin-inline: auto; }
     }
+    /* — Kit À DROITE, sur le téléphone (demande de Cindy,
+       5 nov. 23 h 43, capture de son téléphone à l’appui) :
+       « bouger la photo à Kit à droite ». Au téléphone
+       (≤ 480 px), sa photo de décor sortait de l’écran à
+       gauche (le left: −30 px de la règle ≤ 900 px) et la
+       légende tombait par-dessus sa silhouette. Elle passe
+       donc à DROITE du bloc, entièrement dans l’écran
+       (right: 0 : aucun rognage au bord), et la légende se
+       resserre en colonne à sa gauche (max-width: 46 vw) :
+       les deux se tiennent côte à côte, lisibles, sans
+       aucun chevauchement ni écrit sur lui (règle
+       permanente). Sa taille (43 vw) et son ancrage bas
+       (bottom: 10 px) gardent sa figure sous les honneurs
+       et au-dessus du bas de la section à toutes les
+       largeurs de téléphone (mesuré sur page rendue). La
+       bande 481–900 px et le bureau (Kit au milieu,
+       approuvé le 5 nov.) ne changent pas. — */
+    @media (max-width: 480px) {
+      .gala-decor-photo.gala-decor-photo--kit { left: auto; right: 0; bottom: 10px; width: 43vw; }
+      .gala-kit-note p { max-width: 46vw; }
+    }
     @media (max-width: 1300px) { .gala-decor-photo { opacity: .22; } }
     @media (max-width: 900px) {
       .gala-decor-photo { width: 58vw; opacity: .15; }
