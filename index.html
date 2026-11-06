@@ -2966,6 +2966,11 @@
     .choeur-panel, .calixte-choeur { position: relative; overflow: hidden; }
     .choeur-panel::before, .calixte-choeur::before { content: ""; position: absolute; inset: 0; background: url('assets/fond-drapeau-coeur.svg') center / cover no-repeat; pointer-events: none; }
     .choeur-panel > *, .calixte-choeur > * { position: relative; }
+    #ca-sen-vient .coffre-head { display: flex; gap: 26px; align-items: flex-start; }
+    #ca-sen-vient .coffre-head-text { flex: 1 1 auto; min-width: 0; }
+    #ca-sen-vient .coffre-head .coffre-scene { flex: 0 0 320px; }
+    #ca-sen-vient .coffre-head .coffre-scene .stage { width: 320px; margin-top: 0; }
+    @media (max-width: 760px) { #ca-sen-vient .coffre-head { flex-direction: column; } #ca-sen-vient .coffre-head .coffre-scene { flex: none; margin: 0 auto; } #ca-sen-vient .coffre-head .coffre-scene .stage { width: min(80vw, 300px); } }
     .choeur-videos.single { grid-template-columns: 1fr; max-width: 580px; margin-left: auto; margin-right: auto; }
     .choeur-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px; }
     .choeur-videos figure { margin: 0; }
@@ -6751,9 +6756,12 @@
           <a href="#coffre-livre">Livre</a>
         </nav>
         <img class="papillon-accent coming-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
-        <p class="section-tag">Projets à venir</p>
-        <h2 class="section-title">Le coffre aux <em>talents</em></h2>
-        <p class="coming-hook">Attachez votre tuque : ça mijote, ça pétille — pis j’ai tellement hâte de tout vous montrer !</p>
+        <div class="coffre-head">
+          <div class="coffre-head-text">
+            <p class="section-tag">Projets à venir</p>
+            <h2 class="section-title">Le coffre aux <em>talents</em></h2>
+            <p class="coming-hook">Attachez votre tuque : ça mijote, ça pétille — pis j’ai tellement hâte de tout vous montrer !</p>
+          </div>
         <!-- Animation « Le coffre aux talents » — intégrée le 5 nov. 2026 (version approuvée par Cindy :
              sa vraie miniature ouvre le coffre, « Voilà ! », papillon doré posé sur sa main levée). -->
         <div class="coffre-scene">
@@ -7353,6 +7361,7 @@
             });
           })();
           </script>
+        </div>
         </div>
         <div class="coming-grid">
           <article class="coming-card coming-card--hot" id="coffre-humour">
