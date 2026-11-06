@@ -2138,10 +2138,12 @@
       border: 1px solid rgba(201, 162, 79, .35); }
     .beresford-stage-veil { position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background: linear-gradient(180deg, rgba(255, 253, 247, .04) 50%, rgba(255, 253, 247, .50) 87%, rgba(255, 253, 247, .78) 100%); }
-    .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
+    .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
     .beresford-stage-row .scene-item { text-align: center; }
     .beresford-stage-row .scene-item img, .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { display: block; width: auto; max-width: 100%; height: 205px; margin: 0 auto; background: #0c0d0b; border: 1px solid rgba(201, 162, 79, .35); border-radius: 6px; box-shadow: 0 18px 44px rgba(44, 35, 23, .28); }
     .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { aspect-ratio: 9 / 16; }
+    .beresford-stage-row .scene-item video.vid-wide { aspect-ratio: 16 / 9; }
+    .beresford-stage-row .cap-vid-wide { max-width: 330px; }
     .beresford-stage-row .scene-item figcaption { margin: 9px auto 0; font-size: 13.5px; line-height: 1.35; color: #57493a; }
     .beresford-stage-row .cap-photo { max-width: 190px; }
     .beresford-stage-row .cap-vid { max-width: 180px; }
@@ -5768,6 +5770,10 @@
               <figcaption class="cap-vid">L’audition — La Voix de Beresford, Carnaval du Siffleux, novembre 2014. À la guitare : Matt Boudreau.</figcaption>
             </figure>
             <figure class="scene-item">
+              <video class="vid-wide" src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
+              <figcaption class="cap-vid-wide">Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
+            </figure>
+            <figure class="scene-item">
               <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               <figcaption class="cap-vid">« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015</figcaption>
             </figure>
@@ -5816,12 +5822,6 @@
               <figure class="scene-item">
                               <img src="assets/cindy-andrea-richardson-voix-beresford.jpg" alt="Cindy Roy, en veston blanc, avec la chanteuse Andrea Richardson, à La Voix de Beresford, au Carnaval du Siffleux" width="720" height="960" loading="lazy" />
                               <figcaption>Avec Andrea Richardson — La Voix de Beresford, Carnaval du Siffleux</figcaption>
-                            </figure>
-            </div>
-            <div class="scene-grid beresford-gallery-grid bg-fam--video">
-              <figure class="scene-item">
-                              <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
-                              <figcaption>Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
                             </figure>
             </div>
             <div class="scene-grid beresford-gallery-grid bg-fam--vertical">
