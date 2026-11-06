@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 300">
+  <defs>
+    <linearGradient id="orMicro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a6a24"/>
+      <stop offset="0.30" stop-color="#d9b45f"/>
+      <stop offset="0.52" stop-color="#f6e3a1"/>
+      <stop offset="0.74" stop-color="#c9a24f"/>
+      <stop offset="1" stop-color="#7c5f1f"/>
+    </linearGradient>
+    <linearGradient id="grille" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d4a1e"/>
+      <stop offset="0.5" stop-color="#3f3312"/>
+      <stop offset="1" stop-color="#5d4a1e"/>
+    </linearGradient>
+    <radialGradient id="haloMicro" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2dc9b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f2dc9b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="60" cy="62" rx="52" ry="58" fill="url(#haloMicro)"/>
+  <ellipse cx="60" cy="279" rx="46" ry="7" fill="#6d5a2e" opacity="0.25"/>
+  <!-- Tête du micro -->
+  <path d="M34 58 a26 34 0 0 1 52 0 l0 22 a26 20 0 0 1 -52 0 Z" fill="url(#grille)" stroke="url(#orMicro)" stroke-width="3.5"/>
+  <path d="M36 46 a24 26 0 0 1 48 0" fill="none" stroke="#e9cf87" stroke-width="2" opacity="0.8"/>
+  <path d="M35 58 h50 M36 68 h48 M38 78 h44" stroke="#c9a24f" stroke-width="2.2" opacity="0.85"/>
+  <rect x="33" y="86" width="54" height="7" rx="3.5" fill="url(#orMicro)"/>
+  <circle cx="44" cy="89.5" r="1.6" fill="#6e1423"/><circle cx="60" cy="89.5" r="1.6" fill="#6e1423"/><circle cx="76" cy="89.5" r="1.6" fill="#6e1423"/>
+  <!-- Étrier -->
+  <path d="M30 66 v18 a30 22 0 0 0 60 0 v-18" fill="none" stroke="url(#orMicro)" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="60" cy="112" r="6" fill="url(#orMicro)" stroke="#6d5a2e" stroke-width="1.2"/>
+  <!-- Tige et base -->
+  <rect x="56.5" y="116" width="7" height="146" fill="url(#orMicro)"/>
+  <rect x="50" y="140" width="20" height="6" rx="3" fill="#8a6a24"/>
+  <path d="M18 276 a42 10 0 0 1 84 0 Z" fill="url(#orMicro)" stroke="#6d5a2e" stroke-width="1.2"/>
+  <ellipse cx="60" cy="264" rx="13" ry="4.5" fill="url(#orMicro)" stroke="#6d5a2e" stroke-width="1"/>
+</svg>
