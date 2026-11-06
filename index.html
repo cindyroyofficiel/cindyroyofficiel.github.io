@@ -2085,17 +2085,42 @@
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
     }
 
-    /* ——— Beresford : rangée vedette + galerie par familles de format ———
-       Vedette : la photo de l'annonce recadrée sur Cindy + son audition (vidéo
-       verticale) côte à côte, hauteurs plafonnées pour rester équilibrées.
+    /* ——— Beresford : vedette sur fond de la gang + galerie par familles ———
+       Vedette (arrangement A choisi par Cindy, 5 nov. 22 h 36) : un bloc qui
+       porte en fond la photo de la gang adoucie (« dreamy ») — sa figure au
+       centre du fond reste entièrement visible, au-dessus de la rangée — et,
+       dans le bas du bloc, une seule rangée alignée, même hauteur, espacements
+       égaux : la photo de l'annonce recadrée sur Cindy, son audition et
+       « Je t'aime » (sortie du groupe des verticales de la galerie). Au
+       téléphone : bande douce du fond en haut (Cindy au complet), la rangée
+       coule dessous, rien par-dessus elle.
        Galerie (correction de Cindy, 5 nov. 21 h 51) : pas un seul format forcé
        pour tout, mais des FAMILLES — uniformité et alignement à l'intérieur de
        chaque groupe : paysages 3:2, portraits 2:3, vidéo paysage 16:9,
        verticaux (cellulaire) 9:16 ensemble, et la photo de la gang en finale,
-       pleine largeur, sans aucun recadrage. */
-    .beresford-featured { align-items: center; }
-    .beresford-featured .scene-item img, .beresford-featured .scene-item video { width: auto; max-width: 100%; height: min(560px, 74vh); margin: 0 auto; }
-    .beresford-featured .scene-item video { aspect-ratio: 720 / 1280; }
+       en format réduit (largeur de la tuile vidéo 16:9), cadre complet,
+       sans aucun recadrage. */
+    .beresford-stage { position: relative; border-radius: 22px; overflow: hidden; height: 560px; margin-top: 34px;
+      background-color: #faf5ea; background-image: url("assets/beresford-fond-gang-reve.jpg");
+      background-size: cover; background-position: center 30%; background-repeat: no-repeat;
+      border: 1px solid rgba(201, 162, 79, .35); }
+    .beresford-stage-veil { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 253, 247, .04) 50%, rgba(255, 253, 247, .50) 87%, rgba(255, 253, 247, .78) 100%); }
+    .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
+    .beresford-stage-row .scene-item { text-align: center; }
+    .beresford-stage-row .scene-item img, .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { display: block; width: auto; max-width: 100%; height: 205px; margin: 0 auto; background: #0c0d0b; border: 1px solid rgba(201, 162, 79, .35); border-radius: 6px; box-shadow: 0 18px 44px rgba(44, 35, 23, .28); }
+    .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { aspect-ratio: 9 / 16; }
+    .beresford-stage-row .scene-item figcaption { margin: 9px auto 0; font-size: 13.5px; line-height: 1.35; color: #57493a; }
+    .beresford-stage-row .cap-photo { max-width: 190px; }
+    .beresford-stage-row .cap-vid { max-width: 180px; }
+    @media (max-width: 640px) {
+      .beresford-stage { height: auto; padding-top: 308px; background-size: 150% auto; background-position: center top; }
+      .beresford-stage-veil { background: linear-gradient(180deg, rgba(255, 253, 247, .06) 0%, rgba(255, 253, 247, .30) 42%, rgba(255, 253, 247, .55) 100%); }
+      .beresford-stage-row { position: static; gap: 12px; padding: 0 12px 20px; }
+      .beresford-stage-row .scene-item img, .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { height: 148px; }
+      .beresford-stage-row .scene-item figcaption { font-size: 11.5px; }
+      .beresford-stage-row .cap-photo, .beresford-stage-row .cap-vid { max-width: 120px; }
+    }
     #beresford .beresford-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 22px; grid-auto-flow: dense; margin-top: 30px; }
     #beresford .gallery-body > .beresford-gallery-grid:first-child { margin-top: 6px; }
     #beresford .beresford-gallery-grid .scene-item figcaption { margin-top: 10px; font-size: 14.5px; }
@@ -2106,14 +2131,25 @@
     #beresford .bg-fam--video .scene-item video { aspect-ratio: 16 / 9; object-fit: cover; }
     #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     #beresford .bg-fam--vertical .scene-item iframe { aspect-ratio: 9 / 16; }
+    /* « Je t'aime » partie en vedette (arrangement A) : la verticale restante,
+       « Ah si j'étais un homme », garde la taille exacte de sa famille,
+       centrée dans son groupe. */
+    #beresford .bg-fam--vertical .scene-item:only-child { grid-column: 1 / -1; justify-self: center; width: calc((100% - 66px) / 4); }
     #beresford .beresford-gallery-grid.bg-fam--finale { grid-template-columns: 1fr; }
+    /* Finale réduite (aperçu v3, arrangement A) : la photo de la gang n'est
+       plus pleine largeur — largeur de la tuile vidéo 16:9 au bureau,
+       ~86 % au téléphone, ratio natif et cadre complet conservés. */
+    #beresford .bg-fam--finale .scene-item { width: 100%; max-width: 779px; margin: 0 auto; }
     @media (max-width: 900px) {
       #beresford .beresford-gallery-grid.bg-fam--portrait, #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #beresford .bg-fam--vertical .scene-item:only-child { width: calc((100% - 44px) / 3); }
     }
     @media (max-width: 640px) {
       #beresford .beresford-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
       #beresford .beresford-gallery-grid.bg-fam--portrait, #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #beresford .beresford-gallery-grid.bg-fam--finale { grid-template-columns: 1fr; }
+      #beresford .bg-fam--finale .scene-item { max-width: 86%; }
+      #beresford .bg-fam--vertical .scene-item:only-child { width: calc((100% - 14px) / 2); }
       #beresford .bg-fam--video .scene-item { grid-column: 1 / -1; }
     }
 
@@ -5516,15 +5552,22 @@
         <p class="section-intro">Février 2015, au Carnaval du Siffleux de Beresford (aujourd’hui Belle-Baie) : je remporte la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
         </div>
         <h3 class="chapter-title">Beresford</h3>
-        <div class="scene-grid beresford-featured">
-          <figure class="scene-item">
-            <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" width="277" height="445" loading="lazy" />
-            <figcaption>Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
-          </figure>
-          <figure class="scene-item">
-            <video src="assets/beresford-audition-juges.mp4" poster="assets/beresford-audition-poster.jpg" controls playsinline preload="none" title="L’audition — La Voix de Beresford, Carnaval du Siffleux, Beresford, novembre 2014"></video>
-            <figcaption>L’audition — La Voix de Beresford, Carnaval du Siffleux, novembre 2014</figcaption>
-          </figure>
+        <div class="beresford-stage">
+          <div class="beresford-stage-veil"></div>
+          <div class="beresford-stage-row">
+            <figure class="scene-item">
+              <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" width="277" height="445" loading="lazy" />
+              <figcaption class="cap-photo">Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
+            </figure>
+            <figure class="scene-item">
+              <video src="assets/beresford-audition-juges.mp4" poster="assets/beresford-audition-poster.jpg" controls playsinline preload="none" title="L’audition — La Voix de Beresford, Carnaval du Siffleux, Beresford, novembre 2014"></video>
+              <figcaption class="cap-vid">L’audition — La Voix de Beresford, Carnaval du Siffleux, novembre 2014</figcaption>
+            </figure>
+            <figure class="scene-item">
+              <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <figcaption class="cap-vid">« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015</figcaption>
+            </figure>
+          </div>
         </div>
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie de Beresford <span class="gallery-toggle-hint">les autres photos et vidéos de la soirée, un clic</span></summary>
@@ -5578,10 +5621,6 @@
                             </figure>
             </div>
             <div class="scene-grid beresford-gallery-grid bg-fam--vertical">
-              <figure class="scene-item">
-                              <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                              <figcaption>« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015</figcaption>
-                            </figure>
               <figure class="scene-item">
                               <iframe src="https://www.youtube.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                               <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
