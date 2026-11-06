@@ -289,7 +289,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
@@ -2948,6 +2948,15 @@
     .carnaval-note p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.55; color: var(--ink); }
     .carnaval-note a { display: inline-block; margin-top: 14px; color: var(--accent-2); font-weight: 700; text-underline-offset: 5px; }
     .carnaval-note a:hover { color: var(--accent); }
+    .choeur-panel { max-width: 960px; margin: clamp(48px, 6vw, 72px) auto 0; background: linear-gradient(180deg, #fdfaf2, #fbf4e2); border: 1px solid rgba(201,162,79,.55); border-radius: 22px; box-shadow: 0 24px 50px -22px rgba(60,30,10,.35); padding: clamp(26px, 4vw, 44px); }
+    .choeur-title { font-family: var(--serif); font-weight: 600; font-size: clamp(25px, 3.4vw, 34px); color: #6e1423; text-align: center; margin: 0 0 8px; }
+    .choeur-title::after { content: "★"; display: block; color: #c9a24f; font-size: 15px; line-height: 1; margin-top: 12px; }
+    .choeur-text { max-width: 720px; margin: 14px auto 0; font-size: 18px; line-height: 1.7; color: #2c2317; }
+    .choeur-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px; }
+    .choeur-videos figure { margin: 0; }
+    .choeur-videos iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; display: block; }
+    .choeur-videos figcaption { margin-top: 10px; font-size: 14.5px; color: #57493a; text-align: center; }
+    @media (max-width: 700px) { .choeur-videos { grid-template-columns: 1fr; } }
     .beresford-public { max-width: 760px; margin: clamp(40px, 5vw, 56px) auto 0; font-size: 18.5px; line-height: 1.65; color: var(--ink); }
     .beresford-bridge { max-width: 640px; margin: clamp(44px, 5vw, 60px) auto 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.55; color: var(--ink); }
     .beresford-bridge::before { content: "★"; display: block; color: var(--gold); font-size: 15px; line-height: 1; margin-bottom: 16px; font-style: normal; }
@@ -4703,6 +4712,7 @@
         <span class="sub-menu">
           <a href="#scene">Scène</a>
           <a href="#photos">Photos</a>
+          <a href="#choeur-virtuel">Chœur virtuel</a>
         </span>
       </span>
       <span class="has-sub">
@@ -5910,6 +5920,7 @@
         <nav class="door-nav" aria-label="Compartiments de Scène">
           <a href="#scene">Scène</a>
           <a href="#photos">Photos</a>
+          <a href="#choeur-virtuel">Chœur virtuel</a>
         </nav>
         <div class="scene-head">
           <div class="scene-head-copy">
@@ -6003,6 +6014,20 @@
             </div>
           </div>
         </details>
+        <div class="choeur-panel" id="choeur-virtuel">
+          <h3 class="choeur-title">Le Chœur virtuel de l’Acadie</h3>
+          <p class="choeur-text">Au printemps 2020, en plein confinement, plus de 200 chanteurs et musiciens se sont réunis — chacun de sa maison — pour former le Chœur virtuel de l’Acadie. J’ai eu le bonheur d’en faire partie. On a chanté « Partons, la mer est belle » — passée au Téléjournal de Radio-Canada, avec les Snowbirds — pis « Les Aboiteaux » de notre grand Calixte Duguay. On me voit dans mon petit carré, juste une chanteuse parmi tant d’autres — mais j’ai fait partie du projet, pis c’est ça qui était beau. Le projet a même été mis en nomination aux East Coast Music Awards de 2022.</p>
+          <div class="choeur-videos">
+            <figure>
+              <iframe src="https://www.youtube.com/embed/MBiL9GPeOCw" title="« Partons, la mer est belle » — Chœur virtuel de l’Acadie, avril 2020" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <figcaption>« Partons, la mer est belle » — avril 2020</figcaption>
+            </figure>
+            <figure>
+              <iframe src="https://www.youtube.com/embed/L899wHXe0Yc" title="« Les Aboiteaux » (Calixte Duguay) — Chœur virtuel de l’Acadie, juin 2020" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <figcaption>« Les Aboiteaux » (Calixte Duguay) — juin 2020</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 
