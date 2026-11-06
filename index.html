@@ -2958,6 +2958,9 @@
     @media (max-width: 640px) { .choeur-spot { float: none; margin: 18px auto 4px; width: 230px; } }
     .choeur-xref { max-width: 720px; margin: 16px auto 0; text-align: center; font-size: 16px; color: #57493a; }
     .choeur-xref a, .calixte-choeur a { color: #6e1423; font-weight: 700; text-underline-offset: 4px; }
+    .choeur-panel, .calixte-choeur { position: relative; overflow: hidden; }
+    .choeur-panel::before, .calixte-choeur::before { content: ""; position: absolute; inset: 0; background: url('assets/fond-drapeau-coeur.svg') center / cover no-repeat; pointer-events: none; }
+    .choeur-panel > *, .calixte-choeur > * { position: relative; }
     .choeur-videos.single { grid-template-columns: 1fr; max-width: 580px; margin-left: auto; margin-right: auto; }
     .choeur-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px; }
     .choeur-videos figure { margin: 0; }

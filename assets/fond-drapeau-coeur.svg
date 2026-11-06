@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect x="0" y="0" width="400" height="800" fill="#2a4d9b" opacity="0.13"/>
+  <rect x="400" y="0" width="400" height="800" fill="#efe9dc" opacity="0.20"/>
+  <rect x="800" y="0" width="400" height="800" fill="#c8102e" opacity="0.11"/>
+  <polygon fill="#d4a017" opacity="0.38" points="200,120 224,186 294,186 238,228 258,296 200,254 142,296 162,228 106,186 176,186"/>
+  <path fill="#6e1423" opacity="0.10" d="M880 300 c-30-70-150-80-190-10 c-35 62 5 130 190 240 c185-110 225-178 190-240 c-40-70-160-60-190 10 z"/>
+</svg>
