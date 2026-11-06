@@ -2085,21 +2085,36 @@
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
     }
 
-    /* ——— Beresford : rangée vedette + galerie compacte (demande de Cindy, 5 nov. 2026) ———
+    /* ——— Beresford : rangée vedette + galerie par familles de format ———
        Vedette : la photo de l'annonce recadrée sur Cindy + son audition (vidéo
        verticale) côte à côte, hauteurs plafonnées pour rester équilibrées.
-       Galerie : vignettes uniformes en grille dense — fini les lecteurs
-       géants pleine largeur; les vidéos verticales restent modestes. */
+       Galerie (correction de Cindy, 5 nov. 21 h 51) : pas un seul format forcé
+       pour tout, mais des FAMILLES — uniformité et alignement à l'intérieur de
+       chaque groupe : paysages 3:2, portraits 2:3, vidéo paysage 16:9,
+       verticaux (cellulaire) 9:16 ensemble, et la photo de la gang en finale,
+       pleine largeur, sans aucun recadrage. */
     .beresford-featured { align-items: center; }
     .beresford-featured .scene-item img, .beresford-featured .scene-item video { width: auto; max-width: 100%; height: min(560px, 74vh); margin: 0 auto; }
     .beresford-featured .scene-item video { aspect-ratio: 720 / 1280; }
-    #beresford .beresford-gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 22px; }
+    #beresford .beresford-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 22px; grid-auto-flow: dense; margin-top: 30px; }
+    #beresford .gallery-body > .beresford-gallery-grid:first-child { margin-top: 6px; }
     #beresford .beresford-gallery-grid .scene-item figcaption { margin-top: 10px; font-size: 14.5px; }
+    #beresford .bg-fam--paysage .scene-item img { aspect-ratio: 3 / 2; object-fit: cover; }
+    #beresford .beresford-gallery-grid.bg-fam--portrait { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #beresford .bg-fam--portrait .scene-item img { aspect-ratio: 2 / 3; object-fit: cover; }
+    #beresford .bg-fam--video .scene-item { grid-column: span 2; }
+    #beresford .bg-fam--video .scene-item video { aspect-ratio: 16 / 9; object-fit: cover; }
+    #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #beresford .bg-fam--vertical .scene-item iframe { aspect-ratio: 9 / 16; }
+    #beresford .beresford-gallery-grid.bg-fam--finale { grid-template-columns: 1fr; }
     @media (max-width: 900px) {
-      #beresford .beresford-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #beresford .beresford-gallery-grid.bg-fam--portrait, #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (max-width: 640px) {
       #beresford .beresford-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
+      #beresford .beresford-gallery-grid.bg-fam--portrait, #beresford .beresford-gallery-grid.bg-fam--vertical { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #beresford .beresford-gallery-grid.bg-fam--finale { grid-template-columns: 1fr; }
+      #beresford .bg-fam--video .scene-item { grid-column: 1 / -1; }
     }
 
     /* ——— Projecteur de scène (#scene seulement, idée de Cindy, 3 nov. 2026) ———
@@ -5514,61 +5529,69 @@
         <details class="photo-gallery">
           <summary class="gallery-toggle">Galerie de Beresford <span class="gallery-toggle-hint">les autres photos et vidéos de la soirée, un clic</span></summary>
           <div class="gallery-body">
-            <div class="scene-grid beresford-gallery-grid">
+                        <div class="scene-grid beresford-gallery-grid bg-fam--paysage">
               <figure class="scene-item">
-                <img src="assets/beresford-equipe-louis-noel-2015.jpg" alt="L’équipe du coach Louis Noël à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy Roy" width="720" height="489" loading="lazy" />
-                <figcaption>L’équipe du coach Louis Noël — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
-              </figure>
+                              <img src="assets/beresford-equipe-louis-noel-2015.jpg" alt="L’équipe du coach Louis Noël à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy Roy" width="720" height="489" loading="lazy" />
+                              <figcaption>L’équipe du coach Louis Noël — Jamie Thibeault, Karine Hachey, Brina Warne, Louis Noël et Cindy — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
+                            </figure>
               <figure class="scene-item">
-                <img src="assets/beresford-equipe-kevin-white-2015.jpg" alt="L’équipe du coach Kevin D. White à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Emile Perron, Erica Riordon, Cyril Pitre et Kevin D. White" width="960" height="640" loading="lazy" />
-                <figcaption>L’équipe du coach Kevin D. White (« Fatty ») — Emile Perron, Erica Riordon, Cyril Pitre et le coach — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
-              </figure>
+                              <img src="assets/beresford-equipe-kevin-white-2015.jpg" alt="L’équipe du coach Kevin D. White à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Emile Perron, Erica Riordon, Cyril Pitre et Kevin D. White" width="960" height="640" loading="lazy" />
+                              <figcaption>L’équipe du coach Kevin D. White — Emile Perron, Erica Riordon, Cyril Pitre et le coach — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
+                            </figure>
               <figure class="scene-item">
-                <img src="assets/beresford-equipe-danika-hewlett-2015.jpg" alt="L’équipe de la coach Danika Hewlett à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Gabriel Roy, Andréa Richardson, Melissa Roy, Caroline Doucet et Danika Hewlett" width="960" height="639" loading="lazy" />
-                <figcaption>L’équipe de la coach Danika Hewlett — Gabriel Roy, Andréa Richardson, Melissa Roy, Caroline Doucet et la coach — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
-              </figure>
+                              <img src="assets/beresford-equipe-danika-hewlett-2015.jpg" alt="L’équipe de la coach Danika Hewlett à La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015 — Gabriel Roy, Andréa Richardson, Melissa Roy, Caroline Doucet et Danika Hewlett" width="960" height="639" loading="lazy" />
+                              <figcaption>L’équipe de la coach Danika Hewlett — Gabriel Roy, Andréa Richardson, Melissa Roy, Caroline Doucet et la coach — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
+                            </figure>
               <figure class="scene-item">
-                <img src="assets/beresford-isabelle-leger-2015.jpg" alt="Isabelle Leger (Dizzy Lilly), coordinatrice et hôtesse de La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015" width="640" height="960" loading="lazy" />
-                <figcaption>Coordinatrice et hôtesse : Isabelle Leger (Dizzy Lilly) — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
-              </figure>
-              <figure class="scene-item">
-                <img src="assets/siffleux-cindy-chante-1.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
-                <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
-                <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
-              </figure>
-              <figure class="scene-item">
-                <img src="assets/siffleux-cindy-chante-2.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
-                <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
-              </figure>
+                              <img src="assets/siffleux-cindy-chante-2.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
+                              <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
+                            </figure>
               <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
               <figure class="scene-item">
-                <img src="assets/duo-brina-scene.jpg" alt="Sur scène avec Brina Warne" loading="lazy" />
-                <figcaption>Sur scène avec Brina Warne</figcaption>
-              </figure>
+                              <img src="assets/duo-brina-scene.jpg" alt="Sur scène avec Brina Warne" loading="lazy" />
+                              <figcaption>Sur scène avec Brina Warne</figcaption>
+                            </figure>
               <figure class="scene-item">
-                <img src="assets/duo-brina-studio.jpg" alt="En studio avec Brina Warne" loading="lazy" />
-                <figcaption>En studio avec Brina Warne</figcaption>
-              </figure>
+                              <img src="assets/duo-brina-studio.jpg" style="object-position: 50% 20%" alt="En studio avec Brina Warne" loading="lazy" />
+                              <figcaption>En studio avec Brina Warne</figcaption>
+                            </figure>
+            </div>
+            <div class="scene-grid beresford-gallery-grid bg-fam--portrait">
               <figure class="scene-item">
-                <img src="assets/cindy-andrea-richardson-voix-beresford.jpg" alt="Cindy Roy, en veston blanc, avec la chanteuse Andrea Richardson, à La Voix de Beresford, au Carnaval du Siffleux" width="720" height="960" loading="lazy" />
-                <figcaption>Avec Andrea Richardson — La Voix de Beresford, Carnaval du Siffleux</figcaption>
-              </figure>
+                              <img src="assets/beresford-isabelle-leger-2015.jpg" alt="Isabelle Leger (Dizzy Lilly), coordinatrice et hôtesse de La Voix de Beresford, au Carnaval du Siffleux de Beresford en 2015" width="640" height="960" loading="lazy" />
+                              <figcaption>Coordinatrice et hôtesse : Isabelle Leger (Dizzy Lilly) — Carnaval du Siffleux, 2015 — Photo : Marc Ferron</figcaption>
+                            </figure>
               <figure class="scene-item">
-                <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
-                <figcaption>Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
-              </figure>
+                              <img src="assets/siffleux-cindy-chante-1.jpg" alt="Sur scène au Carnaval du Siffleux, 2015" loading="lazy" />
+                              <figcaption>Sur scène au Carnaval du Siffleux, 2015</figcaption>
+                              <p class="photo-credit">Photos : Cinthia-Line Boudreau</p>
+                            </figure>
               <figure class="scene-item">
-                <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" style="aspect-ratio: 720 / 1164" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <figcaption>« Je t'aime » de Lara Fabian — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
-              </figure>
+                              <img src="assets/cindy-andrea-richardson-voix-beresford.jpg" alt="Cindy Roy, en veston blanc, avec la chanteuse Andrea Richardson, à La Voix de Beresford, au Carnaval du Siffleux" width="720" height="960" loading="lazy" />
+                              <figcaption>Avec Andrea Richardson — La Voix de Beresford, Carnaval du Siffleux</figcaption>
+                            </figure>
+            </div>
+            <div class="scene-grid beresford-gallery-grid bg-fam--video">
               <figure class="scene-item">
-                <iframe src="https://www.youtube.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
-              </figure>
+                              <video src="assets/scene-duo-brina-warne.mp4" poster="assets/scene-duo-brina-warne-poster.jpg" controls playsinline preload="none" title="Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015"></video>
+                              <figcaption>Duo avec Brina Warne — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
+                            </figure>
+            </div>
+            <div class="scene-grid beresford-gallery-grid bg-fam--vertical">
               <figure class="scene-item">
-                <img src="assets/siffleux-groupe-annonce.jpg" alt="Carnaval du Siffleux — La Voix de Beresford, janvier 2015" loading="lazy" />
-                <figcaption>Carnaval du Siffleux — La Voix de Beresford, janvier 2015</figcaption>
-              </figure>
+                              <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                              <figcaption>« Je t'aime » de Lara Fabian — soirée du concours de La Voix de Beresford, Carnaval du Siffleux, 24 janvier 2015</figcaption>
+                            </figure>
+              <figure class="scene-item">
+                              <iframe src="https://www.youtube.com/embed/iLmBPrsKCFU" title="« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                              <figcaption>« Ah si j'étais un homme » (Diane Tell) — La Voix de Beresford, Carnaval du Siffleux, 2015</figcaption>
+                            </figure>
+            </div>
+            <div class="scene-grid beresford-gallery-grid bg-fam--finale">
+              <figure class="scene-item">
+                              <img src="assets/siffleux-groupe-annonce.jpg" alt="Carnaval du Siffleux — La Voix de Beresford, janvier 2015" width="2048" height="1356" loading="lazy" />
+                              <figcaption>Carnaval du Siffleux — La Voix de Beresford, janvier 2015</figcaption>
+                            </figure>
             </div>
           </div>
         </details>
