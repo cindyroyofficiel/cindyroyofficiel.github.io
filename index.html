@@ -1974,8 +1974,10 @@
     .about-video { margin: 28px 0 6px; }
     .about-video video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .about-video figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; }
-    .racines-photo { margin: 30px 0 8px; max-width: 640px; }
+    .racines-photo { margin: 30px 0 8px; max-width: 640px; position: relative; }
     .racines-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .racines-motto { position: absolute; left: 4.5%; top: 6.5%; font-family: "Great Vibes", cursive; font-weight: 400; color: #fdf6e3; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.15; transform: rotate(-2deg); text-shadow: 0 2px 14px rgba(24,12,0,.55), 0 1px 3px rgba(24,12,0,.65); pointer-events: none; }
+    .racines-motto-sub { display: block; font-size: .68em; margin-top: .05em; }
     /* ——— Photo souvenir dans la bio (À propos) ——— */
     .about-photo { margin: 28px auto 6px; max-width: 460px; }
     .about-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
@@ -6169,6 +6171,7 @@
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
             <figure class="racines-photo">
               <img src="assets/cindy-racines-drapeau.jpg" alt="Cindy Roy, son chapeau de paille au bord bleu, tenant le drapeau acadien contre sa joue — l’étoile dorée bien visible" width="1672" height="940" loading="lazy" decoding="async" />
+              <span class="racines-motto">J’aime, je vis, je chante…<span class="racines-motto-sub">Un pas à la fois ♡</span></span>
             </figure>
             <details class="photo-gallery" id="famille">
               <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, mes grands enfants, Michel — un clic</span></summary>
