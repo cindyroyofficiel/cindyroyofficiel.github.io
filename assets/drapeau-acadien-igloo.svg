@@ -34,19 +34,20 @@
   <path d="M52 250 C 100 240, 152 256, 208 246 C 258 237, 302 252, 336 243" stroke="#6f9fc4" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.20"/>
 
   <g>
-    <ellipse cx="238" cy="230" rx="21" ry="6.5" fill="#eef4f8" stroke="#b9d2e4" stroke-width="1.4"/>
-    <ellipse cx="238" cy="227.5" rx="13" ry="3.4" fill="#ffffff" opacity="0.65"/>
-    <ellipse cx="316" cy="240" rx="13" ry="4.5" fill="#e8f1f7" stroke="#b9d2e4" stroke-width="1.2"/>
-    <ellipse cx="150" cy="240" rx="11" ry="4" fill="#eef4f8" stroke="#c3d9ea" stroke-width="1.1"/>
+    <ellipse cx="52" cy="242" rx="17" ry="5.5" fill="#eef4f8" stroke="#b9d2e4" stroke-width="1.3"/>
+    <ellipse cx="52" cy="239.5" rx="10" ry="3" fill="#ffffff" opacity="0.65"/>
+    <ellipse cx="322" cy="244" rx="14" ry="4.5" fill="#e8f1f7" stroke="#b9d2e4" stroke-width="1.2"/>
   </g>
 
   <g>
-    <path d="M26 244 a36 29 0 0 1 72 0 Z" fill="#eaf3f9" stroke="#a9c8de" stroke-width="1.7"/>
-    <path d="M33 230 a31 21 0 0 1 58 0" fill="none" stroke="#c3d9ea" stroke-width="1.3"/>
-    <path d="M43 219 a23 14 0 0 1 38 0" fill="none" stroke="#c3d9ea" stroke-width="1.2"/>
-    <path d="M62 215 L62 244 M44 226 L44 244 M80 226 L80 244" stroke="#c3d9ea" stroke-width="1.1" fill="none"/>
-    <path d="M52 244 a10 12 0 0 1 20 0 Z" fill="#7fa3c4"/>
-    <path d="M52 244 a10 12 0 0 1 20 0" fill="none" stroke="#5f87ab" stroke-width="1.2"/>
+    <ellipse cx="222" cy="260" rx="76" ry="7" fill="#8aa8c0" opacity="0.28"/>
+    <path d="M158 258 a64 50 0 0 1 128 0 Z" fill="#f2f8fc" stroke="#7fa8c9" stroke-width="2.8"/>
+    <path d="M172 232 a50 33 0 0 1 100 0" fill="none" stroke="#a9c8de" stroke-width="2"/>
+    <path d="M188 216 a34 19 0 0 1 68 0" fill="none" stroke="#a9c8de" stroke-width="1.8"/>
+    <path d="M190 226 L190 258 M222 208 L222 258 M254 226 L254 258" stroke="#b9d2e4" stroke-width="1.6" fill="none"/>
+    <ellipse cx="196" cy="222" rx="17" ry="8" fill="#ffffff" opacity="0.55"/>
+    <path d="M204 258 a18 21 0 0 1 36 0 Z" fill="#5f87ab" stroke="#476d8f" stroke-width="2.2"/>
+    <path d="M211 258 a11 14 0 0 1 22 0 Z" fill="#33506e"/>
   </g>
 
   <path d="M112 208 l2 5.2 5.2 2 -5.2 2 -2 5.2 -2 -5.2 -5.2 -2 5.2 -2 Z" fill="#d7e8f5"/>
