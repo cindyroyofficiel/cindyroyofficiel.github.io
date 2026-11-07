@@ -289,7 +289,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
@@ -4754,9 +4754,7 @@
         <a href="#musique">Ma musique</a>
         <span class="sub-menu">
           <a href="#originales">Originales</a>
-          <a href="#martial-music-title">Martial Marey — 2005 à 2017</a>
-          <a href="#arranged-title">Avec Théo — 2007, 2008</a>
-          <a href="#denis-title">Avec Denis — 2017 à 2022</a>
+          <a href="#collaborations">Collaborations</a>
           <a href="#interpretations">Mes reprises — 2017 à aujourd’hui</a>
           <a href="#atelier">L’Atelier</a>
                 </span>
@@ -5598,9 +5596,7 @@
 
         <nav class="door-nav" aria-label="Compartiments de Ma musique">
           <a href="#originales">Originales</a>
-          <a href="#martial-music-title">Martial Marey — 2005 à 2017</a>
-          <a href="#arranged-title">Avec Théo — 2007, 2008</a>
-          <a href="#denis-title">Avec Denis — 2017 à 2022</a>
+          <a href="#collaborations">Collaborations</a>
           <a href="#interpretations">Mes reprises — 2017 à aujourd’hui</a>
           <a href="#atelier">L’Atelier</a>
                 </nav>
@@ -5673,7 +5669,7 @@
             </details>
           </section>
 
-          <section class="arranged music-martial" aria-labelledby="martial-music-title">
+          <section class="arranged music-martial" id="collaborations" aria-labelledby="martial-music-title">
             <div class="arranged-head martial-music-head">
               <figure class="arranged-photo martial-music-photo">
                 <img src="assets/martial-marey-portrait.jpg" alt="Martial Marey" width="1205" height="1260" loading="lazy" />
