@@ -1445,6 +1445,16 @@
     .birth-title { margin: 0 0 14px; font-family: var(--serif); font-size: 24px; line-height: 1.2; font-weight: 600; color: #f0e8da; }
     .birth-copy p + p { margin-top: 16px; }
     .timeline-photo { margin: 26px 0 0; max-width: 420px; }
+    /* Photos de l'entrevue MAX 104.9 (bloc radio du Parcours) : la grande du studio
+       en vedette, deux portraits côte à côte, le selfie sous l'enseigne pour fermer. */
+    .radio-photos { margin-top: 26px; }
+    .radio-photos .timeline-photo { margin: 0; max-width: none; }
+    .radio-photos .timeline-photo img { display: block; width: 100%; height: auto; border-radius: var(--r-media); }
+    .radio-photos figcaption { margin-top: 10px; color: #ccd0ba; font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.45; }
+    .radio-photos-duo { display: flex; gap: 22px; margin-top: 26px; }
+    .radio-photos-duo .timeline-photo { flex: 1 1 0; min-width: 0; }
+    .radio-photos .radio-selfie { margin-top: 26px; max-width: 420px; }
+    @media (max-width: 700px) { .radio-photos-duo { flex-direction: column; } .radio-photos .radio-selfie { max-width: none; } }
     /* Photo « Nicole & moi » (Parcours, 2013 à 2019) : sa grandeur est
        régie par la paire .nicole-duo ci-dessous — même boîte que la vidéo. */
     .timeline-photo.nicole-small { max-width: none; }
@@ -6764,6 +6774,26 @@
           <div class="martial-copy">
             <p>« Ma voix a voyagé loin, à la radio — pis sur le web en même temps. « Ma vraie vie », une chanson de Claude Argelès sur un texte d’Ida Sala que j’ai eu le bonheur d’interpréter, a joué en faible rotation à CKLE-FM, en Acadie, à l’époque où Mathieu Friolet y était animateur.</p>
             <p>Et mes interprétations des chansons de Martial Marey ont aussi trouvé leur beau chemin jusqu’aux ondes : à CJMS, dans le coin de Lévis et de la Chaudière-Appalaches, et même à Radio Corsaire, en France. De l’Acadie à la France, un pas à la fois. 🕊️ »</p>
+          </div>
+          <div class="radio-photos">
+            <figure class="timeline-photo">
+              <img src="assets/max1049-studio-large.jpg" alt="Au studio de MAX 104.9 à Bathurst, le 3 mars 2015 : Cindy Roy au micro, en entrevue avec l'animateur Kevin D. White" loading="lazy" />
+              <figcaption>Au studio de MAX 104.9, le 3 mars 2015 — mon entrevue avec Kevin D. White, quelques semaines après ma victoire à La Voix de Beresford. Merci encore pour ce beau moment.</figcaption>
+            </figure>
+            <div class="radio-photos-duo">
+              <figure class="timeline-photo">
+                <img src="assets/max1049-cindy-micro.jpg" alt="Cindy Roy au micro du studio de MAX 104.9, en train de raconter son parcours" loading="lazy" />
+                <figcaption>Au micro, en train de raconter mon parcours.</figcaption>
+              </figure>
+              <figure class="timeline-photo">
+                <img src="assets/max1049-cindy-portrait.jpg" alt="Cindy Roy souriante au micro du studio de MAX 104.9, mars 2015" loading="lazy" />
+                <figcaption>Au studio de MAX 104.9, mars 2015.</figcaption>
+              </figure>
+            </div>
+            <figure class="timeline-photo radio-selfie">
+              <img src="assets/max1049-brina-enseigne.jpg" alt="Cindy Roy et Brina Warne sous l'enseigne de MAX 104.9, le soir de leurs entrevues" loading="lazy" />
+              <figcaption>Avec Brina Warne, sous l'enseigne de MAX 104.9, le soir de nos entrevues.</figcaption>
+            </figure>
           </div>
             </div>
           </details>
