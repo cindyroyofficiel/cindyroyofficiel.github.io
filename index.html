@@ -1322,6 +1322,8 @@
       .photo-slider { grid-column: 1; }
       .photo-slider input[type="range"] { width: 130px; }
     }
+    .timeline-row .photo-slider { margin-top: 14px; }
+    .dream-layer { transition: opacity .18s linear; }
     .dreamy-bg, .fade-copy { transition: opacity .18s linear; }
     /* Bulle d'aide de la barre « Voir la photo » : paraît quand le bloc entre à l'écran, se referme toute seule */
     .slider-hint {
@@ -6523,19 +6525,21 @@
             <img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" />
           </figure>
           <div class="timeline">
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <img class="pastacle-photo-l" src="assets/petite-cindy-boombox-diane-tell.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
-            <img class="pastacle-photo-r" src="assets/cindy-5-ans-famille.jpg" alt="" aria-hidden="true" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <img class="pastacle-photo-l dream-layer" data-base-opacity="0.34" src="assets/petite-cindy-boombox-diane-tell.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
+            <img class="pastacle-photo-r dream-layer" data-base-opacity="0.34" src="assets/cindy-5-ans-famille.jpg" alt="" aria-hidden="true" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <div class="timeline-year" style="position: relative;">5 ans</div>
-            <div class="timeline-copy" style="position: relative; z-index: 0;"><p>J’avais cinq ans, pis je faisais déjà des « pastacles » — pas des spectacles, des pastacles! Dans le salon, habillée d’un t-shirt trop grand pour moi qui me faisait une robe, ma brosse comme micro, debout sur la table de cuisine, je chantais du Diane Tell : « Si j’étais un homme... »</p>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><p>J’avais cinq ans, pis je faisais déjà des « pastacles » — pas des spectacles, des pastacles! Dans le salon, habillée d’un t-shirt trop grand pour moi qui me faisait une robe, ma brosse comme micro, debout sur la table de cuisine, je chantais du Diane Tell : « Si j’étais un homme... »</p>
 </div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="pastacles-photo-slider">Voir la photo</label><input id="pastacles-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .26; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/cindy-eglise-robertville-marches-fondue.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;" /></div>
-            <img src="assets/eglise-robertville-facade-fondue.webp" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 94%; width: auto; z-index: -1; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%);" />
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.26" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .26; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/cindy-eglise-robertville-marches-fondue.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;" /></div>
+            <img class="dream-layer" data-base-opacity="0.32" src="assets/eglise-robertville-facade-fondue.webp" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 94%; width: auto; z-index: -1; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%);" />
             <div class="timeline-year">Enfance</div>
-            <div class="timeline-copy"><h3 id="robertville">La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
+            <div class="timeline-copy fade-copy"><h3 id="robertville">La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
             </div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="enfance-photo-slider">Voir la photo</label><input id="enfance-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
           <article class="timeline-row" style="position: relative; z-index: 0;">
             
@@ -6548,11 +6552,12 @@
             <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><img class="diane-maison" src="assets/maison-coeur-or.svg" alt="Médaillon doré : une maison avec un cœur au centre, surmontée d'une étoile — le foyer qui accueille." loading="lazy" /><p class="diane-merci-title"><span class="diane-heart" aria-hidden="true">♥</span>Un merci tout spécial à tante Diane.<img class="diane-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" /></p><p>« Quand mon frère et moi étions jeunes, les circonstances ont fait qu'il a fallu trouver un toit pour nous deux. Diane Cormier, ma tante de cœur, nous a accueillis pendant plusieurs années. Elle nous a donné un toit et s'est assurée qu'on ne manque de rien. Je préfère garder les détails de cette période pour moi, mais je tiens à reconnaître ce qu'elle a fait pour nous. Elle est encore présente dans nos vies aujourd'hui, surtout auprès de mes enfants. Pour tout ça, je lui dis <span class="diane-merci-word">merci</span>. »</p><p>Merci d'avoir été là dans pas mal toutes mes aventures — pis d'avoir capturé tant de ces moments-là en vidéo, pour qu'on puisse les revivre encore et encore.</p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="diane-photo-slider">Voir la photo</label><input id="diane-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%);"><img src="assets/talent-search-cindy-jean.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /><img src="assets/talent-search-cindy-bordeaux.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /></div>
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%);"><img src="assets/talent-search-cindy-jean.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /><img src="assets/talent-search-cindy-bordeaux.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /></div>
             <div class="timeline-year" style="position: relative;">2003 à 2004</div>
-            <div class="timeline-copy" style="position: relative; z-index: 0;"><h3>Le Bathurst Talent Search</h3><p>Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst. C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise.</p>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3>Le Bathurst Talent Search</h3><p>Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst. C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise.</p>
 </div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="talent-photo-slider">Voir la photo</label><input id="talent-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2003 à 2005</div>
@@ -6562,18 +6567,20 @@
               <figcaption>Un exemple des duos que je chantais avec des chanteurs du web : sur internet, il n'y a ni frontières ni distances — ma voix voyageait jusqu'à eux, la leur jusqu'à moi. « I Finally Found Someone », avec Jason.</figcaption>
             </figure></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%);"><img src="assets/saint-adolphe-saint-jean-2007.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 6%;" /></div>
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%);"><img src="assets/saint-adolphe-saint-jean-2007.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;" /></div>
             <div class="timeline-year" style="position: relative;">2005 à 2008<style>@keyframes drapeau-vole{0%,100%{transform:rotate(-2.5deg) skewY(-1.5deg)}50%{transform:rotate(2deg) skewY(2.5deg)}}</style><span aria-hidden="true" style="display: block; width: 104px; margin-top: 14px; opacity: .9; transform-origin: 0 50%; animation: drapeau-vole 3.4s ease-in-out infinite;"><svg viewBox="0 0 90 60" focusable="false" style="display: block; width: 100%; height: auto;"><rect width="90" height="60" fill="#003da5" /><rect x="40" width="10" height="60" fill="#ffffff" /><rect y="25" width="90" height="10" fill="#ffffff" /><g fill="#ffffff" font-family="serif" font-size="17" text-anchor="middle"><text x="20" y="21">⚜</text><text x="70" y="21">⚜</text><text x="20" y="51">⚜</text><text x="70" y="51">⚜</text></g></svg></span></div>
-            <div class="timeline-copy"><p>Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
+            <div class="timeline-copy fade-copy"><p>Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
             <p style="font-size: 14px; opacity: .78; margin-top: 8px;">Saint-Jean 2007, Saint-Adolphe-d’Howard. De gauche à droite : Mathieu Binette (flûte), André Binette (guitare), Pierre Shapiro (guitare et voix) — et moi, Cindy Roy, à la voix.</p>
             <p class="saint-jean-text">De 2006 à 2008, j’ai chanté les fêtes de la Saint-Jean à Saint-Adolphe-d’Howard, où j’habitais dans ce temps-là. Trois étés de suite — la photo de 2007 en est un beau souvenir.</p>
             </div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="saintjean-photo-slider">Voir la photo</label><input id="saintjean-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%);"><img src="assets/studio-micro-dreamy.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 55%;" /></div>
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%);"><img src="assets/studio-micro-dreamy.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 55%;" /></div>
             <div class="timeline-year">2005 à 2017</div>
-            <div class="timeline-copy"><p>De 2005 à 2017, j’ai aussi prêté ma voix aux maquettes de plusieurs auteurs-compositeurs — de la France, de la Russie et du Québec. Des collaborations de coulisses : ma voix au service de leurs chansons, le temps d’un enregistrement.</p></div>
+            <div class="timeline-copy fade-copy"><p>De 2005 à 2017, j’ai aussi prêté ma voix aux maquettes de plusieurs auteurs-compositeurs — de la France, de la Russie et du Québec. Des collaborations de coulisses : ma voix au service de leurs chansons, le temps d’un enregistrement.</p></div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="voix-photo-slider">Voir la photo</label><input id="voix-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year" aria-hidden="true"></div>
@@ -6611,20 +6618,23 @@
             </div>
             </div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 175px;">
-            <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 96%; width: auto; z-index: -1; opacity: .36; -webkit-mask-image: radial-gradient(ellipse at center, black 54%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 54%, transparent 97%);" />
+          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 175px;" data-slider-box>
+            <img class="dream-layer" data-base-opacity="0.36" src="assets/siffleux-cindy-emotion-recadree.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 96%; width: auto; z-index: -1; opacity: .36; -webkit-mask-image: radial-gradient(ellipse at center, black 54%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 54%, transparent 97%);" />
             <div class="timeline-year">2015</div>
-            <div class="timeline-copy"><p>La Voix de Beresford 2015 — prix des juges et prix du public. <a href="#beresford">→ Voir la section</a></p></div>
+            <div class="timeline-copy fade-copy"><p>La Voix de Beresford 2015 — prix des juges et prix du public. <a href="#beresford">→ Voir la section</a></p></div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="beresford-photo-slider">Voir la photo</label><input id="beresford-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 215px; align-content: end; padding-bottom: 10px;">
-            <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 60% 22%;" /></div>
+          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 215px; align-content: end; padding-bottom: 10px;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 60% 22%;" /></div>
             <div class="timeline-year">2015</div>
-            <div class="timeline-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
+            <div class="timeline-copy fade-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
+            <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="gala-photo-slider">Voir la photo</label><input id="gala-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;">
-            <img src="assets/cindy-portrait-accueil.jpg" alt="" aria-hidden="true" style="position: absolute; left: -70px; top: 50%; transform: translateY(-50%); height: 88%; width: auto; z-index: -1; opacity: .38; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%);" />
+          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+            <img class="dream-layer" data-base-opacity="0.38" src="assets/cindy-portrait-accueil.jpg" alt="" aria-hidden="true" style="position: absolute; left: -70px; top: 50%; transform: translateY(-50%); height: 88%; width: auto; z-index: -1; opacity: .38; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%);" />
             <div class="timeline-year">Aujourd’hui</div>
-            <div class="timeline-copy"><p>« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça. Pis dernièrement, j’apprécie ma guitare de plus en plus — je suis pas une grande guitariste, mais c’est grâce à elle que je mets des notes, des accords, sur mes mots.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
+            <div class="timeline-copy fade-copy"><p>« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça. Pis dernièrement, j’apprécie ma guitare de plus en plus — je suis pas une grande guitariste, mais c’est grâce à elle que je mets des notes, des accords, sur mes mots.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
+                      <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="aujourdhui-photo-slider">Voir la photo</label><input id="aujourdhui-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
           </div>
         </div>
@@ -8614,14 +8624,25 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
       // Barre « Voir la photo » : le texte s'efface, la photo derrière le texte apparaît.
       document.querySelectorAll('[data-slider-box]').forEach(function (box) {
         var range = box.querySelector('.photo-slider input[type="range"]');
-        var bg = box.querySelector('.dreamy-bg');
-        var copy = box.querySelector('.fade-copy');
-        if (!range || !bg || !copy) { return; }
-        var base = parseFloat(bg.getAttribute('data-base-opacity') || '0.3');
+        if (!range) { return; }
+        var layers = box.querySelectorAll('.dreamy-bg, .dream-layer');
+        var copies = box.querySelectorAll('.fade-copy');
+        if (!layers.length || !copies.length) { return; }
+        var bases = [];
+        layers.forEach(function (el) {
+          var b = parseFloat(el.getAttribute('data-base-opacity') || '');
+          if (isNaN(b)) { b = parseFloat(getComputedStyle(el).opacity); }
+          if (isNaN(b)) { b = 0.3; }
+          el.setAttribute('data-base-opacity', b);
+          bases.push(b);
+        });
+        copies.forEach(function (c) { c.style.transition = 'opacity .18s linear'; });
         function maj() {
           var v = range.value / 100;
-          bg.style.opacity = (base + (0.98 - base) * v).toFixed(3);
-          copy.style.opacity = (1 - v).toFixed(3);
+          layers.forEach(function (el, k) {
+            el.style.opacity = (bases[k] + (0.98 - bases[k]) * v).toFixed(3);
+          });
+          copies.forEach(function (c) { c.style.opacity = (1 - v).toFixed(3); });
         }
         range.addEventListener('input', maj);
         var hint = box.querySelector('.slider-hint');
