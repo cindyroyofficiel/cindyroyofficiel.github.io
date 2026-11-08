@@ -1296,13 +1296,15 @@
     .gala-carte:hover .carte-volet, .gala-carte:focus-visible .carte-volet, .gala-carte.ouvert .carte-volet { transform: rotateY(-158deg); }
     .gala-carte .carte-indice { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); white-space: nowrap; font-size: 13.5px; letter-spacing: .02em; color: #e7cf8e; opacity: .95; transition: opacity .3s ease; pointer-events: none; }
     .gala-carte:hover .carte-indice, .gala-carte:focus-visible .carte-indice, .gala-carte.ouvert .carte-indice { opacity: 0; }
-    .gala-trophee-tourne { flex: 0 0 auto; align-self: center; margin-right: 6px; }
-    .gala-trophee-tourne img { display: block; height: 218px; width: auto; filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .45)); }
+    .gala-trophee-tourne { flex: 0 0 auto; align-self: center; margin-right: 6px; text-align: center; }
+    .gala-trophee-tourne img.trophee-img { display: block; height: 218px; width: auto; margin: 0 auto; filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .45)); }
+    .gala-trophee-tourne img.presentoir { display: block; width: 150px; height: auto; margin: -14px auto 0; }
     @media (max-width: 700px) {
       .gala-surprise { margin-top: 86px; }
       .gala-carte { width: 128px; margin-left: 0; }
       .gala-carte .carte-indice { font-size: 12.5px; bottom: -26px; }
-      .gala-trophee-tourne img { height: 150px; }
+      .gala-trophee-tourne img.trophee-img { height: 150px; }
+      .gala-trophee-tourne img.presentoir { width: 112px; margin-top: -10px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .gala-carte .carte-volet { transition: none; }
@@ -6704,7 +6706,7 @@
                 </span>
                 <span class="carte-indice" aria-hidden="true">✉ Ouvre la carte</span>
               </div>
-              <div class="gala-trophee-tourne" aria-hidden="true"><img src="assets/trophee-gala-2015-tourne.webp" alt="" width="279" height="780" loading="lazy" /></div>
+              <div class="gala-trophee-tourne" aria-hidden="true"><img class="trophee-img" src="assets/trophee-gala-2015-tourne.webp" alt="" width="279" height="780" loading="lazy" /><img class="presentoir" src="assets/presentoir-trophee.svg" alt="" loading="lazy" /></div>
             </div>
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="gala-photo-slider">Voir la photo</label><input id="gala-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 76" width="260" height="76" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="ts-or" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe9a8"/>
+      <stop offset="30%" stop-color="#f3c75f"/>
+      <stop offset="58%" stop-color="#b8862e"/>
+      <stop offset="100%" stop-color="#7a5514"/>
+    </linearGradient>
+    <linearGradient id="ts-bois" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a3826"/>
+      <stop offset="100%" stop-color="#241a10"/>
+    </linearGradient>
+    <radialGradient id="ts-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd98a" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#ffd98a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="130" cy="26" rx="126" ry="24" fill="url(#ts-halo)"/>
+  <path d="M74 30 L186 30 L200 62 L60 62 Z" fill="url(#ts-bois)" stroke="#8a6a24" stroke-width="1.4"/>
+  <ellipse cx="130" cy="26" rx="88" ry="15" fill="url(#ts-or)"/>
+  <ellipse cx="130" cy="24" rx="72" ry="11" fill="#2b1f10"/>
+  <rect x="100" y="46" width="60" height="9" rx="2" fill="url(#ts-or)" opacity="0.9"/>
+</svg>
