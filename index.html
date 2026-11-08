@@ -1284,8 +1284,8 @@
        s'ouvre au survol et au focus clavier; le clic/toucher .ouvert le
        verrouille (petit script délégué). États fermés au repos : le
        déclencheur « ✉ Ouvre la carte ». */
-    .gala-surprise { position: relative; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin: 14px 0 8px; }
-    .gala-carte { position: relative; width: 250px; max-width: 44vw; aspect-ratio: 955 / 671; perspective: 1200px; cursor: pointer; outline-offset: 4px; }
+    .gala-surprise { position: relative; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin: 118px 0 8px; }
+    .gala-carte { position: relative; width: 178px; max-width: 44vw; aspect-ratio: 955 / 671; perspective: 1200px; cursor: pointer; outline-offset: 4px; }
     .gala-carte .carte-dos { position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #f4ecd9; box-shadow: 0 14px 30px rgba(0, 0, 0, .38); }
     .gala-carte .carte-dos img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .gala-carte .carte-volet { position: absolute; inset: 0; z-index: 2; transform-origin: left center; transform: rotateY(0deg); transition: transform 1.15s cubic-bezier(.22, .8, .3, 1); transform-style: preserve-3d; }
@@ -1299,9 +1299,10 @@
     .gala-trophee-tourne { flex: 0 0 auto; align-self: center; margin-right: 6px; }
     .gala-trophee-tourne img { display: block; height: 218px; width: auto; filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .45)); }
     @media (max-width: 700px) {
-      .gala-carte { width: 168px; }
+      .gala-surprise { margin-top: 86px; }
+      .gala-carte { width: 128px; }
       .gala-carte .carte-indice { font-size: 12.5px; bottom: -26px; }
-      .gala-trophee-tourne img { height: 168px; }
+      .gala-trophee-tourne img { height: 150px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .gala-carte .carte-volet { transition: none; }
