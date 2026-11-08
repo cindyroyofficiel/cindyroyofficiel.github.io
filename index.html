@@ -2325,7 +2325,7 @@
        sans aucun recadrage. */
     .beresford-section { position: relative; z-index: 0; overflow: hidden; }
     .beresford-section > *:not(.beresford-bg-igloo) { position: relative; z-index: 1; }
-    .beresford-section::before { content: ""; position: absolute; inset: 0; z-index: 0; background: url("assets/drapeau-acadien-verglas.jpg") left center / auto 300% no-repeat; opacity: .12; pointer-events: none; }
+    .beresford-section::before { content: ""; position: absolute; inset: 0; z-index: 0; background: none; opacity: 1; pointer-events: none; }
     .beresford-bg-igloo { position: absolute; right: -30px; bottom: 40px; width: 300px; height: auto; z-index: 1; opacity: .55;}
     @media (max-width: 760px) { .beresford-bg-igloo { width: 190px; right: -20px; } }
     .beresford-stage { position: relative; border-radius: 22px; overflow: hidden; height: 730px; margin-top: 34px;
@@ -3198,6 +3198,10 @@
     .choeur-videos figcaption { margin-top: 10px; font-size: 14.5px; color: #57493a; text-align: center; }
     @media (max-width: 700px) { .choeur-videos { grid-template-columns: 1fr; } }
     .beresford-public { max-width: 760px; margin: clamp(40px, 5vw, 56px) auto 0; font-size: 18.5px; line-height: 1.65; color: var(--ink); }
+    .dream-flag-zone { position: relative; z-index: 0; margin-top: 40px; padding: 6px 0 10px; }
+    .dream-flag-zone::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("assets/drapeau-acadien-verglas.jpg") left center / auto 130% no-repeat; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); pointer-events: none; }
+    .dream-flag-zone::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(250, 246, 238, .38), rgba(250, 246, 238, .38)); -webkit-mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); pointer-events: none; }
+    .dream-flag-zone .beresford-public { margin-top: 20px; }
     .gros-drapeau { max-width: 880px; margin: 44px auto 0; text-align: center; }
     .gros-drapeau img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: var(--shadow); }
     .gros-drapeau figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; }
@@ -6160,10 +6164,7 @@
           </div>
         </details>
 
-        <figure class="gros-drapeau">
-          <img src="assets/drapeau-acadien-verglas.jpg" alt="Le drapeau acadien de Cindy, pris dans le verglas — les branches givrées autour, l'étoile dorée bien visible" loading="lazy" />
-          <figcaption>Mon drapeau acadien, pris dans le verglas — l'hiver de chez nous, celui du Carnaval.</figcaption>
-        </figure>
+        <div class="dream-flag-zone">
         <p class="beresford-public">Ce que ce concours-là m’a donné de plus beau, c’est un public, pis de la belle expérience de scène. Le monde était content d’entendre chanter en français — leur langue, chez eux, sur une scène. Il s’est trouvé que j’étais presque la seule du concours à le faire, pis ça leur faisait du bien. Ils me suivaient de semaine en semaine, ils me le disaient — pis beaucoup d’entre eux me suivent encore aujourd’hui, sur ma page Facebook, sur YouTube, sur Instagram. Pis là, ils ont une place de plus pour me retrouver : ce site officiel. C’est là que j’ai bâti mon public, un samedi à la fois. Les salles étaient pleines — ils étaient obligés de refuser du monde à la porte. Personne s’attendait à ça — moi la première. Pis le plus beau là-dedans : ils m’ont prêté leur confiance, samedi après samedi — parce qu’une artiste, c’est exigeante envers elle-même, pis la mienne était pas dans le tapis. Tranquillement, un pas à la fois, la leur a fini par me gagner moi aussi.</p>
         <div class="carnaval-2019">
             <figure>
@@ -6192,6 +6193,7 @@
           <p class="carnaval-desc">Le Carnaval du Siffleux, c’est LE rendez-vous de l’hiver chez nous, à Beresford (aujourd’hui Belle-Baie). Pendant des années, début février, tout le village fêtait : sculptures de neige, promenades en traîneau, musique d’ici — pis au centre de tout ça, Arthur le siffleux, notre marmotte, qui sort de sa petite cabane pour prédire si l’hiver achève ou s’il continue. Moi, je connais ce carnaval-là depuis que je suis petite. Après une pause de quelques années, il renaît en force : sa 48e édition aura lieu du 29 janvier au 7 février 2027.</p>
           <a href="https://www.facebook.com/CarnavalSiffleuxBeresford" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford sur Facebook →</a>
         </aside>
+        </div>
         <article class="calixte-story" id="calixte">
           <div class="calixte-dream">
           <h3 class="chapter-title">Le soir où j’ai chanté devant le grand Calixte</h3>
