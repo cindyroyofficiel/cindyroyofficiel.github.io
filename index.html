@@ -9010,6 +9010,10 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
             if (!was) {
               h.classList.add('sub-mobile-open');
               b.setAttribute('aria-expanded', 'true');
+            } else {
+              // Refermer la porte ramène le menu en haut (demande de Cindy, 8 nov.).
+              var panel = document.getElementById('nav-links');
+              if (panel) { panel.scrollTo({ top: 0, behavior: 'smooth' }); }
             }
           });
           h.appendChild(b);
