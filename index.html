@@ -2915,6 +2915,10 @@
       .nav-links .has-sub { display: flex; flex-direction: column; align-items: flex-start; width: 100%; position: relative; }
       .nav-links .sub-menu { display: none; position: static; transform: none; border: none; background: transparent; box-shadow: none; min-width: 0; flex-direction: column; gap: 2px; padding: 2px 0 10px 16px; margin-left: 2px; border-left: 2px solid rgba(201,162,79,.35); }
       .nav-links .has-sub.sub-open .sub-menu { display: none; }
+      /* Sur tactile, le navigateur garde un « survol fantôme » après le toucher
+         (:hover / :focus-within) qui rouvrait le sous-menu dès le doigt levé —
+         signalé par Cindy le 8 nov. On le neutralise : seule la flèche décide. */
+      .nav-links .has-sub:hover .sub-menu, .nav-links .has-sub:focus-within .sub-menu { display: none; }
       .nav-links .has-sub.sub-mobile-open .sub-menu { display: flex; }
       .nav-links .sub-menu a { font-size: 16.5px; padding: 6px 8px; border-bottom: none; width: auto; }
       .sub-toggle { display: block; position: absolute; right: -6px; top: 0; width: 44px; height: 46px; border: 0; background: transparent; color: #c9a24f; font-size: 20px; line-height: 1; cursor: pointer; z-index: 2; }
