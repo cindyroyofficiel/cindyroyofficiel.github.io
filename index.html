@@ -1356,6 +1356,22 @@
       border-top-color: #fdf8ef;
     }
     .slider-hint.show { opacity: 1; transform: translateY(0); }
+    /* Hommage Nicole McGrath : deux colonnes — les écrits à gauche, la photo et la vidéo fondues en dreamy à droite (Cindy, 7 nov.) */
+    @media (min-width: 861px) {
+      .nicole-cols { display: grid; grid-template-columns: 1.12fr .88fr; gap: 34px; align-items: start; margin-top: 10px; text-align: left; }
+      .nicole-cols .hommage-text { max-width: none; margin: 0; }
+      .nicole-media { position: relative; min-height: 100%; }
+    }
+    .nicole-media { position: relative; }
+    .nicole-media .nicole-duo { position: relative; z-index: 1; flex-direction: column; align-items: stretch; gap: 18px; margin-top: 0; }
+    .nicole-media .nicole-duo .timeline-photo, .nicole-media .nicole-duo .timeline-video { max-width: none; width: 100%; }
+    .nicole-dream { position: absolute; inset: -6px -10px; z-index: 0; opacity: .30; pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);
+      mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); }
+    .nicole-dream img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
+    @media (max-width: 860px) {
+      .nicole-media { margin-top: 24px; }
+    }
     /* Pastacles (5 ans) sur téléphone : les deux photos en deux bandes, sans se chevaucher */
     @media (max-width: 700px) {
       .pastacle-photo-l { height: 48% !important; top: 4px !important; transform: none !important; }
@@ -6594,6 +6610,7 @@
               <p class="hommage-dove" aria-hidden="true">🕊️</p>
               <h3 class="hommage-title" id="nicole">À Nicole McGrath</h3>
               <div class="hommage-rule" aria-hidden="true">✦</div>
+              <div class="nicole-cols">
               <div class="hommage-text">
                 <p class="hommage-lead">Elle m’a appris à lire, à écrire… et à chanter comme on prie.</p>
                 <p>Enseignante de ma 1<sup>re</sup> et de ma 6<sup>e</sup> année, Nicole a accompagné mon chant à la paroisse de 2013 à 2019. « Quand tu chantes, c’est comme une prière », qu’elle me disait.</p>
@@ -6602,7 +6619,9 @@
                 <p>Nicole, c’était une grande amie. Elle savait faire planer ma voix vers le ciel. Elle a une grosse place dans mon cœur — elle y est toujours — et elle m’accompagnera toujours.</p>
                 <p>Elle nous a quittés le 25 novembre 2025.</p>
               </div>
-            <div class="nicole-duo">
+              <div class="nicole-media">
+              <div class="nicole-dream" aria-hidden="true"><img src="assets/cindy-nicole-eglise-fondue.webp" alt="" loading="lazy" /></div>
+              <div class="nicole-duo">
             <figure class="timeline-photo nicole-small">
               <img class="photo-fondue" src="assets/cindy-nicole-eglise-fondue.webp" alt="Cindy Roy chantant au micro dans une église, avec Nicole McGrath au clavier juste à côté d’elle" loading="lazy" />
               <figcaption>Nicole &amp; moi</figcaption>
@@ -6611,11 +6630,13 @@
               <video src="assets/jeudi-saint-2014-nicole.mp4" poster="assets/jeudi-saint-2014-affiche.jpg" controls playsinline preload="metadata" title="Jeudi saint 2014 — église Saint-Vincent-de-Paul, Pointe-Verte"></video>
             </figure>
             </div>
+              </div>
+              </div>
               <div class="hommage-epitaph">
                 <p>Merci pour tout, Nicole.</p>
                 <p>Que son âme repose en paix. 🕊️</p>
               </div>
-            </div>
+              
             </div>
           </article>
           <article class="timeline-row" style="position: relative; z-index: 0; min-height: 175px;" data-slider-box>
@@ -6624,8 +6645,8 @@
             <div class="timeline-copy fade-copy"><p>La Voix de Beresford 2015 — prix des juges et prix du public. <a href="#beresford">→ Voir la section</a></p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="beresford-photo-slider">Voir la photo</label><input id="beresford-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 215px; align-content: end; padding-bottom: 10px;" data-slider-box>
-            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 60% 22%;" /></div>
+          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 330px; align-content: end; padding-bottom: 10px;" data-slider-box>
+            <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 78% center;" /></div>
             <div class="timeline-year">2015</div>
             <div class="timeline-copy fade-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="gala-photo-slider">Voir la photo</label><input id="gala-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
