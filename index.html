@@ -2323,6 +2323,11 @@
        verticaux (cellulaire) 9:16 ensemble, et la photo de la gang en finale,
        en format réduit (largeur de la tuile vidéo 16:9), cadre complet,
        sans aucun recadrage. */
+    .beresford-section { position: relative; z-index: 0; overflow: hidden; }
+    .beresford-section > *:not(.beresford-bg-igloo) { position: relative; z-index: 1; }
+    .beresford-section::before { content: ""; position: absolute; inset: 0; z-index: 0; background: url("assets/drapeau-acadien-verglas.jpg") center 30% / cover no-repeat; opacity: .4; pointer-events: none; }
+    .beresford-bg-igloo { position: absolute; right: -30px; bottom: 40px; width: 300px; height: auto; z-index: 1; opacity: .55;}
+    @media (max-width: 760px) { .beresford-bg-igloo { width: 190px; right: -20px; } }
     .beresford-stage { position: relative; border-radius: 22px; overflow: hidden; height: 730px; margin-top: 34px;
       background-color: #faf5ea; background-image: url("assets/beresford-fond-gang-reve.jpg");
       background-size: cover; background-position: center 12%; background-repeat: no-repeat;
@@ -3193,10 +3198,10 @@
     .choeur-videos figcaption { margin-top: 10px; font-size: 14.5px; color: #57493a; text-align: center; }
     @media (max-width: 700px) { .choeur-videos { grid-template-columns: 1fr; } }
     .beresford-public { max-width: 760px; margin: clamp(40px, 5vw, 56px) auto 0; font-size: 18.5px; line-height: 1.65; color: var(--ink); }
-    .propulseur-zone { position: relative; z-index: 0; margin-top: 40px; padding: 10px 0 8px; }
-    .propulseur-zone .propulseur-fond { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: -2; opacity: .3; -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); }
-    .propulseur-zone::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(250, 246, 238, .55), rgba(250, 246, 238, .55)); -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); }
-    .propulseur-zone .beresford-public { margin-top: 26px; }
+    .propulseur-zone { position: static; }
+    .propulseur-fond-off { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: -2; opacity: .3; -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); }
+    .propulseur-voile-off { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(250, 246, 238, .55), rgba(250, 246, 238, .55)); -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); }
+    .propulseur-public-off { margin-top: 26px; }
     .propulseur-wrap { position: relative; max-width: 760px; margin: 0 auto; }
     .drapeau-glace { position: absolute; left: -185px; top: 50%; transform: translateY(-50%); width: 168px; height: auto; z-index: 0; opacity: .5; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); pointer-events: none; }
     .igloo-fond { margin-top: 44px; text-align: center; }
@@ -6051,6 +6056,8 @@
     </section>
 
     <section class="scene beresford-section" id="beresford">
+
+
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments de cette section">
           <a href="#gala">Le Gala</a>
@@ -6150,7 +6157,7 @@
           </div>
         </details>
         <div class="propulseur-wrap"><img class="drapeau-glace" src="assets/drapeau-acadien-verglas.jpg" alt="" aria-hidden="true" loading="lazy" />
-        <div class="propulseur-zone"><img class="propulseur-fond" src="assets/beresford-hiver-fond.jpg" alt="" aria-hidden="true" loading="lazy" />
+
         <p class="beresford-public">Ce que ce concours-là m’a donné de plus beau, c’est un public, pis de la belle expérience de scène. Le monde était content d’entendre chanter en français — leur langue, chez eux, sur une scène. Il s’est trouvé que j’étais presque la seule du concours à le faire, pis ça leur faisait du bien. Ils me suivaient de semaine en semaine, ils me le disaient — pis beaucoup d’entre eux me suivent encore aujourd’hui, sur ma page Facebook, sur YouTube, sur Instagram. Pis là, ils ont une place de plus pour me retrouver : ce site officiel. C’est là que j’ai bâti mon public, un samedi à la fois. Les salles étaient pleines — ils étaient obligés de refuser du monde à la porte. Personne s’attendait à ça — moi la première. Pis le plus beau là-dedans : ils m’ont prêté leur confiance, samedi après samedi — parce qu’une artiste, c’est exigeante envers elle-même, pis la mienne était pas dans le tapis. Tranquillement, un pas à la fois, la leur a fini par me gagner moi aussi.</p>
         </div>
         <div class="carnaval-2019">
