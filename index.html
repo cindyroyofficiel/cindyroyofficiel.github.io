@@ -2619,14 +2619,16 @@
     .entrevues { margin-top: 60px; }
     .entrevues-title { margin: 0; font-family: var(--serif); font-style: italic; font-size: 26px; }
     .entrevue-max { margin-top: 40px; }
-    .max-kevin { display: block; width: min(560px, 100%); margin: 22px auto 4px; }
+        .max-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 26px; align-items: start; margin-top: 22px; }
+    @media (max-width: 760px) { .max-layout { grid-template-columns: 1fr; } }
+    .max-kevin { display: block; width: 100%; margin: 0; }
     .max-kevin img { display: block; width: 100%; height: auto; border-radius: var(--r-media); }
     .max-kevin figcaption { text-align: center; margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--muted); font-style: italic; }
     .entrevue-max-title { margin: 0 0 8px; font-family: var(--serif); font-size: 24px; font-weight: 600; }
     .entrevue-max-intro { margin: 0; max-width: 720px; color: var(--muted); font-size: 17px; line-height: 1.6; }
     .entrevue-max .radio-photos { margin-top: 24px; max-width: 820px; }
     .entrevue-max .radio-photos figcaption { color: var(--muted); }
-    .max1049-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; align-items: start; }
+    .max1049-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 0; align-items: start; }
     .max1049-grid figure { margin: 0; }
     .max1049-grid img { display: block; width: 100%; height: auto; border-radius: var(--r-media); }
     .max1049-grid .pos-top { object-position: center 12%; }
@@ -7747,6 +7749,7 @@
           <div class="entrevue-max">
             <h3 class="entrevue-max-title">MAX 104.9 — entrevue avec Kevin D. White, 2015</h3>
             <p class="entrevue-max-intro">Quelques semaines après ma victoire à La Voix de Beresford, l'animateur Kevin D. White m'a reçue au studio de MAX 104.9, à Bathurst, pour une entrevue « community profile » — enregistrée le 3 mars 2015, puis diffusée le vendredi 6 mars à 9 h, après les nouvelles du matin.</p>
+          <div class="max-layout">
           <figure class="max-kevin">
               <img src="assets/max1049-studio-kevin.jpg" alt="Au studio de MAX 104.9 : l'animateur Kevin D. White à sa console, Cindy Roy de dos au premier plan, et Isabelle Leger qui filme l'entrevue" loading="lazy" />
               <figcaption>Avec Kevin D. White, à sa console — on me voit de dos au premier plan, et Isabelle Leger qui filme l'entrevue.</figcaption>
@@ -7772,6 +7775,7 @@
               <img class="pos-top" src="assets/max1049-brina-enseigne.jpg" alt="Cindy Roy et Brina Warne sous l'enseigne de MAX 104.9, le soir de leurs entrevues" loading="lazy" />
               <figcaption>Avec Brina Warne, sous l'enseigne de MAX 104.9, le soir de nos entrevues.</figcaption>
             </figure>
+          </div>
           </div>
           </div>
         </div>
