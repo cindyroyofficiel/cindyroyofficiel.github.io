@@ -2904,6 +2904,24 @@
       .menu-toggle { display: block; position: relative; z-index: 2; }
     }
 
+    /* Menu compact sur téléphone (approuvé par Cindy le 8 nov. 2026) :
+       les sous-menus partent fermés; une petite flèche dorée déplie une
+       seule porte à la fois (accordéon). Écritures réduites : le menu
+       complet tient sur un écran au lieu d'une longue liste à défiler. */
+    .sub-toggle { display: none; }
+    @media (max-width: 1180px) {
+      .nav-links { padding: 84px 22px 32px; gap: 0; }
+      .nav-links a { font-size: 21px; padding: 10px 34px 10px 0; }
+      .nav-links .has-sub { display: flex; flex-direction: column; align-items: flex-start; width: 100%; position: relative; }
+      .nav-links .sub-menu { display: none; position: static; transform: none; border: none; background: transparent; box-shadow: none; min-width: 0; flex-direction: column; gap: 2px; padding: 2px 0 10px 16px; margin-left: 2px; border-left: 2px solid rgba(201,162,79,.35); }
+      .nav-links .has-sub.sub-open .sub-menu { display: none; }
+      .nav-links .has-sub.sub-mobile-open .sub-menu { display: flex; }
+      .nav-links .sub-menu a { font-size: 16.5px; padding: 6px 8px; border-bottom: none; width: auto; }
+      .sub-toggle { display: block; position: absolute; right: -6px; top: 0; width: 44px; height: 46px; border: 0; background: transparent; color: #c9a24f; font-size: 20px; line-height: 1; cursor: pointer; z-index: 2; }
+      .sub-toggle span { display: inline-block; transition: transform .25s; }
+      .nav-links .has-sub.sub-mobile-open .sub-toggle span { transform: rotate(180deg); }
+    }
+
     /* ════════════════════════════════════════════════════════════════
        PASSE BEAUTÉ — finition visuelle seulement (30 oct. 2026)
        Aucun contenu, aucune composition du hero, aucun média touché :
@@ -8965,5 +8983,38 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
       })();
     </script>
     <script>document.querySelectorAll('.film-track').forEach(function (t) { t.innerHTML += t.innerHTML; });</script>
+    <script>
+      /* Menu compact (téléphone) : une flèche dorée par porte déplie son
+         sous-menu, une seule porte à la fois. Le nom de la porte garde son
+         comportement : il navigue vers sa section et ferme le menu. */
+      (function () {
+        var hosts = Array.prototype.slice.call(document.querySelectorAll('.site-nav .has-sub'));
+        hosts.forEach(function (h) {
+          if (!h.querySelector('.sub-menu')) return;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'sub-toggle';
+          b.setAttribute('aria-expanded', 'false');
+          b.setAttribute('aria-label', 'Afficher ou masquer les sous-sections');
+          b.innerHTML = '<span aria-hidden="true">▾</span>';
+          b.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var was = h.classList.contains('sub-mobile-open');
+            hosts.forEach(function (x) {
+              x.classList.remove('sub-mobile-open');
+              x.classList.remove('sub-open');
+              var t = x.querySelector('.sub-toggle');
+              if (t) t.setAttribute('aria-expanded', 'false');
+            });
+            if (!was) {
+              h.classList.add('sub-mobile-open');
+              b.setAttribute('aria-expanded', 'true');
+            }
+          });
+          h.appendChild(b);
+        });
+      })();
+    </script>
 </body>
 </html>
