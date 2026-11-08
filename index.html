@@ -2305,14 +2305,16 @@
        verticaux (cellulaire) 9:16 ensemble, et la photo de la gang en finale,
        en format réduit (largeur de la tuile vidéo 16:9), cadre complet,
        sans aucun recadrage. */
-    .beresford-stage { position: relative; border-radius: 22px; overflow: hidden; height: 560px; margin-top: 34px;
-      background-color: #faf5ea; background-image: url("assets/beresford-fond-gang-reve-v2.jpg");
+    .beresford-stage { position: relative; border-radius: 22px; overflow: hidden; height: 900px; margin-top: 34px;
+      background-color: #faf5ea; background-image: url("assets/beresford-fond-gang-reve.jpg");
       background-size: cover; background-position: center 30%; background-repeat: no-repeat;
       border: 1px solid rgba(201, 162, 79, .35); }
     .beresford-stage .stage-sparkles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
     .beresford-stage-veil { position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background: linear-gradient(180deg, rgba(255, 253, 247, .04) 50%, rgba(255, 253, 247, .50) 87%, rgba(255, 253, 247, .78) 100%); }
     .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
+    .beresford-row-top { bottom: auto; top: 300px; }
+    .beresford-row-bottom { bottom: 26px; }
     .beresford-stage-row .scene-item { text-align: center; }
     .beresford-stage-row .scene-item img, .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { display: block; width: auto; max-width: 100%; height: 205px; margin: 0 auto; background: #0c0d0b; border: 1px solid rgba(201, 162, 79, .35); border-radius: 6px; box-shadow: 0 18px 44px rgba(44, 35, 23, .28); }
     .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { aspect-ratio: 9 / 16; }
@@ -6018,10 +6020,10 @@
         <div class="beresford-stage">
           <div class="beresford-stage-veil"></div>
           <canvas class="stage-sparkles" aria-hidden="true"></canvas>
-          <div class="beresford-stage-row">
+          <div class="beresford-stage-row beresford-row-top">
             <figure class="scene-item">
-              <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" width="277" height="445" loading="lazy" />
-              <figcaption class="cap-photo">Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
+              <img src="assets/beresford-cindy-louis-noel.jpg" alt="Cindy Roy avec son coach Louis Noël, à La Voix de Beresford, Carnaval du Siffleux, 2015" width="1241" height="1268" loading="lazy" />
+              <figcaption class="cap-vid">Avec mon coach, Louis Noël : une équipe gagnante — La Voix de Beresford, 2015</figcaption>
             </figure>
             <figure class="scene-item">
               <video src="assets/beresford-audition-juges.mp4" poster="assets/beresford-audition-poster.jpg" controls playsinline preload="none" title="L’audition — La Voix de Beresford, Carnaval du Siffleux, Beresford, novembre 2014"></video>
@@ -6034,6 +6036,12 @@
             <figure class="scene-item">
               <iframe src="https://www.youtube.com/embed/qwV1-LSsh00" title="« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               <figcaption class="cap-vid">« Je t'aime » de Lara Fabian — prestation pour la finale de La Voix de Beresford, Carnaval du Siffleux, février 2015</figcaption>
+            </figure>
+          </div>
+          <div class="beresford-stage-row beresford-row-bottom">
+            <figure class="scene-item">
+              <img src="assets/siffleux-cindy-emotion-recadree.jpg" alt="Le moment de l’annonce — La Voix de Beresford, 2015" width="277" height="445" loading="lazy" />
+              <figcaption class="cap-photo">Le moment de l’annonce — La Voix de Beresford, 2015</figcaption>
             </figure>
           </div>
         </div>
