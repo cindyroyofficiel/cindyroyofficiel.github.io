@@ -1394,7 +1394,8 @@
     .slider-hint.show { opacity: 1; transform: translateY(0); }
     /* Hommage Nicole McGrath : deux colonnes — les écrits à gauche, la photo et la vidéo fondues en dreamy à droite (Cindy, 7 nov.) */
     @media (min-width: 861px) {
-      .nicole-cols { display: grid; grid-template-columns: 1.12fr .88fr; gap: 34px; align-items: start; margin-top: 10px; text-align: left; }
+      .nicole-cols { display: grid; grid-template-columns: 1.55fr .85fr; gap: 34px; align-items: start; margin-top: 10px; text-align: left; }
+      .nicole-cols .hommage-text { column-count: 2; column-gap: 30px; }
       .nicole-cols .hommage-text { max-width: none; margin: 0; }
       .nicole-media { position: relative; min-height: 100%; }
     }
