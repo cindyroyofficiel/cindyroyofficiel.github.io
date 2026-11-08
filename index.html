@@ -2611,6 +2611,11 @@
     @keyframes film-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
     @media (prefers-reduced-motion: reduce) { .film-track { animation: none; } }
     @media (max-width: 900px) { .press-film-layout { grid-template-columns: 1fr; } .film-strip { height: 380px; max-width: 420px; margin: 0 auto; width: 100%; } }
+    @media (min-width: 1240px) { .press .presse-wrap { margin-left: max(10px, calc((100vw - 1180px) / 2 - 144px)); margin-right: auto; } }
+    .press .presse-wrap { position: relative; }
+    .presse-micro-in { position: absolute; top: -30px; right: -215px; height: 1020px; width: auto; opacity: .9; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 20%); mask-image: linear-gradient(to right, transparent, black 20%); }
+    @media (max-width: 1500px) { .presse-micro-in { right: -150px; height: 920px; } }
+    @media (max-width: 1239px) { .presse-micro-in { display: none; } }
 .press { background: #0d0d0b url("assets/presse-fond-noir-or.jpg") center top / 1600px auto repeat; color: #f3ead2; }
     .press .section-tag { color: #e7cf8e; }
     .press .section-title { color: #f6e3a1; }
@@ -2648,8 +2653,7 @@
 
     .press > *:not(.presse-deco) { position: relative; z-index: 1; }
     .presse-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-    .presse-micro { position: absolute; top: 0; right: 0; height: 1180px; max-height: 100%; width: auto; max-width: 44%; object-fit: cover; object-position: center top; opacity: .85; -webkit-mask-image: linear-gradient(to right, transparent, black 22%); mask-image: linear-gradient(to right, transparent, black 22%); }
-    @media (max-width: 900px) { .presse-micro { opacity: .6; max-width: 68%; } }
+    .presse-micro { display: none; }
 .presse-cam { position: absolute; top: 130px; left: -70px; width: 470px; height: auto; opacity: .34; transform: rotate(-5deg); -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); }
     .presse-cam-2 { top: auto; left: auto; bottom: 90px; right: -80px; width: 520px; opacity: .30; transform: scaleX(-1) rotate(-4deg); }
     @media (max-width: 1100px) { .presse-cam { width: 340px; left: -110px; } .presse-cam-2 { width: 360px; right: -120px; } }
@@ -7789,11 +7793,11 @@
 
     <section class="press" id="presse">
       <div class="presse-deco" aria-hidden="true">
-        <img class="presse-micro" src="assets/presse-micro-vintage-photo.jpg" alt="" loading="lazy" />
+        <img class="presse-micro-in" src="assets/presse-micro-vintage-photo.jpg" alt="" loading="lazy" />
         <img class="presse-cam" src="assets/presse-outils-vintage.svg" alt="" loading="lazy" />
         <img class="presse-cam presse-cam-2" src="assets/presse-outils-vintage.svg" alt="" loading="lazy" />
       </div>
-      <div class="wrap">
+      <div class="wrap presse-wrap">
         <nav class="door-nav" aria-label="Compartiments de Presse">
           <a href="#presse">Dossier de presse</a>
           <a href="#fiche-presse">La fiche</a>
