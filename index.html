@@ -1360,6 +1360,11 @@
     @media (max-width: 700px) {
       .photo-slider { grid-column: 1; }
       .photo-slider input[type="range"] { width: 130px; }
+      /* Audit mobile 8 nov. : sur téléphone, deux couches dreamy du Parcours dépassaient la
+         rangée (img centrée à 57,5 % et img à left:-70px) et poussaient la page à 396 px.
+         La rangée devient le contenant de rognage de ses couches absolues — aucun effet
+         sur le bureau (≥861 px) ni sur la disposition des autres rangées. */
+      .journey .timeline-row { overflow: hidden; }
     }
     .timeline-row .photo-slider { margin-top: 14px; }
     .dream-layer { transition: opacity .18s linear; }
@@ -2743,6 +2748,10 @@
       .contact-grid { align-items: start; }
     }
     @media (max-width: 620px) {
+      /* Audit mobile 8 nov. : le curseur « Voir la photo » ne faisait que 4 px de haut
+         sous le doigt (bouton de 20 px centré sur une piste fine). Zone tactile de
+         28 px de haut, piste et bouton inchangés visuellement. */
+      .photo-slider input[type="range"] { height: 28px; background: linear-gradient(to right, #c9a24f, #f6e3a1) center / 100% 4px no-repeat; }
       body { font-size: 16px; }
       section { padding: 76px 20px; }
       .wordmark { font-size: 23px; }
