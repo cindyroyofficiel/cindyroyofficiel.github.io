@@ -3286,8 +3286,10 @@
     .choeur-panel > *, .calixte-choeur > * { position: relative; }
     #ca-sen-vient .coffre-head { display: flex; gap: 26px; align-items: flex-start; }
     #ca-sen-vient .coffre-head-text { flex: 1 1 auto; min-width: 0; }
-    #ca-sen-vient .coffre-head .coffre-scene { flex: 0 0 320px; }
-    #ca-sen-vient .coffre-head .coffre-scene .stage { width: 320px; margin-top: 0; }
+    #ca-sen-vient .coffre-head .coffre-scene { flex: 0 0 470px; }
+    #ca-sen-vient .coffre-head .coffre-scene .stage { width: 470px; margin-top: 0; }
+    @media (max-width: 1150px) { #ca-sen-vient .coffre-head .coffre-scene { flex-basis: 420px; } #ca-sen-vient .coffre-head .coffre-scene .stage { width: 420px; } }
+    @media (max-width: 980px) { #ca-sen-vient .coffre-head { flex-direction: column; } #ca-sen-vient .coffre-head .coffre-scene { flex: none; margin: 0 auto; } #ca-sen-vient .coffre-head .coffre-scene .stage { width: min(88vw, 470px); } }
     @media (max-width: 760px) { #ca-sen-vient .coffre-head { flex-direction: column; } #ca-sen-vient .coffre-head .coffre-scene { flex: none; margin: 0 auto; } #ca-sen-vient .coffre-head .coffre-scene .stage { width: min(80vw, 300px); } }
     .choeur-videos.single { grid-template-columns: 1fr; max-width: 580px; margin-left: auto; margin-right: auto; }
     .choeur-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px; }
@@ -7513,12 +7515,19 @@
             from{transform:translateY(2.5px) rotate(-1.1deg)}
             to{transform:translateY(-3.5px) rotate(1.1deg)}
           }
-          /* Position d'honneur : la chanson, première, centrale, plus grande */
-          .coffre-scene .t-song{--lx:50%;   --ty:11.5%; --s:1.28; --d:5.00s}
-          .coffre-scene .t-humour{--lx:13.5%; --ty:26%;   --s:1;    --d:5.37s}
-          .coffre-scene .t-cuisine{--lx:31.5%;--ty:16.5%; --s:1;    --d:5.63s}
-          .coffre-scene .t-balado{--lx:68.5%; --ty:16.5%; --s:1;    --d:5.89s}
-          .coffre-scene .t-livre{--lx:86.5%; --ty:26%;   --s:1;    --d:6.15s}
+          /* Position d'honneur : la chanson, première, centrale, plus grande.
+             8 nov. 2026 (demande de Cindy : scène grossie, catégories au complet
+             sans embarquer une sur l'autre) : la frise respire — la chanson monte
+             un peu, cuisine et balado descendent sous sa ligne d'étiquette
+             (mesuré par sonde à 470 px : étiquette chanson y 88,9..115,3 contre
+             cuisine/balado qui commençaient à y 103,8 — chevauchement vertical
+             de ~11 px ; à --ty 22 % leurs étiquettes passent à ~y 129..150,
+             dégagées, et leurs icônes restent au-dessus de l'étiquette chanson). */
+          .coffre-scene .t-song{--lx:50%;   --ty:10%;   --s:1.28; --d:5.00s}
+          .coffre-scene .t-humour{--lx:13.5%; --ty:27%;   --s:1;    --d:5.37s}
+          .coffre-scene .t-cuisine{--lx:31.5%;--ty:22%; --s:1;    --d:5.63s}
+          .coffre-scene .t-balado{--lx:72%; --ty:22%; --s:1;    --d:5.89s}
+          .coffre-scene .t-livre{--lx:86.5%; --ty:27%;   --s:1;    --d:6.15s}
 
           .coffre-scene .replay{
             margin-top:2.6rem; font-family:var(--serif); font-size:1rem; font-weight:600;
@@ -7562,11 +7571,11 @@
           .coffre-scene .glow{opacity:.9; transform:translateX(-50%) scale(1)}
           .coffre-scene .rays, .coffre-scene .spark{display:none}
           .coffre-scene .talent{opacity:1; animation:none}
-          .coffre-scene .t-song{left:50%;top:11.5%;transform:translate(-50%,-50%) scale(1.28)}
-          .coffre-scene .t-humour{left:13.5%;top:26%;transform:translate(-50%,-50%)}
-          .coffre-scene .t-cuisine{left:31.5%;top:16.5%;transform:translate(-50%,-50%)}
-          .coffre-scene .t-balado{left:68.5%;top:16.5%;transform:translate(-50%,-50%)}
-          .coffre-scene .t-livre{left:86.5%;top:26%;transform:translate(-50%,-50%)}
+          .coffre-scene .t-song{left:50%;top:10%;transform:translate(-50%,-50%) scale(1.28)}
+          .coffre-scene .t-humour{left:13.5%;top:27%;transform:translate(-50%,-50%)}
+          .coffre-scene .t-cuisine{left:31.5%;top:22%;transform:translate(-50%,-50%)}
+          .coffre-scene .t-balado{left:72%;top:22%;transform:translate(-50%,-50%)}
+          .coffre-scene .t-livre{left:86.5%;top:27%;transform:translate(-50%,-50%)}
           .coffre-scene .cindy{opacity:1; left:12%; bottom:2.6%}
           .coffre-scene .cindy img{transform:scaleX(-1)}
           .coffre-scene .cindy .cindy-base{opacity:0}
