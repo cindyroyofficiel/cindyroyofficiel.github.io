@@ -2596,12 +2596,47 @@
 
     /* ——— Dossier de presse : entrevue vidéo + document officiel ——— */
         .press { position: relative; z-index: 0; overflow: hidden; background: var(--cream) url("assets/presse-fond-texture.jpg") center top / 1600px auto repeat; }
+
+    /* ===== PRESSE — THÈME NOIR ET OR (salle des médias, vintage) ===== */
+    .press { background: #0d0d0b url("assets/presse-fond-noir-or.jpg") center top / 1600px auto repeat; color: #f3ead2; }
+    .press .section-tag { color: #e7cf8e; }
+    .press .section-title { color: #f6e3a1; }
+    .press .section-title em { color: #e7cf8e; }
+    .press .section-intro { color: #e9dfc2; }
+    .press .door-nav { background: rgba(16, 16, 13, .92); border-color: rgba(201, 162, 79, .45); }
+    .press .door-nav a { color: #e9dfc2; }
+    .press .door-nav a:hover, .press .door-nav a.active { color: #f6e3a1; }
+    .press .onesheet { background: #171712; border: 1px solid rgba(201, 162, 79, .5); box-shadow: 0 24px 50px rgba(0, 0, 0, .5); color: #f3ead2; }
+    .press .onesheet-name { color: #f6e3a1; }
+    .press .onesheet-role { color: #e7cf8e; }
+    .press .onesheet-block h4 { color: #e7cf8e; }
+    .press .onesheet-block p, .press .onesheet-block li { color: #ece1c4; }
+    .press .onesheet a { color: #f6e3a1; }
+    .press .press-item figcaption { color: #ddd0a8; }
+    .press .press-item video, .press .press-item img { border-color: rgba(201, 162, 79, .55); box-shadow: 0 18px 40px rgba(0, 0, 0, .55); }
+    .press .press-clipping { background: #fdf8ef; border-color: rgba(201, 162, 79, .6); }
+    .press .press-list { color: #ece1c4; }
+    .press .press-list a { color: #f6e3a1; }
+    .press .press-list li { border-color: rgba(201, 162, 79, .35); }
+    .press .press-note { color: #ddd0a8; }
+    .press .entrevues-title { color: #f6e3a1; }
+    .press .entrevue-max-title { color: #f3ead2; }
+    .press .entrevue-max-intro { color: #ddd0a8; }
+    .press .max-kevin figcaption { color: #ddd0a8; }
+    .press .max1049-grid figcaption { color: #cfc096; }
+    .press .press-gallery-title { color: #f3ead2; }
+    .press .kit-item { color: #ece1c4; }
+    .press .kit-item h4, .press .kit-item h3 { color: #e7cf8e; }
+    .press .gallery-toggle { color: #f6e3a1; }
+    .press .gallery-toggle-hint { color: #cfc096; }
+    .press .kit-download { color: #f6e3a1; }
+
     .press > *:not(.presse-deco) { position: relative; z-index: 1; }
     .presse-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-    .presse-cam { position: absolute; top: 130px; left: -70px; width: 400px; height: auto; opacity: .20; transform: rotate(-5deg); -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); }
-    .presse-cam-2 { top: auto; left: auto; bottom: 90px; right: -80px; width: 440px; opacity: .17; transform: scaleX(-1) rotate(-4deg); }
-    @media (max-width: 1100px) { .presse-cam { width: 300px; left: -110px; } .presse-cam-2 { width: 320px; right: -120px; } }
-    @media (max-width: 700px) { .presse-cam { width: 230px; left: -120px; top: 90px; } .presse-cam-2 { width: 250px; right: -130px; bottom: 50px; } }
+    .presse-cam { position: absolute; top: 130px; left: -70px; width: 470px; height: auto; opacity: .34; transform: rotate(-5deg); -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); }
+    .presse-cam-2 { top: auto; left: auto; bottom: 90px; right: -80px; width: 520px; opacity: .30; transform: scaleX(-1) rotate(-4deg); }
+    @media (max-width: 1100px) { .presse-cam { width: 340px; left: -110px; } .presse-cam-2 { width: 360px; right: -120px; } }
+    @media (max-width: 700px) { .presse-cam { width: 260px; left: -120px; top: 90px; } .presse-cam-2 { width: 280px; right: -130px; bottom: 50px; } }
 .press-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; }
     /* Une seule pièce en tête du Dossier de presse (l’entrevue CHAU-TV, depuis
        que la coupure du 9 juin 2015 a rejoint la Galerie de presse) : colonne
