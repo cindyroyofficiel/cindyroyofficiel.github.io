@@ -2889,7 +2889,7 @@
 
     /* Menu à 10 ancres : bascule hamburger sous 1180 px pour éviter tout débordement */
     @media (max-width: 1180px) {
-      .nav-links { display: none; position: fixed; inset: 0; background: rgba(13,19,12,.99); padding: 92px 26px 40px; flex-direction: column; align-items: flex-start; gap: 2px; }
+      .nav-links { display: none; position: fixed; inset: 0; background: rgba(13,19,12,.99); padding: 92px 26px 40px; flex-direction: column; align-items: flex-start; gap: 2px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
       .nav-links.open { display: flex; }
       .nav-links a { width: 100%; padding: 14px 0; font-family: var(--serif); font-size: 27px; border-bottom: 1px solid rgba(255,255,255,.1); white-space: normal; }
       .menu-toggle { display: block; position: relative; z-index: 2; }
