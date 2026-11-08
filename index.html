@@ -7808,6 +7808,8 @@
             <figcaption>Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
+
+
           <aside class="film-strip" aria-label="Ruban de pellicule — mes articles de presse 2015">
             <p class="film-strip-title">La presse en parle — 2015</p>
             <div class="film-track">
@@ -7818,6 +7820,7 @@
               <img src="assets/preuve-acadie-nouvelle-beresford-15aout2015.jpg" alt="Article de L'Acadie Nouvelle, Beresford, 15 août 2015" loading="lazy" />
               <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy avec son trophée du Gala 2015" loading="lazy" />
             </div>
+        </div>
           </aside>
         <div class="entrevues" id="entrevues">
           <p class="entrevues-title">Mes entrevues</p>
@@ -8949,6 +8952,6 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bascule(); }
         });
       })();
-    </script>
+    <script>document.querySelectorAll('.film-track').forEach(function (t) { t.innerHTML += t.innerHTML; });</script>
 </body>
 </html>
