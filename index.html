@@ -2598,7 +2598,20 @@
         .press { position: relative; z-index: 0; overflow: hidden; background: var(--cream) url("assets/presse-fond-texture.jpg") center top / 1600px auto repeat; }
 
     /* ===== PRESSE — THÈME NOIR ET OR (salle des médias, vintage) ===== */
-    .press { background: #0d0d0b url("assets/presse-fond-noir-or.jpg") center top / 1600px auto repeat; color: #f3ead2; }
+        .press-film-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; margin-top: 48px; }
+    .press-film-layout .press-grid { margin-top: 0; }
+    .film-strip { position: relative; background: #080807; border: 1px solid rgba(201, 162, 79, .55); padding: 16px 30px; overflow: hidden; height: 520px; -webkit-mask-image: linear-gradient(to bottom, transparent, black 7%, black 93%, transparent); mask-image: linear-gradient(to bottom, transparent, black 7%, black 93%, transparent); }
+    .film-strip::before, .film-strip::after { content: ""; position: absolute; top: 0; bottom: 0; width: 16px; background-image: radial-gradient(circle, #c9a24f 2.6px, rgba(201, 162, 79, 0) 3.4px); background-size: 16px 24px; background-repeat: repeat-y; opacity: .8; }
+    .film-strip::before { left: 6px; }
+    .film-strip::after { right: 6px; }
+    .film-strip-title { position: relative; z-index: 2; margin: 0 0 12px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 16.5px; color: #e7cf8e; background: #080807; padding-bottom: 8px; }
+    .film-track { display: flex; flex-direction: column; gap: 14px; animation: film-scroll 46s linear infinite; }
+    .film-strip:hover .film-track { animation-play-state: paused; }
+    .film-track img { display: block; width: 100%; height: auto; border: 1px solid rgba(201, 162, 79, .4); background: #fdf8ef; }
+    @keyframes film-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .film-track { animation: none; } }
+    @media (max-width: 900px) { .press-film-layout { grid-template-columns: 1fr; } .film-strip { height: 380px; max-width: 420px; margin: 0 auto; width: 100%; } }
+.press { background: #0d0d0b url("assets/presse-fond-noir-or.jpg") center top / 1600px auto repeat; color: #f3ead2; }
     .press .section-tag { color: #e7cf8e; }
     .press .section-title { color: #f6e3a1; }
     .press .section-title em { color: #e7cf8e; }
@@ -2614,6 +2627,8 @@
     .press .onesheet a { color: #f6e3a1; }
     .press .press-item figcaption { color: #ddd0a8; }
     .press .press-item video, .press .press-item img { border-color: rgba(201, 162, 79, .55); box-shadow: 0 18px 40px rgba(0, 0, 0, .55); }
+    .press .press-grid-one .press-item { background: linear-gradient(#241d10, #17130a); border: 1px solid rgba(201, 162, 79, .75); outline: 3px double rgba(201, 162, 79, .55); outline-offset: 5px; padding: 14px; box-shadow: 0 24px 50px rgba(0, 0, 0, .6); }
+    .press .press-grid-one .press-item figcaption { margin-top: 12px; text-align: center; color: #e7cf8e; font-style: italic; }
     .press .press-clipping { background: #fdf8ef; border-color: rgba(201, 162, 79, .6); }
     .press .press-list { color: #ece1c4; }
     .press .press-list a { color: #f6e3a1; }
@@ -7786,12 +7801,24 @@
         <p class="section-tag">Presse et médias</p>
         <h2 class="section-title">Dossier de <em>presse</em></h2>
         <p class="section-intro">Entrevues, articles et documents officiels — le beau récit que les médias ont fait de mon parcours.</p>
+        <div class="press-film-layout">
         <div class="press-grid press-grid-one">
           <figure class="press-item">
             <iframe src="https://www.youtube.com/embed/w1MF0PKgOi0" title="Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015" loading="lazy" style="aspect-ratio: 720 / 694" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Entrevue à CHAU TV — avant le Gala de la chanson de Caraquet, 2015</figcaption>
           </figure>
         </div>
+          <aside class="film-strip" aria-label="Ruban de pellicule — mes articles de presse 2015">
+            <p class="film-strip-title">La presse en parle — 2015</p>
+            <div class="film-track">
+              <img src="assets/preuve-radio-canada-1aout2015.jpg" alt="Article de Radio-Canada, 1er août 2015" loading="lazy" />
+              <img src="assets/preuve-acadie-nouvelle-gala-31juillet2015.jpg" alt="Article de L'Acadie Nouvelle sur le Gala, 31 juillet 2015" loading="lazy" />
+              <img src="assets/article-acadie-nouvelle-9juin2015-p4.png" alt="Article de L'Acadie Nouvelle, 9 juin 2015" loading="lazy" />
+              <img src="assets/preuve-acadie-nouvelle-petit-rocher-6aout2015.jpg" alt="Article de L'Acadie Nouvelle, Petit-Rocher, 6 août 2015" loading="lazy" />
+              <img src="assets/preuve-acadie-nouvelle-beresford-15aout2015.jpg" alt="Article de L'Acadie Nouvelle, Beresford, 15 août 2015" loading="lazy" />
+              <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy avec son trophée du Gala 2015" loading="lazy" />
+            </div>
+          </aside>
         <div class="entrevues" id="entrevues">
           <p class="entrevues-title">Mes entrevues</p>
           <div class="entrevue-max">
