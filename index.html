@@ -9116,12 +9116,20 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
     }, { threshold: 0.1 });
     io.observe(scene);
   } else { openCurtain(); }
-  var btn = document.getElementById('curtain-replay');
-  if (btn) btn.addEventListener('click', function () {
+  function replayCurtain() {
     scene.classList.remove('curtain-open');
     opened = false;
-    scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(openCurtain, 650);
+  }
+  var btn = document.getElementById('curtain-replay');
+  if (btn) btn.addEventListener('click', function () {
+    scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    replayCurtain();
+  });
+  /* chaque clic sur « Scène » dans les menus rouvre le rideau */
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href$="#scene"]') : null;
+    if (a) replayCurtain();
   });
 })();
 </script>
