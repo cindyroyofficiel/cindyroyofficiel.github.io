@@ -2418,14 +2418,14 @@
        débordement horizontal. */
     #scene { position: relative; overflow: hidden; }
     #scene > .wrap { position: relative; z-index: 1; }
-    .scene-spot { position: absolute; z-index: 0; top: 0; left: 0; right: 0; height: 520px; pointer-events: none; overflow: hidden; }
+    .scene-spot { position: absolute; z-index: 0; top: 0; left: 0; right: 0; height: 620px; pointer-events: none; overflow: hidden; }
     .scene-spot-source { position: absolute; top: -36px; left: 50%; width: 200px; height: 88px; margin-left: -100px; border-radius: 50%; filter: blur(4px);
       background: radial-gradient(ellipse at center, rgba(255, 240, 196, .85) 0%, rgba(255, 222, 150, .32) 55%, rgba(255, 222, 150, 0) 75%); }
     .scene-spot-beam { position: absolute; top: -6px; left: 50%; width: 600px; height: 470px; margin-left: -300px; transform-origin: 50% 0;
       animation: scene-spot-sweep 12s ease-in-out infinite alternate; }
     .scene-spot-cone { position: absolute; inset: 0; filter: blur(7px); clip-path: polygon(47% 0, 53% 0, 86% 100%, 14% 100%);
       background: linear-gradient(180deg, rgba(255, 226, 158, .50) 0%, rgba(250, 205, 116, .30) 45%, rgba(250, 205, 116, .10) 78%, rgba(250, 205, 116, 0) 100%); }
-    .scene-spot-halo { position: absolute; top: 366px; left: 50%; width: 520px; height: 112px; margin-left: -260px; border-radius: 50%; filter: blur(6px);
+    .scene-spot-halo { position: absolute; top: 486px; left: 50%; width: 520px; height: 112px; margin-left: -260px; border-radius: 50%; filter: blur(6px);
       background: radial-gradient(ellipse at center, rgba(255, 228, 160, .48) 0%, rgba(250, 208, 120, .20) 55%, rgba(250, 208, 120, 0) 78%);
       animation: scene-spot-drift 12s ease-in-out infinite alternate; }
     @keyframes scene-spot-sweep { from { transform: rotate(-3.6deg); } to { transform: rotate(3.6deg); } }
@@ -2435,10 +2435,10 @@
       .scene-spot-halo { background: radial-gradient(ellipse at center, rgba(255, 228, 160, .55) 0%, rgba(250, 208, 120, .24) 55%, rgba(250, 208, 120, 0) 78%); }
     }
     @media (max-width: 720px) {
-      .scene-spot { height: 400px; }
+      .scene-spot { height: 440px; }
       .scene-spot-source { width: 150px; height: 70px; margin-left: -75px; }
       .scene-spot-beam { width: 380px; height: 336px; margin-left: -190px; }
-      .scene-spot-halo { top: 258px; width: 330px; height: 84px; margin-left: -165px; }
+      .scene-spot-halo { top: 316px; width: 330px; height: 84px; margin-left: -165px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .scene-spot-beam, .scene-spot-halo { animation: none !important; }
@@ -2457,7 +2457,7 @@
        respirer. La photo d'origine n'est ni retouchée ni recadrée
        dans le fichier : le recadrage est en object-fit, le fondu en
        masque. */
-    .scene-spot-photo { position: absolute; top: 34px; right: clamp(6px, 3.5vw, 56px); width: 380px; max-width: 44%; height: 520px; object-fit: cover; object-position: 58% 8%;
+    .scene-spot-photo { position: absolute; top: 132px; right: clamp(6px, 3.5vw, 56px); width: 380px; max-width: 44%; height: 468px; object-fit: cover; object-position: 58% 8%;
       -webkit-mask-image:
         linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
         linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
@@ -2467,7 +2467,7 @@
         linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
       mask-composite: intersect; }
     @media (max-width: 720px) {
-      .scene-spot-photo { width: 196px; height: 340px; right: -6px; top: 26px; opacity: .62; }
+      .scene-spot-photo { width: 196px; height: 300px; right: -6px; top: 102px; opacity: .62; }
     }
 
     /* ——— RIDEAU + AMBIANCE DE SCÈNE (#scene, idée de Cindy, 9 nov. 2026) ———
@@ -2497,7 +2497,8 @@
     .scene-spark { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #ffe9a8; opacity: 0; animation: scene-spark-rise 10s linear infinite; }
     @keyframes scene-spark-rise { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .75; } 85% { opacity: .5; } 100% { transform: translateY(-560px); opacity: 0; } }
     /* rideau */
-    .scene-curtain { position: absolute; top: 0; left: 0; right: 0; height: min(96svh, 860px); z-index: 40; pointer-events: none; display: none; }
+    #scene { scroll-margin-top: 148px; }
+    .scene-curtain { position: absolute; top: 0; left: 0; right: 0; height: min(96svh, 860px); z-index: 12; pointer-events: none; display: none; }
     #scene.curtain-armed .scene-curtain { display: block; }
     .scene-curtain .panel { position: absolute; top: 0; bottom: 0; width: 52%;
       background:
