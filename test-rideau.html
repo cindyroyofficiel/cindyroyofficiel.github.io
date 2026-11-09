@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test — Rideau Scène</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { height:100%; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background:#050208;
+    overflow:hidden;
+    color:#f5e9d0;
+  }
+  /* ---------- STAGE BACKGROUND ---------- */
+  .stage {
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 108%, rgba(120,60,10,.35), transparent 60%),
+      radial-gradient(ellipse 120% 90% at 50% 40%, #160a24 0%, #07030f 55%, #020105 100%);
+  }
+  /* light beams */
+  .beam {
+    position:absolute; top:-12%; width:34vmax; height:90vmax;
+    clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+    filter: blur(6px);
+    opacity:.5; mix-blend-mode:screen;
+    transform-origin: 50% 0;
+    animation: sway 7s ease-in-out infinite alternate;
+  }
+  .beam.b1 { left:2%;  background:linear-gradient(to bottom, rgba(255,70,90,.85), rgba(255,70,90,0) 78%); animation-delay:0s; }
+  .beam.b2 { left:24%; background:linear-gradient(to bottom, rgba(255,190,60,.8), rgba(255,190,60,0) 78%); animation-delay:-2s; }
+  .beam.b3 { right:24%; background:linear-gradient(to bottom, rgba(80,160,255,.8), rgba(80,160,255,0) 78%); animation-delay:-4s; }
+  .beam.b4 { right:2%;  background:linear-gradient(to bottom, rgba(190,90,255,.8), rgba(190,90,255,0) 78%); animation-delay:-1s; }
+  @keyframes sway { from { transform: rotate(-9deg);} to { transform: rotate(9deg);} }
+  /* floor glow pools */
+  .pool { position:absolute; bottom:6%; width:26vmax; height:7vmax; border-radius:50%; filter:blur(18px); opacity:.35; }
+  .pool.p1 { left:4%;  background:#ff465a; } .pool.p2 { left:28%; background:#ffbe3c; }
+  .pool.p3 { right:28%; background:#50a0ff; } .pool.p4 { right:4%; background:#be5aff; }
+  /* floating dust sparkles */
+  .spark { position:absolute; width:3px; height:3px; border-radius:50%; background:#ffe9a8; opacity:0; animation: rise 9s linear infinite; }
+  @keyframes rise { 0%{ transform:translateY(20vh); opacity:0;} 15%{opacity:.8;} 85%{opacity:.6;} 100%{ transform:translateY(-70vh); opacity:0;} }
+  /* ---------- CONTENT REVEALED ---------- */
+  .content {
+    position:fixed; inset:0; z-index:5;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:2rem 1.2rem;
+    opacity:0; transform:scale(.96);
+    transition: opacity 1.4s ease .9s, transform 1.4s ease .9s;
+  }
+  body.open .content { opacity:1; transform:scale(1); }
+  .content .star { font-size:1.6rem; color:#e9b949; letter-spacing:.6rem; margin-bottom:.6rem; }
+  .content h1 {
+    font-size: clamp(2.6rem, 11vw, 4.6rem);
+    font-weight:normal; letter-spacing:.14em; text-transform:uppercase;
+    color:#f7ead1; text-shadow:0 0 26px rgba(233,185,73,.45), 0 2px 0 rgba(0,0,0,.6);
+  }
+  .content p {
+    margin-top:1rem; font-style:italic; font-size:clamp(1.05rem, 4.6vw, 1.4rem); color:#e8d9b8; max-width:34rem; line-height:1.55;
+  }
+  .content .orn { margin-top:1.4rem; color:#e9b949; font-size:1.1rem; letter-spacing:.4rem; }
+  /* ---------- CURTAINS ---------- */
+  .curtain {
+    position:fixed; top:0; bottom:0; width:52%; z-index:20;
+    background:
+      repeating-linear-gradient(90deg, #5d0a14 0 14px, #8e1220 14px 30px, #a01628 30px 44px, #6d0c17 44px 58px);
+    box-shadow: inset 0 -70px 60px -30px rgba(0,0,0,.75), inset 0 30px 40px rgba(0,0,0,.5);
+    transition: transform 2.6s cubic-bezier(.6,.02,.25,1);
+  }
+  .curtain.left  { left:0;  border-right:4px solid #d4a017; transform-origin:left center; }
+  .curtain.right { right:0; border-left:4px solid #d4a017; transform-origin:right center; }
+  body.open .curtain.left  { transform: translateX(-88%) skewY(0.6deg); }
+  body.open .curtain.right { transform: translateX(88%) skewY(-0.6deg); }
+  .valance {
+    position:fixed; top:0; left:0; right:0; height:15vh; min-height:84px; z-index:21;
+    background:
+      radial-gradient(circle at 10% -30%, transparent 62px, #7d0e1b 63px) repeat-x;
+    background-size: 120px 100%;
+    background-color:#7d0e1b;
+    border-bottom:5px solid #d4a017;
+    box-shadow: 0 12px 28px rgba(0,0,0,.65);
+  }
+  .valance::after {
+    content:""; position:absolute; inset:0;
+    background: repeating-linear-gradient(90deg, rgba(0,0,0,.22) 0 12px, transparent 12px 30px, rgba(255,255,255,.05) 30px 44px, transparent 44px 60px);
+  }
+  /* ---------- CONTROLS ---------- */
+  .controls {
+    position:fixed; bottom:18px; left:0; right:0; z-index:30;
+    display:flex; justify-content:center; gap:10px;
+  }
+  .controls button {
+    font-family:inherit; font-size:.95rem; letter-spacing:.06em;
+    background:rgba(20,8,28,.75); color:#f0d9a0; border:1px solid #c9962e;
+    padding:.55rem 1.2rem; border-radius:999px; cursor:pointer; backdrop-filter: blur(4px);
+  }
+  .controls button:active { background:rgba(60,30,10,.85); }
+  .hint {
+    position:fixed; bottom:64px; left:0; right:0; z-index:30; text-align:center;
+    font-size:.85rem; color:rgba(240,217,160,.75); font-style:italic;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .curtain { transition-duration:.4s; } .beam { animation:none; } .spark { animation:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div>
+    <div class="pool p1"></div><div class="pool p2"></div><div class="pool p3"></div><div class="pool p4"></div>
+  </div>
+
+  <div class="content">
+    <div class="star">★ ★ ★</div>
+    <h1>Scène</h1>
+    <p>« Comme si on embarquait sur la scène… »</p>
+    <div class="orn">✦ ✦ ✦</div>
+  </div>
+
+  <div class="valance"></div>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+
+  <div class="hint">Test de Didy — rien sur ton vrai site n'est touché</div>
+  <div class="controls">
+    <button id="replay">↺ Rejouer le rideau</button>
+  </div>
+
+<script>
+  // sparkles
+  const stage = document.querySelector('.stage');
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.bottom = '0';
+    s.style.animationDelay = (Math.random() * 9) + 's';
+    s.style.animationDuration = (7 + Math.random() * 6) + 's';
+    stage.appendChild(s);
+  }
+  function openCurtain(){ document.body.classList.add('open'); }
+  function closeCurtain(){ document.body.classList.remove('open'); }
+  window.addEventListener('load', () => setTimeout(openCurtain, 700));
+  document.getElementById('replay').addEventListener('click', () => {
+    closeCurtain();
+    setTimeout(openCurtain, 900);
+  });
+</script>
+</body>
+</html>
