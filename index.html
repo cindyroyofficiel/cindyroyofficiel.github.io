@@ -292,7 +292,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
@@ -5087,10 +5087,18 @@
       <span class="has-sub">
         <a href="#parcours">Parcours</a>
         <span class="sub-menu">
-          <a href="#robertville">Robertville</a>
-          <a href="#guitare">Guitare</a>
+          <a href="#enfance">Enfance</a>
+          <a href="#robertville">Adolescence</a>
+          <a href="#guitare">Adulte et mère</a>
+          <a href="#talent">Concours</a>
+          <a href="#talent" class="sub-sub">↳ Bathurst Talent Search</a>
+          <a href="#concours-en-ligne" class="sub-sub">↳ Concours en ligne</a>
+          <a href="#parcours-beresford" class="sub-sub">↳ La Voix de Beresford</a>
+          <a href="#parcours-gala" class="sub-sub">↳ Gala de Caraquet</a>
+          <a href="#scene">Sur scène</a>
           <a href="#nicole">Nicole McGrath</a>
-                            </span>
+          <a href="#aujourdhui">Aujourd'hui</a>
+        </span>
       </span>
       <span class="has-sub">
         <a href="#influences">Influences</a>
@@ -6696,10 +6704,18 @@
     <section class="journey" id="parcours">
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments de Parcours">
-          <a href="#robertville">Robertville</a>
-          <a href="#guitare">Guitare</a>
+          <a href="#enfance">Enfance</a>
+          <a href="#robertville">Adolescence</a>
+          <a href="#guitare">Adulte et mère</a>
+          <a href="#talent">Concours</a>
+          <a href="#talent" class="sub-chip">↳ Bathurst Talent Search</a>
+          <a href="#concours-en-ligne" class="sub-chip">↳ Concours en ligne</a>
+          <a href="#parcours-beresford" class="sub-chip">↳ La Voix de Beresford</a>
+          <a href="#parcours-gala" class="sub-chip">↳ Gala de Caraquet</a>
+          <a href="#scene">Sur scène</a>
           <a href="#nicole">Nicole McGrath</a>
-                            </nav>
+          <a href="#aujourdhui">Aujourd'hui</a>
+        </nav>
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <style>.parcours-hero-photo{position:absolute;top:0;right:0;height:100%;width:35%;object-fit:cover;object-position:center 22%;opacity:.44;border-radius:16px;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 34%),linear-gradient(to top,transparent 0%,black 18%,black 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0%,black 34%),linear-gradient(to top,transparent 0%,black 18%,black 88%,transparent 100%);mask-composite:intersect}@media (max-width:760px){.parcours-hero-photo{opacity:.20;width:56%}}</style>
         <div style="position: relative;">
@@ -6714,10 +6730,10 @@
             <img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" />
           </figure>
           <div class="timeline">
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <article class="timeline-row" id="enfance" style="position: relative; z-index: 0;" data-slider-box>
             <img class="pastacle-photo-l dream-layer" data-base-opacity="0.34" src="assets/petite-cindy-boombox-diane-tell.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <img class="pastacle-photo-r dream-layer" data-base-opacity="0.34" src="assets/cindy-5-ans-famille.jpg" alt="" aria-hidden="true" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
-            <div class="timeline-year" style="position: relative;">5 ans</div>
+            <div class="timeline-year" style="position: relative;">Enfance</div>
             <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><p>J’avais cinq ans, pis je faisais déjà des « pastacles » — pas des spectacles, des pastacles! Dans le salon, habillée d’un t-shirt trop grand pour moi qui me faisait une robe, ma brosse comme micro, debout sur la table de cuisine, je chantais du Diane Tell : « Si j’étais un homme... »</p>
 </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="pastacles-photo-slider">Voir la photo</label><input id="pastacles-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
@@ -6725,7 +6741,7 @@
           <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.26" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .26; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img class="enfance-marches" src="assets/cindy-eglise-robertville-marches-fondue.webp" alt="" style="position: absolute; right: 2%; top: 50%; transform: translateY(-50%); height: 94%; width: auto; object-fit: cover; object-position: center 68%;" /></div>
             <img class="dream-layer" data-base-opacity="0.32" src="assets/eglise-robertville-facade-fondue.webp" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 94%; width: auto; z-index: -1; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%);" />
-            <div class="timeline-year">Enfance</div>
+            <div class="timeline-year">Robertville</div>
             <div class="timeline-copy fade-copy"><h3 id="robertville">La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="enfance-photo-slider">Voir la photo</label><input id="enfance-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
@@ -6733,7 +6749,7 @@
           <article class="timeline-row" style="position: relative; z-index: 0;">
             
             <div class="timeline-year" style="position: relative; align-self: stretch; overflow: visible;">1989 à 1995<img src="assets/cindy-adolescence-decor.jpg" alt="" aria-hidden="true" loading="lazy" style="display: block; position: absolute; left: 0; top: 34px; width: 330px; max-width: none; height: calc(100% + 10px); object-fit: cover; object-position: center 30%; opacity: .55; -webkit-mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%);" /></div>
-            <div class="timeline-copy" style="position: relative; z-index: 0;"><h3>Cindy à l’adolescence</h3><p>À 12 ans, j’étais déjà dans la chorale des jeunes de ma paroisse — et à l’adolescence, je me suis jointe aussi à celle des adultes. Je chantais donc dans les deux : les jeunes le dimanche, les adultes le samedi, sans compter les pratiques du samedi matin. Le reste de ma semaine était tout aussi bien rempli : cours de danse, natation, cours d’orgue. Quelques-uns de nos spectacles de Noël et de danse ont même été télévisés au canal communautaire. À l’école secondaire Népisiguit, il y avait les spectacles de Noël et ceux de variété. Et moi, je traînais toujours un micro dans ma sacoche — toujours prête à pousser la chansonnette.</p><p>Entre les études et les amis, je travaillais aussi : des petits boulots d’été dès l’âge de 12 ans, puis ma première vraie job à 15 ans, à la Coopérative de Robertville. À 16 ans, j’ai eu mon premier char — une Renault Encore 1984, que j’ai conduite un an sans muffler : on m’entendait arriver de loin! J’étais toujours là où ça chantait et où ça dansait.</p></div>
+            <div class="timeline-copy" style="position: relative; z-index: 0;"><h3 id="adolescence">Cindy à l’adolescence</h3><p>À 12 ans, j’étais déjà dans la chorale des jeunes de ma paroisse — et à l’adolescence, je me suis jointe aussi à celle des adultes. Je chantais donc dans les deux : les jeunes le dimanche, les adultes le samedi, sans compter les pratiques du samedi matin. Le reste de ma semaine était tout aussi bien rempli : cours de danse, natation, cours d’orgue. Quelques-uns de nos spectacles de Noël et de danse ont même été télévisés au canal communautaire. À l’école secondaire Népisiguit, il y avait les spectacles de Noël et ceux de variété. Et moi, je traînais toujours un micro dans ma sacoche — toujours prête à pousser la chansonnette.</p><p>Entre les études et les amis, je travaillais aussi : des petits boulots d’été dès l’âge de 12 ans, puis ma première vraie job à 15 ans, à la Coopérative de Robertville. À 16 ans, j’ai eu mon premier char — une Renault Encore 1984, que j’ai conduite un an sans muffler : on m’entendait arriver de loin! J’étais toujours là où ça chantait et où ça dansait.</p></div>
           </article>
           <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dreamy-bg" data-base-opacity="0.36" aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .36; -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%);"><img src="assets/diane-creme-glacee.jpg" alt="" style="flex: 1.15; min-width: 0; height: 100%; object-fit: cover; object-position: center 28%; filter: brightness(1.04) saturate(.95) contrast(.97); -webkit-mask-image: linear-gradient(to right, black 80%, transparent 99%); mask-image: linear-gradient(to right, black 80%, transparent 99%);" /><img src="assets/diane-portrait-enfants.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover; object-position: center 32%; margin-left: -7%; filter: brightness(1.05) saturate(.96) contrast(.97); -webkit-mask-image: linear-gradient(to left, black 80%, transparent 99%); mask-image: linear-gradient(to left, black 80%, transparent 99%);" /></div>
@@ -6744,13 +6760,13 @@
           <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%);"><img src="assets/talent-search-cindy-jean.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /><img src="assets/talent-search-cindy-bordeaux.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /></div>
             <div class="timeline-year" style="position: relative;">2003 à 2004</div>
-            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3>Le Bathurst Talent Search</h3><p>Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst. C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise. Et sur les photos derrière ce texte, je suis enceinte de huit mois — je montais sur scène avec mon beau gros ventre! À ma dernière prestation, avant de commencer à chanter, j’ai même dit au public : « J’espère qu’il y a un docteur dans la salle — ça pourrait arriver d’une minute à l’autre! »</p>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3 id="talent">Le Bathurst Talent Search</h3><p>Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst. C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise. Et sur les photos derrière ce texte, je suis enceinte de huit mois — je montais sur scène avec mon beau gros ventre! À ma dernière prestation, avant de commencer à chanter, j’ai même dit au public : « J’espère qu’il y a un docteur dans la salle — ça pourrait arriver d’une minute à l’autre! »</p>
 </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="talent-photo-slider">Voir la photo</label><input id="talent-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2003 à 2005</div>
-            <div class="timeline-copy" style="position: relative; z-index: 0;"><img class="online-idol-logo" src="assets/logo-online-idol-2003.svg" alt="Logo Online Idol 2003 : un ovale bleu foncé à bordure bleu néon, « Online Idol » en lettres blanches attachées, comme les logos Idol de l'époque." loading="lazy" /><h3>Les concours en ligne</h3><p>J’élevais de jeunes enfants dans ce temps-là — le web, c’était ma façon de garder la musique en vie, pis de continuer à apprendre. À Online Idol, un concours de chant en ligne, je me suis rendue jusqu’au Top 3 — éliminée le 24 septembre 2003, juste avant la finale. Pis sur Dare to Sing pis Singer’s Showcase, deux communautés de chanteurs du monde entier, je partageais mes chansons, je chantais des duos avec des chanteurs d’ailleurs, pis le monde m’encourageait à continuer. C’est là que j’ai appris que ma voix pouvait voyager loin, même à partir de chez nous.</p>
+            <div class="timeline-copy" style="position: relative; z-index: 0;"><img class="online-idol-logo" src="assets/logo-online-idol-2003.svg" alt="Logo Online Idol 2003 : un ovale bleu foncé à bordure bleu néon, « Online Idol » en lettres blanches attachées, comme les logos Idol de l'époque." loading="lazy" /><h3 id="concours-en-ligne">Les concours en ligne</h3><p>J’élevais de jeunes enfants dans ce temps-là — le web, c’était ma façon de garder la musique en vie, pis de continuer à apprendre. À Online Idol, un concours de chant en ligne, je me suis rendue jusqu’au Top 3 — éliminée le 24 septembre 2003, juste avant la finale. Pis sur Dare to Sing pis Singer’s Showcase, deux communautés de chanteurs du monde entier, je partageais mes chansons, je chantais des duos avec des chanteurs d’ailleurs, pis le monde m’encourageait à continuer. C’est là que j’ai appris que ma voix pouvait voyager loin, même à partir de chez nous.</p>
             <figure class="timeline-photo" style="max-width: 440px; margin-top: 14px;">
               <iframe width="100%" height="500" scrolling="no" frameborder="no" src="https://legacy.reverbnation.com/widget_code/html_widget/artist_454008?widget_id=55&pwc[song_ids]=2058655&context_type=song&spoid=artist_454008" style="width:0px;min-width:100%;max-width:100%;" title="Lecteur ReverbNation — Finally found someone, duo de Cindy Roy avec Jason" loading="lazy"></iframe>
               <figcaption>Un exemple des duos que je chantais avec des chanteurs du web : sur internet, il n'y a ni frontières ni distances — ma voix voyageait jusqu'à eux, la leur jusqu'à moi. « I Finally Found Someone », avec Jason.</figcaption>
@@ -6816,13 +6832,13 @@
               
             </div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 250px; overflow: hidden;" data-slider-box>
+          <article class="timeline-row" id="parcours-beresford" style="position: relative; z-index: 0; min-height: 250px; overflow: hidden;" data-slider-box>
           <img class="dream-layer" data-base-opacity="0.85" src="assets/beresford-bandeau-echange.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85; z-index: -1;">
             <div class="timeline-year">2015</div>
             <div class="timeline-copy fade-copy"><p>La Voix de Beresford 2015 — prix des juges et prix du public. <a href="#beresford">→ Voir la section</a></p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="beresford-photo-slider">Voir la photo</label><input id="beresford-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row gala-renvoi" style="position: relative; z-index: 0; min-height: 330px; align-content: end; padding-bottom: 10px;" data-slider-box>
+          <article class="timeline-row gala-renvoi" id="parcours-gala" style="position: relative; z-index: 0; min-height: 330px; align-content: end; padding-bottom: 10px;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.34" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: contain; object-position: center center;" /></div>
             <div class="timeline-year">2015</div>
             <div class="timeline-copy fade-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p>
@@ -6840,7 +6856,7 @@
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="gala-photo-slider">Voir la photo</label><input id="gala-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <article class="timeline-row" id="aujourdhui" style="position: relative; z-index: 0;" data-slider-box>
             <img class="dream-layer" data-base-opacity="0.38" src="assets/cindy-portrait-accueil.jpg" alt="" aria-hidden="true" style="position: absolute; left: -70px; top: 50%; transform: translateY(-50%); height: 88%; width: auto; z-index: -1; opacity: .38; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%);" />
             <div class="timeline-year">Aujourd’hui</div>
             <div class="timeline-copy fade-copy"><p>« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça. Pis dernièrement, j’apprécie ma guitare de plus en plus — je suis pas une grande guitariste, mais c’est grâce à elle que je mets des notes, des accords, sur mes mots.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
