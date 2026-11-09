@@ -2497,7 +2497,17 @@
     .scene-spark { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #ffe9a8; opacity: 0; animation: scene-spark-rise 10s linear infinite; }
     @keyframes scene-spark-rise { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .75; } 85% { opacity: .5; } 100% { transform: translateY(-560px); opacity: 0; } }
     /* rideau */
-    #scene { scroll-margin-top: 148px; }
+    /* Atterrissage mesuré le 2026-11-09 : le scroll-padding global (88 px)
+       et un scroll-margin s’ADDITIONNENT — avec 148 px, la cantonnière
+       atterrissait à 236 px du haut (grand bout de crème au-dessus).
+       Marge 0 = la section arrive à 88 px, le rideau commence d’en haut,
+       juste sous la barre fixe (53 px), comme les autres sections. */
+    #scene { scroll-margin-top: 0; }
+    /* « Moments de scène » dégagé : mesuré le 2026-11-09, le bloc-pilules
+       (bas à 508) recouvrait le surtitre (encre à 467-476, « ÈNE » caché).
+       On descend le bloc de titre de 58 px : le surtitre passe sous les
+       pilules avec ~15 px d’air. Bureau seulement — le téléphone est beau. */
+    @media (min-width: 721px) { #scene .scene-head { padding-top: 58px; } }
     .scene-curtain { position: absolute; top: 0; left: 0; right: 0; height: min(96svh, 860px); z-index: 12; pointer-events: none; display: none; }
     #scene.curtain-armed .scene-curtain { display: block; }
     .scene-curtain .panel { position: absolute; top: 0; bottom: 0; width: 52%;
