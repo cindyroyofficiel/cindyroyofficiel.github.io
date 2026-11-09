@@ -292,7 +292,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
@@ -1805,6 +1805,15 @@
     .influences-quote { margin: 0; font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); line-height: 1.15; font-weight: 500; letter-spacing: -.015em; }
     .influences-quote em { font-style: italic; color: var(--accent); }
     .influences-closing p { margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    /* Bandeau « Aussi dans mon univers » (2026-11-09) : 4 influences en
+       petites lignes — portraits ronds repris des cartes, une ligne chacune. */
+    .influences-aussi { margin-top: 54px; }
+    .influences-aussi-title { margin: 0 0 6px; font-family: var(--serif); font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; letter-spacing: -.015em; }
+    .influences-aussi-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 44px; }
+    .influences-aussi-list li { display: flex; gap: 16px; align-items: center; padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .influences-aussi-list p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.55; }
+    .influences-aussi-list strong { color: var(--ink); }
+    @media (max-width: 700px) { .influences-aussi-list { grid-template-columns: 1fr; } }
     .influences-recognize { margin: 26px 0 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
     /* ——— Influences dépliables : Diane Tell et Francis Cabrel ——— */
     .influence-item--expandable { grid-column: 1 / -1; padding: 0; }
@@ -5211,11 +5220,8 @@
           <a href="#influence-isabelle-toggle">Isabelle Boulay</a>
           <a href="#influence-patrick-toggle">Patrick Norman</a>
           <a href="#influence-ginette-toggle">Ginette Reno</a>
-          <a href="#influence-laurence-toggle">Laurence Jalbert</a>
-          <a href="#influence-shania-toggle">Shania Twain</a>
           <a href="#influence-lara-toggle">Lara Fabian</a>
-          <a href="#influence-alanis-toggle">Alanis Morissette</a>
-          <a href="#influence-celine-toggle">Céline Dion</a>
+          <a href="#aussi-univers">Aussi dans mon univers</a>
         </span>
       </span>
       <span class="has-sub">
@@ -6998,11 +7004,8 @@
           <a href="#influence-isabelle-toggle">Isabelle Boulay</a>
           <a href="#influence-patrick-toggle">Patrick Norman</a>
           <a href="#influence-ginette-toggle">Ginette Reno</a>
-          <a href="#influence-laurence-toggle">Laurence Jalbert</a>
-          <a href="#influence-shania-toggle">Shania Twain</a>
           <a href="#influence-lara-toggle">Lara Fabian</a>
-          <a href="#influence-alanis-toggle">Alanis Morissette</a>
-          <a href="#influence-celine-toggle">Céline Dion</a>
+          <a href="#aussi-univers">Aussi dans mon univers</a>
         </nav>
         <div class="influences-head">
           <div class="influences-head-copy">
@@ -7092,34 +7095,8 @@
               </div>
             </div>
           </li>
-          <li class="influence-item--expandable">
-            <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-laurence-panel" id="influence-laurence-toggle">
-              <img class="influence-portrait" src="assets/influence-portrait-laurence.jpg" alt="Portrait de Laurence Jalbert" width="480" height="480" loading="lazy" />
-              <span class="influence-name">Laurence Jalbert</span>
-              <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
-            </button>
-            <div class="influence-panel" id="influence-laurence-panel" role="region" aria-labelledby="influence-laurence-toggle" hidden>
-              <div class="influence-panel-inner">
-                <p>Pourquoi Laurence Jalbert? C’est familier — comme une amie de longue date. Ses chansons me suivent depuis ses premiers albums, depuis l’époque de Columbia House, où j’ai bâti ma collection de CD, douze à la fois pour une cenne. Dès que j’ai entendu Tomber, je suis tombée sous le charme. Encore et encore, Tomber… honnêtement, toutes les chansons de cet album-là sont mes préférées.</p>
-                <p>Pour moi, Laurence, c’est comme un cheval : sa belle crinière, sa force — et ce côté sauvage. Il y a chez elle quelque chose de familier, un peu comme chez Isabelle Boulay, mais en version sauvage. Et cette énergie-là, je la reconnais : moi aussi, j’ai un petit côté sauvage, pour ceux qui me connaissent bien. J’aime beaucoup le monde… mais j’aime aussi ma petite bulle.</p>
-                <p>Un jour, j’aimerais chanter avec elle. Deux crinières dans le vent — je me verrais bien là. L’invitation est lancée, Laurence : je sais que t’es cool. 😉</p>
-              </div>
-            </div>
-          </li>
-          <li class="influence-item--expandable">
-            <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-shania-panel" id="influence-shania-toggle">
-              <img class="influence-portrait" src="assets/influence-portrait-shania.jpg" alt="Portrait de Shania Twain" width="480" height="480" loading="lazy" />
-              <span class="influence-name">Shania Twain</span>
-              <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
-            </button>
-            <div class="influence-panel" id="influence-shania-panel" role="region" aria-labelledby="influence-shania-toggle" hidden>
-              <div class="influence-panel-inner">
-                <p>Pourquoi Shania Twain? D’abord, son histoire de courage — elle est venue me chercher, droit au cœur. On a nos similarités, elle et moi : comme elle, j’ai dû grandir trop vite, devenir adulte trop vite. Aujourd’hui, je me reprends : je retourne à mes amours de chanson, pis je bâtis, un pas à la fois, vers le rêve d’une vie.</p>
-                <p>Pour moi, c’est la reine du country. Elle a fait tomber toutes les barrières : elle a traversé du country à la pop, elle a amené une dimension nouvelle — le country n’a jamais été pareil après elle, et les femmes du country non plus. Elle l’a fait en restant fidèle à elle-même : au début, ils ont essayé de la modeler; elle a insisté. Résilience et force mentale — c’est ça, Shania. Elle savait où elle s’en allait — son nom le dit : Shania, ça veut dire « je suis en route ».</p>
-                <p>Pis sa musique a tellement joué dans nos oreilles qu’elle est devenue familière — un mouvement, presque. Je l’écoutais religieusement dans l’auto; je les ai toutes sues par cœur. Encore aujourd’hui, quand je sors Man! I Feel Like a Woman! ou Any Man of Mine dans un show, le plancher de danse se remplit — garanti. Mon côté performeuse, celle qui aime danser pis bouger sur scène, s’y reconnaît. Shania, c’est un incontournable.</p>
-              </div>
-            </div>
-          </li>
+          
+          
           <li class="influence-item--expandable">
             <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-lara-panel" id="influence-lara-toggle">
               <img class="influence-portrait" src="assets/influence-portrait-lara.jpg" alt="Portrait de Lara Fabian" width="480" height="480" loading="lazy" />
@@ -7134,36 +7111,32 @@
               </div>
             </div>
           </li>
-          <li class="influence-item--expandable">
-            <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-alanis-panel" id="influence-alanis-toggle">
-              <img class="influence-portrait" src="assets/influence-portrait-alanis.jpg" alt="Portrait d’Alanis Morissette" width="480" height="480" loading="lazy" />
-              <span class="influence-name">Alanis Morissette</span>
-              <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
-            </button>
-            <div class="influence-panel" id="influence-alanis-panel" role="region" aria-labelledby="influence-alanis-toggle" hidden>
-              <div class="influence-panel-inner">
-                <p>Pourquoi Alanis Morissette? Elle est arrivée juste au bon moment. J’avais 16, 17, 18 ans — pis toute une gang de filles comme moi, on était prêtes pour ça. L’adolescence, avec ses amours, ses hormones, tout ce qui bouge fort dans ce temps-là… ses chansons, ça a été un défoulement collectif. Ça faisait du bien de crier ça dans un micro. Jagged Little Pill — selon moi, le meilleur album qu’elle ait jamais fait.</p>
-                <p>Encore aujourd’hui, quand j’ai le goût de me défouler en karaoké, c’est elle que je chante : « And every time I scratch my nails down someone else’s back, I hope you feel it — well, can you feel it? » Ah, que ça fait du bien — ça enlève le méchant. Ça défoule, pis c’est encore efficace aujourd’hui.</p>
-                <p>Pis je suis fière d’elle : une grande Canadienne. Au début, ils ont essayé de la modeler en petite princesse de la pop; elle a dit non, non, non — elle a fait son petit bout de chemin, à sa façon. Elle est restée elle-même. C’est pour ça qu’on se rappelle d’elle, pis qu’on chante encore ses chansons aujourd’hui.</p>
-              </div>
-            </div>
-          </li>
-          <li class="influence-item--expandable">
-            <button class="influence-toggle" type="button" aria-expanded="false" aria-controls="influence-celine-panel" id="influence-celine-toggle">
-              <img class="influence-portrait" src="assets/influence-portrait-celine.jpg" alt="Portrait de Céline Dion" width="480" height="480" loading="lazy" />
-              <span class="influence-name">Céline Dion</span>
-              <span class="influence-discover">Découvrir pourquoi je l’aime <span class="influence-chevron" aria-hidden="true">▸</span></span>
-            </button>
-            <div class="influence-panel" id="influence-celine-panel" role="region" aria-labelledby="influence-celine-toggle" hidden>
-              <div class="influence-panel-inner">
-                <p>Pourquoi Céline Dion? Parce que Céline, c’est un incontournable — la plus grande chanteuse du monde. Pour moi, ça a été l’école totale. Je la suis depuis que je suis toute petite — pas tout à fait aussi longtemps que Diane Tell, mais juste après. J’ai acheté tous ses albums, je connais pratiquement toutes ses chansons, pis je les ai toutes chantées.</p>
-                <p>J’ai appris à chanter en l’imitant. Dans ce temps-là, je pensais que chanter comme Céline, c’était ça, chanter : j’essayais de sonner comme elle, avant de découvrir le plaisir de chanter comme moi — une étape que bien des artistes traversent en se cherchant. Ses chansons, c’étaient souvent mes vocalises : si je pouvais chanter du Céline, le reste allait être facile. Pis aujourd’hui, j’ose croire que j’ai trouvé ma voix — avec des petites influences ici et là, c’est normal. Mais Céline, ça a été la grande, grande, grande école.</p>
-                <p>Pis comment ne pas être fière d’elle? Une si grande carrière, tellement de détermination, tellement de drive. Oui, elle avait une bonne équipe, elle avait son René — mais cette femme-là, c’est une grande. J’ai eu le privilège de la voir en show en 1996, en pleine tournée Falling into You. J’étais étudiante à l’université dans ce temps-là : je m’étais payé un billet, pis j’ai probablement fini le mois à stretcher mes nouilles ramen — but in the end, it was worth it. Mic drop.</p>
-              </div>
-            </div>
-          </li>
+          
+          
           <li class="influence-genres"><span class="influence-name">La musique acadienne, le folk, le country, le blues</span></li>
         </ul>
+
+        <div class="influences-aussi" id="aussi-univers">
+          <h3 class="influences-aussi-title">Aussi dans mon univers</h3>
+          <ul class="influences-aussi-list">
+            <li>
+              <img class="influence-portrait" src="assets/influence-portrait-laurence.jpg" alt="Portrait de Laurence Jalbert" width="480" height="480" loading="lazy" />
+              <p><strong>Laurence Jalbert</strong> — «&nbsp;Familière comme une amie de longue date — je rêve de chanter avec elle un jour.&nbsp;»</p>
+            </li>
+            <li>
+              <img class="influence-portrait" src="assets/influence-portrait-shania.jpg" alt="Portrait de Shania Twain" width="480" height="480" loading="lazy" />
+              <p><strong>Shania Twain</strong> — «&nbsp;La reine du country. Son courage me parle : on a grandi trop vite, toutes les deux.&nbsp;»</p>
+            </li>
+            <li>
+              <img class="influence-portrait" src="assets/influence-portrait-alanis.jpg" alt="Portrait d’Alanis Morissette" width="480" height="480" loading="lazy" />
+              <p><strong>Alanis Morissette</strong> — «&nbsp;Le défoulement de mon adolescence. Crier ça dans un micro, ça faisait du bien.&nbsp;»</p>
+            </li>
+            <li>
+              <img class="influence-portrait" src="assets/influence-portrait-celine.jpg" alt="Portrait de Céline Dion" width="480" height="480" loading="lazy" />
+              <p><strong>Céline Dion</strong> — «&nbsp;Je la suis depuis que je suis toute petite — j’ai chanté pratiquement toutes ses chansons.&nbsp;»</p>
+            </li>
+          </ul>
+        </div>
         <p class="influences-recognize">Je me reconnais dans chacune d’elles.</p>
         <p class="influences-more">Et tellement plein d’autres…</p>
         <div class="influences-closing">
