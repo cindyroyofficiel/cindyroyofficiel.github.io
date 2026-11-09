@@ -1287,7 +1287,7 @@
        s'ouvre au survol et au focus clavier; le clic/toucher .ouvert le
        verrouille (petit script délégué). États fermés au repos : le
        déclencheur « ✉ Ouvre la carte ». */
-    .gala-surprise { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin: 196px 0 8px; width: min(560px, 100%); margin-right: auto; }
+    .gala-surprise { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: flex-end; gap: 18px; margin: 100px 0 8px; width: 100%; }
     .gala-carte { position: relative; flex: 0 0 auto; width: 150px; max-width: 44vw; aspect-ratio: 955 / 671; perspective: 1200px; cursor: pointer; outline-offset: 4px; margin-bottom: 30px; }
     .gala-carte .carte-dos { position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #f4ecd9; box-shadow: 0 14px 30px rgba(0, 0, 0, .38); }
     .gala-carte .carte-dos img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1299,11 +1299,13 @@
     .gala-carte:hover .carte-volet, .gala-carte:focus-visible .carte-volet, .gala-carte.ouvert .carte-volet { transform: rotateY(-158deg); }
     .gala-carte .carte-indice { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); white-space: nowrap; font-size: 13.5px; letter-spacing: .02em; color: #e7cf8e; opacity: .95; transition: opacity .3s ease; pointer-events: none; }
     .gala-carte:hover .carte-indice, .gala-carte:focus-visible .carte-indice, .gala-carte.ouvert .carte-indice { opacity: 0; }
+    .gala-renvoi .timeline-copy > p { margin-top: 124px; }
     .gala-trophee-tourne { flex: 0 0 auto; align-self: center; margin-right: 6px; text-align: center; }
     .gala-trophee-tourne img.trophee-img { display: block; height: 168px; width: auto; margin: 0 auto; transform: translateX(10px); filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .45)); }
     .gala-trophee-tourne img.presentoir { display: block; width: 116px; height: auto; margin: -11px auto 0; }
     @media (max-width: 700px) {
-      .gala-surprise { margin-top: 128px; }
+      .gala-surprise { margin-top: 64px; }
+      .gala-renvoi .timeline-copy > p { margin-top: 36px; }
       .gala-carte { width: 112px; margin-bottom: 26px; }
       .gala-carte .carte-indice { font-size: 12.5px; bottom: -26px; }
       .gala-trophee-tourne img.trophee-img { height: 120px; }
@@ -5116,6 +5118,29 @@
       <a class="nav-cta" href="#contact">Contact</a>
     </div>
   </nav>
+  <script>
+  /* Menu : arme des l'affichage du bouton (avant le script principal en fin de page) */
+  (function () {
+    var toggle = document.querySelector('.menu-toggle');
+    var links = document.getElementById('nav-links');
+    if (!toggle || !links) return;
+    function closeMenu() {
+      links.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Ouvrir le menu');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.stopImmediatePropagation();
+      var open = links.classList.toggle('open');
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      if (!open) window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  })();
+  </script>
 
   <main id="contenu">
     <header class="hero" id="accueil">
@@ -6796,7 +6821,7 @@
             <div class="timeline-copy fade-copy"><p>La Voix de Beresford 2015 — prix des juges et prix du public. <a href="#beresford">→ Voir la section</a></p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="beresford-photo-slider">Voir la photo</label><input id="beresford-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" style="position: relative; z-index: 0; min-height: 330px; align-content: end; padding-bottom: 10px;" data-slider-box>
+          <article class="timeline-row gala-renvoi" style="position: relative; z-index: 0; min-height: 330px; align-content: end; padding-bottom: 10px;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.34" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img src="assets/gala-2015-trophee-retouchee.jpg" alt="" style="width: 100%; height: 100%; object-fit: contain; object-position: center center;" /></div>
             <div class="timeline-year">2015</div>
             <div class="timeline-copy fade-copy"><p>Gala de la chanson de Caraquet 2015 — Ma prière a été entendue : « Entends ma prière » remporte le Prix Auteur-compositeur, le prix de composition de la SOCAN. <a href="#gala">→ Voir la section</a></p>
