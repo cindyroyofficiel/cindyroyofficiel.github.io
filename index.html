@@ -2457,7 +2457,7 @@
        respirer. La photo d'origine n'est ni retouchée ni recadrée
        dans le fichier : le recadrage est en object-fit, le fondu en
        masque. */
-    .scene-spot-photo { position: absolute; top: 0; right: clamp(6px, 3.5vw, 56px); width: 380px; max-width: 44%; height: 520px; object-fit: cover; object-position: 58% 8%;
+    .scene-spot-photo { position: absolute; top: 34px; right: clamp(6px, 3.5vw, 56px); width: 380px; max-width: 44%; height: 520px; object-fit: cover; object-position: 58% 8%;
       -webkit-mask-image:
         linear-gradient(180deg, transparent 0, #000 6%, #000 78%, transparent 100%),
         linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
@@ -2467,7 +2467,7 @@
         linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
       mask-composite: intersect; }
     @media (max-width: 720px) {
-      .scene-spot-photo { width: 196px; height: 340px; right: -6px; opacity: .62; }
+      .scene-spot-photo { width: 196px; height: 340px; right: -6px; top: 26px; opacity: .62; }
     }
 
     /* ——— RIDEAU + AMBIANCE DE SCÈNE (#scene, idée de Cindy, 9 nov. 2026) ———
@@ -2505,8 +2505,8 @@
       transition: transform 2.4s cubic-bezier(.6,.02,.25,1); }
     .scene-curtain .panel.l { left: 0; border-right: 4px solid #d4a017; }
     .scene-curtain .panel.r { right: 0; border-left: 4px solid #d4a017; }
-    #scene.curtain-open .scene-curtain .panel.l { transform: translateX(-88%); }
-    #scene.curtain-open .scene-curtain .panel.r { transform: translateX(88%); }
+    #scene.curtain-open .scene-curtain .panel.l { transform: translateX(-97%); }
+    #scene.curtain-open .scene-curtain .panel.r { transform: translateX(97%); }
     .scene-curtain .valance { position: absolute; top: 0; left: 0; right: 0; height: 118px;
       background: radial-gradient(circle at 10% -30%, transparent 62px, #7d0e1b 63px) repeat-x; background-size: 120px 100%; background-color: #7d0e1b;
       border-bottom: 5px solid #d4a017; box-shadow: 0 12px 28px rgba(0,0,0,.65); }
