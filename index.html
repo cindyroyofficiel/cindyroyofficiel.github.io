@@ -2470,6 +2470,71 @@
       .scene-spot-photo { width: 196px; height: 340px; right: -6px; opacity: .62; }
     }
 
+    /* ——— RIDEAU + AMBIANCE DE SCÈNE (#scene, idée de Cindy, 9 nov. 2026) ———
+       La section devient une vraie scène : fond noir profond, faisceaux de
+       couleurs qui balayent doucement (rouge, or, bleu, mauve, mélange
+       écran, opacités faibles, EN ARRIÈRE du contenu), projecteur doré et
+       photo robe crème inchangés. À l’arrivée dans la section, un rideau
+       de velours rouge se ferme sur le haut puis S’OUVRE (classe posée par
+       le JS en bas de page) et reste stationné sur les côtés comme un
+       cadre de théâtre, cantonnière dorée en haut. Sans JS : pas de
+       rideau, contenu normal. Textes de la section passés en tons clairs
+       et dorés (même famille que Presse). Rien du contenu n’est touché. */
+    #scene { background:
+      radial-gradient(ellipse 90% 480px at 50% 0, rgba(64, 32, 92, .35), transparent 70%),
+      radial-gradient(ellipse 70% 380px at 12% 240px, rgba(120, 30, 40, .18), transparent 70%),
+      radial-gradient(ellipse 70% 380px at 88% 240px, rgba(30, 50, 120, .18), transparent 70%),
+      linear-gradient(180deg, #0a0512 0, #07030e 900px, #05030a 100%); }
+    .scene-stage { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .scene-beam { position: absolute; top: -40px; width: 30vmax; max-width: 430px; height: 1080px;
+      clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); filter: blur(7px); opacity: .42; mix-blend-mode: screen;
+      transform-origin: 50% 0; animation: scene-beam-sway 9s ease-in-out infinite alternate; }
+    .scene-beam.b1 { left: 0;    background: linear-gradient(180deg, rgba(255,70,90,.75), rgba(255,70,90,0) 80%); }
+    .scene-beam.b2 { left: 23%;  background: linear-gradient(180deg, rgba(255,190,60,.65), rgba(255,190,60,0) 80%); animation-delay: -3s; }
+    .scene-beam.b3 { right: 23%; background: linear-gradient(180deg, rgba(80,160,255,.65), rgba(80,160,255,0) 80%); animation-delay: -5.5s; }
+    .scene-beam.b4 { right: 0;   background: linear-gradient(180deg, rgba(190,90,255,.7), rgba(190,90,255,0) 80%); animation-delay: -1.6s; }
+    @keyframes scene-beam-sway { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
+    .scene-spark { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #ffe9a8; opacity: 0; animation: scene-spark-rise 10s linear infinite; }
+    @keyframes scene-spark-rise { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .75; } 85% { opacity: .5; } 100% { transform: translateY(-560px); opacity: 0; } }
+    /* rideau */
+    .scene-curtain { position: absolute; top: 0; left: 0; right: 0; height: min(96svh, 860px); z-index: 40; pointer-events: none; display: none; }
+    #scene.curtain-armed .scene-curtain { display: block; }
+    .scene-curtain .panel { position: absolute; top: 0; bottom: 0; width: 52%;
+      background: repeating-linear-gradient(90deg, #5d0a14 0 14px, #8e1220 14px 30px, #a01628 30px 44px, #6d0c17 44px 58px);
+      box-shadow: inset 0 -70px 60px -30px rgba(0,0,0,.75), inset 0 30px 40px rgba(0,0,0,.5);
+      transition: transform 2.4s cubic-bezier(.6,.02,.25,1); }
+    .scene-curtain .panel.l { left: 0; border-right: 4px solid #d4a017; }
+    .scene-curtain .panel.r { right: 0; border-left: 4px solid #d4a017; }
+    #scene.curtain-open .scene-curtain .panel.l { transform: translateX(-88%); }
+    #scene.curtain-open .scene-curtain .panel.r { transform: translateX(88%); }
+    .scene-curtain .valance { position: absolute; top: 0; left: 0; right: 0; height: 118px;
+      background: radial-gradient(circle at 10% -30%, transparent 62px, #7d0e1b 63px) repeat-x; background-size: 120px 100%; background-color: #7d0e1b;
+      border-bottom: 5px solid #d4a017; box-shadow: 0 12px 28px rgba(0,0,0,.65); }
+    .scene-curtain .valance::after { content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, rgba(0,0,0,.22) 0 12px, transparent 12px 30px, rgba(255,255,255,.05) 30px 44px, transparent 44px 60px); }
+    .curtain-replay { margin-top: 26px; font-family: var(--serif); font-size: 15.5px; letter-spacing: .05em;
+      background: rgba(20,8,28,.55); color: #f0d9a0; border: 1px solid rgba(212,160,23,.7); padding: 9px 20px; border-radius: 999px; cursor: pointer; }
+    .curtain-replay:hover { background: rgba(60,30,10,.75); }
+    /* textes clairs sur fond de scène */
+    #scene .section-tag { color: #e7cf8e; }
+    #scene .section-title { color: #f6e3a1; }
+    #scene .section-title em { color: #e7cf8e; }
+    #scene .section-intro { color: #e9dfc2; }
+    #scene .scene-group-title { color: var(--gold); }
+    #scene .scene-item figcaption { color: #d9cfb4; }
+    #scene .photo-credit { color: #cfc096; }
+    #scene .gallery-toggle { color: #f6e3a1; }
+    #scene .gallery-toggle-hint { color: #cfc096; }
+    @media (max-width: 720px) {
+      .scene-curtain { height: min(94svh, 760px); }
+      .scene-curtain .valance { height: 92px; background-size: 96px 100%; }
+      .scene-beam { height: 760px; opacity: .34; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scene-curtain .panel { transition-duration: .35s; }
+      .scene-beam, .scene-spark { animation: none !important; }
+    }
+
     /* ——— En-tête de la section Scène (Cindy, 3 nov.) : les deux photos du
        soir recomposées sur le fond de la photo de couverture défilent à
        DROITE du titre « La scène, comme si vous y étiez », dans la même
@@ -6314,11 +6379,22 @@
     </section>
 
     <section class="scene" id="scene">
+      <div class="scene-stage" aria-hidden="true">
+        <div class="scene-beam b1"></div>
+        <div class="scene-beam b2"></div>
+        <div class="scene-beam b3"></div>
+        <div class="scene-beam b4"></div>
+      </div>
       <div class="scene-spot" aria-hidden="true">
         <img class="scene-spot-photo" src="assets/cindy-scene-robe-creme.jpg" alt="" width="1122" height="1361" loading="lazy" />
         <div class="scene-spot-source"></div>
         <div class="scene-spot-beam"><div class="scene-spot-cone"></div></div>
         <div class="scene-spot-halo"></div>
+      </div>
+      <div class="scene-curtain" aria-hidden="true">
+        <div class="panel l"></div>
+        <div class="panel r"></div>
+        <div class="valance"></div>
       </div>
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments de Scène">
@@ -6331,6 +6407,7 @@
             <p class="section-tag">Moments de scène</p>
             <h2 class="section-title">La scène, <em>comme si vous y étiez.</em></h2>
             <p class="section-intro">Des prestations restaurées avec soin, partagées ici en entier — des cercles d’auteurs aux duos improvisés, en passant par ces soirées qui ont compté et qui brillent encore dans ma mémoire.</p>
+            <button class="curtain-replay" type="button" id="curtain-replay">↺ Rejouer le rideau</button>
           </div>
         </div>
         <div class="scene-grid scene-grid--bibitte">
@@ -8985,5 +9062,45 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
         });
       })();
     </script>
+<script>
+(function () {
+  var scene = document.getElementById('scene');
+  if (!scene) return;
+  /* étincelles dorées dans la lumière */
+  var stage = scene.querySelector('.scene-stage');
+  if (stage) {
+    for (var i = 0; i < 22; i++) {
+      var s = document.createElement('span');
+      s.className = 'scene-spark';
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.top = (300 + Math.random() * 420) + 'px';
+      s.style.animationDelay = (Math.random() * 10) + 's';
+      s.style.animationDuration = (8 + Math.random() * 6) + 's';
+      stage.appendChild(s);
+    }
+  }
+  /* rideau : armé seulement si le JS roule; s’ouvre à l’arrivée dans la section */
+  scene.classList.add('curtain-armed');
+  var opened = false;
+  function openCurtain() {
+    if (opened) return;
+    opened = true;
+    setTimeout(function () { scene.classList.add('curtain-open'); }, 500);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { openCurtain(); io.disconnect(); } });
+    }, { threshold: 0.1 });
+    io.observe(scene);
+  } else { openCurtain(); }
+  var btn = document.getElementById('curtain-replay');
+  if (btn) btn.addEventListener('click', function () {
+    scene.classList.remove('curtain-open');
+    opened = false;
+    scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(openCurtain, 650);
+  });
+})();
+</script>
 </body>
 </html>
