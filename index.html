@@ -9117,9 +9117,20 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
     io.observe(scene);
   } else { openCurtain(); }
   function replayCurtain() {
+    /* referme, attend que la page ait FINI d’arriver à la section, puis ouvre */
     scene.classList.remove('curtain-open');
     opened = false;
-    setTimeout(openCurtain, 650);
+    var done = false, t = null;
+    function go() {
+      if (done) return;
+      done = true;
+      window.removeEventListener('scroll', onScroll);
+      setTimeout(openCurtain, 250);
+    }
+    function onScroll() { clearTimeout(t); t = setTimeout(go, 150); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(onScroll, 80);   /* si la page ne défile pas (déjà sur place) */
+    setTimeout(go, 1800);       /* sécurité */
   }
   var btn = document.getElementById('curtain-replay');
   if (btn) btn.addEventListener('click', function () {
