@@ -58,17 +58,17 @@
   /* attaches dorées (embrasses) au point de pincement du drapé */
   .curtain::before, .curtain::after { content:""; position:absolute; opacity:0; transition: opacity .8s ease 1.9s; }
   body.open .curtain::before, body.open .curtain::after { opacity:1; }
-  .curtain::before { top:29.5%; width:30%; height:19px; border-radius:10px; z-index:2;
+  .curtain::before { top:23%; width:16%; height:17px; border-radius:9px; z-index:2;
     background: linear-gradient(180deg, #f6dc8a 0, #d9a83e 38%, #96700f 55%, #e9b949 82%, #b8860b 100%);
     box-shadow: 0 3px 7px rgba(0,0,0,.55), inset 0 1px 2px rgba(255,255,255,.65); }
-  .curtain.left::before  { left:0;  transform: rotate(-27deg); transform-origin: left center; }
-  .curtain.right::before { right:0; transform: rotate(27deg);  transform-origin: right center; }
-  .curtain::after { top:calc(29.5% + 24px); width:15px; height:38px; z-index:2;
+  .curtain.left::before  { left:0;  transform: rotate(-41deg); transform-origin: left center; }
+  .curtain.right::before { right:0; transform: rotate(41deg);  transform-origin: right center; }
+  .curtain::after { top:calc(23% + 33px); width:14px; height:34px; z-index:2;
     border-radius: 42% 42% 50% 50% / 18% 18% 62% 62%;
     background: linear-gradient(180deg, #e9b949 0, #c9962e 55%, #8a5f14 100%);
     box-shadow: 0 3px 6px rgba(0,0,0,.5); }
-  .curtain.left::after  { left:4.5%; }
-  .curtain.right::after { right:4.5%; }
+  .curtain.left::after  { left:2.2%; }
+  .curtain.right::after { right:2.2%; }
   .valance { position:fixed; top:0; left:0; right:0; height:15vh; min-height:84px; z-index:21;
     background: radial-gradient(circle at 10% -30%, transparent 62px, #2e020a 63px) repeat-x;
     background-size: 120px 100%; background-color:#2e020a;
