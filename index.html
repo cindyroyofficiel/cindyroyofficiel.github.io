@@ -2508,6 +2508,11 @@
        On descend le bloc de titre de 58 px : le surtitre passe sous les
        pilules avec ~15 px d’air. Bureau seulement — le téléphone est beau. */
     @media (min-width: 721px) { #scene .scene-head { padding-top: 58px; } }
+    /* Barre de sous-menu alignée à gauche sur Scène (bureau) : centrée, son
+       bout droit arrivait devant le visage de Cindy sur la photo de scène
+       (constaté par elle le 2026-11-09). À gauche, elle reste au-dessus des
+       faisceaux et du titre — pu devant sa face. Téléphone inchangé. */
+    @media (min-width: 721px) { #scene .door-nav { margin-left: 0; margin-right: auto; } }
     .scene-curtain { position: absolute; top: 0; left: 0; right: 0; height: min(96svh, 860px); z-index: 12; pointer-events: none; display: none; }
     #scene.curtain-armed .scene-curtain { display: block; }
     .scene-curtain .panel { position: absolute; top: 0; bottom: 0; width: 52%;
