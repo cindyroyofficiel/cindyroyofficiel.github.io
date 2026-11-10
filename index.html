@@ -4798,6 +4798,21 @@
     .collab-face { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold); flex: none; }
     .collab-entry .gallery-body > .arranged:first-child,
     .collab-entry .gallery-body > .martial:first-child { margin-top: 6px; padding-top: 10px; border-top: 0; }
+    /* ——— Originales : le montage en carré à gauche, les chansons en
+       liste à droite (9 nov., idée de Cindy : « réduis le montage de
+       moitié — juste le carré où je chante, pas le gros 16:9 — pis
+       mets mes chansons une en dessous de l’autre à droite »). Le
+       recadrage cover ne garde que le centre de l’image : les côtés
+       flous du montage disparaissent. ——— */
+    #originales .originales-top { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 24px; }
+    #originales .originales-top .montage-frame { margin: 0; max-width: none; }
+    #originales .originales-top .montage-frame video { aspect-ratio: 1 / 1; object-fit: cover; }
+    #originales .originales-top .song-list { margin: 0; }
+    #originales .originales-top .song-jump { padding: 15px 4px; }
+    @media (max-width: 760px) {
+      #originales .originales-top { grid-template-columns: 1fr; gap: 18px; }
+      #originales .originales-top .montage-frame video { aspect-ratio: 4 / 3; }
+    }
     /* Condensation des Collaborations (9 nov., demande de Cindy : « trop
        d’air entre Martial pis Denis pis Théo ») — les coutures entre les
        blocs des trois collaborateurs fondent de plus de moitié pour que
@@ -6044,7 +6059,8 @@
           <h3 class="montage-title">Mes originales, <em>en quelques secondes — telles qu’elles sont nées, du brut, du vrai.</em></h3>
           <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une.</p>
           <p class="solo-line">Les six chansons que je présente ici sont <strong>entièrement de moi — paroles et musique, sans collaboration</strong>.</p>
-          <figure class="montage-frame">
+          <div class="originales-top">
+            <figure class="montage-frame">
             <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
           </figure>
           <ol class="song-list">
@@ -6055,6 +6071,7 @@
             <li><button class="song-jump" type="button" data-time="88.5" aria-label="Écouter « Fonce vers tes rêves » dans le montage vidéo"><span class="song-num">05</span><img class="song-icon" src="assets/icone-originale-fonce-vers-tes-reves.png" alt="Icône élan — Fonce vers tes rêves" width="480" height="480" loading="lazy" /><span class="song-name">Fonce vers tes rêves</span></button></li>
             <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">06</span><img class="song-icon" src="assets/icone-originale-avant-de-me-rendre.png" alt="Icône chemin vers la lumière — Avant de me rendre" width="480" height="480" loading="lazy" /><span class="song-name">Avant de me rendre</span><span class="song-state">Présentée au Gala 2015</span></button></li>
           </ol>
+          </div>
 
                   <details class="photo-gallery collab-group" id="collaborations">
             <summary class="collab-summary"><span class="collab-summary-title">Collaborations</span><span class="collab-summary-hint">Théo · Denis · Martial — un clic pour ouvrir</span></summary>
