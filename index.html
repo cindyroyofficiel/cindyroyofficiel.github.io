@@ -3740,6 +3740,31 @@
     }
     .gallery-item { border: 1px solid rgba(166, 124, 26, .5); border-radius: 5px; box-shadow: 0 12px 24px -14px rgba(60, 38, 6, .5); }
 
+    /* ——— Note Carnaval : les photos de chaque côté, fondues (10 nov. 2026) ———
+       Choix de Cindy : les familles en patins à gauche, la promenade
+       en traîneau à droite, son texte au centre — les deux photos
+       fondues dans le décor (jamais de collage). Sur téléphone,
+       elles deviennent deux bandes douces, au-dessus et au-dessous. */
+    aside.carnaval-note#carnaval { max-width: 1180px; }
+    .carnaval-layout {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px) minmax(0, 1fr);
+      gap: clamp(14px, 2.5vw, 30px); align-items: stretch;
+    }
+    .carnaval-photo {
+      width: 100%; height: 100%; min-height: 250px; object-fit: cover; display: block; opacity: .92;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 97%);
+      mask-image: radial-gradient(ellipse at center, #000 55%, transparent 97%);
+    }
+    .carnaval-texte { align-self: center; }
+    .carnaval-note .carnaval-credits {
+      margin: 16px auto 0; max-width: 640px;
+      font-family: inherit; font-style: normal; font-size: 12.5px; line-height: 1.5; color: var(--muted);
+    }
+    @media (max-width: 899px) {
+      .carnaval-layout { grid-template-columns: 1fr; }
+      .carnaval-photo { height: 180px; min-height: 0; }
+    }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -6966,8 +6991,15 @@
         </div>
         </div>
         <aside class="carnaval-note" id="carnaval">
+          <div class="carnaval-layout">
+          <img class="carnaval-photo" src="assets/carnaval-patins-familles.jpg" alt="Des familles et des enfants qui patinent sur une patinoire extérieure, l’hiver" loading="lazy" />
+          <div class="carnaval-texte">
           <p class="carnaval-desc">Le Carnaval du Siffleux, c’est LE rendez-vous de l’hiver chez nous, à Beresford (aujourd’hui Belle-Baie). Pendant des années, début février, tout le village fêtait : sculptures de neige, promenades en traîneau, musique d’ici — pis au centre de tout ça, Arthur le siffleux, notre marmotte, qui sort de sa petite cabane pour prédire si l’hiver achève ou s’il continue. Moi, je connais ce carnaval-là depuis que je suis petite. Après une pause de quelques années, il renaît en force : sa 48e édition aura lieu du 29 janvier au 7 février 2027.</p>
           <a href="https://www.facebook.com/CarnavalSiffleuxBeresford" target="_blank" rel="noopener">Suivre le Carnaval du Siffleux de Beresford sur Facebook →</a>
+          </div>
+          <img class="carnaval-photo" src="assets/carnaval-traineau-soir.jpg" alt="Un cheval blanc attelé à un traîneau, le soir, devant une maison illuminée" loading="lazy" />
+          </div>
+          <p class="carnaval-credits">Photos d’ambiance : familles en patins © Fjmustak (CC BY-SA 4.0) · promenade en traîneau © EgorovaSvetlana (CC BY-SA 4.0) — via Wikimedia Commons</p>
         </aside>
         </div>
         <article class="calixte-story" id="calixte">
