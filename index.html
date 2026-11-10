@@ -4782,6 +4782,22 @@
     #originales .martial-title em { color: var(--accent); }
     #originales .martial-copy p { color: var(--ink); }
     #originales .martial-head .martial-photo figcaption { color: var(--muted); }
+    /* ——— Collaborations : UN gros titre, un sous-menu, trois petites
+       faces (9 nov., dessin de Cindy : « écris Collaborations en gros,
+       pis quand tu cliques, trois petites faces, avec les chansons à
+       côté pis les histoires »). Tout le groupe se referme sous le
+       titre; chaque collaborateur s’ouvre d’un clic. ——— */
+    .collab-group { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .collab-summary { display: flex; align-items: baseline; gap: 8px 14px; flex-wrap: wrap; cursor: pointer; list-style: none; }
+    .collab-summary::-webkit-details-marker { display: none; }
+    .collab-summary-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 44px); font-weight: 600; line-height: 1.1; color: #a67c1a; }
+    @media (prefers-color-scheme: dark) { .collab-summary-title { color: var(--gold); } }
+    .collab-summary-hint { color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16px; }
+    .collab-entry { margin-top: 12px; }
+    .collab-entry-toggle { align-items: center; }
+    .collab-face { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold); flex: none; }
+    .collab-entry .gallery-body > .arranged:first-child,
+    .collab-entry .gallery-body > .martial:first-child { margin-top: 6px; padding-top: 10px; border-top: 0; }
     /* Condensation des Collaborations (9 nov., demande de Cindy : « trop
        d’air entre Martial pis Denis pis Théo ») — les coutures entre les
        blocs des trois collaborateurs fondent de plus de moitié pour que
@@ -6040,7 +6056,13 @@
             <li><button class="song-jump" type="button" data-time="103.5" aria-label="Écouter « Avant de me rendre » dans le montage vidéo"><span class="song-num">06</span><img class="song-icon" src="assets/icone-originale-avant-de-me-rendre.png" alt="Icône chemin vers la lumière — Avant de me rendre" width="480" height="480" loading="lazy" /><span class="song-name">Avant de me rendre</span><span class="song-state">Présentée au Gala 2015</span></button></li>
           </ol>
 
-          <section class="arranged" aria-labelledby="arranged-title">
+                  <details class="photo-gallery collab-group" id="collaborations">
+            <summary class="collab-summary"><span class="collab-summary-title">Collaborations</span><span class="collab-summary-hint">Théo · Denis · Martial — un clic pour ouvrir</span></summary>
+            <div class="gallery-body">
+          <details class="photo-gallery collab-entry">
+            <summary class="gallery-toggle collab-entry-toggle"><img class="collab-face" src="assets/theo-rota.jpg" alt="" loading="lazy">Théo Rota<span class="gallery-toggle-hint">deux chansons — un clic</span></summary>
+            <div class="gallery-body">
+<section class="arranged" aria-labelledby="arranged-title">
             <div class="arranged-head">
               <figure class="arranged-photo">
                 <img src="assets/theo-rota.jpg" alt="Théo Rota" width="644" height="616" loading="lazy" />
@@ -6066,8 +6088,12 @@
               </div>
             </details>
           </section>
-
-          <section class="arranged" aria-labelledby="denis-title">
+            </div>
+          </details>
+          <details class="photo-gallery collab-entry">
+            <summary class="gallery-toggle collab-entry-toggle"><img class="collab-face" src="assets/toile-clair-de-lune.jpg" alt="" loading="lazy">Denis Leclair<span class="gallery-toggle-hint">« Toile au clair de lune » — un clic</span></summary>
+            <div class="gallery-body">
+<section class="arranged" aria-labelledby="denis-title">
             <div class="arranged-head">
               <figure class="arranged-photo">
                 <img src="assets/toile-clair-de-lune.jpg" alt="Cindy Roy sur la plage, les bras levés vers la pleine lune — l’image de « Toile au clair de lune », sa composition avec Denis Leclair" width="1086" height="1448" loading="lazy">
@@ -6087,8 +6113,12 @@
               </div>
             </details>
           </section>
-
-          <article class="martial">
+            </div>
+          </details>
+          <details class="photo-gallery collab-entry">
+            <summary class="gallery-toggle collab-entry-toggle"><img class="collab-face" src="assets/martial-marey-portrait.jpg" alt="" loading="lazy">Martial Marey<span class="gallery-toggle-hint">son histoire, ses chansons — un clic</span></summary>
+            <div class="gallery-body">
+<article class="martial">
             <div class="martial-head">
               <figure class="martial-photo">
                 <button class="martial-thumb" type="button" aria-expanded="false" aria-controls="martial-story" aria-label="Lire l’histoire de Martial Marey">
@@ -6111,7 +6141,7 @@
             </details>
           </article>
 
-          <section class="arranged music-martial" id="collaborations" aria-labelledby="martial-music-title">
+          <section class="arranged music-martial" aria-labelledby="martial-music-title">
             <div class="arranged-head martial-music-head">
               <div class="martial-music-head-copy">
             <h3 class="arranged-title" id="martial-music-title">Les chansons de Martial Marey — interprétées par Cindy</h3>
@@ -6153,6 +6183,10 @@
             </div>
             <p class="tribute-listen"><a href="#mes-cris-dans-le-silence">Écouter « Mes cris dans le silence » →</a></p>
           </section>
+            </div>
+          </details>
+            </div>
+        </details>
         </div>
         <!-- Mes reprises : UNE seule liste fusionnée (décision de Cindy, 2 nov.) —
              plus de catégories « à la guitare » / « avec arrangement » : les
