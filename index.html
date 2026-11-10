@@ -619,12 +619,12 @@
        mare .32/.16 → .30/.15), géométrie intacte. */
     .hero-petite {
       position: absolute; z-index: 4; margin: 0;
-      right: clamp(16px, 3.5vw, 54px); bottom: 22px;
-      width: clamp(128px, 15vw, 188px);
+      left: clamp(16px, 3.5vw, 54px); bottom: 22px;
+      width: clamp(104px, 11vw, 148px);
       background: linear-gradient(145deg, #e8c877, #b98a2e 55%, #e8c877);
       padding: 5px; border-radius: 10px;
       box-shadow: 0 14px 34px rgba(10, 20, 40, .45);
-      transform: rotate(2.5deg);
+      transform: rotate(-2.5deg);
     }
     .hero-petite img { display: block; width: 100%; height: auto; border-radius: 6px; }
     @media (max-width: 700px) {
@@ -872,8 +872,8 @@
          visage et son torse dans ce premier écran, sans défiler.
          Le bas de la robe peut être rogné sur les écrans bas — c’est
          le prix, assumé, pour voir son visage dès l’arrivée. */
-      .hero-photo.hero-cover picture { aspect-ratio: 1920 / 1420; max-height: 100svh; }
-      .hero-photo.hero-cover img { object-position: 50% 0%; }
+      .hero-photo.hero-cover picture { aspect-ratio: auto; width: 100%; height: min(100svh, 85.416vw); }
+      .hero-photo.hero-cover img { object-position: 50% 16%; }
       .hero-titles { padding: 48px clamp(22px, 5vw, 64px) 52px; }
       .hero-photo.hero-cover .hero-butterfly { width: 22px; margin-bottom: 5px; }
       .hero-titles .origin { line-height: 1.4; }
@@ -4786,7 +4786,7 @@
           la grille — fini le grand vide à gauche.
        ════════════════════════════════════════════════════════════════ */
     @media (min-width: 701px) {
-      .hero-photo.hero-cover img { object-position: 46% 0%; transform: translateX(-1%) scale(1.025); }
+      .hero-photo.hero-cover img { object-position: 50% 16%; transform: none; }
     }
     .hero-titles .hero-motto .motto-initial { font-size: 1.55em; line-height: .82; }
     .welcome-frame video { border: 1px solid rgba(201, 162, 79, .55); box-shadow: 0 10px 26px rgba(74, 56, 26, .16); }
@@ -5221,7 +5221,7 @@
       mask-image: linear-gradient(to right, transparent 64%, #000 81%, #000 100%), linear-gradient(to bottom, #000 62%, transparent 98%);
       mask-composite: intersect;
       opacity: .62; }
-    .gala-head::after { content: ""; position: absolute; left: 73.5%; top: 62%; width: 32.5%; height: 38%; z-index: 0; pointer-events: none;
+    .gala-head::after { content: ""; position: absolute; left: 67.5%; top: 62%; width: 32.5%; height: 38%; z-index: 0; pointer-events: none;
       background: radial-gradient(ellipse at center, rgba(255, 226, 160, .50), rgba(255, 214, 135, .22) 52%, rgba(255, 214, 135, 0) 74%);
       filter: blur(12px); opacity: .85; }
     .gala-head-text { flex: 1 1 auto; min-width: 0; max-width: 880px; position: relative; z-index: 1; }
