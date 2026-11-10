@@ -1884,24 +1884,29 @@
        le contenu (.wrap) passe devant, à z-index 1. */
     .influences { position: relative; overflow: hidden; }
     .influences > .wrap { position: relative; z-index: 1; }
-    /* Fond des Influences (9 nov. au soir, demande expresse de Cindy) :
-       la vraie mer et un vrai voilier vert et blanc, en référence à
-       « Si j'étais un homme » de Diane Tell — la chanson qu'elle
-       chante depuis ses cinq ans (« je serais capitaine d'un bateau
-       vert et blanc »). AUCUN effet dreamy : la photo est réelle,
-       pleine force, en bande derrière l'en-tête de la section. */
+    /* Le calque de fond de la section (pleine grandeur) — l’image
+       actuelle est décrite au bloc « Fond des Influences » plus bas,
+       près des règles de l’en-tête. */
     .influences-dream { position: absolute; top: 0; left: 0; right: 0; z-index: 0; pointer-events: none;
-      height: clamp(400px, 36vw, 500px); }
+      bottom: 0; height: auto; }
     .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
-    .influences-dream img.dream-duo { object-position: 50% 46%; }
+    .influences-dream img.dream-duo { object-position: 50% 30%; }
     .influences-dream::after { display: none; content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(58% 46% at 20% 26%, rgba(255, 253, 247, .52), rgba(255, 253, 247, 0) 72%),
         linear-gradient(to bottom, rgba(255, 253, 247, .30), rgba(255, 253, 247, .06) 46%, rgba(255, 253, 247, 0) 74%); }
+    /* Fond des Influences (9 nov. au soir, choix de Cindy) : son image
+       de la mer au clair de lune — la colombe, la pleine lune et le
+       voilier aux voiles vertes et blanches (« Si j'étais un homme »)
+       — à la grandeur de toute la section. Le titre passe en clair
+       doré pour rester lisible sur le ciel de nuit. */
+    .influences-head .section-tag { color: #e7b34b; }
+    .influences-head .section-title { color: #fffaf0; text-shadow: 0 2px 26px rgba(2,12,32,.6); }
+    .influences-head .section-title em { color: #e7b34b; }
     .influences-head { position: relative; }
     .influences-head-copy { max-width: 700px; min-width: 0; }
     @media (max-width: 700px) {
-      .influences-dream { height: 430px; }
+      .influences-dream { height: auto; }
       .influences-dream img { opacity: .5; }
       .influences-dream::after {
         background:
@@ -7137,7 +7142,7 @@
     <section class="influences" id="influences">
       <div class="duo-extension" aria-hidden="true"></div>
       <div class="influences-dream" aria-hidden="true">
-        <img class="dream-duo" src="assets/mer-voilier-vert-blanc.jpg" alt="" width="1600" height="720" loading="eager" />
+        <img class="dream-duo" src="assets/mer-lune-colombe-voilier.jpg" alt="" width="1472" height="1616" loading="eager" />
       </div>
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments d’Influences">
