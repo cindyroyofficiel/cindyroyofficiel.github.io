@@ -3367,6 +3367,14 @@
     .piano-listen:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
     .piano-listen.is-playing { background: rgba(201,162,79,.18); border-color: var(--gold); color: #f0cd7e; }
     .piano-caption { margin: 12px auto 0; max-width: 100%; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.45; color: #d9bc74; }
+    /* Le duo des passes, petit et fondu dans le décor de l’entête du
+       Gala (9 nov., idée de Cindy approuvée par ❤️) : la passe
+       FrancoFête + Cindy qui la porte, une de chaque bord du centre,
+       ~2 pouces, bords fondus — leur seule place sur la page (la
+       figure de « Ma prière a été entendue » a été retirée). */
+    .pass-duo { display: flex; justify-content: center; gap: 20px; margin-top: 22px; }
+    .pass-duo-img { height: 148px; width: auto; opacity: .94; filter: saturate(1.12) brightness(1.05); -webkit-mask-image: radial-gradient(118% 118% at 50% 46%, #000 64%, transparent 99%); mask-image: radial-gradient(118% 118% at 50% 46%, #000 64%, transparent 99%); }
+    @media (max-width: 640px) { .pass-duo-img { height: 118px; } }
     @media print { .piano-listen, .piano-caption { display: none; } }
     .highlights-vedette { max-width: 500px; margin: clamp(52px, 6vw, 76px) auto 0; padding: 12px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 0 70px rgba(201,162,79,.22); border-radius: var(--r-card); }
     .highlights-vedette img { width: 100%; display: block; border-radius: 8px; }
@@ -5153,6 +5161,13 @@
        demande de Cindy : « trop gros dans le milieu ») — la droite
        reste libre pour un ajout futur. */
     .lavoix-dream .lavoix-video { margin-left: 0; margin-right: auto; max-width: 250px; }
+    /* Fond souvenir des auditions (9 nov., ❤️ de Cindy) : la photo de
+       la gang des auditions avec Wilfred LeBouthillier, très pâle et
+       fondue, surtout à droite du panneau — l’usure de la vieille
+       photo fait partie du souvenir. */
+    .lavoix-dream .lavoix-bg { position: absolute; top: 0; right: 0; width: min(700px, 92%); height: 100%; object-fit: cover; object-position: 50% 26%; opacity: .13; -webkit-mask-image: radial-gradient(115% 105% at 82% 36%, #000 24%, transparent 74%); mask-image: radial-gradient(115% 105% at 82% 36%, #000 24%, transparent 74%); pointer-events: none; }
+    .lavoix-dream > *:not(.lavoix-bg):not(.mic-deco) { position: relative; z-index: 1; }
+    .lavoix-dream .mic-deco { z-index: 1; }
     .lavoix-dream .lavoix-video video { display: block; width: 100%; border-radius: 10px; box-shadow: var(--shadow); background: #221820; }
     .lavoix-dream .lavoix-video figcaption { margin-top: 9px; text-align: center; color: #66584a; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.4; }
     @media (max-width: 640px) { .lavoix-dream { padding: 24px 18px 20px; } .lavoix-dream .mic-deco { width: 104px; } }
@@ -5541,6 +5556,10 @@
           <button class="piano-listen" id="piano-listen-btn" type="button" aria-pressed="false" aria-controls="piano-listen-audio">🎹 Écouter un petit bout de piano</button>
           <p class="piano-caption">« Entends ma prière » — version instrumentale classique</p>
           <audio id="piano-listen-audio" preload="none" src="assets/entend-ma-priere-piano-extrait.mp3"></audio>
+          <div class="pass-duo" aria-hidden="true">
+            <img class="pass-duo-img" src="assets/laissez-passer-francofete-2015.jpg" alt="" width="480" height="640" loading="lazy" />
+            <img class="pass-duo-img" src="assets/cindy-francofete-2015.jpg" alt="" width="800" height="1067" loading="lazy" />
+          </div>
         </div>
         <figure class="highlights-vedette">
           <img src="assets/hommage-assemblee-trophee-2015.jpg" alt="Le trophée doré Lauréat 2015 du Gala de la chanson de Cindy Roy, à côté de la lettre d’hommage encadrée du député Daniel Guitard, de l’Assemblée législative du Nouveau-Brunswick, datée du 2 décembre 2015" width="1112" height="1361" loading="lazy" />
@@ -5627,16 +5646,11 @@
           <h4 class="birth-title">« Moi, je crois » — choisir le bonheur</h4>
           <p>Pour moi, « Moi, je crois », c’est croire à la vie, de tout son cœur. On pense souvent que le bonheur est inaccessible, alors qu’il suffit parfois, tout simplement, de le choisir. Il faut aligner notre cœur avec notre être profond ; nos expériences humaines nous y conduisent souvent. Je crois que nous sommes une conscience, de l’énergie, et que nous avons simplement emprunté ce vaisseau pour cette vie-ci.</p>
         </div>
-        <div class="gala-memory">
+        <div class="gala-memory gala-memory--text">
           <div class="gala-prix-copy">
             <h3 class="birth-title">Ma prière a été entendue</h3>
             <p>Le Prix Auteur-compositeur m’a été remis pour ma chanson originale « Entends ma prière » — le prix de composition associé à la SOCAN. Et ce même soir, au même gala, j’ai aussi reçu le Prix RADARTS — un beau laissez-passer pour la FrancoFête en Acadie.</p>
           </div>
-          <figure class="gala-doc">
-            <img src="assets/laissez-passer-francofete-2015.jpg" alt="Le laissez-passer d’artiste de Cindy Roy à la FrancoFête en Acadie — on y lit le logo « francofête en Acadie », son nom « Cindy Roy » et la bande SOCAN au bas de la carte" width="480" height="640" loading="lazy" />
-            <img src="assets/cindy-francofete-2015.jpg" alt="Cindy Roy à la FrancoFête en Acadie, son laissez-passer au cou — Moncton, novembre 2015" width="800" height="1067" loading="lazy" style="margin-top: 14px" />
-            <figcaption>Mon laissez-passer d’artiste à la FrancoFête en Acadie — Moncton, novembre 2015.</figcaption>
-          </figure>
         </div>
           </div>
         </details>
@@ -6480,6 +6494,7 @@
           </div>
           </div>
           <div class="lavoix-dream" id="lavoix">
+          <img class="lavoix-bg" src="assets/auditions-gang-fondue.jpg" alt="" aria-hidden="true" loading="lazy" />
           <svg class="mic-deco" viewBox="0 0 100 170" fill="none" stroke="#b8912f" stroke-width="5" stroke-linecap="round" aria-hidden="true"><rect x="36" y="8" width="28" height="62" rx="14"/><path d="M22 52 a28 28 0 0 0 56 0"/><line x1="50" y1="82" x2="50" y2="118"/><line x1="30" y1="118" x2="70" y2="118"/><path d="M14 34 a40 40 0 0 1 8 -14"/><path d="M86 34 a40 40 0 0 0 -8 -14"/></svg>
           <h3 class="chapter-title">Mes auditions</h3>
           <p class="auditions-nav">Au fil des années : <a class="x-ref" href="#audition-2003">2003</a> · <a class="x-ref" href="#audition-2005">2005</a> · <a class="x-ref" href="#audition-2015">2015</a> · <a class="x-ref" href="#audition-2023">2023</a></p>
