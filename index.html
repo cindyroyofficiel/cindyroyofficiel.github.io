@@ -3337,6 +3337,16 @@
     footer .wrap { align-items: center; }
     footer strong { color: #ddd9c9; letter-spacing: .1em; }
 
+    /* — Audit téléphone 2026-11-10 : la carte spirale du Gala, une fois ouverte,
+       voyait le bout de son rabat coupé au bord gauche de l’écran (carte centrée,
+       rabat de même largeur vers la gauche) — on décale sa zone vers la droite.
+       Et la dernière ligne du pied de page passait sous le bouton flottant
+       « Écrivez-moi » en fin de page — on lui donne l’air de passer au-dessus. — */
+    @media (max-width: 700px) {
+      .gala-carte-zone { padding-left: 92px; }
+      footer { padding-bottom: 104px; }
+    }
+
     /* — Barre de défilement assortie, discrète — */
     html { scrollbar-color: #b0823c var(--paper); }
     ::-webkit-scrollbar { width: 11px; }
