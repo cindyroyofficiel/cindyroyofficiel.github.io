@@ -1171,6 +1171,7 @@
     .song-jump:hover .song-name, .song-jump:active .song-name, .song-jump:focus-visible .song-name { text-decoration: underline; text-underline-offset: 5px; }
     .song-num { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; }
     .song-name { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+    .atelier-listen { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
     .song-state { color: var(--muted); font-size: 13px; text-align: right; }
     .covers-title { margin: 36px 0 0; font-family: var(--serif); font-size: 30px; font-weight: 600; }
     .covers-intro { margin: 14px 0 6px; max-width: 640px; color: var(--muted); font-size: 18px; line-height: 1.6; }
@@ -6649,18 +6650,18 @@
           </div>
           <figure class="montage-frame">
             <video src="assets/des-bouts-de-moi.mp4" poster="assets/des-bouts-de-moi-poster.jpg" controls playsinline preload="none" title="« Des bouts de moi » — Cindy Roy"></video>
-            <figcaption>Des bouts de moi</figcaption>
+            <figcaption>Des bouts de moi — en construction</figcaption>
           </figure>
           <h4 class="family-title">Sur l’établi, en ce moment</h4>
           <ol class="song-list atelier-list">
-            <li><span class="song-num">01</span><span class="song-name">Entends ma prière</span><span class="song-state">Chanson primée (Étoile) · 2015 — en chantier</span></li>
-            <li><span class="song-num">02</span><span class="song-name">Moi je crois</span><span class="song-state">En chantier</span></li>
-            <li><span class="song-num">03</span><span class="song-name">Les mots oubliés</span><span class="song-state">En chantier</span></li>
-            <li><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span><span class="song-state">En chantier</span></li>
-            <li><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span><span class="song-state">En chantier</span></li>
-            <li><span class="song-num">06</span><span class="song-name">Avant de me rendre</span><span class="song-state">En chantier</span></li>
+            <li><span class="song-num">01</span><span class="song-name">Entends ma prière</span><span class="song-state">Chanson primée (Étoile) · 2015 — pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="2.5">Écouter un extrait</a></span></li>
+            <li><span class="song-num">02</span><span class="song-name">Moi je crois</span><span class="song-state">Pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="43.5">Écouter un extrait</a></span></li>
+            <li><span class="song-num">03</span><span class="song-name">Les mots oubliés</span><span class="song-state">Pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="58.5">Écouter un extrait</a></span></li>
+            <li><span class="song-num">04</span><span class="song-name">Une fille qui lâche pas</span><span class="song-state">Pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="73.5">Écouter un extrait</a></span></li>
+            <li><span class="song-num">05</span><span class="song-name">Fonce vers tes rêves</span><span class="song-state">Pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="88.5">Écouter un extrait</a></span></li>
+            <li><span class="song-num">06</span><span class="song-name">Avant de me rendre</span><span class="song-state">Pas encore d’arrangement · <a class="atelier-listen" href="#originales" data-time="103.5">Écouter un extrait</a></span></li>
           </ol>
-          <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une. Les nouvelles ébauches s’ajouteront ici, un pas à la fois.</p>
+          <p class="fil-line">Les chansons de l’album d’une vie — en attente d’arrangement, une à une. Les nouvelles ébauches s’ajouteront ici, un pas à la fois.</p>
           <p class="atelier-doors">
             <a class="button button-primary" href="#embarquez">Embarquez dans mon train</a>
           </p>
@@ -8821,6 +8822,23 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
             montageVideo.load();
           }
           montageVideo.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+        });
+      });
+
+      // Atelier, « Sur l'établi » : le lien « Écouter un extrait » d'une
+      // chanson emporte à son moment dans le montage des Originales —
+      // on active l'onglet Originales, puis on déclenche le bouton de la
+      // chanson (le même geste que dans le panneau Originales).
+      document.querySelectorAll('.atelier-listen').forEach(function (link) {
+        link.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          var t = link.getAttribute('data-time');
+          var tab = document.getElementById('tab-originales');
+          if (tab) tab.click();
+          setTimeout(function () {
+            var btn = document.querySelector('#originales .song-jump[data-time="' + t + '"]');
+            if (btn) btn.click();
+          }, 120);
         });
       });
 
