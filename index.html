@@ -2287,14 +2287,10 @@
        cadré pour garder l’enseigne « Porte de scène », les visages et les
        pieds; pour la photo avec Michel, le cadre centré garde les deux
        sujets au complet. ——— */
-    .michel-photos { margin: 32px auto 8px; max-width: 400px; display: flex; gap: 14px; align-items: flex-start; justify-content: center; }
-    .michel-photo-main, .michel-photo-small { margin: 0; flex: 1 1 0; min-width: 0; }
-    .michel-photos img { width: 100%; aspect-ratio: 21 / 50; object-fit: cover; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
-    .michel-photo-main img { object-position: 50% 72%; }
-    .michel-photo-small img { object-position: 50% 50%; }
-    @media (max-width: 620px) {
-      .michel-photos { gap: 10px; max-width: 400px; }
-    }
+    .michel-photos { margin: 30px auto 10px; max-width: 560px; background: linear-gradient(145deg, #e8c877, #b98a2e 55%, #e8c877); padding: 9px; border-radius: 14px; box-shadow: 0 10px 28px rgba(60, 42, 8, .28); }
+    .michel-photos-inner { background: #14201a; border-radius: 8px; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .michel-photos figure { margin: 0; }
+    .michel-photos img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; display: block; border-radius: 5px; }
     @media (max-width: 620px) {
       .parents-photos { grid-template-columns: 1fr; gap: 28px; max-width: 340px; margin-inline: auto; }
     }
@@ -6945,12 +6941,14 @@
             <p class="michel-merci-title"><span class="michel-heart" aria-hidden="true">♥</span>À Michel — l'homme de ma vie.</p>
             <p class="maman-suite" style="margin-top: 16px;">Michel, l’homme de ma vie — mon complice en tout. Toujours le premier à m’encourager, il connaît mes chansons par cœur — mes silences aussi. On partage le vaisseau, pis la musique : il prend sa guitare pour le plaisir, on chante à deux, on s’amuse comme des enfants — pis on vit au max les belles années qui nous sont données, une journée précieuse à la fois. Un regard, un fou rire, une toune qui part toute seule : c’est ça, nous deux.</p>
             <div class="michel-photos">
-              <figure class="michel-photo-main">
-                <img class="photo-fondue" src="assets/cindy-miroir-robe-verte-fondue.webp" alt="Cindy Roy devant le miroir, plein pied, dans sa robe verte et ses sandales dorées, le soir du spectacle" width="864" height="2057" loading="lazy" decoding="async" />
+              <div class="michel-photos-inner">
+              <figure>
+                <img src="assets/cindy-michel-bec.jpg" alt="Michel Fortin embrasse Cindy Roy sur le front, dehors, à la lumière dorée" width="862" height="1150" loading="lazy" decoding="async" />
               </figure>
-              <figure class="michel-photo-small">
-                <img class="photo-fondue" src="assets/cindy-michel-miroir-fondue.webp" alt="Cindy Roy et Michel Fortin devant le même miroir, le même soir — Michel la regarde avec un petit sourire" width="927" height="2208" loading="lazy" decoding="async" />
+              <figure>
+                <img src="assets/cindy-michel-selfie.jpg" alt="Cindy Roy et Michel Fortin, joue contre joue, tous les deux souriants" width="862" height="1150" loading="lazy" decoding="async" />
               </figure>
+              </div>
             </div>
               </div>
             </details>
