@@ -5430,10 +5430,19 @@
     @media (max-width: 640px) { .lavoix-dream { padding: 24px 18px 20px; } .lavoix-dream .mic-deco { width: 104px; } }
     @media (max-width: 640px) { .lavoix-photo { float: none; width: min(240px, 80%); margin: 14px auto; } }
     @media (max-width: 760px) {
-      .calixte-dream { background-image: linear-gradient(180deg, #fbf7ee 0%, #f7efdd 100%); }
+      .calixte-dream .calixte-bg img { object-position: center; }
       .calixte-dream p { background: transparent; }
     }
-    .calixte-dream { margin-top: 26px; padding: 30px 30px 26px; border-radius: 22px; background: #fbf7ee url('assets/calixte-fond-reve-v2.jpg') center top / cover no-repeat; box-shadow: var(--shadow); }
+    .calixte-dream { position: relative; overflow: hidden; margin-top: 26px; padding: 30px 30px 26px; border-radius: 22px; background: #fbf7ee; box-shadow: var(--shadow); }
+    /* La photo de fond devient une couche (10 nov., demande de Cindy) :
+       barre « voir la photo » comme dans son Parcours — au téléphone,
+       la photo était carrément retirée (fond crème uni sous 760 px),
+       on ne voyait plus Calixte et Cindy. Là, elle reste là, pâle
+       derrière le texte, et la barre l'amène au complet. */
+    .calixte-dream .calixte-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .calixte-dream .calixte-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .calixte-dream > *:not(.calixte-bg) { position: relative; z-index: 1; }
+    .calixte-dream .photo-slider { justify-content: flex-end; margin-top: 16px; color: #8a6a24; }
     .calixte-dream .chapter-title { margin-top: 0; color: #6e1423; text-shadow: 0 1px 10px rgba(251,247,238,.95), 0 0 22px rgba(251,247,238,.9); }
     .calixte-dream > p { margin: 18px 0 0; font-size: 18px; line-height: 1.75; color: #2c2317; background: rgba(251,247,238,.38); border-radius: 14px; padding: 18px 20px; }
     .calixte-dream .calixte-texte { background: rgba(251,247,238,.38); border-radius: 14px; padding: 20px 22px; max-width: 500px; margin: 18px auto 0; }
@@ -5457,7 +5466,7 @@
       .calixte-dream > p { max-width: 500px; margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 760px) {
-      .calixte-dream { background: url('assets/calixte-fond-reve-mobile.jpg') center / cover no-repeat; }
+      .calixte-dream { background: #fbf7ee; }
     }
     .door-nav { position: sticky; top: 74px; z-index: 30; display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto; padding: 10px 12px; margin: 0 auto 26px; max-width: 880px; background: rgba(251,247,238,.94); border: 1px solid rgba(201,162,79,.55); border-radius: 999px; box-shadow: var(--shadow); scrollbar-width: none; }
     .door-nav::-webkit-scrollbar { display: none; }
@@ -6756,9 +6765,10 @@
         </aside>
         </div>
         <article class="calixte-story" id="calixte">
-          <div class="calixte-dream">
-          <h3 class="chapter-title">Le soir où j’ai chanté devant le grand Calixte</h3>
-          <div class="calixte-texte">
+          <div class="calixte-dream" data-slider-box>
+          <picture class="dream-layer calixte-bg" aria-hidden="true"><source media="(max-width: 760px)" srcset="assets/calixte-fond-reve-mobile.jpg" /><img src="assets/calixte-fond-reve-v2.jpg" alt="" loading="lazy" /></picture>
+          <h3 class="chapter-title fade-copy">Le soir où j’ai chanté devant le grand Calixte</h3>
+          <div class="calixte-texte fade-copy">
             <p>Février 2015. Quelques semaines à peine après avoir eu l’honneur de remporter La Voix de Beresford, je vais souper à Petit-Rocher, au Bistro Cœur d’Artishow — le bistro de mon ami Michel Carpentier et de Karim. Un souper comme les autres, je pensais. Je savais pas ce qui m’attendait à la table voisine.</p>
             <p>À cette table : l’ensemble Musica Mundi, venu accompagner le grand Calixte Duguay.</p>
             <p>Michel partage ma belle nouvelle au monde, pis il me demande de chanter. Le cœur qui débat, je me lève… pis je chante a cappella « Plus jamais la mer » — sa chanson à lui, devant lui. Musica Mundi pose ses harmonies par-dessus, comme une vague qui lève — un moment suspendu, un gros plein d’émotion. Pis la cerise sur le sundae : Calixte vient s’asseoir à côté de moi. Il me félicite, pis il m’encourage à aller auditionner pour La Voix.</p>
@@ -6766,6 +6776,7 @@
             <p>Le bistro a malheureusement fermé ses portes depuis — comme bien d’autres entreprises, il n’a pas été épargné par les difficultés des années 2020 à 2022. Mais ce soir-là, lui, il reste ouvert dans ma mémoire — pis il y fera toujours de la musique.</p>
             <p class="calixte-link"><a href="https://fr.wikipedia.org/wiki/Calixte_Duguay" target="_blank" rel="noopener">Pour découvrir Calixte Duguay — un pionnier de la chanson acadienne →</a></p>
           </div>
+          <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="calixte-photo-slider">Voir la photo</label><input id="calixte-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </div>
           <div class="calixte-choeur">
             <figure class="choeur-spot calixte-spot">
