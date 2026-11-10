@@ -293,6 +293,15 @@
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
     #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    @media (max-width: 640px) {
+      /* Depuis que les barres de boutons s'enroulent (10 nov.), le panneau
+         colle du Parcours descend jusqu'a 297px : ses ancres atterrissent
+         plus bas pour que les titres restent visibles dessous. Meme
+         prudence pour Influences (panneau a 235px une fois colle). */
+      #enfance, #adolescence, #robertville, #guitare, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #nicole, #aujourdhui { scroll-margin-top: 225px; }
+      #influences, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 190px; }
+      .influences-head { padding-top: 14px; }
+    }
     @media (max-width: 640px) { .door-nav { top: 66px; flex-wrap: wrap; overflow-x: visible; justify-content: center; border-radius: 26px; padding: 10px; } .door-nav a { padding: 6px 12px; font-size: 13.5px; } .door-nav a.sub-chip { font-size: 12px; padding: 5px 10px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 205px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
