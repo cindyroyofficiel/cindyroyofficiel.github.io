@@ -2320,9 +2320,10 @@
     .manifesto p strong, .manifesto p em { color: var(--ink); }
     @media (prefers-color-scheme: dark) { .manifesto-title { color: var(--gold); } }
     @media (max-width: 620px) { .manifesto { margin-bottom: 48px; padding: 36px 22px 40px; } .manifesto p { text-align: left; } }
-    /* Credo : son paysage en ouverture + son portrait dans le texte (10 nov., photos d’elle, aucun artifice). */
-    .credo-banner { margin: 0 0 28px; }
-    .credo-banner img { width: 100%; height: clamp(170px, 26vw, 248px); object-fit: cover; object-position: center 58%; border-radius: 14px; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    /* Credo : SA photo au bord du lac, en gros, pleine page en ouverture (10 nov., à sa demande). */
+    .credo-hero { margin: -46px calc(-1 * clamp(24px, 5vw, 60px)) 30px; }
+    .credo-hero img { width: 100%; height: clamp(380px, 52vw, 560px); object-fit: cover; object-position: 62% 10%; display: block; }
+    @media (max-width: 620px) { .credo-hero { margin: -36px -22px 26px; } .credo-hero img { height: 400px; } }
     .credo-portrait { float: right; width: 226px; margin: 24px 0 12px 26px; }
     .credo-portrait img { width: 100%; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow); }
     @media (max-width: 620px) { .credo-portrait { float: none; width: 210px; margin: 22px auto 2px; } }
@@ -6818,7 +6819,7 @@
           <a href="#mission">Ma mission</a>
         </nav>
         <div class="manifesto reveal" id="credo">
-          <figure class="credo-banner"><img src="assets/credo-lac-automne.jpg" alt="Un lac paisible sous un grand ciel d’automne, les arbres dénudés sur la rive — un paysage filmé par Cindy" width="1440" height="528" loading="lazy" /></figure>
+          <figure class="credo-hero"><img src="assets/cindy-credo-lac.jpg" alt="Cindy Roy au bord du lac, la main ouverte vers le paysage d’automne — naturelle, sans artifice" width="1000" height="1400" loading="lazy" /></figure>
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
           <h2 class="manifesto-title">Je choisis le vrai</h2>
           <figure class="credo-portrait"><img src="assets/cindy-credo-portrait.jpg" alt="Cindy Roy, portrait naturel devant les pins, sans artifice" width="720" height="958" loading="lazy" /></figure>
