@@ -3401,6 +3401,18 @@
     .pass-duo-inner::after { content: ""; position: absolute; inset: 9px; border-radius: 4px; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,.20), transparent 14%, transparent 44%, rgba(0,0,0,.42) 50%, transparent 56%, transparent 86%, rgba(0,0,0,.20)); }
     .pass-page-l { transform: perspective(700px) rotateY(4deg); transform-origin: right center; }
     .pass-page-r { transform: perspective(700px) rotateY(-4deg); transform-origin: left center; }
+    /* Triptyque Diane Tell (9 nov., idée de Didy approuvée par Cindy) :
+       cadre d’or en trois temps dans le haut du panneau de Diane —
+       la pose à la fenêtre de Calgary, le boombox, la rencontre à
+       Petit-Rocher, 45 ans plus tard. */
+    .diane-triptyque { margin: 4px auto 20px; max-width: 880px; padding: 9px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); border-radius: 14px; box-shadow: 0 22px 50px rgba(60,45,10,.28), 0 0 44px rgba(201,162,79,.18); }
+    .diane-triptyque-inner { display: grid; grid-template-columns: .82fr 1.5fr .74fr; gap: 9px; padding: 9px; background: #14201a; border-radius: 8px; }
+    .diane-triptyque-img { width: 100%; height: 300px; display: block; object-fit: cover; border-radius: 4px; }
+    .diane-triptyque-img--pose { object-position: 50% 32%; }
+    .diane-triptyque-img--reve { object-position: 42% 50%; }
+    .diane-triptyque-img--rencontre { object-position: 50% 22%; }
+    .diane-triptyque figcaption { margin-top: 12px; padding: 0 6px; color: #4a3a14; font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.55; text-align: center; }
+    @media (max-width: 700px) { .diane-triptyque { padding: 6px; } .diane-triptyque-inner { gap: 6px; padding: 6px; } .diane-triptyque-img { height: 168px; } }
     .pass-duo-img { height: 148px; width: auto; display: block; border-radius: 4px; filter: saturate(1.10) brightness(1.04); }
     @media (max-width: 640px) { .pass-duo-img { height: 118px; } }
     @media print { .piano-listen, .piano-caption { display: none; } }
@@ -7154,16 +7166,12 @@
             </button>
             <div class="influence-panel" id="influence-diane-panel" role="region" aria-labelledby="influence-diane-toggle" hidden>
               <div class="influence-panel-inner">
-                <figure class="influence-photo">
-                  <img src="assets/cindy-diane-tell-petit-rocher.jpg" alt="Cindy Roy avec Diane Tell à Petit-Rocher — Diane Tell à gauche, en noir avec un béret, et Cindy Roy à droite, en veste bleue et robe blanche, debout côte à côte devant un rideau noir" loading="lazy" />
-                  <figcaption>Avec Diane Tell, mon idole depuis 45 ans — Petit-Rocher, 4 octobre 2026</figcaption>
+                <figure class="diane-triptyque">
+                  <span class="diane-triptyque-inner"><img class="diane-triptyque-img diane-triptyque-img--pose" src="assets/cindy-calgary-fenetre.jpg" alt="La petite Cindy Roy, vers cinq ans, à Calgary — posée jambes croisées sur une chaise devant la grande fenêtre, comme elle aimait faire devant la caméra" width="1489" height="1843" loading="lazy" /><img class="diane-triptyque-img diane-triptyque-img--reve" src="assets/petite-cindy-boombox-diane-tell.jpg" alt="La petite Cindy Roy, vers cinq ans, assise sur un lit à côté d’un gros boombox, avec un grand sourire — vieille photo de famille aux couleurs d’époque" width="1080" height="733" loading="lazy" /><img class="diane-triptyque-img diane-triptyque-img--rencontre" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="Cindy Roy avec Diane Tell à Petit-Rocher — Diane Tell à gauche, en noir avec un béret, et Cindy Roy à droite, en veste bleue et robe blanche, debout côte à côte devant un rideau noir" loading="lazy" /></span>
+                  <figcaption>La petite Cindy, vers cinq ans, à Calgary — je posais devant la fenêtre, pis j’écoutais mon Diane Tell. Quarante-cinq ans plus tard : avec Diane Tell, mon idole — Petit-Rocher, 4 octobre 2026.</figcaption>
                 </figure>
                 <p>Pourquoi Diane Tell? Parce qu’elle me rappelle les femmes de ma famille. Sa douceur, c’est celle des femmes Boudreau — mes tantes, ma mère. Mais derrière cette douceur, il y a un cœur de guerrière, de rebelle : elle fait sa petite affaire, elle sort des cadres. Féminine, coquette assumée, avec une bonne tête sur les épaules. Ce côté-là d’elle colle tellement à mon énergie — comme si, elle et moi, on se reconnaissait.</p>
             <p>Diane, c’est la première artiste que j’ai entendue de ma vie. J’avais cinq ans, on vivait à Calgary, et c’est mon oncle Alain qui m’avait donné une de ses cassettes. Ma mère avait un stéréo à deux cassettes : je m’enregistrais en chantant avec Diane — pis déjà, du haut de mes cinq ans, je rêvais de chanter comme elle. « Je veux chanter comme Diane! » J’étais déjà exigeante envers moi-même, à cinq ans.</p>
-                <figure class="influence-photo influence-photo--enfance">
-                  <img src="assets/petite-cindy-boombox-diane-tell.jpg" alt="La petite Cindy Roy, vers cinq ans, assise sur un lit à côté d’un gros boombox, avec un grand sourire — vieille photo de famille aux couleurs d’époque" width="1080" height="733" loading="lazy" />
-                  <figcaption>La petite Cindy, vers cinq ans — « J’écoutais mon Diane Tell. »</figcaption>
-                </figure>
             <p>Je me suis toujours sentie comme une belle petite bébitte weird, pas comme les autres — je rentrais pas dans le cadre, moi non plus. Mon album préféré d’elle, c’est En flèche : ma petite cassette orange, je l’ai gardée toute ma vie — même si, un jour, j’ai enregistré par-dessus une chanson par accident. Elle vaut plus que de l’or pour moi, cette cassette-là.</p>
             <p>C’est sûrement là, devant ce stéréo, que j’ai décidé : « Moi, je veux chanter. » Bien des artistes sont passés depuis, mais Diane, elle, je l’ai toujours gardée avec moi — tout le long du chemin, comme une étoile qui me guide.</p>
               </div>
