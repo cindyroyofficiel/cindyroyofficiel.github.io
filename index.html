@@ -2099,11 +2099,12 @@
        ligne déborde en largeur réduite, elle se replie doucement
        comme un vers qui continue. ——— */
     .welcome-poem .welcome-intro {
+      position: relative;
       margin: 0; max-width: none;
       font-family: "Dancing Script", cursive; font-weight: 500;
-      font-size: clamp(28px, 2.9vw, 37px); line-height: 1.5;
+      font-size: clamp(22px, 2.3vw, 26px); line-height: 1.40;
       color: #43331d;
-      padding: clamp(28px, 3.2vw, 44px) clamp(24px, 3vw, 42px);
+      padding: clamp(24px, 2.6vw, 34px) clamp(24px, 3vw, 42px);
       background:
         radial-gradient(90% 70% at 18% 8%, rgba(190, 150, 80, .16), rgba(190, 150, 80, 0) 55%),
         radial-gradient(70% 60% at 88% 92%, rgba(170, 125, 60, .14), rgba(170, 125, 60, 0) 60%),
@@ -2117,6 +2118,17 @@
         inset 0 0 46px rgba(150, 110, 45, .16),
         0 20px 44px rgba(60, 40, 10, .22);
     }
+    /* ——— Sa signature au bas du parchemin (idée de Cindy, 10 nov.) :
+       son nom à la main, pis un cœur aux couleurs de l’Acadie —
+       l’étoile dorée sur le bleu, pis au centre, en or, le gouvernail
+       de Belle-Baie. Le cœur scelle le coin du parchemin, un peu
+       penché, comme un sceau qu’on vient d’apposer. ——— */
+    .poem-signature {
+      position: absolute; right: 20px; bottom: -24px; z-index: 3;
+      display: flex; align-items: center;
+      transform: rotate(-4deg);
+    }
+    .poem-heart { width: 96px; height: auto; flex: none; filter: drop-shadow(0 6px 10px rgba(60, 40, 10, .35)); }
     .welcome-photo { margin: 0; grid-column: 1 / -1; width: min(720px, 100%); justify-self: center; }
     /* ——— La rangée du voilier : photo à gauche, sa ligne à côté.
        La ligne est une de SES lignes de voix (approuvée mot pour
@@ -5593,10 +5605,10 @@
             <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
           </figure>
           <div class="welcome-poem-copy">
-          <p class="welcome-intro">« Bienvenue dans mon jardin musical,<br>où mon cœur se partage entre deux rives :<br>mon Acadie natale — Robertville, au cœur de Belle-Baie,<br>là où la mer, jamais ben loin, veille sur ma vie —<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>et Laval, mon havre tranquille,<br>où je fais escale entre deux marées. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /></p>
+          <p class="welcome-intro">« Bienvenue dans mon jardin musical,<br>où mon cœur se partage entre deux rives :<br>mon Acadie natale — Robertville, au cœur de Belle-Baie,<br>là où la mer, jamais ben loin, veille sur ma vie —<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>et Laval, mon havre tranquille,<br>où je fais escale entre deux marées. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /><span class="poem-signature"><svg class="poem-heart" viewBox="0 0 100 92" role="img" aria-label="Cœur aux couleurs du drapeau acadien, signé Cindy Roy, avec le gouvernail de Belle-Baie — la signature de Cindy Roy" focusable="false"><defs><clipPath id="coeur-clip"><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z"/></clipPath></defs><g clip-path="url(#coeur-clip)"><rect width="34" height="92" fill="#0064aa"/><rect x="33" width="34" height="92" fill="#ffffff"/><rect x="66" width="34" height="92" fill="#ed2e26"/><polygon fill="#fcd116" points="16,12 17.9,17.8 24,18 19.1,21.7 20.8,27.7 16,24.4 11.2,27.7 12.9,21.7 8,18 14.1,17.8"/><text x="50" y="53" text-anchor="middle" font-family="'Dancing Script', cursive" font-weight="600" font-size="15" fill="#6e1423" transform="rotate(-3 50 50)">Cindy Roy</text><g stroke="#0d2d52" stroke-width="2.4" fill="none"><path d="M50 59.5v21M39.5 70h21M42.6 62.6l14.8 14.8M57.4 62.6L42.6 77.4"/></g><circle cx="50" cy="70" r="7.6" fill="none" stroke="#c9a24f" stroke-width="3"/><circle cx="50" cy="70" r="2.6" fill="#c9a24f"/></g><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z" fill="none" stroke="#a67c1a" stroke-width="2.4"/></svg></span></p>
           <div class="mini-flags mini-flags--fixes">
               <span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de l’Acadie : bleu, blanc, rouge à l’étoile dorée" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span>
-              <span class="mini-flag"><img src="assets/drapeau-belle-baie.png" alt="Drapeau officiel de la Ville de Belle-Baie : étoile dorée de l’Acadie et gouvernail sur fond bleu, plume et forêt sur les couleurs acadiennes" width="512" height="258" loading="lazy" /></span>
+              
             </div>
           </div>
           <figure class="welcome-frame">
