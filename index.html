@@ -1884,22 +1884,17 @@
        le contenu (.wrap) passe devant, à z-index 1. */
     .influences { position: relative; overflow: hidden; }
     .influences > .wrap { position: relative; z-index: 1; }
+    /* Fond des Influences (9 nov. au soir, demande expresse de Cindy) :
+       la vraie mer et un vrai voilier vert et blanc, en référence à
+       « Si j'étais un homme » de Diane Tell — la chanson qu'elle
+       chante depuis ses cinq ans (« je serais capitaine d'un bateau
+       vert et blanc »). AUCUN effet dreamy : la photo est réelle,
+       pleine force, en bande derrière l'en-tête de la section. */
     .influences-dream { position: absolute; top: 0; left: 0; right: 0; z-index: 0; pointer-events: none;
-      height: clamp(620px, 62vw, 900px);
-      display: grid; grid-template-columns: 1fr 1fr;
-      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3.5%, #000 96.5%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 99%);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to right, transparent 0, #000 3.5%, #000 96.5%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 99%);
-      mask-composite: intersect; }
-    .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: .52; filter: saturate(1.04); }
-    /* Fond dream de la section Influences : depuis le 9 nov. au soir,
-       c’est la scène de Diane Tell vue de la table de Cindy à
-       Petit-Rocher (la photo de la rencontre vit maintenant dans le
-       triptyque d’or du panneau de Diane). */
-    .influences-dream img.dream-duo { object-position: 50% 30%; grid-column: 2;
-      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%);
-      mask-image: linear-gradient(to right, transparent 0, #000 14%); }
-    .influences-dream::after { content: ""; position: absolute; inset: 0;
+      height: clamp(400px, 36vw, 500px); }
+    .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    .influences-dream img.dream-duo { object-position: 50% 46%; }
+    .influences-dream::after { display: none; content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(58% 46% at 20% 26%, rgba(255, 253, 247, .52), rgba(255, 253, 247, 0) 72%),
         linear-gradient(to bottom, rgba(255, 253, 247, .30), rgba(255, 253, 247, .06) 46%, rgba(255, 253, 247, 0) 74%); }
@@ -7142,7 +7137,7 @@
     <section class="influences" id="influences">
       <div class="duo-extension" aria-hidden="true"></div>
       <div class="influences-dream" aria-hidden="true">
-        <img class="dream-duo" src="assets/cindy-table-diane-tell-scene.jpg" alt="" width="720" height="930" loading="eager" />
+        <img class="dream-duo" src="assets/mer-voilier-vert-blanc.jpg" alt="" width="1600" height="720" loading="eager" />
       </div>
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments d’Influences">
