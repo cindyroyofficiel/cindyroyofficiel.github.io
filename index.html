@@ -4813,6 +4813,16 @@
       #originales .originales-top { grid-template-columns: 1fr; gap: 18px; }
       #originales .originales-top .montage-frame video { aspect-ratio: 4 / 3; }
     }
+    /* ——— « Découvrir » plus lisibles (9 nov., demande de Cindy : « les
+       écrits sont pas très foncés — peut-être en noir, pis un petit
+       quelque chose quand tu passes la souris »). Les libellés
+       « Découvrir pourquoi je l’aime » passent du doré moyen à
+       l’encre foncée du site, et virent dorés au survol (le soulignement
+       existait déjà); les petits textes d’aide des boutons-pillules
+       gagnent en présence. ——— */
+    .influence-discover { color: var(--ink); }
+    .influence-toggle:hover .influence-discover, .influence-toggle:focus-visible .influence-discover { color: #a67c1a; }
+    .gallery-toggle-hint { opacity: .92; }
     /* Condensation des Collaborations (9 nov., demande de Cindy : « trop
        d’air entre Martial pis Denis pis Théo ») — les coutures entre les
        blocs des trois collaborateurs fondent de plus de moitié pour que
