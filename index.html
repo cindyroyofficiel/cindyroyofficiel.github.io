@@ -3027,19 +3027,18 @@
        tourne et de la photo de victoire — les trois ensemble, juste sous
        l'en-tête de la section. La photo de victoire garde aussi sa place
        d'ouverture plus bas (gala-opening) : rien n'est déplacé. */
-    .gala-trio { display: flex; align-items: center; justify-content: flex-start; gap: clamp(16px, 3.4vw, 42px); margin: 42px auto 0 0; max-width: 880px; }
+    .gala-trio { display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 3.4vw, 42px); margin: 42px 0 0; }
     .gala-trio-programme { margin: 0; flex: 0 1 330px; text-align: center; order: 1; }
     .gala-trio-programme img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.5); box-shadow: 0 24px 60px rgba(0,0,0,.42); }
     .gala-trio-programme figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
     .gala-trio-side { margin: 0; flex: 0 1 235px; order: 3; }
     .gala-trio-side img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.35); box-shadow: 0 18px 44px rgba(0,0,0,.4); }
-    .gala-trio-trophy { flex: 0 0 auto; display: flex; justify-content: center; order: 2; }
-    .gala-trio-trophy img { display: block; height: 215px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
+    .trio-prog-wrap { position: relative; }
+    .trio-prog-wrap .trio-trophee-sur { position: absolute; right: 5%; bottom: 22%; height: 150px; width: auto; border: none; box-shadow: none; filter: drop-shadow(0 8px 14px rgba(20, 16, 8, .35)); }
     @media (max-width: 760px) {
       .gala-trio { flex-wrap: wrap; }
       .gala-trio-programme { flex-basis: 100%; order: 1; max-width: 320px; }
-      .gala-trio-trophy { order: 2; }
-      .gala-trio-trophy img { height: 150px; }
+      .trio-prog-wrap .trio-trophee-sur { height: 110px; }
       .gala-trio-side { order: 3; flex-basis: min(300px, 72vw); }
     }
     .gala-opening { margin: 48px auto 0; max-width: 680px; }
@@ -5723,9 +5722,11 @@
           })();
         </script>
         <div class="gala-trio">
-          <div class="gala-trio-trophy" aria-hidden="true"><img src="assets/trophee-gala-2015-tourne.webp" alt="" width="279" height="780" loading="lazy" /></div>
           <figure class="gala-trio-programme">
-            <img src="assets/gala-programme-47e-couverture.jpg" alt="Couverture du programme officiel du 47e Gala de la chanson de Caraquet : le titre du Gala, la date du vendredi 31 juillet 2015, les portraits des finalistes et le trophée dessiné" width="1100" height="1445" loading="lazy" />
+            <div class="trio-prog-wrap">
+              <img src="assets/gala-programme-47e-couverture.jpg" alt="Couverture du programme officiel du 47e Gala de la chanson de Caraquet : le titre du Gala, la date du vendredi 31 juillet 2015, les portraits des finalistes et le trophée dessiné" width="1100" height="1445" loading="lazy" />
+              <img class="trio-trophee-sur" src="assets/trophee-gala-2015-tourne.webp" alt="" aria-hidden="true" width="279" height="780" loading="lazy" />
+            </div>
             <figcaption>Le programme officiel du 47e Gala de la chanson de Caraquet — vendredi 31 juillet 2015</figcaption>
           </figure>
           <figure class="gala-trio-side">
