@@ -2133,6 +2133,13 @@
     @media (max-width: 620px) { .welcome-actions { margin-top: 26px; } .button-listen { width: 100%; } }
     /* ——— Montage des chansons originales (en vedette du répertoire) ——— */
     .montage-title { margin: 42px 0 2px; max-width: 920px; font-family: var(--serif); font-size: clamp(42px, 6vw, 72px); line-height: 1.02; letter-spacing: -.02em; font-weight: 600; color: var(--ink); }
+    /* Entête des Originales (9 nov., photo envoyée par Cindy, placée
+       où elle pointait : l’espace vide à droite du grand titre) —
+       Cindy en studio, fondue dans le décor. */
+    .originales-head { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 30px; align-items: center; }
+    .originales-head-photo { margin: 0; }
+    .originales-head-photo img { display: block; width: 100%; height: auto; opacity: .95; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 98%); }
+    @media (max-width: 760px) { .originales-head { grid-template-columns: 1fr; gap: 10px; } .originales-head-photo { max-width: 240px; margin: 2px auto 0; } }
     .montage-title::before { content: "★"; display: block; color: var(--gold); font-family: var(--sans); font-size: 18px; line-height: 1; margin-bottom: 14px; }
     .montage-title em { font-style: italic; font-weight: 500; color: #a67c1a; }
     @media (prefers-color-scheme: dark) { .montage-title { color: var(--cream-ink); } .montage-title em { color: var(--gold); } }
@@ -6118,9 +6125,14 @@
           </div>
         </div>
         <div id="originales" role="tabpanel" aria-labelledby="tab-originales">
+          <div class="originales-head">
+          <div class="originales-head-text">
           <h3 class="montage-title">Mes originales, <em>en quelques secondes — telles qu’elles sont nées, du brut, du vrai.</em></h3>
           <p class="fil-line">Les chansons de l’album d’une vie — en chantier, une à une.</p>
           <p class="solo-line">Les six chansons que je présente ici sont <strong>entièrement de moi — paroles et musique, sans collaboration</strong>.</p>
+          </div>
+          <figure class="originales-head-photo"><img src="assets/cindy-studio-rose.jpg" alt="Cindy Roy en enregistrement, casque aux oreilles, les yeux fermés, chantant dans son micro" width="900" height="889" loading="lazy" /></figure>
+          </div>
           <div class="originales-top">
             <figure class="montage-frame">
             <video src="assets/montage-originales.mp4" poster="assets/montage-originales-poster.jpg" controls playsinline preload="none" title="Mes chansons originales — montage de Cindy Roy : 15 secondes de chacune de ses chansons originales"></video>
