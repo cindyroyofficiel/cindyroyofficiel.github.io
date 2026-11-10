@@ -2953,6 +2953,16 @@
        de son père, que Cindy tient, avec « Avant de me rendre ». */
     .gala-section .gala-story .story-photo { margin: 20px auto 2px; max-width: 320px; }
     .gala-section .gala-story .story-photo img { display: block; width: 100%; height: auto; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(255,255,255,.16); }
+    /* La photo de son père À CÔTÉ du récit de naissance d’« Entends ma
+       prière » (9 nov., placement pointé par Cindy : l’espace vide à
+       droite du texte) — le récit parle de lui d’un bout à l’autre;
+       sur téléphone, la photo suit le premier paragraphe. */
+    @media (min-width: 861px) {
+      .gala-section .gala-story--pere { display: grid; grid-template-columns: minmax(0, 1fr) 320px; column-gap: 34px; max-width: 1060px; }
+      .gala-section .gala-story--pere .birth-title { grid-column: 1 / -1; }
+      .gala-section .gala-story--pere p { grid-column: 1; }
+      .gala-section .gala-story--pere .story-photo { grid-column: 2; grid-row: 2 / span 8; margin: 6px 0 0; align-self: start; }
+    }
     .gala-section .gala-story p { color: #dde0cb; margin: 0 0 16px; }
     .gala-section .gala-story p:last-child { margin-bottom: 0; }
     /* ——— Le moment de l’annonce, mis en valeur (Cindy, 4 nov.) : son
@@ -5579,9 +5589,12 @@
         <details class="photo-gallery">
           <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entends ma prière », un clic</span></summary>
           <div class="gallery-body">
-        <div class="gala-story">
+        <div class="gala-story gala-story--pere">
           <h4 class="birth-title">Comment « Entends ma prière » est née</h4>
           <p>En 2014, je venais de perdre mon père, Lévis Roy, pis je traversais une période très difficile : l’hôpital, le travail, mes jeunes enfants — pis la maladie, avec la douleur pis tout ce qu’elle traînait avec elle. Le diabète s’ajoutait à ça dans ce temps-là. Tout arrivait en même temps. Je marchais chaque jour, je me battais pour ma santé. Pis un jour, en pleine marche, une mélodie m’est venue, comme un cadeau tombé du ciel. J’ai levé les yeux… et les mots sont arrivés tout seuls : « Entends ma prière. » Je me suis enregistrée sur mon téléphone, petit bout par petit bout, pour rien perdre. De retour à la maison, j’ai tout couché sur papier — mes paroles, ma mélodie — puis les accords sont venus à la guitare.</p>
+          <figure class="story-photo">
+            <img src="assets/cindy-papa-cadre.jpg" alt="Cindy Roy tenant le portrait encadré de son père, Lévis Roy" width="776" height="1000" loading="lazy" />
+          </figure>
           <p>Ce que je demandais, dans cette chanson-là, c’était de guérir — pis de trouver ma voie. La maladie de Verneuil, connue aussi sous le nom d’hidradénite suppurée, m’avait fait la vie assez difficile — présente depuis ma petite enfance, elle a duré plus de 25 ans. Je demandais à Dieu de m’aider à porter cette croix-là, pis à m’en sortir. C’est écrit tel quel dans mes mots : « Aide-moi à trouver ma voie comme tu l’as fait. » Pis dans le bridge, ça monte en crescendo : « Aide-moi, oh aide-moi… » — mon cri du cœur. Je te chante ma prière, tout doux et humblement, avec mes joies et mes pleurs, de mon âme jusqu’au ciel.</p>
           <p>Mais ma prière est pas restée juste la mienne. En l’écrivant, le « je » est devenu « nous » : « Aides-nous à prendre notre croix comme tu l’as fait. » Pis plus loin : « Ici sur la terre, nous rêvons de faire un monde meilleur — illumine notre cœur. » C’est une prière pour moi, oui — mais aussi pour tout le monde qui porte quelque chose de lourd.</p>
           <p>Pis ma prière a été entendue. On dit de cette maladie qu’elle ne guérit pas — elle est considérée incurable encore aujourd’hui. Moi, je suis en rémission : je n’en souffre plus — depuis 2015, plus rien. Pis le diabète est disparu lui aussi, avec mes efforts pis le virage santé que j’ai pris. Un pas à la fois, j’ai repris ma santé en main — j’ai perdu 140 livres, pis aujourd’hui, je n’ai plus besoin d’aucun médicament. Ma perte de poids, la nutrition, la prière, la foi, mon père… je crois que tout ça a contribué à ce que je vis comme un miracle.</p>
@@ -5596,9 +5609,6 @@
         <div class="gala-story">
           <h4 class="birth-title">« Avant de me rendre » — le voyage de mon père</h4>
           <p>« Avant de me rendre », c’est moi qui l’ai écrite, mais c’est l’histoire de mon père : son voyage vers son ciel, ses trébuchements en chemin et, au bout du compte, son âme sauvée. En l’écrivant, j’avais l’impression qu’il me racontait tout ça à travers moi, comme s’il avait emprunté mon vaisseau pour me transmettre son histoire. Moi, j’étais simplement le canal, le cœur grand ouvert.</p>
-          <figure class="story-photo">
-            <img src="assets/cindy-papa-cadre.jpg" alt="Cindy Roy tenant le portrait encadré de son père, Lévis Roy" width="776" height="1000" loading="lazy" />
-          </figure>
         </div>
         <div class="gala-story">
           <h4 class="birth-title">« Moi, je crois » — choisir le bonheur</h4>
