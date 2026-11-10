@@ -3602,6 +3602,70 @@
       .coming-badge { animation: none; }
     }
 
+    /* ——— LE COFFRE : les quatre trésors (surprise pour Cindy, 10 nov. 2026) ———
+       Chaque compartiment reçoit SON ambiance, comme les talents qui
+       s'envolent du coffre : projecteur de scène (humour), chaleur de
+       four (cuisine), studio doré fondu (balado), parchemin (livre). */
+    .coming-card {
+      box-shadow: var(--shadow-warm), inset 0 0 0 1px rgba(255, 252, 244, .6), inset 0 0 38px rgba(201, 162, 79, .10);
+    }
+    .coming-card > * { position: relative; z-index: 1; }
+    .coming-card::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
+    /* Humour : le projecteur de scène sur le fond sombre + étincelles */
+    .coming-card--hot {
+      background:
+        radial-gradient(430px 210px at 50% -50px, rgba(255, 216, 130, .38), rgba(255, 216, 130, 0) 70%),
+        linear-gradient(150deg, var(--deep-2) 0%, var(--deep) 78%);
+    }
+    .coming-card--hot::after {
+      width: 120px; height: 96px; top: 12px; right: 12px; opacity: .5;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 L12.2 7.8 L20 10 L12.2 12.2 L10 20 L7.8 12.2 L0 10 L7.8 7.8 Z' fill='%23e9c766'/%3E%3C/svg%3E") right 0 top 0 / 32px 32px no-repeat,
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 L12.2 7.8 L20 10 L12.2 12.2 L10 20 L7.8 12.2 L0 10 L7.8 7.8 Z' fill='%23e9c766'/%3E%3C/svg%3E") right 46px top 50px / 19px 19px no-repeat,
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 L12.2 7.8 L20 10 L12.2 12.2 L10 20 L7.8 12.2 L0 10 L7.8 7.8 Z' fill='%23e9c766'/%3E%3C/svg%3E") right 6px top 66px / 13px 13px no-repeat;
+    }
+    /* Cuisine : la chaleur du four + la petite vapeur dorée */
+    .coffre-card--cuisine {
+      background:
+        radial-gradient(520px 300px at 88% -60px, rgba(255, 196, 110, .38), rgba(255, 196, 110, 0) 65%),
+        radial-gradient(430px 260px at -50px 112%, rgba(224, 122, 82, .20), rgba(224, 122, 82, 0) 60%),
+        linear-gradient(165deg, #fff9ec, #fdf2dd 55%, #fbeed2);
+    }
+    .coffre-card--cuisine::after {
+      width: 66px; height: 46px; top: 16px; right: 18px; opacity: .55;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Cg fill='none' stroke='%23b98a24' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M14 38 C10 30 18 26 14 18 C11 12 16 8 15 3'/%3E%3Cpath d='M30 38 C26 30 34 26 30 18 C27 12 32 8 31 3'/%3E%3Cpath d='M46 38 C42 30 50 26 46 18 C43 12 48 8 47 3'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    /* Balado : le studio doré, fondu à droite */
+    .coffre-card--balado {
+      background:
+        radial-gradient(460px 280px at 90% -40px, rgba(255, 205, 120, .30), rgba(255, 205, 120, 0) 62%),
+        linear-gradient(165deg, #fffaf0, #faf1de);
+    }
+    .coffre-card--balado::after {
+      top: 0; right: 0; bottom: 0; width: 64%;
+      background: url("assets/studio-micro-dreamy.jpg") center 38% / cover no-repeat;
+      opacity: .30;
+      -webkit-mask-image: linear-gradient(to left, #000 22%, transparent 96%);
+      mask-image: linear-gradient(to left, #000 22%, transparent 96%);
+    }
+    /* Livre : le parchemin + le petit livre ouvert */
+    .coffre-card--livre {
+      background:
+        radial-gradient(320px 190px at 14% -10px, rgba(166, 124, 26, .16), rgba(166, 124, 26, 0) 60%),
+        linear-gradient(165deg, #faf0d7, #f5e7c6 58%, #f0deb8);
+    }
+    .coffre-card--livre::after {
+      width: 92px; height: 66px; right: 14px; bottom: 10px; opacity: .5;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 44'%3E%3Cg fill='none' stroke='%23a67c1a' stroke-width='2.2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M32 10 C24 4 14 3 6 6 V36 C14 33 24 34 32 40 C40 34 50 33 58 36 V6 C50 3 40 4 32 10 Z'/%3E%3Cpath d='M32 10 V40'/%3E%3Cpath d='M12 13 C17 11.5 22 11.8 27 14'/%3E%3Cpath d='M12 21 C17 19.5 22 19.8 27 22'/%3E%3Cpath d='M37 14 C42 11.8 47 11.5 52 13'/%3E%3Cpath d='M37 22 C42 19.8 47 19.5 52 21'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    @media (prefers-color-scheme: dark) {
+      .coffre-card--cuisine { background: radial-gradient(520px 300px at 88% -60px, rgba(255, 196, 110, .16), rgba(255, 196, 110, 0) 65%), linear-gradient(165deg, #2c2a1e, #262b1d); }
+      .coffre-card--livre { background: radial-gradient(320px 190px at 14% -10px, rgba(201, 162, 79, .14), rgba(201, 162, 79, 0) 60%), linear-gradient(165deg, #33291a, #262b1d); }
+      .coffre-card--balado { background: radial-gradient(460px 280px at 90% -40px, rgba(255, 205, 120, .14), rgba(255, 205, 120, 0) 62%), linear-gradient(165deg, #2c2a1e, #262b1d); }
+      .coffre-card--balado::after { opacity: .22; }
+      .coffre-card--cuisine::after, .coffre-card--livre::after { opacity: .7; }
+    }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -8300,17 +8364,17 @@
             <video src="assets/teaser-cindy-roy-show-v3.mp4" poster="assets/teaser-cindy-roy-show-poster.jpg" controls playsinline preload="none" title="La bande-annonce du Cindy Roy Show — un avant-goût des capsules d’humour de Cindy Roy"></video>
             <p class="teaser-note">Teaser medley — les 4 capsules complètes sont disponibles sur <a href="https://youtube.com/playlist?list=PLG_ipdyLZjDuTosVd1R-xi0vhD81rg0-K" target="_blank" rel="noopener">YouTube</a>.</p>
           </article>
-          <article class="coming-card" id="coffre-cuisine">
+          <article class="coming-card coffre-card--cuisine" id="coffre-cuisine">
             <span class="coming-badge">À construire</span>
             <h3>Dans ma cuisine</h3>
             <p>Ma cuisine à ma façon — moins de sucre, mais plein, plein de cœur.</p>
           </article>
-          <article class="coming-card" id="coffre-balado">
+          <article class="coming-card coffre-card--balado" id="coffre-balado">
             <span class="coming-badge">À construire</span>
             <h3>Podcast / Balado</h3>
             <p>Mon podcast vidéo, tourné à la maison, tout près de vous — je vous raconte tout ça en détail dans ma section Podcast.</p>
           </article>
-          <article class="coming-card" id="coffre-livre">
+          <article class="coming-card coffre-card--livre" id="coffre-livre">
             <span class="coming-badge">À construire</span>
             <h3>Livre</h3>
             <p>Entre rêves et prières — mon livre, en préparation, une page à la fois.</p>
