@@ -2994,6 +2994,26 @@
     @media (prefers-reduced-motion: reduce) { .carousel-track { transition: none; } }
 
     /* ——— Section-récit du Gala ——— */
+    /* Trio du Gala (10 nov., demande de Cindy) : le programme officiel du
+       47e Gala CENTRÉ en pièce maîtresse, flanqué du petit trophée qui
+       tourne et de la photo de victoire — les trois ensemble, juste sous
+       l'en-tête de la section. La photo de victoire garde aussi sa place
+       d'ouverture plus bas (gala-opening) : rien n'est déplacé. */
+    .gala-trio { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 4vw, 52px); margin: 42px auto 0; max-width: 1080px; }
+    .gala-trio-programme { margin: 0; flex: 0 1 480px; text-align: center; }
+    .gala-trio-programme img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.5); box-shadow: 0 24px 60px rgba(0,0,0,.42); }
+    .gala-trio-programme figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
+    .gala-trio-side { margin: 0; flex: 0 1 300px; }
+    .gala-trio-side img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.35); box-shadow: 0 18px 44px rgba(0,0,0,.4); }
+    .gala-trio-trophy { flex: 0 0 auto; display: flex; justify-content: center; }
+    .gala-trio-trophy img { display: block; height: 300px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
+    @media (max-width: 760px) {
+      .gala-trio { flex-wrap: wrap; }
+      .gala-trio-programme { flex-basis: 100%; order: 1; }
+      .gala-trio-trophy { order: 2; }
+      .gala-trio-trophy img { height: 190px; }
+      .gala-trio-side { order: 3; flex-basis: min(300px, 72vw); }
+    }
     .gala-opening { margin: 48px auto 0; max-width: 680px; }
     .gala-opening img { width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.42); border: 1px solid rgba(213,164,58,.35); }
     .gala-opening figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
@@ -5674,6 +5694,16 @@
             }
           })();
         </script>
+        <div class="gala-trio">
+          <div class="gala-trio-trophy" aria-hidden="true"><img src="assets/trophee-gala-2015-tourne.webp" alt="" width="279" height="780" loading="lazy" /></div>
+          <figure class="gala-trio-programme">
+            <img src="assets/gala-programme-47e-couverture.jpg" alt="Couverture du programme officiel du 47e Gala de la chanson de Caraquet : le titre du Gala, la date du vendredi 31 juillet 2015, les portraits des finalistes et le trophée dessiné" width="1100" height="1445" loading="lazy" />
+            <figcaption>Le programme officiel du 47e Gala de la chanson de Caraquet — vendredi 31 juillet 2015</figcaption>
+          </figure>
+          <figure class="gala-trio-side">
+            <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de la remise de son prix au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
+          </figure>
+        </div>
         <p class="section-intro">L’histoire de ma chanson primée (Étoile), des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
         <figure class="gala-opening">
           <img src="assets/gala-2015-trophee-retouchee.jpg" alt="Cindy Roy sur scène, radieuse, tenant son trophée et son certificat, entourée de deux présentateurs lors de la remise de son prix au 47e Gala de la chanson de Caraquet en 2015" width="1708" height="1178" loading="lazy" />
