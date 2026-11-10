@@ -2220,6 +2220,13 @@
     .parent-frame img { position: relative; width: 100%; height: 100%; display: block; object-fit: contain; }
     .parent-frame--zoom img { object-fit: cover; object-position: 50% 32%; }
     .parent-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
+    /* Photo de Mona seule, fondue dans le décor sous le paragraphe que
+       Cindy a écrit pour elle (9 nov., demande de Cindy : focus sur sa
+       mère ici — la photo avec son père a été retirée de ce bloc, il
+       a sa place au Gala). Zoomée un peu, bords fondus. */
+    .mona-photo { margin: 30px auto 8px; max-width: 430px; }
+    .mona-photo img { display: block; width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 60% 28%; transform: scale(1.06); opacity: .94; -webkit-mask-image: radial-gradient(ellipse at center, black 57%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 57%, transparent 98%); }
+    .mona-photo figcaption { margin-top: 12px; color: var(--muted); font-size: 15px; line-height: 1.55; text-align: center; }
     .maman-line { margin: 26px 0 0; font-family: var(--serif); font-size: 23px; line-height: 1.4; font-weight: 600; color: var(--ink); text-align: center; }
     .maman-suite { margin: 8px auto 0; max-width: 560px; font-family: var(--serif); font-size: 19px; line-height: 1.55; font-weight: 400; color: var(--muted); text-align: center; }
     /* ——— Photos du miroir (À propos, près de Michel) : les deux photos à la
@@ -6757,16 +6764,10 @@
             <p class="mona-merci-title"><span class="mona-heart" aria-hidden="true">♥</span>À ma mère, Mona — la toute première.</p>
             <p>Ma mère, c’est une force tranquille, une artiste dans l’âme.</p>
             <p>C’est elle, la toute première, qui m’a donné le goût de la musique. Je viens d’une famille musicale — ça a bercé toute mon enfance — mais ce sont nos soirées toutes seules, elle avec sa guitare, à me jouer des petits bouts de ses compositions, qui sont venus me chercher au tout début. Avant Diane Tell, avant Cabrel, avant toutes mes influences, il y a eu ma mère. Le plus gros morceau de tout, c’est à elle qu’il revient.</p>
-            <div class="parents-photos">
-              <figure class="parent-photo">
-                <span class="parent-frame" style="--frame-bg: url('assets/cindy-avec-son-pere.jpg')"><img src="assets/cindy-avec-son-pere.jpg" alt="Cindy Roy avec son père" width="1220" height="1254" decoding="async" /></span>
-                <figcaption>Avec mon père, Lévis Roy</figcaption>
-              </figure>
-              <figure class="parent-photo">
-                <span class="parent-frame parent-frame--zoom" style="--frame-bg: url('assets/cindy-avec-sa-mere.jpg')"><img src="assets/cindy-avec-sa-mere.jpg" alt="Cindy Roy avec sa mère, Mona Boudreau" width="1535" height="2048" loading="lazy" decoding="async" /></span>
+            <figure class="mona-photo">
+                <img src="assets/cindy-avec-sa-mere.jpg" alt="Cindy Roy avec sa mère, Mona Boudreau" width="1535" height="2048" loading="lazy" decoding="async" />
                 <figcaption>Avec ma mère, Mona Boudreau</figcaption>
               </figure>
-            </div>
             <div class="grands-fond" style="position: relative; overflow: hidden; border-radius: 16px; padding: 18px 20px; background: #fdf8ef;">
               <img class="grands-photo-g" src="assets/cindy-enfants-2005-pale.jpg" alt="" aria-hidden="true" loading="lazy" style="position: absolute; top: 0; left: 0; height: 100%; width: 46%; object-fit: contain; object-position: left center; opacity: 0.17; -webkit-mask-image: radial-gradient(ellipse at left center, black 50%, transparent 96%); mask-image: radial-gradient(ellipse at left center, black 50%, transparent 96%);" />
               <img class="grands-photo-d" src="assets/a-mes-grands-cindy-enfants.jpg" alt="" aria-hidden="true" loading="lazy" style="position: absolute; top: 0; right: 0; height: 100%; width: 46%; object-fit: contain; object-position: right center; opacity: 0.17; -webkit-mask-image: radial-gradient(ellipse at right center, black 50%, transparent 96%); mask-image: radial-gradient(ellipse at right center, black 50%, transparent 96%);" />
