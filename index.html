@@ -1594,6 +1594,15 @@
     .gala-doc { margin: 0; }
     .gala-doc img { width: 100%; box-shadow: 0 18px 44px rgba(0,0,0,.38); border: 1px solid rgba(255,255,255,.16); }
     .gala-doc figcaption { margin-top: 12px; color: #bfc2a9; font-size: 13.5px; text-align: center; }
+    /* Le laissez-passer + la photo de Cindy avec, EN PETIT à côté du
+       texte des prix (9 nov., demande de Cindy : « ça a pas besoin
+       d’être gros ») — la colonne des documents se resserre et les
+       deux images se placent côte à côte au lieu d’être empilées
+       en grand à côté du paragraphe du Prix RADARTS. */
+    .gala-memory { grid-template-columns: minmax(0, 1fr) minmax(290px, 420px); }
+    .gala-doc { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+    .gala-doc img { margin-top: 0 !important; }
+    .gala-doc figcaption { grid-column: 1 / -1; }
 
     /* ——— Hommage à Martial Marey (Parcours) : bloc autonome, ses collaborations avec la France ——— */
     .martial { margin-top: 38px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.15); max-width: 820px; }
