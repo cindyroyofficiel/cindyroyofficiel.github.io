@@ -1892,21 +1892,19 @@
       mask-image: linear-gradient(to right, transparent 0, #000 3.5%, #000 96.5%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 99%);
       mask-composite: intersect; }
     .influences-dream img { width: 100%; height: 100%; object-fit: cover; opacity: .52; filter: saturate(1.04); }
-    .influences-dream img.dream-duo { object-position: 50% 22%; grid-column: 2;
+    /* Fond dream de la section Influences : depuis le 9 nov. au soir,
+       c’est la scène de Diane Tell vue de la table de Cindy à
+       Petit-Rocher (la photo de la rencontre vit maintenant dans le
+       triptyque d’or du panneau de Diane). */
+    .influences-dream img.dream-duo { object-position: 50% 30%; grid-column: 2;
       -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%);
       mask-image: linear-gradient(to right, transparent 0, #000 14%); }
     .influences-dream::after { content: ""; position: absolute; inset: 0;
       background:
         radial-gradient(58% 46% at 20% 26%, rgba(255, 253, 247, .52), rgba(255, 253, 247, 0) 72%),
         linear-gradient(to bottom, rgba(255, 253, 247, .30), rgba(255, 253, 247, .06) 46%, rgba(255, 253, 247, 0) 74%); }
-    .influences-head { position: relative; padding: 30px 0 14px; }
-    .influences-head-copy { max-width: 700px; min-width: 0; position: relative; z-index: 1; }
-    /* Fond surprise des Influences (9 nov., carte blanche de Cindy) :
-       la scène de Diane Tell vue de la table de Cindy à Petit-Rocher,
-       fondue derrière le titre de la section — son point de vue à elle,
-       le soir de la rencontre. */
-    .influences-bg { position: absolute; inset: -26px -12px -20px; width: calc(100% + 24px); height: calc(100% + 46px); object-fit: cover; object-position: 50% 30%; opacity: .33; filter: saturate(.92); z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent), linear-gradient(to bottom, transparent, black 24%, black 74%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent), linear-gradient(to bottom, transparent, black 24%, black 74%, transparent); mask-composite: intersect; }
-    @media (max-width: 700px) { .influences-bg { opacity: .26; object-position: 50% 26%; } }
+    .influences-head { position: relative; }
+    .influences-head-copy { max-width: 700px; min-width: 0; }
     @media (max-width: 700px) {
       .influences-dream { height: 430px; }
       .influences-dream img { opacity: .5; }
@@ -7144,7 +7142,7 @@
     <section class="influences" id="influences">
       <div class="duo-extension" aria-hidden="true"></div>
       <div class="influences-dream" aria-hidden="true">
-        <img class="dream-duo" src="assets/cindy-diane-tell-petit-rocher.jpg" alt="" width="969" height="1347" loading="eager" />
+        <img class="dream-duo" src="assets/cindy-table-diane-tell-scene.jpg" alt="" width="720" height="930" loading="eager" />
       </div>
       <div class="wrap">
         <nav class="door-nav" aria-label="Compartiments d’Influences">
@@ -7157,7 +7155,6 @@
           <a href="#aussi-univers">Aussi dans mon univers</a>
         </nav>
         <div class="influences-head">
-          <img class="influences-bg" src="assets/cindy-table-diane-tell-scene.jpg" alt="" aria-hidden="true" loading="lazy" />
           <div class="influences-head-copy">
             <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
             <p class="section-tag">Influences</p>
