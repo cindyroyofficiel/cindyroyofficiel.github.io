@@ -2112,7 +2112,7 @@
        hors du rouleau. ——— */
     .welcome-scroll {
       position: relative;
-      display: flex; align-items: center;
+      display: flex; align-items: flex-start;
       gap: clamp(24px, 3vw, 40px);
       padding: clamp(40px, 4vw, 54px) clamp(28px, 3.4vw, 46px);
       background:
@@ -2150,7 +2150,7 @@
       flex: 0 0 252px; width: 252px; max-width: 252px; margin: 0;
     }
     @media (max-width: 1199px) {
-      .welcome-scroll { flex-direction: column; }
+      .welcome-scroll { flex-direction: column; align-items: center; }
       .welcome-scroll .welcome-frame { flex: none; width: min(290px, 100%); max-width: 290px; }
     }
     @media (max-width: 700px) {
