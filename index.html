@@ -293,7 +293,7 @@
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
     #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
-    @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
+    @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 205px; } }
     .has-sub { position: relative; display: inline-flex; }
     .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); flex-direction: column; gap: 2px; background: rgba(16,20,13,.97); border: 1px solid rgba(201,162,79,.5); border-radius: 14px; padding: 10px; min-width: 180px; box-shadow: 0 18px 40px rgba(0,0,0,.35); z-index: 60; }
     .sub-menu::before { content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px; }
@@ -2551,15 +2551,19 @@
     .beresford-stage-row .cap-photo { max-width: 190px; }
     .beresford-stage-row .cap-vid { max-width: 180px; }
     @media (max-width: 640px) {
-      .beresford-stage { height: auto; padding-top: 308px; background-size: 150% auto; background-position: center top; }
+      /* Beresford au telephone (10 nov., demande de Cindy : « pro et
+         aligne partout ») : la scene devient une colonne centree —
+         chaque media a sa pleine presence, legendes uniformes. */
+      .beresford-stage { height: auto; padding-top: 200px; background-size: 150% auto; background-position: center top; }
       .beresford-stage-veil { background: linear-gradient(180deg, rgba(255, 253, 247, .06) 0%, rgba(255, 253, 247, .30) 42%, rgba(255, 253, 247, .55) 100%); }
-      .beresford-stage-row { position: relative; z-index: 1; gap: 12px; padding: 0 12px 20px; }
-      .beresford-stage-row .scene-item img, .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { height: 148px; }
-      .beresford-row-top { justify-content: flex-start; }
-      .beresford-stage-row .scene-item.louis-big img { height: 250px; }
-      .beresford-stage-row .scene-item.louis-big .cap-vid { max-width: 230px; }
-      .beresford-stage-row .scene-item figcaption { font-size: 11.5px; }
-      .beresford-stage-row .cap-photo, .beresford-stage-row .cap-vid { max-width: 120px; }
+      .beresford-stage-row { position: relative; z-index: 1; flex-direction: column; align-items: center; gap: 30px; padding: 0 16px 26px; }
+      .beresford-stage-row .scene-item { width: 100%; }
+      .beresford-stage-row .scene-item img { height: auto; width: min(320px, 100%); }
+      .beresford-stage-row .scene-item video, .beresford-stage-row .scene-item iframe { height: 340px; width: auto; }
+      .beresford-stage-row .scene-item video.vid-wide { width: 100%; height: auto; }
+      .beresford-stage-row .scene-item.louis-big img { height: auto; width: min(320px, 100%); }
+      .beresford-stage-row .scene-item figcaption { font-size: 13.5px; }
+      .beresford-stage-row .cap-photo, .beresford-stage-row .cap-vid, .beresford-stage-row .cap-vid-wide, .beresford-stage-row .scene-item.louis-big .cap-vid { max-width: 320px; }
     }
     #beresford .beresford-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 22px; grid-auto-flow: dense; margin-top: 30px; }
     #beresford .gallery-body > .beresford-gallery-grid:first-child { margin-top: 6px; }
@@ -2581,6 +2585,10 @@
     #beresford .siffleux-mascotte img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); box-shadow: 0 8px 22px rgba(90,60,10,.25); flex: none; }
     #beresford .siffleux-mascotte figcaption { font-size: 15.5px; color: var(--muted); line-height: 1.5; margin: 0; }
     #beresford .siffleux-mascotte figcaption strong { font-family: var(--serif); color: var(--ink); font-size: 17.5px; }
+    @media (max-width: 640px) {
+      #beresford .siffleux-mascotte { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+      #beresford .siffleux-mascotte figcaption { font-size: 13px; }
+    }
     #beresford .siffleux-credit { display: block; font-size: 12px; opacity: .8; margin-top: 2px; }
     @media (max-width: 620px) { #beresford .siffleux-mascotte img { width: 84px; height: 84px; } }
     @media (min-width: 1200px) {
@@ -5508,7 +5516,7 @@
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
     #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 148px; }
-    @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 138px; } }
+    @media (max-width: 640px) { .door-nav { top: 66px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 205px; } }
     .calixte-story > p { margin: 20px 0 0; font-size: 18px; line-height: 1.75; color: var(--ink); }
     .calixte-photos { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; align-items: start; }
     .calixte-photos figure { margin: 0 auto; width: min(100%, 330px); }
