@@ -3701,6 +3701,45 @@
       .booking-card { padding: 24px 22px 20px; }
     }
 
+    /* ——— GALERIES : le mur des cadres dorés (10 nov. 2026) ———
+       Chaque porte de galerie devient une plaque de musée éclairée
+       par le haut, et la galerie ouverte reçoit sa salle : cadre
+       doré, lueur chaude — version profonde dans les sections
+       sombres (Gala, Scène, Presse). */
+    .gallery-toggle, #scene .gallery-toggle, .press .gallery-toggle {
+      color: var(--ink);
+      background:
+        radial-gradient(270px 74px at 50% -26px, rgba(255, 216, 130, .65), rgba(255, 216, 130, 0) 70%),
+        linear-gradient(170deg, #fffaf0, #f6ead0 60%, #efdfba);
+      border-color: rgba(166, 124, 26, .8);
+      box-shadow: 0 14px 30px -12px rgba(60, 38, 6, .45), inset 0 0 0 1px rgba(255, 252, 244, .85), inset 0 0 22px rgba(201, 162, 79, .16);
+    }
+    .gallery-toggle:hover {
+      background:
+        radial-gradient(270px 74px at 50% -26px, rgba(255, 216, 130, .85), rgba(255, 216, 130, 0) 70%),
+        linear-gradient(170deg, #fffdf6, #f8eed6 60%, #f2e2bc);
+      border-color: var(--gold-dark);
+    }
+    .gallery-toggle .gallery-toggle-hint, #scene .gallery-toggle-hint, .press .gallery-toggle-hint { color: #66584a; opacity: 1; }
+    .gallery-body {
+      margin-top: 20px; padding: 12px clamp(12px, 2.5vw, 26px) clamp(20px, 3vw, 30px);
+      border: 1.5px solid rgba(201, 162, 79, .45); border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 250, 240, .6), rgba(246, 238, 218, .3));
+      box-shadow: inset 0 0 0 1px rgba(255, 252, 244, .55), inset 0 22px 36px -24px rgba(201, 162, 79, .4);
+    }
+    #gala .gallery-body, #scene .gallery-body, .press .gallery-body {
+      background: linear-gradient(180deg, rgba(233, 199, 102, .07), rgba(0, 0, 0, .16));
+      border-color: rgba(201, 162, 79, .5);
+      box-shadow: inset 0 0 0 1px rgba(255, 252, 244, .08), inset 0 22px 36px -24px rgba(0, 0, 0, .55);
+    }
+    @media (prefers-color-scheme: dark) {
+      .gallery-body {
+        background: linear-gradient(180deg, rgba(233, 199, 102, .07), rgba(0, 0, 0, .16));
+        border-color: rgba(201, 162, 79, .5);
+      }
+    }
+    .gallery-item { border: 1px solid rgba(166, 124, 26, .5); border-radius: 5px; box-shadow: 0 12px 24px -14px rgba(60, 38, 6, .5); }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
