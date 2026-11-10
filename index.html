@@ -2167,6 +2167,26 @@
       transform: rotate(-4deg);
     }
     .poem-heart { width: 96px; height: auto; flex: none; filter: drop-shadow(0 6px 10px rgba(60, 40, 10, .35)); }
+    /* ——— Ses trésors de mer, déposés sur le rouleau avec le cœur
+       (demande de Cindy, 10 nov.) : de VRAIES photos — une étoile de
+       mer à gauche du cœur, une coquille Saint-Jacques à sa droite,
+       comme ramassées sur le bord de la mer pis posées là. ——— */
+    .poem-shell { position: absolute; z-index: 3; pointer-events: none; height: auto; }
+    .poem-shell--etoile {
+      right: 126px; bottom: -20px; width: 84px;
+      transform: rotate(14deg);
+      filter: drop-shadow(0 7px 9px rgba(60, 40, 10, .35));
+    }
+    .poem-shell--coquille {
+      right: -14px; bottom: -36px; width: 94px;
+      transform: rotate(-7deg);
+      filter: drop-shadow(0 7px 9px rgba(60, 40, 10, .35));
+    }
+    @media (max-width: 700px) {
+      .poem-shell--etoile { right: 110px; bottom: -16px; width: 62px; }
+      .poem-shell--coquille { right: -8px; bottom: -28px; width: 70px; }
+    }
+    .footer-credits-mer { font-size: 11.5px; opacity: .72; }
     .welcome-photo { margin: 0; grid-column: 1 / -1; width: min(720px, 100%); justify-self: center; }
     /* ——— La rangée du voilier : photo à gauche, sa ligne à côté.
        La ligne est une de SES lignes de voix (approuvée mot pour
@@ -5649,6 +5669,8 @@
             <video src="assets/video-bienvenue-piano-finition.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
             <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
           </figure>
+          <img class="poem-shell poem-shell--etoile" src="assets/etoile-de-mer.png" alt="" width="560" height="450" loading="lazy" aria-hidden="true" />
+          <img class="poem-shell poem-shell--coquille" src="assets/coquille-saint-jacques.png" alt="" width="560" height="512" loading="lazy" aria-hidden="true" />
           </div>
             <div class="mere-chanteuse">
               <figure class="mere-photo">
@@ -8589,7 +8611,7 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
   <a class="fixed-contact" href="mailto:contact@cindyroyofficiel.com" aria-label="Écrivez-moi par courriel">Écrivez-moi</a>
 
   <footer>
-    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>Cindy Roy Officiel</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature"><span class="footer-sig-name">Cindy Roy</span> — l’album d’une vie, un pas à la fois. 🦋</span><span class="footer-rights">© 2026 Cindy Roy — Tous droits réservés</span></div>
+    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>Cindy Roy Officiel</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature"><span class="footer-sig-name">Cindy Roy</span> — l’album d’une vie, un pas à la fois. 🦋</span><span class="footer-credits-mer">Trésors de mer du parchemin : coquille Saint-Jacques © H. Zell (CC BY-SA 3.0) · étoile de mer © Biopics (CC BY-SA 4.0) — photos via Wikimedia Commons</span><span class="footer-rights">© 2026 Cindy Roy — Tous droits réservés</span></div>
   </footer>
 
   <script>
