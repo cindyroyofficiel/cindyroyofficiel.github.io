@@ -5438,7 +5438,24 @@
     @media (max-width: 640px) { .lavoix-dream { padding: 24px 18px 20px; } .lavoix-dream .mic-deco { width: 104px; } }
     @media (max-width: 640px) { .lavoix-photo { float: none; width: min(240px, 80%); margin: 14px auto; } }
     @media (max-width: 760px) {
-      .calixte-dream .calixte-bg img { object-position: center; }
+      /* Telephone (10 nov., retour de Cindy) : le montage unique ecrasait
+         les deux photos (une coupee, l'autre perdue). On empile les deux
+         photos originales de Calixte et Cindy, fondues l'une dans l'autre,
+         presentes en douceur derriere le texte (opacite .55), et la barre
+         les revele au complet. */
+      .calixte-dream .calixte-bg {
+        display: flex; flex-direction: column; opacity: .55;
+        -webkit-mask-image: radial-gradient(ellipse at center, #000 62%, transparent 98%);
+        mask-image: radial-gradient(ellipse at center, #000 62%, transparent 98%);
+      }
+      .calixte-dream .calixte-bg .calixte-img-main { display: none; }
+      .calixte-dream .calixte-bg .calixte-img-tel { display: block; width: 100%; min-height: 0; object-fit: cover; }
+      .calixte-dream .calixte-bg .calixte-img-tel--a { flex: 1 1 54%; object-position: center 30%; }
+      .calixte-dream .calixte-bg .calixte-img-tel--b {
+        flex: 1 1 46%; object-position: center 32%; margin-top: -34px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%);
+        mask-image: linear-gradient(to bottom, transparent, #000 22%);
+      }
       .calixte-dream p { background: transparent; }
     }
     .calixte-dream { position: relative; overflow: hidden; margin-top: 26px; padding: 30px 30px 26px; border-radius: 22px; background: #fbf7ee; box-shadow: var(--shadow); }
@@ -5448,7 +5465,8 @@
        on ne voyait plus Calixte et Cindy. Là, elle reste là, pâle
        derrière le texte, et la barre l'amène au complet. */
     .calixte-dream .calixte-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .calixte-dream .calixte-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .calixte-dream .calixte-img-main { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .calixte-dream .calixte-img-tel { display: none; }
     .calixte-dream > *:not(.calixte-bg) { position: relative; z-index: 1; }
     .calixte-dream .photo-slider { justify-content: flex-end; margin-top: 16px; color: #8a6a24; }
     .calixte-dream .chapter-title { margin-top: 0; color: #6e1423; text-shadow: 0 1px 10px rgba(251,247,238,.95), 0 0 22px rgba(251,247,238,.9); }
@@ -6773,7 +6791,7 @@
         </div>
         <article class="calixte-story" id="calixte">
           <div class="calixte-dream" data-slider-box>
-          <picture class="dream-layer calixte-bg" aria-hidden="true"><source media="(max-width: 760px)" srcset="assets/calixte-fond-reve-mobile.jpg" /><img src="assets/calixte-fond-reve-v2.jpg" alt="" loading="lazy" /></picture>
+          <div class="dream-layer calixte-bg" aria-hidden="true"><img class="calixte-img-main" src="assets/calixte-fond-reve-v2.jpg" alt="" loading="lazy" /><img class="calixte-img-tel calixte-img-tel--a" src="assets/cindy-calixte-face-a-face.jpg" alt="" loading="lazy" /><img class="calixte-img-tel calixte-img-tel--b" src="assets/cindy-calixte-accolade-artishow.jpg" alt="" loading="lazy" /></div>
           <h3 class="chapter-title fade-copy">Le soir où j’ai chanté devant le grand Calixte</h3>
           <div class="calixte-texte fade-copy">
             <p>Février 2015. Quelques semaines à peine après avoir eu l’honneur de remporter La Voix de Beresford, je vais souper à Petit-Rocher, au Bistro Cœur d’Artishow — le bistro de mon ami Michel Carpentier et de Karim. Un souper comme les autres, je pensais. Je savais pas ce qui m’attendait à la table voisine.</p>
