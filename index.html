@@ -2320,6 +2320,12 @@
     .manifesto p strong, .manifesto p em { color: var(--ink); }
     @media (prefers-color-scheme: dark) { .manifesto-title { color: var(--gold); } }
     @media (max-width: 620px) { .manifesto { margin-bottom: 48px; padding: 36px 22px 40px; } .manifesto p { text-align: left; } }
+    /* Credo : son paysage en ouverture + son portrait dans le texte (10 nov., photos d’elle, aucun artifice). */
+    .credo-banner { margin: 0 0 28px; }
+    .credo-banner img { width: 100%; height: clamp(170px, 26vw, 248px); object-fit: cover; object-position: center 58%; border-radius: 14px; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .credo-portrait { float: right; width: 226px; margin: 24px 0 12px 26px; }
+    .credo-portrait img { width: 100%; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    @media (max-width: 620px) { .credo-portrait { float: none; width: 210px; margin: 22px auto 2px; } }
     /* ——— Citation signature + photo d’automne, côte à côte ——— */
     .signature-duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .72fr); gap: clamp(28px, 4.5vw, 56px); align-items: center; }
     .signature-duo .signature-quote { text-align: left; }
@@ -6812,8 +6818,10 @@
           <a href="#mission">Ma mission</a>
         </nav>
         <div class="manifesto reveal" id="credo">
+          <figure class="credo-banner"><img src="assets/credo-lac-automne.jpg" alt="Un lac paisible sous un grand ciel d’automne, les arbres dénudés sur la rive — un paysage filmé par Cindy" width="1440" height="528" loading="lazy" /></figure>
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
           <h2 class="manifesto-title">Je choisis le vrai</h2>
+          <figure class="credo-portrait"><img src="assets/cindy-credo-portrait.jpg" alt="Cindy Roy, portrait naturel devant les pins, sans artifice" width="720" height="958" loading="lazy" /></figure>
           <p>On vit à une époque où tout va vite. Les outils d’intelligence artificielle font maintenant partie de notre quotidien. Moi, je les trouve intéressants et agréables à utiliser. Mais pour moi, ce qui compte, c’est de rester vraie et de ne pas oublier ce qui nous rend humains : nos petites failles, nos imperfections et tout ce qui fait qu’on est uniques.</p>
           <p>Avec ma musique, j’ai envie de vous montrer le chemin au complet — pas seulement la chanson une fois qu’elle est terminée. Une idée, quelques accords, des mots qui cherchent leur place… Tout ça fait partie de l’histoire.</p>
           <p>C’est correct de partager un projet même s’il est encore à l’état brut. Une chanson n’a pas besoin d’être parfaite pour avoir quelque chose à raconter. Elle peut changer, grandir et prendre une toute autre couleur avec le temps.</p>
