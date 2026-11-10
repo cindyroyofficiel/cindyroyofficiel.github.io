@@ -2084,7 +2084,7 @@
          (alignée sur le portrait du haut) et son texte — choisi
          et approuvé mot pour mot par Cindy — vit dans la colonne
          de droite, centré verticalement contre la photo. */
-      .welcome-photo-row { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: clamp(28px, 3.5vw, 44px); align-items: center; }
+      .welcome-photo-row { display: block; }
       .welcome-photo-row .welcome-photo { grid-column: auto; width: 100%; }
     }
     /* ——— Le poème de bienvenue, à la plume (demande de Cindy,
@@ -2101,7 +2101,7 @@
     .welcome-poem .welcome-intro {
       margin: 0; max-width: none;
       font-family: "Dancing Script", cursive; font-weight: 500;
-      font-size: clamp(22px, 2.3vw, 26px); line-height: 1.40;
+      font-size: clamp(20px, 2vw, 23px); line-height: 1.40;
       color: #43331d;
     }
     /* ——— Le parchemin devient un ROULEAU victorien (idée de Cindy,
@@ -2162,57 +2162,55 @@
        de Belle-Baie. Le cœur scelle le coin du parchemin, un peu
        penché, comme un sceau qu’on vient d’apposer. ——— */
     .poem-signature {
-      position: absolute; right: 46px; bottom: -24px; z-index: 3;
-      display: flex; align-items: center;
-      transform: rotate(-4deg);
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 20px;
     }
     .poem-heart { width: 96px; height: auto; flex: none; filter: drop-shadow(0 6px 10px rgba(60, 40, 10, .35)); }
     /* ——— Ses trésors de mer, déposés sur le rouleau avec le cœur
        (demande de Cindy, 10 nov.) : de VRAIES photos — une étoile de
        mer à gauche du cœur, une coquille Saint-Jacques à sa droite,
        comme ramassées sur le bord de la mer pis posées là. ——— */
-    .poem-shell { position: absolute; z-index: 3; pointer-events: none; height: auto; }
+    .poem-shell { height: auto; flex: none; }
     .poem-shell--etoile {
-      right: 158px; bottom: -20px; width: 84px;
-      transform: rotate(14deg);
+      width: 62px; transform: rotate(14deg);
       filter: drop-shadow(0 7px 9px rgba(60, 40, 10, .35));
     }
     .poem-shell--coquille {
-      right: -12px; bottom: -44px; width: 88px;
-      transform: rotate(-7deg);
+      width: 74px; transform: rotate(-7deg);
       filter: drop-shadow(0 7px 9px rgba(60, 40, 10, .35));
     }
     @media (max-width: 700px) {
-      .poem-signature { right: 88px; bottom: -20px; }
       .poem-heart { width: 80px; }
-      .poem-shell--etoile { right: 176px; bottom: -14px; width: 56px; }
-      .poem-shell--coquille { right: 0; bottom: -30px; width: 66px; }
+      .poem-shell--etoile { width: 50px; }
+      .poem-shell--coquille { width: 60px; }
     }
     .footer-credits-mer { font-size: 11.5px; opacity: .72; }
-    .welcome-photo { margin: 0; grid-column: 1 / -1; width: min(720px, 100%); justify-self: center; }
+    .welcome-photo { margin: 0; grid-column: 1 / -1; width: 100%; justify-self: center; }
     /* ——— La rangée du voilier : photo à gauche, sa ligne à côté.
        La ligne est une de SES lignes de voix (approuvée mot pour
        mot le 2 nov.) : elle s’écrit donc à la plume du site
        (Great Vibes), en belle taille lisible, comme le poème
        de bienvenue et la ligne « Mère chanteuse ». Au téléphone,
        la rangée s’empile : la photo, puis sa ligne dessous. ——— */
-    .welcome-photo-row { min-width: 0; }
+    .welcome-photo-row { min-width: 0; position: relative; max-width: 1020px; margin: 0 auto; }
     .welcome-photo-row .welcome-photo { margin: 0 auto; }
     .welcome-photo-line {
-      margin: 22px 0 0; min-width: 0;
+      position: absolute; z-index: 2;
+      top: 5%; left: 8%; right: 8%;
+      margin: 0; min-width: 0;
       font-family: var(--script-name); font-weight: 400;
-      font-size: clamp(30px, 3.1vw, 42px); line-height: 1.4;
-      color: var(--ink); text-wrap: balance;
+      font-size: clamp(24px, 3.1vw, 42px); line-height: 1.4;
+      color: var(--ink); text-wrap: balance; text-align: center;
     }
     @media (min-width: 821px) {
-      .welcome-photo-line { margin: 0; }
+      .welcome-photo-line { top: 42%; left: auto; right: 4.5%; width: 47%; transform: translateY(-50%); text-align: left; }
     }
     .welcome-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .welcome-photo figcaption { margin-top: 14px; color: var(--muted); font-size: 13.5px; }
     /* ——— Portrait signature, grand et clair, au début de Bienvenue :
        première cellule de la grille ci-dessus (à gauche du texte). ——— */
-    .welcome-portrait { margin: 0; max-width: none; }
-    .welcome-portrait img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
+    .welcome-portrait { margin: 0; max-width: none; align-self: stretch; }
+    .welcome-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     /* ——— Mini drapeaux en défilé doux, sous le poème ———
        Belle-Baie, l’Acadie, le Québec, le Canada et la France,
        en tout petits drapeaux (21 px de haut) qui se suivent et
@@ -4918,8 +4916,10 @@
     .poem-leaf-a { vertical-align: -.12em; transform: rotate(-12deg); }
     .poem-leaf-b { vertical-align: -.1em; transform: rotate(16deg); }
     .welcome-photo-line {
-      position: relative; z-index: 0;
+      z-index: 2;
       text-shadow:
+        0 1px 12px rgba(251, 247, 238, .9),
+        0 0 26px rgba(251, 247, 238, .75),
         0 1px 0 rgba(255, 253, 247, .5),
         0 0 24px rgba(157, 180, 189, .5),
         0 12px 32px rgba(226, 154, 132, .38);
@@ -5674,14 +5674,13 @@
             <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
           </figure>
           <div class="welcome-poem-copy welcome-scroll"><div class="scroll-texte">
-          <p class="welcome-intro">« Bienvenue dans mon jardin musical,<br>où mon cœur se partage entre deux rives :<br>mon Acadie natale — Robertville, au cœur de Belle-Baie,<br>là où la mer, jamais ben loin, veille sur ma vie —<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>et Laval, mon havre tranquille,<br>où je fais escale entre deux marées. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /><span class="poem-signature"><svg class="poem-heart" viewBox="0 0 100 92" role="img" aria-label="Cœur aux couleurs du drapeau acadien, signé Cindy Roy, avec le gouvernail de Belle-Baie — la signature de Cindy Roy" focusable="false"><defs><clipPath id="coeur-clip"><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z"/></clipPath></defs><g clip-path="url(#coeur-clip)"><rect width="34" height="92" fill="#0064aa"/><rect x="33" width="34" height="92" fill="#ffffff"/><rect x="66" width="34" height="92" fill="#ed2e26"/><polygon fill="#fcd116" points="16,12 17.9,17.8 24,18 19.1,21.7 20.8,27.7 16,24.4 11.2,27.7 12.9,21.7 8,18 14.1,17.8"/><text x="50" y="53" text-anchor="middle" font-family="'Dancing Script', cursive" font-weight="600" font-size="15" fill="#6e1423" transform="rotate(-3 50 50)">Cindy Roy</text><g stroke="#0d2d52" stroke-width="2.4" fill="none"><path d="M50 59.5v21M39.5 70h21M42.6 62.6l14.8 14.8M57.4 62.6L42.6 77.4"/></g><circle cx="50" cy="70" r="7.6" fill="none" stroke="#c9a24f" stroke-width="3"/><circle cx="50" cy="70" r="2.6" fill="#c9a24f"/></g><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z" fill="none" stroke="#a67c1a" stroke-width="2.4"/></svg></span></p>
+          <p class="welcome-intro">« Bienvenue dans mon jardin musical,<br>où mon cœur se partage entre deux rives :<br>mon Acadie natale — Robertville, au cœur de Belle-Baie,<br>là où la mer, jamais ben loin, veille sur ma vie —<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>et Laval, mon havre tranquille,<br>où je fais escale entre deux marées. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /></p>
+          <div class="poem-signature"><img class="poem-shell poem-shell--etoile" src="assets/etoile-de-mer.png" alt="" width="560" height="450" loading="lazy" aria-hidden="true" /><svg class="poem-heart" viewBox="0 0 100 92" role="img" aria-label="Cœur aux couleurs du drapeau acadien, signé Cindy Roy, avec le gouvernail de Belle-Baie — la signature de Cindy Roy" focusable="false"><defs><clipPath id="coeur-clip"><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z"/></clipPath></defs><g clip-path="url(#coeur-clip)"><rect width="34" height="92" fill="#0064aa"/><rect x="33" width="34" height="92" fill="#ffffff"/><rect x="66" width="34" height="92" fill="#ed2e26"/><polygon fill="#fcd116" points="16,12 17.9,17.8 24,18 19.1,21.7 20.8,27.7 16,24.4 11.2,27.7 12.9,21.7 8,18 14.1,17.8"/><text x="50" y="53" text-anchor="middle" font-family="'Dancing Script', cursive" font-weight="600" font-size="15" fill="#6e1423" transform="rotate(-3 50 50)">Cindy Roy</text><g stroke="#0d2d52" stroke-width="2.4" fill="none"><path d="M50 59.5v21M39.5 70h21M42.6 62.6l14.8 14.8M57.4 62.6L42.6 77.4"/></g><circle cx="50" cy="70" r="7.6" fill="none" stroke="#c9a24f" stroke-width="3"/><circle cx="50" cy="70" r="2.6" fill="#c9a24f"/></g><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z" fill="none" stroke="#a67c1a" stroke-width="2.4"/></svg><img class="poem-shell poem-shell--coquille" src="assets/coquille-saint-jacques.png" alt="" width="560" height="512" loading="lazy" aria-hidden="true" /></div>
           </div>
           <figure class="welcome-frame">
             <video src="assets/video-bienvenue-piano-finition.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
             <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
           </figure>
-          <img class="poem-shell poem-shell--etoile" src="assets/etoile-de-mer.png" alt="" width="560" height="450" loading="lazy" aria-hidden="true" />
-          <img class="poem-shell poem-shell--coquille" src="assets/coquille-saint-jacques.png" alt="" width="560" height="512" loading="lazy" aria-hidden="true" />
           </div>
             <div class="mere-chanteuse">
               <figure class="mere-photo">
