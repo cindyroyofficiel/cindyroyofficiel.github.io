@@ -1961,6 +1961,12 @@
     .influences .door-nav { background: rgba(8, 18, 36, .55); border-color: rgba(201, 162, 79, .5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 10px 26px rgba(2, 12, 32, .35); }
     .influences .door-nav a { color: #f3e9c8; background: rgba(255, 250, 240, .10); border-color: rgba(201, 162, 79, .45); }
     .influences .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
+    /* …et plus PETITE au téléphone : elle cachait ses mains levées
+       et la colombe. */
+    @media (max-width: 700px) {
+      .influences .door-nav { padding: 6px 8px; gap: 6px; margin-bottom: 18px; }
+      .influences .door-nav a { padding: 5px 12px; font-size: 13.5px; }
+    }
     /* — Extension du décor du duo (Cindy, 4 nov. au soir, puis
        sa demande du même soir : « le plancher et le rideau en
        continu ») : le RIDEAU NOIR et le PLANCHER de la photo
