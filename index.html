@@ -2537,6 +2537,13 @@
       background-size: cover; background-position: center 12%; background-repeat: no-repeat;
       border: 1px solid rgba(201, 162, 79, .35); }
     .beresford-stage .stage-sparkles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+    /* Photo d'entrevue (MAX 104.9) fondue dans le decor de la scene, a
+       droite (demande de Cindy, 10 nov. : remplir le vide de droite avec
+       sa plus belle photo d'entrevue, fondue avec le reste). */
+    .beresford-stage-entrevue { position: absolute; z-index: 0; top: 0; right: 0; height: 100%; width: auto; opacity: .7; pointer-events: none;
+      -webkit-mask-image: linear-gradient(to left, #000 50%, transparent 97%);
+      mask-image: linear-gradient(to left, #000 50%, transparent 97%); }
+    @media (max-width: 640px) { .beresford-stage-entrevue { display: none; } }
     .beresford-stage-veil { position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background: linear-gradient(180deg, rgba(255, 253, 247, .04) 50%, rgba(255, 253, 247, .50) 87%, rgba(255, 253, 247, .78) 100%); }
     .beresford-stage-row { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 30px; padding: 0 30px; }
@@ -2578,6 +2585,14 @@
     #beresford .bg-fam--vertical .scene-item iframe { aspect-ratio: 9 / 16; }
     #beresford .bg-fam--portrait .scene-item iframe { aspect-ratio: 9 / 16; }
     #beresford .isabelle-spot { float: right; width: 118px; margin: 4px 0 10px 18px; }
+    /* Sur grand ecran : Isabelle sous le medaillon de la marmotte, dans la
+       meme colonne a droite, un peu plus petite (demande de Cindy, 10 nov. :
+       « Met la en dessous de la marmotte, juste a rapetisser un peu la
+       photo ») — elle ne couvre plus le visage de Cindy dans le decor. */
+    @media (min-width: 1200px) {
+      #beresford .beresford-head { min-height: 606px; }
+      #beresford .isabelle-spot { position: absolute; float: none; right: 81px; top: 276px; width: 100px; margin: 0; z-index: 2; }
+    }
     #beresford .isabelle-spot img { width: 100%; height: auto; border-radius: 12px; }
     /* La mascotte du Carnaval (10 nov.) : le siffleux en médaillon,
        à côté du « 2015 » du titre sur grand écran (env. 2 pouces),
@@ -6698,6 +6713,7 @@
         <p class="section-intro">Février 2015, au Carnaval du Siffleux de Beresford (aujourd’hui Belle-Baie) : les juges et le public m’ont fait l’honneur de la première place de La Voix de Beresford — le prix des juges et le prix du public. Une soirée gravée dans mon cœur, que je vous partage ici, en vidéos et en photos.</p>
         </div>
         <div class="beresford-stage">
+          <img class="beresford-stage-entrevue" src="assets/max1049-cindy-portrait.jpg" alt="" aria-hidden="true" loading="lazy" />
           <div class="beresford-stage-veil"></div>
           <canvas class="stage-sparkles" aria-hidden="true"></canvas>
           <div class="beresford-stage-row beresford-row-top">
