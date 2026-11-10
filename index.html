@@ -3397,7 +3397,10 @@
        ~2 pouces, bords fondus — leur seule place sur la page (la
        figure de « Ma prière a été entendue » a été retirée). */
     .pass-duo { display: flex; width: fit-content; margin: 24px auto 0; padding: 9px; background: linear-gradient(155deg, #ecd28e, #c9a24f 48%, #9a741f); border-radius: 14px; box-shadow: 0 22px 50px rgba(0,0,0,.45), 0 0 44px rgba(201,162,79,.16); }
-    .pass-duo-inner { display: flex; gap: 9px; padding: 9px; background: #14201a; border-radius: 8px; }
+    .pass-duo-inner { position: relative; display: flex; gap: 9px; padding: 9px; background: #14201a; border-radius: 8px; }
+    .pass-duo-inner::after { content: ""; position: absolute; inset: 9px; border-radius: 4px; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,.20), transparent 14%, transparent 44%, rgba(0,0,0,.42) 50%, transparent 56%, transparent 86%, rgba(0,0,0,.20)); }
+    .pass-page-l { transform: perspective(700px) rotateY(4deg); transform-origin: right center; }
+    .pass-page-r { transform: perspective(700px) rotateY(-4deg); transform-origin: left center; }
     .pass-duo-img { height: 148px; width: auto; display: block; border-radius: 4px; filter: saturate(1.10) brightness(1.04); }
     @media (max-width: 640px) { .pass-duo-img { height: 118px; } }
     @media print { .piano-listen, .piano-caption { display: none; } }
@@ -5581,8 +5584,8 @@
           <p class="piano-caption">« Entends ma prière » — version instrumentale classique</p>
           <audio id="piano-listen-audio" preload="none" src="assets/entend-ma-priere-piano-extrait.mp3"></audio>
           <div class="pass-duo" aria-hidden="true"><span class="pass-duo-inner">
-            <img class="pass-duo-img" src="assets/laissez-passer-francofete-2015.jpg" alt="" width="480" height="640" loading="lazy" />
-            <img class="pass-duo-img" src="assets/cindy-francofete-2015.jpg" alt="" width="800" height="1067" loading="lazy" />
+            <img class="pass-duo-img pass-page-l" src="assets/laissez-passer-francofete-2015.jpg" alt="" width="480" height="640" loading="lazy" />
+            <img class="pass-duo-img pass-page-r" src="assets/cindy-francofete-2015.jpg" alt="" width="800" height="1067" loading="lazy" />
           </span></div>
         </div>
         <figure class="highlights-vedette">
