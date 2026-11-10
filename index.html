@@ -2197,9 +2197,10 @@
     .about-video { margin: 28px 0 6px; }
     .about-video video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .about-video figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; }
-    /* Famille Boudreau (9 nov.) : la vidéo du party de Noël a déménagé
-       sous le paragraphe du salon des Boudreau (pleine largeur, là où
-       Cindy pointait) — voir .about-video plus haut. */
+    /* Famille Boudreau (9 nov.) : la vidéo du party de Noël vit sous le
+       paragraphe du salon des Boudreau, dans la colonne du texte —
+       pas plus bas que le pied de la photo du party, à gauche. */
+    .about-copy .noel-inline { max-width: 540px; margin: 22px 0 0; }
     .boudreau-photo { grid-column: 1; margin: 30px 0 0; }
     .boudreau-photo figcaption { margin-top: 10px; text-align: center; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.45; }
     .boudreau-photo img { display: block; width: 100%; height: auto; opacity: .92; -webkit-mask-image: radial-gradient(ellipse at center, black 56%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 56%, transparent 98%); }
@@ -6731,12 +6732,12 @@
           <div class="about-copy">
             <p>Je suis Cindy Roy, autrice-compositrice-interprète acadienne, née à Bathurst et originaire de Robertville, au Nouveau-Brunswick.</p>
             <p>Je chante depuis toute petite — vers l’âge de deux ans, presque avant même de savoir parler. Dans le salon des Boudreau, la musique prenait vie : à Noël, dès que les guitares sortaient, c’était un vrai petit paradis pour mon âme de chanteuse en devenir. C’était tassé, mais j’étais déterminée — j’ai fini par me tailler une place parmi les guitares et les voix, tout près, au cœur de la musique. Mon rêve de chanter m’habitait déjà; ces petits moments venaient le nourrir et me murmurer, au creux de l’âme, que la musique était ma mission.</p>
-          </div>
-        </div>
-        <figure class="about-video">
+            <figure class="about-video noel-inline">
               <video src="assets/party-noel-boudreau-montage-restaure-v3.mp4" poster="assets/poster-noel-1986.jpg" controls playsinline preload="none" title="Party de Noël des Boudreau, vers 1986 — montage restauré, avec la chanson de Cindy en lit musical"></video>
               <figcaption>1986. Le salon des Boudreau à Noël — tassé, joyeux, plein de musique. C'est dans ce petit paradis-là que ma mission a commencé.</figcaption>
             </figure>
+          </div>
+        </div>
         <div class="about-copy racines-suite" id="racines">
             <h3>Mes racines acadiennes</h3>
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
