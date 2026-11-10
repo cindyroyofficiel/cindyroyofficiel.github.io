@@ -3757,6 +3757,14 @@
     }
     .carnaval-texte { align-self: center; }
     .carnaval-photo--neige { object-position: 78% 42%; }
+    aside.carnaval-note#carnaval { position: relative; }
+    .carnaval-note > * { position: relative; z-index: 1; }
+    .carnaval-flocons {
+      position: absolute; inset: -14px -8px; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg stroke='%238fa9c4' stroke-width='2.4' stroke-linecap='round' fill='none'%3E%3Cg transform='translate(52 58)' opacity='.8'%3E%3Cpath d='M0-17 V17 M-15-8.5 L15 8.5 M-15 8.5 L15-8.5 M0-17 l-4.5 5 M0-17 l4.5 5 M0 17 l-4.5-5 M0 17 l4.5-5'/%3E%3C/g%3E%3Cg transform='translate(238 42) scale(.62)' opacity='.55'%3E%3Cpath d='M0-17 V17 M-15-8.5 L15 8.5 M-15 8.5 L15-8.5 M0-17 l-4.5 5 M0-17 l4.5 5 M0 17 l-4.5-5 M0 17 l4.5-5'/%3E%3C/g%3E%3Cg transform='translate(160 148) scale(.8)' opacity='.4'%3E%3Cpath d='M0-17 V17 M-15-8.5 L15 8.5 M-15 8.5 L15-8.5 M0-17 l-4.5 5 M0-17 l4.5 5 M0 17 l-4.5-5 M0 17 l4.5-5'/%3E%3C/g%3E%3Cg transform='translate(66 248) scale(.7)' opacity='.6'%3E%3Cpath d='M0-17 V17 M-15-8.5 L15 8.5 M-15 8.5 L15-8.5 M0-17 l-4.5 5 M0-17 l4.5 5 M0 17 l-4.5-5 M0 17 l4.5-5'/%3E%3C/g%3E%3Cg transform='translate(252 232)' opacity='.75'%3E%3Cpath d='M0-17 V17 M-15-8.5 L15 8.5 M-15 8.5 L15-8.5 M0-17 l-4.5 5 M0-17 l4.5 5 M0 17 l-4.5-5 M0 17 l4.5-5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(ellipse at center, transparent 52%, #000 88%);
+      mask-image: radial-gradient(ellipse at center, transparent 52%, #000 88%);
+    }
     .carnaval-note .carnaval-credits {
       margin: 16px auto 0; max-width: 640px;
       font-family: inherit; font-style: normal; font-size: 12.5px; line-height: 1.5; color: var(--muted);
@@ -6992,6 +7000,7 @@
         </div>
         </div>
         <aside class="carnaval-note" id="carnaval">
+          <span class="carnaval-flocons" aria-hidden="true"></span>
           <div class="carnaval-layout">
           <img class="carnaval-photo" src="assets/carnaval-patins-familles.jpg" alt="Des familles et des enfants qui patinent sur une patinoire extérieure, l’hiver" loading="lazy" />
           <div class="carnaval-texte">
