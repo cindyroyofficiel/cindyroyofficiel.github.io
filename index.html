@@ -2074,7 +2074,7 @@
     @media (min-width: 821px) {
       .welcome-poem { grid-template-columns: minmax(0, 400px) minmax(0, 1fr) minmax(0, 288px); }
       .welcome-portrait { grid-column: 1; grid-row: 1; }
-      .welcome-poem-copy { grid-column: 2; grid-row: 1; }
+      .welcome-poem-copy { grid-column: 2 / -1; grid-row: 1; }
       .welcome-poem > .welcome-frame { grid-column: 3; grid-row: 1; margin: 0; width: 100%; max-width: none; }
       .welcome-poem > .mere-chanteuse { grid-column: 1 / -1; grid-row: 2; }
       .welcome-poem > .welcome-photo-row { grid-column: 1 / -1; grid-row: 3; }
@@ -2099,12 +2099,22 @@
        ligne déborde en largeur réduite, elle se replie doucement
        comme un vers qui continue. ——— */
     .welcome-poem .welcome-intro {
-      position: relative;
       margin: 0; max-width: none;
       font-family: "Dancing Script", cursive; font-weight: 500;
       font-size: clamp(22px, 2.3vw, 26px); line-height: 1.40;
       color: #43331d;
-      padding: clamp(24px, 2.6vw, 34px) clamp(24px, 3vw, 42px);
+    }
+    /* ——— Le parchemin devient un ROULEAU victorien (idée de Cindy,
+       10 nov.) : le papier est roulé en haut pis en bas — deux
+       cylindres dorés aux bouts en boutons d’or — et le parchemin
+       s’étend jusqu’à sa vidéo de bienvenue, rentrée dedans avec
+       l’écriture. Sa photo de portrait, elle, reste à gauche,
+       hors du rouleau. ——— */
+    .welcome-scroll {
+      position: relative;
+      display: flex; align-items: center;
+      gap: clamp(24px, 3vw, 40px);
+      padding: clamp(40px, 4vw, 54px) clamp(28px, 3.4vw, 46px);
       background:
         radial-gradient(90% 70% at 18% 8%, rgba(190, 150, 80, .16), rgba(190, 150, 80, 0) 55%),
         radial-gradient(70% 60% at 88% 92%, rgba(170, 125, 60, .14), rgba(170, 125, 60, 0) 60%),
@@ -2116,7 +2126,35 @@
         inset 0 0 0 6px rgba(255, 252, 240, .55),
         inset 0 0 0 7px rgba(166, 124, 26, .38),
         inset 0 0 46px rgba(150, 110, 45, .16),
+        inset 0 26px 30px -20px rgba(101, 70, 25, .55),
+        inset 0 -26px 30px -20px rgba(101, 70, 25, .55),
         0 20px 44px rgba(60, 40, 10, .22);
+    }
+    .welcome-scroll::before, .welcome-scroll::after {
+      content: ""; position: absolute; left: -16px; right: -16px; height: 30px;
+      border-radius: 16px; z-index: 2;
+      background:
+        radial-gradient(circle at 11px 50%, #e8c96e 0 6px, #8a6a34 7px 9px, rgba(0, 0, 0, 0) 10px),
+        radial-gradient(circle at calc(100% - 11px) 50%, #e8c96e 0 6px, #8a6a34 7px 9px, rgba(0, 0, 0, 0) 10px),
+        linear-gradient(180deg, #7d5f2a 0%, #c8a75e 18%, #f3e3b3 38%, #e6cf92 55%, #a37f3c 82%, #6e5223 100%);
+      background-repeat: no-repeat;
+      box-shadow:
+        0 5px 12px rgba(60, 40, 10, .35),
+        inset 0 -4px 7px rgba(90, 60, 20, .5),
+        inset 0 3px 5px rgba(255, 246, 214, .55);
+    }
+    .welcome-scroll::before { top: -15px; }
+    .welcome-scroll::after { bottom: -15px; }
+    .scroll-texte { flex: 1 1 auto; min-width: 0; }
+    .welcome-scroll .welcome-frame {
+      flex: 0 0 252px; width: 252px; max-width: 252px; margin: 0;
+    }
+    @media (max-width: 1199px) {
+      .welcome-scroll { flex-direction: column; }
+      .welcome-scroll .welcome-frame { flex: none; width: min(290px, 100%); max-width: 290px; }
+    }
+    @media (max-width: 700px) {
+      .welcome-scroll::before, .welcome-scroll::after { left: -10px; right: -10px; }
     }
     /* ——— Sa signature au bas du parchemin (idée de Cindy, 10 nov.) :
        son nom à la main, pis un cœur aux couleurs de l’Acadie —
@@ -5604,7 +5642,7 @@
           <figure class="welcome-portrait">
             <img src="assets/cindy-portrait-accueil.jpg" alt="Portrait rapproché de Cindy Roy, souriante, en tricot crème avec son foulard à carreaux, à l’extérieur" width="1087" height="1447" />
           </figure>
-          <div class="welcome-poem-copy">
+          <div class="welcome-poem-copy welcome-scroll"><div class="scroll-texte">
           <p class="welcome-intro">« Bienvenue dans mon jardin musical,<br>où mon cœur se partage entre deux rives :<br>mon Acadie natale — Robertville, au cœur de Belle-Baie,<br>là où la mer, jamais ben loin, veille sur ma vie —<img class="poem-leaf poem-leaf-a" src="assets/leaf-photo-gold-small.png" alt="" width="200" height="172" /><br>et Laval, mon havre tranquille,<br>où je fais escale entre deux marées. »<img class="poem-leaf poem-leaf-b" src="assets/leaf-photo-orange.png" alt="" width="409" height="310" /><span class="poem-signature"><svg class="poem-heart" viewBox="0 0 100 92" role="img" aria-label="Cœur aux couleurs du drapeau acadien, signé Cindy Roy, avec le gouvernail de Belle-Baie — la signature de Cindy Roy" focusable="false"><defs><clipPath id="coeur-clip"><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z"/></clipPath></defs><g clip-path="url(#coeur-clip)"><rect width="34" height="92" fill="#0064aa"/><rect x="33" width="34" height="92" fill="#ffffff"/><rect x="66" width="34" height="92" fill="#ed2e26"/><polygon fill="#fcd116" points="16,12 17.9,17.8 24,18 19.1,21.7 20.8,27.7 16,24.4 11.2,27.7 12.9,21.7 8,18 14.1,17.8"/><text x="50" y="53" text-anchor="middle" font-family="'Dancing Script', cursive" font-weight="600" font-size="15" fill="#6e1423" transform="rotate(-3 50 50)">Cindy Roy</text><g stroke="#0d2d52" stroke-width="2.4" fill="none"><path d="M50 59.5v21M39.5 70h21M42.6 62.6l14.8 14.8M57.4 62.6L42.6 77.4"/></g><circle cx="50" cy="70" r="7.6" fill="none" stroke="#c9a24f" stroke-width="3"/><circle cx="50" cy="70" r="2.6" fill="#c9a24f"/></g><path d="M50 86C22 65 7 47 7 29 7 14 18 6 30 6c10 0 17 6 20 14 3-8 10-14 20-14 12 0 23 8 23 23 0 18-15 36-43 57Z" fill="none" stroke="#a67c1a" stroke-width="2.4"/></svg></span></p>
           <div class="mini-flags mini-flags--fixes">
               <span class="mini-flag"><svg viewBox="0 0 90 60" role="img" aria-label="Drapeau de l’Acadie : bleu, blanc, rouge à l’étoile dorée" focusable="false"><rect width="30" height="60" fill="#0064aa"/><rect x="30" width="30" height="60" fill="#ffffff"/><rect x="60" width="30" height="60" fill="#ed2e26"/><polygon fill="#fcd116" points="15,8.5 17,14.4 23.2,14.6 18.2,18.4 19.9,24.4 15,20.9 10.1,24.4 11.8,18.4 6.8,14.6 13,14.4"/></svg></span>
@@ -5615,6 +5653,7 @@
             <video src="assets/video-bienvenue-piano-finition.mp4" poster="assets/poster-bienvenue-debout.jpg" controls playsinline preload="none" title="Cindy Roy vous souhaite la bienvenue en vidéo, filmée dans sa cour à Laval, en automne"></video>
             <figcaption>Je vous accueille en vidéo, dans mon p’tit jardin d’automne — bienvenue chez nous.</figcaption>
           </figure>
+          </div>
             <div class="mere-chanteuse">
               <figure class="mere-photo">
                 <img src="assets/cindy-main-sur-le-coeur.jpg" alt="Cindy Roy dehors en automne, la main sur le cœur, à côté d’une plante aux feuilles d’automne" width="798" height="1024" loading="lazy" />
