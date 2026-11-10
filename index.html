@@ -3810,6 +3810,42 @@
       .pl-n7 { top: 64px; right: 80%; }
     }
 
+    /* ——— Le plateau devient un vrai plateau (10 nov. 2026, idée de Cindy) ———
+       « Tout mon art, sur un même plateau » pris au mot : un
+       plancher de scène en bois chaud sous les quatre cartes,
+       rebord doré devant, halos de projecteur au sol — les
+       lecteurs debout sur la scène. */
+    .plateau-grid { position: relative; padding: 30px 18px 48px; margin-bottom: 30px; }
+    .plateau-grid::before {
+      content: ""; position: absolute; z-index: 0;
+      left: 50%; transform: translateX(-50%); bottom: 10px;
+      width: calc(100% + 26px); height: 200px;
+      background:
+        radial-gradient(ellipse 55% 42% at 26% 90%, rgba(255, 216, 145, .38), rgba(255, 216, 145, 0) 70%),
+        radial-gradient(ellipse 55% 42% at 74% 90%, rgba(255, 216, 145, .38), rgba(255, 216, 145, 0) 70%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 116px, rgba(62, 36, 14, .35) 116px 118px),
+        linear-gradient(180deg, #b0824f 0%, #96683a 52%, #77512a 100%);
+      border-radius: 48% 48% 16px 16px / 64px 64px 16px 16px;
+      box-shadow: inset 0 3px 0 rgba(255, 226, 170, .55), inset 0 -18px 30px rgba(58, 32, 8, .35);
+    }
+    .plateau-grid::after {
+      content: ""; position: absolute; z-index: 0;
+      left: 50%; transform: translateX(-50%); bottom: -14px;
+      width: calc(100% + 26px); height: 30px;
+      background: linear-gradient(180deg, #5f3c1f, #3f2612);
+      border-top: 3px solid var(--gold);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 22px 30px -14px rgba(50, 30, 8, .55);
+    }
+    .plateau-card {
+      position: relative; z-index: 1;
+      box-shadow: var(--shadow-warm), 0 24px 26px -18px rgba(60, 35, 10, .55);
+    }
+    @media (max-width: 720px) {
+      .plateau-grid { padding: 22px 8px 40px; }
+      .plateau-grid::before { height: 150px; }
+    }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
