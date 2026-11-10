@@ -2324,6 +2324,12 @@
     .credo-hero { margin: -46px calc(-1 * clamp(24px, 5vw, 60px)) 30px; }
     .credo-hero img { width: 100%; height: clamp(380px, 52vw, 560px); object-fit: cover; object-position: 62% 10%; display: block; }
     @media (max-width: 620px) { .credo-hero { margin: -36px -22px 26px; } .credo-hero img { height: 400px; } }
+    /* Credo : le banc du lac en dreamy dans tout le fond, jusqu’aux marges (10 nov., à sa demande). */
+    .manifesto { position: relative; overflow: hidden; }
+    .manifesto > *:not(.credo-dream) { position: relative; z-index: 2; }
+    .credo-dream { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 24%; opacity: .34; z-index: 0; }
+    .manifesto::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(253, 248, 239, .34), rgba(253, 248, 239, .62)); pointer-events: none; }
+    @media (prefers-color-scheme: dark) { .manifesto::after { background: linear-gradient(180deg, rgba(24, 20, 14, .38), rgba(24, 20, 14, .66)); } }
     .credo-portrait { float: right; width: 226px; margin: 24px 0 12px 26px; }
     .credo-portrait img { width: 100%; display: block; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow); }
     @media (max-width: 620px) { .credo-portrait { float: none; width: 210px; margin: 22px auto 2px; } }
@@ -6819,6 +6825,7 @@
           <a href="#mission">Ma mission</a>
         </nav>
         <div class="manifesto reveal" id="credo">
+          <img class="credo-dream" src="assets/credo-banc-lac.jpg" alt="" aria-hidden="true" loading="lazy" />
           <figure class="credo-hero"><img src="assets/cindy-credo-lac.jpg" alt="Cindy Roy au bord du lac, la main ouverte vers le paysage d’automne — naturelle, sans artifice" width="1000" height="1400" loading="lazy" /></figure>
           <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
           <h2 class="manifesto-title">Je choisis le vrai</h2>
