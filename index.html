@@ -3781,6 +3781,35 @@
       .carnaval-photo { height: 180px; min-height: 0; }
     }
 
+    /* ——— Le plateau : le voyage des notes (10 nov. 2026, ❤️ de Cindy) ———
+       Des notes dorées qui s'envolent du voilier vers le titre,
+       dans le ciel de l'en-tête de Ma musique — fondues, en
+       dérive lente comme le bateau. */
+    .plateau-notes { position: absolute; inset: 0; pointer-events: none; }
+    .pl-note {
+      position: absolute; display: block;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cg fill='%23c9a24f'%3E%3Cellipse cx='7' cy='26' rx='5.6' ry='4.1' transform='rotate(-18 7 26)'/%3E%3Crect x='11.4' y='4' width='1.9' height='22'/%3E%3Cpath d='M13.3 4c4.8 1.8 7 5.8 6.4 11-1.2-4.2-3.2-6.4-6.4-7.4z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      animation: pl-drift 8s ease-in-out infinite alternate;
+    }
+    .pl-n1 { top: 128px; right: 27%; width: 26px; height: 34px; opacity: .50; --r: -8deg; }
+    .pl-n2 { top: 84px;  right: 36%; width: 19px; height: 25px; opacity: .40; --r: 6deg;  animation-delay: -2s; }
+    .pl-n3 { top: 118px; right: 45%; width: 30px; height: 39px; opacity: .45; --r: -12deg; animation-delay: -4s; }
+    .pl-n4 { top: 60px;  right: 54%; width: 17px; height: 22px; opacity: .35; --r: 10deg; animation-delay: -1s; }
+    .pl-n5 { top: 96px;  right: 62%; width: 24px; height: 31px; opacity: .38; --r: -6deg; animation-delay: -5s; }
+    .pl-n6 { top: 50px;  right: 71%; width: 15px; height: 20px; opacity: .30; --r: 14deg; animation-delay: -3s; }
+    .pl-n7 { top: 82px;  right: 79%; width: 20px; height: 26px; opacity: .28; --r: -10deg; animation-delay: -6s; }
+    @keyframes pl-drift {
+      from { transform: translateY(0) rotate(var(--r, 0deg)); }
+      to   { transform: translateY(-7px) rotate(var(--r, 0deg)); }
+    }
+    @media (max-width: 820px) {
+      .pl-n4, .pl-n6 { display: none; }
+      .pl-n1 { top: 96px; right: 30%; }
+      .pl-n3 { top: 88px; right: 47%; }
+      .pl-n5 { top: 74px; right: 63%; }
+      .pl-n7 { top: 64px; right: 80%; }
+    }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -5976,6 +6005,7 @@
             <ellipse cx="110" cy="176.5" rx="44" ry="2.4" fill="none" stroke="rgba(255, 255, 255, .26)" stroke-width="1.2" />
           </svg>
         </div>
+        <div class="plateau-notes" aria-hidden="true"><span class="pl-note pl-n1"></span><span class="pl-note pl-n2"></span><span class="pl-note pl-n3"></span><span class="pl-note pl-n4"></span><span class="pl-note pl-n5"></span><span class="pl-note pl-n6"></span><span class="pl-note pl-n7"></span></div>
       </div>
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
