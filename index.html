@@ -1905,6 +1905,19 @@
     .influences-head .section-title em { color: #e7b34b; }
     .influences-head { position: relative; }
     .influences-head-copy { max-width: 700px; min-width: 0; }
+    /* Fignolage nuit des Influences (9 nov., approuvé par Cindy) :
+       textes clairs sur la mer de nuit, grands panneaux sur carte
+       crème pour une lecture parfaite. */
+    .influences .influence-name { color: #fffaf0; text-shadow: 0 1px 14px rgba(2,12,32,.55); }
+    .influences .influence-discover { color: #e7b34b; }
+    .influences .influence-toggle:hover .influence-discover, .influences .influence-toggle:focus-visible .influence-discover { color: #f3d98b; }
+    .influences .influence-panel-inner { background: rgba(253, 248, 239, .95); border-radius: 14px; padding: 26px 28px 12px; box-shadow: 0 18px 44px rgba(2,12,32,.35); }
+    .influences .influences-aussi-title { color: #fffaf0; text-shadow: 0 1px 14px rgba(2,12,32,.5); }
+    .influences .influences-aussi-list strong { color: #fffaf0; }
+    .influences .influences-aussi-list p { color: rgba(255,250,240,.86); }
+    .influences .influences-aussi-list li { border-bottom-color: rgba(255,250,240,.28); }
+    .influences .influences-credits { color: rgba(255,250,240,.72); }
+    @media (max-width: 620px) { .influences .influence-panel-inner { padding: 20px 16px 8px; } }
     @media (max-width: 700px) {
       .influences-dream { height: auto; }
       .influences-dream img { opacity: 1; }
