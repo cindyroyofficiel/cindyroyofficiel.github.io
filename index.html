@@ -3020,19 +3020,19 @@
        tourne et de la photo de victoire — les trois ensemble, juste sous
        l'en-tête de la section. La photo de victoire garde aussi sa place
        d'ouverture plus bas (gala-opening) : rien n'est déplacé. */
-    .gala-trio { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 4vw, 52px); margin: 42px auto 0; max-width: 1080px; }
-    .gala-trio-programme { margin: 0; flex: 0 1 480px; text-align: center; }
+    .gala-trio { display: flex; align-items: center; justify-content: flex-start; gap: clamp(16px, 3.4vw, 42px); margin: 42px auto 0; max-width: 880px; }
+    .gala-trio-programme { margin: 0; flex: 0 1 330px; text-align: center; order: 1; }
     .gala-trio-programme img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.5); box-shadow: 0 24px 60px rgba(0,0,0,.42); }
     .gala-trio-programme figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
-    .gala-trio-side { margin: 0; flex: 0 1 300px; }
+    .gala-trio-side { margin: 0; flex: 0 1 235px; order: 3; }
     .gala-trio-side img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.35); box-shadow: 0 18px 44px rgba(0,0,0,.4); }
-    .gala-trio-trophy { flex: 0 0 auto; display: flex; justify-content: center; }
-    .gala-trio-trophy img { display: block; height: 300px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
+    .gala-trio-trophy { flex: 0 0 auto; display: flex; justify-content: center; order: 2; }
+    .gala-trio-trophy img { display: block; height: 215px; width: auto; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .45)); }
     @media (max-width: 760px) {
       .gala-trio { flex-wrap: wrap; }
-      .gala-trio-programme { flex-basis: 100%; order: 1; }
+      .gala-trio-programme { flex-basis: 100%; order: 1; max-width: 320px; }
       .gala-trio-trophy { order: 2; }
-      .gala-trio-trophy img { height: 190px; }
+      .gala-trio-trophy img { height: 150px; }
       .gala-trio-side { order: 3; flex-basis: min(300px, 72vw); }
     }
     .gala-opening { margin: 48px auto 0; max-width: 680px; }
