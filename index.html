@@ -2187,6 +2187,15 @@
     .about-video { margin: 28px 0 6px; }
     .about-video video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .about-video figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    /* Duo famille (9 nov., design de Cindy) : la vidéo du party de Noël
+       des Boudreau rapetissée de moitié, et la photo du party de
+       famille (~1980, Cindy en robe rouge) fondue dans le décor
+       juste à sa droite. */
+    .famille-duo { display: flex; gap: 28px; align-items: flex-start; margin: 28px 0 6px; }
+    .famille-duo .about-video { margin: 0; flex: 0 0 47%; }
+    .famille-duo-photo { flex: 1; min-width: 0; }
+    .famille-duo-photo img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: cover; object-position: center 62%; opacity: .88; -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 55%, transparent 98%); }
+    @media (max-width: 760px) { .famille-duo { flex-direction: column; } .famille-duo .about-video { flex: none; width: 100%; } .famille-duo-photo img { max-height: 300px; } }
     .racines-photo { margin: 30px 0 8px; max-width: 640px; position: relative; }
     .racines-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .racines-motto { position: absolute; left: 4.5%; top: 6.5%; font-family: "Great Vibes", cursive; font-weight: 400; color: #fdf6e3; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.15; transform: rotate(-2deg); text-shadow: 0 2px 14px rgba(24,12,0,.55), 0 1px 3px rgba(24,12,0,.65); pointer-events: none; }
@@ -6721,10 +6730,13 @@
             <details class="photo-gallery" id="famille">
               <summary class="gallery-toggle">Mes racines, ma famille <span class="gallery-toggle-hint">mes grands-parents, ma mère, mon père, mes grands enfants, Michel — un clic</span></summary>
               <div class="gallery-body">
+            <div class="famille-duo">
             <figure class="about-video">
               <video src="assets/party-noel-boudreau-montage-restaure-v3.mp4" poster="assets/poster-noel-1986.jpg" controls playsinline preload="none" title="Party de Noël des Boudreau, vers 1986 — montage restauré, avec la chanson de Cindy en lit musical"></video>
               <figcaption>1986. Le salon des Boudreau à Noël — tassé, joyeux, plein de musique. C'est dans ce petit paradis-là que ma mission a commencé.</figcaption>
             </figure>
+            <div class="famille-duo-photo" aria-hidden="true"><img src="assets/party-boudreau-1980-fondue.jpg" alt="" loading="lazy" /></div>
+            </div>
             <p>Ma grand-mère Marie Boudreau chantait et jouait de l’orgue dans son salon, souvent à l’oreille. Moi aussi, j’avais déjà l’oreille et je m’amusais à inventer des mélodies. C’est elle qui m’a montré mes premiers accords — ça m’a influencée, comme tout le reste.</p>
             <p>Pendant ce temps, mon grand-père Émery Boudreau filmait tous les moments spéciaux — il aimait tellement sa caméra. Excellent cuisinier, c'est lui qui cuisait la dinde à chaque Noël. Vétéran de la Deuxième Guerre mondiale, c’était un véritable héros — il s’est battu pour notre pays. Un homme autoritaire… mais drôle comme pas un! Mon oncle Donald a raconté son histoire dans son livre, La guerre à Emery à Edmond — vous le trouverez plus bas, dans ma vitrine familiale. Ma grand-mère et lui se taquinaient sans arrêt, chacun essayant de nous recruter dans son équipe.</p>
             <p>Ma grand-mère Violet montait sur scène sous le nom de « la Gadelle » et faisait rire des salles entières.</p>
