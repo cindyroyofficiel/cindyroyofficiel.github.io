@@ -2140,6 +2140,9 @@
     .originales-head-photo { margin: 0; }
     .originales-head-photo img { display: block; width: 100%; height: auto; opacity: .95; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 98%); }
     @media (max-width: 760px) { .originales-head { grid-template-columns: 1fr; gap: 10px; } .originales-head-photo { max-width: 240px; margin: 2px auto 0; } }
+    /* Une liche par la gauche (9 nov., demande de Cindy : « pousse-la
+       d’une liche ») — bureau seulement. */
+    @media (min-width: 761px) { .originales-head-photo { margin-left: -12px; } }
     .montage-title::before { content: "★"; display: block; color: var(--gold); font-family: var(--sans); font-size: 18px; line-height: 1; margin-bottom: 14px; }
     .montage-title em { font-style: italic; font-weight: 500; color: #a67c1a; }
     @media (prefers-color-scheme: dark) { .montage-title { color: var(--cream-ink); } .montage-title em { color: var(--gold); } }
@@ -6726,7 +6729,7 @@
         </div>
         <div class="about-grid">
           <blockquote class="big-quote">« La musique, c’est de la <em>nourriture pour mon âme.</em> »</blockquote>
-          <div class="boudreau-photo" aria-hidden="true"><img src="assets/party-boudreau-1980-fondue.jpg" alt="" loading="lazy" /></div>
+          <div class="boudreau-photo" aria-hidden="true"><img src="assets/party-boudreau-1980-decor.jpg" alt="" loading="lazy" /></div>
           <div class="about-copy">
             <p>Je suis Cindy Roy, autrice-compositrice-interprète acadienne, née à Bathurst et originaire de Robertville, au Nouveau-Brunswick.</p>
             <p>Je chante depuis toute petite — vers l’âge de deux ans, presque avant même de savoir parler. Dans le salon des Boudreau, la musique prenait vie : à Noël, dès que les guitares sortaient, c’était un vrai petit paradis pour mon âme de chanteuse en devenir. C’était tassé, mais j’étais déterminée — j’ai fini par me tailler une place parmi les guitares et les voix, tout près, au cœur de la musique. Mon rêve de chanter m’habitait déjà; ces petits moments venaient le nourrir et me murmurer, au creux de l’âme, que la musique était ma mission.</p>
