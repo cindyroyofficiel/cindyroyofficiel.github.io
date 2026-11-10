@@ -4911,11 +4911,16 @@
        hauteurs égales, une belle paire. Au téléphone, les deux
        restent empilées, le badge au même endroit. */
     .gala-videos-panel { margin-top: 40px; padding: clamp(26px, 4vw, 44px) clamp(18px, 4vw, 44px) clamp(30px, 4vw, 40px); border-radius: 22px; border: 1px solid rgba(201, 162, 79, .55);
-      background: radial-gradient(120% 90% at 50% 0%, rgba(236, 210, 142, .35), rgba(236, 210, 142, 0) 55%), linear-gradient(170deg, #fdfaf2, #f6eeda);
+      background:
+        radial-gradient(120% 90% at 50% 0%, rgba(236, 210, 142, .35), rgba(236, 210, 142, 0) 55%),
+        linear-gradient(rgba(253, 250, 242, .84), rgba(246, 238, 218, .92)),
+        url("assets/gala-salle-carrefour-fond.jpg") center 32% / cover no-repeat,
+        linear-gradient(170deg, #fdfaf2, #f6eeda);
       box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
     .gala-videos-panel .gala-subhead { margin-top: 0; text-align: center; color: #6e1423; }
     .gala-videos-panel .gala-subhead::after { content: "★"; display: block; margin-top: 10px; color: #c9a24f; font-size: 14px; }
     .gala-videos-panel figcaption { color: #57493a; }
+    .gala-videos-panel .scene-item figcaption { color: #57493a; }
     .gala-videos-duo .gala-featured { position: relative; }
     .gala-videos-duo .gala-featured .scene-badge {
       position: absolute; top: 0; left: 50%; z-index: 2;
