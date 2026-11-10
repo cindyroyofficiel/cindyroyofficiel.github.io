@@ -3027,7 +3027,19 @@
        tourne et de la photo de victoire — les trois ensemble, juste sous
        l'en-tête de la section. La photo de victoire garde aussi sa place
        d'ouverture plus bas (gala-opening) : rien n'est déplacé. */
-    .gala-trio { display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 3.4vw, 42px); margin: 42px 0 0; }
+    /* Gala, suite (10 nov., demandes de Cindy) : le faisceau du projecteur
+       CONTINUE sous l'en-tête, jusqu'à la rangée des photos, et les photos
+       du trio FONDENT dans le décor — jamais d'effet collage. */
+    .gala-trio { display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 3.4vw, 42px); margin: 42px 0 0; position: relative; }
+    .gala-trio > * { position: relative; z-index: 1; }
+    .gala-trio::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 224, 152, .30), rgba(255, 210, 125, .15) 45%, rgba(255, 205, 118, 0) 92%);
+      clip-path: polygon(86% 0, 100% 0, 100% 100%, 68% 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 64%, #000 81%, #000 100%);
+      mask-image: linear-gradient(to right, transparent 64%, #000 81%, #000 100%);
+      opacity: .55; }
+    .trio-prog-wrap > img:first-child { border: none; box-shadow: none; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); }
+    .gala-trio .gala-opening img { border: none; box-shadow: none; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); }
     .gala-trio-programme { margin: 0; flex: 0 1 330px; text-align: center; order: 1; }
     .gala-trio-programme img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.5); box-shadow: 0 24px 60px rgba(0,0,0,.42); }
     .gala-trio-programme figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
