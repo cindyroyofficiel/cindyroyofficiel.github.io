@@ -3040,6 +3040,16 @@
       opacity: .55; }
     .trio-prog-wrap > img:first-child { border: none; box-shadow: none; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); }
     .gala-trio .gala-opening img { border: none; box-shadow: none; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 50%, #000 74%, transparent 99%); }
+    /* La carte d’annonce en vedette dans la section Gala (10 nov., demande
+       de Cindy) : elle arrive EN SPIRALE quand on défile jusqu’à elle,
+       puis elle s’ouvre toute seule. */
+    .gala-carte-zone { display: flex; justify-content: center; margin: 56px auto 10px; }
+    .gala-carte--vedette { width: 200px; }
+    @media (max-width: 700px) { .gala-carte--vedette { width: 158px; } }
+    .carte-spirale { opacity: 0; }
+    .carte-spirale.en-vue { animation: carte-spirale-in 1.5s cubic-bezier(.22, .8, .3, 1) forwards; }
+    @keyframes carte-spirale-in { 0% { opacity: 0; transform: rotate(-620deg) scale(.15) translateY(40px); } 60% { opacity: 1; } 100% { opacity: 1; transform: rotate(0deg) scale(1) translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { .carte-spirale { opacity: 1; } .carte-spirale.en-vue { animation: none; } }
     .gala-trio-programme { margin: 0; flex: 0 1 330px; text-align: center; order: 1; }
     .gala-trio-programme img { width: 100%; height: auto; border: 1px solid rgba(213,164,58,.5); box-shadow: 0 24px 60px rgba(0,0,0,.42); }
     .gala-trio-programme figcaption { margin-top: 14px; text-align: center; color: #dde0cb; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.5; }
@@ -5746,6 +5756,16 @@
           </figure>
         </div>
         <p class="section-intro">L’histoire de ma chanson primée (Étoile), des prix reçus ce soir-là et d’un moment qui a marqué ma vie.</p>
+        <div class="gala-carte-zone">
+          <div class="gala-carte gala-carte--vedette carte-spirale" id="gala-carte-gala" tabindex="0" role="button" aria-expanded="false" aria-label="Ouvrir la carte d’annonce du Prix Auteur-compositeur du Gala de la chanson de Caraquet 2015">
+            <span class="carte-dos"><img src="assets/carte-annonce-texte.jpg" alt="La carte d’annonce du Gala ouverte : « Le lauréat ou la lauréate — Prix Auteur-compositeur — Concours de la chanson primée — est… Cindy Roy »" width="1365" height="906" loading="lazy" /></span>
+            <span class="carte-volet">
+              <span class="volet-face"><img src="assets/carte-annonce-couverture.jpg" alt="" aria-hidden="true" width="955" height="671" loading="lazy" /></span>
+              <span class="volet-face volet-dos"><img src="assets/carte-annonce-unifiee-fondue.png" alt="" aria-hidden="true" width="525" height="700" loading="lazy" /></span>
+            </span>
+            <span class="carte-indice" aria-hidden="true">✉ La carte de l’annonce</span>
+          </div>
+        </div>
         <details class="photo-gallery">
           <summary class="gallery-toggle">L’histoire derrière la chanson <span class="gallery-toggle-hint">la naissance d’« Entends ma prière », un clic</span></summary>
           <div class="gallery-body">
@@ -9257,18 +9277,40 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           range.addEventListener('input', function () { hint.classList.remove('show'); }, { once: true });
         }
       });
-      // Carte d'annonce du Gala (Parcours) : clic/toucher ou Entrée/Espace bascule l'ouverture.
+      // Cartes d'annonce du Gala : clic/toucher ou Entrée/Espace bascule l'ouverture.
+      // Celle de la section Gala arrive en spirale au défilement, puis s'ouvre toute seule.
       (function () {
-        var carte = document.getElementById('gala-carte-annonce');
-        if (!carte) { return; }
-        function bascule() {
+        var cartes = document.querySelectorAll('.gala-carte');
+        if (!cartes.length) { return; }
+        function bascule(carte) {
           var ouvert = carte.classList.toggle('ouvert');
           carte.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
         }
-        carte.addEventListener('click', bascule);
-        carte.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bascule(); }
+        Array.prototype.forEach.call(cartes, function (carte) {
+          carte.addEventListener('click', function () { bascule(carte); });
+          carte.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bascule(carte); }
+          });
         });
+        var vedette = document.getElementById('gala-carte-gala');
+        if (!vedette) { return; }
+        var reduit = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function apparait() {
+          vedette.classList.add('en-vue');
+          setTimeout(function () {
+            if (!vedette.classList.contains('ouvert')) { bascule(vedette); }
+          }, reduit ? 500 : 1600);
+        }
+        if ('IntersectionObserver' in window && !reduit) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { apparait(); io.disconnect(); }
+            });
+          }, { threshold: 0.4 });
+          io.observe(vedette);
+        } else {
+          apparait();
+        }
       })();
     </script>
     <script>document.querySelectorAll('.film-track').forEach(function (t) { t.innerHTML += t.innerHTML; });</script>
