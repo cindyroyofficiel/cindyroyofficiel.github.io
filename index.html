@@ -5457,6 +5457,15 @@
         mask-image: linear-gradient(to bottom, transparent, #000 22%);
       }
       .calixte-dream p { background: transparent; }
+      /* Le fond drapeau + coeur des panneaux Choeur virtuel : en « cover »
+         sur un panneau haut et etroit, le coeur (a droite du dessin) se
+         faisait couper en deux. Au telephone on montre le dessin entier,
+         fondu en filigrane — le coeur au complet. */
+      .choeur-panel::before, .calixte-choeur::before {
+        background-size: contain; background-position: center 30%;
+        -webkit-mask-image: radial-gradient(ellipse at center, #000 58%, transparent 96%);
+        mask-image: radial-gradient(ellipse at center, #000 58%, transparent 96%);
+      }
     }
     .calixte-dream { position: relative; overflow: hidden; margin-top: 26px; padding: 30px 30px 26px; border-radius: 22px; background: #fbf7ee; box-shadow: var(--shadow); }
     /* La photo de fond devient une couche (10 nov., demande de Cindy) :
