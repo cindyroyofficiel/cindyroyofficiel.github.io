@@ -4772,6 +4772,16 @@
        ses chansons forment UN seul sujet — l’air entre les deux blocs fond
        presque au complet pour que tout se tienne ensemble à l’écran. */
     #originales .music-martial { margin-top: 6px; padding-top: 14px; }
+    /* Lisibilité (9 nov., signalé par Cindy : « le texte est pas assez
+       foncé ») : le bloc histoire de Martial vit sur le fond clair de
+       Ma musique, mais ses couleurs venaient de l’ancien fond sombre —
+       titre quasi blanc, texte pâle, légende invisible. On passe aux
+       couleurs foncées du site, en gardant l’or pour l’italique. */
+    #originales .martial { border-top-color: var(--line); }
+    #originales .martial-title { color: var(--ink); }
+    #originales .martial-title em { color: var(--accent); }
+    #originales .martial-copy p { color: var(--ink); }
+    #originales .martial-head .martial-photo figcaption { color: var(--muted); }
     #originales .arranged .photo-gallery { margin-top: 22px; }
     @media (max-width: 620px) {
       #originales .music-martial { margin-top: 6px; padding-top: 12px; }
