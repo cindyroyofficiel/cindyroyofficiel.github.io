@@ -3904,6 +3904,61 @@
         0 30px 55px -18px rgba(110, 65, 8, .50), 0 0 90px rgba(255, 205, 120, .30);
     }
 
+    /* ——— La p’tite Cindy part la musique (10 nov. 2026, idée de Cindy) ———
+       À droite de l’en-tête du Plateau, le coin était vide : la
+       petite Cindy (celle du Coffre) arrive, pèse « play » sur le
+       système de son, pis elle danse pendant que les notes
+       montent. Visible seulement quand la poche existe (≥ 1150 px). */
+    .plateau-danse { position: relative; height: 0; z-index: 1; }
+    .danse-stage { position: absolute; right: 2px; bottom: 10px; width: 336px; height: 196px; cursor: pointer; }
+    .danse-sol {
+      position: absolute; left: 8px; right: 2px; bottom: 0; height: 20px; border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(90, 60, 20, .20), rgba(90, 60, 20, 0) 68%);
+    }
+    .danse-stage .sono { position: absolute; right: 0; bottom: 8px; z-index: 1; }
+    .mini-wrap { position: absolute; left: 4px; bottom: 6px; width: 94px; z-index: 2; }
+    .mini-wrap img { display: block; width: 100%; height: auto; }
+    .mini-bras { position: absolute; inset: 0; opacity: 0; }
+    .danse-note {
+      position: absolute; z-index: 3; display: block; opacity: 0; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cg fill='%23c9a24f'%3E%3Cellipse cx='7' cy='26' rx='5.6' ry='4.1' transform='rotate(-18 7 26)'/%3E%3Crect x='11.4' y='4' width='1.9' height='22'/%3E%3Cpath d='M13.3 4c4.8 1.8 7 5.8 6.4 11-1.2-4.2-3.2-6.4-6.4-7.4z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    .dn1 { right: 138px; bottom: 118px; width: 17px; height: 23px; --dx: -12px; }
+    .dn2 { right: 96px;  bottom: 126px; width: 13px; height: 18px; --dx: 9px; }
+    .dn3 { right: 168px; bottom: 112px; width: 20px; height: 27px; --dx: -6px; }
+    .dn4 { right: 66px;  bottom: 120px; width: 15px; height: 20px; --dx: 13px; }
+    .dn5 { right: 116px; bottom: 132px; width: 12px; height: 16px; --dx: -16px; }
+    .play .mini-wrap { animation: mini-approche 1s ease forwards, mini-danse .62s ease-in-out 1.6s infinite alternate; }
+    .play .mini-bras { animation: bras-presse 1.6s ease forwards; }
+    .play .sono-play { animation: play-brille 1.6s ease forwards; transform-box: fill-box; transform-origin: center; }
+    .play .sono-woofer { animation: woofer-bat .62s ease-in-out 1.6s infinite alternate; transform-box: fill-box; transform-origin: center; }
+    .play .danse-note { animation: note-monte 3.4s linear infinite; }
+    .play .dn1 { animation-delay: 1.7s; } .play .dn2 { animation-delay: 2.5s; }
+    .play .dn3 { animation-delay: 3.3s; } .play .dn4 { animation-delay: 4.1s; }
+    .play .dn5 { animation-delay: 4.9s; }
+    @keyframes mini-approche { from { transform: translateX(0); } to { transform: translateX(34px); } }
+    @keyframes mini-danse {
+      from { transform: translate(34px, 0) rotate(-2.6deg); }
+      to   { transform: translate(34px, -8px) rotate(2.6deg); }
+    }
+    @keyframes bras-presse { 0%, 30% { opacity: 0; } 46%, 78% { opacity: 1; } 94%, 100% { opacity: 0; } }
+    @keyframes play-brille {
+      0%, 52% { transform: scale(1); filter: none; }
+      64% { transform: scale(1.14); filter: drop-shadow(0 0 7px rgba(233, 185, 73, .95)); }
+      100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(233, 185, 73, .6)); }
+    }
+    @keyframes woofer-bat { from { transform: scale(1); } to { transform: scale(1.07); } }
+    @keyframes note-monte {
+      0% { opacity: 0; transform: translate(0, 8px) rotate(-5deg); }
+      16% { opacity: .85; }
+      100% { opacity: 0; transform: translate(var(--dx, 0), -66px) rotate(9deg); }
+    }
+    @media (max-width: 1149px) { .plateau-danse { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .play .mini-wrap, .play .mini-bras, .play .sono-play, .play .sono-woofer, .play .danse-note { animation: none !important; }
+      .danse-note { opacity: .5; }
+    }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -6106,6 +6161,30 @@
         <p class="section-tag">Le plateau</p>
         <h2 class="section-title">Tout mon art, <em>sur un même plateau.</em></h2>
         <p class="section-intro">Mes chansons originales, mes reprises, mes chansons en construction pis mon humour — tous mes lecteurs, rassemblés ici, d’un seul coup d’œil. Le reste du site vous raconte chaque histoire en détail; ici, on écoute.</p>
+        <div class="plateau-danse" aria-hidden="true"><div class="danse-stage" id="danse-stage" title="Revoir la p’tite Cindy partir la musique">
+          <svg class="sono" viewBox="0 0 200 122" width="190" height="116" focusable="false"><rect x="8" y="28" width="184" height="80" rx="11" fill="#22304a" stroke="#c9a24f" stroke-width="2"/><rect x="76" y="36" width="48" height="11" rx="3" fill="#f7f2e2" opacity=".88"/><circle cx="38" cy="38" r="5.5" fill="#e9b949"/><circle cx="162" cy="38" r="5.5" fill="#e9b949"/><circle class="sono-woofer" cx="38" cy="66" r="17" fill="#31456a" stroke="#e9b949" stroke-width="2.5"/><circle cx="38" cy="66" r="7" fill="#e9b949"/><circle class="sono-woofer" cx="162" cy="66" r="17" fill="#31456a" stroke="#e9b949" stroke-width="2.5"/><circle cx="162" cy="66" r="7" fill="#e9b949"/><circle class="sono-play" cx="100" cy="64" r="15.5" fill="#c9a24f"/><path d="M95 55.5 L110 64 L95 72.5 Z" fill="#fffcf4"/><rect x="70" y="90" width="9" height="5" rx="1.5" fill="#e9b949"/><rect x="84" y="90" width="9" height="5" rx="1.5" fill="#c96f2e"/><rect x="98" y="90" width="9" height="5" rx="1.5" fill="#e9b949"/><rect x="112" y="90" width="9" height="5" rx="1.5" fill="#c96f2e"/><rect x="126" y="90" width="9" height="5" rx="1.5" fill="#e9b949"/><rect x="26" y="108" width="16" height="7" rx="2" fill="#22304a"/><rect x="158" y="108" width="16" height="7" rx="2" fill="#22304a"/></svg>
+          <div class="mini-wrap"><img class="mini-base" src="assets/coffre-mini-cindy.webp" alt="" width="398" height="716" loading="lazy" /><img class="mini-bras" src="assets/coffre-mini-cindy-bras-leve.webp" alt="" width="398" height="716" loading="lazy" /></div>
+          <span class="danse-note dn1"></span><span class="danse-note dn2"></span><span class="danse-note dn3"></span><span class="danse-note dn4"></span><span class="danse-note dn5"></span>
+          <span class="danse-sol"></span>
+        </div></div>
+        <script>
+        (function () {
+          var stage = document.getElementById('danse-stage');
+          if (!stage) return;
+          var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          function restart() {
+            stage.classList.remove('play');
+            void stage.offsetWidth;
+            stage.classList.add('play');
+          }
+          if (reduced || !('IntersectionObserver' in window)) { stage.classList.add('play'); return; }
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { stage.classList.add('play'); io.disconnect(); } });
+          }, { threshold: .3 });
+          io.observe(stage);
+          stage.addEventListener('click', restart);
+        })();
+        </script>
         <div class="plateau-grid">
           <div class="plateau-beams" aria-hidden="true"><span class="beam beam-l"></span><span class="beam beam-r"></span></div>
           <article class="plateau-card">
