@@ -3973,25 +3973,32 @@
        et son faisceau qui balaie la mer vers le voilier. */
     .plateau-phare { position: absolute; left: .2%; top: 252px; width: 84px; height: 168px; z-index: 0; pointer-events: none; }
     .plateau-phare svg { display: block; position: relative; z-index: 1; }
+    .phare-halo {
+      position: absolute; z-index: 0; left: -14px; top: -8px; width: 84px; height: 84px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 242, 196, .9), rgba(255, 242, 196, 0) 65%);
+      animation: halo-pulse 3.8s ease-in-out infinite alternate;
+    }
+    @keyframes halo-pulse { from { opacity: .75; } to { opacity: 1; } }
     .phare-faisceau {
-      position: absolute; z-index: 0; left: 20px; top: 22px; width: 350px; height: 46px;
+      position: absolute; z-index: 0; left: 20px; top: 16px; width: 590px; height: 66px;
       transform-origin: 5px 50%; transform: rotate(4deg);
-      clip-path: polygon(0 40%, 0 60%, 100% 100%, 100% 0);
-      background: linear-gradient(90deg, rgba(255, 238, 185, .42), rgba(255, 238, 185, 0) 88%);
-      filter: blur(4px);
+      clip-path: polygon(0 38%, 0 62%, 100% 100%, 100% 0);
+      background: linear-gradient(90deg, rgba(255, 240, 195, .68), rgba(255, 240, 195, .18) 55%, rgba(255, 240, 195, 0) 92%);
+      filter: blur(5px);
       animation: phare-balaie 11s ease-in-out infinite alternate;
     }
-    @keyframes phare-balaie { from { transform: rotate(-6deg); } to { transform: rotate(16deg); } }
+    @keyframes phare-balaie { from { transform: rotate(-8deg); } to { transform: rotate(18deg); } }
     .phare-reflet {
       position: absolute; z-index: 0; left: 22px; top: 148px; width: 30px; height: 52px;
-      filter: blur(3px); opacity: .38; border-radius: 50%;
+      filter: blur(3px); opacity: .5; border-radius: 50%;
       background: repeating-linear-gradient(180deg, rgba(255, 226, 150, .5) 0 3px, rgba(255, 226, 150, 0) 3px 9px);
       animation: plateau-shimmer 7s ease-in-out infinite alternate;
     }
     @media (max-width: 720px) {
       .plateau-phare { left: 0; top: 208px; width: 50px; height: 100px; }
       .plateau-phare svg { width: 50px; height: 100px; }
-      .phare-faisceau { left: 12px; top: 12px; width: 200px; height: 30px; }
+      .phare-faisceau { left: 12px; top: 8px; width: 305px; height: 42px; }
+      .phare-halo { left: -8px; top: -4px; width: 50px; height: 50px; }
       .phare-reflet { left: 13px; top: 88px; height: 36px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -4993,13 +5000,13 @@
        restent dominants et 100 % lisibles. Mouvements lents et
        calmes; scène figée si prefers-reduced-motion. */
     .plateau-scene { position: absolute; z-index: 0; top: 0; left: 0; right: 0; height: 480px; pointer-events: none; opacity: .9;
-      background: linear-gradient(180deg, rgba(250, 214, 165, .50) 0%, rgba(248, 183, 140, .38) 32%, rgba(240, 158, 138, .26) 54%, rgba(233, 168, 152, .13) 72%, rgba(233, 168, 152, 0) 100%); }
+      background: linear-gradient(180deg, rgba(243, 182, 116, .66) 0%, rgba(237, 148, 103, .55) 30%, rgba(224, 118, 108, .42) 52%, rgba(208, 116, 118, .24) 72%, rgba(208, 116, 118, 0) 100%); }
     .plateau-sun { position: absolute; top: 110px; right: 21%; width: 124px; height: 124px; border-radius: 50%; opacity: .85;
       background: radial-gradient(circle, rgba(255, 238, 196, .95) 0%, rgba(251, 203, 128, .55) 52%, rgba(251, 203, 128, 0) 72%); }
     .plateau-water { position: absolute; left: 0; right: 0; top: 298px; height: 132px;
       background:
         repeating-linear-gradient(180deg, rgba(255, 240, 210, 0) 0 9px, rgba(255, 240, 210, .13) 9px 10px),
-        linear-gradient(180deg, rgba(146, 164, 160, .32) 0%, rgba(120, 146, 152, .18) 55%, rgba(120, 146, 152, 0) 100%); }
+        linear-gradient(180deg, rgba(108, 130, 140, .42) 0%, rgba(96, 120, 134, .26) 55%, rgba(96, 120, 134, 0) 100%); }
     .plateau-reflect { position: absolute; top: 300px; right: calc(21% + 6px); width: 112px; height: 104px; border-radius: 50%; filter: blur(2px); opacity: .5;
       background: repeating-linear-gradient(180deg, rgba(255, 216, 152, .34) 0 3px, rgba(255, 216, 152, 0) 3px 9px);
       animation: plateau-shimmer 7s ease-in-out infinite alternate; }
@@ -6223,7 +6230,7 @@
             <ellipse cx="110" cy="176.5" rx="44" ry="2.4" fill="none" stroke="rgba(255, 255, 255, .26)" stroke-width="1.2" />
           </svg>
         </div>
-        <div class="plateau-notes" aria-hidden="true"><span class="pl-note pl-n1"></span><span class="pl-note pl-n2"></span><span class="pl-note pl-n3"></span><span class="pl-note pl-n4"></span><span class="pl-note pl-n5"></span><span class="pl-note pl-n6"></span><span class="pl-note pl-n7"></span></div><div class="plateau-phare" aria-hidden="true"><span class="phare-faisceau"></span><svg viewBox="0 0 120 240" width="84" height="168" focusable="false"><defs><clipPath id="phareTour"><path d="M12 228 L20 62 L44 62 L52 228 Z"/></clipPath></defs><path d="M0 234 Q10 216 26 226 Q38 212 54 224 Q70 214 80 230 Q82 238 40 239 Q2 240 0 234 Z" fill="#6b7a80" opacity=".8"/><g clip-path="url(#phareTour)"><rect x="8" y="60" width="48" height="172" fill="#fdfaf2"/><rect x="8" y="60" width="48" height="40" fill="#2b4f9e"/><rect x="8" y="140" width="48" height="42" fill="#c0392b"/><rect x="8" y="196" width="48" height="36" fill="#2b4f9e" opacity=".88"/></g><path d="M12 228 L20 62 L44 62 L52 228 Z" fill="none" stroke="#8a6d2f" stroke-width="1.6" opacity=".55"/><path d="M32 108 L34.2 114.1 L40.7 114.3 L35.5 118.3 L37.3 124.7 L32 121 L26.7 124.7 L28.5 118.3 L23.3 114.3 L29.8 114.1 Z" fill="#e9b949" stroke="#a67c1a" stroke-width=".8"/><circle cx="32" cy="86" r="6.5" fill="#22304a" stroke="#e9b949" stroke-width="2.2"/><rect x="15" y="52" width="34" height="6" rx="2" fill="#57441f"/><rect x="21" y="30" width="22" height="22" rx="3" fill="#ffe9a8" stroke="#57441f" stroke-width="2"/><path d="M17 30 L47 30 L32 13 Z" fill="#c0392b"/><circle class="phare-lumiere" cx="32" cy="41" r="13" fill="#ffedb5" opacity=".55"/><g transform="rotate(-10 68 208)" stroke="#8a5a2a" stroke-linecap="round"><circle cx="68" cy="208" r="14.5" fill="none" stroke-width="3.4"/><circle cx="68" cy="208" r="8.6" fill="none" stroke-width="1.8"/><g stroke-width="2.2"><line x1="68" y1="189" x2="68" y2="227"/><line x1="49" y1="208" x2="87" y2="208"/><line x1="54.6" y1="194.6" x2="81.4" y2="221.4"/><line x1="81.4" y1="194.6" x2="54.6" y2="221.4"/></g><circle cx="68" cy="208" r="3.2" fill="#8a5a2a" stroke="none"/></g></svg><span class="phare-reflet"></span></div><div class="plateau-rochers" aria-hidden="true"><svg viewBox="0 0 60 132" width="60" height="132" focusable="false"><g stroke="#4d585f" stroke-width="1.4"><ellipse cx="23" cy="17" rx="20" ry="14" fill="#7d8891"/><ellipse cx="41" cy="43" rx="16" ry="12" fill="#6d787f"/><ellipse cx="16" cy="66" rx="18" ry="14" fill="#85909a"/><ellipse cx="38" cy="91" rx="17" ry="13" fill="#75818a"/><ellipse cx="20" cy="117" rx="20" ry="14" fill="#68737c"/></g><g fill="#9aa5ad" opacity=".65"><ellipse cx="17" cy="12" rx="9" ry="4.5"/><ellipse cx="11" cy="61" rx="8" ry="4"/><ellipse cx="33" cy="86" rx="7.5" ry="3.6"/><ellipse cx="14" cy="112" rx="9" ry="4.4"/></g></svg></div><div class="plateau-bouee" aria-hidden="true"><svg viewBox="0 0 48 58" width="46" height="56" focusable="false"><defs><clipPath id="boueeCorps"><path d="M17 14 L31 14 L35 50 Q24 55 13 50 Z"/></clipPath></defs><ellipse cx="24" cy="53" rx="17" ry="3.6" fill="#5f7a80" opacity=".5"/><g clip-path="url(#boueeCorps)"><rect x="11" y="12" width="26" height="12" fill="#2b4f9e"/><rect x="11" y="24" width="26" height="13" fill="#fdfaf2"/><rect x="11" y="37" width="26" height="16" fill="#c0392b"/></g><path d="M17 14 L31 14 L35 50 Q24 55 13 50 Z" fill="none" stroke="#57441f" stroke-width="1.3" opacity=".6"/><path d="M24 25.5 L25.4 29.2 L29.3 29.4 L26.2 31.8 L27.2 35.6 L24 33.4 L20.8 35.6 L21.8 31.8 L18.7 29.4 L22.6 29.2 Z" fill="#e9b949"/><rect x="22.6" y="7" width="2.8" height="7" fill="#57441f"/><circle class="bouee-lumiere" cx="24" cy="6" r="3.4" fill="#ffd968"/></svg><span class="bouee-reflet"></span></div><div class="plateau-etoiles" aria-hidden="true"><span class="pl-star pl-s1"></span><span class="pl-star pl-s2"></span><span class="pl-star pl-s3"></span><span class="pl-star pl-s4"></span><span class="pl-star pl-s5"></span><span class="pl-star pl-s6"></span></div>
+        <div class="plateau-notes" aria-hidden="true"><span class="pl-note pl-n1"></span><span class="pl-note pl-n2"></span><span class="pl-note pl-n3"></span><span class="pl-note pl-n4"></span><span class="pl-note pl-n5"></span><span class="pl-note pl-n6"></span><span class="pl-note pl-n7"></span></div><div class="plateau-phare" aria-hidden="true"><span class="phare-halo"></span><span class="phare-faisceau"></span><svg viewBox="0 0 120 240" width="84" height="168" focusable="false"><defs><clipPath id="phareTour"><path d="M12 228 L20 62 L44 62 L52 228 Z"/></clipPath></defs><path d="M0 234 Q10 216 26 226 Q38 212 54 224 Q70 214 80 230 Q82 238 40 239 Q2 240 0 234 Z" fill="#6b7a80" opacity=".8"/><g clip-path="url(#phareTour)"><rect x="8" y="60" width="48" height="172" fill="#fdfaf2"/><rect x="8" y="60" width="48" height="40" fill="#2b4f9e"/><rect x="8" y="140" width="48" height="42" fill="#c0392b"/><rect x="8" y="196" width="48" height="36" fill="#2b4f9e" opacity=".88"/></g><path d="M12 228 L20 62 L44 62 L52 228 Z" fill="none" stroke="#8a6d2f" stroke-width="1.6" opacity=".55"/><path d="M32 108 L34.2 114.1 L40.7 114.3 L35.5 118.3 L37.3 124.7 L32 121 L26.7 124.7 L28.5 118.3 L23.3 114.3 L29.8 114.1 Z" fill="#e9b949" stroke="#a67c1a" stroke-width=".8"/><circle cx="32" cy="86" r="6.5" fill="#22304a" stroke="#e9b949" stroke-width="2.2"/><rect x="15" y="52" width="34" height="6" rx="2" fill="#57441f"/><rect x="21" y="30" width="22" height="22" rx="3" fill="#ffe9a8" stroke="#57441f" stroke-width="2"/><path d="M17 30 L47 30 L32 13 Z" fill="#c0392b"/><circle class="phare-lumiere" cx="32" cy="41" r="13" fill="#ffedb5" opacity=".55"/><g transform="rotate(-10 68 208)" stroke="#8a5a2a" stroke-linecap="round"><circle cx="68" cy="208" r="14.5" fill="none" stroke-width="3.4"/><circle cx="68" cy="208" r="8.6" fill="none" stroke-width="1.8"/><g stroke-width="2.2"><line x1="68" y1="189" x2="68" y2="227"/><line x1="49" y1="208" x2="87" y2="208"/><line x1="54.6" y1="194.6" x2="81.4" y2="221.4"/><line x1="81.4" y1="194.6" x2="54.6" y2="221.4"/></g><circle cx="68" cy="208" r="3.2" fill="#8a5a2a" stroke="none"/></g></svg><span class="phare-reflet"></span></div><div class="plateau-rochers" aria-hidden="true"><svg viewBox="0 0 60 132" width="60" height="132" focusable="false"><g stroke="#4d585f" stroke-width="1.4"><ellipse cx="23" cy="17" rx="20" ry="14" fill="#7d8891"/><ellipse cx="41" cy="43" rx="16" ry="12" fill="#6d787f"/><ellipse cx="16" cy="66" rx="18" ry="14" fill="#85909a"/><ellipse cx="38" cy="91" rx="17" ry="13" fill="#75818a"/><ellipse cx="20" cy="117" rx="20" ry="14" fill="#68737c"/></g><g fill="#9aa5ad" opacity=".65"><ellipse cx="17" cy="12" rx="9" ry="4.5"/><ellipse cx="11" cy="61" rx="8" ry="4"/><ellipse cx="33" cy="86" rx="7.5" ry="3.6"/><ellipse cx="14" cy="112" rx="9" ry="4.4"/></g></svg></div><div class="plateau-bouee" aria-hidden="true"><svg viewBox="0 0 48 58" width="46" height="56" focusable="false"><defs><clipPath id="boueeCorps"><path d="M17 14 L31 14 L35 50 Q24 55 13 50 Z"/></clipPath></defs><ellipse cx="24" cy="53" rx="17" ry="3.6" fill="#5f7a80" opacity=".5"/><g clip-path="url(#boueeCorps)"><rect x="11" y="12" width="26" height="12" fill="#2b4f9e"/><rect x="11" y="24" width="26" height="13" fill="#fdfaf2"/><rect x="11" y="37" width="26" height="16" fill="#c0392b"/></g><path d="M17 14 L31 14 L35 50 Q24 55 13 50 Z" fill="none" stroke="#57441f" stroke-width="1.3" opacity=".6"/><path d="M24 25.5 L25.4 29.2 L29.3 29.4 L26.2 31.8 L27.2 35.6 L24 33.4 L20.8 35.6 L21.8 31.8 L18.7 29.4 L22.6 29.2 Z" fill="#e9b949"/><rect x="22.6" y="7" width="2.8" height="7" fill="#57441f"/><circle class="bouee-lumiere" cx="24" cy="6" r="3.4" fill="#ffd968"/></svg><span class="bouee-reflet"></span></div><div class="plateau-etoiles" aria-hidden="true"><span class="pl-star pl-s1"></span><span class="pl-star pl-s2"></span><span class="pl-star pl-s3"></span><span class="pl-star pl-s4"></span><span class="pl-star pl-s5"></span><span class="pl-star pl-s6"></span></div>
       </div>
       <div class="wrap">
         <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
