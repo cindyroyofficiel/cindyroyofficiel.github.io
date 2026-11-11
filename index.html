@@ -4050,6 +4050,50 @@
        Le titre montait trop haut : la section respire en haut. */
     @media (min-width: 721px) { #plateau { padding-top: 172px; } }
 
+    /* HOMMAGE ÉMERY: le parchemin du Souvenir (À propos, après le vidéo de Noël) */
+    .emery-hommage {
+      position: relative;
+      max-width: 880px;
+      margin: 58px auto 0;
+      padding: clamp(26px, 4vw, 44px);
+      color: #43331d;
+      background: linear-gradient(165deg, #faf0d7, #f5e7c6 58%, #f1dfba);
+      border: 1.5px solid rgba(201, 162, 79, .75);
+      border-top: 5px solid #6e1423;
+      border-radius: 18px;
+      box-shadow: 0 24px 44px -22px rgba(60, 35, 10, .45), inset 0 0 0 5px rgba(255, 252, 244, .55), inset 0 0 40px rgba(201, 162, 79, .12);
+    }
+    .emery-title {
+      margin: 0 0 14px;
+      text-align: center;
+      color: #6e1423;
+      font-size: clamp(25px, 3.4vw, 35px);
+      line-height: 1.2;
+    }
+    .emery-intro { max-width: 660px; margin: 0 auto; text-align: center; }
+    .emery-photo { max-width: 720px; margin: 28px auto 0; }
+    .emery-photo img {
+      display: block; width: 100%; height: auto; border-radius: 10px;
+      border: 1px solid rgba(110, 20, 35, .4);
+      box-shadow: 0 16px 30px -16px rgba(60, 35, 10, .5);
+    }
+    .emery-photo figcaption { margin-top: 10px; text-align: center; color: #66584a; font-size: 14.5px; }
+    .emery-poem {
+      max-width: 640px; margin: 34px auto 0; text-align: center;
+      font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(17.5px, 2vw, 19.5px); line-height: 1.75;
+    }
+    .emery-poem p { margin: 0 0 22px; }
+    .emery-poem .emery-lest { margin-bottom: 0; font-size: 1.08em; }
+    .emery-book { max-width: 660px; margin: 32px auto 0; text-align: center; }
+    .emery-book-link { margin: 16px 0 0; text-align: center; }
+    .emery-book-link a {
+      display: inline-block; padding: 11px 24px; border-radius: 999px;
+      border: 1.5px solid #a67c1a; background: rgba(255, 252, 244, .65);
+      color: #6e1423; font-weight: 700; text-decoration: none;
+    }
+    .emery-book-link a:hover, .emery-book-link a:focus-visible { text-decoration: underline; }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -7567,6 +7611,25 @@
             </figure>
           </div>
         </div>
+        <article class="emery-hommage" id="emery">
+          <h3 class="emery-title"><span aria-hidden="true">🌺</span> Mon grand-père, Émery Boudreau</h3>
+          <p class="emery-intro">Le vidéo de Noël juste ici, c’est lui qui l’a filmé. Mon pépère Émery gardait toujours sa caméra proche — il voulait conserver nos moments pour toujours. Mais avant d’être notre pépère, il a été un soldat: vétéran de la Deuxième Guerre mondiale, blessé par balle, revenu chez lui avec ses médailles pis son grand cœur. J’ai écrit ce poème pour lui.</p>
+          <figure class="emery-photo">
+            <img src="assets/emery-boudreau-medailles.jpg" alt="Cadre souvenir d’Émery Boudreau: ses cinq médailles de la Deuxième Guerre mondiale, un écusson au drapeau du Canada et son portrait en uniforme" width="2048" height="1044" loading="lazy" decoding="async" />
+            <figcaption>Émery Boudreau et ses médailles de la Deuxième Guerre mondiale</figcaption>
+          </figure>
+          <div class="emery-poem">
+            <p>Il s’appelait Emery Boudreau.<br />Un jeune homme au regard franc,<br />qui a tout quitté pour défendre la liberté.</p>
+            <p>Blessé par balle pendant la guerre,<br />mais jamais vaincu.<br />Il a connu la peur, le froid, la dureté du monde...<br />et il a continué d’avancer, guidé par le courage et le devoir.</p>
+            <p>Sous son uniforme battait un cœur d’homme vrai —<br />parfois dur, parfois comique,<br />mais toujours habité d’une force tranquille.<br />Il portait ses cicatrices comme des souvenirs silencieux,<br />et son rire, quand il éclatait, faisait oublier un peu la gravité du passé.</p>
+            <p>Les années ont passé...<br />et le soldat est devenu grand-père.<br />Avec ses airs d’homme fort et son humour bien à lui,<br />il impressionnait autant qu’il faisait sourire.<br />Enfant, je l’observais avec respect,<br />mêlé d’un peu de crainte et beaucoup d’admiration.</p>
+            <p>Aujourd’hui, je regarde sa photo,<br />et j’entends encore le battement discret de son courage.<br />Son nom résonne comme une prière murmurée par le vent,<br />et son âme veille, libre, au-dessus de nos jours.</p>
+            <p>Merci grand-papa Emery.<br />Pour tes forces et tes failles,<br />ton silence, ton rire, ton humanité.<br />Tu fais partie de notre histoire,<br />et ta lumière ne s’éteindra jamais.</p>
+            <p class="emery-lest"><span aria-hidden="true">🌺</span> <em>Lest we forget.</em> <span aria-hidden="true">🇨🇦</span></p>
+          </div>
+          <p class="emery-book">Son histoire complète, son fils — mon oncle Donald Boudreau — l’a racontée dans son livre <em>La guerre à Emery à Edmond</em>, bâti à partir des propres cassettes de pépère.</p>
+          <p class="emery-book-link"><a href="https://www.anboutique.ca/catalogue/livres-francophones/biographie/la-guerre-a-emery-a-edmond/" target="_blank" rel="noopener">Acheter le livre</a></p>
+        </article>
         <div class="about-copy racines-suite" id="racines">
             <h3>Mes racines acadiennes</h3>
             <p>La musique, l’humour et la gratitude font partie de mon histoire. Dans ma famille, ces petites richesses se transmettent d’une génération à l’autre.</p>
