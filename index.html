@@ -2481,7 +2481,14 @@
     .mission { max-width: 880px; margin: 70px auto 0; padding: 46px clamp(24px, 5vw, 60px) 50px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; position: relative; overflow: hidden; }
     /* Saule en fondu derrière la mission (demandé par Cindy le 11 nov. : « le saule en gros en background, en fondu ») */
     .mission-dream { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; opacity: .30; z-index: 0; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 46%, #000 60%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 46%, #000 60%, transparent 99%); }
-    .mission > *:not(.mission-dream):not(.mission-portrait) { position: relative; z-index: 2; }
+    .mission > *:not(.mission-dream):not(.mission-portrait):not(.mission-fly) { position: relative; z-index: 2; }
+    /* Le papillon de la mission : plus gros, il traverse le bloc quand celui-ci entre à l'écran, puis se dépose en haut à droite et continue de battre des ailes (idée de Cindy, 11 nov.) */
+    .mission-fly { position: absolute; top: 26px; left: 30px; width: 78px; z-index: 3; pointer-events: none; }
+    .mission-fly .papillon-accent { width: 78px; height: auto; margin: 0; opacity: 1; filter: drop-shadow(0 3px 7px rgba(90, 60, 10, .35)); animation: mission-battement 1.5s ease-in-out infinite alternate; }
+    .mission.in .mission-fly { animation: mission-vol 9.5s ease-in-out .5s forwards; }
+    @keyframes mission-battement { from { transform: scaleX(1) rotate(-3deg); } to { transform: scaleX(.7) rotate(3deg); } }
+    @keyframes mission-vol { 0% { left: 30px; top: 26px; } 25% { left: 30%; top: 4px; } 50% { left: 55%; top: 36px; } 75% { left: 76%; top: 8px; } 100% { left: calc(100% - 108px); top: 28px; } }
+    @media (prefers-reduced-motion: reduce) { .mission-fly { left: auto; right: 30px; top: 28px; } .mission.in .mission-fly { animation: none; } .mission-fly .papillon-accent { animation: none; } }
     .mission .photo-slider { justify-content: flex-start; justify-self: start; margin-top: 28px; }
     /* Texte à gauche + plus foncé pour la lisibilité (demandé par Cindy le 11 nov. au soir) */
     .mission .papillon-accent { margin-left: 0; margin-right: auto; }
@@ -7824,7 +7831,7 @@
         </div>
         <div class="mission reveal" data-slider-box>
           <img class="mission-dream dreamy-bg" data-base-opacity="0.30" src="assets/saule-mission-fond.jpg" alt="" aria-hidden="true" loading="lazy" />
-          <img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+          <span class="mission-fly"><img class="papillon-accent" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" /></span>
           <figure class="mission-portrait"><img class="mission-me dreamy-bg" data-base-opacity="0.5" src="assets/cindy-saule-portrait.jpg" alt="" aria-hidden="true" loading="lazy" /></figure>
           <h3 class="mission-title fade-copy" id="mission">Ma mission</h3>
           <p class="mission-text fade-copy">« Depuis ma tendre enfance, je sais que je suis ici pour une raison. Je ne me suis jamais sentie faite pour les cadres : je peux y entrer, faire ma petite besogne à ma façon, mais la mission que je porte est plus grande que ça. Ma mission, c’est d’apporter de l’amour vrai, partout où je passe. Parce que là où on met notre attention, c’est là que notre énergie s’en va. Si on choisit de la mettre au bon endroit — de nourrir l’amour pis les bonnes choses — l’ennemi n’est pas invité : il trouve pas de place pour entrer. Un cœur rempli d’amour, ça laisse pas de mauvaise craque pour le mal. »</p>
