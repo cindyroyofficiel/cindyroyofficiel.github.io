@@ -1663,7 +1663,10 @@
     .step-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(44px, 6vw, 76px); line-height: 1; }
     .step-copy p { max-width: 580px; font-size: 19px; color: rgba(255,255,255,.88); }
     .step-photo { margin: 30px 0 0; width: clamp(190px, 22vw, 250px); }
-    .step-photo img { width: 100%; height: auto; display: block; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.4); }
+    /* Photo de la rivière : fondue dans la bande orangée (12 nov. 2026,
+       Cindy : « collée là... ça a besoin plus d'élégance ») — masque radial
+       doux comme les autres photos fondues du site, ni cadre ni ombre franche. */
+    .step-photo img { width: 100%; height: auto; display: block; -webkit-mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); }
     @media (max-width: 700px) {
       .step-photo { width: 210px; }
     }
@@ -6236,6 +6239,39 @@
       #parcours .door-nav a { flex: 0 0 auto; white-space: nowrap; }
     }
     @media (prefers-reduced-motion: reduce) { .tiroir-btn .tiroir-chev { transition: none; } }
+
+    /* ——— Lisibilité téléphone (12 nov. 2026, signalée par Cindy) ———
+       1) Adolescence : sa photo fondue est la plus présente des chapitres
+          (opacité .55) et, au téléphone, elle couvre toute la carte — le
+          texte crème se perdait sur ses zones claires. On pose derrière le
+          texte le même voile foncé doux que le renvoi Beresford : porté par
+          le bloc de texte, il s'efface avec lui quand la barre « Voir la
+          photo » révèle la photo. Bureau inchangé.
+       2) Aujourd'hui : au téléphone, son portrait latéral ne paraissait
+          qu'en lisière coupée à gauche de la carte. Il devient un fond pâle
+          sur toute la carte, comme les couches des autres chapitres; le
+          bureau garde sa présentation latérale.
+       3) Bouton « Écrivez-moi » : réduit au téléphone pour ne plus manger
+          le contenu en lecture, et dégagement au défilement vers le bas
+          (le pied de page a déjà ses 104 px d'air depuis l'audit du 10 nov.). */
+    @media (max-width: 620px) {
+      .journey .timeline-row:has(> img.ado-photo) .timeline-copy {
+        background: linear-gradient(180deg, rgba(18, 24, 15, .54), rgba(18, 24, 15, .68));
+        border-radius: 12px;
+        padding: 12px 14px;
+        box-shadow: 0 0 24px 8px rgba(18, 24, 15, .45);
+      }
+    }
+    @media (max-width: 700px) {
+      .journey .tiroir.tiroir-auj > img.dream-layer {
+        left: 0 !important; top: 0 !important; transform: none !important;
+        width: 100% !important; height: 100% !important;
+        object-fit: cover; object-position: center 32%;
+      }
+      .fixed-contact { right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); min-height: 42px; padding: 9px 15px; font-size: 13.5px; gap: 7px; }
+      .fixed-contact::before { width: 12px; height: 21px; }
+      html { scroll-padding-bottom: 86px; }
+    }
 </style>
 </head>
 <body>
