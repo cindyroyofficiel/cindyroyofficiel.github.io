@@ -2574,6 +2574,37 @@
       .scene-featured figcaption { font-size: 19px; }
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
     }
+    /* ——— Galerie vidéo unifiée (Cindy, 11 nov. au soir) : toutes les vidéos ensemble, serrées, « comme une vraie galerie » — ordre choisi par Cindy : Entends ma prière, Medley Offenbach et Angel en haut; Lonely, Festivités; les deux Mario côte à côte. La photo d'arrière-scène devient décor fondu à droite de la première rangée. ——— */
+    .scene-gallery { margin-top: 34px; display: grid; gap: 36px; }
+    .gal-row { display: grid; gap: 24px; align-items: start; }
+    .gal-row--vedettes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .gal-row--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+    .gal-row--vedettes .scene-item { max-width: 290px; }
+    .gal-row--vedettes .scene-item--reel { max-width: 290px; }
+    /* La photo d'arrière-scène, déménagée dans l'album : elle y prend toute sa cellule, comme les autres photos */
+    .scene-album .scene-decor { max-width: none; }
+    .scene-card--pair { display: grid; grid-template-columns: repeat(2, minmax(0, 280px)); gap: 24px; align-items: start; }
+    .scene-card--pair .scene-group-title { grid-column: 1 / -1; }
+    .scene-card--pair .scene-item + .scene-item { margin-top: 0; }
+    .scene-card--pair .scene-item { max-width: 280px; }
+    /* Photo d'arrière-scène en décor : fondue dans le fond, sans cadre ni ombre — pas un collage */
+    .scene-decor { margin: 0; max-width: 280px; }
+    .scene-decor img { border: none; box-shadow: none; background: transparent; opacity: .92; -webkit-mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); }
+    .scene-decor figcaption { text-align: center; }
+    /* Bandeau d'arrière-scène (Cindy, 11 nov. 23 h 20) : la photo de la loge fondue dans le décor, sous le texte d'intro — la scène en haut à droite, l'arrière-scène en dessous, « on donne les deux » */
+    .scene-loge-band { margin: 36px auto 0; max-width: 780px; }
+    .scene-loge-band img { width: 100%; height: 430px; object-fit: cover; object-position: 50% 26%; border: none; box-shadow: none; background: transparent; opacity: .9; -webkit-mask-image: radial-gradient(ellipse 94% 92% at 50% 44%, #000 50%, transparent 98%); mask-image: radial-gradient(ellipse 94% 92% at 50% 44%, #000 50%, transparent 98%); }
+    .scene-loge-band figcaption { margin-top: 2px; text-align: center; font-style: italic; color: var(--muted); font-size: 16px; }
+    @media (max-width: 720px) { .scene-loge-band { margin-top: 28px; } .scene-loge-band img { height: 300px; object-position: 50% 25%; } }
+    @media (max-width: 1020px) { .gal-row--vedettes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px) {
+      .scene-gallery { gap: 28px; }
+      .gal-row { gap: 18px; }
+      .gal-row--duo { grid-template-columns: 1fr; }
+      .gal-row--vedettes .scene-item, .scene-decor { max-width: none; }
+      .scene-card--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .scene-card--pair .scene-item { max-width: none; }
+    }
     /* Album de scène au téléphone : 2 colonnes, photos modestes, légendes plus petites */
     @media (max-width: 720px) {
       .scene-album { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
@@ -7511,41 +7542,18 @@
             <button class="curtain-replay" type="button" id="curtain-replay">↺ Rejouer le rideau</button>
           </div>
         </div>
+        <figure class="scene-loge-band">
+          <img src="assets/cindy-miroir-loge-solo-fondue.webp" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — l'arrière-scène, avant d'entrer en scène" width="864" height="2432" loading="lazy" />
+          <figcaption>En arrière-scène, devant le miroir, avant d'entrer en scène.</figcaption>
+        </figure>
         <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>À l’affiche</h3>
-        <div class="scene-grid scene-grid--bibitte">
-          <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
+        <div class="scene-gallery">
+          <div class="gal-row gal-row--vedettes">
+<div class="scene-card">
+<h4 class="scene-group-title">« Entends ma prière »</h4>
 <figure class="scene-item">
             <iframe src="https://www.youtube.com/embed/Qz-Kh4FD_LY" title="Cindy Roy chante « Entends ma prière » à La Bibitte, Bathurst, le 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte" loading="lazy" style="aspect-ratio: 720 / 1252" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Entends ma prière » — La Bibitte, Bathurst, 1er mai 2015, avec Louis Noël à la guitare et Mathieu Binette à la flûte</figcaption>
-          </figure>
-          <figure class="scene-item scene-loge">
-            <img class="photo-fondue" src="assets/cindy-miroir-loge-solo-fondue.webp" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — derrière elle, la coiffeuse éclairée, les costumes suspendus et l’écriteau « Stage Door »" width="864" height="2432" loading="lazy" />
-            <figcaption>En arrière-scène, devant le miroir, avant d’entrer en scène.</figcaption>
-          </figure>
-          <figure class="scene-item scene-bibitte-wide">
-            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
-            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
-          </figure>
-        </div>
-        <div class="scene-ornement" aria-hidden="true">
-          <span>★</span>
-          <img src="assets/papillon-or.png" alt="" width="920" height="691" loading="lazy" />
-          <span>★</span>
-        </div>
-        <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>Mes prestations en vidéo</h3>
-        <div class="scene-grid scene-shelf">
-<div class="scene-card">
-<h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
-          </figure>
-</div>
-<div class="scene-card">
-<h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
           </figure>
 </div>
 <div class="scene-card">
@@ -7556,6 +7564,39 @@
           </figure>
 </div>
 <div class="scene-card">
+<h4 class="scene-group-title">« Quand la nature écoute »</h4>
+<figure class="scene-item scene-item--reel">
+            <video src="assets/angel-sormany.mp4" poster="assets/angel-sormany-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — octobre 2025, filmé par sa tante Louise" style="aspect-ratio: 9 / 16; width: 100%"></video>
+            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
+            <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
+          </figure>
+</div>
+          </div>
+          <div class="gal-row gal-row--duo">
+<div class="scene-card">
+<h4 class="scene-group-title">Medley de mes originales</h4>
+<figure class="scene-item">
+            <video src="assets/medley-originales-labibitte.mp4" poster="assets/medley-originales-poster.jpg" controls playsinline preload="none" title="Medley des originales de Cindy Roy — « Entends ma prière », « Moi je crois » et « Avant de me rendre », à La Bibitte, Bathurst, le 1er mai 2015"></video>
+            <figcaption>« Entends ma prière », « Moi je crois » et « Avant de me rendre » — La Bibitte, Bathurst, 1er mai 2015</figcaption>
+          </figure>
+</div>
+<div class="scene-card">
+<h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
+          </figure>
+</div>
+          </div>
+          <div class="gal-row gal-row--duo">
+<div class="scene-card">
+<h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
+          </figure>
+</div>
+<div class="scene-card scene-card--pair">
 <h4 class="scene-group-title">Mario Benjamin</h4>
 <figure class="scene-item scene-item--portrait">
             <iframe src="https://www.youtube.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -7566,14 +7607,12 @@
             <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
           </figure>
 </div>
-<div class="scene-card">
-<h4 class="scene-group-title">« Quand la nature écoute »</h4>
-<figure class="scene-item scene-item--reel">
-            <video src="assets/angel-sormany.mp4" poster="assets/angel-sormany-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — octobre 2025, filmé par sa tante Louise" style="aspect-ratio: 9 / 16; width: 100%"></video>
-            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
-            <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
-          </figure>
-</div>
+          </div>
+        </div>
+        <div class="scene-ornement" aria-hidden="true">
+          <span>★</span>
+          <img src="assets/papillon-or.png" alt="" width="920" height="691" loading="lazy" />
+          <span>★</span>
         </div>
         <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>L’album de scène</h3>
         <div class="scene-grid scene-album">
@@ -7601,6 +7640,11 @@
                 <img src="assets/affiche-dans-lshed-labibitte-2015.jpg" alt="L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015" loading="lazy" />
                 <figcaption>L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015</figcaption>
               </figure>
+<figure class="scene-item">
+            <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
+            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
+          </figure>
+
 <figure class="scene-item">
                 <img src="assets/des-airs-et-des-mots-couverture-2015.jpg" alt="Montage sépia des quatre membres du cercle d’auteurs-compositeurs Des airs et des mots, en 2015 — Cindy Roy, Louis Noël, Stéphane Hébert et Madiane Michaud" width="720" height="280" loading="lazy" />
                 <figcaption>Des airs et des mots — Cindy, Louis Noël, Stéphane Hébert et Madiane Michaud, 2015</figcaption>
