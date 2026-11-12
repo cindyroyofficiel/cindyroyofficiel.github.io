@@ -1303,6 +1303,14 @@
        déclencheur « ✉ Ouvre la carte ». */
     .gala-surprise { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: center; gap: 18px; margin: 100px 0 8px; width: 100%; }
     .gala-renvoi { overflow: hidden; }
+    /* Finition 12 nov. — renvois de fin de Parcours : voile sombre doux
+       derrière le texte blanc posé sur les photos (Beresford claire,
+       Gala sur les visages). Le voile est sur la copie (.fade-copy) :
+       il s'efface avec le texte quand la barre révèle la photo. */
+    #parcours-beresford .timeline-copy { background: linear-gradient(180deg, rgba(18, 24, 15, .50), rgba(18, 24, 15, .62)); border-radius: 12px; padding: 10px 14px; margin-left: -14px; box-shadow: 0 0 24px 8px rgba(18, 24, 15, .42); }
+    #parcours-beresford .timeline-year { text-shadow: 0 1px 10px rgba(18, 24, 15, .85), 0 0 22px rgba(18, 24, 15, .5); }
+    #parcours-beresford .photo-slider { text-shadow: 0 1px 8px rgba(18, 24, 15, .6); }
+    #parcours-gala .timeline-copy > p { background: linear-gradient(180deg, rgba(10, 14, 10, .42), rgba(10, 14, 10, .55)); border-radius: 12px; padding: 10px 14px; margin-left: -14px; box-shadow: 0 0 24px 8px rgba(10, 14, 10, .38); }
     .gala-carte { position: relative; flex: 0 0 auto; width: 150px; max-width: 44vw; aspect-ratio: 955 / 671; perspective: 1200px; cursor: pointer; outline-offset: 4px; margin-bottom: 30px; }
     .gala-carte .carte-dos { position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; background: #f4ecd9; box-shadow: 0 14px 30px rgba(0, 0, 0, .38); }
     .gala-carte .carte-dos img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1466,7 +1474,7 @@
       font-size: 2.3em;
       line-height: 1.3;
       font-weight: 400;
-      color: #e7b34b;
+      color: #a37f1c;
       margin: 30px 0 14px;
       max-width: 760px;
     }
@@ -1922,7 +1930,7 @@
        voilier aux voiles vertes et blanches (« Si j'étais un homme »)
        — à la grandeur de toute la section. Le titre passe en clair
        doré pour rester lisible sur le ciel de nuit. */
-    .influences-head .section-tag { color: #e7b34b; }
+    .influences-head .section-tag { color: #e7b34b; text-shadow: 0 1px 8px rgba(2, 12, 32, .9), 0 0 24px rgba(2, 12, 32, .6); }
     .influences-head .section-title { color: #fffaf0; text-shadow: 0 2px 26px rgba(2,12,32,.6); }
     .influences-head .section-title em { color: #e7b34b; }
     .influences-head { position: relative; }
@@ -2361,7 +2369,7 @@
        pas plus bas que le pied de la photo du party, à gauche. */
     .about-copy .noel-inline { max-width: 540px; margin: 22px 0 0; }
     .boudreau-photo { grid-column: 1; margin: 30px 0 0; }
-    .boudreau-photo figcaption { margin-top: 10px; text-align: center; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.45; }
+    .boudreau-photo figcaption { margin-top: 10px; text-align: center; color: #57493a; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.45; }
     .boudreau-photo img { display: block; width: 100%; height: auto; opacity: .92; -webkit-mask-image: radial-gradient(ellipse at center, black 56%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 56%, transparent 98%); }
     .racines-photo { margin: 30px 0 8px; max-width: 640px; position: relative; }
     .racines-photo img { width: 100%; display: block; box-shadow: var(--shadow); border: 1px solid var(--line); }
@@ -2499,7 +2507,9 @@
       @keyframes mission-vol { 0% { left: calc(100% - 84px); top: 20px; } 30% { left: 58%; top: 0; } 55% { left: 36%; top: 24px; } 80% { left: 15%; top: 4px; } 100% { left: 6px; top: 2px; } }
     }
     @media (prefers-reduced-motion: reduce) { .mission-fly { left: 44px; top: 2px; } .mission.in .mission-fly { animation: none; } .mission-fly .papillon-accent { animation: none; } }
-    .mission .photo-slider { justify-content: flex-start; justify-self: start; margin-top: 28px; }
+    .mission .photo-slider { justify-content: flex-start; justify-self: start; margin-top: 28px; color: #8a6a24; }
+    .mission .photo-slider input[type="range"] { background: linear-gradient(to right, #8a6a24, #c9a24f); }
+    @media (max-width: 620px) { .mission .photo-slider input[type="range"] { background: linear-gradient(to right, #8a6a24, #c9a24f) center / 100% 4px no-repeat; } }
     /* Texte à gauche + plus foncé pour la lisibilité (demandé par Cindy le 11 nov. au soir) */
     .mission .papillon-accent { margin-left: 0; margin-right: auto; }
     .mission-title { text-align: left; color: #8a5f0d; }
@@ -2582,6 +2592,7 @@
 .gal-row--vedettes .scene-card--centre .scene-item{margin-inline:auto}
 .scene-card--pair .scene-group-title{text-align:center}
 .scene-artist-links{grid-column:1/-1;text-align:center;font-size:15px;margin:6px 0 0;color:var(--muted)}
+#scene .scene-artist-links{color:#d9cfb4}
 .scene-artist-links a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 .scene-song-title{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--gold);text-align:center;margin:0;line-height:1.2}
 @media(min-width:721px){.scene-loge-ghost{display:block;width:150px;height:auto;margin:18px auto 0;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}}
@@ -2710,7 +2721,7 @@
       #beresford .siffleux-mascotte { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
       #beresford .siffleux-mascotte figcaption { font-size: 13px; }
     }
-    #beresford .siffleux-credit { display: block; font-size: 12px; opacity: .8; margin-top: 2px; }
+    #beresford .siffleux-credit { display: block; font-size: 12px; opacity: 1; margin-top: 2px; color: #57493a; }
     @media (max-width: 620px) { #beresford .siffleux-mascotte img { width: 84px; height: 84px; } }
     @media (min-width: 1200px) {
       #beresford .beresford-head { padding-right: 252px; }
@@ -3084,6 +3095,7 @@
     .press .press-grid-one .press-item { background: linear-gradient(#241d10, #17130a); border: 1px solid rgba(201, 162, 79, .75); outline: 3px double rgba(201, 162, 79, .55); outline-offset: 5px; padding: 14px; box-shadow: 0 24px 50px rgba(0, 0, 0, .6); }
     .press .press-grid-one .press-item figcaption { margin-top: 12px; text-align: center; color: #e7cf8e; font-style: italic; }
     .press .press-clipping { background: #fdf8ef; border-color: rgba(201, 162, 79, .6); }
+    .press .press-clipping figcaption { color: #66584a; }
     .press .press-list { color: #ece1c4; }
     .press .press-list a { color: #f6e3a1; }
     .press .press-list li { border-color: rgba(201, 162, 79, .35); }
@@ -3774,12 +3786,16 @@
         var(--deep-2);
     }
     .contact::before {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .55;
+      /* Finition 12 nov. : le semis d'étoiles vit dans l'espace libre en
+         haut à droite (au téléphone : seulement la bande au-dessus du
+         texte) — plus aucune étoile posée sur les lettres. */
+      content: ""; position: absolute; top: 0; right: 0; left: auto; bottom: auto; width: 40%; height: 330px; z-index: 0; pointer-events: none; opacity: .55;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='210' viewBox='0 0 210 210'%3E%3Cg fill='%23e9c766'%3E%3Cpath d='M40 22 L42 30 L50 32 L42 34 L40 42 L38 34 L30 32 L38 30 Z'/%3E%3Ccircle cx='158' cy='58' r='1.7'/%3E%3Cpath d='M112 128 L113.4 133 L118.5 134.4 L113.4 135.8 L112 141 L110.6 135.8 L105.5 134.4 L110.6 133 Z'/%3E%3Ccircle cx='52' cy='168' r='1.3'/%3E%3Ccircle cx='186' cy='172' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
       background-size: 210px 210px;
       -webkit-mask-image: linear-gradient(to bottom, #000 26%, transparent 76%);
       mask-image: linear-gradient(to bottom, #000 26%, transparent 76%);
     }
+    @media (max-width: 1100px) { .contact::before { left: 0; right: auto; width: 100%; height: 84px; } }
     .contact-grid { position: relative; z-index: 1; }
     .spectacles-line { border-left: 2px solid rgba(233, 179, 75, .6); padding-left: 18px; }
     .booking-card {
@@ -4091,11 +4107,11 @@
       animation: plateau-shimmer 7s ease-in-out infinite alternate;
     }
     @media (max-width: 720px) {
-      .plateau-phare { left: 0; top: 208px; width: 50px; height: 100px; }
-      .plateau-phare svg { width: 50px; height: 100px; }
-      .phare-faisceau { left: 12px; top: 8px; width: 305px; height: 42px; }
-      .phare-halo { left: -8px; top: -4px; width: 50px; height: 50px; }
-      .phare-reflet { left: 13px; top: 88px; height: 36px; }
+      .plateau-phare { left: 0; top: 14px; width: 46px; height: 92px; }
+      .plateau-phare svg { width: 46px; height: 92px; }
+      .phare-faisceau { left: 11px; top: 7px; width: 300px; height: 40px; }
+      .phare-halo { left: -8px; top: -4px; width: 46px; height: 46px; }
+      .phare-reflet { left: 12px; top: 84px; height: 24px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .phare-faisceau { animation: none; transform: rotate(4deg); }
@@ -4124,9 +4140,9 @@
       .bouee-reflet { top: 44px; }
     }
     @media (max-width: 720px) {
-      .plateau-bouee { left: 60%; top: 258px; width: 36px; }
-      .plateau-bouee svg { width: 36px; height: 44px; }
-      .bouee-reflet { top: 42px; height: 24px; }
+      .plateau-bouee { left: 56%; top: 288px; width: 34px; }
+      .plateau-bouee svg { width: 34px; height: 42px; }
+      .bouee-reflet { top: 40px; height: 24px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .plateau-bouee, .bouee-lumiere, .bouee-reflet { animation: none; }
@@ -4936,7 +4952,7 @@
         linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
         linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
       mask-composite: intersect; }
-    .ecrit-video figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.4; }
+    .ecrit-video figcaption { margin-top: 10px; color: #57493a; font-family: var(--serif); font-style: italic; font-size: 16.5px; line-height: 1.4; }
     /* — RECENTRAGE SUR L’ORDINATEUR SEULEMENT (Cindy, 4 nov., plus
        tard) : sur le portable, le vidéo restait encore trop vers la
        droite — elle le veut environ au MILIEU de l’espace libre
@@ -5170,6 +5186,7 @@
     .plateau-boat svg { display: block; width: 100%; height: auto; animation: plateau-bob 6.5s ease-in-out infinite; }
     .plateau-flag { transform-origin: 110px 23px; animation: plateau-flag 3.8s ease-in-out infinite alternate; }
     @keyframes plateau-sail { from { transform: translateX(46px); } to { transform: translateX(-72px); } }
+    @keyframes plateau-sail-m { from { transform: translateX(8px); } to { transform: translateX(-16px); } }
     @keyframes plateau-bob { 0%, 100% { transform: translateY(0) rotate(-1.1deg); } 50% { transform: translateY(4px) rotate(1.1deg); } }
     @keyframes plateau-flag { from { transform: rotate(-2.5deg) skewY(-1.5deg); } to { transform: rotate(3deg) skewY(2deg); } }
     @keyframes plateau-shimmer { from { opacity: .34; transform: scaleX(.92); } to { opacity: .55; transform: scaleX(1.05); } }
@@ -5177,8 +5194,9 @@
       .plateau-scene { height: 410px; opacity: .78; }
       .plateau-sun { top: 88px; right: 9%; width: 88px; height: 88px; }
       .plateau-water { top: 252px; height: 112px; }
-      .plateau-reflect { top: 254px; right: calc(9% + 4px); width: 80px; height: 84px; }
-      .plateau-boat { top: 152px; right: 4%; width: 134px; opacity: .55; }
+      .plateau-reflect { top: 264px; right: 5%; width: 80px; height: 84px; }
+      .plateau-boat { top: 258px; right: 3%; width: 112px; opacity: .55; animation-name: plateau-sail-m; }
+      .plateau .section-intro { margin-top: 54px; }
     }
     @media (prefers-color-scheme: dark) { .plateau-scene { opacity: .5; } }
     @media (prefers-reduced-motion: reduce) {
@@ -5407,14 +5425,14 @@
          trait bleu-gris très pâle passe juste sous chaque ligne
          d’écriture, comme sous une plume qui suit la réglure. */
       background-image: linear-gradient(180deg, rgba(93, 124, 150, 0) 33px, rgba(93, 124, 150, .30) 34px, rgba(93, 124, 150, 0) 35px);
-      background-size: 100% 40px; background-repeat: repeat-y; background-position: 0 2px;
+      background-size: 100% 40px; background-repeat: repeat-y; background-position: 0 7px;
       text-shadow: 0 0 .35px rgba(78, 53, 32, .35);
     }
     @media (max-width: 620px) {
       .mere-chanteuse { gap: 14px; padding: 20px 16px 20px 28px; }
       .mere-chanteuse::before { left: 12px; }
       .mere-photo { flex-basis: 104px; width: 104px; }
-      .mere-line { font-size: 26px; line-height: 36px; background-size: 100% 36px; background-image: linear-gradient(180deg, rgba(93, 124, 150, 0) 29px, rgba(93, 124, 150, .30) 30px, rgba(93, 124, 150, 0) 31px); }
+      .mere-line { font-size: 26px; line-height: 36px; background-size: 100% 36px; background-position: 0 5px; background-image: linear-gradient(180deg, rgba(93, 124, 150, 0) 29px, rgba(93, 124, 150, .30) 30px, rgba(93, 124, 150, 0) 31px); }
     }
 
     /* ════════════════════════════════════════════════════════
@@ -5641,7 +5659,7 @@
       box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
     .gala-videos-panel .gala-subhead { margin-top: 0; text-align: center; color: #6e1423; }
     .gala-videos-panel .gala-subhead::after { content: "★"; display: block; margin-top: 10px; color: #c9a24f; font-size: 14px; }
-    .gala-videos-panel figcaption { color: #57493a; }
+    .gala-videos-panel figcaption { color: #57493a; background: rgba(253, 250, 242, .78); box-shadow: 0 0 18px 8px rgba(253, 250, 242, .78); border-radius: 10px; padding: 8px 12px; }
     .gala-videos-panel .scene-item figcaption { color: #57493a; }
     .gala-videos-duo .gala-featured { position: relative; }
     .gala-videos-duo .gala-featured .scene-badge {
@@ -6098,7 +6116,9 @@
     .calixte-dream .calixte-img-main { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .calixte-dream .calixte-img-tel { display: none; }
     .calixte-dream > *:not(.calixte-bg) { position: relative; z-index: 1; }
-    .calixte-dream .photo-slider { justify-content: flex-end; margin-top: 16px; color: #8a6a24; }
+    .calixte-dream .photo-slider { justify-content: flex-end; margin-top: 16px; color: #6e5416; }
+    .calixte-dream .photo-slider input[type="range"] { background: linear-gradient(to right, #6e5416, #a8842f); }
+    @media (max-width: 620px) { .calixte-dream .photo-slider input[type="range"] { background: linear-gradient(to right, #6e5416, #a8842f) center / 100% 4px no-repeat; } }
     .calixte-dream .chapter-title { margin-top: 0; color: #6e1423; text-shadow: 0 1px 10px rgba(251,247,238,.95), 0 0 22px rgba(251,247,238,.9); }
     .calixte-dream > p { margin: 18px 0 0; font-size: 18px; line-height: 1.75; color: #2c2317; background: rgba(251,247,238,.38); border-radius: 14px; padding: 18px 20px; }
     .calixte-dream .calixte-texte { background: rgba(251,247,238,.38); border-radius: 14px; padding: 20px 22px; max-width: 500px; margin: 18px auto 0; }
@@ -6169,7 +6189,54 @@
       .mexiglu-photo { max-width: min(340px, 100%); }
     }
 
-  </style>
+  
+    /* ——— Parcours en tiroirs (finition 12 nov. 2026, variante B) ———
+       Chaque chapitre devient une carte : en surface, l'année, le titre,
+       la photo fondue et la ligne-phare; le reste vit dans le tiroir,
+       intact. Les renvois Beresford et Gala ne sont pas des tiroirs. */
+    .journey .timeline-row.tiroir { display: block; position: relative; border: 1px solid rgba(201, 162, 79, .35); border-radius: 18px; padding: 24px 26px 26px; margin: 0 0 18px; }
+    .tiroir .timeline-year { margin: 0 0 6px; padding-right: 58px; }
+    .tiroir .timeline-copy h3 { padding-right: 58px; }
+    .tiroir .diane-merci-title { padding-right: 58px; }
+    /* Chapitres sans h3 (Enfance, 2005 à 2017, Aujourd'hui) : l'année
+       devient le titre de la carte. */
+    .journey .tiroir:not(:has(.timeline-copy h3)) .timeline-year { font-family: var(--serif); font-size: clamp(26px, 3.4vw, 32px); font-weight: 600; text-transform: none; letter-spacing: 0; color: #f3ecd9; margin-bottom: 8px; }
+    /* Bouton chevron doré, 46 px, en haut à droite de chaque carte */
+    .tiroir-btn { position: absolute; top: 16px; right: 16px; z-index: 5; width: 46px; height: 46px; padding: 0; border-radius: 50%; border: 1px solid rgba(201, 162, 79, .7); background: radial-gradient(circle at 32% 30%, #f6e3a1, #c9a24f 80%); box-shadow: 0 6px 16px rgba(0, 0, 0, .45); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .tiroir-btn .tiroir-chev { display: block; width: 12px; height: 12px; border-right: 3px solid #3a2c10; border-bottom: 3px solid #3a2c10; transform: rotate(-135deg); transition: transform .35s ease; }
+    .tiroir.ferme .tiroir-btn .tiroir-chev { transform: rotate(45deg); }
+    .tiroir-btn:focus-visible { outline: 3px solid #f6e3a1; outline-offset: 3px; }
+    /* État fermé : seul le contenu de surface reste visible */
+    .tiroir.ferme .timeline-copy > * { display: none !important; }
+    .tiroir.ferme .timeline-copy > h3, .tiroir.ferme .timeline-copy > .tiroir-phare, .tiroir.ferme .timeline-copy > .diane-merci-title, .tiroir.ferme .timeline-copy > .hommage { display: block !important; }
+    .tiroir.ferme .photo-slider { display: none !important; }
+    .tiroir.ferme .diane-papillon { display: none !important; }
+    .tiroir.ferme.tiroir-sj .timeline-year > span { display: none !important; }
+    /* Nicole fermée : titre et ligne-phare seulement, alignés à gauche */
+    .tiroir.ferme .hommage-text > p:not(.hommage-lead) { display: none !important; }
+    .tiroir.ferme .nicole-media, .tiroir.ferme .hommage-epitaph, .tiroir.ferme .hommage-dove, .tiroir.ferme .hommage-rule { display: none !important; }
+    .tiroir.ferme .hommage { text-align: left; }
+    .tiroir.ferme .hommage .hommage-title { text-align: left; font-size: clamp(34px, 5vw, 44px); }
+    .tiroir.ferme .hommage-text .hommage-lead { text-align: left; }
+    /* Fermée au bureau, la ligne-phare reprend une seule colonne et
+       toute la largeur du panneau (le texte ouvert est en 2 colonnes). */
+    .tiroir.ferme .nicole-cols { grid-template-columns: 1fr; }
+    .tiroir.ferme .nicole-cols .hommage-text { column-count: 1; }
+    /* Aujourd'hui fermée : son portrait prend plus de hauteur dans la carte */
+    .tiroir.ferme.tiroir-auj > img.dream-layer { height: 150%; left: -18px; }
+    /* Curseurs « Voir la photo » apaisés dans les tiroirs (variante A) */
+    .journey .tiroir .photo-slider { font-size: 12px; }
+    .journey .tiroir .photo-slider input[type="range"] { width: 104px; }
+    .journey .tiroir .photo-slider input[type="range"]::-webkit-slider-thumb { width: 15px; height: 15px; }
+    .journey .tiroir .photo-slider input[type="range"]::-moz-range-thumb { width: 15px; height: 15px; }
+    /* Menu du Parcours au téléphone : une seule rangée défilante */
+    @media (max-width: 720px) {
+      #parcours .door-nav { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; }
+      #parcours .door-nav::-webkit-scrollbar { display: none; }
+      #parcours .door-nav a { flex: 0 0 auto; white-space: nowrap; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tiroir-btn .tiroir-chev { transition: none; } }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -7991,75 +8058,76 @@
             <img src="assets/cindy-rochers-regard.jpg" alt="Cindy Roy assise sur un rocher sous les pins, souriante, les lunettes de soleil sur la tête" loading="lazy" />
           </figure>
           <div class="timeline">
-          <article class="timeline-row" id="enfance" style="position: relative; z-index: 0;" data-slider-box>
+          <article class="timeline-row tiroir" id="enfance" style="position: relative; z-index: 0;" data-slider-box>
             <img class="pastacle-photo-l dream-layer" data-base-opacity="0.34" src="assets/petite-cindy-boombox-diane-tell.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <img class="pastacle-photo-r dream-layer" data-base-opacity="0.34" src="assets/cindy-5-ans-famille.jpg" alt="" aria-hidden="true" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); height: 97%; width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <div class="timeline-year" style="position: relative;">Enfance</div>
-            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><p>J’avais cinq ans, pis je faisais déjà des « pastacles » — pas des spectacles, des pastacles! Dans le salon, habillée d’un t-shirt trop grand pour moi qui me faisait une robe, ma brosse comme micro, debout sur la table de cuisine, je chantais du Diane Tell : « Si j’étais un homme... »</p>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><p class="tiroir-phare">J’avais cinq ans, pis je faisais déjà des « pastacles » — pas des spectacles, des pastacles!</p><p>Dans le salon, habillée d’un t-shirt trop grand pour moi qui me faisait une robe, ma brosse comme micro, debout sur la table de cuisine, je chantais du Diane Tell : « Si j’étais un homme... »</p>
 </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="pastacles-photo-slider">Voir la photo</label><input id="pastacles-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.26" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .26; -webkit-mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 46%, transparent 97%);"><img class="enfance-marches" src="assets/cindy-eglise-robertville-marches-fondue.webp" alt="" style="position: absolute; right: 2%; top: 50%; transform: translateY(-50%); height: 94%; width: auto; object-fit: cover; object-position: center 68%;" /></div>
             <img class="dream-layer" data-base-opacity="0.32" src="assets/eglise-robertville-facade-fondue.webp" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 94%; width: auto; z-index: -1; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 50%, transparent 97%);" />
             <div class="timeline-year">Robertville</div>
-            <div class="timeline-copy fade-copy"><h3 id="robertville">La chorale de Robertville</h3><p>J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos. Pour moi, l’église, c’était un refuge. Dans ce temps-là, on barrait pas les portes : j’y allais même quand il y avait personne, juste pour entendre ma voix résonner — l’acoustique d’une église, c’est tellement beau. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
+            <div class="timeline-copy fade-copy"><h3 id="robertville">La chorale de Robertville</h3><p class="tiroir-phare">J’ai fait mes premières armes dans la chorale de ma paroisse, à Robertville, où j’attendais les dimanches avec impatience pour chanter mes petits solos.</p><p>Pour moi, l’église, c’était un refuge. Dans ce temps-là, on barrait pas les portes : j’y allais même quand il y avait personne, juste pour entendre ma voix résonner — l’acoustique d’une église, c’est tellement beau. J’étais une enfant pleine de vie : je chantais, je dansais — des cours de danse, des cours d’orgue, des cours de natation — toujours sur le go. Pis je chantais, je chantais, je chantais, dans ma chambre, avec mon petit karaoké. J’ai jamais arrêté : la musique a toujours été au cœur de ma vie.</p>
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="enfance-photo-slider">Voir la photo</label><input id="enfance-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
+<img class="dream-layer ado-photo" data-base-opacity="0.55" src="assets/cindy-adolescence-decor.jpg" alt="" aria-hidden="true" loading="lazy" style="display: block; position: absolute; left: 0; top: 0; width: 330px; max-width: none; height: 100%; object-fit: cover; object-position: center 30%; opacity: .55; -webkit-mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%);" />
             
-            <div class="timeline-year" style="position: relative; align-self: stretch; overflow: visible;">1989 à 1995<img class="dream-layer ado-photo" data-base-opacity="0.55" src="assets/cindy-adolescence-decor.jpg" alt="" aria-hidden="true" loading="lazy" style="display: block; position: absolute; left: 0; top: 34px; width: 330px; max-width: none; height: calc(100% + 10px); object-fit: cover; object-position: center 30%; opacity: .55; -webkit-mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 44%, transparent 96%);" /></div>
-            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3 id="adolescence">Cindy à l’adolescence</h3><p>Le reste de ma semaine était bien rempli. À l’école secondaire Népisiguit, il y avait les spectacles de Noël et ceux de variété. Et moi, je traînais toujours un micro dans ma sacoche — toujours prête à pousser la chansonnette. J’ai toujours aimé la scène : je m’y sens chez moi depuis mes pastacles, à cinq ans — c’est là que j’ai pogné la piqûre. J’ai toujours aimé coiffer pis maquiller : je prenais plaisir à coiffer mes amies pour toutes sortes d’événements. Autant j’aime être au naturel, autant j’aime la coquetterie — pis je l’assume. Même chose pour le linge : j’achète pas des choses qui coûtent une fortune, mais j’aime les vêtements de bon goût, agencer les affaires. Magasiner avec le monde, conseiller ceux qui me demandaient quoi porter — j’aimais ça autant. J’aurais probablement été une bonne styliste : c’est une des avenues que j’aurais pu prendre. J’ai toujours aimé l’humour — ça fait partie de moi. À l’adolescence, je faisais des shows dans le salon : j’entertainais la famille, dans le temps de Toto pis Toutoune. « Mon doux, mon doux, mon doux! »</p><p>Entre les études et les amis, je travaillais aussi — des petits boulots dès l’âge de 12 ans. À 16 ans, j’ai eu mon premier char : une Renault Encore 1984, que j’ai conduite un an sans muffler — on m’entendait arriver de loin! J’étais toujours là où ça chantait et où ça dansait.</p></div>
+            <div class="timeline-year" style="position: relative; align-self: stretch; overflow: visible;">1989 à 1995</div>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3 id="adolescence">Cindy à l’adolescence</h3><p class="tiroir-phare">Le reste de ma semaine était bien rempli. À l’école secondaire Népisiguit, il y avait les spectacles de Noël et ceux de variété.</p><p>Et moi, je traînais toujours un micro dans ma sacoche — toujours prête à pousser la chansonnette. J’ai toujours aimé la scène : je m’y sens chez moi depuis mes pastacles, à cinq ans — c’est là que j’ai pogné la piqûre. J’ai toujours aimé coiffer pis maquiller : je prenais plaisir à coiffer mes amies pour toutes sortes d’événements. Autant j’aime être au naturel, autant j’aime la coquetterie — pis je l’assume. Même chose pour le linge : j’achète pas des choses qui coûtent une fortune, mais j’aime les vêtements de bon goût, agencer les affaires. Magasiner avec le monde, conseiller ceux qui me demandaient quoi porter — j’aimais ça autant. J’aurais probablement été une bonne styliste : c’est une des avenues que j’aurais pu prendre. J’ai toujours aimé l’humour — ça fait partie de moi. À l’adolescence, je faisais des shows dans le salon : j’entertainais la famille, dans le temps de Toto pis Toutoune. « Mon doux, mon doux, mon doux! »</p><p>Entre les études et les amis, je travaillais aussi — des petits boulots dès l’âge de 12 ans. À 16 ans, j’ai eu mon premier char : une Renault Encore 1984, que j’ai conduite un an sans muffler — on m’entendait arriver de loin! J’étais toujours là où ça chantait et où ça dansait.</p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="adolescence-photo-slider">Voir la photo</label><input id="adolescence-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dreamy-bg" data-base-opacity="0.36" aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .36; -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%);"><img src="assets/diane-creme-glacee.jpg" alt="" style="flex: 1.15; min-width: 0; height: 100%; object-fit: cover; object-position: center 28%; filter: brightness(1.04) saturate(.95) contrast(.97); -webkit-mask-image: linear-gradient(to right, black 80%, transparent 99%); mask-image: linear-gradient(to right, black 80%, transparent 99%);" /><img src="assets/diane-portrait-enfants.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover; object-position: center 32%; margin-left: -7%; filter: brightness(1.05) saturate(.96) contrast(.97); -webkit-mask-image: linear-gradient(to left, black 80%, transparent 99%); mask-image: linear-gradient(to left, black 80%, transparent 99%);" /></div>
             <div class="timeline-year" aria-hidden="true"></div>
-            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><img class="diane-maison" src="assets/maison-coeur-or.svg" alt="Médaillon doré : une maison avec un cœur au centre, surmontée d'une étoile — le foyer qui accueille." loading="lazy" /><p class="diane-merci-title"><span class="diane-heart" aria-hidden="true">♥</span>Un merci tout spécial à tante Diane.<img class="diane-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" /></p><p>« Quand mon frère et moi étions jeunes, les circonstances ont fait qu'il a fallu trouver un toit pour nous deux. Diane Cormier, ma tante de cœur, nous a accueillis pendant plusieurs années. Elle nous a donné un toit et s'est assurée qu'on ne manque de rien. Je préfère garder les détails de cette période pour moi, mais je tiens à reconnaître ce qu'elle a fait pour nous. Elle est encore présente dans nos vies aujourd'hui, surtout auprès de mes enfants. Pour tout ça, je lui dis <span class="diane-merci-word">merci</span>. »</p><p>Merci d'avoir été là dans pas mal toutes mes aventures — pis d'avoir capturé tant de ces moments-là en vidéo, pour qu'on puisse les revivre encore et encore.</p></div>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><img class="diane-maison" src="assets/maison-coeur-or.svg" alt="Médaillon doré : une maison avec un cœur au centre, surmontée d'une étoile — le foyer qui accueille." loading="lazy" /><p class="diane-merci-title"><span class="diane-heart" aria-hidden="true">♥</span>Un merci tout spécial à tante Diane.<img class="diane-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" /></p><p class="tiroir-phare">« Quand mon frère et moi étions jeunes, les circonstances ont fait qu'il a fallu trouver un toit pour nous deux.</p><p>Diane Cormier, ma tante de cœur, nous a accueillis pendant plusieurs années. Elle nous a donné un toit et s'est assurée qu'on ne manque de rien. Je préfère garder les détails de cette période pour moi, mais je tiens à reconnaître ce qu'elle a fait pour nous. Elle est encore présente dans nos vies aujourd'hui, surtout auprès de mes enfants. Pour tout ça, je lui dis <span class="diane-merci-word">merci</span>. »</p><p>Merci d'avoir été là dans pas mal toutes mes aventures — pis d'avoir capturé tant de ces moments-là en vidéo, pour qu'on puisse les revivre encore et encore.</p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="diane-photo-slider">Voir la photo</label><input id="diane-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; display: flex; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 97%);"><img src="assets/talent-search-cindy-jean.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /><img src="assets/talent-search-cindy-bordeaux.jpg" alt="" style="flex: 1; min-width: 0; height: 100%; object-fit: cover;" /></div>
             <div class="timeline-year" style="position: relative;">2003 à 2004</div>
-            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3 id="talent">Le Bathurst Talent Search</h3><p>Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst. C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise. Et sur les photos derrière ce texte, je suis enceinte de huit mois — je montais sur scène avec mon beau gros ventre! À ma dernière prestation, avant de commencer à chanter, j’ai même dit au public : « J’espère qu’il y a un docteur dans la salle — ça pourrait arriver d’une minute à l’autre! »</p>
+            <div class="timeline-copy fade-copy" style="position: relative; z-index: 0;"><h3 id="talent">Le Bathurst Talent Search</h3><p class="tiroir-phare">Choisie parmi 26 finalistes, je me rends jusqu’aux six derniers — la dernière à représenter la région de Bathurst.</p><p>C’étaient mes premières planches : des spectacles chaque samedi, tout l’hiver, à l’auditorium de BHS — toujours la même salle, toujours pleine, la finale comprise. Et sur les photos derrière ce texte, je suis enceinte de huit mois — je montais sur scène avec mon beau gros ventre! À ma dernière prestation, avant de commencer à chanter, j’ai même dit au public : « J’espère qu’il y a un docteur dans la salle — ça pourrait arriver d’une minute à l’autre! »</p>
 </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="talent-photo-slider">Voir la photo</label><input id="talent-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row">
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir">
             <div class="timeline-year">2003 à 2005</div>
-            <div class="timeline-copy" style="position: relative; z-index: 0;"><img class="online-idol-logo" src="assets/logo-online-idol-2003.svg" alt="Logo Online Idol 2003 : un ovale bleu foncé à bordure bleu néon, « Online Idol » en lettres blanches attachées, comme les logos Idol de l'époque." loading="lazy" /><h3 id="concours-en-ligne">Les concours en ligne</h3><p>J’élevais mes enfants, qui étaient tout petits dans ce temps-là — le web, c’était ma façon de garder la musique en vie, pis de continuer à apprendre. À Online Idol, un concours de chant en ligne à l’échelle mondiale — il y avait des chanteurs de partout, des États-Unis comme d’ailleurs —, je me suis rendue jusqu’au Top 3 — éliminée le 24 septembre 2003, juste avant la finale. Sur Dare to Sing et Singer’s Showcase, deux communautés de chanteurs du monde entier, je partageais mes chansons, je chantais des duos avec des chanteurs d’ailleurs, pis le monde m’encourageait à continuer. C’est là que j’ai appris que ma voix pouvait voyager loin, même à partir de chez nous.</p>
+            <div class="timeline-copy" style="position: relative; z-index: 0;"><img class="online-idol-logo" src="assets/logo-online-idol-2003.svg" alt="Logo Online Idol 2003 : un ovale bleu foncé à bordure bleu néon, « Online Idol » en lettres blanches attachées, comme les logos Idol de l'époque." loading="lazy" /><h3 id="concours-en-ligne">Les concours en ligne</h3><p class="tiroir-phare">J’élevais mes enfants, qui étaient tout petits dans ce temps-là — le web, c’était ma façon de garder la musique en vie, pis de continuer à apprendre.</p><p>À Online Idol, un concours de chant en ligne à l’échelle mondiale — il y avait des chanteurs de partout, des États-Unis comme d’ailleurs —, je me suis rendue jusqu’au Top 3 — éliminée le 24 septembre 2003, juste avant la finale. Sur Dare to Sing et Singer’s Showcase, deux communautés de chanteurs du monde entier, je partageais mes chansons, je chantais des duos avec des chanteurs d’ailleurs, pis le monde m’encourageait à continuer. C’est là que j’ai appris que ma voix pouvait voyager loin, même à partir de chez nous.</p>
             <figure class="timeline-photo" style="max-width: 440px; margin-top: 14px;">
               <iframe width="100%" height="500" scrolling="no" frameborder="no" src="https://legacy.reverbnation.com/widget_code/html_widget/artist_454008?widget_id=55&pwc[song_ids]=2058655&context_type=song&spoid=artist_454008" style="width:0px;min-width:100%;max-width:100%;" title="Lecteur ReverbNation — Finally found someone, duo de Cindy Roy avec Jason" loading="lazy"></iframe>
               <figcaption>Un des nombreux duos que j’ai chantés avec mes amis chanteurs du web. Reprise de « I Finally Found Someone », en duo avec Jason, de New York, aux États-Unis.</figcaption>
             </figure></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir tiroir-sj" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%); mask-image: radial-gradient(ellipse at center, black 38%, transparent 99.5%);"><img src="assets/saint-adolphe-saint-jean-2007.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;" /></div>
             <div class="timeline-year" style="position: relative;">2005 à 2008<style>@keyframes drapeau-vole{0%,100%{transform:rotate(-2.5deg) skewY(-1.5deg)}50%{transform:rotate(2deg) skewY(2.5deg)}}</style><span aria-hidden="true" style="display: block; width: 104px; margin-top: 14px; opacity: .9; transform-origin: 0 50%; animation: drapeau-vole 3.4s ease-in-out infinite;"><svg viewBox="0 0 90 60" focusable="false" style="display: block; width: 100%; height: auto;"><rect width="90" height="60" fill="#003da5" /><rect x="40" width="10" height="60" fill="#ffffff" /><rect y="25" width="90" height="10" fill="#ffffff" /><g fill="#ffffff" font-family="serif" font-size="17" text-anchor="middle"><text x="20" y="21">⚜</text><text x="70" y="21">⚜</text><text x="20" y="51">⚜</text><text x="70" y="51">⚜</text></g></svg></span></div>
-            <div class="timeline-copy fade-copy"><p>Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
+            <div class="timeline-copy fade-copy"><h3>Fête de la Saint-Jean</h3><p class="tiroir-phare">Fête de la Saint-Jean, Saint-Adolphe-d’Howard, 2007 — avec Pierre Shapiro, André Binette et Mathieu Binette</p>
             <p style="font-size: 14px; opacity: .78; margin-top: 8px;">Saint-Jean 2007, Saint-Adolphe-d’Howard. De gauche à droite : Mathieu Binette (flûte), André Binette (guitare), Pierre Shapiro (guitare et voix) — et moi, Cindy Roy, à la voix.</p>
             <p class="saint-jean-text">De 2006 à 2008, j’ai chanté les fêtes de la Saint-Jean à Saint-Adolphe-d’Howard, où j’habitais dans ce temps-là. Trois étés de suite — la photo de 2007 en est un beau souvenir.</p>
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="saintjean-photo-slider">Voir la photo</label><input id="saintjean-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
             <div class="dream-layer" data-base-opacity="0.27" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; opacity: .27; -webkit-mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%); mask-image: radial-gradient(ellipse at center, black 42%, transparent 98%);"><img src="assets/studio-micro-dreamy.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 55%;" /></div>
             <div class="timeline-year">2005 à 2017</div>
-            <div class="timeline-copy fade-copy"><p>De 2005 à 2017, j’ai aussi prêté ma voix aux maquettes de plusieurs auteurs-compositeurs — de la France, de la Russie et du Québec. Des collaborations de coulisses : ma voix, pis mes chœurs, au service de leurs chansons, le temps d’un enregistrement.</p></div>
+            <div class="timeline-copy fade-copy"><p class="tiroir-phare">De 2005 à 2017, j’ai aussi prêté ma voix aux maquettes de plusieurs auteurs-compositeurs — de la France, de la Russie et du Québec.</p><p>Des collaborations de coulisses : ma voix, pis mes chœurs, au service de leurs chansons, le temps d’un enregistrement.</p></div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="voix-photo-slider">Voir la photo</label><input id="voix-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row" style="position: relative; z-index: 0;" data-slider-box>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir" style="position: relative; z-index: 0;" data-slider-box>
             <img class="dream-layer" data-base-opacity="0.34" src="assets/cindy-cowboy-studio-nb.jpg" alt="" aria-hidden="true" style="position: absolute; left: 2px; top: 0; height: min(118%, 690px); width: auto; z-index: -1; opacity: .34; -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <img class="dream-layer" data-base-opacity="0.34" src="assets/cindy-guitare-micro-rode.jpg" alt="" aria-hidden="true" style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); height: min(97%, 590px); width: auto; z-index: -1; opacity: .34; filter: grayscale(1); -webkit-mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 52%, transparent 97%);" />
             <div class="timeline-year" aria-hidden="true"></div>
-            <div class="timeline-copy fade-copy"><h3 id="guitare">Chanteuse, gratteuse de guitare.</h3><p>J’ai commencé à travailler très tôt — à 12 ans, je gardais déjà les enfants du village toutes les fins de semaine pis tous les étés. À 15 ans, je servais à la coop de mon village. Après, j’ai touché à pas mal de métiers — les restos, les centres d’appels, le service à la clientèle — pis j’ai pas mal fait le tour : j’ai partagé ma vie entre le nord-est, le nord-ouest pis le sud du Nouveau-Brunswick, pis le Québec. Ça avait commencé tôt, ce voyagement-là : dès l’enfance, j’étais rendue jusqu’à Calgary.</p>
+            <div class="timeline-copy fade-copy"><h3 id="guitare">Chanteuse, gratteuse de guitare.</h3><p class="tiroir-phare">J’ai commencé à travailler très tôt — à 12 ans, je gardais déjà les enfants du village toutes les fins de semaine pis tous les étés.</p><p>À 15 ans, je servais à la coop de mon village. Après, j’ai touché à pas mal de métiers — les restos, les centres d’appels, le service à la clientèle — pis j’ai pas mal fait le tour : j’ai partagé ma vie entre le nord-est, le nord-ouest pis le sud du Nouveau-Brunswick, pis le Québec. Ça avait commencé tôt, ce voyagement-là : dès l’enfance, j’étais rendue jusqu’à Calgary.</p>
 <p>En 2002, je suis devenue maman à temps plein. De belles années avec mes enfants, où j’étais là, au foyer — avec un diplôme d’aide en santé décroché en 2003, mon frère gardant mon petit pendant mes cours. Pis la musique, la nuit : quand la maison dormait, j’enregistrais mes maquettes dans mon petit studio pis j’écrivais. Chanteuse de nuit, qu’on pourrait dire.</p>
 <p>En 2008, les enfants rendus à l’école, je suis retournée sur le marché du travail, montée jusqu’à chef d’équipe. Pis ma musique, je l’ai jamais lâchée : des spectacles ici et là, surtout l’été dans les festivités acadiennes, les fêtes de la Saint-Jean, pis du chant dans les églises, accompagnée de Nicole McGrath — pis des cercles d’auteurs-compositeurs auxquels j’ai participé à quelques reprises. J’aurais voulu vivre d’elle — mais les bills, faut que ça se paye. Elle, en tout cas, elle m’a jamais quittée.</p><p>Pis ma guitare, dans tout ça? Je l’ai jamais apprise formellement : je la grattais de temps en temps, par essais pis erreurs, jusqu’à ce que je pogne les accords de base que mon oncle Johnny m’avait montrés. Je la prenais, je l’abandonnais, je la reprenais. Dans la dernière année, par contre, j’ai appris pas mal : je joue encore à l’oreille, assez pour composer — la guitare me permet de mettre un peu de son, un peu de musique sur mes mots. Je fais pas de shows avec, pas encore — peut-être un jour —, mais à la maison, je deviens de plus en plus à l’aise de m’accompagner. Mon instrument de choix, ça reste ma voix.</p>
 </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="guitare-photo-slider">Voir la photo</label><input id="guitare-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
-          <article class="timeline-row">
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
+          <article class="timeline-row tiroir">
             <div class="timeline-year">2013 à 2019</div>
             <div class="timeline-copy">
             <div class="hommage hommage-wide">
@@ -8095,7 +8163,7 @@
               </div>
               
             </div>
-          </article>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
           <article class="timeline-row" id="parcours-beresford" style="position: relative; z-index: 0; min-height: 250px; overflow: hidden;" data-slider-box>
           <img class="dream-layer" data-base-opacity="0.85" src="assets/beresford-bandeau-echange.jpg" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85; z-index: -1;">
             <div class="timeline-year">2015</div>
@@ -8120,12 +8188,12 @@
             </div>
             <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="gala-photo-slider">Voir la photo</label><input id="gala-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </article>
-          <article class="timeline-row" id="aujourdhui" style="position: relative; z-index: 0;" data-slider-box>
+          <article class="timeline-row tiroir tiroir-auj" id="aujourdhui" style="position: relative; z-index: 0;" data-slider-box>
             <img class="dream-layer" data-base-opacity="0.38" src="assets/cindy-portrait-accueil.jpg" alt="" aria-hidden="true" style="position: absolute; left: -70px; top: 50%; transform: translateY(-50%); height: 88%; width: auto; z-index: -1; opacity: .38; -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%); mask-image: radial-gradient(ellipse at center, black 58%, transparent 97%);" />
             <div class="timeline-year">Aujourd’hui</div>
-            <div class="timeline-copy fade-copy"><p>« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
+            <div class="timeline-copy fade-copy"><p class="tiroir-phare">« Je suis une fille qui rêve et chante encore — pis mon plus grand rêve, il a le visage d’un album.</p><p>Une chanson, ça naît tout petit : quelques mots griffonnés, une mélodie qui cherche son chemin. Du brut, du vrai — l’art du début. Pis à partir de là, doucement… ça peut devenir un diamant.</p><p>En 2015, j’avais le vent dans les voiles. Après, la vie s’est passée — des fois, ça va pas où ça nous tente d’aller, pis on prend des chemins différents. Tous les chemins mènent à Rome, qu’ils disent : le mien a fait un long détour. Mais il était nécessaire — c’est là que je suis allée chercher mes leçons de vie. Je crois qu’on vient sur terre pour apprendre, pis que notre âme a besoin de ces petites leçons-là pour son ascension.</p><p>Aujourd’hui, je reviens — avec tout mon bagage : le savoir, l’expérience, la sagesse ramassée en route. Plus fidèle à qui je suis vraiment. Plus prête que jamais. Parce que chanter, pour moi, ça a toujours été vital — comme respirer. Une mission de vie. Chanter pis écrire : un va pas sans l’autre. J’ai besoin de ça.</p><p>Là, je suis rendue là : mettre ces petits bouts de moi ensemble, un à un, pis en faire l’album d’une vie.</p><p>Si une belle rencontre musicale se présente en chemin, ma porte est ouverte : les atomes crochus, quand ils sont là, ça se sent. Ça se force pas — ça se reconnaît. »</p></div>
                       <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="aujourdhui-photo-slider">Voir la photo</label><input id="aujourdhui-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
-          </article>
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
           </div>
         </div>
 
@@ -10311,5 +10379,87 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
   });
 })();
 </script>
-</body>
+    <script>
+      // Parcours en tiroirs (12 nov. 2026) : chaque chapitre s'ouvre et se
+      // ferme en douceur; les pastilles du menu ouvrent le tiroir visé.
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var arts = Array.prototype.slice.call(document.querySelectorAll('article.tiroir'));
+        if (!arts.length) { return; }
+        function nameOf(art) {
+          var h = art.querySelector('.timeline-copy h3, .diane-merci-title, .hommage-title');
+          var y = art.querySelector('.timeline-year');
+          var t = (h && h.textContent.trim()) || (y && y.textContent.trim()) || 'chapitre';
+          return t.replace(/\s+/g, ' ');
+        }
+        function sync(art) {
+          var btn = art.querySelector('.tiroir-btn');
+          if (!btn) { return; }
+          var open = !art.classList.contains('ferme');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.setAttribute('aria-label', (open ? 'Fermer le chapitre : ' : 'Ouvrir le chapitre : ') + nameOf(art));
+        }
+        function setState(art, open, animate) {
+          var isOpen = !art.classList.contains('ferme');
+          if (open === isOpen) { sync(art); return; }
+          var h0 = art.offsetHeight;
+          art.classList.toggle('ferme', !open);
+          sync(art);
+          if (animate && !reduce && h0) {
+            var h1 = art.offsetHeight;
+            if (h1 !== h0) {
+              art.style.height = h0 + 'px';
+              art.style.overflow = 'hidden';
+              void art.offsetHeight;
+              art.style.transition = 'height .45s ease';
+              art.style.height = h1 + 'px';
+              setTimeout(function () { art.style.height = ''; art.style.overflow = ''; art.style.transition = ''; }, 490);
+            }
+          }
+          if (!open) {
+            requestAnimationFrame(function () {
+              var t = art.getBoundingClientRect().top;
+              if (t < 100) { window.scrollBy(0, t - 150); }
+            });
+          }
+        }
+        arts.forEach(function (art) {
+          var btn = art.querySelector('.tiroir-btn');
+          if (btn) {
+            btn.addEventListener('click', function (e) { e.stopPropagation(); setState(art, art.classList.contains('ferme'), true); });
+          }
+          // En surface (tiroir fermé), toucher l'année, le titre ou la
+          // ligne-phare ouvre le chapitre.
+          art.addEventListener('click', function (e) {
+            if (!art.classList.contains('ferme')) { return; }
+            if (e.target.closest('a, button, input, video, audio, .photo-slider, details')) { return; }
+            if (e.target.closest('.timeline-year, .timeline-copy h3, .tiroir-phare, .diane-merci-title')) {
+              setState(art, true, true);
+            }
+          });
+          sync(art);
+        });
+        // État initial : tous les tiroirs fermés, sauf Enfance (aperçu approuvé).
+        arts.forEach(function (art) {
+          if (art.id !== 'enfance') { art.classList.add('ferme'); }
+          sync(art);
+        });
+        // Pastilles du menu du Parcours : ouvrir le tiroir visé, puis défiler.
+        document.querySelectorAll('#parcours .door-nav a[href^="#"]').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            var tgt = document.getElementById(a.getAttribute('href').slice(1));
+            if (!tgt) { return; }
+            var art = tgt.closest('article.tiroir');
+            if (art && art.classList.contains('ferme')) {
+              e.preventDefault();
+              setState(art, true, false);
+              requestAnimationFrame(function () {
+                tgt.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+              });
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>
