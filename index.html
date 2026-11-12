@@ -5314,8 +5314,8 @@
        uniquement du contenu déjà présent sur le site, aucun montant. — */
     .onesheet { margin-top: 58px; padding: clamp(28px, 4vw, 44px); background: var(--surface); border: 1.5px solid rgba(201,162,79,.6); border-radius: var(--r-card); box-shadow: var(--shadow-warm); }
     .onesheet-head { display: flex; gap: clamp(20px, 3.5vw, 36px); align-items: center; }
-    .onesheet-photo { margin: 0; flex: none; width: clamp(120px, 18vw, 168px); }
-    .onesheet-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; display: block; border-radius: var(--r-media); border: 1px solid var(--line); }
+    .onesheet-photo { margin: 0; flex: none; width: clamp(220px, 25vw, 300px); }
+    .onesheet-photo img { width: 100%; aspect-ratio: 48 / 41; object-fit: cover; object-position: 50% 50%; display: block; border-radius: var(--r-media); border: 1px solid var(--line); }
     .onesheet-name { margin: 0; font-family: var(--script-name); font-size: clamp(42px, 5.2vw, 58px); font-weight: 400; line-height: 1.2; }
     .onesheet-role { margin: 8px 0 0; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .onesheet-cols { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 40px; }
@@ -5328,6 +5328,7 @@
     .onesheet-block a { color: var(--accent); font-weight: 750; text-underline-offset: 4px; }
     @media (max-width: 720px) {
       .onesheet-head { flex-direction: column; align-items: flex-start; }
+      .onesheet-photo { width: min(300px, 100%); }
       .onesheet-cols { grid-template-columns: 1fr; }
     }
     @media print { .onesheet { break-inside: avoid; box-shadow: none; } }
@@ -9280,7 +9281,7 @@
           <p class="section-tag">Pour les salles et les organisateurs</p>
           <div class="onesheet-head">
             <figure class="onesheet-photo">
-              <img src="assets/cindy-scene-robe-creme.jpg" alt="Cindy Roy chantant sur scène en robe crème, un micro à la main" loading="lazy" />
+              <img src="assets/cindy-accueil-ciel-large.jpg" alt="Cindy Roy en robe émeraude, les bras ouverts sous un ciel bleu d’automne, sur un tapis de feuilles" loading="lazy" />
             </figure>
             <div>
               <h3 class="onesheet-name">Cindy Roy</h3>
