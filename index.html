@@ -1443,8 +1443,12 @@
       .nicole-cols { display: grid; grid-template-columns: 1.9fr .85fr; gap: 34px; align-items: start; margin-top: 10px; text-align: left; }
     }
     @media (min-width: 861px) {
-      .hommage-wide { margin-top: 0; margin-right: 0; margin-left: -190px; width: calc(100% + 190px); }
-.hommage.hommage-wide { margin-left: -190px; width: calc(100% + 190px); }
+      /* Correctif 12 nov. (repéré par Cindy sur son portable) : l'ancien élargissement
+         (-190px, pensé pour l'ancienne rangée deux colonnes) faisait dépasser la bannière
+         du panneau du chapitre en mode tiroir. Elle reste maintenant DANS le panneau :
+         94 % de la largeur utile, centrée, à toutes les largeurs. */
+      .hommage-wide { margin-top: 0; margin-right: auto; margin-left: auto; width: 94%; max-width: 100%; box-sizing: border-box; }
+.hommage.hommage-wide { margin-left: auto; margin-right: auto; width: 94%; max-width: 100%; box-sizing: border-box; }
       .nicole-cols .hommage-text { column-count: 2; column-gap: 30px; }
       .nicole-cols .hommage-text { max-width: none; margin: 0; }
       .nicole-media { position: relative; min-height: 100%; }
@@ -9205,6 +9209,10 @@
           <figure class="press-item">
             <img src="assets/lettre-maire-desjardins.jpg" alt="Lettre officielle de la Municipalité de Petit-Rocher, datée du 6 août 2015 : le maire Luc Desjardins félicite Cindy Roy, au nom du conseil municipal, pour le Prix auteur-compositeur de la chanson primée remporté au Gala de la Chanson de Caraquet" width="1536" height="2048" loading="lazy" />
             <figcaption>Lettre du maire de Petit-Rocher, Luc Desjardins — 6 août 2015</figcaption>
+          </figure>
+          <figure class="press-item">
+            <img src="assets/lettre-depute-guitard.jpg" alt="Lettre encadrée du député Daniel Guitard (Restigouche-Chaleur) — extrait du Hansard de l'Assemblée législative du Nouveau-Brunswick, daté du 2 décembre 2015 : son hommage à Cindy Roy, « Cindy fait la fierté des gens de notre région »" width="720" height="925" loading="lazy" />
+            <figcaption>Lettre du député Daniel Guitard — Assemblée législative du Nouveau-Brunswick, 2 décembre 2015</figcaption>
           </figure>
         </div>
 
