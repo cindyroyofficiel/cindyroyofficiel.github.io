@@ -2577,6 +2577,10 @@
     /* ——— Galerie vidéo unifiée (Cindy, 11 nov. au soir) : toutes les vidéos ensemble, serrées, « comme une vraie galerie » — ordre choisi par Cindy : Entends ma prière, Medley Offenbach et Angel en haut; Lonely, Festivités; les deux Mario côte à côte. La photo d'arrière-scène devient décor fondu à droite de la première rangée. ——— */
     .scene-gallery { position: relative; margin-top: 34px; display: grid; gap: 36px; }
 .scene-loge-ghost{display:none}
+.gal-row--vedettes .scene-card--centre .scene-group-title{text-align:center}
+.gal-row--vedettes .scene-card--centre .scene-item{margin-inline:auto}
+.scene-card--pair .scene-group-title{text-align:center}
+.scene-song-title{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--gold);text-align:center;margin:0;line-height:1.2}
 @media(min-width:721px){.scene-loge-ghost{display:block;width:150px;height:auto;margin:18px auto 0;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}}
     .gal-row { display: grid; gap: 24px; align-items: start; }
     .gal-row--vedettes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -7553,18 +7557,18 @@
           </figure>
 <img class="scene-loge-ghost" src="assets/cindy-miroir-loge-marge.webp" alt="" aria-hidden="true" loading="lazy">
 </div>
-<div class="scene-card">
+<div class="scene-card scene-card--centre">
 <h4 class="scene-group-title">Medley Offenbach</h4>
 <figure class="scene-item scene-item--portrait">
-            <iframe src="https://www.youtube.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
+            <iframe src="https://www.youtube.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford, en 2019" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford, en 2019</figcaption>
           </figure>
 </div>
-<div class="scene-card">
+<div class="scene-card scene-card--centre">
 <h4 class="scene-group-title">« Quand la nature écoute »</h4>
 <figure class="scene-item scene-item--reel">
             <video src="assets/angel-sormany.mp4" poster="assets/angel-sormany-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — octobre 2025, filmé par sa tante Louise" style="aspect-ratio: 9 / 16; width: 100%"></video>
-            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
+            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany, en octobre 2025. Merci à ma tante Louise pour la vidéo.</figcaption>
             <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
           </figure>
 </div>
@@ -7574,14 +7578,14 @@
 <h4 class="scene-group-title">Medley de mes originales</h4>
 <figure class="scene-item">
             <video src="assets/medley-originales-labibitte.mp4" poster="assets/medley-originales-poster.jpg" controls playsinline preload="none" title="Medley des originales de Cindy Roy — « Entends ma prière », « Moi je crois » et « Avant de me rendre », à La Bibitte, Bathurst, le 1er mai 2015"></video>
-            <figcaption>« Entends ma prière », « Moi je crois » et « Avant de me rendre » — La Bibitte, Bathurst, 1er mai 2015</figcaption>
+            <figcaption>« Entends ma prière », « Moi je crois » et « Avant de me rendre » — soirée Des airs et des mots, La Bibitte, Bathurst, 1er mai 2015</figcaption>
           </figure>
 </div>
 <div class="scene-card">
 <h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
 <figure class="scene-item">
             <iframe src="https://www.youtube.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
+            <figcaption>Cercle d’auteurs-compositeurs, avec Louis Noël, Stéphane Hébert et Madiane Michaud — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
           </figure>
 </div>
           </div>
@@ -7594,12 +7598,13 @@
           </figure>
 </div>
 <div class="scene-card scene-card--pair">
-<h4 class="scene-group-title">« Provocante » avec Mario Benjamin</h4>
+<h4 class="scene-group-title">Mario Benjamin</h4>
+<h4 class="scene-song-title">« Provocante »</h4>
+<h4 class="scene-song-title">« Reviens-moi »</h4>
 <figure class="scene-item scene-item--portrait">
             <iframe src="https://www.youtube.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
           </figure>
-<h4 class="scene-group-title" style="margin-top:26px">« Reviens-moi » avec Mario Benjamin</h4>
 <figure class="scene-item scene-item--portrait">
             <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
             <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
@@ -7616,7 +7621,7 @@
         <div class="scene-grid scene-album">
 <figure class="scene-item">
             <img src="assets/fete-acadie-beresford-2015.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes sur scène aux Festivités acadiennes de Beresford, en août 2015 — de gauche à droite : Louis Noël, Cindy Roy, Stéphane Hébert et Madiane Michaud, devant un grand drapeau acadien" loading="lazy" />
-            <figcaption>Le cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, août 2015</figcaption>
+            <figcaption>Le cercle d’auteurs-compositeurs, avec Louis Noël, Stéphane Hébert et Madiane Michaud — Festivités acadiennes de Beresford, août 2015</figcaption>
           </figure>
 <figure class="scene-item">
             <img src="assets/cindy-drapeau-acadien.jpg" alt="Cindy Roy, chapeau de paille aux couleurs acadiennes, tenant un drapeau acadien à l’étoile dorée, aux Festivités acadiennes" width="1200" height="1207" loading="lazy" />
@@ -7640,7 +7645,7 @@
               </figure>
 <figure class="scene-item">
             <img src="assets/cercle-auteurs-la-bibitte.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes en spectacle à La Bibitte du CCNB, à Bathurst — Cindy Roy au micro, entourée de Louis Noël, Stéphane Hébert et Madiane Michaud" loading="lazy" />
-            <figcaption>Des airs et des mots — La Bibitte, 2015</figcaption>
+            <figcaption>Des airs et des mots, avec Louis Noël, Stéphane Hébert et Madiane Michaud — La Bibitte, 2015</figcaption>
           </figure>
 
 <figure class="scene-item">
