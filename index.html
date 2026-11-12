@@ -2536,6 +2536,19 @@
     .scene-featured video { width: 100%; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); }
     .scene-featured figcaption { margin-top: 16px; font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.4; color: var(--ink); }
     .scene-grid-title { margin: 84px 0 0; font-family: var(--serif); font-size: 36px; font-weight: 600; }
+    /* Réorganisation Scène (Cindy, 11 nov.) : trois parties nommées — À l'affiche, l'étagère vidéo, l'album photo */
+    .scene-part-title { margin: 84px 0 0; font-family: var(--serif); font-size: clamp(28px, 4vw, 36px); font-weight: 600; color: #e7cf8e; }
+    .scene-part-star { color: var(--gold); margin-right: 10px; }
+    #scene .scene-part-title:first-of-type { margin-top: 54px; }
+    .scene-card { min-width: 0; }
+    .scene-card .scene-group-title { margin-top: 0; margin-bottom: 12px; }
+    .scene-card .scene-item + .scene-item { margin-top: 34px; }
+    .scene-card .scene-item--reel { margin: 0 auto; }
+    /* Vidéos portrait de l'étagère : rapetissées et centrées (Cindy, 11 nov. : « il y en a des énormes ») */
+    .scene-shelf .scene-item--portrait { max-width: 280px; margin-left: auto; margin-right: auto; }
+    .scene-shelf .scene-item--reel { max-width: 300px; }
+    /* Téléphone : dégager l'étiquette « Moments de scène » de la barre de boutons collante (elle la recouvrait) */
+    @media (max-width: 720px) { #scene .scene-head { padding-top: 76px; } }
     .scene-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; }
     .scene-group-title { grid-column: 1 / -1; margin: 26px 0 -8px; font-family: var(--serif); font-size: clamp(26px, 3.2vw, 32px); font-weight: 600; line-height: 1.15; color: #a67c1a; }
     .scene-group-title:first-child { margin-top: 0; }
@@ -7489,6 +7502,7 @@
             <button class="curtain-replay" type="button" id="curtain-replay">↺ Rejouer le rideau</button>
           </div>
         </div>
+        <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>À l’affiche</h3>
         <div class="scene-grid scene-grid--bibitte">
           <h4 class="scene-group-title">La Bibitte — première partie de Dans l’Shed, 1er mai 2015</h4>
 <figure class="scene-item">
@@ -7509,15 +7523,51 @@
           <img src="assets/papillon-or.png" alt="" width="920" height="691" loading="lazy" />
           <span>★</span>
         </div>
-        <details class="photo-gallery">
-          <summary class="gallery-toggle">Galerie — Moments de scène <span class="gallery-toggle-hint">tous les autres moments, un clic</span></summary>
-          <div class="gallery-body">
-            <div class="scene-grid">
+        <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>Mes prestations en vidéo</h3>
+        <div class="scene-grid scene-shelf">
+<div class="scene-card">
 <h4 class="scene-group-title">Festivités acadiennes de Beresford</h4>
 <figure class="scene-item">
             <iframe src="https://www.youtube.com/embed/umLC9aWtAx8" title="Cercle d’auteurs-compositeurs aux Festivités acadiennes de Beresford, le 15 août 2015" loading="lazy" style="aspect-ratio: 720 / 394" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, 15 août 2015</figcaption>
           </figure>
+</div>
+<div class="scene-card">
+<h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
+<figure class="scene-item">
+            <iframe src="https://www.youtube.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
+          </figure>
+</div>
+<div class="scene-card">
+<h4 class="scene-group-title">Medley Offenbach</h4>
+<figure class="scene-item scene-item--portrait">
+            <iframe src="https://www.youtube.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
+          </figure>
+</div>
+<div class="scene-card">
+<h4 class="scene-group-title">Mario Benjamin</h4>
+<figure class="scene-item scene-item--portrait">
+            <iframe src="https://www.youtube.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
+          </figure>
+<figure class="scene-item scene-item--portrait">
+            <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
+            <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
+          </figure>
+</div>
+<div class="scene-card">
+<h4 class="scene-group-title">« Quand la nature écoute »</h4>
+<figure class="scene-item scene-item--reel">
+            <video src="assets/angel-sormany.mp4" poster="assets/angel-sormany-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — octobre 2025, filmé par sa tante Louise" style="aspect-ratio: 9 / 16; width: 100%"></video>
+            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
+            <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
+          </figure>
+</div>
+        </div>
+        <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>L’album de scène</h3>
+        <div class="scene-grid scene-album">
 <figure class="scene-item">
             <img src="assets/fete-acadie-beresford-2015.jpg" alt="Le cercle d’auteurs-compositeurs-interprètes sur scène aux Festivités acadiennes de Beresford, en août 2015 — de gauche à droite : Louis Noël, Cindy Roy, Stéphane Hébert et Madiane Michaud, devant un grand drapeau acadien" loading="lazy" />
             <figcaption>Le cercle d’auteurs-compositeurs — Festivités acadiennes de Beresford, août 2015</figcaption>
@@ -7525,11 +7575,6 @@
 <figure class="scene-item">
             <img src="assets/cindy-drapeau-acadien.jpg" alt="Cindy Roy, chapeau de paille aux couleurs acadiennes, tenant un drapeau acadien à l’étoile dorée, aux Festivités acadiennes" width="1200" height="1207" loading="lazy" />
             <figcaption>Festivités acadiennes</figcaption>
-          </figure>
-          <h4 class="scene-group-title">« Lonely » avec Michel Thériault</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/Avd41U-Hxz8" title="Cindy Roy chante « Lonely » en duo avec Michel Thériault à Beresford, le 15 août 2016" loading="lazy" style="aspect-ratio: 720 / 426" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Lonely » en duo avec Michel Thériault — Beresford, 15 août 2016</figcaption>
           </figure>
 <figure class="scene-item">
             <img class="photo-fondue" src="assets/photo-scene-donna-landry-2016-1-fondue.webp" alt="Cindy Roy au micro sur scène avec Michel Thériault à la guitare et son bassiste, devant un rideau aux couleurs acadiennes — Beresford, 15 août 2016" loading="lazy" />
@@ -7539,41 +7584,19 @@
             <img class="photo-fondue" src="assets/photo-scene-donna-landry-2016-3-fondue.webp" alt="Cindy Roy avec Michel Thériault, devant les fanions acadiens — Beresford, 15 août 2016" loading="lazy" />
             <figcaption>Avec Michel Thériault — Beresford, 15 août 2016</figcaption>
           </figure>
-          <h4 class="scene-group-title">Medley Offenbach</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/H3ISK1YLfes" title="Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford" loading="lazy" style="aspect-ratio: 496 / 1536" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>Medley Offenbach — souper-spectacle sold out à la salle Raoul-Charest, Beresford</figcaption>
-          </figure>
-          <h4 class="scene-group-title">Mario Benjamin</h4>
-<figure class="scene-item">
-            <iframe src="https://www.youtube.com/embed/2fj2aQi9H8A" title="« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin" loading="lazy" style="aspect-ratio: 720 / 1280" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            <figcaption>« Provocante » (Marjo) — Boston Pizza, Saint-Eustache, 4 octobre 2025, invitée sur le moment par Mario Benjamin</figcaption>
-          </figure>
 <figure class="scene-item">
             <img class="photo-fondue" src="assets/cindy-et-mario-benjamin-fondue.webp" alt="Cindy Roy avec Mario Benjamin" width="1080" height="1428" loading="lazy" />
             <figcaption>Avec Mario Benjamin — Boston Pizza, Saint-Eustache, 4 octobre 2025</figcaption>
           </figure>
 <figure class="scene-item">
-            <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
-            <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
-          </figure>
-              <figure class="scene-item">
                 <img src="assets/affiche-dans-lshed-labibitte-2015.jpg" alt="L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015" loading="lazy" />
                 <figcaption>L’affiche de la soirée — première partie de Dans l’Shed, La Bibitte (Bathurst), 1er mai 2015</figcaption>
               </figure>
-              <figure class="scene-item">
+<figure class="scene-item">
                 <img src="assets/des-airs-et-des-mots-couverture-2015.jpg" alt="Montage sépia des quatre membres du cercle d’auteurs-compositeurs Des airs et des mots, en 2015 — Cindy Roy, Louis Noël, Stéphane Hébert et Madiane Michaud" width="720" height="280" loading="lazy" />
                 <figcaption>Des airs et des mots — Cindy, Louis Noël, Stéphane Hébert et Madiane Michaud, 2015</figcaption>
               </figure>
-          <h4 class="scene-group-title">« Quand la nature écoute »</h4>
-<figure class="scene-item scene-item--reel">
-            <video src="assets/angel-sormany.mp4" poster="assets/angel-sormany-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « In the Arms of an Angel » au camp de son oncle Johnny et de sa tante Louise, à Sormany — octobre 2025, filmé par sa tante Louise" style="aspect-ratio: 9 / 16; width: 100%"></video>
-            <figcaption>« In the Arms of an Angel », un moment suspendu dans le temps, au camp de mon oncle Johnny et de ma tante Louise, à Sormany. Merci à ma tante Louise pour la vidéo.</figcaption>
-            <p class="photo-credit"><a href="https://facebook.com/reel/3225534657596758/" target="_blank" rel="noopener">Voir sur Facebook</a></p>
-          </figure>
-            </div>
-          </div>
-        </details>
+        </div>
         <div class="choeur-panel" id="choeur-virtuel">
           <h3 class="choeur-title">Le Chœur virtuel de l’Acadie</h3>
           <figure class="choeur-spot">
