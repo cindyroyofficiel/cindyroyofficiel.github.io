@@ -4261,6 +4261,30 @@
     }
     .emery-book-link a:hover, .emery-book-link a:focus-visible { text-decoration: underline; }
 
+    /* HOMMAGE ÉMERY en tiroir (12 nov. 2026, décision de Cindy : « il prend
+       pas mal de place… on peut le mettre dans son tiroir ») — même composant
+       que les chapitres du Parcours (article.tiroir + .tiroir-btn + .ferme,
+       fermé par défaut par le script des tiroirs). La surface garde le titre,
+       une vignette de la photo des médailles, une ligne d'essence tirée de
+       l'intro, l'appel « Découvrir… » et le lien du livre de Donald; tout
+       l'hommage (intro, photo, poème, livre) vit dans le tiroir, intact. */
+    .emery-hommage.tiroir .emery-title { padding-left: 54px; padding-right: 54px; }
+    @media (max-width: 560px) { .emery-hommage.tiroir .emery-title { padding-left: 42px; padding-right: 42px; } }
+    .emery-hommage.ferme .emery-corps { display: none; }
+    .emery-hommage:not(.ferme) .emery-surface { display: none; }
+    .emery-vignette {
+      display: block; width: 168px; max-width: 55%; height: auto; margin: 6px auto 0;
+      border-radius: 10px; border: 1px solid rgba(110, 20, 35, .4);
+      box-shadow: 0 10px 20px -12px rgba(60, 35, 10, .5); cursor: pointer;
+    }
+    .emery-phare { max-width: 620px; margin: 16px auto 0; text-align: center; }
+    .emery-decouvrir { margin: 18px auto 0; text-align: center; font-weight: 700; color: #6e1423; cursor: pointer; }
+    .emery-decouvrir-txt { border-bottom: 2px solid rgba(201, 162, 79, .85); padding-bottom: 2px; }
+    .emery-decouvrir:hover .emery-decouvrir-txt { border-bottom-color: #6e1423; }
+    .emery-surface-book { margin: 12px auto 0; text-align: center; font-size: 14.5px; }
+    .emery-surface-book a { color: #66584a; text-decoration: none; border-bottom: 1px dotted rgba(102, 88, 74, .7); }
+    .emery-surface-book a:hover, .emery-surface-book a:focus-visible { color: #6e1423; border-bottom-style: solid; }
+
     /* Les garde-fous mouvement/impression restent les derniers mots */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -7934,8 +7958,14 @@
             </figure>
           </div>
         </div>
-        <article class="emery-hommage" id="emery">
+        <article class="emery-hommage tiroir" id="emery">
+          <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button>
           <h3 class="emery-title"><span aria-hidden="true">🌺</span> Mon grand-père, Émery Boudreau</h3>
+          <img class="emery-vignette emery-surface" src="assets/emery-boudreau-medailles.jpg" alt="" width="2048" height="1044" loading="lazy" decoding="async" />
+          <p class="emery-phare emery-surface">Vétéran de la Deuxième Guerre mondiale, mon pépère Émery gardait toujours sa caméra proche — il voulait conserver nos moments pour toujours.</p>
+          <p class="emery-decouvrir emery-surface"><span class="emery-decouvrir-txt">Découvrir l’hommage à mon grand-père Émery</span></p>
+          <p class="emery-surface-book emery-surface"><a href="https://www.anboutique.ca/catalogue/livres-francophones/biographie/la-guerre-a-emery-a-edmond/" target="_blank" rel="noopener">Le livre de mon oncle Donald : « La guerre à Emery à Edmond »</a></p>
+          <div class="emery-corps">
           <p class="emery-intro">Le vidéo de Noël juste ici, c’est lui qui l’a filmé. Mon pépère Émery gardait toujours sa caméra proche — il voulait conserver nos moments pour toujours. Mais avant d’être notre pépère, il a été un soldat: vétéran de la Deuxième Guerre mondiale, blessé par balle, revenu chez lui avec ses médailles pis son grand cœur. J’ai écrit ce poème pour lui.</p>
           <figure class="emery-photo">
             <img src="assets/emery-boudreau-medailles.jpg" alt="Cadre souvenir d’Émery Boudreau: ses cinq médailles de la Deuxième Guerre mondiale, un écusson au drapeau du Canada et son portrait en uniforme" width="2048" height="1044" loading="lazy" decoding="async" />
@@ -7952,6 +7982,7 @@
           </div>
           <p class="emery-book">Son histoire complète, son fils — mon oncle Donald Boudreau — l’a racontée dans son livre <em>La guerre à Emery à Edmond</em>, bâti à partir des propres cassettes de pépère.</p>
           <p class="emery-book-link"><a href="https://www.anboutique.ca/catalogue/livres-francophones/biographie/la-guerre-a-emery-a-edmond/" target="_blank" rel="noopener">Acheter le livre</a></p>
+          </div>
         </article>
         <div class="about-copy racines-suite" id="racines">
             <h3>Mes racines acadiennes</h3>
@@ -10562,7 +10593,7 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
         var arts = Array.prototype.slice.call(document.querySelectorAll('article.tiroir'));
         if (!arts.length) { return; }
         function nameOf(art) {
-          var h = art.querySelector('.timeline-copy h3, .diane-merci-title, .hommage-title');
+          var h = art.querySelector('.timeline-copy h3, .diane-merci-title, .hommage-title, .emery-title');
           var y = art.querySelector('.timeline-year');
           var t = (h && h.textContent.trim()) || (y && y.textContent.trim()) || 'chapitre';
           return t.replace(/\s+/g, ' ');
@@ -10608,7 +10639,7 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           art.addEventListener('click', function (e) {
             if (!art.classList.contains('ferme')) { return; }
             if (e.target.closest('a, button, input, video, audio, .photo-slider, details')) { return; }
-            if (e.target.closest('.timeline-year, .timeline-copy h3, .tiroir-phare, .diane-merci-title')) {
+            if (e.target.closest('.timeline-year, .timeline-copy h3, .tiroir-phare, .diane-merci-title, .emery-title, .emery-phare, .emery-decouvrir, .emery-vignette')) {
               setState(art, true, true);
             }
           });
