@@ -2497,7 +2497,7 @@
     @media (prefers-color-scheme: dark) { .mission .fade-copy { text-shadow: 0 1px 3px rgba(18, 14, 8, .85), 0 0 16px rgba(18, 14, 8, .7); } }
     /* Son portrait sous le saule, à DROITE et fondu dans le décor (version demandée par Cindy le 11 nov. au soir) */
     .mission-portrait { margin: 0; }
-    .mission-me { position: absolute; top: 0; right: 0; height: 56%; width: min(480px, 76%); object-fit: cover; object-position: 84% 8%; opacity: .55; z-index: 1; -webkit-mask-image: radial-gradient(ellipse 90% 92% at 70% 28%, #000 46%, transparent 97%); mask-image: radial-gradient(ellipse 90% 92% at 70% 28%, #000 46%, transparent 97%); }
+    .mission-me { position: absolute; top: 0; right: 0; height: 56%; width: min(480px, 76%); object-fit: cover; object-position: 84% 8%; opacity: .55; z-index: 1; -webkit-mask-image: radial-gradient(ellipse 90% 92% at 70% 28%, #000 46%, transparent 97%), linear-gradient(to top, transparent 0, #000 38%); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 90% 92% at 70% 28%, #000 46%, transparent 97%), linear-gradient(to top, transparent 0, #000 38%); mask-composite: intersect; }
     .mission-title { margin: 0; font-family: var(--serif); font-size: clamp(38px, 5vw, 58px); line-height: 1.05; font-weight: 600; letter-spacing: -.015em; color: #a67c1a; }
     .mission-text { margin: 24px auto 0; max-width: 720px; font-family: var(--serif); font-size: clamp(20px, 2.3vw, 24px); line-height: 1.62; color: #33270f; text-align: left; }
     .mission-lines { margin: 36px auto 0; padding-top: 34px; border-top: 1px solid var(--line); max-width: 720px; }
