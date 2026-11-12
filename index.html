@@ -299,7 +299,12 @@
          plus bas pour que les titres restent visibles dessous. Meme
          prudence pour Influences (panneau a 235px une fois colle). */
       #enfance, #adolescence, #robertville, #guitare, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #nicole, #aujourdhui { scroll-margin-top: 225px; }
-      #influences, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 190px; }
+      #influences { scroll-margin-top: 190px; }
+      /* Menu Influences de nouveau collé (overflow: clip, 12 nov.) :
+         une fois collé il occupe jusqu’à ~235 px (top 66 + panneau
+         enroulé) — les cibles des pastilles atterrissent juste en
+         dessous, entièrement dégagées du menu. */
+      #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 245px; }
       .influences-head { padding-top: 14px; }
     }
     @media (max-width: 640px) { .door-nav { top: 66px; flex-wrap: wrap; overflow-x: visible; justify-content: center; border-radius: 26px; padding: 10px; } .door-nav a { padding: 6px 12px; font-size: 13.5px; } .door-nav a.sub-chip { font-size: 12px; padding: 5px 10px; } #calixte, #lavoix, #carnaval, #beresford { scroll-margin-top: 205px; } }
@@ -1915,7 +1920,13 @@
        et le fondu du panneau reste retiré.
        Purement décoratif : aria-hidden, alt vide, aucun clic —
        le contenu (.wrap) passe devant, à z-index 1. */
-    .influences { position: relative; overflow: hidden; }
+    /* overflow: clip (et pas seulement hidden) : hidden crée un contenant
+       de défilement qui tuait le position: sticky du menu .door-nav — le
+       menu partait avec la page et « disparaissait » dès qu’on défilait
+       dans la section (signalé par Cindy, 12 nov.). Clip découpe le fond
+       de la même façon sans créer ce contenant; hidden reste le repli
+       pour les navigateurs sans clip. */
+    .influences { position: relative; overflow: hidden; overflow: clip; }
     .influences > .wrap { position: relative; z-index: 1; }
     /* Le calque de fond de la section (pleine grandeur) — l’image
        actuelle est décrite au bloc « Fond des Influences » plus bas,
@@ -8242,6 +8253,7 @@
                 <p>Que ton âme repose en paix. 🕊️</p>
               </div>
               
+            </div>
             </div>
           <button class="tiroir-btn" type="button" aria-expanded="true" aria-label="Fermer le chapitre"><span class="tiroir-chev" aria-hidden="true"></span></button></article>
           <article class="timeline-row" id="parcours-beresford" style="position: relative; z-index: 0; min-height: 250px; overflow: hidden;" data-slider-box>
