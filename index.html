@@ -4355,6 +4355,12 @@
     .dream-flag-zone::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("assets/drapeau-acadien-verglas.jpg") left center / cover no-repeat; opacity: .32; -webkit-mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); pointer-events: none; }
     .dream-flag-zone::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(250, 246, 238, .38), rgba(250, 246, 238, .38)); -webkit-mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); mask-image: radial-gradient(ellipse at 30% 45%, black 45%, transparent 97%); pointer-events: none; }
     .dream-flag-zone .beresford-public { margin-top: 20px; }
+    /* Portrait « Gratitude » : le geste de merci qui clôt le récit Beresford
+       (image choisie par Cindy, 12 nov. 2026, le mot « Gratitude » déjà
+       incrusté dans la photo) — fondu dreamy par masque radial doux comme
+       la photo de la rivière, ni cadre franc ni texte par-dessus. */
+    .beresford-gratitude { margin: clamp(30px, 4vw, 44px) auto 4px; width: min(430px, 88%); }
+    .beresford-gratitude img { width: 100%; height: auto; display: block; -webkit-mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); }
     .gros-drapeau { max-width: 880px; margin: 44px auto 0; text-align: center; }
     .gros-drapeau img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: var(--shadow); }
     .gros-drapeau figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; }
@@ -7533,6 +7539,9 @@
         <div class="dream-flag-zone">
 
         <p class="beresford-public">Ce que ce concours-là m’a donné de plus beau, c’est un public, pis de la belle expérience de scène. Le monde était content d’entendre chanter en français — leur langue, chez eux, sur une scène. Il s’est trouvé que j’étais presque la seule du concours à le faire, pis ça leur faisait du bien. Ils me suivaient de semaine en semaine, ils me le disaient — pis beaucoup d’entre eux me suivent encore aujourd’hui, sur ma page Facebook, sur YouTube, sur Instagram. Pis là, ils ont une place de plus pour me retrouver : ce site officiel. C’est là que j’ai bâti mon public, un samedi à la fois. Les salles étaient pleines — ils étaient obligés de refuser du monde à la porte. Personne s’attendait à ça — moi la première. Pis le plus beau là-dedans : ils m’ont prêté leur confiance, samedi après samedi — parce qu’une artiste, c’est exigeante envers elle-même, pis la mienne était pas dans le tapis. Tranquillement, un pas à la fois, la leur a fini par me gagner moi aussi.</p>
+        <figure class="beresford-gratitude" id="beresford-gratitude">
+          <img src="assets/beresford-gratitude.png" alt="Cindy, le regard vers le ciel — Gratitude" width="1084" height="1389" loading="lazy" />
+        </figure>
         <div class="carnaval-2019">
             <figure>
               <img src="assets/carnaval-2019-affiche.jpg" alt="Affiche du souper-spectacle d’ouverture du Carnaval du Siffleux 2019, avec Cindy et Denis — complet" width="900" height="1159" loading="lazy" />
