@@ -2482,13 +2482,18 @@
     /* Saule en fondu derrière la mission (demandé par Cindy le 11 nov. : « le saule en gros en background, en fondu ») */
     .mission-dream { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; opacity: .30; z-index: 0; -webkit-mask-image: radial-gradient(ellipse 97% 95% at 50% 46%, #000 60%, transparent 99%); mask-image: radial-gradient(ellipse 97% 95% at 50% 46%, #000 60%, transparent 99%); }
     .mission > *:not(.mission-dream):not(.mission-portrait):not(.mission-fly) { position: relative; z-index: 2; }
-    /* Le papillon de la mission : plus gros, il traverse le bloc quand celui-ci entre à l'écran, puis se dépose en haut à droite et continue de battre des ailes (idée de Cindy, 11 nov.) */
-    .mission-fly { position: absolute; top: 26px; left: 30px; width: 78px; z-index: 3; pointer-events: none; }
+    /* Le papillon de la mission : plus gros, il part de la droite quand le bloc entre à l'écran, traverse le haut du bloc et se dépose sur le M de « Ma mission » en battant des ailes (idée de Cindy, 11 nov.) */
+    .mission-fly { position: absolute; top: 24px; left: calc(100% - 108px); width: 78px; z-index: 3; pointer-events: none; }
     .mission-fly .papillon-accent { width: 78px; height: auto; margin: 0; opacity: 1; filter: drop-shadow(0 3px 7px rgba(90, 60, 10, .35)); animation: mission-battement 1.5s ease-in-out infinite alternate; }
     .mission.in .mission-fly { animation: mission-vol 9.5s ease-in-out .5s forwards; }
     @keyframes mission-battement { from { transform: scaleX(1) rotate(-3deg); } to { transform: scaleX(.7) rotate(3deg); } }
-    @keyframes mission-vol { 0% { left: 30px; top: 26px; } 25% { left: 30%; top: 4px; } 50% { left: 55%; top: 36px; } 75% { left: 76%; top: 8px; } 100% { left: calc(100% - 108px); top: 28px; } }
-    @media (prefers-reduced-motion: reduce) { .mission-fly { left: auto; right: 30px; top: 28px; } .mission.in .mission-fly { animation: none; } .mission-fly .papillon-accent { animation: none; } }
+    @keyframes mission-vol { 0% { left: calc(100% - 108px); top: 24px; } 30% { left: 62%; top: 2px; } 55% { left: 40%; top: 30px; } 80% { left: 18%; top: 6px; } 100% { left: 44px; top: 2px; } }
+    @media (max-width: 640px) {
+      .mission-fly { width: 60px; top: 20px; left: calc(100% - 84px); }
+      .mission-fly .papillon-accent { width: 60px; }
+      @keyframes mission-vol { 0% { left: calc(100% - 84px); top: 20px; } 30% { left: 58%; top: 0; } 55% { left: 36%; top: 24px; } 80% { left: 15%; top: 4px; } 100% { left: 6px; top: 2px; } }
+    }
+    @media (prefers-reduced-motion: reduce) { .mission-fly { left: 44px; top: 2px; } .mission.in .mission-fly { animation: none; } .mission-fly .papillon-accent { animation: none; } }
     .mission .photo-slider { justify-content: flex-start; justify-self: start; margin-top: 28px; }
     /* Texte à gauche + plus foncé pour la lisibilité (demandé par Cindy le 11 nov. au soir) */
     .mission .papillon-accent { margin-left: 0; margin-right: auto; }
