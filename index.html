@@ -4128,6 +4128,8 @@
        Visible seulement quand la poche existe (≥ 1150 px). */
     .plateau-danse { position: relative; height: 0; z-index: 1; }
     .danse-stage { position: absolute; right: 2px; bottom: 10px; width: 336px; height: 196px; cursor: pointer; }
+    .danse-invite { display: block; width: fit-content; margin: 4px 6px 0 auto; padding: 2px 0; background: none; border: 0; cursor: pointer; font: inherit; font-size: .98rem; font-style: italic; color: #8a6d2f; text-decoration: underline dotted rgba(138, 109, 47, .55); text-underline-offset: 3px; }
+    .danse-invite:hover { color: #6d5423; }
     .danse-sol {
       position: absolute; left: 8px; right: 2px; bottom: 0; height: 20px; border-radius: 50%;
       background: radial-gradient(ellipse at center, rgba(90, 60, 20, .20), rgba(90, 60, 20, 0) 68%);
@@ -4173,7 +4175,7 @@
       16% { opacity: .85; }
       100% { opacity: 0; transform: translate(var(--dx, 0), -66px) rotate(9deg); }
     }
-    @media (max-width: 1149px) { .plateau-danse { display: none; } }
+    @media (max-width: 1149px) { .plateau-danse { display: none; } .danse-invite { display: none; } }
     @media (prefers-reduced-motion: reduce) {
       .play .mini-wrap, .play .mini-base, .play .sono-play, .play .sono-woofer, .play .danse-note { animation: none !important; }
       .danse-note { opacity: .5; }
@@ -6652,6 +6654,7 @@
           <span class="danse-note dn1"></span><span class="danse-note dn2"></span><span class="danse-note dn3"></span><span class="danse-note dn4"></span><span class="danse-note dn5"></span>
           <span class="danse-sol"></span>
         </div></div>
+        <button type="button" class="danse-invite" id="danse-invite">Cindy vous souhaite la bienvenue ici ---&gt;</button>
         <audio id="danse-bienvenue" src="assets/bienvenue-cindy.mp3" preload="auto"></audio>
         <script>
         (function () {
@@ -6659,10 +6662,12 @@
           if (!stage) return;
           var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           /* — La voix de la p’tite Cindy (12 nov. 2026, idée de Cindy) :
-             au clic qui relance la danse, quand son doigt enfonce le
-             bouton play (~1,1 s), elle dit « Allô, bienvenue dans mon
-             petit jardin musical! » — la VRAIE voix de Cindy. Purement additif :
-             si le fichier est absent ou bloqué, rien ne change. — */
+             au clic qui relance la danse, la bande-son part tout de suite :
+             la porte s’ouvre pendant qu’elle glisse vers le système de son,
+             des pas, le loquet qui clenche — puis, à ~1,4 s, elle dit
+             « Allô, bienvenue dans mon petit jardin musical! » — la VRAIE
+             voix de Cindy. Purement additif : si le fichier est absent ou
+             bloqué, rien ne change. — */
           var voix = document.getElementById('danse-bienvenue');
           var voixTimer = null;
           function ditBonjour() {
@@ -6682,7 +6687,7 @@
           function restartAvecVoix() {
             restart();
             if (voixTimer) { clearTimeout(voixTimer); }
-            voixTimer = setTimeout(ditBonjour, reduced ? 0 : 1100);
+            voixTimer = setTimeout(ditBonjour, 0);
           }
           if (reduced || !('IntersectionObserver' in window)) { stage.classList.add('play'); return; }
           var io = new IntersectionObserver(function (entries) {
@@ -6690,6 +6695,8 @@
           }, { threshold: .3 });
           io.observe(stage);
           stage.addEventListener('click', restartAvecVoix);
+          var invite = document.getElementById('danse-invite');
+          if (invite) { invite.addEventListener('click', restartAvecVoix); }
         })();
         </script>
         <div class="plateau-grid">
