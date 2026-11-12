@@ -4068,6 +4068,42 @@
       box-shadow: 0 0 0 6px #f8ecd6, 0 0 0 8px rgba(201, 162, 79, .65),
         0 30px 55px -18px rgba(110, 65, 8, .50), 0 0 90px rgba(255, 205, 120, .30);
     }
+    /* ——— Mes reprises : le même langage que les Originales (demande de Cindy, 12 nov.) ———
+       Grille deux colonnes (montage à gauche, liste à droite), petits ronds dorés
+       reliés par le fil doré, halo autour des ronds, rangées au même pas.
+       Les ronds portent la miniature YouTube de la vidéo de la chanson quand
+       elle est vérifiée; sinon, un médaillon doré ♪ — le même genre de
+       pictogramme que les icônes des originales — en attendant sa miniature. */
+    #interpretations .reprises-top { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 24px; }
+    #interpretations .reprises-top .montage-frame { margin: 0; max-width: none; }
+    #interpretations .reprises-top .montage-frame iframe { border: 2px solid #a67c1a; border-radius: 6px; box-shadow: 0 0 0 6px #f8ecd6, 0 0 0 8px rgba(201, 162, 79, .65), 0 30px 55px -18px rgba(110, 65, 8, .50), 0 0 90px rgba(255, 205, 120, .30); }
+    #interpretations .reprises-top .song-list { margin: 0; position: relative; }
+    #interpretations .reprises-top .song-jump { padding: 15px 4px; grid-template-columns: 42px auto 1fr auto; }
+    #interpretations .reprises-top .song-list::before {
+      content: ""; position: absolute; z-index: 0;
+      left: 96px; top: 52px; bottom: 52px; width: 2px;
+      background: linear-gradient(180deg, rgba(201, 162, 79, 0), rgba(201, 162, 79, .55) 6%, rgba(201, 162, 79, .55) 94%, rgba(201, 162, 79, 0));
+    }
+    #interpretations .song-icon {
+      position: relative; z-index: 1;
+      box-shadow: 0 2px 8px rgba(60, 42, 10, .18), 0 0 0 5px rgba(201, 162, 79, .16), 0 0 18px rgba(201, 162, 79, .30);
+    }
+    #interpretations .song-icon-note {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 35% 30%, #fbf3dd, #e9cf9a 60%, #d9b96f);
+      color: #8a6d2f; font-size: 30px; line-height: 1;
+    }
+    #interpretations .clip-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    #interpretations .clip-head h5 { margin: 0; text-align: left; flex: 1; }
+    #interpretations .clip-icon { width: 54px; height: 54px; flex: 0 0 auto; }
+    @media (max-width: 760px) {
+      #interpretations .reprises-top { grid-template-columns: 1fr; gap: 18px; }
+    }
+    @media (max-width: 620px) {
+      #interpretations .reprises-top .song-jump { grid-template-columns: 32px auto 1fr; }
+      #interpretations .reprises-top .song-list::before { left: 87px; top: 43px; bottom: 43px; }
+      #interpretations .song-icon-note { font-size: 24px; }
+    }
 
     /* ——— La p’tite Cindy part la musique (10 nov. 2026, idée de Cindy ;
        presse clarifiée le même soir : « elle pèse pas play ») ———
@@ -7418,31 +7454,33 @@
         <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
           <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées — des versions toutes simples, comme dans mon salon, entre nous, pis d’autres avec arrangement. Mon instrument de choix, ça reste ma voix. Mon répertoire est large : variété francophone, chansons à texte, country, rock et pop. Pas d’étiquette — j’aime les chansons qui disent quelque chose, pis je sais m’adapter à votre événement. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
           <h3 class="montage-title">Mes reprises <em>favorites</em></h3>
+          <div class="reprises-top">
           <figure class="montage-frame">
             <iframe src="https://www.youtube.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Vos plus écoutées et mes coups de cœur — 15 secondes chacune, juste les moments les plus forts.</figcaption>
           </figure>
           <ol class="song-list">
-            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Je pars à l’autre bout du monde » dans le montage des reprises"><span class="song-num">01</span><span class="song-name">Je pars à l’autre bout du monde</span></button></li>
-            <li><button class="song-jump" type="button" data-time="17.5" aria-label="Écouter « Nothing’s Gonna Change My Love for You » dans le montage des reprises"><span class="song-num">02</span><span class="song-name">Nothing’s Gonna Change My Love for You</span></button></li>
-            <li><button class="song-jump" type="button" data-time="32.5" aria-label="Écouter « Un peu plus haut, un peu plus loin » dans le montage des reprises"><span class="song-num">03</span><span class="song-name">Un peu plus haut, un peu plus loin</span></button></li>
-            <li><button class="song-jump" type="button" data-time="47.5" aria-label="Écouter « Voyage, voyage » dans le montage des reprises"><span class="song-num">04</span><span class="song-name">Voyage, voyage</span></button></li>
-            <li><button class="song-jump" type="button" data-time="62.5" aria-label="Écouter « Always Remember Us This Way » dans le montage des reprises"><span class="song-num">05</span><span class="song-name">Always Remember Us This Way</span></button></li>
-            <li><button class="song-jump" type="button" data-time="77.5" aria-label="Écouter « Jericho Walls » dans le montage des reprises"><span class="song-num">06</span><span class="song-name">Jericho Walls</span></button></li>
-            <li><button class="song-jump" type="button" data-time="92.5" aria-label="Écouter « Someone You Loved » dans le montage des reprises"><span class="song-num">07</span><span class="song-name">Someone You Loved</span></button></li>
-            <li><button class="song-jump" type="button" data-time="107.5" aria-label="Écouter « Éternel » dans le montage des reprises"><span class="song-num">08</span><span class="song-name">Éternel</span></button></li>
-            <li><button class="song-jump" type="button" data-time="122.5" aria-label="Écouter « Je pardonne » dans le montage des reprises"><span class="song-num">09</span><span class="song-name">Je pardonne</span></button></li>
-            <li><button class="song-jump" type="button" data-time="137.5" aria-label="Écouter « Beautiful Things » dans le montage des reprises"><span class="song-num">10</span><span class="song-name">Beautiful Things</span></button></li>
-            <li><button class="song-jump" type="button" data-time="152.5" aria-label="Écouter « The Door » dans le montage des reprises"><span class="song-num">11</span><span class="song-name">The Door</span></button></li>
-            <li><button class="song-jump" type="button" data-time="167.5" aria-label="Écouter « Lose Control » dans le montage des reprises"><span class="song-num">12</span><span class="song-name">Lose Control</span></button></li>
-            <li><button class="song-jump" type="button" data-time="182.5" aria-label="Écouter « Ce monde » dans le montage des reprises"><span class="song-num">13</span><span class="song-name">Ce monde</span></button></li>
-            <li><button class="song-jump" type="button" data-time="197.5" aria-label="Écouter « Le jardinier du couvent » dans le montage des reprises"><span class="song-num">14</span><span class="song-name">Le jardinier du couvent</span></button></li>
-            <li><button class="song-jump" type="button" data-time="212.5" aria-label="Écouter « Sur ta plage » dans le montage des reprises"><span class="song-num">15</span><span class="song-name">Sur ta plage</span></button></li>
-            <li><button class="song-jump" type="button" data-time="227.5" aria-label="Écouter « Une » dans le montage des reprises"><span class="song-num">16</span><span class="song-name">Une</span></button></li>
-            <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-name">Amoureuse</span></button></li>
-            <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
-            <li><a class="song-jump" href="#ayoye" aria-label="Écouter « Ayoye » — bonus : la chanson au complet, en audio seulement, dans le lecteur juste en dessous"><span class="song-num">19</span><span class="song-name">Ayoye <span class="song-note">(bonus track)</span></span></a></li>
+            <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Je pars à l’autre bout du monde » dans le montage des reprises"><span class="song-num">01</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Je pars à l’autre bout du monde</span></button></li>
+            <li><button class="song-jump" type="button" data-time="17.5" aria-label="Écouter « Nothing’s Gonna Change My Love for You » dans le montage des reprises"><span class="song-num">02</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Nothing’s Gonna Change My Love for You</span></button></li>
+            <li><button class="song-jump" type="button" data-time="32.5" aria-label="Écouter « Un peu plus haut, un peu plus loin » dans le montage des reprises"><span class="song-num">03</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Un peu plus haut, un peu plus loin</span></button></li>
+            <li><button class="song-jump" type="button" data-time="47.5" aria-label="Écouter « Voyage, voyage » dans le montage des reprises"><span class="song-num">04</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Voyage, voyage</span></button></li>
+            <li><button class="song-jump" type="button" data-time="62.5" aria-label="Écouter « Always Remember Us This Way » dans le montage des reprises"><span class="song-num">05</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Always Remember Us This Way</span></button></li>
+            <li><button class="song-jump" type="button" data-time="77.5" aria-label="Écouter « Jericho Walls » dans le montage des reprises"><span class="song-num">06</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Jericho Walls</span></button></li>
+            <li><button class="song-jump" type="button" data-time="92.5" aria-label="Écouter « Someone You Loved » dans le montage des reprises"><span class="song-num">07</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Someone You Loved</span></button></li>
+            <li><button class="song-jump" type="button" data-time="107.5" aria-label="Écouter « Éternel » dans le montage des reprises"><span class="song-num">08</span><img class="song-icon" src="assets/reprise-eternel.jpg" alt="Miniature de la vidéo « Éternel » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Éternel</span></button></li>
+            <li><button class="song-jump" type="button" data-time="122.5" aria-label="Écouter « Je pardonne » dans le montage des reprises"><span class="song-num">09</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Je pardonne</span></button></li>
+            <li><button class="song-jump" type="button" data-time="137.5" aria-label="Écouter « Beautiful Things » dans le montage des reprises"><span class="song-num">10</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Beautiful Things</span></button></li>
+            <li><button class="song-jump" type="button" data-time="152.5" aria-label="Écouter « The Door » dans le montage des reprises"><span class="song-num">11</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">The Door</span></button></li>
+            <li><button class="song-jump" type="button" data-time="167.5" aria-label="Écouter « Lose Control » dans le montage des reprises"><span class="song-num">12</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Lose Control</span></button></li>
+            <li><button class="song-jump" type="button" data-time="182.5" aria-label="Écouter « Ce monde » dans le montage des reprises"><span class="song-num">13</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Ce monde</span></button></li>
+            <li><button class="song-jump" type="button" data-time="197.5" aria-label="Écouter « Le jardinier du couvent » dans le montage des reprises"><span class="song-num">14</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Le jardinier du couvent</span></button></li>
+            <li><button class="song-jump" type="button" data-time="212.5" aria-label="Écouter « Sur ta plage » dans le montage des reprises"><span class="song-num">15</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Sur ta plage</span></button></li>
+            <li><button class="song-jump" type="button" data-time="227.5" aria-label="Écouter « Une » dans le montage des reprises"><span class="song-num">16</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Une</span></button></li>
+            <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Amoureuse</span></button></li>
+            <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Une fleur à la bouche</span></button></li>
+            <li><a class="song-jump" href="#ayoye" aria-label="Écouter « Ayoye » — bonus : la chanson au complet, en audio seulement, dans le lecteur juste en dessous"><span class="song-num">19</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Ayoye <span class="song-note">(bonus track)</span></span></a></li>
           </ol>
+          </div>
 
           <figure class="clip-card solo" id="ayoye">
             <p class="bonus-wrap"><span class="coming-badge">Bonus track · nº 19</span></p>
@@ -7459,30 +7497,30 @@
           <p class="family-note">Des extraits de 15 secondes — chansons de Francis Cabrel</p>
           <div class="family-grid">
             <figure class="clip-card">
-              <h5>Je te suivrai</h5>
+              <div class="clip-head"><img class="song-icon clip-icon" src="assets/reprise-je-te-suivrai.jpg" alt="Miniature de la vidéo « Je te suivrai » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><h5>Je te suivrai</h5></div>
               <iframe class="portrait" src="https://www.youtube.com/embed/vrL2gu9MMxs" title="Cindy Roy chante « Je te suivrai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </figure>
             <figure class="clip-card">
-              <h5>Je t’aimais, je t’aime et je t’aimerai</h5>
+              <div class="clip-head"><img class="song-icon clip-icon" src="assets/reprise-je-taimais.jpg" alt="Miniature de la vidéo « Je t’aimais, je t’aime et je t’aimerai » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><h5>Je t’aimais, je t’aime et je t’aimerai</h5></div>
               <iframe class="portrait" src="https://www.youtube.com/embed/soZTlzml5jU" title="Cindy Roy chante « Je t’aimais, je t’aime et je t’aimerai » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               <figcaption>Pour Shawn et Marie-Eve</figcaption>
             </figure>
             <figure class="clip-card wide">
-              <h5>De l’autre côté de toi</h5>
+              <div class="clip-head"><img class="song-icon clip-icon" src="assets/reprise-de-lautre-cote.jpg" alt="Miniature de la vidéo « De l’autre côté de toi » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><h5>De l’autre côté de toi</h5></div>
               <iframe class="landscape" src="https://www.youtube.com/embed/3swsUNYifZI" title="Cindy Roy chante « De l’autre côté de toi » de Francis Cabrel — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </figure>
           </div>
 
           <h4 class="family-title">🤠 Dédicace country</h4>
           <figure class="clip-card solo">
-            <h5>Coal Miner’s Daughter</h5>
+            <div class="clip-head"><img class="song-icon clip-icon" src="assets/reprise-coal-miners-daughter.jpg" alt="Miniature de la vidéo « Coal Miner’s Daughter » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><h5>Coal Miner’s Daughter</h5></div>
             <iframe class="portrait" src="https://www.youtube.com/embed/8QxlcbwJxSc" title="Cindy Roy chante « Coal Miner’s Daughter » de Loretta Lynn — extrait de 15 secondes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Loretta Lynn — pour mon oncle Len Roy, à la demande de ma cousine Heather Ann (extrait)</figcaption>
           </figure>
 
           <h4 class="family-title">🕊️ Hommage à Dolly Parton</h4>
           <figure class="clip-card solo">
-            <h5>Coat of Many Colors</h5>
+            <div class="clip-head"><img class="song-icon clip-icon" src="assets/reprise-coat-of-many-colors.jpg" alt="Miniature de la vidéo « Coat of Many Colors » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><h5>Coat of Many Colors</h5></div>
             <iframe class="portrait" src="https://www.youtube.com/embed/uAhzD7jrmgs" title="Cindy Roy chante « Coat of Many Colors » — son hommage à Dolly Parton, au complet" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Mon hommage à Dolly Parton, au complet. Entre deux brassées de lavage, je l’ai chantée tout simplement avec mon cœur.</figcaption>
           </figure>
