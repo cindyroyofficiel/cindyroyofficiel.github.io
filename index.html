@@ -4093,6 +4093,19 @@
       background: radial-gradient(circle at 35% 30%, #fbf3dd, #e9cf9a 60%, #d9b96f);
       color: #8a6d2f; font-size: 30px; line-height: 1;
     }
+    /* Rangée 19 « Ayoye » (12 nov.) : rangée d’information, PAS un bouton —
+       elle ne fait pas partie du montage; elle joue au complet dans la
+       carte bonus juste en dessous. Le lien-ancre qui mimait un bouton de
+       chanson a été retiré (Cindy : « c’est confusing »); aucun effet de
+       survol cliquable, juste un petit guide discret « audio complet ↓ »
+       (masqué sous 620 px, où la grille passe à 3 colonnes). */
+    #interpretations .song-row-static { cursor: default; }
+    #interpretations .song-row-static:hover .song-name,
+    #interpretations .song-row-static:focus-visible .song-name { text-decoration: none; }
+    #interpretations .song-item-bonus:hover { background: transparent; }
+    #interpretations .song-item-bonus:hover .song-name { transform: none; }
+    #interpretations .song-audio-hint { color: var(--muted); font-size: 14px; font-style: italic; white-space: nowrap; }
+    @media (max-width: 620px) { #interpretations .song-audio-hint { display: none; } }
     #interpretations .clip-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
     #interpretations .clip-head h5 { margin: 0; text-align: left; flex: 1; }
     #interpretations .clip-icon { width: 54px; height: 54px; flex: 0 0 auto; }
@@ -7478,7 +7491,7 @@
             <li><button class="song-jump" type="button" data-time="227.5" aria-label="Écouter « Une » dans le montage des reprises"><span class="song-num">16</span><img class="song-icon" src="assets/reprise-une.jpg" alt="Miniature de la vidéo « Une » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Une</span></button></li>
             <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><img class="song-icon" src="assets/reprise-amoureuse.jpg" alt="Miniature de la vidéo « Amoureuse » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Amoureuse</span></button></li>
             <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><img class="song-icon" src="assets/reprise-une-fleur-a-la-bouche.jpg" alt="Miniature de la vidéo « Une fleur à la bouche » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Une fleur à la bouche</span></button></li>
-            <li><a class="song-jump" href="#ayoye" aria-label="Écouter « Ayoye » — bonus : la chanson au complet, en audio seulement, dans le lecteur juste en dessous"><span class="song-num">19</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Ayoye <span class="song-note">(bonus track)</span></span></a></li>
+            <li class="song-item-bonus"><div class="song-jump song-row-static"><span class="song-num">19</span><span class="song-icon song-icon-note" aria-hidden="true">♪</span><span class="song-name">Ayoye <span class="song-note">(bonus track)</span></span><span class="song-audio-hint" aria-hidden="true">audio complet ↓</span></div></li>
           </ol>
           </div>
 
