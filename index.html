@@ -3829,6 +3829,18 @@
     .booking-card .collab-line { margin-top: 22px; color: #66584a; }
     .contact-panel { border-top: 1px solid rgba(233, 179, 75, .55); }
     .contact .socials a { text-decoration-color: rgba(233, 179, 75, .65); }
+    /* Photo de guitare dans l'en-tête Contact (12 nov. 2026, choix de Cindy) :
+       posée dans la colonne de droite, au-dessus du panneau « Me joindre »,
+       cadre doré assorti à la carte parchemin; au téléphone, elle s'empile
+       sous la carte, sans écraser le texte ni le bouton. */
+    .contact-side { display: flex; flex-direction: column; gap: 26px; }
+    .contact-photo { margin: 0; }
+    .contact-photo img {
+      display: block; width: 100%; max-width: 400px; height: auto; border-radius: 18px;
+      border: 1.5px solid rgba(201, 162, 79, .75);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, .35);
+    }
+    @media (max-width: 720px) { .contact-photo img { max-width: 330px; } }
     @media (max-width: 620px) {
       .booking-card { padding: 24px 22px 20px; }
     }
@@ -7371,6 +7383,12 @@
             <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><span class="song-name">Une fleur à la bouche</span></button></li>
           </ol>
 
+          <figure class="clip-card solo">
+            <h5>Ayoye</h5>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/324089521&color=%23b98a2f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true" title="Lecteur SoundCloud — « Ayoye » (reprise d’Offenbach), Cindy Roy et Denis Leclair, 2017" loading="lazy"></iframe>
+            <figcaption>Reprise d’Offenbach (2017) — Arrangement : Denis Leclair</figcaption>
+          </figure>
+
           <details class="photo-gallery">
             <summary class="gallery-toggle">Les extraits, par famille <span class="gallery-toggle-hint">Mes Cabrel · Country · Dolly Parton, un clic</span></summary>
             <div class="gallery-body">
@@ -9354,6 +9372,10 @@
                 <img src="assets/scene-parc-lunettes.jpg" alt="Cindy Roy au parc avec ses lunettes, en manteau à carreaux, dans la lumière d’automne — photo signée de sa main" loading="lazy" />
                 <figcaption>Cindy Roy — portrait au parc, avec lunettes<br /><a class="kit-download" href="assets/scene-parc-lunettes.jpg" download>Télécharger</a></figcaption>
               </figure>
+              <figure class="kit-item">
+                <img src="assets/cindy-guitare-divan.jpg" alt="Cindy Roy chez elle, assise sur le divan avec sa guitare acoustique, un cahier et un crayon sur la table devant elle — photo signée de sa main" loading="lazy" />
+                <figcaption>Cindy Roy — à la maison, avec sa guitare<br /><a class="kit-download" href="assets/cindy-guitare-divan.jpg" download>Télécharger</a></figcaption>
+              </figure>
             </div>
           </div>
         </details>
@@ -9520,10 +9542,15 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
           <p class="collab-line">Collaborations : je suis ouverte aux belles rencontres musicales — co-écriture, arrangements, scène. Ma porte est ouverte.</p>
           </div>
         </div>
-        <div class="contact-panel">
+        <div class="contact-side">
+          <figure class="contact-photo">
+            <img src="assets/cindy-guitare-divan.jpg" alt="Cindy Roy chez elle, assise sur le divan avec sa guitare acoustique, un cahier et un crayon sur la table devant elle — là où ses chansons commencent" width="1304" height="2048" loading="lazy" />
+          </figure>
+          <div class="contact-panel">
           <strong>Me joindre</strong>
           <div class="socials" aria-label="Mes réseaux sociaux">
             <a href="https://www.youtube.com/@cindyroyofficiel" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@cindyroyofficiel" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/cindyroyofficiel" target="_blank" rel="noopener">Instagram</a>
+          </div>
           </div>
         </div>
       </div>
