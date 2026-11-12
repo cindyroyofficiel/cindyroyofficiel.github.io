@@ -2543,13 +2543,17 @@
     .scene-card { min-width: 0; }
     .scene-card .scene-group-title { margin-top: 0; margin-bottom: 12px; }
     .scene-card .scene-item + .scene-item { margin-top: 34px; }
-    .scene-card .scene-item--reel { margin: 0 auto; }
+    .scene-card .scene-item--reel { margin: 0; }
     /* Vidéos portrait de l'étagère : rapetissées et centrées (Cindy, 11 nov. : « il y en a des énormes ») */
-    .scene-shelf .scene-item--portrait { max-width: 280px; margin-left: auto; margin-right: auto; }
+    .scene-shelf .scene-item--portrait { max-width: 280px; margin-left: 0; margin-right: auto; }
     .scene-shelf .scene-item--reel { max-width: 300px; }
+    /* Le reel « Quand la nature écoute » : aligné à gauche sous son titre, comme les autres cartes (sa règle d'origine, pensée pour une rangée pleine, le centrait) */
+    .scene-grid.scene-shelf .scene-item.scene-item--reel { justify-self: start; margin-left: 0; margin-right: auto; max-width: 300px; }
     /* Téléphone : dégager l'étiquette « Moments de scène » de la barre de boutons collante (elle la recouvrait) */
     @media (max-width: 720px) { #scene .scene-head { padding-top: 76px; } }
     .scene-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 34px; align-items: start; }
+    /* Album de scène : photos plus petites, en 3 colonnes — plus doux pour l'œil (Cindy, 11 nov.) */
+    .scene-album { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 26px; }
     .scene-group-title { grid-column: 1 / -1; margin: 26px 0 -8px; font-family: var(--serif); font-size: clamp(26px, 3.2vw, 32px); font-weight: 600; line-height: 1.15; color: #a67c1a; }
     .scene-group-title:first-child { margin-top: 0; }
     @media (prefers-color-scheme: dark) { .scene-group-title { color: var(--gold); } }
@@ -2569,6 +2573,11 @@
       .scene-grid { grid-template-columns: 1fr; gap: 40px; }
       .scene-featured figcaption { font-size: 19px; }
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
+    }
+    /* Album de scène au téléphone : 2 colonnes, photos modestes, légendes plus petites */
+    @media (max-width: 720px) {
+      .scene-album { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
+      .scene-album .scene-item figcaption { font-size: 14px; margin-top: 10px; }
     }
 
     /* ——— Beresford : vedette sur fond de la gang + galerie par familles ———
