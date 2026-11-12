@@ -6652,22 +6652,44 @@
           <span class="danse-note dn1"></span><span class="danse-note dn2"></span><span class="danse-note dn3"></span><span class="danse-note dn4"></span><span class="danse-note dn5"></span>
           <span class="danse-sol"></span>
         </div></div>
+        <audio id="danse-bienvenue" src="assets/bienvenue-cindy.mp3" preload="auto"></audio>
         <script>
         (function () {
           var stage = document.getElementById('danse-stage');
           if (!stage) return;
           var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          /* — La voix de la p’tite Cindy (12 nov. 2026, idée de Cindy) :
+             au clic qui relance la danse, quand son doigt enfonce le
+             bouton play (~1,1 s), elle dit « Allô, bienvenue dans mon
+             petit jardin musical! » — la VRAIE voix de Cindy. Purement additif :
+             si le fichier est absent ou bloqué, rien ne change. — */
+          var voix = document.getElementById('danse-bienvenue');
+          var voixTimer = null;
+          function ditBonjour() {
+            if (!voix) return;
+            try {
+              voix.pause();
+              voix.currentTime = 0;
+              var p = voix.play();
+              if (p && p.catch) { p.catch(function () {}); }
+            } catch (e) { /* silence : l’animation continue */ }
+          }
           function restart() {
             stage.classList.remove('play');
             void stage.offsetWidth;
             stage.classList.add('play');
+          }
+          function restartAvecVoix() {
+            restart();
+            if (voixTimer) { clearTimeout(voixTimer); }
+            voixTimer = setTimeout(ditBonjour, reduced ? 0 : 1100);
           }
           if (reduced || !('IntersectionObserver' in window)) { stage.classList.add('play'); return; }
           var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) { if (e.isIntersecting) { stage.classList.add('play'); io.disconnect(); } });
           }, { threshold: .3 });
           io.observe(stage);
-          stage.addEventListener('click', restart);
+          stage.addEventListener('click', restartAvecVoix);
         })();
         </script>
         <div class="plateau-grid">
