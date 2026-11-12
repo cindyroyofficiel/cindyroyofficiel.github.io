@@ -2575,7 +2575,9 @@
       .scene-grid-title { margin-top: 64px; font-size: 31px; }
     }
     /* ——— Galerie vidéo unifiée (Cindy, 11 nov. au soir) : toutes les vidéos ensemble, serrées, « comme une vraie galerie » — ordre choisi par Cindy : Entends ma prière, Medley Offenbach et Angel en haut; Lonely, Festivités; les deux Mario côte à côte. La photo d'arrière-scène devient décor fondu à droite de la première rangée. ——— */
-    .scene-gallery { margin-top: 34px; display: grid; gap: 36px; }
+    .scene-gallery { position: relative; margin-top: 34px; display: grid; gap: 36px; }
+.scene-loge-margin{display:none}
+@media(min-width:1400px){.scene-loge-margin{display:block;position:absolute;top:402px;left:0;transform:translateX(calc(-100% - 16px));width:min(168px,calc(50vw - 614px));height:auto;opacity:.5;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:radial-gradient(ellipse 74% 90% at 50% 47%,#000 50%,transparent 76%),linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);mask-composite:intersect}}
     .gal-row { display: grid; gap: 24px; align-items: start; }
     .gal-row--vedettes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .gal-row--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
@@ -2592,10 +2594,7 @@
     .scene-decor img { border: none; box-shadow: none; background: transparent; opacity: .92; -webkit-mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); }
     .scene-decor figcaption { text-align: center; }
     /* Bandeau d'arrière-scène (Cindy, 11 nov. 23 h 20) : la photo de la loge fondue dans le décor, sous le texte d'intro — la scène en haut à droite, l'arrière-scène en dessous, « on donne les deux » */
-    .scene-loge-band { margin: 36px auto 0; max-width: 780px; }
-    .scene-loge-band img { width: 100%; height: 430px; object-fit: cover; object-position: 50% 26%; border: none; box-shadow: none; background: transparent; opacity: .9; -webkit-mask-image: radial-gradient(ellipse 94% 92% at 50% 44%, #000 50%, transparent 98%); mask-image: radial-gradient(ellipse 94% 92% at 50% 44%, #000 50%, transparent 98%); }
-    .scene-loge-band figcaption { margin-top: 2px; text-align: center; font-style: italic; color: var(--muted); font-size: 16px; }
-    @media (max-width: 720px) { .scene-loge-band { margin-top: 28px; } .scene-loge-band img { height: 300px; object-position: 50% 25%; } }
+    @media (max-width: 720px) { }
     @media (max-width: 1020px) { .gal-row--vedettes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 720px) {
       .scene-gallery { gap: 28px; }
@@ -7542,12 +7541,10 @@
             <button class="curtain-replay" type="button" id="curtain-replay">↺ Rejouer le rideau</button>
           </div>
         </div>
-        <figure class="scene-loge-band">
-          <img src="assets/cindy-miroir-loge-solo-fondue.webp" alt="Cindy Roy seule devant le miroir de sa loge, en robe verte et talons dorés, son téléphone à la main — l'arrière-scène, avant d'entrer en scène" width="864" height="2432" loading="lazy" />
-          <figcaption>En arrière-scène, devant le miroir, avant d'entrer en scène.</figcaption>
-        </figure>
+        
         <h3 class="scene-part-title"><span class="scene-part-star" aria-hidden="true">★</span>À l’affiche</h3>
         <div class="scene-gallery">
+<img class="scene-loge-margin" src="assets/cindy-miroir-loge-marge.webp" alt="" aria-hidden="true" loading="lazy">
           <div class="gal-row gal-row--vedettes">
 <div class="scene-card">
 <h4 class="scene-group-title">« Entends ma prière »</h4>
