@@ -3637,6 +3637,11 @@
     .footer-signature { flex: 1 1 100%; margin-top: 10px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 15px; color: #cfc9b4; }
     .footer-rights { flex: 1 1 100%; margin-top: 6px; text-align: center; }
     .footer-sig-name { display: inline; font-family: var(--script-name); font-style: normal; font-size: 1.75em; line-height: 1; color: #e9dfc2; vertical-align: -.08em; }
+    /* La signature de la fin de visite devient sa VRAIE main (12 nov. 2026) :
+       même image qu'au merci de Beresford (assets/signature-cindy.png),
+       doré relevé par filtre pour rester lisible et lumineux sur le vert
+       profond du pied de page — les traits, eux, sont inchangés. */
+    .footer-sig-img { display: inline-block; height: 46px; width: auto; vertical-align: -13px; filter: brightness(1.85) saturate(1.05); }
     .sig-name strong { font-family: var(--script-name); font-size: 25px; font-weight: 400; letter-spacing: 0; line-height: 1.25; color: #f0e8da; white-space: nowrap; }
     /* — Accent signature : le petit papillon doré, centré au-dessus des titres de section — */
     .papillon-accent { display: block; width: 38px; height: auto; margin: 0 auto 14px; }
@@ -4361,6 +4366,16 @@
        la photo de la rivière, ni cadre franc ni texte par-dessus. */
     .beresford-gratitude { margin: clamp(30px, 4vw, 44px) auto 4px; width: min(430px, 88%); }
     .beresford-gratitude img { width: 100%; height: auto; display: block; -webkit-mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); mask-image: radial-gradient(ellipse at center, black 56%, transparent 96%); }
+    /* Merci signé à la main : la VRAIE signature de Cindy, extraite de sa
+       page manuscrite (choisie par elle, 12 nov. 2026) — encre recolorée
+       doré foncé sur fond transparent, aucun trait redessiné ni lissé.
+       Le papillon d'or se pose au bout de son trait final (la descente
+       du « y » de Roy, là où son stylo s'est levé). */
+    .beresford-merci { margin: clamp(16px, 2.4vw, 24px) auto 6px; text-align: center; }
+    .beresford-merci .merci-ligne { font-family: var(--script-name); font-weight: 400; font-size: 1.9rem; line-height: 1.25; color: #8a6d2f; margin: 0 0 4px; }
+    .beresford-merci .signature-wrap { position: relative; display: inline-block; width: min(250px, 62%); }
+    .beresford-merci .signature-img { width: 100%; height: auto; display: block; }
+    .beresford-merci .signature-papillon { position: absolute; right: -10px; bottom: -6px; width: 24px; height: auto; transform: rotate(10deg); }
     .gros-drapeau { max-width: 880px; margin: 44px auto 0; text-align: center; }
     .gros-drapeau img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: var(--shadow); }
     .gros-drapeau figcaption { margin-top: 10px; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 16.5px; }
@@ -7542,6 +7557,13 @@
         <figure class="beresford-gratitude" id="beresford-gratitude">
           <img src="assets/beresford-gratitude.png" alt="Cindy, le regard vers le ciel — Gratitude" width="1084" height="1389" loading="lazy" />
         </figure>
+        <div class="beresford-merci">
+          <p class="merci-ligne">Merci, du fond du cœur.</p>
+          <span class="signature-wrap">
+            <img class="signature-img" src="assets/signature-cindy.png" alt="Signature manuscrite de Cindy Roy" width="673" height="416" loading="lazy" />
+            <img class="signature-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
+          </span>
+        </div>
         <div class="carnaval-2019">
             <figure>
               <img src="assets/carnaval-2019-affiche.jpg" alt="Affiche du souper-spectacle d’ouverture du Carnaval du Siffleux 2019, avec Cindy et Denis — complet" width="900" height="1159" loading="lazy" />
@@ -9499,7 +9521,7 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
   <a class="fixed-contact" href="mailto:contact@cindyroyofficiel.com" aria-label="Écrivez-moi par courriel">Écrivez-moi</a>
 
   <footer>
-    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>Cindy Roy Officiel</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature"><span class="footer-sig-name">Cindy Roy</span> — l’album d’une vie, un pas à la fois. 🦋</span><span class="footer-credits-mer">Trésors de mer du parchemin : coquille Saint-Jacques © H. Zell (CC BY-SA 3.0) · étoile de mer © Biopics (CC BY-SA 4.0) — photos via Wikimedia Commons</span><span class="footer-credits-gramophone">Gramophone de Répertoire : photo © Pierre André Leclercq (CC BY 4.0), via Wikimedia Commons — fond retiré</span><span class="footer-rights">© 2026 Cindy Roy — Tous droits réservés</span></div>
+    <div class="wrap"><span class="sig-name"><span class="acadie-signature" aria-hidden="true"><span class="acadie-star">★</span><span class="acadie-bars"><i></i><i></i><i></i></span></span><strong>Cindy Roy Officiel</strong></span><span>Robertville, Nouveau-Brunswick · Autrice-compositrice-interprète acadienne</span><span class="footer-signature"><img class="footer-sig-img" src="assets/signature-cindy.png" alt="Cindy Roy" width="673" height="416" loading="lazy" /> — l’album d’une vie, un pas à la fois. 🦋</span><span class="footer-credits-mer">Trésors de mer du parchemin : coquille Saint-Jacques © H. Zell (CC BY-SA 3.0) · étoile de mer © Biopics (CC BY-SA 4.0) — photos via Wikimedia Commons</span><span class="footer-credits-gramophone">Gramophone de Répertoire : photo © Pierre André Leclercq (CC BY 4.0), via Wikimedia Commons — fond retiré</span><span class="footer-rights">© 2026 Cindy Roy — Tous droits réservés</span></div>
   </footer>
 
   <script>
