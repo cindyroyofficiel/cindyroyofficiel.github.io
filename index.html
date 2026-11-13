@@ -7554,7 +7554,7 @@
           <div class="reprises-top">
           <div class="media-col">
           <figure class="montage-frame">
-            <iframe src="https://www.youtube.com/embed/vIRqbPTz8Qc" title="Sélection country — Cindy Roy : 15 secondes de chacune de ses 18 chansons country" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe id="country-player" src="https://www.youtube.com/embed/vIRqbPTz8Qc?enablejsapi=1" title="Sélection country — Cindy Roy : 15 secondes de chacune de ses 18 chansons country" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>18 extraits de 15 secondes — slow, vite, slow, vite : jamais deux slows collées.</figcaption>
           </figure>
           <figure class="country-photo">
@@ -10838,6 +10838,56 @@ img.photo-fondue { background: transparent !important; border: 0 !important; box
   t();
   b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
 })();
+</script>
+
+<script>
+  /* Sélection country : les sauts se font par l’API du lecteur YouTube
+     (seekTo) plutôt que par un rechargement de l’intégration avec ?start=.
+     Le rechargement par URL échoue silencieusement pour le dernier extrait
+     (départ à 257 s, dans les dernières secondes de la vidéo : le lecteur
+     tombe sur l’écran de fin au lieu de jouer) — constaté le 12 nov. 2026.
+     Si l’API n’est pas prête, on ne touche à rien : le gestionnaire
+     habituel des .song-jump prend le relais, exactement comme avant. */
+  (function () {
+    var frame = document.getElementById('country-player');
+    if (!frame) return;
+    var block = frame.closest('.reprises-top');
+    if (!block) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var player = null, ready = false;
+    function armPlayer() {
+      try {
+        player = new YT.Player('country-player', {
+          events: { onReady: function () { ready = true; } }
+        });
+      } catch (e) { player = null; ready = false; }
+    }
+    var previousReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (typeof previousReady === 'function') previousReady();
+      armPlayer();
+    };
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+    /* Phase de capture sur le bloc : notre écoute passe AVANT celle des
+       boutons, on peut donc court-circuiter le rechargement par URL —
+       mais seulement quand le lecteur API est prêt à prendre le relais. */
+    block.addEventListener('click', function (ev) {
+      var btn = ev.target && ev.target.closest ? ev.target.closest('.song-jump') : null;
+      if (!btn || !block.contains(btn)) return;
+      if (!ready || !player || typeof player.seekTo !== 'function') return;
+      var t = parseFloat(btn.getAttribute('data-time'));
+      if (isNaN(t)) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      try {
+        player.seekTo(t, true);
+        player.playVideo();
+      } catch (e) { return; }
+      frame.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    }, true);
+  })();
 </script>
   </body>
 </html>
