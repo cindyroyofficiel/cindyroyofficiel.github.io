@@ -4090,6 +4090,16 @@
     #interpretations .reprises-top .media-col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
     #interpretations .country-photo { margin: 0; }
     #interpretations .country-photo img { width: 100%; height: auto; display: block; border: 2px solid #a67c1a; border-radius: 6px; box-shadow: 0 24px 45px -18px rgba(110, 65, 8, .45); }
+    /* Photo fondue des favorites (12 nov. 2026) : Cindy dehors (chapeau blanc, foulard
+       léopard), fondue dans le décor derrière le titre, le montage et la liste des 18 —
+       jamais un cadre de plus. Barre « Voir la photo » dans le bloc, comme ailleurs. */
+    #interpretations .fav-dream { position: relative; z-index: 0; }
+    #interpretations .fav-bg { position: absolute; left: 0; top: 0; height: 100%; width: auto; z-index: -1; pointer-events: none; }
+    #interpretations .fav-dream .photo-slider { justify-content: flex-end; }
+    @media (max-width: 760px) {
+      #interpretations .fav-dream { overflow: hidden; }
+      #interpretations .fav-bg { left: 50%; transform: translateX(-54%); }
+    }
     #interpretations .reprises-top .song-jump { padding: 15px 4px; grid-template-columns: 42px auto 1fr auto; }
     #interpretations .reprises-top .song-list::before {
       content: ""; position: absolute; z-index: 0;
@@ -7507,8 +7517,10 @@
              arrangement sont mélangées, et c’est assumé). -->
         <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
           <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées — des versions toutes simples, comme dans mon salon, entre nous, pis d’autres avec arrangement. Mon instrument de choix, ça reste ma voix. Mon répertoire est large : variété francophone, chansons à texte, country, rock et pop. Pas d’étiquette — j’aime les chansons qui disent quelque chose, pis je sais m’adapter à votre événement. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
-          <h3 class="montage-title">Mes reprises <em>favorites</em></h3>
-          <div class="reprises-top">
+          <div class="fav-dream" data-slider-box>
+          <img class="dream-layer fav-bg" data-base-opacity="0.34" src="assets/reprises-cindy-dehors-fondue.webp" alt="" aria-hidden="true" loading="lazy" />
+          <h3 class="montage-title fade-copy">Mes reprises <em>favorites</em></h3>
+          <div class="reprises-top fade-copy">
           <figure class="montage-frame">
             <iframe src="https://www.youtube.com/embed/6EbnH2hwycI" title="Mes reprises favorites — montage de Cindy Roy : 15 secondes de chacune de ses 18 reprises favorites" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>Vos plus écoutées et mes coups de cœur — 15 secondes chacune, juste les moments les plus forts.</figcaption>
@@ -7533,6 +7545,8 @@
             <li><button class="song-jump" type="button" data-time="242.5" aria-label="Écouter « Amoureuse » dans le montage des reprises"><span class="song-num">17</span><img class="song-icon" src="assets/reprise-amoureuse.jpg" alt="Miniature de la vidéo « Amoureuse » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Amoureuse</span></button></li>
             <li><button class="song-jump" type="button" data-time="257.5" aria-label="Écouter « Une fleur à la bouche » dans le montage des reprises"><span class="song-num">18</span><img class="song-icon" src="assets/reprise-une-fleur-a-la-bouche.jpg" alt="Miniature de la vidéo « Une fleur à la bouche » de Cindy Roy sur YouTube" width="480" height="360" loading="lazy" /><span class="song-name">Une fleur à la bouche</span></button></li>
           </ol>
+          </div>
+          <div class="photo-slider"><span class="slider-hint" role="note">Glisse vers la droite pour voir la photo.</span><span aria-hidden="true">👁</span><label for="reprises-photo-slider">Voir la photo</label><input id="reprises-photo-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Voir la photo derrière le texte" /></div>
           </div>
 
           <h3 class="montage-title">Le country de chez nous</h3>
