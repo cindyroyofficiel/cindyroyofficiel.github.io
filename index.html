@@ -4259,7 +4259,15 @@
       @keyframes mac-salue { from { transform: rotate(-1.8deg); } to { transform: rotate(2.2deg) translateY(-2px); } }
       @keyframes mac-approche { from { transform: translateX(0); } to { transform: translateX(142px); } }
       @keyframes mac-danse { from { transform: translate(142px, 0) rotate(-3deg); } to { transform: translate(142px, -7px) rotate(3deg); } }
-      .mac-invite { display: inline-block; margin-top: 8px; padding: 9px 18px 10px 15px; background: linear-gradient(180deg, rgba(255, 233, 168, .38), rgba(233, 185, 73, .20)); border: 1.5px solid #a67c1a; border-radius: 999px; box-shadow: inset 0 -3px 0 rgba(201, 162, 79, .55), 0 2px 8px rgba(138, 109, 47, .16); cursor: pointer; font: inherit; font-size: .95rem; font-style: italic; font-weight: 600; color: #6d5423; transition: background .25s ease, box-shadow .25s ease, transform .25s ease; }
+      /* Lisibilité de la pilule (13 nov. au soir, retour de Cindy, capture
+         téléphone à l’appui) : l’ancien dégradé doré TRANSLUCIDE (.38/.20)
+         se fondait dans le vert foncé de la section en mode nuit et
+         l’encre brun-doré #6d5423 dessus tombait à ~1,4:1 de contraste —
+         texte presque invisible. Même famille d’or que la pilule du
+         Plateau (.danse-invite), mais en dégradé PLEIN (#ffe9a8 → #e9b949,
+         les teintes pleines des anciens stops) et encre brun très foncé
+         #3a2a08 en graisse 700 : contraste ≥ 7,6:1 dans les deux modes. */
+      .mac-invite { display: inline-block; margin-top: 8px; padding: 9px 18px 10px 15px; background: linear-gradient(180deg, #ffe9a8, #e9b949); border: 1.5px solid #a67c1a; border-radius: 999px; box-shadow: inset 0 -3px 0 rgba(201, 162, 79, .55), 0 2px 8px rgba(138, 109, 47, .16); cursor: pointer; font: inherit; font-size: .95rem; font-style: italic; font-weight: 700; color: #3a2a08; transition: background .25s ease, box-shadow .25s ease, transform .25s ease; }
       .mac-invite:active { transform: translateY(1px); }
       .mac-invite:focus-visible { outline: 2px dashed #a67c1a; outline-offset: 3px; }
       @media (prefers-reduced-motion: reduce) {
