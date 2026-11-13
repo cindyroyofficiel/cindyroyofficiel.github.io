@@ -4087,6 +4087,9 @@
     #interpretations .reprises-top .montage-frame { margin: 0; max-width: none; }
     #interpretations .reprises-top .montage-frame iframe { border: 2px solid #a67c1a; border-radius: 6px; box-shadow: 0 0 0 6px #f8ecd6, 0 0 0 8px rgba(201, 162, 79, .65), 0 30px 55px -18px rgba(110, 65, 8, .50), 0 0 90px rgba(255, 205, 120, .30); }
     #interpretations .reprises-top .song-list { margin: 0; position: relative; }
+    #interpretations .reprises-top .media-col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+    #interpretations .country-photo { margin: 0; }
+    #interpretations .country-photo img { width: 100%; height: auto; display: block; border: 2px solid #a67c1a; border-radius: 6px; box-shadow: 0 24px 45px -18px rgba(110, 65, 8, .45); }
     #interpretations .reprises-top .song-jump { padding: 15px 4px; grid-template-columns: 42px auto 1fr auto; }
     #interpretations .reprises-top .song-list::before {
       content: ""; position: absolute; z-index: 0;
@@ -7535,10 +7538,15 @@
           <h3 class="montage-title">Le country de chez nous</h3>
           <p class="covers-intro">Pour les légions, les salles pis les mordus du country par chez nous — ma sélection, en extraits.</p>
           <div class="reprises-top">
+          <div class="media-col">
           <figure class="montage-frame">
             <iframe src="https://www.youtube.com/embed/vIRqbPTz8Qc" title="Sélection country — Cindy Roy : 15 secondes de chacune de ses 18 chansons country" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             <figcaption>18 extraits de 15 secondes — slow, vite, slow, vite : jamais deux slows collées.</figcaption>
           </figure>
+          <figure class="country-photo">
+            <img src="assets/cindy-country-chapeau-nb.jpg" alt="Cindy Roy en chapeau de cowboy, noir et blanc" width="900" height="1200" loading="lazy" />
+          </figure>
+          </div>
           <ol class="song-list">
             <li><button class="song-jump" type="button" data-time="2.5" aria-label="Écouter « Coat of Many Colors » dans le montage country"><span class="song-num">01</span><img class="song-icon" src="assets/country-01.jpg" alt="Miniature de l’extrait « Coat of Many Colors » du montage country de Cindy Roy" width="480" height="270" loading="lazy" /><span class="song-name">Coat of Many Colors</span></button></li>
             <li><button class="song-jump" type="button" data-time="17.5" aria-label="Écouter « What Made You Say That » dans le montage country"><span class="song-num">02</span><img class="song-icon" src="assets/country-02.jpg" alt="Miniature de l’extrait « What Made You Say That » du montage country de Cindy Roy" width="480" height="270" loading="lazy" /><span class="song-name">What Made You Say That</span></button></li>
