@@ -4204,6 +4204,63 @@
       .danse-note { opacity: .5; }
     }
 
+    /* ——— Mini Cindy à l’entrée, version téléphone (13 nov. 2026,
+       demande de Cindy : « au début quand on rentre », une « place
+       stratégique ») ———
+       Au bureau (≥ 1150 px), Mini Cindy vit au Plateau et ce bloc
+       n’existe pas à l’écran (display: none, zéro changement). Au
+       téléphone (≤ 1149 px), où la danse du Plateau est masquée,
+       elle accueille donc dès l’entrée, en haut du bloc de
+       bienvenue : elle fait signe de la main au repos; au toucher
+       (scène ou pilule), elle danse, les notes montent, le système
+       de son s’allume et sa VRAIE voix joue le même message de
+       bienvenue que celui du Plateau. Tout vit dans la requête
+       ≤ 1149 px : aucune règle du bureau n’est touchée, et les
+       keyframes du Plateau (bras-presse, play-brille, led-on,
+       woofer-bat, note-monte) sont réutilisés tels quels. */
+    .mini-accueil { display: none; }
+    @media (max-width: 1149px) {
+      .mini-accueil { display: block; text-align: center; margin: 0 0 26px; }
+      .mac-stage { position: relative; width: min(324px, 100%); height: 172px; margin: 0 auto; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+      .mac-stage:focus-visible { outline: 2px dashed #a67c1a; outline-offset: 4px; border-radius: 12px; }
+      .mac-sol {
+        position: absolute; left: 6px; right: 6px; bottom: 0; height: 20px; border-radius: 50%;
+        background: radial-gradient(ellipse at center, rgba(90, 60, 20, .20), rgba(90, 60, 20, 0) 68%);
+      }
+      .mac-stage .sono { position: absolute; right: 8px; bottom: 8px; width: 148px; height: auto; z-index: 1; }
+      .mac-mini { position: absolute; left: 16px; bottom: 5px; width: 76px; z-index: 2; transform-origin: 50% 100%; animation: mac-salue 3.2s ease-in-out infinite alternate; }
+      .mac-mini img { display: block; width: 100%; height: auto; }
+      .mac-mini .mac-pose { position: absolute; inset: 0; z-index: 1; opacity: 0; }
+      .mac-note {
+        position: absolute; z-index: 3; display: block; opacity: 0; pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cg fill='%23c9a24f'%3E%3Cellipse cx='7' cy='26' rx='5.6' ry='4.1' transform='rotate(-18 7 26)'/%3E%3Crect x='11.4' y='4' width='1.9' height='22'/%3E%3Cpath d='M13.3 4c4.8 1.8 7 5.8 6.4 11-1.2-4.2-3.2-6.4-6.4-7.4z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      }
+      .mac-n1 { right: 128px; bottom: 122px; width: 17px; height: 23px; --dx: -12px; }
+      .mac-n2 { right: 88px;  bottom: 130px; width: 13px; height: 18px; --dx: 9px; }
+      .mac-n3 { right: 160px; bottom: 114px; width: 20px; height: 27px; --dx: -6px; }
+      .mac-n4 { right: 58px;  bottom: 124px; width: 15px; height: 20px; --dx: 13px; }
+      .mac-n5 { right: 106px; bottom: 136px; width: 12px; height: 16px; --dx: -16px; }
+      .mac-play .mac-mini { animation: mac-danse .62s ease-in-out infinite alternate; }
+      .mac-play .mac-pose { animation: bras-presse 2.1s ease forwards; }
+      .mac-play .sono-play { animation: play-brille 2.1s ease forwards; transform-box: fill-box; transform-origin: center; }
+      .mac-play .sono-led { animation: led-on 2.1s ease forwards; }
+      .mac-play .sono-woofer { animation: woofer-bat .62s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+      .mac-play .mac-note { animation: note-monte 3.4s linear infinite; }
+      .mac-play .mac-n1 { animation-delay: .3s; } .mac-play .mac-n2 { animation-delay: 1s; }
+      .mac-play .mac-n3 { animation-delay: 1.7s; } .mac-play .mac-n4 { animation-delay: 2.4s; }
+      .mac-play .mac-n5 { animation-delay: 3.1s; }
+      @keyframes mac-salue { from { transform: rotate(-1.8deg); } to { transform: rotate(2.2deg) translateY(-2px); } }
+      @keyframes mac-danse { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(-7px); } }
+      .mac-invite { display: inline-block; margin-top: 8px; padding: 9px 18px 10px 15px; background: linear-gradient(180deg, rgba(255, 233, 168, .38), rgba(233, 185, 73, .20)); border: 1.5px solid #a67c1a; border-radius: 999px; box-shadow: inset 0 -3px 0 rgba(201, 162, 79, .55), 0 2px 8px rgba(138, 109, 47, .16); cursor: pointer; font: inherit; font-size: .95rem; font-style: italic; font-weight: 600; color: #6d5423; transition: background .25s ease, box-shadow .25s ease, transform .25s ease; }
+      .mac-invite:active { transform: translateY(1px); }
+      .mac-invite:focus-visible { outline: 2px dashed #a67c1a; outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) {
+        .mac-mini { animation: none; }
+        .mac-play .mac-mini, .mac-play .mac-pose, .mac-play .sono-play, .mac-play .sono-woofer, .mac-play .mac-note { animation: none !important; }
+        .mac-play .mac-note { opacity: .5; }
+      }
+    }
+
     /* ——— Le phare acadien (10 nov. 2026, vision de Cindy) ———
        Dans le chenal à gauche de l’en-tête du Plateau (le seul
        espace libre, entre la marge et les textes) : tour blanche
@@ -6599,6 +6656,60 @@
 
     <section class="welcome-video" id="bienvenue">
       <div class="wrap">
+        <div class="mini-accueil" id="mini-accueil">
+          <div class="mac-stage" id="mac-stage" role="button" tabindex="0" aria-label="Mini Cindy vous souhaite la bienvenue — touchez-la pour l’entendre vous accueillir" title="Mini Cindy vous souhaite la bienvenue">
+            <svg class="sono" viewBox="0 0 200 150" width="176" height="132" focusable="false" aria-hidden="true"><rect x="6" y="6" width="188" height="136" rx="12" fill="#22304a" stroke="#c9a24f" stroke-width="2"/><rect x="112" y="15" width="66" height="12" rx="3" fill="#f7f2e2" opacity=".88"/><circle cx="30" cy="52" r="5" fill="#e9b949"/><circle cx="170" cy="52" r="5" fill="#e9b949"/><circle class="sono-woofer" cx="42" cy="88" r="24" fill="#31456a" stroke="#e9b949" stroke-width="2.5"/><circle cx="42" cy="88" r="9.5" fill="#e9b949"/><circle class="sono-woofer" cx="158" cy="88" r="24" fill="#31456a" stroke="#e9b949" stroke-width="2.5"/><circle cx="158" cy="88" r="9.5" fill="#e9b949"/><circle class="sono-play" cx="80" cy="24" r="13" fill="#c9a24f"/><path d="M75.5 17.5 L87 24 L75.5 30.5 Z" fill="#fffcf4"/><circle class="sono-led" cx="100" cy="24" r="3.4" fill="#4a4a44"/><rect x="64" y="122" width="10" height="5" rx="1.5" fill="#e9b949"/><rect x="80" y="122" width="10" height="5" rx="1.5" fill="#c96f2e"/><rect x="96" y="122" width="10" height="5" rx="1.5" fill="#e9b949"/><rect x="112" y="122" width="10" height="5" rx="1.5" fill="#c96f2e"/><rect x="128" y="122" width="10" height="5" rx="1.5" fill="#e9b949"/><rect x="24" y="142" width="16" height="6" rx="2" fill="#22304a"/><rect x="160" y="142" width="16" height="6" rx="2" fill="#22304a"/></svg>
+            <div class="mac-mini"><img class="mac-pose" src="assets/coffre-mini-cindy.webp" alt="" width="398" height="716" loading="lazy" /><img class="mac-bras" src="assets/coffre-mini-cindy-bras-leve.webp" alt="" width="398" height="716" loading="lazy" /></div>
+            <span class="mac-note mac-n1"></span><span class="mac-note mac-n2"></span><span class="mac-note mac-n3"></span><span class="mac-note mac-n4"></span><span class="mac-note mac-n5"></span>
+            <span class="mac-sol"></span>
+          </div>
+          <button type="button" class="mac-invite" id="mac-invite">Touche ici — Cindy vous souhaite la bienvenue</button>
+          <audio id="mac-voix" src="assets/bienvenue-cindy.mp3" preload="auto"></audio>
+          <script>
+          (function () {
+            var stage = document.getElementById('mac-stage');
+            if (!stage) return;
+            var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            /* — Mini Cindy à l’entrée, au téléphone (13 nov. 2026) :
+               même accueil que celui du Plateau, en version poche.
+               Quand la scène entre à l’écran, elle danse une première
+               fois, en silence; au toucher, elle redanse ET la voix
+               de bienvenue de Cindy part (le même mp3 que le Plateau).
+               Purement additif : si l’audio est bloqué, la danse
+               continue sans lui. — */
+            var voix = document.getElementById('mac-voix');
+            var stopTimer = null;
+            function ditBonjour() {
+              if (!voix) return;
+              try {
+                voix.pause();
+                voix.currentTime = 0;
+                var p = voix.play();
+                if (p && p.catch) { p.catch(function () {}); }
+              } catch (e) { /* silence : l’animation continue */ }
+            }
+            function danse(duree) {
+              stage.classList.remove('mac-play');
+              void stage.offsetWidth;
+              stage.classList.add('mac-play');
+              if (stopTimer) { clearTimeout(stopTimer); }
+              stopTimer = setTimeout(function () { stage.classList.remove('mac-play'); }, duree);
+            }
+            function lancer() { danse(9000); ditBonjour(); }
+            stage.addEventListener('click', lancer);
+            var invite = document.getElementById('mac-invite');
+            if (invite) { invite.addEventListener('click', lancer); }
+            stage.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lancer(); }
+            });
+            if (reduced || !('IntersectionObserver' in window)) { stage.classList.add('mac-play'); return; }
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) { if (e.isIntersecting) { danse(6000); io.disconnect(); } });
+            }, { threshold: .3 });
+            io.observe(stage);
+          })();
+          </script>
+        </div>
         <p class="section-tag">Bienvenue</p>
         <h2 class="welcome-title">Un petit mot <svg class="title-feather" viewBox="0 0 24 42" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12 2c6.5 5.5 7.8 15.5 0 30C4.2 17.5 5.5 7.5 12 2Z" fill="currentColor" fill-opacity=".14" stroke="none"/><path d="M12 2c6.5 5.5 7.8 15.5 0 30C4.2 17.5 5.5 7.5 12 2Z"/><path d="M12 12c2.8-.3 5-1.9 6.2-4.4M12 19c3-.2 5.4-1.8 6.8-4.4M12 26c2.8-.2 5-1.7 6.3-4.2M12 12c-2.8-.3-5-1.9-6.2-4.4M12 19c-3-.2-5.4-1.8-6.8-4.4M12 26c-2.8-.2-5-1.7-6.3-4.2"/><path d="M12 40c-.4-10-.4-26 0-37"/></g></svg><em>de bienvenue</em>, de vive voix.<span class="title-leaves" aria-hidden="true"><img class="title-leaf-1" src="assets/leaf-photo-red-deep.png" alt="" width="565" height="521" /><img class="title-leaf-2" src="assets/leaf-photo-gold.png" alt="" width="521" height="366" /><img class="title-leaf-3" src="assets/leaf-photo-orange-red.png" alt="" width="346" height="235" /></span></h2>
         <p class="section-intro">En attendant l’album, mon site officiel, c’est lui : tous les petits bouts de moi, ramassés avec amour, un pas à la fois.</p>
