@@ -4211,13 +4211,20 @@
        n’existe pas à l’écran (display: none, zéro changement). Au
        téléphone (≤ 1149 px), où la danse du Plateau est masquée,
        elle accueille donc dès l’entrée, en haut du bloc de
-       bienvenue : elle fait signe de la main au repos; au toucher
-       (scène ou pilule), elle danse, les notes montent, le système
-       de son s’allume et sa VRAIE voix joue le même message de
-       bienvenue que celui du Plateau. Tout vit dans la requête
-       ≤ 1149 px : aucune règle du bureau n’est touchée, et les
-       keyframes du Plateau (bras-presse, play-brille, led-on,
-       woofer-bat, note-monte) sont réutilisés tels quels. */
+       bienvenue : elle fait signe de la main au repos; à l’arrivée
+       à l’écran (en silence) ou au toucher (scène ou pilule, avec
+       sa VRAIE voix — le même message de bienvenue que celui du
+       Plateau), elle MARCHE jusqu’au système de son (mac-approche,
+       calquée sur mini-approche du Plateau : glissement de 1,05 s,
+       142 px à la géométrie poche), tend le bras, pèse sur play —
+       le bouton s’enfonce, la lumière d’alimentation s’allume —
+       puis elle danse sur place pendant que les notes montent
+       (marche ajoutée le 13 nov. après-midi, demande de Cindy :
+       « fait la marcher comme avant jusqu’au play du stereo »).
+       Tout vit dans la requête ≤ 1149 px : aucune règle du bureau
+       n’est touchée, et les keyframes du Plateau (bras-presse,
+       play-brille, led-on, woofer-bat, note-monte) sont réutilisés
+       tels quels. */
     .mini-accueil { display: none; }
     @media (max-width: 1149px) {
       .mini-accueil { display: block; text-align: center; margin: 0 0 26px; }
@@ -4240,17 +4247,18 @@
       .mac-n3 { right: 160px; bottom: 114px; width: 20px; height: 27px; --dx: -6px; }
       .mac-n4 { right: 58px;  bottom: 124px; width: 15px; height: 20px; --dx: 13px; }
       .mac-n5 { right: 106px; bottom: 136px; width: 12px; height: 16px; --dx: -16px; }
-      .mac-play .mac-mini { animation: mac-danse .62s ease-in-out infinite alternate; }
+      .mac-play .mac-mini { animation: mac-approche 1.05s ease forwards, mac-danse .62s ease-in-out 2.15s infinite alternate; }
       .mac-play .mac-pose { animation: bras-presse 2.1s ease forwards; }
       .mac-play .sono-play { animation: play-brille 2.1s ease forwards; transform-box: fill-box; transform-origin: center; }
       .mac-play .sono-led { animation: led-on 2.1s ease forwards; }
-      .mac-play .sono-woofer { animation: woofer-bat .62s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+      .mac-play .sono-woofer { animation: woofer-bat .62s ease-in-out 2.15s infinite alternate; transform-box: fill-box; transform-origin: center; }
       .mac-play .mac-note { animation: note-monte 3.4s linear infinite; }
-      .mac-play .mac-n1 { animation-delay: .3s; } .mac-play .mac-n2 { animation-delay: 1s; }
-      .mac-play .mac-n3 { animation-delay: 1.7s; } .mac-play .mac-n4 { animation-delay: 2.4s; }
-      .mac-play .mac-n5 { animation-delay: 3.1s; }
+      .mac-play .mac-n1 { animation-delay: 2.3s; } .mac-play .mac-n2 { animation-delay: 3.1s; }
+      .mac-play .mac-n3 { animation-delay: 3.9s; } .mac-play .mac-n4 { animation-delay: 4.7s; }
+      .mac-play .mac-n5 { animation-delay: 5.5s; }
       @keyframes mac-salue { from { transform: rotate(-1.8deg); } to { transform: rotate(2.2deg) translateY(-2px); } }
-      @keyframes mac-danse { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(-7px); } }
+      @keyframes mac-approche { from { transform: translateX(0); } to { transform: translateX(142px); } }
+      @keyframes mac-danse { from { transform: translate(142px, 0) rotate(-3deg); } to { transform: translate(142px, -7px) rotate(3deg); } }
       .mac-invite { display: inline-block; margin-top: 8px; padding: 9px 18px 10px 15px; background: linear-gradient(180deg, rgba(255, 233, 168, .38), rgba(233, 185, 73, .20)); border: 1.5px solid #a67c1a; border-radius: 999px; box-shadow: inset 0 -3px 0 rgba(201, 162, 79, .55), 0 2px 8px rgba(138, 109, 47, .16); cursor: pointer; font: inherit; font-size: .95rem; font-style: italic; font-weight: 600; color: #6d5423; transition: background .25s ease, box-shadow .25s ease, transform .25s ease; }
       .mac-invite:active { transform: translateY(1px); }
       .mac-invite:focus-visible { outline: 2px dashed #a67c1a; outline-offset: 3px; }
@@ -6672,8 +6680,9 @@
             var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             /* — Mini Cindy à l’entrée, au téléphone (13 nov. 2026) :
                même accueil que celui du Plateau, en version poche.
-               Quand la scène entre à l’écran, elle danse une première
-               fois, en silence; au toucher, elle redanse ET la voix
+               Quand la scène entre à l’écran, elle marche jusqu’au
+               stéréo, pèse play et danse une première fois, en
+               silence; au toucher, elle refait la séquence ET la voix
                de bienvenue de Cindy part (le même mp3 que le Plateau).
                Purement additif : si l’audio est bloqué, la danse
                continue sans lui. — */
