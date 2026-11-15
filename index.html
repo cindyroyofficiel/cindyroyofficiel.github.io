@@ -4104,6 +4104,11 @@
     #interpretations .reprises-top { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 24px; }
     #interpretations .reprises-top .montage-frame { margin: 0; max-width: none; }
     #interpretations .reprises-top .montage-frame iframe { border: 2px solid #a67c1a; border-radius: 6px; box-shadow: 0 0 0 6px #f8ecd6, 0 0 0 8px rgba(201, 162, 79, .65), 0 30px 55px -18px rgba(110, 65, 8, .50), 0 0 90px rgba(255, 205, 120, .30); }
+    /* Reprise live dans mon salon (ajout 14 nov. 2026) : vidéo portrait vedette, centrée */
+    .live-salon-frame { margin: 26px auto 6px; max-width: 400px; }
+    .live-salon-frame video { width: 100%; aspect-ratio: 9 / 16; display: block; background: #0c0d0b; box-shadow: var(--shadow); border: 1px solid var(--line); border-radius: var(--r-media); }
+    .live-salon-frame figcaption { font-family: var(--script-name); font-weight: 400; font-size: clamp(24px, 2.4vw, 29px); line-height: 1.45; color: var(--ink); text-align: center; margin-top: 16px; }
+    @media (prefers-color-scheme: dark) { .live-salon-frame figcaption { color: var(--cream-ink); } }
     #interpretations .reprises-top .song-list { margin: 0; position: relative; }
     #interpretations .reprises-top .media-col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
     #interpretations .country-photo { margin: 0; }
@@ -7663,6 +7668,11 @@
              arrangement sont mélangées, et c’est assumé). -->
         <div id="interpretations" role="tabpanel" aria-labelledby="tab-interpretations" hidden>
           <p class="covers-intro">Je m’amuse ici, tout brutement, à vous livrer un petit bout de moi à travers mes chansons préférées — des versions toutes simples, comme dans mon salon, entre nous, pis d’autres avec arrangement. Mon instrument de choix, ça reste ma voix. Mon répertoire est large : variété francophone, chansons à texte, country, rock et pop. Pas d’étiquette — j’aime les chansons qui disent quelque chose, pis je sais m’adapter à votre événement. D’autres titres s’ajouteront ici, au fil de mes vidéos YouTube.</p>
+          <h3 class="montage-title">Reprise <em>live</em> — dans mon salon</h3>
+          <figure class="live-salon-frame">
+            <video src="assets/essentiel-live-salon.mp4" poster="assets/essentiel-live-salon-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « L'essentiel » de Ginette Reno — live dans son salon, le 14 novembre 2026"></video>
+            <figcaption>« L'essentiel » de Ginette Reno — chantée live dans mon salon, le 14 novembre 2026. Un petit cadeau pour vous autres, tout brut, comme entre nous. 🦋</figcaption>
+          </figure>
           <div class="fav-dream" data-slider-box>
           <img class="dream-layer fav-bg" data-base-opacity="0.34" src="assets/reprises-cindy-dehors-fondue.webp" alt="" aria-hidden="true" loading="lazy" />
           <h3 class="montage-title fade-copy">Mes reprises <em>favorites</em></h3>
