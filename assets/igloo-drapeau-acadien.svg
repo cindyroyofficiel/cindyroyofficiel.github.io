@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300">
+  <defs>
+    <clipPath id="drapeauPerche">
+      <path d="M192 36 C 226 27, 256 42, 296 35 C 294 58, 296 74, 296 92 C 256 99, 226 86, 192 92 C 194 74, 194 54, 192 36 Z"/>
+    </clipPath>
+    <linearGradient id="plisDrapeau" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10243e" stop-opacity="0.14"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.13"/>
+      <stop offset="0.65" stop-color="#10243e" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="flouSol" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+
+  <!-- ombre au sol -->
+  <ellipse cx="190" cy="256" rx="150" ry="11" fill="#8aa8c0" opacity="0.22" filter="url(#flouSol)"/>
+
+  <!-- mât planté au sommet de l'igloo -->
+  <rect x="188.4" y="30" width="3.6" height="128" rx="1.8" fill="#8a6d3b"/>
+  <circle cx="190.2" cy="28" r="4.4" fill="#d99e06" stroke="#b57f04" stroke-width="1"/>
+
+  <!-- drapeau acadien perché -->
+  <g clip-path="url(#drapeauPerche)">
+    <rect x="192" y="24" width="36" height="80" fill="#2a4d9b"/>
+    <rect x="228" y="24" width="34" height="80" fill="#f7f3ea"/>
+    <rect x="262" y="24" width="36" height="80" fill="#c8102e"/>
+    <rect x="192" y="24" width="106" height="80" fill="url(#plisDrapeau)"/>
+  </g>
+  <path d="M192 36 C 226 27, 256 42, 296 35 C 294 58, 296 74, 296 92 C 256 99, 226 86, 192 92 C 194 74, 194 54, 192 36 Z" fill="none" stroke="#7c6a4f" stroke-width="1.4" opacity="0.45"/>
+  <polygon fill="#f2b705" stroke="#d99e06" stroke-width="1.2" points="210,46 213.4,56.6 224.6,56.8 215.6,63.4 218.8,74.2 210,67.8 201.2,74.2 204.4,63.4 195.4,56.8 206.6,56.6"/>
+
+  <!-- le gros igloo -->
+  <g>
+    <path d="M56 250 a134 108 0 0 1 268 0 Z" fill="#f2f8fc" stroke="#7fa8c9" stroke-width="3"/>
+    <path d="M84 218 a106 80 0 0 1 212 0" fill="none" stroke="#a9c8de" stroke-width="2.2"/>
+    <path d="M112 190 a78 54 0 0 1 156 0" fill="none" stroke="#a9c8de" stroke-width="2"/>
+    <path d="M140 168 a50 32 0 0 1 100 0" fill="none" stroke="#b9d2e4" stroke-width="1.8"/>
+    <path d="M118 198 L118 250 M262 198 L262 250 M86 226 L86 250 M294 226 L294 250" stroke="#b9d2e4" stroke-width="1.8" fill="none"/>
+    <ellipse cx="140" cy="182" rx="34" ry="13" fill="#ffffff" opacity="0.55"/>
+    <!-- entrée -->
+    <path d="M160 250 a30 34 0 0 1 60 0 Z" fill="#5f87ab" stroke="#476d8f" stroke-width="2.4"/>
+    <path d="M169 250 a21 25 0 0 1 42 0 Z" fill="#33506e"/>
+    <path d="M160 250 a30 34 0 0 1 60 0" fill="none" stroke="#dbe9f3" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- bancs de neige -->
+  <path d="M22 252 C 70 242, 120 254, 176 246 C 236 238, 300 252, 352 244" stroke="#6f9fc4" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.28"/>
+  <ellipse cx="52" cy="246" rx="17" ry="5.5" fill="#eef4f8" stroke="#b9d2e4" stroke-width="1.3"/>
+  <ellipse cx="330" cy="248" rx="14" ry="4.5" fill="#e8f1f7" stroke="#b9d2e4" stroke-width="1.2"/>
+
+  <!-- étincelles -->
+  <path d="M96 108 l2.2 5.8 5.8 2.2 -5.8 2.2 -2.2 5.8 -2.2 -5.8 -5.8 -2.2 5.8 -2.2 Z" fill="#d7e8f5"/>
+  <path d="M322 130 l1.6 4.2 4.2 1.6 -4.2 1.6 -1.6 4.2 -1.6 -4.2 -4.2 -1.6 4.2 -1.6 Z" fill="#d7e8f5"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Une maison dorée avec un cœur au centre, surmontée d'une étoile">
+  <defs>
+    <linearGradient id="orMaison" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a6a24"/>
+      <stop offset="0.30" stop-color="#d9b45f"/>
+      <stop offset="0.52" stop-color="#f6e3a1"/>
+      <stop offset="0.74" stop-color="#c9a24f"/>
+      <stop offset="1" stop-color="#7c5f1f"/>
+    </linearGradient>
+    <linearGradient id="orCoeur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e3a1"/>
+      <stop offset="0.55" stop-color="#e7b34b"/>
+      <stop offset="1" stop-color="#c9a24f"/>
+    </linearGradient>
+    <radialGradient id="fondMedaillon" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#2b402c"/>
+      <stop offset="1" stop-color="#1d2b1e"/>
+    </radialGradient>
+    <radialGradient id="haloMaison" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2dc9b" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f2dc9b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- halo doux -->
+  <circle cx="120" cy="120" r="118" fill="url(#haloMaison)"/>
+
+  <!-- le médaillon -->
+  <circle cx="120" cy="120" r="103" fill="url(#fondMedaillon)" stroke="url(#orMaison)" stroke-width="5"/>
+  <circle cx="120" cy="120" r="93" fill="none" stroke="#c9a24f" stroke-width="1.4" opacity="0.65"/>
+
+  <!-- étoile dorée au-dessus du toit -->
+  <path d="M120 34 L124.7 47.6 L139 48 L127.8 56.8 L131.8 70.6 L120 62.6 L108.2 70.6 L112.2 56.8 L101 48 L115.3 47.6 Z" fill="url(#orCoeur)"/>
+
+  <!-- étincelles -->
+  <path d="M56 92 L58.4 99.6 L66 102 L58.4 104.4 L56 112 L53.6 104.4 L46 102 L53.6 99.6 Z" fill="#e7b34b" opacity="0.85"/>
+  <path d="M184 92 L186.4 99.6 L194 102 L186.4 104.4 L184 112 L181.6 104.4 L174 102 L181.6 99.6 Z" fill="#e7b34b" opacity="0.85"/>
+
+  <!-- la maison : toit et murs en trait doré -->
+  <path d="M68 130 L120 88 L172 130" fill="none" stroke="url(#orMaison)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M84 124 L84 172 L156 172 L156 124" fill="none" stroke="url(#orMaison)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- le cœur, au centre de la maison -->
+  <path d="M120 160 C 103 147, 95 136.5, 95 126.5 C 95 117.5, 101.5 111, 109.5 111 C 114.5 111, 118.5 114, 120 118.5 C 121.5 114, 125.5 111, 130.5 111 C 138.5 111, 145 117.5, 145 126.5 C 145 136.5, 137 147, 120 160 Z" fill="url(#orCoeur)"/>
+
+  <!-- le seuil -->
+  <path d="M76 186 L164 186" stroke="#c9a24f" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M92 196 L148 196" stroke="#c9a24f" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+</svg>
