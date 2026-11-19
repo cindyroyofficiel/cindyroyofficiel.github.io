@@ -292,7 +292,7 @@
     .door-nav::-webkit-scrollbar { display: none; }
     .door-nav a { flex: 0 0 auto; padding: 7px 16px; border-radius: 999px; color: #6e1423; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid rgba(201,162,79,.4); background: rgba(255,255,255,.55); }
     .door-nav a:hover { background: #6e1423; color: #fbf7ee; }
-    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
+    #choeur-virtuel, #calixte, #lavoix, #carnaval, #beresford, #beresford-titre, #originales, #interpretations, #atelier, #arranged-title, #denis-title, #martial-music-title, #collaborations, #credo, #racines, #famille, #vitrine, #autodidacte, #mission, #robertville, #guitare, #nicole, #martial-story, #radio, #coffre-humour, #coffre-cuisine, #coffre-balado, #coffre-livre, #coffre-saloon, #fiche-presse, #articles-presse, #entrevues, #photos, #enfance, #adolescence, #talent, #concours-en-ligne, #parcours-beresford, #parcours-gala, #aujourdhui, #aussi-univers, [id^="influence-"][id$="-toggle"] { scroll-margin-top: 148px; }
     @media (max-width: 640px) {
       /* Depuis que les barres de boutons s'enroulent (10 nov.), le panneau
          colle du Parcours descend jusqu'a 297px : ses ancres atterrissent
@@ -3811,6 +3811,27 @@
       -webkit-mask-image: linear-gradient(to left, #000 22%, transparent 96%);
       mask-image: linear-gradient(to left, #000 22%, transparent 96%);
     }
+    /* Saloon : la chaleur du foyer — carte vedette pleine largeur, braises en bas */
+    .coffre-card--saloon {
+      grid-column: 1 / -1;
+      background:
+        radial-gradient(640px 300px at 50% 115%, rgba(255, 138, 61, .22), rgba(255, 138, 61, 0) 62%),
+        linear-gradient(165deg, #2e2118, #241a12 58%, #1d130c);
+      color: #fdf3e3;
+    }
+    .coffre-card--saloon::after {
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: url("assets/saloon-salon-cosy.jpg") center 62% / cover no-repeat;
+      opacity: .48;
+    }
+    .coffre-card--saloon h3 { color: #ffd9a0; font-size: clamp(2.2rem, 5.4vw, 3.4rem); line-height: 1.08; text-shadow: 0 2px 18px rgba(0, 0, 0, .55); margin-bottom: .3em; }
+    .coffre-card--saloon p { color: rgba(253, 243, 227, .88); }
+    .coffre-card--saloon .teaser-note { color: rgba(253, 243, 227, .72); }
+    .saloon-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .saloon-videos figure { margin: 0; }
+    .saloon-videos figcaption { margin-top: 10px; font-size: .98rem; color: rgba(253, 243, 227, .85); }
+    .saloon-videos video { width: 100%; border-radius: 10px; }
+    @media (max-width: 760px) { .saloon-videos { grid-template-columns: 1fr; } }
     /* Livre : le parchemin + le petit livre ouvert */
     .coffre-card--livre {
       background:
@@ -6588,6 +6609,7 @@
           <a href="#coffre-cuisine">Dans ma cuisine</a>
           <a href="#coffre-balado">Podcast / Balado</a>
           <a href="#coffre-livre">Livre</a>
+          <a href="#coffre-saloon">Cindyoke Saloon</a>
         </span>
       </span>
       <span class="has-sub">
@@ -8900,6 +8922,7 @@
           <a href="#coffre-cuisine">Dans ma cuisine</a>
           <a href="#coffre-balado">Podcast / Balado</a>
           <a href="#coffre-livre">Livre</a>
+          <a href="#coffre-saloon">Cindyoke Saloon</a>
         </nav>
         <img class="papillon-accent coming-papillon" src="assets/papillon-or.png" alt="" aria-hidden="true" width="920" height="691" loading="lazy" />
         <div class="coffre-head">
@@ -9541,6 +9564,21 @@
             <span class="coming-badge">À construire</span>
             <h3>Livre</h3>
             <p>Entre rêves et prières — mon livre, en préparation, une page à la fois.</p>
+          </article>
+          <article class="coming-card coffre-card--saloon" id="coffre-saloon">
+            <h3>Cindyoke Saloon</h3>
+            <p>Bienvenue dans mon saloon! Installez-vous dans les divans confy, près du feu de foyer — ici, je chante live, de mon salon à vos oreilles, pis je ramène de vieilles tounes qui méritent de revivre.</p>
+            <div class="saloon-videos">
+              <figure>
+                <video src="assets/reviens-chez-nous-salon.mp4" poster="assets/reviens-chez-nous-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « Je reviens chez nous » de Jean-Pierre Ferland — live dans son salon"></video>
+                <figcaption><strong>« Je reviens chez nous »</strong> — Jean-Pierre Ferland, live dans mon salon.</figcaption>
+              </figure>
+              <figure>
+                <video src="assets/essentiel-live-salon.mp4" poster="assets/essentiel-live-salon-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « L'essentiel » de Ginette Reno — live dans son salon, le 14 novembre 2026"></video>
+                <figcaption><strong>« L'essentiel »</strong> — Ginette Reno, live dans mon salon.</figcaption>
+              </figure>
+            </div>
+            <p class="teaser-note">Le saloon va rouvrir souvent — d'autres vieilles tounes s'en viennent, un pas à la fois.</p>
           </article>
         </div>
       </div>
