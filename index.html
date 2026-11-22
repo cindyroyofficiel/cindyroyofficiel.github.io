@@ -2453,6 +2453,8 @@
     .michel-photos-inner { background: #14201a; border-radius: 8px; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .michel-photos figure { margin: 0; }
     .michel-photos img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; display: block; border-radius: 5px; }
+    .michel-photos figure.michel-photo-large { grid-column: 1 / -1; }
+    .michel-photos figure.michel-photo-large img { object-position: 50% 50%; }
     @media (max-width: 620px) {
       .parents-photos { grid-template-columns: 1fr; gap: 28px; max-width: 340px; margin-inline: auto; }
     }
@@ -8367,6 +8369,9 @@
             <p class="maman-suite" style="margin-top: 16px;">Michel, l’homme de ma vie — mon complice en tout. Toujours le premier à m’encourager, il connaît mes chansons par cœur — mes silences aussi. On partage le vaisseau, pis la musique : il prend sa guitare pour le plaisir, on chante à deux, on s’amuse comme des enfants — pis on vit au max les belles années qui nous sont données, une journée précieuse à la fois. Un regard, un fou rire, une toune qui part toute seule : c’est ça, nous deux.</p>
             <div class="michel-photos">
               <div class="michel-photos-inner">
+              <figure class="michel-photo-large">
+                <img src="assets/cindy-michel-elegants.jpg" alt="Cindy Roy et Michel Fortin, enlacés et souriants, en tenue élégante à la maison" width="1034" height="1398" loading="lazy" decoding="async" />
+              </figure>
               <figure>
                 <img src="assets/cindy-michel-bec.jpg" alt="Michel Fortin embrasse Cindy Roy sur le front, dehors, à la lumière dorée" width="862" height="1150" loading="lazy" decoding="async" />
               </figure>
