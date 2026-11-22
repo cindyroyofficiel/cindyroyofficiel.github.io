@@ -2649,6 +2649,10 @@
     .scene-card--pair .scene-group-title { grid-column: 1 / -1; }
     .scene-card--pair .scene-item + .scene-item { margin-top: 0; }
     .scene-card--pair .scene-item { max-width: 280px; }
+    /* Bloc « Islands in the Stream » (Cindy, 21 nov.) : dans la grille paire, son titre et sa figure tombaient côte à côte dans deux cellules — on les empile pleine largeur : titre au-dessus, vidéo centrée en dessous, légende pleine largeur */
+    .scene-card--pair .pair-full { grid-column: 1 / -1; }
+    .scene-card--pair figure.pair-full { max-width: none; }
+    .scene-card--pair figure.pair-full video { max-width: 300px; margin-inline: auto; }
     /* Photo d'arrière-scène en décor : fondue dans le fond, sans cadre ni ombre — pas un collage */
     .scene-decor { margin: 0; max-width: 280px; }
     .scene-decor img { border: none; box-shadow: none; background: transparent; opacity: .92; -webkit-mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); mask-image: radial-gradient(ellipse 74% 70% at 50% 46%, #000 52%, transparent 97%); }
@@ -2664,10 +2668,12 @@
       .scene-card--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
       .scene-card--pair .scene-item { max-width: none; }
     }
-    /* Album de scène au téléphone : 2 colonnes, photos modestes, légendes plus petites */
+    /* Album de scène au téléphone : empilé, une photo à la fois (Cindy, 21 nov. — en 2 colonnes, la photo acadienne ressortait énorme et coupée à côté de la photo de Beresford) : chaque photo entière, largeur raisonnable, légende dessous */
     @media (max-width: 720px) {
-      .scene-album { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
-      .scene-album .scene-item figcaption { font-size: 14px; margin-top: 10px; }
+      .scene-album { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+      .scene-album .scene-item { width: 100%; max-width: 340px; margin-inline: auto; }
+      .scene-album .scene-item img { height: auto; }
+      .scene-album .scene-item figcaption { font-size: 15px; margin-top: 12px; }
     }
 
     /* ——— Beresford : vedette sur fond de la gang + galerie par familles ———
@@ -8165,6 +8171,11 @@
 <figure class="scene-item scene-item--portrait">
             <video src="assets/scene-reviens-moi.mp4" poster="assets/scene-reviens-moi-poster.jpg" controls playsinline preload="none" title="« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026"></video>
             <figcaption>« Reviens-moi » — improvisé sur scène avec Mario Benjamin, Verdun (Montréal), 30 mai 2026</figcaption>
+          </figure>
+<h4 class="scene-song-title pair-full">« Islands in the Stream » avec Mario Benjamin</h4>
+<figure class="scene-item scene-item--portrait pair-full">
+            <video src="assets/scene-duo-mario-islands.mp4" poster="assets/scene-duo-mario-islands-poster.jpg" controls playsinline preload="none" title="Cindy Roy chante « Islands in the Stream » en duo avec Mario Benjamin au Four de Saint-Eustache, le 20 novembre 2026"></video>
+            <figcaption>« Islands in the Stream » — en duo avec Mario Benjamin, au Four de Saint-Eustache, le 20 novembre 2026. Invitée à monter chanter avec lui, à la bonne franquette — un petit moment simple qui fait du bien au cœur. Merci Mario! 🦋</figcaption>
           </figure>
 <p class="scene-artist-links">Mario Benjamin sur le web : <a href="https://www.facebook.com/MarioBenjamin.chanteur" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/user/mariobenjamin100" target="_blank" rel="noopener">YouTube</a></p>
 </div>
